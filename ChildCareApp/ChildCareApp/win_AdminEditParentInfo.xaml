@@ -1,0 +1,29 @@
+﻿<Window x:Class="ChildCareApp.win_AdminEditParentInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="win_AdminEditParentInfo" Height="461.194" Width="644.776">
+    <Grid>
+        <Canvas x:Name="cnv_ParentIcon" HorizontalAlignment="Left" Height="152" Margin="23,41,0,0" VerticalAlignment="Top" Width="158"/>
+        <Label x:Name="lbl_Parent" Content="Parent Image" HorizontalAlignment="Left" Margin="44,15,0,0" VerticalAlignment="Top" Width="98"/>
+        <TextBox x:Name="txt_FirstName" HorizontalAlignment="Left" Height="23" Margin="308,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+        <Label x:Name="lbl_FirstName" Content="First Name:" HorizontalAlignment="Left" Margin="220,38,0,0" VerticalAlignment="Top" Width="83"/>
+        <Label x:Name="lbl_LastName" Content="Last Name:" HorizontalAlignment="Left" Margin="220,69,0,0" VerticalAlignment="Top" Width="83"/>
+        <TextBox x:Name="txt_LastName" HorizontalAlignment="Left" Height="23" Margin="308,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+        <Label x:Name="lbl_MiddleInitial" Content="Middle Initial:" HorizontalAlignment="Left" Margin="479,38,0,0" VerticalAlignment="Top" Width="82"/>
+        <TextBox x:Name="txt_MiddleInitial" HorizontalAlignment="Left" Height="23" Margin="561,41,-36,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
+        <Label x:Name="lbl_UserID" Content="ID Number:" HorizontalAlignment="Left" Margin="220,117,0,0" VerticalAlignment="Top" Width="83"/>
+        <TextBox x:Name="txt_LastName_Copy" HorizontalAlignment="Left" Height="23" Margin="308,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+        <Label x:Name="lbl_PhoneNumber" Content="Phone Number:" HorizontalAlignment="Left" Margin="198,148,0,0" VerticalAlignment="Top" Width="96"/>
+        <TextBox x:Name="txt_PhoneNumber" HorizontalAlignment="Left" Height="23" Margin="308,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+        <Label x:Name="lbl_Address" Content="Address:" HorizontalAlignment="Left" Margin="237,179,0,0" VerticalAlignment="Top" Width="55"/>
+        <TextBox x:Name="txt_Address" HorizontalAlignment="Left" Height="23" Margin="308,182,-11,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
+        <Label x:Name="lbl_City" Content="City:" HorizontalAlignment="Left" Margin="258,210,0,0" VerticalAlignment="Top" Width="34"/>
+        <TextBox x:Name="txt_City" HorizontalAlignment="Left" Height="23" Margin="308,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+        <Label x:Name="lbl_State" Content="State:" HorizontalAlignment="Left" Margin="479,210,0,0" VerticalAlignment="Top" Width="43"/>
+        <ComboBox x:Name="cbo_State" HorizontalAlignment="Left" Margin="527,214,-18,0" VerticalAlignment="Top" Width="74"/>
+        <Button x:Name="btn_AddChild" Content="Add A Child" HorizontalAlignment="Left" Margin="502,343,-36,-57" VerticalAlignment="Top" Width="117" Height="68"/>
+        <Label x:Name="lbl_Zip" Content="Zip:" HorizontalAlignment="Left" Margin="490,244,0,0" VerticalAlignment="Top" Width="43"/>
+        <TextBox x:Name="txt_Zip" HorizontalAlignment="Left" Height="23" Margin="527,247,-18,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74"/>
+
+    </Grid>
+</Window>

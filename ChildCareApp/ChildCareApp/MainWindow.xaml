@@ -1,8 +1,6 @@
-﻿<Window x:Class="ChildCareApp.MainWindow"
+﻿<Window x:Name="win_Login" x:Class="ChildCareApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="296.268" Width="495.149">
+    <Grid/>
 </Window>
