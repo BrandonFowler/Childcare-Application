@@ -1,0 +1,10 @@
+﻿<Window x:Class="ChildCareApp.win_AddOrEditParent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="win_AddOrEditParent" Height="300" Width="300">
+    <Grid>
+        <Button x:Name="btn_AddNewParent" Content="Add New Parent" HorizontalAlignment="Left" Margin="75,35,0,0" VerticalAlignment="Top" Width="134" Height="81" Click="btn_AddNewParent_Click"/>
+        <Button x:Name="btn_EditOrDeleteParent" Content="Edit / Delete Parent Info" HorizontalAlignment="Left" Margin="75,157,0,0" VerticalAlignment="Top" Width="134" Height="81" Click="btn_EditOrDeleteParent_Click"/>
+
+    </Grid>
+</Window>

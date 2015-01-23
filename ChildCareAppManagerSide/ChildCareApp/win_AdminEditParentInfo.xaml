@@ -12,7 +12,7 @@
         <Label x:Name="lbl_MiddleInitial" Content="Middle Initial:" HorizontalAlignment="Left" Margin="479,38,0,0" VerticalAlignment="Top" Width="82"/>
         <TextBox x:Name="txt_MiddleInitial" HorizontalAlignment="Left" Height="23" Margin="561,41,-36,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
         <Label x:Name="lbl_UserID" Content="ID Number:" HorizontalAlignment="Left" Margin="220,117,0,0" VerticalAlignment="Top" Width="83"/>
-        <TextBox x:Name="txt_LastName_Copy" HorizontalAlignment="Left" Height="23" Margin="308,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+        <TextBox x:Name="txt_IDNumber" HorizontalAlignment="Left" Height="23" Margin="308,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
         <Label x:Name="lbl_PhoneNumber" Content="Phone Number:" HorizontalAlignment="Left" Margin="198,148,0,0" VerticalAlignment="Top" Width="96"/>
         <TextBox x:Name="txt_PhoneNumber" HorizontalAlignment="Left" Height="23" Margin="308,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
         <Label x:Name="lbl_Address" Content="Address:" HorizontalAlignment="Left" Margin="237,179,0,0" VerticalAlignment="Top" Width="55"/>
@@ -24,6 +24,8 @@
         <Button x:Name="btn_AddChild" Content="Add A Child" HorizontalAlignment="Left" Margin="502,343,-36,-57" VerticalAlignment="Top" Width="117" Height="68"/>
         <Label x:Name="lbl_Zip" Content="Zip:" HorizontalAlignment="Left" Margin="490,244,0,0" VerticalAlignment="Top" Width="43"/>
         <TextBox x:Name="txt_Zip" HorizontalAlignment="Left" Height="23" Margin="527,247,-18,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74"/>
+        <Button x:Name="btn_SubmitInfo" Content="Submit Info" HorizontalAlignment="Left" Margin="308,254,0,0" VerticalAlignment="Top" Width="75" Click="btn_Submit_Click"/>
+        <Button x:Name="btn_Finish" Content="Finish" HorizontalAlignment="Left" Margin="526,297,0,0" VerticalAlignment="Top" Width="75" Click="btn_Finish_Click"/>
 
     </Grid>
 </Window>

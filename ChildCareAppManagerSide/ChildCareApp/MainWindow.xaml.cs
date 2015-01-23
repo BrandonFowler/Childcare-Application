@@ -22,7 +22,14 @@ namespace ChildCareApp {
         public MainWindow() {
             InitializeComponent();
 
+            
+        }
 
+        private void btn_Shortcut_Click(object sender, RoutedEventArgs e) {
+
+            win_AddOrEditParent AddOrEditParent = new win_AddOrEditParent();
+            AddOrEditParent.Show();
+            this.Close(); 
         }
 
     }

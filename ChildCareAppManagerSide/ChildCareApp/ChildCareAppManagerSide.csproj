@@ -53,8 +53,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="win_AddOrEditParent.xaml.cs">
+      <DependentUpon>win_AddOrEditParent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="win_AdminEditParentInfo.xaml.cs">
       <DependentUpon>win_AdminEditParentInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_ParentLogin.xaml.cs">
+      <DependentUpon>win_ParentLogin.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -68,7 +74,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="win_AddOrEditParent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="win_AdminEditParentInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="win_ParentLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
