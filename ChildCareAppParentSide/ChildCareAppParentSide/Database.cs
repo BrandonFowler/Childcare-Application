@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Data;
 
-namespace ChildCareApplicationParentSide {
+namespace ChildCareAppParentSide {
+
     class Database {
 
         private SQLiteConnection dbCon;
 
         public Database() {
             dbCon = new SQLiteConnection("Data Source=../../clients.db;Version=3;");
-        }
+        }//end Database
 
         public bool validateLogin(string ID, string PIN) {
             dbCon.Open();
-            string sql = "select rowid from client where ID = " + ID +" and PIN = " + PIN;
+            string sql = "select rowid from client where ID = " + ID + " and PIN = " + PIN;
             SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             int recordFound = Convert.ToInt32(command.ExecuteScalar());
 
@@ -28,7 +29,7 @@ namespace ChildCareApplicationParentSide {
 
             dbCon.Close();
             return false;
-        }
+        }//end validateLogin
 
         public String[] findChildren(string id) {
             dbCon.Open();
@@ -56,7 +57,7 @@ namespace ChildCareApplicationParentSide {
             }
             dbCon.Close();
             return names;
-        }
+        }//end findChildren
 
         public bool checkIn(string name) {
             dbCon.Open();
@@ -74,7 +75,7 @@ namespace ChildCareApplicationParentSide {
             command.ExecuteNonQuery();
             dbCon.Close();
             return true;
-        }
+        }//end checkOut
 
-    }
+    }//end Database(Class)
 }
