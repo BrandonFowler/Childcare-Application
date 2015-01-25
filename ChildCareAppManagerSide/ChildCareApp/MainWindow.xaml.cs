@@ -194,7 +194,7 @@ namespace ChildCareApp {
             this.Close(); 
         }//end shortcut click
 
-        private void btn_Login_Click(object sender, RoutedEventArgs e) {
+        /*private void btn_Login_Click(object sender, RoutedEventArgs e) {
             if (txt_UserName.Text.Equals("1") && txt_Password.Text.Equals("1")) {
                 lbl_ManagerPas.Visibility = System.Windows.Visibility.Hidden;
                 lbl_UserName.Visibility = System.Windows.Visibility.Hidden;
@@ -208,6 +208,7 @@ namespace ChildCareApp {
                 btn_Shortcut.Visibility = System.Windows.Visibility.Visible;
             }
         }
+        */
 
     }
 }
