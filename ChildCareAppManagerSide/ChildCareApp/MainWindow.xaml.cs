@@ -25,11 +25,10 @@ namespace ChildCareApp {
             
         }
 
-        private void btn_Shortcut_Click(object sender, RoutedEventArgs e) {
-
+        private void btn_EditParentsKids_Click(object sender, RoutedEventArgs e) {
             win_AddOrEditParent AddOrEditParent = new win_AddOrEditParent();
             AddOrEditParent.Show();
-            this.Close(); 
+            //this.Close(); 
         }
 
         private void btn_Login_Click(object sender, RoutedEventArgs e) {
@@ -42,9 +41,25 @@ namespace ChildCareApp {
                 txt_UserName.Visibility = System.Windows.Visibility.Hidden;
                 btn_Login.IsEnabled = false;
                 btn_Login.Visibility = System.Windows.Visibility.Hidden;
-                btn_Shortcut.IsEnabled = true;
-                btn_Shortcut.Visibility = System.Windows.Visibility.Visible;
+                btn_EditParentsKids.IsEnabled = true;
+                btn_EditParentsKids.Visibility = System.Windows.Visibility.Visible;
             }
+        }
+
+        private void btn_EditPricing_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void btn_EditSpecialEvents_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void btn_BusinessReport_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void btn_ParentReport_Click(object sender, RoutedEventArgs e) {
+
         }
 
     }
