@@ -17,11 +17,12 @@ namespace ChildCareApp {
     /// Interaction logic for win_AdminEditParentInfo.xaml
     /// </summary>
     public partial class win_AdminEditParentInfo : Window {
-        public win_AdminEditParentInfo() {
+        public win_AdminEditParentInfo(string parentID) {
             InitializeComponent();
             AddStates();
             cnv_ParentIcon.Background = new SolidColorBrush(Colors.Aqua); //setting canvas color so we can see it
-            btn_Delete.Background = new SolidColorBrush(Colors.Red); 
+            btn_Delete.Background = new SolidColorBrush(Colors.Red);
+            LoadParentInfo(parentID);
         }
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
@@ -112,6 +113,13 @@ namespace ChildCareApp {
 
             return false; 
         }
+
+        private void LoadParentInfo(string parentID) {
+
+            txt_IDNumber.Text = parentID;
+            //txt_FirstName.Text = LoadParentInfoDatabase.GetFirstName(parentID); 
+
+        }//end LoadParentInfo
         private void AddStates() {
 
             cbo_State.SelectedIndex = 46;

@@ -15,29 +15,17 @@ using System.Windows.Shapes;
 namespace ChildCareApp
 {
     /// <summary>
-    /// Interaction logic for win_AddOrEditParent.xaml
+    /// Interaction logic for win_AdminMenu.xaml
     /// </summary>
-    /// 
-    /* This window is for the admin to be able to choose to add a new parent or 
-     * to Edit or Delete an existing one. I dont know if we want the do add parent here, 
-     * so just remove that option if you think it is not something the admin should do here. 
-     */
-    public partial class win_AddOrEditParent : Window {
-        public win_AddOrEditParent() {
+    public partial class win_AdminMenu : Window {
+        public win_AdminMenu() {
             InitializeComponent();
-        }
-
-        private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
-
-
-
-        }
+        }//end win_AdminMenu
 
         private void btn_EditOrDeleteParent_Click(object sender, RoutedEventArgs e) {
-
             win_ParentLogin ParentLogin = new win_ParentLogin();
             ParentLogin.Show();
-            this.Close(); 
-        }
-    }
-}
+            this.Close();
+        }//end btn_EditOrDeleteParent_Click
+    }//end class
+}//end namespace
