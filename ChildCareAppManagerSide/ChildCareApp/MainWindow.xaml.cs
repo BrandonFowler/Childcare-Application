@@ -32,5 +32,20 @@ namespace ChildCareApp {
             this.Close(); 
         }
 
+        private void btn_Login_Click(object sender, RoutedEventArgs e) {
+            if (txt_UserName.Text.Equals("1") && txt_Password.Text.Equals("1")) {
+                lbl_ManagerPas.Visibility = System.Windows.Visibility.Hidden;
+                lbl_UserName.Visibility = System.Windows.Visibility.Hidden;
+                txt_Password.IsEnabled = false;
+                txt_Password.Visibility = System.Windows.Visibility.Hidden;
+                txt_UserName.IsEnabled = false;
+                txt_UserName.Visibility = System.Windows.Visibility.Hidden;
+                btn_Login.IsEnabled = false;
+                btn_Login.Visibility = System.Windows.Visibility.Hidden;
+                btn_Shortcut.IsEnabled = true;
+                btn_Shortcut.Visibility = System.Windows.Visibility.Visible;
+            }
+        }
+
     }
 }
