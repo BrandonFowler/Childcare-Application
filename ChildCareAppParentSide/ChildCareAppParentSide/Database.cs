@@ -31,6 +31,21 @@ namespace ChildCareAppParentSide {
             return false;
         }//end validateLogin
 
+        public bool validateAdmin(string ID, string PIN) {
+            dbCon.Open();
+            string sql = "select rowid from admins where ID = " + ID + " and PIN = " + PIN;
+            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            int recordFound = Convert.ToInt32(command.ExecuteScalar());
+
+            if (recordFound > 0) {
+                dbCon.Close();
+                return true;
+            }
+
+            dbCon.Close();
+            return false;
+        }//end validateLogin
+
         public String[] findChildren(string id) {
             dbCon.Open();
 

@@ -156,17 +156,22 @@ namespace ChildCareAppParentSide {
             string ID = txt_IDEntry.Text;
             string PIN = txt_PINEntry.Text;
             bool userFound = this.db.validateLogin(ID, PIN);
+            bool adminFound = this.db.validateAdmin(ID, PIN);
 
             if (userFound) {
-                MessageBox.Show("User found");
+                win_ChildLogin ChildLoginWindow = new win_ChildLogin(ID);
+                ChildLoginWindow.Show();
+                this.Close();
+            }
+            else if (adminFound) {
+                win_AdminWindow AdminWindow = new win_AdminWindow(ID);
+                AdminWindow.Show();
+                this.Close();
             }
             else {
                 MessageBox.Show("User ID or PIN does not exist");
             }
 
-            /*
-              Still need to account for admin login
-            */
         }//btn_Login_Click(Class)
 
     }//end win_LoginWindow
