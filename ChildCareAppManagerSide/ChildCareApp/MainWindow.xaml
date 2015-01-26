@@ -1,24 +1,13 @@
 ﻿<Window x:Name="win_Login" x:Class="ChildCareApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="342.268" Width="553.149">
+        Title="MainWindow" Height="291.268" Width="274.149">
     <Grid>
-        <Button x:Name="btn_Shortcut" Content="Go To Admin Edit Page" HorizontalAlignment="Left" Margin="384,280,0,0" VerticalAlignment="Top" Width="151" Click="btn_Shortcut_Click"/>
-        <Label x:Name="lbl_ID" Content="ID" HorizontalAlignment="Left" Margin="51,106,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_PIN" Content="PIN" HorizontalAlignment="Left" Margin="51,180,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_IDEntry" HorizontalAlignment="Left" Height="23" Margin="109,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="6"/>
-        <TextBox x:Name="txt_PINEntry" HorizontalAlignment="Left" Height="23" Margin="109,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="4"/>
-        <Button x:Name="btn_Number1" Content="1" HorizontalAlignment="Left" Margin="318,84,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number1_Click"/>
-        <Button x:Name="btn_Number2" Content="2" HorizontalAlignment="Left" Margin="373,84,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number2_Click"/>
-        <Button x:Name="btn_Number3" Content="3" HorizontalAlignment="Left" Margin="430,84,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="3.417,4.525" Click="btn_Number3_Click"/>
-        <Button x:Name="btn_Number4" Content="4" HorizontalAlignment="Left" Margin="318,124,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="2.904,2.808" Click="btn_Number4_Click"/>
-        <Button x:Name="btn_Number5" Content="5" HorizontalAlignment="Left" Margin="373,124,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number5_Click"/>
-        <Button x:Name="btn_Number6" Content="6" HorizontalAlignment="Left" Margin="430,124,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number6_Click"/>
-        <Button x:Name="btn_Number7" Content="7" HorizontalAlignment="Left" Margin="318,166,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number7_Click"/>
-        <Button x:Name="btn_Number8" Content="8" HorizontalAlignment="Left" Margin="373,166,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number8_Click"/>
-        <Button x:Name="btn_Number9" Content="9" HorizontalAlignment="Left" Margin="430,166,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number9_Click"/>
-        <Button x:Name="btn_Number0" Content="0" HorizontalAlignment="Left" Margin="318,211,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number0_Click"/>
-        <Button x:Name="btn_Clear" Content="Clear" HorizontalAlignment="Left" Margin="373,211,0,0" VerticalAlignment="Top" Width="89" Click="btn_Clear_Click"/>
-        <Button x:Name="btn_Login" Content="Log In" HorizontalAlignment="Left" Margin="213,259,0,0" VerticalAlignment="Top" Width="89" Click="btn_Login_Click"/>
+        <Button x:Name="btn_Exit" Content="Exit" HorizontalAlignment="Left" Margin="179,230,0,0" VerticalAlignment="Top" Width="77" Click="btn_Exit_Click"/>
+        <Label x:Name="lbl_UserName" Content="User Name" HorizontalAlignment="Left" Margin="40,34,0,0" VerticalAlignment="Top" Width="146"/>
+        <Label x:Name="lbl_Password" Content="Password" HorizontalAlignment="Left" Margin="40,88,0,0" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="txt_UserName" Height="23" Margin="40,60,40,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="6"/>
+        <TextBox x:Name="txt_Password" Height="23" Margin="40,114,40,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="4"/>
+        <Button x:Name="btn_Login" Content="Log In" Margin="80,173,80,0" VerticalAlignment="Top" Click="btn_Login_Click"/>
     </Grid>
 </Window>

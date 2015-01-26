@@ -26,6 +26,12 @@ namespace ChildCareApp
             win_ParentLogin ParentLogin = new win_ParentLogin();
             ParentLogin.Show();
             this.Close();
-        }//end btn_EditOrDeleteParent_Click
+        }
+
+        private void btn_Logout_Click(object sender, RoutedEventArgs e) {
+            MainWindow loginWindow = new MainWindow();
+            loginWindow.Show();
+            this.Close();
+        }
     }//end class
 }//end namespace
