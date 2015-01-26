@@ -57,8 +57,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BusinessReport.xaml.cs">
+      <DependentUpon>BusinessReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="LoadParentInfoDatabase.cs" />
+    <Compile Include="ParentReport.xaml.cs">
+      <DependentUpon>ParentReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="win_AdminEditParentInfo.xaml.cs">
       <DependentUpon>win_AdminEditParentInfo.xaml</DependentUpon>
     </Compile>
@@ -68,6 +74,10 @@
     <Compile Include="win_ParentLogin.xaml.cs">
       <DependentUpon>win_ParentLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="BusinessReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,6 +90,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ParentReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="win_AdminEditParentInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

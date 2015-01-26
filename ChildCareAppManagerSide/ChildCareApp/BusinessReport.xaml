@@ -1,0 +1,13 @@
+﻿<Window x:Class="ChildCareApp.BusinessReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BusinessReport" Height="528" Width="764">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="388" Margin="10,99,0,0" VerticalAlignment="Top" Width="736">
+            <DataGrid Margin="9"/>
+        </Border>
+        <Button x:Name="btn_CurrentMonthReport" Content="Current Month Report" HorizontalAlignment="Left" Margin="37,37,0,0" VerticalAlignment="Top" Width="136"/>
+        <Button x:Name="btn_DateRangeReport" Content="Date Range Report" HorizontalAlignment="Left" Margin="204,37,0,0" VerticalAlignment="Top" Width="122"/>
+
+    </Grid>
+</Window>

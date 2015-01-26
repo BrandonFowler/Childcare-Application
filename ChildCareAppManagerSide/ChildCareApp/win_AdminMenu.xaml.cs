@@ -33,5 +33,15 @@ namespace ChildCareApp
             loginWindow.Show();
             this.Close();
         }
+
+        private void btn_ParentReport_Click(object sender, RoutedEventArgs e) {
+            ParentReport parentReportWin = new ParentReport();
+            parentReportWin.Show();
+        }
+
+        private void btn_BusinessReport_Click(object sender, RoutedEventArgs e) {
+            BusinessReport businessReportWin = new BusinessReport();
+            businessReportWin.Show();
+        }
     }//end class
 }//end namespace
