@@ -56,13 +56,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ChildLoginWindow.xaml.cs">
-      <DependentUpon>ChildLoginWindow.xaml</DependentUpon>
+    <Compile Include="win_ChildLoginWindow.xaml.cs">
+      <DependentUpon>win_ChildLoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminWindow.xaml.cs">
-      <DependentUpon>AdminWindow.xaml</DependentUpon>
+    <Compile Include="win_AdminWindow.xaml.cs">
+      <DependentUpon>win_AdminWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="LoginWindow.xaml">
+    <Page Include="win_LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -71,15 +71,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Database.cs" />
-    <Compile Include="LoginWindow.xaml.cs">
-      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    <Compile Include="win_LoginWindow.xaml.cs">
+      <DependentUpon>win_LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ChildLoginWindow.xaml">
+    <Page Include="win_ChildLoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminWindow.xaml">
+    <Page Include="win_AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
