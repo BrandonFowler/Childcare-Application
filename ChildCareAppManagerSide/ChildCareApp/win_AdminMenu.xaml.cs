@@ -23,7 +23,8 @@ namespace ChildCareApp
         }//end win_AdminMenu
 
         private void btn_EditOrDeleteParent_Click(object sender, RoutedEventArgs e) {
-            win_ParentLogin ParentLogin = new win_ParentLogin();
+            bool editParent = true; 
+            win_ParentLogin ParentLogin = new win_ParentLogin(editParent);
             ParentLogin.Show();
             this.Close();
         }
@@ -42,6 +43,13 @@ namespace ChildCareApp
         private void btn_BusinessReport_Click(object sender, RoutedEventArgs e) {
             BusinessReport businessReportWin = new BusinessReport();
             businessReportWin.Show();
+        }
+
+        private void btn_EditOrDeleteChild_Click(object sender, RoutedEventArgs e) {
+            bool editParent = false; 
+            win_ParentLogin ParentLogin = new win_ParentLogin(editParent);
+            ParentLogin.Show();
+            this.Close();
         }
     }//end class
 }//end namespace

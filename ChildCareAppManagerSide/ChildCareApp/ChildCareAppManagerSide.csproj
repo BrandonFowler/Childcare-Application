@@ -65,6 +65,9 @@
     <Compile Include="ParentReport.xaml.cs">
       <DependentUpon>ParentReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="win_AdminEditChildInfo.xaml.cs">
+      <DependentUpon>win_AdminEditChildInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="win_AdminEditParentInfo.xaml.cs">
       <DependentUpon>win_AdminEditParentInfo.xaml</DependentUpon>
     </Compile>
@@ -91,6 +94,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ParentReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="win_AdminEditChildInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

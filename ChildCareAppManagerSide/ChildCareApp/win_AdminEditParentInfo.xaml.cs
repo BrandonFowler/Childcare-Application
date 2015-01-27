@@ -111,6 +111,11 @@ namespace ChildCareApp {
                 return true;
             }
 
+            else if (string.IsNullOrWhiteSpace(this.txt_Email.Text))
+            {
+                MessageBox.Show("Please enter your e-mail.");
+                return true;
+            }
             return false; 
         }
 

@@ -27,9 +27,10 @@ namespace ChildCareApp
         private bool IDBoxSelected = false;
         private bool PINBoxSelected = false;
         private Database db;
-
-        public win_ParentLogin() {
+        private bool editParent; 
+        public win_ParentLogin(bool editP) {
             InitializeComponent();
+            editParent = editP; 
             this.db = new Database();
             this.txt_IDEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_IDEntry.GotFocus += OnIDBoxFocus;
@@ -64,140 +65,6 @@ namespace ChildCareApp
         }//end KeyPressedValidateNumber
 
 
-        private void btn_Number1_Click(object sender, RoutedEventArgs e)
-        {
-            if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6)
-            {
-                this.txt_IDEntry.Text += "1";
-            }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4)
-            {
-                this.txt_PINEntry.Text += "1";
-            }
-        }//btn_Number1_Click
-
-        private void btn_Number2_Click(object sender, RoutedEventArgs e)
-        {
-            if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6)
-            {
-                this.txt_IDEntry.Text += "2";
-            }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4)
-            {
-                this.txt_PINEntry.Text += "2";
-            }
-        }//btn_Number2_Click
-
-        private void btn_Number3_Click(object sender, RoutedEventArgs e)
-        {
-            if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6)
-            {
-                this.txt_IDEntry.Text += "3";
-            }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4)
-            {
-                this.txt_PINEntry.Text += "3";
-            }
-        }//btn_Number3_Click
-
-        private void btn_Number4_Click(object sender, RoutedEventArgs e)
-        {
-            if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6)
-            {
-                this.txt_IDEntry.Text += "4";
-            }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4)
-            {
-                this.txt_PINEntry.Text += "4";
-            }
-        }//btn_Number4_Click
-
-        private void btn_Number5_Click(object sender, RoutedEventArgs e)
-        {
-            if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6)
-            {
-                this.txt_IDEntry.Text += "5";
-            }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4)
-            {
-                this.txt_PINEntry.Text += "5";
-            }
-        }//btn_Number5_Click
-
-        private void btn_Number6_Click(object sender, RoutedEventArgs e)
-        {
-            if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6)
-            {
-                this.txt_IDEntry.Text += "6";
-            }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4)
-            {
-                this.txt_PINEntry.Text += "6";
-            }
-        }//btn_Number6_Click
-
-        private void btn_Number7_Click(object sender, RoutedEventArgs e)
-        {
-            if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6)
-            {
-                this.txt_IDEntry.Text += "7";
-            }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4)
-            {
-                this.txt_PINEntry.Text += "7";
-            }
-        }//btn_Number7_Click
-
-        private void btn_Number8_Click(object sender, RoutedEventArgs e)
-        {
-            if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6)
-            {
-                this.txt_IDEntry.Text += "8";
-            }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4)
-            {
-                this.txt_PINEntry.Text += "8";
-            }
-        }//btn_Number8_Click
-
-        private void btn_Number9_Click(object sender, RoutedEventArgs e)
-        {
-            if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6)
-            {
-                this.txt_IDEntry.Text += "9";
-            }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4)
-            {
-                this.txt_PINEntry.Text += "9";
-            }
-        }//btn_Number9_Click
-
-        private void btn_Number0_Click(object sender, RoutedEventArgs e)
-        {
-            if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6)
-            {
-                this.txt_IDEntry.Text += "0";
-            }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4)
-            {
-                this.txt_PINEntry.Text += "0";
-            }
-        }//btn_Number0_Click
-
-        private void btn_Clear_Click(object sender, RoutedEventArgs e)
-        {
-            if (IDBoxSelected)
-            {
-                this.txt_IDEntry.Clear();
-                this.txt_IDEntry.Focus();
-            }
-            if (PINBoxSelected)
-            {
-                this.txt_PINEntry.Clear();
-                this.txt_PINEntry.Focus();
-            }
-        }//btn_Clear_Click
-
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
 
             string ID = txt_IDEntry.Text;
@@ -207,7 +74,11 @@ namespace ChildCareApp
             if (userFound)
             {
                 MessageBox.Show("User found");
-                DisplayAdminEditParentWindow(ID); 
+                if (editParent)
+                    DisplayAdminEditParentWindow(ID);
+
+                else
+                    DisplayAdminEditChildInfo(ID); 
             }
             else
             {
@@ -224,5 +95,13 @@ namespace ChildCareApp
             AdminEditParentWindow.Show();
             this.Close();
         }//end DisplayAdminEditParentWindow
+
+        private void DisplayAdminEditChildInfo(string ID)
+        {
+
+            win_AdminEditChildInfo AdminEditChildInfo = new win_AdminEditChildInfo(ID);
+            AdminEditChildInfo.Show();
+            this.Close();
+        }//end DisplayAdminEditChildInfo
     }
 }
