@@ -172,7 +172,7 @@ namespace ChildCareAppParentSide {
                 MessageBox.Show("User ID or PIN does not exist");
             }
 
-        }//btn_Login_Click(Class)
+        }//btn_Login_Click
 
-    }//end win_LoginWindow
+    }//end win_LoginWindow(class)
 }

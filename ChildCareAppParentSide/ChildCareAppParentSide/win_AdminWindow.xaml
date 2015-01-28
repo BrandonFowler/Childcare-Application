@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Admin" Height="350" Width="525">
     <Grid>
-        
+        <Button x:Name="btn_LogOutAdmin" Content="Log Out" HorizontalAlignment="Left" Margin="412,271,0,0" VerticalAlignment="Top" Width="75" Click="btn_LogOutAdmin_Click"/>
+
     </Grid>
 </Window>

@@ -46,32 +46,35 @@ namespace ChildCareAppParentSide {
             return false;
         }//end validateLogin
 
-        public String[] findChildren(string id) {
+        public String[,] findChildren(string id) {
             dbCon.Open();
 
             string sql = "select rowid from child where parentID = " + id;
             SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             int recordFound = Convert.ToInt32(command.ExecuteScalar());
 
-            if (recordFound == 0) {
-                dbCon.Close();
-                return null;
+            if(recordFound == 0) {
+              dbCon.Close();
+              return null;
             }
 
-            sql = "select name from child where parentID = " + id;
+            sql = "select childID, name from child where parentID = " + id;
             command = new SQLiteCommand(sql, this.dbCon);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
             int count = DS.Tables[0].Rows.Count;
-            String[] names = new string[count];
-            int x = 0;
-            while (x < count) {
-                names[x] = DS.Tables[0].Rows[x][0].ToString();
-                x++;
+            String[,] data = new string[count,2];
+           
+            for(int x = 0; x < count; x++) {
+                for(int y = 0; y < 2; y++) {
+                    data[x, y] = DS.Tables[0].Rows[x][y].ToString();
+                
+                }
             }
+
             dbCon.Close();
-            return names;
+            return data;
         }//end findChildren
 
         public bool checkIn(string name) {
