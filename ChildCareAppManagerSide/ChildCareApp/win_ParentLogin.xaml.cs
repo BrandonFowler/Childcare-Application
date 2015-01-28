@@ -25,7 +25,7 @@ namespace ChildCareApp
     public partial class win_ParentLogin : Window {
 
         private bool IDBoxSelected = false;
-        private bool PINBoxSelected = false;
+ 
         private Database db;
         private bool editParent; 
         public win_ParentLogin(bool editP) {
@@ -34,22 +34,13 @@ namespace ChildCareApp
             this.db = new Database();
             this.txt_IDEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_IDEntry.GotFocus += OnIDBoxFocus;
-            this.txt_PINEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
-            this.txt_PINEntry.GotFocus += OnPINBoxFocus;
             this.txt_IDEntry.Focus();
         }
 
-        private void OnIDBoxFocus(object sender, EventArgs e)
-        {
+        private void OnIDBoxFocus(object sender, EventArgs e) {
             this.IDBoxSelected = true;
-            this.PINBoxSelected = false;
-        }//end OnTDBoxFocus
 
-        private void OnPINBoxFocus(object sender, EventArgs e)
-        {
-            this.PINBoxSelected = true;
-            this.IDBoxSelected = false;
-        }//end OnPINBoxFocus
+        }//end OnTDBoxFocus
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e)
         {
@@ -68,8 +59,7 @@ namespace ChildCareApp
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
 
             string ID = txt_IDEntry.Text;
-            string PIN = txt_PINEntry.Text;
-            bool userFound = this.db.validateLogin(ID, PIN);
+            bool userFound = this.db.validateLogin(ID);
 
             if (userFound)
             {

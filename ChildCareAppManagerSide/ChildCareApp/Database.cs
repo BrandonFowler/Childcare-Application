@@ -17,10 +17,10 @@ namespace ChildCareApp {
             dbCon = new SQLiteConnection("Data Source=../../clients.db;Version=3;");
         }//end Database
 
-        public bool validateLogin(string ID, string PIN)
+        public bool validateLogin(string ID)
         {
             dbCon.Open();
-            string sql = "select rowid from client where ID = " + ID + " and PIN = " + PIN;
+            string sql = "select rowid from client where ID = " + ID;
             SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             int recordFound = Convert.ToInt32(command.ExecuteScalar());
 
