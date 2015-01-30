@@ -63,11 +63,12 @@ namespace ChildCareAppParentSide {
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
-            int count = DS.Tables[0].Rows.Count;
-            String[,] data = new string[count,2];
+            int cCount = DS.Tables[0].Columns.Count;
+            int rCount = DS.Tables[0].Rows.Count;
+            String[,] data = new string[rCount,cCount];
            
-            for(int x = 0; x < count; x++) {
-                for(int y = 0; y < 2; y++) {
+            for(int x = 0; x < rCount; x++) {
+                for(int y = 0; y < cCount; y++) {
                     data[x, y] = DS.Tables[0].Rows[x][y].ToString();
                 
                 }
@@ -84,7 +85,7 @@ namespace ChildCareAppParentSide {
             command.ExecuteNonQuery();
             dbCon.Close();
             return true;
-        }
+        }//end checkIn
 
         public bool checkOut(string name) {
             dbCon.Open();
@@ -94,6 +95,24 @@ namespace ChildCareAppParentSide {
             dbCon.Close();
             return true;
         }//end checkOut
+
+        public string[] getParentInfo(String ID) {
+            string sql = "select * from client where id = " + ID;
+            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            command = new SQLiteCommand(sql, this.dbCon);
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            DataSet DS = new DataSet();
+            DB.Fill(DS);
+
+            int cCount = DS.Tables[0].Columns.Count;
+            string[] data = new String[cCount];
+
+            for (int x = 0; x < cCount; x++) {
+                data[x] = DS.Tables[0].Rows[0][x].ToString();
+            }
+
+            return data;
+        }
 
     }//end Database(Class)
 }
