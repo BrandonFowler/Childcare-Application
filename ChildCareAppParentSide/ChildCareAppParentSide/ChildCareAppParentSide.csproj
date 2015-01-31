@@ -58,12 +58,19 @@
     </ApplicationDefinition>
     <Compile Include="Child.cs" />
     <Compile Include="DateAndTime.cs" />
+    <Compile Include="win_AdminLogin.xaml.cs">
+      <DependentUpon>win_AdminLogin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="win_ChildLoginWindow.xaml.cs">
       <DependentUpon>win_ChildLoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="win_AdminWindow.xaml.cs">
       <DependentUpon>win_AdminWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="win_AdminLogin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="win_LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

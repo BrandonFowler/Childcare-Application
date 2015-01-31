@@ -13,12 +13,12 @@ namespace ChildCareAppParentSide {
         private SQLiteConnection dbCon;
 
         public Database() {
-            dbCon = new SQLiteConnection("Data Source=../../clients.db;Version=3;");
+            dbCon = new SQLiteConnection("Data Source=../../../../Database/ChildcareDB.s3db;Version=3;");
         }//end Database
 
         public bool validateLogin(string ID, string PIN) {
             dbCon.Open();
-            string sql = "select rowid from client where ID = " + ID + " and PIN = " + PIN;
+            string sql = "select rowid from Guardian where Guardian_ID = " + ID + " and GuardianPIN = " + PIN;
             SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             int recordFound = Convert.ToInt32(command.ExecuteScalar());
 
@@ -31,9 +31,9 @@ namespace ChildCareAppParentSide {
             return false;
         }//end validateLogin
 
-        public bool validateAdmin(string ID, string PIN) {
+        public bool validateAdmin(string userName, string password) {
             dbCon.Open();
-            string sql = "select rowid from admins where ID = " + ID + " and PIN = " + PIN;
+            string sql = "select rowid from Administrator where AdministratorPW = " + password;
             SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             int recordFound = Convert.ToInt32(command.ExecuteScalar());
 
@@ -49,7 +49,9 @@ namespace ChildCareAppParentSide {
         public String[,] findChildren(string id) {
             dbCon.Open();
 
-            string sql = "select rowid from child where parentID = " + id;
+            string sql = "select Child.* " +
+                "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
+                "where Guardian_ID =" + id;
             SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             int recordFound = Convert.ToInt32(command.ExecuteScalar());
 
@@ -58,7 +60,9 @@ namespace ChildCareAppParentSide {
               return null;
             }
 
-            sql = "select childID, name from child where parentID = " + id;
+            sql = "select Child.* "+
+                "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID "+ 
+                "where Guardian_ID ="+id;
             command = new SQLiteCommand(sql, this.dbCon);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
@@ -70,7 +74,6 @@ namespace ChildCareAppParentSide {
             for(int x = 0; x < rCount; x++) {
                 for(int y = 0; y < cCount; y++) {
                     data[x, y] = DS.Tables[0].Rows[x][y].ToString();
-                
                 }
             }
 
@@ -78,6 +81,7 @@ namespace ChildCareAppParentSide {
             return data;
         }//end findChildren
 
+        /**
         public bool checkIn(string name) {
             dbCon.Open();
             string sql = "update child set checkedIn = 1 where name = '" + name + "'";
@@ -95,9 +99,10 @@ namespace ChildCareAppParentSide {
             dbCon.Close();
             return true;
         }//end checkOut
+        **/
 
         public string[] getParentInfo(String ID) {
-            string sql = "select * from client where id = " + ID;
+            string sql = "select * from Guardian where Guardian_ID = " + ID;
             SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             command = new SQLiteCommand(sql, this.dbCon);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
@@ -112,7 +117,25 @@ namespace ChildCareAppParentSide {
             }
 
             return data;
-        }
+        }// end getParentInfo
+
+        public string[] getChildInfo(String ID) {
+            string sql = "select * from Child where Child_ID = " + ID;
+            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            command = new SQLiteCommand(sql, this.dbCon);
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            DataSet DS = new DataSet();
+            DB.Fill(DS);
+
+            int cCount = DS.Tables[0].Columns.Count;
+            string[] data = new String[cCount];
+
+            for (int x = 0; x < cCount; x++) {
+                data[x] = DS.Tables[0].Rows[0][x].ToString();
+            }
+
+            return data;
+        }//end getChildInfo
 
     }//end Database(Class)
 }

@@ -47,8 +47,8 @@ namespace ChildCareAppParentSide {
             string[,] childrenData = db.findChildren(this.parentID);
             if (childrenData != null) {
                 for (int x = 0; x < childrenData.GetLength(0); x++) {
-                    Image Image = buildImage(childrenData[x, 0], 60);
-                    lst_CheckInBox.Items.Add(new Child(childrenData[x, 1], Image));
+                    Image image = buildImage(childrenData[x, 6], 60);
+                    lst_CheckInBox.Items.Add(new Child(childrenData[x, 1], childrenData[x,2], image));
                 }
             }
         }//end setUpCheckInBox
@@ -56,13 +56,24 @@ namespace ChildCareAppParentSide {
         private Image buildImage(string path, int size) {
             Image image = new Image();
             image.Width = size;
-            BitmapImage bitmapImage = new BitmapImage();
-            var fileInfo = new FileInfo(@"..\..\default.jpg");
-            bitmapImage.BeginInit();
-            bitmapImage.UriSource = new Uri(fileInfo.FullName);
-            bitmapImage.DecodePixelWidth = size;
-            bitmapImage.EndInit();
-            image.Source = bitmapImage;
+            
+            try {
+                BitmapImage bitmapImage = new BitmapImage();
+                var fileInfo = new FileInfo(@"" + path);
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = new Uri(fileInfo.FullName);
+                bitmapImage.DecodePixelWidth = size;
+                bitmapImage.EndInit();
+                image.Source = bitmapImage;
+            } catch {
+                BitmapImage bitmapImage = new BitmapImage();
+                var fileInfo = new FileInfo(@"../../../../Photos/default.jpg");
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = new Uri(fileInfo.FullName);
+                bitmapImage.DecodePixelWidth = size;
+                bitmapImage.EndInit();
+                image.Source = bitmapImage;
+            }
             return image;
         }//end buildImage
 
@@ -87,8 +98,8 @@ namespace ChildCareAppParentSide {
 
         public void setUpParentDisplay() {
             string [] parentInfo = db.getParentInfo(this.parentID);
-            lbl_ParentName.Content = parentInfo[1];
-            img_ParentPic.Source = (buildImage("default.jpg", 100)).Source;
+            lbl_ParentName.Content = parentInfo[2]+" "+parentInfo[3];
+            img_ParentPic.Source = (buildImage(parentInfo[11], 100)).Source;
         }//end setUpParentDisplay
 
         public void eventsSetup() {

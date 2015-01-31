@@ -42,7 +42,7 @@ namespace ChildCareAppParentSide {
         }//end OnPINBoxFocus
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e) {
-            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back) {
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back || e.Key == Key.Tab) {
 
             }
             else {
@@ -156,22 +156,23 @@ namespace ChildCareAppParentSide {
             string ID = txt_IDEntry.Text;
             string PIN = txt_PINEntry.Text;
             bool userFound = this.db.validateLogin(ID, PIN);
-            bool adminFound = this.db.validateAdmin(ID, PIN);
 
             if (userFound) {
                 win_ChildLogin ChildLoginWindow = new win_ChildLogin(ID);
                 ChildLoginWindow.Show();
                 this.Close();
             }
-            else if (adminFound) {
-                win_AdminWindow AdminWindow = new win_AdminWindow(ID);
-                AdminWindow.Show();
-                this.Close();
-            }
             else {
                 MessageBox.Show("User ID or PIN does not exist");
             }
 
+        }
+
+        private void btn_AdminLogin_Click(object sender, RoutedEventArgs e) {
+            win_AdminLogin adminLogin = new win_AdminLogin();
+            adminLogin.Show();
+            this.Close();
+            
         }//btn_Login_Click
 
     }//end win_LoginWindow(class)
