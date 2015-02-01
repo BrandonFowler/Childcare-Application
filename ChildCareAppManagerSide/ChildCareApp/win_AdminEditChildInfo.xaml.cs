@@ -59,6 +59,10 @@ namespace ChildCareApp {
 
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
 
+            bool? delete;
+            win_DeleteConformation DeleteConformation = new win_DeleteConformation();
+            delete = DeleteConformation.ShowDialog();
+
         }//end btn_Delete_Click
 
         private void btn_MainMenu_Click(object sender, RoutedEventArgs e) {

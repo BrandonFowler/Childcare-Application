@@ -68,10 +68,7 @@ namespace ChildCareApp {
             bool? delete;
             win_DeleteConformation DeleteConformation = new win_DeleteConformation();
             delete = DeleteConformation.ShowDialog();
-            delete = DeleteConformation.DialogResult;
-
-            int x = 0; 
-
+           
         }//end btn_Delete_Click
 
         private void ClearFields() {
