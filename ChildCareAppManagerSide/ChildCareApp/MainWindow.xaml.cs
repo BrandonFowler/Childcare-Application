@@ -60,18 +60,29 @@ namespace ChildCareApp {
         }//end OnPINBoxFocus
 
         private void btn_Login_Click(object sender, RoutedEventArgs e) {
-            string ID = txt_UserName.Text;
-            string PIN = txt_Password.Text;
-            bool userFound = this.db.validateAdminLogin(ID, PIN);
+            if (string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.txt_Password.Text))
+            {
+                MessageBox.Show("Please enter a User Name and a Password.");
 
-            if (userFound) {
-                MessageBox.Show("Admin found");
-                DisplayAdminWindow(); 
             }
-            else {
-                MessageBox.Show("User ID or PIN does not exist");
-            }
+            else
+            {
 
+                string ID = txt_UserName.Text;
+                string PIN = txt_Password.Text;
+                bool userFound = this.db.validateAdminLogin(ID, PIN);
+
+                if (userFound)
+                {
+                    MessageBox.Show("Admin found");
+                    DisplayAdminWindow();
+                }
+                else
+                {
+                    MessageBox.Show("User ID or PIN does not exist");
+                }
+
+            }
             /*
               Still need to account for admin login
             */

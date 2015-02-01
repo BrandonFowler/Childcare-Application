@@ -42,8 +42,7 @@ namespace ChildCareApp
 
         }//end OnTDBoxFocus
 
-        private void KeyPressedValidateNumber(Object o, KeyEventArgs e)
-        {
+        private void KeyPressedValidateNumber(Object o, KeyEventArgs e) {
             if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back)
             {
 
@@ -58,24 +57,35 @@ namespace ChildCareApp
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
 
-            string ID = txt_IDEntry.Text;
-            bool userFound = this.db.validateLogin(ID);
 
-            if (userFound)
+
+            if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text))
             {
-                MessageBox.Show("User found");
-                if (editParent)
-                    DisplayAdminEditParentWindow(ID);
+                MessageBox.Show("Please enter the parents ID number.");
 
-                else
-                    DisplayAdminEditChildInfo(ID); 
             }
             else
             {
-                MessageBox.Show("User ID or PIN does not exist");
-            }
-            
-             
+
+
+                string ID = txt_IDEntry.Text;
+                bool userFound = this.db.validateLogin(ID);
+
+                if (userFound)
+                {
+                    MessageBox.Show("User found");
+                    if (editParent)
+                        DisplayAdminEditParentWindow(ID);
+
+                    else
+                        DisplayAdminEditChildInfo(ID);
+                }//end if
+                else
+                {
+                    MessageBox.Show("User ID or PIN does not exist");
+                }//end else
+
+            }//end else
 
         }//end submit click
 
@@ -86,8 +96,7 @@ namespace ChildCareApp
             this.Close();
         }//end DisplayAdminEditParentWindow
 
-        private void DisplayAdminEditChildInfo(string ID)
-        {
+        private void DisplayAdminEditChildInfo(string ID) {
 
             win_AdminEditChildInfo AdminEditChildInfo = new win_AdminEditChildInfo(ID);
             AdminEditChildInfo.Show();
