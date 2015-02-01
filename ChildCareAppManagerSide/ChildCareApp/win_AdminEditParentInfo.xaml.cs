@@ -33,29 +33,47 @@ namespace ChildCareApp {
             //save all information to database
             if (formNotComplete == false)
             {
-                string firstName, lastName, middle, address, city, state, zip;
+                string firstName, lastName, middle, address, city, state, zip, email;
 
                 firstName = txt_FirstName.Text;
                 lastName = txt_LastName.Text;
                 middle = txt_MiddleInitial.Text;
-                
+
+                email = txt_Email.Text; 
+
                 address = txt_Address.Text;
                 city = txt_City.Text;
                 state = cbo_State.Text; //dont know if this will work yet
                 zip = txt_Zip.Text;
 
 
-                ClearFields();
+               //ClearFields();
             }
-
-        }
+        }//end btn_Submit_Click
 
         private void btn_Finish_Click(object sender, RoutedEventArgs e) {
 
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close(); 
-        }
+        }//end btn_Finish_Click
+
+        private void btn_AddChild_Click(object sender, RoutedEventArgs e) {
+
+
+        }//end btn_AddChild_Click
+
+        private void btn_Delete_Click(object sender, RoutedEventArgs e) {
+
+            bool? delete;
+            win_DeleteConformation DeleteConformation = new win_DeleteConformation();
+            delete = DeleteConformation.ShowDialog();
+            delete = DeleteConformation.DialogResult;
+
+            int x = 0; 
+
+        }//end btn_Delete_Click
+
         private void ClearFields() {
             txt_Address.Clear();
             txt_City.Clear();
@@ -65,7 +83,9 @@ namespace ChildCareApp {
             txt_IDNumber.Clear();
             txt_PhoneNumber.Clear();
             txt_Zip.Clear();
-        }
+            txt_Email.Clear(); 
+        }//end ClearFields
+
         private bool CheckIfNull() {
 
             if (string.IsNullOrWhiteSpace(this.txt_Address.Text))
@@ -117,7 +137,7 @@ namespace ChildCareApp {
                 return true;
             }
             return false; 
-        }
+        }//end checkIfNull
 
         private void LoadParentInfo(string parentID) {
 
@@ -184,9 +204,8 @@ namespace ChildCareApp {
             cbo_State.Items.Add("WI");
             cbo_State.Items.Add("WY");
 
+        }//end AddStates
 
 
-
-        }
-    }
-}
+    }//end class
+}//end nameSpace

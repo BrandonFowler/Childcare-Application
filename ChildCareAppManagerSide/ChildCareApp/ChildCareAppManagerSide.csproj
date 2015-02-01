@@ -74,6 +74,9 @@
     <Compile Include="win_AdminMenu.xaml.cs">
       <DependentUpon>win_AdminMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="win_DeleteConformation.xaml.cs">
+      <DependentUpon>win_DeleteConformation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="win_ParentLogin.xaml.cs">
       <DependentUpon>win_ParentLogin.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="win_AdminMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="win_DeleteConformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
