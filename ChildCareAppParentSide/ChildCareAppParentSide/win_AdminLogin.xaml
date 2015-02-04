@@ -10,6 +10,7 @@
             <TextBox x:Name="txt_UserName" Height="23" Margin="153,60,161,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="10"/>
             <TextBox x:Name="txt_Password" Height="23" Margin="153,122,161,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="10"/>
             <Button x:Name="btn_Login" Content="Log In" Margin="193,174,190,0" VerticalAlignment="Top" Click="btn_Login_Click"/>
+            <Button x:Name="btn_Keyboard" Content="Keyboard" HorizontalAlignment="Left" Margin="10,245,0,0" VerticalAlignment="Top" Width="103" Click="btn_Keyboard_Click" IsEnabled="False" Visibility="Hidden"/>
         </Grid>
     </Viewbox>
 </Window>

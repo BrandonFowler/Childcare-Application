@@ -20,7 +20,7 @@
             <Button x:Name="btn_Number0" Content="0" HorizontalAlignment="Left" Margin="318,211,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number0_Click"/>
             <Button x:Name="btn_Clear" Content="Clear" HorizontalAlignment="Left" Margin="373,211,0,0" VerticalAlignment="Top" Width="89" Click="btn_Clear_Click"/>
             <Button x:Name="btn_Login" Content="Log In" HorizontalAlignment="Left" Margin="213,259,0,0" VerticalAlignment="Top" Width="89" Click="btn_Login_Click" Height="50"/>
-            <Button x:Name="btn_AdminLogin" Content="Administrator Log In" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Height="21" Click="btn_AdminLogin_Click"/>
+            <Button x:Name="btn_AdminLogin" Content="Administrator Log In" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Height="21" Click="btn_AdminLogin_Click" Margin="10,10,0,0"/>
         </Grid>
     </Viewbox>
 </Window>

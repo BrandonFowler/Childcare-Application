@@ -18,7 +18,7 @@ namespace ChildCareAppParentSide {
    
     public partial class win_ChildLogin : Window {
 
-        private string parentID;
+        private string guardianID;
         private Database db;
         private DateAndTime updateTime;
 
@@ -28,7 +28,7 @@ namespace ChildCareAppParentSide {
 
         public win_ChildLogin(string ID) {
             InitializeComponent();
-            this.parentID = ID;
+            this.guardianID = ID;
             this.db = new Database();
             setUpCheckInBox();
             setUpParentDisplay();
@@ -45,11 +45,16 @@ namespace ChildCareAppParentSide {
         }//end btn_LogOutParent
 
         private void setUpCheckInBox() {
-            string[,] childrenData = db.findChildren(this.parentID);
+            string[,] childrenData = db.findChildren(this.guardianID);
             if (childrenData != null) {
                 for (int x = 0; x < childrenData.GetLength(0); x++) {
                     Image image = buildImage(childrenData[x, 6], 60);
-                    lst_CheckInBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0]));
+                    if (!db.isCheckedIn(childrenData[x, 0],this.guardianID)){
+                        lst_CheckInBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0]));
+                    }
+                    else{
+                        lst_CheckOutBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0]));
+                    }
                 }
             }
         }//end setUpCheckInBox
@@ -81,6 +86,9 @@ namespace ChildCareAppParentSide {
         private void btn_CheckIn_Click(object sender, RoutedEventArgs e) {
             if (cbo_EventChoice.SelectedItem != null) {
                 if (lst_CheckInBox.SelectedItem != null) {
+                    string eventID = ((ComboBoxItem)cbo_EventChoice.SelectedItem).Tag.ToString();
+                    string childID = ((Child)lst_CheckInBox.SelectedItem).ID;
+                    db.checkIn(childID, eventID, guardianID);
                     lst_CheckOutBox.Items.Add(lst_CheckInBox.SelectedItem);
                     lst_CheckInBox.Items.Remove(lst_CheckInBox.SelectedItem);
                 }
@@ -92,15 +100,17 @@ namespace ChildCareAppParentSide {
 
         private void btn_CheckOut_Click(object sender, RoutedEventArgs e) {
             if (lst_CheckOutBox.SelectedItem != null) {
+                string childID = ((Child)lst_CheckOutBox.SelectedItem).ID;
+                db.checkOut(childID, guardianID);
                 lst_CheckInBox.Items.Add(lst_CheckOutBox.SelectedItem);
                 lst_CheckOutBox.Items.Remove(lst_CheckOutBox.SelectedItem);
             }
         }//end btn_CheckOut_Click
 
         public void setUpParentDisplay() {
-            string [] parentInfo = db.getParentInfo(this.parentID);
+            string [] parentInfo = db.getParentInfo(this.guardianID);
             lbl_ParentName.Content = parentInfo[2]+" "+parentInfo[3];
-            img_ParentPic.Source = (buildImage(parentInfo[11], 100)).Source;
+            img_ParentPic.Source = (buildImage(parentInfo[11], 150)).Source;
         }//end setUpParentDisplay
 
         public void eventsSetup() {
