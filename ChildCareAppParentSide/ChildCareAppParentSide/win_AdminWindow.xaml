@@ -1,9 +1,9 @@
 ﻿<Window x:Class="ChildCareAppParentSide.win_AdminWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Admin" Height="530" Width="915">
+        Title="Admin" Height="800" Width="1280">
     <Viewbox StretchDirection="Both" Stretch="Uniform">
-        <Grid>
+        <Grid Width="481">
             <Button x:Name="btn_LogOutAdmin" Content="Log Out" HorizontalAlignment="Left" Margin="412,271,0,0" VerticalAlignment="Top" Width="75" Click="btn_LogOutAdmin_Click"/>
         </Grid>
     </Viewbox>

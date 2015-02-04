@@ -46,6 +46,7 @@ namespace ChildCareAppParentSide {
 
             win_AdminWindow AdminWindow = new win_AdminWindow();
             AdminWindow.Show();
+            AdminWindow.WindowState = WindowState.Maximized;
             this.Close(); 
 
         }//end DisplayAdminWindow
@@ -53,6 +54,7 @@ namespace ChildCareAppParentSide {
         private void btn_Exit_Click(object sender, RoutedEventArgs e) {
             win_LoginWindow loginWindow = new win_LoginWindow();
             loginWindow.Show();
+            loginWindow.WindowState = WindowState.Maximized;
             this.Close();
         }//end shortcut click
     }

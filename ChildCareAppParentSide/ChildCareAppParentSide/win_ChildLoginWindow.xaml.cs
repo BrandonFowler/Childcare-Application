@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Globalization;
 
 namespace ChildCareAppParentSide {
    
@@ -48,7 +49,7 @@ namespace ChildCareAppParentSide {
             if (childrenData != null) {
                 for (int x = 0; x < childrenData.GetLength(0); x++) {
                     Image image = buildImage(childrenData[x, 6], 60);
-                    lst_CheckInBox.Items.Add(new Child(childrenData[x, 1], childrenData[x,2], image));
+                    lst_CheckInBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0]));
                 }
             }
         }//end setUpCheckInBox
@@ -103,7 +104,11 @@ namespace ChildCareAppParentSide {
         }//end setUpParentDisplay
 
         public void eventsSetup() {
-            cbo_EventChoice.Items.Add("Normal Price");
+            string[,] events = db.getEvents();
+            for (int x = 0; x < events.GetLength(0); x++) {
+                ComboBoxItem newEvent = new ComboBoxItem() { Content = events[x, 1], Tag = events[x, 0] };
+                cbo_EventChoice.Items.Add(newEvent);
+            } 
         }//end eventSetup
 
     }//end win_ChildLoginWindow(Class)

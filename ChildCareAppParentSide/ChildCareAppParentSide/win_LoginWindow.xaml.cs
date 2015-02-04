@@ -23,6 +23,7 @@ namespace ChildCareAppParentSide {
 
         public win_LoginWindow() {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
             this.db = new Database();
             this.txt_IDEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_IDEntry.GotFocus += OnIDBoxFocus;
@@ -153,24 +154,31 @@ namespace ChildCareAppParentSide {
         }//btn_Clear_Click
 
         private void btn_Login_Click(object sender, RoutedEventArgs e) {
-            string ID = txt_IDEntry.Text;
-            string PIN = txt_PINEntry.Text;
-            bool userFound = this.db.validateLogin(ID, PIN);
 
-            if (userFound) {
-                win_ChildLogin ChildLoginWindow = new win_ChildLogin(ID);
-                ChildLoginWindow.Show();
-                this.Close();
+            if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text) || string.IsNullOrWhiteSpace(this.txt_PINEntry.Text)) {
+                MessageBox.Show("Please enter a User ID and a PIN.");
+
             }
             else {
-                MessageBox.Show("User ID or PIN does not exist");
+                string ID = txt_IDEntry.Text;
+                string PIN = txt_PINEntry.Text;
+                bool userFound = this.db.validateLogin(ID, PIN);
+                if (userFound) {
+                    win_ChildLogin ChildLoginWindow = new win_ChildLogin(ID);
+                    ChildLoginWindow.Show();
+                    ChildLoginWindow.WindowState = WindowState.Maximized;
+                    this.Close();
+                }
+                else {
+                    MessageBox.Show("User ID or PIN does not exist");
+                }
             }
-
         }
 
         private void btn_AdminLogin_Click(object sender, RoutedEventArgs e) {
             win_AdminLogin adminLogin = new win_AdminLogin();
             adminLogin.Show();
+            adminLogin.WindowState = WindowState.Maximized;
             this.Close();
             
         }//btn_Login_Click

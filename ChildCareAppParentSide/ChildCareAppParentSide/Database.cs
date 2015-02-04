@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Data;
+using System.Globalization;
 
 namespace ChildCareAppParentSide {
 
@@ -33,7 +34,7 @@ namespace ChildCareAppParentSide {
 
         public bool validateAdmin(string userName, string password) {
             dbCon.Open();
-            string sql = "select rowid from Administrator where AdministratorPW = " + password;
+            string sql = "select rowid from Administrator where AdministratorPW="+password+" or AdministratorUN='"+userName+"'";
             SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             int recordFound = Convert.ToInt32(command.ExecuteScalar());
 
@@ -80,6 +81,27 @@ namespace ChildCareAppParentSide {
             dbCon.Close();
             return data;
         }//end findChildren
+
+        public string[,] getEvents() {
+            DateTime dt = DateTime.Now;
+            string dateTime = DateTime.Now.ToString();
+            string date = Convert.ToDateTime(dateTime).ToString("yyyy-MM-dd");
+            string dayOfWeek = dt.DayOfWeek.ToString();
+            string sql = "select Event_ID, EventName from EventData where Date= '"+ date +"' or Day='" + dayOfWeek + "' or EventName='Normal Care'";
+            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            DataSet DS = new DataSet();
+            DB.Fill(DS);
+            int cCount = DS.Tables[0].Columns.Count;
+            int rCount = DS.Tables[0].Rows.Count;
+            string[,] events = new string[rCount, cCount];
+            for (int x = 0; x < rCount; x++) {
+                for (int y = 0; y < cCount; y++) {
+                    events[x, y] = DS.Tables[0].Rows[x][y].ToString();
+                }
+            }
+            return events;
+        }
 
         /**
         public bool checkIn(string name) {

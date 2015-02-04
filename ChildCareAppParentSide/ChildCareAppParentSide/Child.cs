@@ -11,10 +11,11 @@ namespace ChildCareAppParentSide {
 
         public class Child {
 
-            public Child(string fn, string ln, Image Image) {
+            public Child(string fn, string ln, Image Image, string ID) {
                 this.firstName = fn;
                 this.lastName = ln;
                 this.image = Image;
+                this.ID = ID;
                
             }// end constructor
 
@@ -23,6 +24,8 @@ namespace ChildCareAppParentSide {
             public string lastName { get; set; }
 
             public Image image { get; set; }
+
+            public string ID { get; set; }
 
         }//end Child(Class)
 }
