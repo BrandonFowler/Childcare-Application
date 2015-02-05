@@ -86,9 +86,10 @@ namespace ChildCareAppParentSide {
             dbCon.Open();
             DateTime dt = DateTime.Now;
             string dateTime = DateTime.Now.ToString();
-            string date = Convert.ToDateTime(dateTime).ToString("yyyy-MM-dd");
+            string month = Convert.ToDateTime(dateTime).ToString("MM");
+            string day = Convert.ToDateTime(dateTime).ToString("dd");
             string dayOfWeek = dt.DayOfWeek.ToString();
-            string sql = "select Event_ID, EventName from EventData where Date= '"+ date +"' or Day='" + dayOfWeek + "' or EventName='Normal Care'";
+            string sql = "select Event_ID, EventName from EventData where Day= '" + day + "' and Month='" + month + "' or Weekday='" + dayOfWeek + "' or EventName='Normal Care'";
             SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();

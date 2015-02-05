@@ -44,9 +44,9 @@ namespace ChildCareAppParentSide {
 
         private void btn_Login_Click(object sender, RoutedEventArgs e) {
             string UN = txt_UserName.Text;
-            string PW = txt_Password.Text;
+            string PW = txt_Password.Password;
             bool userFound = this.db.validateAdmin(UN, PW);
-            if (string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.txt_Password.Text))
+            if (string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.txt_Password.Password))
             {
                 MessageBox.Show("Please enter a User Name and a Password.");
 
@@ -84,7 +84,7 @@ namespace ChildCareAppParentSide {
 
         private void OnUserNameFocus(object sender, EventArgs e){
             if (isTablet){
-                if (string.IsNullOrWhiteSpace(this.txt_Password.Text))
+                if (string.IsNullOrWhiteSpace(this.txt_Password.Password))
                 {
                     System.Diagnostics.Process.Start("osk.exe");
                 }

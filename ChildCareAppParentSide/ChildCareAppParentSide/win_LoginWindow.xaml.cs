@@ -56,8 +56,8 @@ namespace ChildCareAppParentSide {
             if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6) {
                 this.txt_IDEntry.Text += "1";
             }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4) {
-                this.txt_PINEntry.Text += "1";
+            if (PINBoxSelected && this.txt_PINEntry.Password.Length < 4) {
+                this.txt_PINEntry.Password += "1";
             }
         }//btn_Number1_Click
 
@@ -65,8 +65,8 @@ namespace ChildCareAppParentSide {
             if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6) {
                 this.txt_IDEntry.Text += "2";
             }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4) {
-                this.txt_PINEntry.Text += "2";
+            if (PINBoxSelected && this.txt_PINEntry.Password.Length < 4) {
+                this.txt_PINEntry.Password += "2";
             }
         }//btn_Number2_Click
 
@@ -74,8 +74,8 @@ namespace ChildCareAppParentSide {
             if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6) {
                 this.txt_IDEntry.Text += "3";
             }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4) {
-                this.txt_PINEntry.Text += "3";
+            if (PINBoxSelected && this.txt_PINEntry.Password.Length < 4) {
+                this.txt_PINEntry.Password += "3";
             }
         }//btn_Number3_Click
 
@@ -83,8 +83,8 @@ namespace ChildCareAppParentSide {
             if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6) {
                 this.txt_IDEntry.Text += "4";
             }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4) {
-                this.txt_PINEntry.Text += "4";
+            if (PINBoxSelected && this.txt_PINEntry.Password.Length < 4) {
+                this.txt_PINEntry.Password += "4";
             }
         }//btn_Number4_Click
 
@@ -92,8 +92,8 @@ namespace ChildCareAppParentSide {
             if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6) {
                 this.txt_IDEntry.Text += "5";
             }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4) {
-                this.txt_PINEntry.Text += "5";
+            if (PINBoxSelected && this.txt_PINEntry.Password.Length < 4) {
+                this.txt_PINEntry.Password += "5";
             }
         }//btn_Number5_Click
 
@@ -101,8 +101,8 @@ namespace ChildCareAppParentSide {
             if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6) {
                 this.txt_IDEntry.Text += "6";
             }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4) {
-                this.txt_PINEntry.Text += "6";
+            if (PINBoxSelected && this.txt_PINEntry.Password.Length < 4) {
+                this.txt_PINEntry.Password += "6";
             }
         }//btn_Number6_Click
 
@@ -110,8 +110,8 @@ namespace ChildCareAppParentSide {
             if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6) {
                 this.txt_IDEntry.Text += "7";
             }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4) {
-                this.txt_PINEntry.Text += "7";
+            if (PINBoxSelected && this.txt_PINEntry.Password.Length < 4) {
+                this.txt_PINEntry.Password += "7";
             }
         }//btn_Number7_Click
 
@@ -119,8 +119,8 @@ namespace ChildCareAppParentSide {
             if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6) {
                 this.txt_IDEntry.Text += "8";
             }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4) {
-                this.txt_PINEntry.Text += "8";
+            if (PINBoxSelected && this.txt_PINEntry.Password.Length < 4) {
+                this.txt_PINEntry.Password += "8";
             }
         }//btn_Number8_Click
 
@@ -128,8 +128,8 @@ namespace ChildCareAppParentSide {
             if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6) {
                 this.txt_IDEntry.Text += "9";
             }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4) {
-                this.txt_PINEntry.Text += "9";
+            if (PINBoxSelected && this.txt_PINEntry.Password.Length < 4) {
+                this.txt_PINEntry.Password += "9";
             }
         }//btn_Number9_Click
 
@@ -137,8 +137,8 @@ namespace ChildCareAppParentSide {
             if (IDBoxSelected && this.txt_IDEntry.Text.Length < 6) {
                 this.txt_IDEntry.Text += "0";
             }
-            if (PINBoxSelected && this.txt_PINEntry.Text.Length < 4) {
-                this.txt_PINEntry.Text += "0";
+            if (PINBoxSelected && this.txt_PINEntry.Password.Length < 4) {
+                this.txt_PINEntry.Password += "0";
             }
         }//btn_Number0_Click
 
@@ -155,13 +155,13 @@ namespace ChildCareAppParentSide {
 
         private void btn_Login_Click(object sender, RoutedEventArgs e) {
 
-            if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text) || string.IsNullOrWhiteSpace(this.txt_PINEntry.Text)) {
+            if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text) || string.IsNullOrWhiteSpace(this.txt_PINEntry.Password)) {
                 MessageBox.Show("Please enter a User ID and a PIN.");
 
             }
             else {
                 string ID = txt_IDEntry.Text;
-                string PIN = txt_PINEntry.Text;
+                string PIN = txt_PINEntry.Password;
                 bool userFound = this.db.validateLogin(ID, PIN);
                 if (userFound) {
                     win_ChildLogin ChildLoginWindow = new win_ChildLogin(ID);
