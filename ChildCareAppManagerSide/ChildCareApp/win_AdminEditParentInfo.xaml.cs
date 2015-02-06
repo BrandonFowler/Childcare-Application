@@ -11,15 +11,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.SQLite;
+using System.Data; 
 
 namespace ChildCareApp {
     /// <summary>
     /// Interaction logic for win_AdminEditParentInfo.xaml
     /// </summary>
     public partial class win_AdminEditParentInfo : Window {
+
+        private LoadParentInfoDatabase db;
         public win_AdminEditParentInfo(string parentID) {
+
             InitializeComponent();
             AddStates();
+            this.db = new LoadParentInfoDatabase();
             cnv_ParentIcon.Background = new SolidColorBrush(Colors.Aqua); //setting canvas color so we can see it
             btn_Delete.Background = new SolidColorBrush(Colors.Red);
             LoadParentInfo(parentID);
@@ -33,18 +39,21 @@ namespace ChildCareApp {
             //save all information to database
             if (formNotComplete == false)
             {
-                string firstName, lastName, middle, address, city, state, zip, email;
+                string pID, firstName, lastName, address, city, state, zip, email, phone;
 
+                pID = txt_IDNumber.Text; 
                 firstName = txt_FirstName.Text;
                 lastName = txt_LastName.Text;
-                middle = txt_MiddleInitial.Text;
 
+                phone = txt_PhoneNumber.Text; 
                 email = txt_Email.Text; 
 
                 address = txt_Address.Text;
                 city = txt_City.Text;
                 state = cbo_State.Text; //dont know if this will work yet
                 zip = txt_Zip.Text;
+
+                this.db.UpdateParentInfo(pID, firstName, lastName, phone, email, address, city, state, zip); 
 
 
                //ClearFields();
@@ -76,7 +85,6 @@ namespace ChildCareApp {
             txt_City.Clear();
             txt_FirstName.Clear();
             txt_LastName.Clear();
-            txt_MiddleInitial.Clear();
             txt_IDNumber.Clear();
             txt_PhoneNumber.Clear();
             txt_Zip.Clear();
@@ -115,13 +123,6 @@ namespace ChildCareApp {
                 return true;
             }
 
-            else if (string.IsNullOrWhiteSpace(this.txt_MiddleInitial.Text))
-            {
-                MessageBox.Show("Please enter your middle initial.");
-                return true;
-            }
-
-
             else if (string.IsNullOrWhiteSpace(this.cbo_State.Text))
             {
                 MessageBox.Show("Please enter your state.");
@@ -139,7 +140,26 @@ namespace ChildCareApp {
         private void LoadParentInfo(string parentID) {
 
             txt_IDNumber.Text = parentID;
-            //txt_FirstName.Text = LoadParentInfoDatabase.GetFirstName(parentID); 
+            DataSet DS = new DataSet();
+            DS = this.db.GetParentInfo(parentID);
+            int count = DS.Tables[0].Rows.Count;
+            if(count > 0)
+            {
+                 txt_FirstName.Text = DS.Tables[0].Rows[0][2].ToString();
+                 txt_LastName.Text =  DS.Tables[0].Rows[0][3].ToString();
+
+                 txt_PhoneNumber.Text =  DS.Tables[0].Rows[0][4].ToString();
+                 txt_Email.Text =  DS.Tables[0].Rows[0][5].ToString();
+
+                 txt_Address.Text =  DS.Tables[0].Rows[0][6].ToString();
+                 txt_City.Text =  DS.Tables[0].Rows[0][8].ToString();
+                 txt_Zip.Text =  DS.Tables[0].Rows[0][9].ToString();
+                 cbo_State.Text =  DS.Tables[0].Rows[0][10].ToString();
+                string imageLink =  DS.Tables[0].Rows[0][11].ToString();
+                ImageBrush ib = new ImageBrush(); 
+                ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
+                cnv_ParentIcon.Background = ib; 
+            }
 
         }//end LoadParentInfo
         private void AddStates() {
