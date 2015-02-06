@@ -14,7 +14,7 @@ namespace ChildCareApp {
 
         public LoadParentInfoDatabase()
         {
-            dbCon = new SQLiteConnection("Data Source=../../ChildcareDB.s3db;Version=3;");  
+            dbCon = new SQLiteConnection("Data Source=../../ChildCare_v3.s3db;Version=3;");  
         }//end Database
 
         public DataSet GetParentInfo(string parentID) {
@@ -35,7 +35,7 @@ namespace ChildCareApp {
         public void UpdateParentInfo(string ID, string firstName, string lastName, string phone, string email, string address, string city, string state, string zip)
         {
             dbCon.Open();
-            /*  SYNTAX erron somewhere in sql statement......
+            /*  //SYNTAX erron somewhere in sql statement......
             string sql = "UPDATE Guardian SET FirstName = " + firstName + ", LastName = " + lastName + ", Phone = " + phone + ", Email = " + email +
                         ", Address1 = " +address+ ", City = " +city+ ", State = " +state+ ", Zip  =" +zip+ "WHERE Guardian_ID =" +ID+";";
            
