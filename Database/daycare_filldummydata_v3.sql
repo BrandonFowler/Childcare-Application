@@ -131,7 +131,7 @@ VALUES (2,
         NULL,
         "Friday");
 
-INSERT INTO transaction
+INSERT INTO childcaretransaction
 VALUES (1,
         1,
         1,
@@ -140,7 +140,7 @@ VALUES (1,
         curtime(),
         10);
 
-INSERT INTO transaction
+INSERT INTO childcaretransaction
 VALUES (2,
         2,
         5,

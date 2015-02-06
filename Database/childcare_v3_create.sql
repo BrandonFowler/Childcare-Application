@@ -75,8 +75,8 @@ CREATE TABLE OperatingHours (
     CONSTRAINT OperatingHours_pk PRIMARY KEY (Weekday)
 );
 
--- Table Transaction
-CREATE TABLE Transaction (
+-- Table ChildCareTransaction
+CREATE TABLE ChildCareTransaction (
     Transaction_ID int    NOT NULL ,
     Event_ID int    NOT NULL ,
     Connection_ID int    NOT NULL ,
@@ -102,15 +102,15 @@ ALTER TABLE AllowedConnections ADD CONSTRAINT AllowedConnections_Child FOREIGN K
 
 ALTER TABLE AllowedConnections ADD CONSTRAINT AllowedConnections_Guardian FOREIGN KEY AllowedConnections_Guardian (Guardian_ID)
     REFERENCES Guardian (Guardian_ID);
--- Reference:  Transaction_AllowedConnections (table: Transaction)
+-- Reference:  Transaction_AllowedConnections (table: ChildCareTransaction)
 
 
-ALTER TABLE Transaction ADD CONSTRAINT Transaction_AllowedConnections FOREIGN KEY Transaction_AllowedConnections (Connection_ID)
+ALTER TABLE ChildCareTransaction ADD CONSTRAINT Transaction_AllowedConnections FOREIGN KEY Transaction_AllowedConnections (Connection_ID)
     REFERENCES AllowedConnections (Connection_ID);
--- Reference:  Transaction_BillingData (table: Transaction)
+-- Reference:  Transaction_BillingData (table: ChildCareTransaction)
 
 
-ALTER TABLE Transaction ADD CONSTRAINT Transaction_BillingData FOREIGN KEY Transaction_BillingData (Event_ID)
+ALTER TABLE ChildCareTransaction ADD CONSTRAINT Transaction_BillingData FOREIGN KEY Transaction_BillingData (Event_ID)
     REFERENCES EventData (Event_ID);
 
 

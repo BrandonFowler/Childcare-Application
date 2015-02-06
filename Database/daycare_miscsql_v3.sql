@@ -127,23 +127,23 @@ SELECT *
   FROM allowedconnections
  WHERE Connection_ID = 1;
 
--- RetrieveTransaction (find transaction data by transaction ID)
+-- RetrieveTransaction (find childcaretransaction data by childcaretransaction ID)
 
 SELECT *
-  FROM transaction
+  FROM childcaretransaction
  WHERE Transaction_ID = 1;
 
 -- FindOpenTransaction (get open transactions based on guardian ID)
 
 SELECT *
-  FROM transaction, allowedconnections
- WHERE     transaction.CheckedOut IS NULL
-       AND transaction.Connection_ID = allowedconnections.Connection_ID
-       AND transaction.Connection_ID = 1;
+  FROM childcaretransaction, allowedconnections
+ WHERE     childcaretransaction.CheckedOut IS NULL
+       AND childcaretransaction.Connection_ID = allowedconnections.Connection_ID
+       AND childcaretransaction.Connection_ID = 1;
 
--- CheckIn/AddTransaction (insert a new transaction with a null checkout and total)
+-- CheckIn/AddTransaction (insert a new childcaretransaction with a null checkout and total)
 
-INSERT INTO transaction
+INSERT INTO childcaretransaction
 VALUES (12,
         1,
         1,
@@ -152,8 +152,8 @@ VALUES (12,
         NULL,
         NULL);
 
--- CheckOut/EditTransaction (updates the transaction based on transaction id, need to create a method for total cost calculation probably)
+-- CheckOut/EditTransaction (updates the childcaretransaction based on childcaretransaction id, need to create a method for total cost calculation probably)
 
-UPDATE transaction
+UPDATE childcaretransaction
    SET CheckedOut = curtime(), TransactionTotal = 10
  WHERE Transaction_ID = 12;
