@@ -7,13 +7,7 @@
         <Label x:Name="lbl_ParentID" Content="Parent ID" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btn_CurrentMonthReport" Content="Current Month Report" HorizontalAlignment="Left" Margin="164,51,0,0" VerticalAlignment="Top" Width="134"/>
         <Button x:Name="btn_DateRangeReport" Content="Date Range Report" HorizontalAlignment="Left" Margin="322,51,0,0" VerticalAlignment="Top" Width="123"/>
-        <DataGrid x:Name="ParentDataGrid" Margin="10,92,0,0" VerticalAlignment="Top" Height="395" HorizontalAlignment="Left" Width="363" CanUserReorderColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="Kid" Header="Kid" MinWidth="150"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Hours" MinWidth="70"/>
-                <DataGridTextColumn x:Name="ParentFormRate" Header="Rate" MinWidth="70"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Total" MinWidth="70"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <DataGrid x:Name="ParentDataGrid" Margin="10,92,0,0" VerticalAlignment="Top" Height="395" HorizontalAlignment="Left" Width="363" CanUserReorderColumns="False"/>
+        <Button x:Name="btn_LoadAll" Content="Load All Charges" HorizontalAlignment="Left" Margin="518,51,0,0" VerticalAlignment="Top" Width="115" Click="btn_LoadAll_Click"/>
     </Grid>
 </Window>
