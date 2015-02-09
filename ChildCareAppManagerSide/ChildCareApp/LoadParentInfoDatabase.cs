@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
-using System.Data; 
+using System.Data;
+using System.Windows;  
 
 namespace ChildCareApp {
 
@@ -32,18 +33,55 @@ namespace ChildCareApp {
             return DS; 
         }//end GetFirstName
 
-        public void UpdateParentInfo(string ID, string firstName, string lastName, string phone, string email, string address, string city, string state, string zip)
+        public void DeleteParentInfo(string parentID)
         {
-            dbCon.Open();
-            /*  //SYNTAX erron somewhere in sql statement......
-            string sql = "UPDATE Guardian SET FirstName = " + firstName + ", LastName = " + lastName + ", Phone = " + phone + ", Email = " + email +
-                        ", Address1 = " +address+ ", City = " +city+ ", State = " +state+ ", Zip  =" +zip+ "WHERE Guardian_ID =" +ID+";";
-           
-            SQLiteCommand mycommand = new SQLiteCommand(sql, this.dbCon);
-            mycommand.CommandText = sql;
-            mycommand.ExecuteNonQuery(); 
 
-            */
+            dbCon.Open();
+            try
+            {
+                string sql = "DELETE from Guardian where Guardian_ID = " + parentID;
+                SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+                MessageBox.Show("Completed");
+            }
+            catch (SQLiteException e)
+            {
+                MessageBox.Show("Failed");
+            }
+            dbCon.Close();
+            
+        }//end GetFirstName
+
+        public void UpdateParentInfo(string ID, string firstName, string lastName, string phone, string email, string address, string address2, string city, string state, string zip) {
+            dbCon.Open();
+
+            try
+            {
+              
+                    string sql = @"UPDATE Guardian SET FirstName = @firstName, LastName = @lastName, Phone = @phone, Email = @email,"+
+                                        "Address1 = @address, Address2 = @address2, City = @city, State = @state, Zip  = @zip WHERE Guardian_ID = @ID;";
+                SQLiteCommand mycommand = new SQLiteCommand(sql, this.dbCon);
+                mycommand.CommandText = sql; 
+                mycommand.Parameters.Add(new SQLiteParameter("@firstName", firstName));
+                mycommand.Parameters.Add(new SQLiteParameter("@lastName", lastName));
+                mycommand.Parameters.Add(new SQLiteParameter("@phone", phone));
+                mycommand.Parameters.Add(new SQLiteParameter("@email", email));
+                mycommand.Parameters.Add(new SQLiteParameter("@address", address));
+                mycommand.Parameters.Add(new SQLiteParameter("@address2", address2));
+                mycommand.Parameters.Add(new SQLiteParameter("@city", city));
+                mycommand.Parameters.Add(new SQLiteParameter("@state", state));
+                mycommand.Parameters.Add(new SQLiteParameter("@zip", zip));
+                mycommand.Parameters.Add(new SQLiteParameter("@ID", ID));
+                
+                mycommand.ExecuteNonQuery();
+                MessageBox.Show("Completed");
+            }
+
+            catch (SQLiteException e)
+            {
+                MessageBox.Show(e.ToString()); 
+            }
             dbCon.Close();  
         }
       

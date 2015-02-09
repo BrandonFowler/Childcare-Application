@@ -60,6 +60,7 @@
     <Compile Include="BusinessReport.xaml.cs">
       <DependentUpon>BusinessReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChildInfoDatabse.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="LoadParentInfoDatabase.cs" />
     <Compile Include="ParentReport.xaml.cs">

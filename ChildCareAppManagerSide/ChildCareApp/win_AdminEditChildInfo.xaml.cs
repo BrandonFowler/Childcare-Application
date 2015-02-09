@@ -11,20 +11,29 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+using System.Collections; 
 
 namespace ChildCareApp {
     /// <summary>
     /// Interaction logic for win_AdminEditChildInfo.xaml
     /// </summary>
+    /// 
+
     public partial class win_AdminEditChildInfo : Window {
+        private ChildInfoDatabse db;
+        private int childIndex;
+        DataSet DS = new DataSet();
+
         public win_AdminEditChildInfo(string parentID) {
             InitializeComponent();
             AddStates();
+            this.db = new ChildInfoDatabse();
             cnv_ChildIcon.Background = new SolidColorBrush(Colors.Aqua); //setting canvas color so we can see it
             btn_Delete.Background = new SolidColorBrush(Colors.Red);
             LoadParentInfo(parentID);
-            string childID =  GetChildID(parentID); 
-            LoadChildInfo(childID); 
+            //string childID =  GetChildID(parentID); 
+            LoadChildInfo(parentID); 
         }
 
 
@@ -34,14 +43,13 @@ namespace ChildCareApp {
 
             if (formNotComplete == false)
             {
-                string firstName, lastName, middle, address, city, state, zip, month, day, year, medical, allergies;
+                string cID, firstName, lastName, middle, address, city, state, zip, month, day, year, medical, allergies;
+
 
                 firstName = txt_FirstName.Text;
                 lastName = txt_LastName.Text;
-                middle = txt_MiddleInitial.Text;
 
-                month = txt_Month.Text;
-                day = txt_Day.Text;
+
                 year = txt_Year.Text; 
 
                 address = txt_Address.Text;
@@ -50,7 +58,10 @@ namespace ChildCareApp {
                 zip = txt_Zip.Text;
 
                 medical = txt_Medical.Text;
-                allergies = txt_Allergies.Text; 
+                allergies = txt_Allergies.Text;
+
+                cID = DS.Tables[0].Rows[childIndex][0].ToString();
+                this.db.UpdateChildInfo(cID, firstName, lastName, year, medical, allergies);
 
                // ClearFields();
             }
@@ -63,8 +74,27 @@ namespace ChildCareApp {
             win_DeleteConformation DeleteConformation = new win_DeleteConformation();
             delete = DeleteConformation.ShowDialog();
 
+            if ((bool)delete == true)
+            {
+               /* string cID = DS.Tables[0].Rows[childIndex][0].ToString();
+                this.db.DeleteChildInfo(cID);
+                ClearFields();
+                DS.Clear();
+                string parentID = txt_IDNumber.Text;
+                childIndex = 0; 
+                //LoadChildInfo(parentID); */
+                DisableForm();
+            }
+
+
         }//end btn_Delete_Click
 
+        private void DisableForm()
+        {
+            btn_Next.IsEnabled = false; 
+            btn_Delete.IsEnabled = false;
+            btn_Submit.IsEnabled = false; 
+        }
         private void btn_MainMenu_Click(object sender, RoutedEventArgs e) {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
@@ -84,15 +114,41 @@ namespace ChildCareApp {
             return cID;
         }//end LoadParentInfo
 
-        private void LoadChildInfo(string childID)
+        private void LoadChildInfo(string parentID)
         {
-            //sql to get child info
 
+            //DS.Clear(); 
+            DS = this.db.GetChildInfo(parentID);
+            int count = DS.Tables[0].Rows.Count;
+            if (count > 0)
+            {
+                childIndex = 0;
+                FillTextBox(); 
+            }
+            if (count > 0)
+            {
+
+            }
         }//LoadChildInfo
+
+        private void FillTextBox() {
+
+            txt_FirstName.Text = DS.Tables[0].Rows[childIndex][1].ToString();
+            txt_LastName.Text = DS.Tables[0].Rows[childIndex][2].ToString();
+            txt_Year.Text = DS.Tables[0].Rows[childIndex][3].ToString();
+            txt_Medical.Text = DS.Tables[0].Rows[childIndex][5].ToString();
+            txt_Allergies.Text = DS.Tables[0].Rows[childIndex][4].ToString();
+          
+            /*string imageLink = DS.Tables[0].Rows[0][6].ToString();
+            ImageBrush ib = new ImageBrush();
+            ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
+            cnv_ChildIcon.Background = ib; */
+
+        }
 
         private bool CheckIfNull() {
 
-            if (string.IsNullOrWhiteSpace(this.txt_Address.Text))
+           /* if (string.IsNullOrWhiteSpace(this.txt_Address.Text))
             {
                 MessageBox.Show("Please enter your address.");
                 return true;
@@ -108,9 +164,9 @@ namespace ChildCareApp {
             {
                 MessageBox.Show("Please enter your zip.");
                 return true;
-            }
+            }*/
 
-            else if (string.IsNullOrWhiteSpace(this.txt_FirstName.Text))
+            if (string.IsNullOrWhiteSpace(this.txt_FirstName.Text))
             {
                 MessageBox.Show("Please enter your first name.");
                 return true;
@@ -122,20 +178,14 @@ namespace ChildCareApp {
                 return true;
             }
 
-            else if (string.IsNullOrWhiteSpace(this.txt_MiddleInitial.Text))
-            {
-                MessageBox.Show("Please enter your middle initial.");
-                return true;
-            }
 
-
-            else if (string.IsNullOrWhiteSpace(this.cbo_State.Text))
+           /* else if (string.IsNullOrWhiteSpace(this.cbo_State.Text))
             {
                 MessageBox.Show("Please enter your state.");
                 return true;
-            }
+            }*/
 
-            else if (string.IsNullOrWhiteSpace(this.txt_Month.Text) || string.IsNullOrWhiteSpace(this.txt_Day.Text) || string.IsNullOrWhiteSpace(this.txt_Year.Text))
+            else if ( string.IsNullOrWhiteSpace(this.txt_Year.Text))
             {
                 MessageBox.Show("Please enter the birthday. MM/DD/YYYY");
                 return true;
@@ -149,12 +199,12 @@ namespace ChildCareApp {
             txt_City.Clear();
             txt_FirstName.Clear();
             txt_LastName.Clear();
-            txt_MiddleInitial.Clear();
+
             txt_IDNumber.Clear();
             txt_Allergies.Clear();
-            txt_Day.Clear();
+
             txt_Medical.Clear();
-            txt_Month.Clear();
+
             txt_Year.Clear();
             txt_Zip.Clear();
         }//end ClarFields
@@ -219,6 +269,16 @@ namespace ChildCareApp {
             cbo_State.Items.Add("WI");
             cbo_State.Items.Add("WY");
 
+        }
+
+        private void btn_Next_Click(object sender, RoutedEventArgs e) {
+
+            int count = DS.Tables[0].Rows.Count;
+            string pID = txt_IDNumber.Text; 
+
+            childIndex = (childIndex + 1) % count;
+            //LoadChildInfo(pID);  
+            FillTextBox(); 
         }//end addStates
     }//end class
 }//end nameSpace

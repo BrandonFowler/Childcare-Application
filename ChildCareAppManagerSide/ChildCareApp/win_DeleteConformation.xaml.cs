@@ -31,7 +31,7 @@ namespace ChildCareApp {
         }//end btn_Yes_Click
 
         private void btn_No_Click(object sender, RoutedEventArgs e) {
-            this.DialogResult = true;   
+            this.DialogResult = false;   
             this.Close(); 
         }//end btn_No_Click
 

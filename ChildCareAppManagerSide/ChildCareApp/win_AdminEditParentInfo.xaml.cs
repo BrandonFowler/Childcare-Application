@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Data.SQLite;
-using System.Data; 
+using System.Windows.Media.Imaging; 
 
 namespace ChildCareApp {
     /// <summary>
@@ -39,7 +29,7 @@ namespace ChildCareApp {
             //save all information to database
             if (formNotComplete == false)
             {
-                string pID, firstName, lastName, address, city, state, zip, email, phone;
+                string pID, firstName, lastName, address, address2, city, state, zip, email, phone;
 
                 pID = txt_IDNumber.Text; 
                 firstName = txt_FirstName.Text;
@@ -49,11 +39,12 @@ namespace ChildCareApp {
                 email = txt_Email.Text; 
 
                 address = txt_Address.Text;
+                address2 = txt_Address2.Text; 
                 city = txt_City.Text;
                 state = cbo_State.Text; //dont know if this will work yet
                 zip = txt_Zip.Text;
 
-                this.db.UpdateParentInfo(pID, firstName, lastName, phone, email, address, city, state, zip); 
+                this.db.UpdateParentInfo(pID, firstName, lastName, phone, email, address, address2, city, state, zip); 
 
 
                //ClearFields();
@@ -69,26 +60,46 @@ namespace ChildCareApp {
 
         private void btn_AddChild_Click(object sender, RoutedEventArgs e) {
 
+            string pID = txt_IDNumber.Text; 
+            win_AdminEditChildInfo AdminEditChildInfo = new win_AdminEditChildInfo(pID);
+            AdminEditChildInfo.Show();
+            this.Close();
 
         }//end btn_AddChild_Click
 
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
 
             bool? delete;
+             
             win_DeleteConformation DeleteConformation = new win_DeleteConformation();
             delete = DeleteConformation.ShowDialog();
-           
+            if ((bool)delete == true)
+            {
+                string pID = txt_IDNumber.Text;
+                this.db.DeleteParentInfo(pID);
+                ClearFields();
+                DisableForm(); 
+            }
+
+
         }//end btn_Delete_Click
+        private void DisableForm() {
+            btn_EditChild.IsEnabled = false;
+            btn_Delete.IsEnabled = false;
+            btn_SubmitInfo.IsEnabled = false; 
+        }
 
         private void ClearFields() {
             txt_Address.Clear();
+            txt_Address2.Clear(); 
             txt_City.Clear();
             txt_FirstName.Clear();
             txt_LastName.Clear();
             txt_IDNumber.Clear();
             txt_PhoneNumber.Clear();
             txt_Zip.Clear();
-            txt_Email.Clear(); 
+            txt_Email.Clear();
+            txt_IDNumber.Clear(); 
         }//end ClearFields
 
         private bool CheckIfNull() {
@@ -152,6 +163,7 @@ namespace ChildCareApp {
                  txt_Email.Text =  DS.Tables[0].Rows[0][5].ToString();
 
                  txt_Address.Text =  DS.Tables[0].Rows[0][6].ToString();
+                 txt_Address2.Text = DS.Tables[0].Rows[0][7].ToString();
                  txt_City.Text =  DS.Tables[0].Rows[0][8].ToString();
                  txt_Zip.Text =  DS.Tables[0].Rows[0][10].ToString();
                  cbo_State.Text =  DS.Tables[0].Rows[0][9].ToString();

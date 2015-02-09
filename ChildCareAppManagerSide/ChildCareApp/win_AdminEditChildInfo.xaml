@@ -11,8 +11,6 @@
         <Label x:Name="lbl_FirstName" Content="First Name:" HorizontalAlignment="Left" Margin="220,38,0,0" VerticalAlignment="Top" Width="83"/>
         <Label x:Name="lbl_LastName" Content="Last Name:" HorizontalAlignment="Left" Margin="220,69,0,0" VerticalAlignment="Top" Width="83"/>
         <TextBox x:Name="txt_LastName" HorizontalAlignment="Left" Height="23" Margin="304,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
-        <Label x:Name="lbl_MiddleInitial" Content="Middle Initial:" HorizontalAlignment="Left" Margin="479,38,0,0" VerticalAlignment="Top" Width="82"/>
-        <TextBox x:Name="txt_MiddleInitial" HorizontalAlignment="Left" Height="23" Margin="566,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
         <Label x:Name="lbl_Address" Content="Address:" HorizontalAlignment="Left" Margin="233,146,0,0" VerticalAlignment="Top" Width="55"/>
         <TextBox x:Name="txt_Address" HorizontalAlignment="Left" Height="23" Margin="304,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
         <Label x:Name="lbl_City" Content="City:" HorizontalAlignment="Left" Margin="254,177,0,0" VerticalAlignment="Top" Width="34"/>
@@ -29,13 +27,9 @@
         <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="474,374,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_Delete_Click"/>
         <Button x:Name="btn_MainMenu" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="70,374,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_MainMenu_Click"/>
         <Label x:Name="lbl_Birthday" Content="Birthday:" HorizontalAlignment="Left" Margin="229,115,0,0" VerticalAlignment="Top" Width="68"/>
-        <TextBox x:Name="txt_Month" HorizontalAlignment="Left" Height="23" Margin="304,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="33"/>
-        <Label x:Name="lbl_Month" Content="Month:" HorizontalAlignment="Left" Margin="297,92,0,0" VerticalAlignment="Top" Width="55"/>
-        <TextBox x:Name="txt_Day" HorizontalAlignment="Left" Height="23" Margin="374,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="33"/>
-        <Label x:Name="lbl_Day" Content="Day:" HorizontalAlignment="Left" Margin="370,92,0,0" VerticalAlignment="Top" Width="55"/>
-        <TextBox x:Name="txt_Year" HorizontalAlignment="Left" Height="23" Margin="435,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
-        <Label x:Name="lbl_Year" Content="Year:" HorizontalAlignment="Left" Margin="431,92,0,0" VerticalAlignment="Top" Width="55"/>
-        <Label x:Name="lbl_Example" Content="EX: 02 - 20 - 2002" HorizontalAlignment="Left" Margin="529,118,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_Year" HorizontalAlignment="Left" Height="23" Margin="304,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"/>
+        <Label x:Name="lbl_Example" Content="EX: 02 - 20 - 2002" HorizontalAlignment="Left" Margin="412,112,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_Next" Content="Next" HorizontalAlignment="Left" Margin="505,325,0,0" VerticalAlignment="Top" Width="75" Click="btn_Next_Click"/>
 
     </Grid>
 </Window>

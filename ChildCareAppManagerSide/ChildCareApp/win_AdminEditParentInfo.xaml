@@ -15,18 +15,20 @@
         <TextBox x:Name="txt_PhoneNumber" HorizontalAlignment="Left" Height="23" Margin="308,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
         <Label x:Name="lbl_Address" Content="Address:" HorizontalAlignment="Left" Margin="230,188,0,0" VerticalAlignment="Top" Width="55"/>
         <TextBox x:Name="txt_Address" HorizontalAlignment="Left" Height="23" Margin="301,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
-        <Label x:Name="lbl_City" Content="City:" HorizontalAlignment="Left" Margin="251,219,0,0" VerticalAlignment="Top" Width="34"/>
-        <TextBox x:Name="txt_City" HorizontalAlignment="Left" Height="23" Margin="301,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
-        <Label x:Name="lbl_State" Content="State:" HorizontalAlignment="Left" Margin="472,219,0,0" VerticalAlignment="Top" Width="43"/>
-        <ComboBox x:Name="cbo_State" HorizontalAlignment="Left" Margin="520,223,0,0" VerticalAlignment="Top" Width="74"/>
-        <Button x:Name="btn_AddChild" Content="Add A Child" HorizontalAlignment="Left" Margin="502,376,0,0" VerticalAlignment="Top" Width="92" Height="45" Click="btn_AddChild_Click"/>
-        <Label x:Name="lbl_Zip" Content="Zip:" HorizontalAlignment="Left" Margin="483,253,0,0" VerticalAlignment="Top" Width="43"/>
-        <TextBox x:Name="txt_Zip" HorizontalAlignment="Left" Height="23" Margin="520,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74"/>
+        <Label x:Name="lbl_City" Content="City:" HorizontalAlignment="Left" Margin="251,249,0,0" VerticalAlignment="Top" Width="34"/>
+        <TextBox x:Name="txt_City" HorizontalAlignment="Left" Height="23" Margin="301,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+        <Label x:Name="lbl_State" Content="State:" HorizontalAlignment="Left" Margin="472,249,0,0" VerticalAlignment="Top" Width="43"/>
+        <ComboBox x:Name="cbo_State" HorizontalAlignment="Left" Margin="520,253,0,0" VerticalAlignment="Top" Width="74"/>
+        <Button x:Name="btn_EditChild" Content="Edit My Child" HorizontalAlignment="Left" Margin="502,376,0,0" VerticalAlignment="Top" Width="92" Height="45" Click="btn_AddChild_Click"/>
+        <Label x:Name="lbl_Zip" Content="Zip:" HorizontalAlignment="Left" Margin="483,283,0,0" VerticalAlignment="Top" Width="43"/>
+        <TextBox x:Name="txt_Zip" HorizontalAlignment="Left" Height="23" Margin="520,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74"/>
         <Button x:Name="btn_SubmitInfo" Content="Submit Changes" HorizontalAlignment="Left" Margin="308,320,0,0" VerticalAlignment="Top" Width="99" Click="btn_Submit_Click"/>
         <Button x:Name="btn_Finish" Content="Back to Login" HorizontalAlignment="Left" Margin="43,320,0,0" VerticalAlignment="Top" Width="99" Click="btn_Finish_Click"/>
         <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="43,376,0,0" VerticalAlignment="Top" Width="92" Height="38" Click="btn_Delete_Click"/>
         <Label x:Name="lbl_Email" Content="Email:" HorizontalAlignment="Left" Margin="247,148,0,0" VerticalAlignment="Top" Width="47"/>
         <TextBox x:Name="txt_Email" HorizontalAlignment="Left" Height="23" Margin="308,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+        <Label x:Name="lbl_Address2" Content="Address 2:" HorizontalAlignment="Left" Margin="221,217,0,0" VerticalAlignment="Top" Width="64"/>
+        <TextBox x:Name="txt_Address2" HorizontalAlignment="Left" Height="23" Margin="301,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
 
     </Grid>
 </Window>
