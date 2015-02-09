@@ -3,12 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ParentReport" Height="528" Width="764">
     <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="388" Margin="10,99,0,0" VerticalAlignment="Top" Width="736">
-            <DataGrid Margin="9,9,0,9" HorizontalAlignment="Left" Width="716"/>
-        </Border>
         <TextBox x:Name="txt_ParentID" HorizontalAlignment="Left" Height="23" Margin="10,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lbl_ParentID" Content="Parent ID" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btn_CurrentMonthReport" Content="Current Month Report" HorizontalAlignment="Left" Margin="164,51,0,0" VerticalAlignment="Top" Width="134"/>
         <Button x:Name="btn_DateRangeReport" Content="Date Range Report" HorizontalAlignment="Left" Margin="322,51,0,0" VerticalAlignment="Top" Width="123"/>
+        <DataGrid x:Name="ParentDataGrid" Margin="10,92,0,0" VerticalAlignment="Top" Height="395" HorizontalAlignment="Left" Width="363" CanUserReorderColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="Kid" Header="Kid" MinWidth="150"/>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Hours" MinWidth="70"/>
+                <DataGridTextColumn x:Name="ParentFormRate" Header="Rate" MinWidth="70"/>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Total" MinWidth="70"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

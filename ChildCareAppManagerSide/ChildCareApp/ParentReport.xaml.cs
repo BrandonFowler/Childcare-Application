@@ -20,5 +20,9 @@ namespace ChildCareApp {
         public ParentReport() {
             InitializeComponent();
         }
+
+        private void LoadReport(int parentID, int startDate, int endDate) {
+
+        }
     }
 }
