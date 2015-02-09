@@ -167,10 +167,10 @@ namespace ChildCareApp {
                  txt_City.Text =  DS.Tables[0].Rows[0][8].ToString();
                  txt_Zip.Text =  DS.Tables[0].Rows[0][10].ToString();
                  cbo_State.Text =  DS.Tables[0].Rows[0][9].ToString();
-                string imageLink =  DS.Tables[0].Rows[0][11].ToString();
+               /* string imageLink =  DS.Tables[0].Rows[0][11].ToString();
                 ImageBrush ib = new ImageBrush(); 
                 ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
-                cnv_ParentIcon.Background = ib; 
+                cnv_ParentIcon.Background = ib; */
             }
 
         }//end LoadParentInfo
