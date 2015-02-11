@@ -19,17 +19,13 @@ namespace ChildCareAppParentSide {
     public partial class win_ChildLogin : Window {
 
         private string guardianID;
-        private Database db;
+        private ChildCheckInDatabase db;
         private DateAndTime updateTime;
-
-        public win_ChildLogin() {
-            InitializeComponent();
-        }//end default constructor
 
         public win_ChildLogin(string ID) {
             InitializeComponent();
             this.guardianID = ID;
-            this.db = new Database();
+            this.db = new ChildCheckInDatabase();
             setUpCheckInBox();
             setUpParentDisplay();
             eventsSetup();
@@ -118,7 +114,11 @@ namespace ChildCareAppParentSide {
             for (int x = 0; x < events.GetLength(0); x++) {
                 ComboBoxItem newEvent = new ComboBoxItem() { Content = events[x, 1], Tag = events[x, 0] };
                 cbo_EventChoice.Items.Add(newEvent);
-            } 
+            }
+
+            if (events.GetLength(0) == 1) {
+                cbo_EventChoice.SelectedItem = cbo_EventChoice.Items[0];
+            }
         }//end eventSetup
 
     }//end win_ChildLoginWindow(Class)

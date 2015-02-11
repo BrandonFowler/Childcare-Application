@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 
 namespace ChildCareAppParentSide {
+
     public class DateAndTime : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
         private DateTime now;

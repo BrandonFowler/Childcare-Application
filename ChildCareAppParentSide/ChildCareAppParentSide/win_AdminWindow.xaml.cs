@@ -17,7 +17,7 @@ namespace ChildCareAppParentSide {
     public partial class win_AdminWindow : Window {
 
         private string ID;
-        private Database db;
+        private ChildCheckInDatabase db;
 
         public win_AdminWindow() {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace ChildCareAppParentSide {
         public win_AdminWindow(string ID) {
             InitializeComponent();
             this.ID = ID;
-            this.db = new Database();
+            this.db = new ChildCheckInDatabase();
         }//end constructor
 
         private void btn_LogOutAdmin_Click(object sender, RoutedEventArgs e) {

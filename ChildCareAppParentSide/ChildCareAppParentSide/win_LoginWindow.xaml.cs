@@ -19,12 +19,12 @@ namespace ChildCareAppParentSide {
 
         private bool IDBoxSelected = false;
         private bool PINBoxSelected = false;
-        private Database db;
+        private ChildCheckInDatabase db;
 
         public win_LoginWindow() {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
-            this.db = new Database();
+            this.db = new ChildCheckInDatabase();
             this.txt_IDEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_IDEntry.GotFocus += OnIDBoxFocus;
             this.txt_PINEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
@@ -173,7 +173,7 @@ namespace ChildCareAppParentSide {
                     MessageBox.Show("User ID or PIN does not exist");
                 }
             }
-        }
+        }//btn_Login_Click
 
         private void btn_AdminLogin_Click(object sender, RoutedEventArgs e) {
             win_AdminLogin adminLogin = new win_AdminLogin();
