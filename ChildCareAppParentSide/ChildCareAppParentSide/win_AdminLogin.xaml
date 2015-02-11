@@ -4,12 +4,12 @@
         Title="Administrator Log In" Height="800" Width="1280">
     <Viewbox StretchDirection="Both" Stretch="Uniform">
         <Grid Width="460" Height="275">
-            <Button x:Name="btn_Back" Content="Back" HorizontalAlignment="Left" Margin="413,10,0,0" VerticalAlignment="Top" Width="37" Click="btn_Back_Click" RenderTransformOrigin="2.199,1.423"/>
+            <Button x:Name="btn_Back" Content="Back" HorizontalAlignment="Left" Margin="413,245,0,0" VerticalAlignment="Top" Width="37" Click="btn_Back_Click" RenderTransformOrigin="2.199,1.423"/>
             <Label x:Name="lbl_UserName" Content="User Name" HorizontalAlignment="Left" Margin="153,29,0,0" VerticalAlignment="Top" Width="104"/>
             <Label x:Name="lbl_Password" Content="Password" HorizontalAlignment="Left" Margin="153,96,0,0" VerticalAlignment="Top" Width="85"/>
             <TextBox x:Name="txt_UserName" Height="23" Margin="153,60,161,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="10"/>
             <PasswordBox x:Name="txt_Password" Height="23" Margin="153,122,161,0" VerticalAlignment="Top" MaxLength="10"/>
-            <Button x:Name="btn_Login" Content="Log In" Margin="344,81,39,0" VerticalAlignment="Top" Click="btn_Login_Click" Height="41"/>
+            <Button x:Name="btn_Login" Content="Log In" Margin="180,194,203,0" VerticalAlignment="Top" Click="btn_Login_Click" Height="41"/>
             <Button x:Name="btn_Keyboard" Content="Keyboard" HorizontalAlignment="Left" Margin="10,245,0,0" VerticalAlignment="Top" Width="103" Click="btn_Keyboard_Click" IsEnabled="False" Visibility="Hidden"/>
         </Grid>
     </Viewbox>

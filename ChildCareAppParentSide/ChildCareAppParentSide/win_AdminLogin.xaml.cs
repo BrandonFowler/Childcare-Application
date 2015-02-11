@@ -11,19 +11,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using System.Diagnostics;
+using System.IO;
 
 namespace ChildCareAppParentSide {
    
     public partial class win_AdminLogin : Window {
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
-
         public static extern int GetSystemMetrics(int nIndex);
-
+       
         private const int SM_TABLETPC = 86;
         private bool isTablet = false;
         private AdminDatabase db;
@@ -33,8 +32,6 @@ namespace ChildCareAppParentSide {
             this.isTablet = IsTablet();
             this.txt_UserName.GotFocus += FocusedTextBox;
             this.txt_Password.GotFocus += FocusedTextBox;
-            this.txt_UserName.LostFocus += TextBoxFocusLost;
-            this.txt_Password.LostFocus += TextBoxFocusLost;
             this.db = new AdminDatabase();
             if (isTablet){
                 btn_Keyboard.Visibility = Visibility.Visible;
@@ -59,7 +56,6 @@ namespace ChildCareAppParentSide {
             {
                 if (userFound)
                 {
-                    endKeyboard();
                     DisplayAdminWindow();
                     this.Close();
                 }
@@ -72,7 +68,6 @@ namespace ChildCareAppParentSide {
         }//btn_Login_Click(Class)
 
         private void DisplayAdminWindow() {
-
             win_AdminWindow AdminWindow = new win_AdminWindow();
             AdminWindow.Show();
             AdminWindow.WindowState = WindowState.Maximized;
@@ -81,7 +76,6 @@ namespace ChildCareAppParentSide {
         }//end DisplayAdminWindow
 
         private void btn_Back_Click(object sender, RoutedEventArgs e) {
-            endKeyboard();
             win_LoginWindow loginWindow = new win_LoginWindow();
             loginWindow.Show();
             loginWindow.WindowState = WindowState.Maximized;
@@ -90,7 +84,7 @@ namespace ChildCareAppParentSide {
 
         private void FocusedTextBox(object sender, EventArgs e){
             if (isTablet) {
-                Process.Start("osk.exe");
+                startKeyBoard();
             }
         }//end OnTDBoxFocus
 
@@ -99,20 +93,19 @@ namespace ChildCareAppParentSide {
         }//end IsTablet
 
         private void btn_Keyboard_Click(object sender, RoutedEventArgs e){
-            Process.Start("osk.exe");
+            startKeyBoard();
         }//end btn_KeyBoard_Click
 
-        private void TextBoxFocusLost(object sender, EventArgs e) {
-            endKeyboard();
-        }//end LostUserNameFocus
+        private void startKeyBoard(){
+            Version win8version = new Version(6, 2, 9200, 0);
 
-        private void endKeyboard() {
-            string processName = "osk";
-            Process[] processes = Process.GetProcessesByName(processName);
-            foreach (Process process in processes) {
-                process.Kill();
+            if (Environment.OSVersion.Version >= win8version)
+            {
+                string progFiles = @"C:\Program Files\Common Files\Microsoft Shared\ink";
+                string keyboardPath = Path.Combine(progFiles, "TabTip.exe");
+                Process.Start(keyboardPath);
             }
-        }//end endKeyboard
+        }//end startKeyBoard
   
     }//end win_AdminLogin(class)
 }
