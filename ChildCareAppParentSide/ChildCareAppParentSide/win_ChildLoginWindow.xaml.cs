@@ -42,6 +42,11 @@ namespace ChildCareAppParentSide {
 
         private void setUpCheckInBox() {
             string[,] childrenData = db.findChildren(this.guardianID);
+
+            if(childrenData == null){
+                return;
+            }
+
             if (childrenData != null) {
                 for (int x = 0; x < childrenData.GetLength(0); x++) {
                     Image image = buildImage(childrenData[x, 6], 60);

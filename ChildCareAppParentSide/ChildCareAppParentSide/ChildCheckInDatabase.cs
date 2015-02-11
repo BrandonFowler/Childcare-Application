@@ -41,25 +41,18 @@ namespace ChildCareAppParentSide {
             dbCon.Open();
 
             string sql = "select Child.* " +
-                         "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
-                         "where Guardian_ID =" + id;
-
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            int recordFound = Convert.ToInt32(command.ExecuteScalar());
-
-            if(recordFound == 0) {
-              dbCon.Close();
-              return null;
-            }
-
-            sql = "select Child.* "+
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID "+ 
                   "where Guardian_ID = "+id;
 
-            command = new SQLiteCommand(sql, this.dbCon);
+            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
+
+            if (DS.Tables == null) {
+                return null;
+            }
+
             int cCount = DS.Tables[0].Columns.Count;
             int rCount = DS.Tables[0].Rows.Count;
             String[,] data = new string[rCount,cCount];

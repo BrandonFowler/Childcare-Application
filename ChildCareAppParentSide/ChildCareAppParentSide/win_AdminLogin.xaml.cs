@@ -27,15 +27,14 @@ namespace ChildCareAppParentSide {
         private const int SM_TABLETPC = 86;
         private bool isTablet = false;
         private AdminDatabase db;
-        private Process keyboard;
 
         public win_AdminLogin(){
             InitializeComponent();
             this.isTablet = IsTablet();
-            this.txt_UserName.GotFocus += OnUserNameFocus;
-            this.txt_Password.GotFocus += OnPasswordFocus;
-            this.txt_UserName.LostFocus += LostUserNameFocus;
-            this.txt_Password.LostFocus += LostPasswordFocus;
+            this.txt_UserName.GotFocus += FocusedTextBox;
+            this.txt_Password.GotFocus += FocusedTextBox;
+            this.txt_UserName.LostFocus += TextBoxFocusLost;
+            this.txt_Password.LostFocus += TextBoxFocusLost;
             this.db = new AdminDatabase();
             if (isTablet){
                 btn_Keyboard.Visibility = Visibility.Visible;
@@ -60,6 +59,7 @@ namespace ChildCareAppParentSide {
             {
                 if (userFound)
                 {
+                    endKeyboard();
                     DisplayAdminWindow();
                     this.Close();
                 }
@@ -80,24 +80,19 @@ namespace ChildCareAppParentSide {
 
         }//end DisplayAdminWindow
 
-        private void btn_Exit_Click(object sender, RoutedEventArgs e) {
+        private void btn_Back_Click(object sender, RoutedEventArgs e) {
+            endKeyboard();
             win_LoginWindow loginWindow = new win_LoginWindow();
             loginWindow.Show();
             loginWindow.WindowState = WindowState.Maximized;
             this.Close();
         }//end shortcut click
 
-        private void OnUserNameFocus(object sender, EventArgs e){
-            if (isTablet) {
-                keyboard = Process.Start("osk.exe");
-            }
-        }//end OnTDBoxFocus
-
-        private void OnPasswordFocus(object sender, EventArgs e){
+        private void FocusedTextBox(object sender, EventArgs e){
             if (isTablet) {
                 Process.Start("osk.exe");
             }
-        }//end OnPINBoxFocus
+        }//end OnTDBoxFocus
 
         private bool IsTablet(){
             return (GetSystemMetrics(SM_TABLETPC) != 0);
@@ -107,21 +102,17 @@ namespace ChildCareAppParentSide {
             Process.Start("osk.exe");
         }//end btn_KeyBoard_Click
 
-        private void LostUserNameFocus(object sender, EventArgs e) {
-            string processName = "osk";
-            Process[] processes = Process.GetProcessesByName(processName);
-            foreach (Process process in processes) {
-                process.Kill();
-            }
+        private void TextBoxFocusLost(object sender, EventArgs e) {
+            endKeyboard();
         }//end LostUserNameFocus
 
-        private void LostPasswordFocus(object sender, EventArgs e) {
+        private void endKeyboard() {
             string processName = "osk";
             Process[] processes = Process.GetProcessesByName(processName);
             foreach (Process process in processes) {
                 process.Kill();
             }
-        }//end LostPasswordFocus
+        }//end endKeyboard
   
     }//end win_AdminLogin(class)
 }

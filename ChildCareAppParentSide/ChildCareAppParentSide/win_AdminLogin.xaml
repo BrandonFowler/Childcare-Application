@@ -4,7 +4,7 @@
         Title="Administrator Log In" Height="800" Width="1280">
     <Viewbox StretchDirection="Both" Stretch="Uniform">
         <Grid Width="460" Height="275">
-            <Button x:Name="btn_Exit" Content="Back" HorizontalAlignment="Left" Margin="413,10,0,0" VerticalAlignment="Top" Width="37" Click="btn_Exit_Click" RenderTransformOrigin="2.199,1.423"/>
+            <Button x:Name="btn_Back" Content="Back" HorizontalAlignment="Left" Margin="413,10,0,0" VerticalAlignment="Top" Width="37" Click="btn_Back_Click" RenderTransformOrigin="2.199,1.423"/>
             <Label x:Name="lbl_UserName" Content="User Name" HorizontalAlignment="Left" Margin="153,29,0,0" VerticalAlignment="Top" Width="104"/>
             <Label x:Name="lbl_Password" Content="Password" HorizontalAlignment="Left" Margin="153,96,0,0" VerticalAlignment="Top" Width="85"/>
             <TextBox x:Name="txt_UserName" Height="23" Margin="153,60,161,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="10"/>
