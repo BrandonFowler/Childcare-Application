@@ -61,6 +61,7 @@
       <DependentUpon>BusinessReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChildInfoDatabse.cs" />
+    <Compile Include="Child.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="LoadParentInfoDatabase.cs" />
     <Compile Include="ParentReport.xaml.cs">

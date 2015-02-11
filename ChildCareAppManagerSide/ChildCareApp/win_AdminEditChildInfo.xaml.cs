@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
-using System.Collections; 
+using System.Collections;
+using System.IO;
 
 namespace ChildCareApp {
     /// <summary>
@@ -24,16 +25,19 @@ namespace ChildCareApp {
         private ChildInfoDatabse db;
         private int childIndex;
         DataSet DS = new DataSet();
+        private string ID;
 
         public win_AdminEditChildInfo(string parentID) {
             InitializeComponent();
-            AddStates();
+            this.ID = parentID;
             this.db = new ChildInfoDatabse();
             cnv_ChildIcon.Background = new SolidColorBrush(Colors.Aqua); //setting canvas color so we can see it
             btn_Delete.Background = new SolidColorBrush(Colors.Red);
             LoadParentInfo(parentID);
             //string childID =  GetChildID(parentID); 
-            LoadChildInfo(parentID); 
+            //LoadChildInfo(parentID); 
+            setChildBox();
+            lst_ChildBox.SelectionChanged += ListBoxSelectionChanged;
         }
 
 
@@ -43,7 +47,7 @@ namespace ChildCareApp {
 
             if (formNotComplete == false)
             {
-                string cID, firstName, lastName, middle, address, city, state, zip, month, day, year, medical, allergies;
+                string cID, firstName, lastName, year, medical, allergies;
 
 
                 firstName = txt_FirstName.Text;
@@ -52,16 +56,22 @@ namespace ChildCareApp {
 
                 year = txt_Year.Text; 
 
-                address = txt_Address.Text;
-                city = txt_City.Text;
-                state = cbo_State.Text; //dont know if this will work yet
-                zip = txt_Zip.Text;
+                
 
                 medical = txt_Medical.Text;
                 allergies = txt_Allergies.Text;
+                cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
 
-                cID = DS.Tables[0].Rows[childIndex][0].ToString();
+                //cID = DS.Tables[0].Rows[childIndex][0].ToString();
                 this.db.UpdateChildInfo(cID, firstName, lastName, year, medical, allergies);
+                ((Child)(lst_ChildBox.SelectedItem)).firstName = firstName;
+                ((Child)(lst_ChildBox.SelectedItem)).lastName = lastName;
+                ((Child)(lst_ChildBox.SelectedItem)).birthday = year;
+                ((Child)(lst_ChildBox.SelectedItem)).medical = medical;
+                ((Child)(lst_ChildBox.SelectedItem)).allergies = allergies;
+
+                lst_ChildBox.Items.Clear();
+                setChildBox();
 
                // ClearFields();
             }
@@ -76,22 +86,24 @@ namespace ChildCareApp {
 
             if ((bool)delete == true)
             {
-               /* string cID = DS.Tables[0].Rows[childIndex][0].ToString();
+               ///string cID = DS.Tables[0].Rows[childIndex][0].ToString();
+                string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
                 this.db.DeleteChildInfo(cID);
-                ClearFields();
+                /*ClearFields();
                 DS.Clear();
                 string parentID = txt_IDNumber.Text;
                 childIndex = 0; 
                 //LoadChildInfo(parentID); */
-                DisableForm();
+                //DisableForm();
+                lst_ChildBox.Items.Clear();
+                setChildBox();
             }
 
 
         }//end btn_Delete_Click
 
         private void DisableForm()
-        {
-            btn_Next.IsEnabled = false; 
+        { 
             btn_Delete.IsEnabled = false;
             btn_Submit.IsEnabled = false; 
         }
@@ -195,9 +207,7 @@ namespace ChildCareApp {
 
         private void ClearFields()
         {
-            txt_Address.Clear();
-            txt_City.Clear();
-            txt_FirstName.Clear();
+             txt_FirstName.Clear();
             txt_LastName.Clear();
 
             txt_IDNumber.Clear();
@@ -206,70 +216,10 @@ namespace ChildCareApp {
             txt_Medical.Clear();
 
             txt_Year.Clear();
-            txt_Zip.Clear();
+            
         }//end ClarFields
 
-        private void AddStates()
-        {
-
-            cbo_State.SelectedIndex = 46;//shoulkd be sent to sql statement for states
-
-            cbo_State.Items.Add("AL");
-            cbo_State.Items.Add("AK");
-            cbo_State.Items.Add("AZ");
-            cbo_State.Items.Add("AR");
-            cbo_State.Items.Add("CA");
-            cbo_State.Items.Add("CO");
-            cbo_State.Items.Add("CT");
-            cbo_State.Items.Add("DE");
-            cbo_State.Items.Add("FL");
-            cbo_State.Items.Add("GA");
-
-            cbo_State.Items.Add("HI");
-            cbo_State.Items.Add("ID");
-            cbo_State.Items.Add("IL");
-            cbo_State.Items.Add("IN");
-            cbo_State.Items.Add("IA");
-            cbo_State.Items.Add("KS");
-            cbo_State.Items.Add("KY");
-            cbo_State.Items.Add("LA");
-            cbo_State.Items.Add("ME");
-            cbo_State.Items.Add("MD");
-
-            cbo_State.Items.Add("MA");
-            cbo_State.Items.Add("MI");
-            cbo_State.Items.Add("MN");
-            cbo_State.Items.Add("MS");
-            cbo_State.Items.Add("MO");
-            cbo_State.Items.Add("MT");
-            cbo_State.Items.Add("NE");
-            cbo_State.Items.Add("NV");
-            cbo_State.Items.Add("NH");
-            cbo_State.Items.Add("NJ");
-
-            cbo_State.Items.Add("NM");
-            cbo_State.Items.Add("NY");
-            cbo_State.Items.Add("NC");
-            cbo_State.Items.Add("ND");
-            cbo_State.Items.Add("OH");
-            cbo_State.Items.Add("OK");
-            cbo_State.Items.Add("OR");
-            cbo_State.Items.Add("PA");
-            cbo_State.Items.Add("RI");
-            cbo_State.Items.Add("SC");
-
-            cbo_State.Items.Add("SD");
-            cbo_State.Items.Add("TN");
-            cbo_State.Items.Add("TX");
-            cbo_State.Items.Add("UT");
-            cbo_State.Items.Add("VT");
-            cbo_State.Items.Add("VA");
-            cbo_State.Items.Add("WA");
-            cbo_State.Items.Add("WV");
-            cbo_State.Items.Add("WI");
-            cbo_State.Items.Add("WY");
-
-        }
+        
 
         private void btn_Next_Click(object sender, RoutedEventArgs e) {
 
@@ -280,5 +230,60 @@ namespace ChildCareApp {
             //LoadChildInfo(pID);  
             FillTextBox(); 
         }//end addStates
+
+        private void setChildBox() {
+            string[,] childrenData = db.findChildren(this.ID);
+
+            if (childrenData == null) {
+                return;
+            }
+
+            if (childrenData != null) {
+                for (int x = 0; x < childrenData.GetLength(0); x++) {
+                    Image image = buildImage(childrenData[x, 6], 60);
+                    lst_ChildBox.Items.Add(new Child(childrenData[x, 0], childrenData[x, 1], childrenData[x, 2],
+                                            image, childrenData[x, 3], childrenData[x, 4], childrenData[x, 5]));
+                }
+            }
+        }//end setUpCheckInBox
+
+        private Image buildImage(string path, int size) {
+            Image image = new Image();
+            image.Width = size;
+
+            try {
+                BitmapImage bitmapImage = new BitmapImage();
+                var fileInfo = new FileInfo(@"" + path);
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = new Uri(fileInfo.FullName);
+                bitmapImage.DecodePixelWidth = size;
+                bitmapImage.EndInit();
+                image.Source = bitmapImage;
+            } catch {
+                BitmapImage bitmapImage = new BitmapImage();
+                var fileInfo = new FileInfo(@"../../../../Photos/default.jpg");
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = new Uri(fileInfo.FullName);
+                bitmapImage.DecodePixelWidth = size;
+                bitmapImage.EndInit();
+                image.Source = bitmapImage;
+            }
+            return image;
+        }//end buildImage	
+
+        private void ListBoxSelectionChanged(object sender, System.EventArgs e) {
+
+            if (lst_ChildBox.SelectedItem != null) {
+                txt_FirstName.Text = ((Child)(lst_ChildBox.SelectedItem)).firstName;
+                txt_LastName.Text = ((Child)(lst_ChildBox.SelectedItem)).lastName;
+                txt_Year.Text = ((Child)(lst_ChildBox.SelectedItem)).birthday;
+                txt_Medical.Text = ((Child)(lst_ChildBox.SelectedItem)).medical;
+                txt_Allergies.Text = ((Child)(lst_ChildBox.SelectedItem)).allergies;
+            }
+            
+        
+        }
     }//end class
+
+
 }//end nameSpace

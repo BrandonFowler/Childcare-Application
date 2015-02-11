@@ -1,6 +1,7 @@
 ﻿<Window x:Class="ChildCareApp.win_AdminEditChildInfo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ChildCareApp"
         Title="win_AdminEditChildInfo" Height="465" Width="656">
     <Grid>
         <Canvas x:Name="cnv_ChildIcon" HorizontalAlignment="Left" Height="152" Margin="23,41,0,0" VerticalAlignment="Top" Width="158"/>
@@ -11,25 +12,31 @@
         <Label x:Name="lbl_FirstName" Content="First Name:" HorizontalAlignment="Left" Margin="220,38,0,0" VerticalAlignment="Top" Width="83"/>
         <Label x:Name="lbl_LastName" Content="Last Name:" HorizontalAlignment="Left" Margin="220,69,0,0" VerticalAlignment="Top" Width="83"/>
         <TextBox x:Name="txt_LastName" HorizontalAlignment="Left" Height="23" Margin="304,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
-        <Label x:Name="lbl_Address" Content="Address:" HorizontalAlignment="Left" Margin="233,146,0,0" VerticalAlignment="Top" Width="55"/>
-        <TextBox x:Name="txt_Address" HorizontalAlignment="Left" Height="23" Margin="304,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286"/>
-        <Label x:Name="lbl_City" Content="City:" HorizontalAlignment="Left" Margin="254,177,0,0" VerticalAlignment="Top" Width="34"/>
-        <TextBox x:Name="txt_City" HorizontalAlignment="Left" Height="23" Margin="304,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
-        <Label x:Name="lbl_State" Content="State:" HorizontalAlignment="Left" Margin="475,177,0,0" VerticalAlignment="Top" Width="43"/>
-        <ComboBox x:Name="cbo_State" HorizontalAlignment="Left" Margin="523,181,0,0" VerticalAlignment="Top" Width="74"/>
-        <Label x:Name="lbl_Zip" Content="Zip:" HorizontalAlignment="Left" Margin="486,211,0,0" VerticalAlignment="Top" Width="43"/>
-        <TextBox x:Name="txt_Zip" HorizontalAlignment="Left" Height="23" Margin="523,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74"/>
-        <Label x:Name="lbl_Medical" Content="Medical Issues:" HorizontalAlignment="Left" Margin="220,230,0,0" VerticalAlignment="Top" Width="89"/>
-        <TextBox x:Name="txt_Medical" HorizontalAlignment="Left" Height="Auto" Margin="220,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187"/>
-        <Label x:Name="lbl_Allergies" Content="Allergies:" HorizontalAlignment="Left" Margin="432,230,0,0" VerticalAlignment="Top" Width="89"/>
-        <TextBox x:Name="txt_Allergies" HorizontalAlignment="Left" Height="Auto" Margin="432,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187"/>
+        <Label x:Name="lbl_Medical" Content="Medical Issues:" HorizontalAlignment="Left" Margin="218,161,0,0" VerticalAlignment="Top" Width="89"/>
+        <TextBox x:Name="txt_Medical" HorizontalAlignment="Left" Height="Auto" Margin="218,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187"/>
+        <Label x:Name="lbl_Allergies" Content="Allergies:" HorizontalAlignment="Left" Margin="430,161,0,0" VerticalAlignment="Top" Width="89"/>
+        <TextBox x:Name="txt_Allergies" HorizontalAlignment="Left" Height="Auto" Margin="430,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187"/>
         <Button x:Name="btn_Submit" Content="Submit" HorizontalAlignment="Left" Margin="264,374,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_Submit_Click"/>
         <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="474,374,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_Delete_Click"/>
         <Button x:Name="btn_MainMenu" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="70,374,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_MainMenu_Click"/>
         <Label x:Name="lbl_Birthday" Content="Birthday:" HorizontalAlignment="Left" Margin="229,115,0,0" VerticalAlignment="Top" Width="68"/>
         <TextBox x:Name="txt_Year" HorizontalAlignment="Left" Height="23" Margin="304,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"/>
         <Label x:Name="lbl_Example" Content="EX: 02 - 20 - 2002" HorizontalAlignment="Left" Margin="412,112,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btn_Next" Content="Next" HorizontalAlignment="Left" Margin="505,325,0,0" VerticalAlignment="Top" Width="75" Click="btn_Next_Click"/>
-
+        <ListBox x:Name="lst_ChildBox" HorizontalAlignment="Left" Height="124" Margin="70,245,0,0" VerticalAlignment="Top" Width="395">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type local:Child}">
+                    <StackPanel>
+                        <TextBlock Margin="3" Text="{Binding firstName}"/>
+                        <TextBlock Margin="3" Text="{Binding lastName}"/>
+                        <ContentControl Margin="3" Content="{Binding image}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>
