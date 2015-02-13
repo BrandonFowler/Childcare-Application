@@ -37,17 +37,16 @@ namespace ChildCareAppParentSide {
                 return;
             }
 
-            if (childrenData != null) {
-                for (int x = 0; x < childrenData.GetLength(0); x++) {
-                    Image image = buildImage(childrenData[x, 6], 60);
-                    if (!db.isCheckedIn(childrenData[x, 0],this.guardianID)){
-                        lst_CheckInBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0]));
-                    }
-                    else{
-                        lst_CheckOutBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0]));
-                    }
+            for (int x = 0; x < childrenData.GetLength(0); x++) {
+                Image image = buildImage(childrenData[x, 6], 60);
+                if (!db.isCheckedIn(childrenData[x, 0],this.guardianID)){
+                    lst_CheckInBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0], childrenData[x,3]));
+                }
+                else{
+                    lst_CheckOutBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0], childrenData[x,3]));
                 }
             }
+          
         }//end setUpCheckInBox
 
         private Image buildImage(string path, int size) {
@@ -79,7 +78,8 @@ namespace ChildCareAppParentSide {
                 if (lst_CheckInBox.SelectedItem != null) {
                     string eventID = ((ComboBoxItem)cbo_EventChoice.SelectedItem).Tag.ToString();
                     string childID = ((Child)lst_CheckInBox.SelectedItem).ID;
-                    db.checkIn(childID, eventID, guardianID);
+                    string birthday = ((Child)lst_CheckInBox.SelectedItem).birthday;
+                    db.checkIn(childID, eventID, guardianID, birthday);
                     lst_CheckOutBox.Items.Add(lst_CheckInBox.SelectedItem);
                     lst_CheckInBox.Items.Remove(lst_CheckInBox.SelectedItem);
                 }
