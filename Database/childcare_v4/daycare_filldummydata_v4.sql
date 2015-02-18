@@ -100,7 +100,7 @@ VALUES (1, 1, 1);
 INSERT INTO AllowedConnections
 VALUES (2, 1, 2);
 
-INSERT INTO AallowedConnections
+INSERT INTO AllowedConnections
 VALUES (3, 1, 3);
 
 INSERT INTO AllowedConnections
