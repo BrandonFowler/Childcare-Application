@@ -18,13 +18,8 @@ namespace ChildCareApp
     /// Interaction logic for win_ParentLogin.xaml
     /// </summary>
     /// 
-    /* This class is almost identical to the mainWindow.cs... 
-     * There has to be a better way of doing this and not just redoing all the same code
-     * This is for testing,, we sould redo if we have time
-     */
-    public partial class win_ParentLogin : Window {
 
-        private bool IDBoxSelected = false;
+    public partial class win_ParentLogin : Window {
  
         private Database db;
         private bool editParent; 
@@ -33,14 +28,8 @@ namespace ChildCareApp
             editParent = editP; 
             this.db = new Database();
             this.txt_IDEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
-            this.txt_IDEntry.GotFocus += OnIDBoxFocus;
             this.txt_IDEntry.Focus();
         }
-
-        private void OnIDBoxFocus(object sender, EventArgs e) {
-            this.IDBoxSelected = true;
-
-        }//end OnTDBoxFocus
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e) {
             if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back)
@@ -57,8 +46,6 @@ namespace ChildCareApp
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
 
-
-
             if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text))
             {
                 MessageBox.Show("Please enter the parents ID number.");
@@ -66,14 +53,12 @@ namespace ChildCareApp
             }
             else
             {
-
-
                 string ID = txt_IDEntry.Text;
                 bool userFound = this.db.validateLogin(ID);
 
                 if (userFound)
                 {
-                    MessageBox.Show("User found");
+                    
                     if (editParent)
                         DisplayAdminEditParentWindow(ID);
 

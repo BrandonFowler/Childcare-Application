@@ -51,7 +51,7 @@ namespace ChildCareApp
                 mycommand.CommandText = sql;
                 mycommand.Parameters.Add(new SQLiteParameter("@firstName", firstName));
                 mycommand.Parameters.Add(new SQLiteParameter("@lastName", lastName));
-                //mycommand.Parameters.Add(new SQLiteParameter("@birthday", birthday));
+                mycommand.Parameters.Add(new SQLiteParameter("@birthday", birthday));
                 mycommand.Parameters.Add(new SQLiteParameter("@allergies", allergies));
                 mycommand.Parameters.Add(new SQLiteParameter("@medical", medical));
 

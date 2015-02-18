@@ -19,9 +19,8 @@
         <Button x:Name="btn_Submit" Content="Submit" HorizontalAlignment="Left" Margin="264,374,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_Submit_Click"/>
         <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="474,374,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_Delete_Click"/>
         <Button x:Name="btn_MainMenu" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="70,374,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_MainMenu_Click"/>
-        <Label x:Name="lbl_Birthday" Content="Birthday:" HorizontalAlignment="Left" Margin="229,115,0,0" VerticalAlignment="Top" Width="68"/>
-        <TextBox x:Name="txt_Year" HorizontalAlignment="Left" Height="23" Margin="304,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"/>
-        <Label x:Name="lbl_Example" Content="EX: 02 - 20 - 2002" HorizontalAlignment="Left" Margin="412,112,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_Birthday" Content="Birthday:" HorizontalAlignment="Left" Margin="220,130,0,0" VerticalAlignment="Top" Width="68"/>
+        <Label x:Name="lbl_Example" Content=" Enter a date or click the Calender. EX: 01/01/2005" HorizontalAlignment="Left" Margin="218,104,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="lst_ChildBox" HorizontalAlignment="Left" Height="124" Margin="70,245,0,0" VerticalAlignment="Top" Width="395">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -38,5 +37,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Button x:Name="btn_AddChild" Content="Add A Child" HorizontalAlignment="Left" Margin="488,261,0,0" VerticalAlignment="Top" Width="97" Height="58" Click="btn_AddChild_Click"/>
+        <DatePicker x:Name="dte_Birthday" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="304,130,0,0" DisplayDate="2005-01-01" IsTodayHighlighted="False"/>
     </Grid>
 </Window>

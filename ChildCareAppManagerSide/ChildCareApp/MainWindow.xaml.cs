@@ -60,21 +60,20 @@ namespace ChildCareApp {
         }//end OnPINBoxFocus
 
         private void btn_Login_Click(object sender, RoutedEventArgs e) {
-            if (string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.txt_Password.Text))
+            if (string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.txt_Password.Password))
             {
                 MessageBox.Show("Please enter a User Name and a Password.");
 
             }
             else
             {
-
+                
                 string ID = txt_UserName.Text;
-                string PIN = txt_Password.Text;
+                string PIN = txt_Password.Password;
                 bool userFound = this.db.validateAdminLogin(ID, PIN);
 
                 if (userFound)
                 {
-                    MessageBox.Show("Admin found");
                     DisplayAdminWindow();
                 }
                 else
