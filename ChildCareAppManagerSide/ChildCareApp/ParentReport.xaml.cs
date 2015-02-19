@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Data.SQLite;
+using MySql.Data.MySqlClient;
 using System.Data;
 
 namespace ChildCareApp {
@@ -28,23 +28,23 @@ namespace ChildCareApp {
         }
 
         private void btn_LoadAll_Click(object sender, RoutedEventArgs e) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../ChildCare_v3.s3db;Version=3;");
+            MySqlConnection connection = new MySqlConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
 
             try {
-                connection.Open();//Date, FirstName, LastName, TransactionTotal
-                string query = "SELECT * FROM AllowedConnections NATURAL JOIN Child";//(Guardian NATURAL JOIN AllowedConnections)";// NATURAL JOIN Child";// NATURAL JOIN ChildCareTransaction";
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                connection.Open();
+                string query = "SELECT * FROM AllowedConnections NATURAL JOIN Child";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
 
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable table = new DataTable("Parent Report");
                 adapter.Fill(table);
                 ParentDataGrid.ItemsSource = table.DefaultView;
                 adapter.Update(table);
 
                 connection.Close();
-            } catch (Exception except) {
-                MessageBox.Show(except.Message);
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
             }
         }
     }
