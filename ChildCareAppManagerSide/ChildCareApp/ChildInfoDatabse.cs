@@ -19,34 +19,98 @@ namespace ChildCareApp
             dbCon = new SQLiteConnection("Data Source=../../ChildCare_v3.s3db;Version=3;");  
         }//end Database
 
-
-        public DataSet GetChildInfo(string parentID)
-        {
-
+        public DataSet GetMaxID() {
             dbCon.Open();
-            string sql = "SELECT * FROM child, allowedconnections, guardian " +
-                            "WHERE allowedconnections.Guardian_ID = " + parentID +
-                            " AND allowedconnections.Child_ID = child.Child_ID" +
-                            " GROUP BY child.Child_ID;";
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
-            DB.Fill(DS);
+            try
+            {
+                string sql = "SELECT MAX(Child_ID) FROM Child;";
 
+                SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+                SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+                
+                DB.Fill(DS);
+            }
 
+            catch (SQLiteException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            dbCon.Close();
+            return DS; 
+        }
+
+        public DataSet GetMaxConnectionID()
+        {
+            dbCon.Open();
+            DataSet DS = new DataSet();
+            try
+            {
+                string sql = "SELECT MAX(Connection_ID) FROM AllowedConnections;";
+
+                SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+                SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+
+                DB.Fill(DS);
+            }
+
+            catch (SQLiteException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
             dbCon.Close();
             return DS;
-        }//end GetFirstName
+        }
 
-        public void UpdateChildInfo(string ID, string firstName, string lastName, string birthday, string medical, string allergies)
-        {
+        public void AddNewChild(string cID, string fName, string lName, string birthday, string allergies, string medical, string photo) {
+            
+            dbCon.Open();
+          //  try
+          //  {
+
+               //string sql = "INSERT INTO Child VALUES ("+ cID + ", " + fName + ", " + lName + ", " + birthday + ", " + allergies + ", " + medical + ", " + photo + ");";
+                string sql = "INSERT INTO Child(Child_ID, FirstName, LastName, Birthday, Allergies, Medical, PhotoLocation) "
+                            + "VALUES ('" + cID + "', '" + fName + "', '" + lName + "', '" + birthday + "', '" + allergies + "', '" + medical + "', '" + photo + "');";
+            
+                SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+           // }
+           /* catch (SQLiteException e)
+            {
+                MessageBox.Show(e.ToString());
+            }*/
+            dbCon.Close();
+        }
+        public void UpdateAllowedConnections(string conID, string pID, string cID) {
             dbCon.Open();
 
             try
             {
+                string sql = "INSERT INTO AllowedConnections(Connection_ID, Guardian_ID, Child_ID) "
+                                + "VALUES (" + conID + ", " + pID + ", " + cID + ");";
+                SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
 
-                string sql = @"UPDATE Child SET FirstName = @firstName, LastName = @lastName, Allergies = @allergies, Medical = @medical WHERE Child_ID = @ID;";
+            catch (SQLiteException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            dbCon.Close();
+        }
+
+        public void UpdateChildInfo(string ID, string firstName, string lastName, string birthday, string medical, string allergies) {
+            
+            dbCon.Open();
+
+
+
+            try
+            {
+                MessageBox.Show(birthday);
+                string sql = @"UPDATE Child SET FirstName = @firstName, LastName = @lastName, Birthday = @birthday, Allergies = @allergies, Medical = @medical WHERE Child_ID = @ID;";
                 SQLiteCommand mycommand = new SQLiteCommand(sql, this.dbCon);
                 mycommand.CommandText = sql;
                 mycommand.Parameters.Add(new SQLiteParameter("@firstName", firstName));

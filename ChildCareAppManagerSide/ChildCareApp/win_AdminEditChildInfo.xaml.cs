@@ -49,7 +49,10 @@ namespace ChildCareApp {
                 firstName = txt_FirstName.Text;
                 lastName = txt_LastName.Text;
                 
-                birthday = dte_Birthday.SelectedDate.ToString(); 
+                //birthday = dte_Birthday.SelectedDate.Value.ToShortDateString(); 
+                birthday = dte_Birthday.SelectedDate.Value.ToString("yyyy-MM-dd"); 
+
+                //birthday = "'1/1/2006'"; 
                 medical = txt_Medical.Text;
                 allergies = txt_Allergies.Text;
                 cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
@@ -203,7 +206,32 @@ namespace ChildCareApp {
 
         private void btn_AddChild_Click(object sender, RoutedEventArgs e)
         {
-            ClearFields(); 
+            //ClearFields();
+            DataSet DS = new DataSet();
+            DS = this.db.GetMaxID();
+           // MessageBox.Show("FUCK");
+
+            int maxID = Convert.ToInt32(DS.Tables[0].Rows[0][0]);
+            maxID = maxID + 1;
+            string mID = maxID.ToString();  
+
+            Image i; 
+            i = buildImage("../../../../Photos/default.jpg", 60); 
+            lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None"));
+
+            DS = this.db.GetMaxConnectionID();
+            int connID = Convert.ToInt32(DS.Tables[0].Rows[0][0]);
+            connID = connID + 1;
+            string connectionID = connID.ToString(); 
+
+            this.db.UpdateAllowedConnections(connectionID, ID, mID);
+
+            this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "somewhere.jpg");
+
+            lst_ChildBox.Items.Clear();
+            setChildBox();
+
+
         }
     }//end class
 
