@@ -1,62 +1,92 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SQLite;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
-using System.Globalization;
-using MySql.Data.MySqlClient;
 
 namespace ChildCareAppParentSide {
 
     class ChildCheckInDatabase {
 
-        private SQLiteConnection dbCon;
-
-        MySql.Data.MySqlClient.MySqlConnection conn;
-        string myConnectionString;
+        private MySql.Data.MySqlClient.MySqlConnection conn;
+        private string server;
+        private string port;
+        private string database;
+        private string UID;
+        private string password;
+        private string connectionString;
 
         public ChildCheckInDatabase() {
-            dbCon = new SQLiteConnection("Data Source=../../ChildcareDB.s3db;Version=3;");
-            myConnectionString = "SERVER=146.187.135.22; PORT=3306; DATABASE=childcare_v4; UID=ccdev; PASSWORD=devpw821;";
+            this.server = "146.187.135.22";
+            this.port = "3306";
+            this.database = "childcare_v4";
+            this.UID = "ccdev";
+            this.password = "devpw821";
+            connectionString = "SERVER="+server+"; PORT="+port+"; DATABASE="+database+"; UID="+UID+"; PASSWORD="+password+";";
             conn = new MySql.Data.MySqlClient.MySqlConnection();
-            conn.ConnectionString = myConnectionString;
+            conn.ConnectionString = connectionString;
+        }//end Database(default constructor)
+
+        public ChildCheckInDatabase(string server, string port, string database, string UID, string password){
+            this.server = server;
+            this.port = port;
+            this.database = database;
+            this.UID = UID;
+            this.password = password;
+            connectionString = server + "; PORT=" + port + "; DATABASE=" + database + "; UID=" + UID + "; PASSWORD=" + password + ";";
+            conn = new MySql.Data.MySqlClient.MySqlConnection();
+            conn.ConnectionString = connectionString;
         }//end Database
 
-        //Converted, not cleaned
         public bool validateLogin(string ID, string PIN) {
 
             string sql = "select Guardian_ID " +
                          "from Guardian " + 
                          "where Guardian_ID = " + ID + " and GuardianPIN = " + PIN;
 
-            //dbCon.Open();
-            //SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             conn.Open();
             MySqlCommand command = new MySqlCommand(sql, conn);
-            int recordFound = Convert.ToInt32(command.ExecuteScalar());
+            object recordFound = command.ExecuteScalar();
 
-            if (recordFound > 0) {
+            if (recordFound != DBNull.Value && recordFound != null) {
                 conn.Close();
                 return true;
             }
 
-            //dbCon.Close();
             conn.Close();
             return false;
         }//end validateLogin
 
-        public String[,] findChildren(string id) {
+        public string[] getParentInfo(String guardianID) {
+
+            string sql = "select * " +
+                         "from Guardian " +
+                         "where Guardian_ID = " + guardianID;
+
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
+            DataSet DS = new DataSet();
+            DB.Fill(DS);
+
+            int cCount = DS.Tables[0].Columns.Count;
+            string[] data = new String[cCount];
+
+            for (int x = 0; x < cCount; x++) {
+                data[x] = DS.Tables[0].Rows[0][x].ToString();
+            }
+
+            conn.Close();
+            return data;
+        }// end getParentInfo
+
+        public String[,] findChildren(string guardianID) {
 
             string sql = "select Child.* " +
-                  "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID "+ 
-                  "where Guardian_ID = "+id;
+                  "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID "+
+                  "where Guardian_ID = " + guardianID;
 
-            dbCon.Open();
-
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
 
@@ -74,7 +104,7 @@ namespace ChildCareAppParentSide {
                 }
             }
 
-            dbCon.Close();
+            conn.Close();
             return data;
         }//end findChildren
 
@@ -87,12 +117,11 @@ namespace ChildCareAppParentSide {
 
             string sql = "select Event_ID, EventName " + 
                          "from EventData " + 
-                         "where Day= '" + day + "' and Month='" + month + "' or Weekday='" + dayOfWeek + "' or EventName='Normal Care'";
+                         "where EventDay= '" + day + "' and EventMonth='" + month + "' or EventWeekday='" + dayOfWeek + "' or Event_ID='2'";
 
-            dbCon.Open();
-
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
             int cCount = DS.Tables[0].Columns.Count;
@@ -103,51 +132,66 @@ namespace ChildCareAppParentSide {
                     events[x, y] = DS.Tables[0].Rows[x][y].ToString();
                 }
             }
-            dbCon.Close();
+
+            conn.Close();
             return events;
         }//end getEvents
-       
+
         public bool checkIn(string childID, string eventID, string guardianID, string birthday) {
             DateTime dt = DateTime.Now;
             string dateTime = DateTime.Now.ToString();
             string date = Convert.ToDateTime(dateTime).ToString("yyyy-MM-dd");
             string time = Convert.ToDateTime(dateTime).ToString("HH:mm:ss");
             bool isInfant;
-            if (Convert.ToInt32(eventID) == 0) {
+            if (Convert.ToInt32(eventID) == 2) {
                 isInfant = checkInfant(birthday, date);
                 if (isInfant) {
-                    eventID = "1";
+                    eventID = "3";
                 }
             }
 
-            string connectionID = getConnectionID(guardianID, childID);
+            string allowanceID = getConnectionID(guardianID, childID);
+            int maxTransactionID = getNextPrimary("ChildCareTransaction_ID","ChildCareTransaction");
 
-            string sql = "insert into " + 
-                  "Transactions (Event_ID,Connection_ID,Date,CheckedIn) " + 
-                  "values ("+eventID+","+connectionID+",'"+date+"','"+time+"')";
+            string sql = "insert into " +
+                         "ChildCareTransaction (ChildCareTransaction_ID,Event_ID,Allowance_ID,Date,CheckedIn) " + 
+                         "values ("+maxTransactionID+","+eventID+","+allowanceID+",'"+date+"','"+time+"')";
 
-            dbCon.Open();
-
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
             command.ExecuteNonQuery();
-            dbCon.Close();
+
+            conn.Close();
             return true;
         }//end checkIn
 
+        private int getNextPrimary(string column, string table) {
+            string sql = "Select Max(" + column + ") from " + table;
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            object max = command.ExecuteScalar();
+            if (max != DBNull.Value && max != null) {
+                conn.Close();
+                return Convert.ToInt32(max) + 1;
+            }
+            conn.Close();
+            return 0;
+        }//end getMaxPrimary
+
         public string getConnectionID(string guardianID, string childID) {
 
-            string sql = "select Connection_ID " +
+            string sql = "select Allowance_ID " +
                          "from AllowedConnections " +
                          "where Guardian_ID = '" + guardianID + "' and Child_ID = '" + childID + "'";
 
-            dbCon.Open();
-
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
             string connectionID = DS.Tables[0].Rows[0][0].ToString();
-            dbCon.Close();
+
+            conn.Close();
             return connectionID;
         }//end getConnectionID
 
@@ -156,8 +200,8 @@ namespace ChildCareAppParentSide {
             string dateTimeString = DateTime.Now.ToString();
             string currentDateString = Convert.ToDateTime(dateTimeString).ToString("yyyy-MM-dd");
             string currentTimeString = Convert.ToDateTime(dateTimeString).ToString("HH:mm:ss");
-            string connectionID = getConnectionID(guardianID, childID);
-            string[] transaction = findTransaction(connectionID);
+            string allowanceID = getConnectionID(guardianID, childID);
+            string[] transaction = findTransaction(allowanceID);
             string transactionID = transaction[0];
             string eventID = transaction[1];
             string checkInTime = transaction[4];
@@ -170,8 +214,8 @@ namespace ChildCareAppParentSide {
             if(ishourly){
                double hourDifference = TimeSpanTime.Hours - TimeSpanCheckInTime.Hours;
                double minuteDifference = TimeSpanTime.Minutes - TimeSpanCheckInTime.Minutes;
-               double totalCheckedInHours = hourDifference + (minuteDifference/60);
-               if ((eventID.CompareTo("0") == 0 || eventID.CompareTo("1") == 0) && totalCheckedInHours > 3) {
+               double totalCheckedInHours = hourDifference + (minuteDifference/60.0);
+               if ((eventID.CompareTo("2") == 0 || eventID.CompareTo("3") == 0) && totalCheckedInHours > 3) {
                     double timeDifference = totalCheckedInHours - 3;
                     if (timeDifference > lateTime) {
                         lateTime = timeDifference;
@@ -196,46 +240,47 @@ namespace ChildCareAppParentSide {
                 }
             }
 
-            dbCon.Open();
-
-            string sql = "update Transactions " +
+            string sql = "update ChildCareTransaction " +
                   "set CheckedOut='" + currentTimeString + "' " + ", TransactionTotal = " + eventFee +" "+
-                  "where Connection_ID ="+connectionID +" and CheckedOut is null";
-            
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+                  "where Allowance_ID ="+ allowanceID +" and CheckedOut is null";
+
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
             command.ExecuteNonQuery();
-            dbCon.Close();
+            conn.Close();
 
             if (isLate) {
-                eventID = "2";
+                eventID = "1";
                 double lateFee = getLateFee(eventID);
                 lateFee = lateFee * lateTime;
+
+                int maxTransactionID = getNextPrimary("ChildCareTransaction_ID", "ChildCareTransaction");
                     
                 sql = "insert into " +
-                      "Transactions (Event_ID,Connection_ID,Date,CheckedIn,CheckedOut,TransactionTotal) " +
-                      "values ("+eventID+","+connectionID+",'"+currentDateString+"','00:00:00','00:00:00',"+lateFee+") ";
+                      "ChildCareTransaction (ChildCareTransaction_ID,Event_ID,Allowance_ID,Date,CheckedIn,CheckedOut,TransactionTotal) " +
+                      "values ("+maxTransactionID+","+eventID+","+allowanceID+",'"+currentDateString+"','00:00:00','00:00:00',"+lateFee+") ";
 
-                dbCon.Open();
-
-                command = new SQLiteCommand(sql, this.dbCon);
+                conn.Open();
+                command = new MySqlCommand(sql, conn);
                 command.ExecuteNonQuery();
+                conn.Close();
             }
-            dbCon.Close();
+            
             return true;
         }//end checkOut
 
         public string getClosingTime(string dayOfWeek) {
             string sql = "select Closing " +
-                         "from OperationHours " +
-                         "where Weekday = '" + dayOfWeek + "'";
+                         "from OperatingHours " +
+                         "where OperatingWeekday = '" + dayOfWeek + "'";
 
-            dbCon.Open();
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
             string closingTime = DS.Tables[0].Rows[0][0].ToString();
-            dbCon.Close();
+            conn.Close();
 
             return closingTime;
         }// end getClosingTime
@@ -246,29 +291,27 @@ namespace ChildCareAppParentSide {
                          "from EventData " +
                          "where Event_ID = " + eventID;
 
-            dbCon.Open();
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
             string fee = DS.Tables[0].Rows[0][0].ToString();
-            dbCon.Close();
+            conn.Close();
 
             double lateFee = Convert.ToDouble(fee);
             return lateFee;
         }//end getLateFee
 
-        
         public string[] getEvent(string eventID) {
 
             string sql = "select * " +
                   "from EventData " +
                   "where Event_ID = " + eventID;
 
-            dbCon.Open();
-
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
 
@@ -277,42 +320,38 @@ namespace ChildCareAppParentSide {
             for (int x = 0; x < cCount; x++) {
                 eventData[x] = DS.Tables[0].Rows[0][x].ToString();
             }
-            dbCon.Close();
+            conn.Close();
+
             return eventData;
         }//end getEvent
 
         public int numberOfCheckedIn(string guardianID) {
 
-            string sql = "select Transaction_ID " +
-                         "from AllowedConnections natural join Transactions " +
+            string sql = "select ChildCareTransaction_ID " +
+                         "from AllowedConnections natural join ChildCareTransaction " +
                          "where Guardian_ID = '" + guardianID + "'" + " and CheckedOut is null";
 
-            dbCon.Open();
-
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
-            
-            if (DS.Tables == null) {
-                dbCon.Close();
-                return 0;
-            }
+
             int count = DS.Tables[0].Rows.Count;
-            dbCon.Close();
+            conn.Close();
+
             return count;
         }//end numberOfCheckedIn
 
-        public string[] findTransaction(string connectionID) {
+        public string[] findTransaction(string allowanceID) {
 
             string sql = "select * " +
-                         "from Transactions "+
-                         "where Connection_ID =" + connectionID + " and CheckedOut is null";
+                         "from ChildCareTransaction "+
+                         "where Allowance_ID =" + allowanceID + " and CheckedOut is null";
 
-            dbCon.Open();
-
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
             int cCount = DS.Tables[0].Columns.Count;
@@ -320,64 +359,38 @@ namespace ChildCareAppParentSide {
             for (int x = 0; x < cCount; x++) {
                 transaction[x] = DS.Tables[0].Rows[0][x].ToString();
             }
-            dbCon.Close();
+            conn.Close();
+
             return transaction;
         }//end FindTransaction
-
-       
-       
-        public string[] getParentInfo(String ID) {
-
-            string sql = "select * " + 
-                         "from Guardian " + 
-                         "where Guardian_ID = " + ID;
-
-            dbCon.Open();
-
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
-            DataSet DS = new DataSet();
-            DB.Fill(DS);
-
-            int cCount = DS.Tables[0].Columns.Count;
-            string[] data = new String[cCount];
-
-            for (int x = 0; x < cCount; x++) {
-                data[x] = DS.Tables[0].Rows[0][x].ToString();
-            }
-            dbCon.Close();
-            return data;
-        }// end getParentInfo
 
         public bool isCheckedIn(string childID, string guardianID){
             
 
-            string sql = "select Connection_ID " + 
+            string sql = "select Allowance_ID " + 
                          "from AllowedConnections " + 
                          "where Guardian_ID = '" + guardianID + "' and Child_ID = '" + childID + "'";
 
-            dbCon.Open();
-
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
-            string connectionID = DS.Tables[0].Rows[0][0].ToString();
+            string allowanceID = DS.Tables[0].Rows[0][0].ToString();
 
-            sql = "select rowid " + 
-                  "from Transactions " + 
-                  "where Connection_ID =" + connectionID + " and CheckedOut is null";
+            sql = "select ChildCareTransaction_ID " + 
+                  "from ChildCareTransaction " + 
+                  "where Allowance_ID =" + allowanceID + " and CheckedOut is null";
 
-            command = new SQLiteCommand(sql, this.dbCon);
-            int recordFound = Convert.ToInt32(command.ExecuteScalar());
+            command = new MySqlCommand(sql, conn);
+            object recordFound = command.ExecuteScalar();
 
-            if (recordFound > 0) {
-                dbCon.Close();
+            if (recordFound != DBNull.Value && recordFound != null) {
+                conn.Close();
                 return true;
             }
+            conn.Close();
 
-            dbCon.Close();
             return false;
         }//end isCheckedIn
 
@@ -392,13 +405,12 @@ namespace ChildCareAppParentSide {
         }//end checkInfant
 
         public double checkIfPastClosing(string dayOfWeek, TimeSpan time) {
-
             string closingTime = getClosingTime(dayOfWeek);
             TimeSpan TSClosingTime = TimeSpan.Parse(closingTime);
 
             double hourDifference = time.Hours - TSClosingTime.Hours;
             double minuteDifference = time.Minutes - TSClosingTime.Minutes;
-            double hours = hourDifference + (minuteDifference / 60);
+            double hours = hourDifference + (minuteDifference / 60.0);
             if (hours < 0) {
                 return 0;
             }
@@ -408,10 +420,10 @@ namespace ChildCareAppParentSide {
         public bool checkIfHourly(string eventID) {
             string[] eventData = getEvent(eventID);
             if (String.IsNullOrWhiteSpace(eventData[2])) {
-                return true;
+                return false;
             }
             else {
-                return false;
+                return true;
             }
         }//end checkIfHourly
 

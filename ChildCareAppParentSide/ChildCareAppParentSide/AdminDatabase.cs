@@ -1,39 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SQLite;
-using System.Data;
-using System.Globalization;
+﻿using MySql.Data.MySqlClient;
+using System;
 
 namespace ChildCareAppParentSide {
 
     class AdminDatabase {
 
-        private SQLiteConnection dbCon;
+        //private SQLiteConnection dbCon;
+        private MySql.Data.MySqlClient.MySqlConnection conn;
+        private string server;
+        private string port;
+        private string database;
+        private string UID;
+        private string password;
+        private string connectionString;
 
         public AdminDatabase() {
-            dbCon = new SQLiteConnection("Data Source=../../ChildcareDB.s3db;Version=3;");
+            //dbCon = new SQLiteConnection("Data Source=../../ChildcareDB.s3db;Version=3;");
+            this.server = "146.187.135.22";
+            this.port = "3306";
+            this.database = "childcare_v4";
+            this.UID = "ccdev";
+            this.password = "devpw821";
+            connectionString = "SERVER=" + server + "; PORT=" + port + "; DATABASE=" + database + "; UID=" + UID + "; PASSWORD=" + password + ";";
+            conn = new MySql.Data.MySqlClient.MySqlConnection();
+            conn.ConnectionString = connectionString;
         }//end AdminDatabase
 
         public bool validateAdmin(string userName, string password) {
 
-            dbCon.Open();
+            //dbCon.Open();
 
-            string sql = "select rowid " +
+            string sql = "select AccessLevel " +
                          "from Administrator " + 
-                         "where AdministratorPW=" + password + " or AdministratorUN='" + userName + "'";
+                         "where AdministratorPW='" + password + "' and AdministratorUN='" + userName + "'";
 
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            int recordFound = Convert.ToInt32(command.ExecuteScalar());
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            object recordFound = command.ExecuteScalar();
 
-            if (recordFound > 0) {
-                dbCon.Close();
+            if (recordFound != DBNull.Value && recordFound != null) {
+                conn.Close();
                 return true;
             }
 
-            dbCon.Close();
+            //dbCon.Close();
+            conn.Close();
             return false;
         }//end validateLogin
     }

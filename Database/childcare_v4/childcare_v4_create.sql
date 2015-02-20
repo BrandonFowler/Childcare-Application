@@ -44,7 +44,7 @@ CREATE TABLE ChildCareTransaction (
     Date date    NOT NULL ,
     CheckedIn time    NOT NULL ,
     CheckedOut time    NULL ,
-    TransactionTotal int    NULL ,
+    TransactionTotal float    NULL ,
     CONSTRAINT ChildCareTransaction_pk PRIMARY KEY (ChildCareTransaction_ID)
 );
 
