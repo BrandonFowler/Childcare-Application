@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Data;
 using System.Globalization;
+using MySql.Data.MySqlClient;
 
 namespace ChildCareAppParentSide {
 
@@ -13,26 +14,36 @@ namespace ChildCareAppParentSide {
 
         private SQLiteConnection dbCon;
 
+        MySql.Data.MySqlClient.MySqlConnection conn;
+        string myConnectionString;
+
         public ChildCheckInDatabase() {
             dbCon = new SQLiteConnection("Data Source=../../ChildcareDB.s3db;Version=3;");
+            myConnectionString = "SERVER=146.187.135.22; PORT=3306; DATABASE=childcare_v4; UID=ccdev; PASSWORD=devpw821;";
+            conn = new MySql.Data.MySqlClient.MySqlConnection();
+            conn.ConnectionString = myConnectionString;
         }//end Database
 
+        //Converted, not cleaned
         public bool validateLogin(string ID, string PIN) {
 
-            string sql = "select rowid " +
+            string sql = "select Guardian_ID " +
                          "from Guardian " + 
                          "where Guardian_ID = " + ID + " and GuardianPIN = " + PIN;
 
-            dbCon.Open();
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            //dbCon.Open();
+            //SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
             int recordFound = Convert.ToInt32(command.ExecuteScalar());
 
             if (recordFound > 0) {
-                dbCon.Close();
+                conn.Close();
                 return true;
             }
 
-            dbCon.Close();
+            //dbCon.Close();
+            conn.Close();
             return false;
         }//end validateLogin
 
