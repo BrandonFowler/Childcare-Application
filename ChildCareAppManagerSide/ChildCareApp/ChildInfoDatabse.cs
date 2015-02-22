@@ -5,19 +5,39 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Data;
-using System.Windows;  
+using System.Windows;
+using MySql.Data.MySqlClient;
 
 namespace ChildCareApp
 {
     class ChildInfoDatabse
     {
 
-        private SQLiteConnection dbCon;
+        private MySql.Data.MySqlClient.MySqlConnection dbCon;
+        private string server;
+        private string port;
+        private string database;
+        private string UID;
+        private string password;
+        private string connectionString;
+
+        public ChildInfoDatabse()
+        {
+            this.server = "146.187.135.22";
+            this.port = "3306";
+            this.database = "childcare_v4";
+            this.UID = "ccdev";
+            this.password = "devpw821";
+            connectionString = "SERVER="+server+"; PORT="+port+"; DATABASE="+database+"; UID="+UID+"; PASSWORD="+password+";";
+            dbCon = new MySql.Data.MySqlClient.MySqlConnection();
+            dbCon.ConnectionString = connectionString;
+        }//end Database(default constructor)
+      /*  private SQLiteConnection dbCon;
 
         public ChildInfoDatabse()
         {
             dbCon = new SQLiteConnection("Data Source=../../ChildCare_v3.s3db;Version=3;");  
-        }//end Database
+        }//end Database*/
 
         public DataSet GetMaxID() {
             dbCon.Open();
@@ -26,8 +46,10 @@ namespace ChildCareApp
             {
                 string sql = "SELECT MAX(Child_ID) FROM Child;";
 
-                SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-                SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+                //SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+               // SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+                MySqlCommand command = new MySqlCommand(sql, dbCon);
+                MySqlDataAdapter DB = new MySqlDataAdapter(command); 
                 
                 DB.Fill(DS);
             }
@@ -48,8 +70,10 @@ namespace ChildCareApp
             {
                 string sql = "SELECT MAX(Connection_ID) FROM AllowedConnections;";
 
-                SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-                SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+               // SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+               // SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+                MySqlCommand command = new MySqlCommand(sql, dbCon);
+                MySqlDataAdapter DB = new MySqlDataAdapter(command); 
 
                 DB.Fill(DS);
             }
@@ -72,7 +96,8 @@ namespace ChildCareApp
                 string sql = "INSERT INTO Child(Child_ID, FirstName, LastName, Birthday, Allergies, Medical, PhotoLocation) "
                             + "VALUES ('" + cID + "', '" + fName + "', '" + lName + "', '" + birthday + "', '" + allergies + "', '" + medical + "', '" + photo + "');";
             
-                SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+               // SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+                MySqlCommand command = new MySqlCommand(sql, dbCon);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
            // }
@@ -89,7 +114,8 @@ namespace ChildCareApp
             {
                 string sql = "INSERT INTO AllowedConnections(Connection_ID, Guardian_ID, Child_ID) "
                                 + "VALUES (" + conID + ", " + pID + ", " + cID + ");";
-                SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+               // SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+                MySqlCommand command = new MySqlCommand(sql, dbCon);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
             }
@@ -111,7 +137,8 @@ namespace ChildCareApp
             {
                 MessageBox.Show(birthday);
                 string sql = @"UPDATE Child SET FirstName = @firstName, LastName = @lastName, Birthday = @birthday, Allergies = @allergies, Medical = @medical WHERE Child_ID = @ID;";
-                SQLiteCommand mycommand = new SQLiteCommand(sql, this.dbCon);
+                //SQLiteCommand mycommand = new SQLiteCommand(sql, this.dbCon);
+                MySqlCommand mycommand = new MySqlCommand(sql, dbCon);
                 mycommand.CommandText = sql;
                 mycommand.Parameters.Add(new SQLiteParameter("@firstName", firstName));
                 mycommand.Parameters.Add(new SQLiteParameter("@lastName", lastName));
@@ -139,12 +166,14 @@ namespace ChildCareApp
             try
             {
                 string sql = "DELETE from Child where Child_ID = " + childID;
-                SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+                //SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+                MySqlCommand command = new MySqlCommand(sql, dbCon);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
 
                 sql = "DELETE from AllowedConnections where Child_ID = " + childID;
-                command = new SQLiteCommand(sql, this.dbCon);
+                //command = new SQLiteCommand(sql, this.dbCon);
+                command = new MySqlCommand(sql, dbCon);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
 
@@ -165,8 +194,10 @@ namespace ChildCareApp
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
                   "where Guardian_ID = " + id;
 
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+           // SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            MySqlCommand command = new MySqlCommand(sql, dbCon);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
+           // SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
 
