@@ -27,7 +27,7 @@ namespace ChildCareApp {
         public bool validateLogin(string ID)
         {
             dbCon.Open();
-            string sql = "select Guardian_ID from Guardian where Guardian_ID = " + ID ;
+            string sql = "select Guardian_ID from Guardian WHERE Guardian_ID = " + ID ;
             SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
 
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);

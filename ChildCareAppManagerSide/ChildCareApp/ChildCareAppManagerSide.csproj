@@ -68,6 +68,7 @@
     <Compile Include="Child.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="LoadParentInfoDatabase.cs" />
+    <Compile Include="ParentInfoDB.cs" />
     <Compile Include="ParentReport.xaml.cs">
       <DependentUpon>ParentReport.xaml</DependentUpon>
     </Compile>
