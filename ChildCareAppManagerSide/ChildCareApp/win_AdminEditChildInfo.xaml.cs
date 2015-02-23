@@ -224,9 +224,9 @@ namespace ChildCareApp {
             connID = connID + 1;
             string connectionID = connID.ToString(); 
 
-            this.db.UpdateAllowedConnections(connectionID, ID, mID);
-
             this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "somewhere.jpg");
+
+            this.db.UpdateAllowedConnections(connectionID, ID, mID);
 
             lst_ChildBox.Items.Clear();
             setChildBox();

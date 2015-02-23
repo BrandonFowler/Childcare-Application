@@ -80,7 +80,7 @@ namespace ChildCareApp {
                 command.ExecuteNonQuery();
                 MessageBox.Show("Completed");
             }
-            catch (SQLiteException e)
+            catch (MySqlException e)
             {
                 MessageBox.Show("Failed");
             }
@@ -98,23 +98,23 @@ namespace ChildCareApp {
                                         "Address1 = @address, Address2 = @address2, City = @city, State = @state, Zip  = @zip WHERE Guardian_ID = @ID;";
                 //SQLiteCommand mycommand = new SQLiteCommand(sql, this.dbConn);
                     MySqlCommand mycommand = new MySqlCommand(sql, dbConn);
-                mycommand.CommandText = sql; 
-                mycommand.Parameters.Add(new SQLiteParameter("@firstName", firstName));
-                mycommand.Parameters.Add(new SQLiteParameter("@lastName", lastName));
-                mycommand.Parameters.Add(new SQLiteParameter("@phone", phone));
-                mycommand.Parameters.Add(new SQLiteParameter("@email", email));
-                mycommand.Parameters.Add(new SQLiteParameter("@address", address));
-                mycommand.Parameters.Add(new SQLiteParameter("@address2", address2));
-                mycommand.Parameters.Add(new SQLiteParameter("@city", city));
-                mycommand.Parameters.Add(new SQLiteParameter("@state", state));
-                mycommand.Parameters.Add(new SQLiteParameter("@zip", zip));
-                mycommand.Parameters.Add(new SQLiteParameter("@ID", ID));
+                mycommand.CommandText = sql;
+                mycommand.Parameters.Add(new MySqlParameter("@firstName", firstName));
+                mycommand.Parameters.Add(new MySqlParameter("@lastName", lastName));
+                mycommand.Parameters.Add(new MySqlParameter("@phone", phone));
+                mycommand.Parameters.Add(new MySqlParameter("@email", email));
+                mycommand.Parameters.Add(new MySqlParameter("@address", address));
+                mycommand.Parameters.Add(new MySqlParameter("@address2", address2));
+                mycommand.Parameters.Add(new MySqlParameter("@city", city));
+                mycommand.Parameters.Add(new MySqlParameter("@state", state));
+                mycommand.Parameters.Add(new MySqlParameter("@zip", zip));
+                mycommand.Parameters.Add(new MySqlParameter("@ID", ID));
                 
                 mycommand.ExecuteNonQuery();
                 MessageBox.Show("Completed");
             }
 
-            catch (SQLiteException e)
+            catch (MySqlException e)
             {
                 MessageBox.Show(e.ToString()); 
             }

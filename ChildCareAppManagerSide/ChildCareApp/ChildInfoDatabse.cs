@@ -54,7 +54,7 @@ namespace ChildCareApp
                 DB.Fill(DS);
             }
 
-            catch (SQLiteException e)
+            catch (MySqlException e)
             {
                 MessageBox.Show(e.ToString());
             }
@@ -66,9 +66,10 @@ namespace ChildCareApp
         {
             dbCon.Open();
             DataSet DS = new DataSet();
+            
             try
             {
-                string sql = "SELECT MAX(Connection_ID) FROM AllowedConnections;";
+                string sql = "SELECT MAX(Allowance_ID) FROM AllowedConnections;";
 
                // SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
                // SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
@@ -78,7 +79,7 @@ namespace ChildCareApp
                 DB.Fill(DS);
             }
 
-            catch (SQLiteException e)
+            catch (MySqlException e)
             {
                 MessageBox.Show(e.ToString());
             }
@@ -112,15 +113,20 @@ namespace ChildCareApp
 
             try
             {
-                string sql = "INSERT INTO AllowedConnections(Connection_ID, Guardian_ID, Child_ID) "
-                                + "VALUES (" + conID + ", " + pID + ", " + cID + ");";
+                string sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID) "
+                                + "VALUES(" + conID + ", " + pID + ", " + cID + ");";
+
+                //string sql = "INSERT INTO AllowedConnections VALUES(" + conID + ", " + pID + ", " + cID + ");";
                // SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+
+                //string sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID) VALUES(@conID, @pID, @cID);";
                 MySqlCommand command = new MySqlCommand(sql, dbCon);
                 command.CommandText = sql;
+
                 command.ExecuteNonQuery();
             }
 
-            catch (SQLiteException e)
+            catch (MySqlException e)
             {
                 MessageBox.Show(e.ToString());
             }
@@ -140,19 +146,19 @@ namespace ChildCareApp
                 //SQLiteCommand mycommand = new SQLiteCommand(sql, this.dbCon);
                 MySqlCommand mycommand = new MySqlCommand(sql, dbCon);
                 mycommand.CommandText = sql;
-                mycommand.Parameters.Add(new SQLiteParameter("@firstName", firstName));
-                mycommand.Parameters.Add(new SQLiteParameter("@lastName", lastName));
-                mycommand.Parameters.Add(new SQLiteParameter("@birthday", birthday));
-                mycommand.Parameters.Add(new SQLiteParameter("@allergies", allergies));
-                mycommand.Parameters.Add(new SQLiteParameter("@medical", medical));
+                mycommand.Parameters.Add(new MySqlParameter("@firstName", firstName));
+                mycommand.Parameters.Add(new MySqlParameter("@lastName", lastName));
+                mycommand.Parameters.Add(new MySqlParameter("@birthday", birthday));
+                mycommand.Parameters.Add(new MySqlParameter("@allergies", allergies));
+                mycommand.Parameters.Add(new MySqlParameter("@medical", medical));
 
-                mycommand.Parameters.Add(new SQLiteParameter("@ID", ID));
+                mycommand.Parameters.Add(new MySqlParameter("@ID", ID));
 
                 mycommand.ExecuteNonQuery();
                 MessageBox.Show("Completed");
             }
 
-            catch (SQLiteException e)
+            catch (MySqlException e)
             {
                 MessageBox.Show(e.ToString());
             }
@@ -165,21 +171,23 @@ namespace ChildCareApp
             dbCon.Open();
             try
             {
-                string sql = "DELETE from Child where Child_ID = " + childID;
-                //SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+                string sql = "DELETE from AllowedConnections where Child_ID = " + childID;
+                //command = new SQLiteCommand(sql, this.dbCon);
                 MySqlCommand command = new MySqlCommand(sql, dbCon);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
 
-                sql = "DELETE from AllowedConnections where Child_ID = " + childID;
-                //command = new SQLiteCommand(sql, this.dbCon);
+                sql = "DELETE from Child where Child_ID = " + childID;
+                //SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
                 command = new MySqlCommand(sql, dbCon);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
 
+
+
                 MessageBox.Show("Completed");
             }
-            catch (SQLiteException e)
+            catch (MySqlException e)
             {
                 MessageBox.Show("Failed");
             }
