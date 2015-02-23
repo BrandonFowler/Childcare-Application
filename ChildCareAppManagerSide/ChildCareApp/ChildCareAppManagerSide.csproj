@@ -84,6 +84,12 @@
     <Compile Include="win_DeleteConformation.xaml.cs">
       <DependentUpon>win_DeleteConformation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="win_EditEvents.xaml.cs">
+      <DependentUpon>win_EditEvents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_EventModificationWindow.xaml.cs">
+      <DependentUpon>win_EventModificationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="win_ParentLogin.xaml.cs">
       <DependentUpon>win_ParentLogin.xaml</DependentUpon>
     </Compile>
@@ -120,6 +126,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="win_DeleteConformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="win_EditEvents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="win_EventModificationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

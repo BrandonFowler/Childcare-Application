@@ -7,8 +7,7 @@
         <Button x:Name="btn_ParentReport" Content="Parent Report" Margin="40,29,40,0" VerticalAlignment="Top" Height="25" Click="btn_ParentReport_Click"/>
         <Button x:Name="btn_BusinessReport" Content="Business Report" Margin="40,59,40,0" VerticalAlignment="Top" Height="25" Click="btn_BusinessReport_Click"/>
         <Button x:Name="btn_EditOrDeleteChild" Content="Edit / Delete Child Info" Margin="40,119,40,0" VerticalAlignment="Top" Height="25" Click="btn_EditOrDeleteChild_Click"/>
-        <Button x:Name="btn_EditSpecialEvents" Content="Edit Special Events" Margin="40,149,40,0" VerticalAlignment="Top" Height="25"/>
-        <Button x:Name="btn_EditPricing" Content="Edit Pricing" Margin="40,179,40,0" VerticalAlignment="Top" Height="25"/>
+        <Button x:Name="btn_EditAddEvents" Content="Edit / Add Events" Margin="40,149,40,0" VerticalAlignment="Top" Height="25" Click="btn_EditAddEvents_Click"/>
         <Button x:Name="btn_Logout" Content="Logout" Margin="139,234,10,0" VerticalAlignment="Top" Height="25" Click="btn_Logout_Click"/>
 
     </Grid>

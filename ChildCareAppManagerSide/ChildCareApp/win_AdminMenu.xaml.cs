@@ -51,5 +51,10 @@ namespace ChildCareApp
             ParentLogin.Show();
             this.Close();
         }
+
+        private void btn_EditAddEvents_Click(object sender, RoutedEventArgs e) {
+            win_EditEvents editEvents = new win_EditEvents();
+            editEvents.Show();
+        }
     }//end class
 }//end namespace
