@@ -42,11 +42,14 @@ namespace ChildCareAppParentSide {
             {
                 if (userFound)
                 {
+            
                     string guardianID = getID();
-                    win_AdminEditParentInfo AdminWindow = new win_AdminEditParentInfo(guardianID, this.isTablet);
-                    AdminWindow.Show();
-                    AdminWindow.WindowState = WindowState.Maximized;
-                    this.Close(); 
+                    if (!String.IsNullOrEmpty(guardianID)) {
+                        win_AdminEditParentInfo AdminWindow = new win_AdminEditParentInfo(guardianID, this.isTablet);
+                        AdminWindow.Show();
+                        AdminWindow.WindowState = WindowState.Maximized;
+                        this.Close();
+                    }
                 }
                 else
                 {

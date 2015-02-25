@@ -238,10 +238,15 @@ namespace ChildCareAppParentSide {
             if (lst_ChildBox.SelectedItem != null) {
                 string childID = ((Child)(lst_ChildBox.SelectedItem)).ID;
                 string guardianID = getID();
-                int max = db.getMaxConnectionID();
-                max++;
-                db.updateAllowedConnections(Convert.ToString(max), guardianID, childID);
-                MessageBox.Show("Child has been linked");
+                if (!String.IsNullOrEmpty(guardianID)) {
+                    int max = db.getMaxConnectionID();
+                    max++;
+                    db.updateAllowedConnections(Convert.ToString(max), guardianID, childID);
+                    MessageBox.Show("Child has been linked");
+                }
+                else {
+                    MessageBox.Show("Chould not retrieve valid guardian ID");
+                }
             }
         }//end btn_linkToAnotherGuardian
 

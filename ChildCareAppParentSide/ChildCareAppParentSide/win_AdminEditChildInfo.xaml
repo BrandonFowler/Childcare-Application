@@ -16,8 +16,8 @@
             <TextBox x:Name="txt_Medical" HorizontalAlignment="Left" Height="Auto" Margin="252,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187"/>
             <Label x:Name="lbl_Allergies" Content="Allergies:" HorizontalAlignment="Left" Margin="483,128,0,0" VerticalAlignment="Top" Width="89" RenderTransformOrigin="-0.552,1.653"/>
             <TextBox x:Name="txt_Allergies" HorizontalAlignment="Left" Height="Auto" Margin="483,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187"/>
-            <Button x:Name="btn_Submit" Content="Submit" HorizontalAlignment="Left" Margin="224,343,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_Submit_Click" RenderTransformOrigin="1.635,-0.225"/>
-            <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="375,343,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_Delete_Click"/>
+            <Button x:Name="btn_Submit" Content="Submit Changes" HorizontalAlignment="Left" Margin="276,343,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_Submit_Click" RenderTransformOrigin="1.635,-0.225"/>
+            <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="0,248,0,0" VerticalAlignment="Top" Width="40" Height="32" Click="btn_Delete_Click" IsEnabled="False" Visibility="Hidden"/>
             <Button x:Name="btn_MainMenu" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="70,343,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_MainMenu_Click"/>
             <Label x:Name="lbl_Birthday" Content="Birthday:" HorizontalAlignment="Left" Margin="252,77,0,0" VerticalAlignment="Top" Width="68"/>
             <ListBox x:Name="lst_ChildBox" HorizontalAlignment="Left" Height="124" Margin="70,214,0,0" VerticalAlignment="Top" Width="395">
@@ -40,7 +40,7 @@
             <DatePicker x:Name="dte_Birthday" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="252,99,0,0" DisplayDate="2005-01-01" IsTodayHighlighted="False"/>
             <Button x:Name="btn_Keyboard" Content="Keyboard" HorizontalAlignment="Left" Margin="0,403,0,0" VerticalAlignment="Top" Width="103" Click="btn_Keyboard_Click" IsEnabled="False" Visibility="Hidden" RenderTransformOrigin="5.932,-6.9"/>
             <Image x:Name="img_childPic" HorizontalAlignment="Left" Height="118" Margin="70,43,0,0" VerticalAlignment="Top" Width="121"/>
-            <Button x:Name="btn_linkToGuardian" Content="Link to another guardian" HorizontalAlignment="Left" Margin="534,343,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="-0.581,0.588" Height="51" Click="btn_linkToGuardian_Click"/>
+            <Button x:Name="btn_linkToGuardian" Content="Link to another guardian" HorizontalAlignment="Left" Margin="483,343,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="-0.581,0.588" Height="51" Click="btn_linkToGuardian_Click"/>
             <TextBox x:Name="txt_imageName" HorizontalAlignment="Left" Height="23" Margin="93,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
             <Label x:Name="lbl_imageName" Content="Image Name:" HorizontalAlignment="Left" Margin="10,163,0,0" VerticalAlignment="Top" Width="87"/>
         </Grid>

@@ -19,18 +19,19 @@
             <TextBox x:Name="txt_City" HorizontalAlignment="Left" Height="23" Margin="308,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
             <Label x:Name="lbl_State" Content="State:" HorizontalAlignment="Left" Margin="502,168,0,0" VerticalAlignment="Top" Width="43" RenderTransformOrigin="3.055,-2.074"/>
             <ComboBox x:Name="cbo_State" HorizontalAlignment="Left" Margin="502,194,0,0" VerticalAlignment="Top" Width="74"/>
-            <Button x:Name="btn_EditChild" Content="Edit Children" HorizontalAlignment="Left" Margin="558,318,0,0" VerticalAlignment="Top" Width="92" Height="40" Click="btn_AddChild_Click"/>
+            <Button x:Name="btn_EditChild" Content="Edit Children" HorizontalAlignment="Left" Margin="377,320,0,0" VerticalAlignment="Top" Width="92" Height="40" Click="btn_AddChild_Click"/>
             <Label x:Name="lbl_Zip" Content="Zip:" HorizontalAlignment="Left" Margin="607,168,0,0" VerticalAlignment="Top" Width="43" RenderTransformOrigin="3.234,-3.762"/>
             <TextBox x:Name="txt_Zip" HorizontalAlignment="Left" Height="23" Margin="607,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74"/>
-            <Button x:Name="btn_SubmitInfo" Content="Submit Changes" HorizontalAlignment="Left" Margin="215,320,0,0" VerticalAlignment="Top" Width="104" Click="btn_Submit_Click" Height="40"/>
-            <Button x:Name="btn_Finish" Content="Back to Login" HorizontalAlignment="Left" Margin="43,320,0,0" VerticalAlignment="Top" Width="92" Click="btn_Finish_Click" Height="40"/>
-            <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="397,320,0,0" VerticalAlignment="Top" Width="92" Height="38" Click="btn_Delete_Click"/>
+            <Button x:Name="btn_SubmitInfo" Content="Submit Changes" HorizontalAlignment="Left" Margin="217,320,0,0" VerticalAlignment="Top" Width="104" Click="btn_Submit_Click" Height="40" RenderTransformOrigin="-0.509,0.49"/>
+            <Button x:Name="btn_Finish" Content="Back to Login" HorizontalAlignment="Left" Margin="71,320,0,0" VerticalAlignment="Top" Width="92" Click="btn_Finish_Click" Height="40"/>
+            <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="0,247,0,0" VerticalAlignment="Top" Width="39" Height="38" Click="btn_Delete_Click" IsEnabled="False" Visibility="Hidden"/>
             <Label x:Name="lbl_Email" Content="Email:" HorizontalAlignment="Left" Margin="520,64,0,0" VerticalAlignment="Top" Width="47"/>
             <TextBox x:Name="txt_Email" HorizontalAlignment="Left" Height="23" Margin="520,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
             <TextBox x:Name="txt_imageName" HorizontalAlignment="Left" Height="23" Margin="115,193,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
             <Label x:Name="lbl_imageName" Content="Image Name:" HorizontalAlignment="Left" Margin="23,190,0,0" VerticalAlignment="Top" Width="87"/>
             <Image x:Name="img_ParentPic" HorizontalAlignment="Left" Height="118" Margin="42,41,0,0" VerticalAlignment="Top" Width="121"/>
             <Button x:Name="btn_Keyboard" Content="Keyboard" HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="103" Click="btn_Keyboard_Click" IsEnabled="False" Visibility="Hidden"/>
+            <Button x:Name="btn_ChangePin" Content="Change Pin" HorizontalAlignment="Left" Margin="544,320,0,0" VerticalAlignment="Top" Width="106" Height="40" Click="btn_ChangePin_Click"/>
         </Grid>
     </Viewbox>
 </Window>

@@ -294,5 +294,12 @@ namespace ChildCareAppParentSide {
             }
         }//end startKeyBoard
 
+        private void btn_ChangePin_Click(object sender, RoutedEventArgs e) {
+            bool? done;
+            win_EnterNewPin pinEntry = new win_EnterNewPin(parentID, isTablet);
+            pinEntry.WindowState = WindowState.Maximized;
+            done = pinEntry.ShowDialog();
+        }//end btn_ChangePin_Click
+
     }//end win_AdminEditParentInfo(class)
 }//end nameSpace

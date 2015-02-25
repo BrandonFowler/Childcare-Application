@@ -33,14 +33,14 @@ namespace ChildCareAppParentSide {
                 this.Close();
             }
             else {
-                bool? delete;
-                win_Confirmation DeleteConformation = new win_Confirmation("This ID does not exist. Would you like to register a new guardian?");
-                delete = DeleteConformation.ShowDialog();
-                if ((bool)delete == true) {
+                bool? done;
+                win_Confirmation confirmation = new win_Confirmation("This ID does not exist. Would you like to register a new guardian?");
+                done = confirmation.ShowDialog();
+                if ((bool)done == true) {
                     db.addNewParent(ID);
                     win_EnterNewPin pinEntry = new win_EnterNewPin(ID,isTablet);
                     pinEntry.WindowState = WindowState.Maximized;
-                    bool? done = pinEntry.ShowDialog();
+                    done = pinEntry.ShowDialog();
                     this.Close();
                 }
                 else {
