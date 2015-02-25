@@ -17,7 +17,7 @@ namespace ChildCareAppParentSide {
         public ChildCheckInDatabase() {
             this.server = "146.187.135.22";
             this.port = "3306";
-            this.database = "childcare_v4";
+            this.database = "childcare_v5";
             this.UID = "ccdev";
             this.password = "devpw821";
             connectionString = "SERVER="+server+"; PORT="+port+"; DATABASE="+database+"; UID="+UID+"; PASSWORD="+password+";";
@@ -150,11 +150,11 @@ namespace ChildCareAppParentSide {
                 }
             }
 
-            string allowanceID = getConnectionID(guardianID, childID);
-            int maxTransactionID = getNextPrimary("ChildCareTransaction_ID","ChildCareTransaction");
+            string allowanceID = getAllowanceID(guardianID, childID);
+            int maxTransactionID = getNextPrimary("ChildcareTransaction_ID","ChildcareTransaction");
 
             string sql = "insert into " +
-                         "ChildCareTransaction (ChildCareTransaction_ID,Event_ID,Allowance_ID,Date,CheckedIn) " + 
+                         "ChildcareTransaction (ChildcareTransaction_ID,Event_ID,Allowance_ID,transactionDate,CheckedIn) " + 
                          "values ("+maxTransactionID+","+eventID+","+allowanceID+",'"+date+"','"+time+"')";
 
             conn.Open();
@@ -178,7 +178,7 @@ namespace ChildCareAppParentSide {
             return 0;
         }//end getMaxPrimary
 
-        public string getConnectionID(string guardianID, string childID) {
+        public string getAllowanceID(string guardianID, string childID) {
 
             string sql = "select Allowance_ID " +
                          "from AllowedConnections " +
@@ -186,11 +186,7 @@ namespace ChildCareAppParentSide {
 
             conn.Open();
             MySqlCommand command = new MySqlCommand(sql, conn);
-            MySqlDataAdapter DB = new MySqlDataAdapter(command);
-            DataSet DS = new DataSet();
-            DB.Fill(DS);
-            string connectionID = DS.Tables[0].Rows[0][0].ToString();
-
+            string connectionID = Convert.ToString(command.ExecuteScalar());
             conn.Close();
             return connectionID;
         }//end getConnectionID
@@ -200,7 +196,7 @@ namespace ChildCareAppParentSide {
             string dateTimeString = DateTime.Now.ToString();
             string currentDateString = Convert.ToDateTime(dateTimeString).ToString("yyyy-MM-dd");
             string currentTimeString = Convert.ToDateTime(dateTimeString).ToString("HH:mm:ss");
-            string allowanceID = getConnectionID(guardianID, childID);
+            string allowanceID = getTransactionAllowanceID(guardianID, childID);
             string[] transaction = findTransaction(allowanceID);
             string transactionID = transaction[0];
             string eventID = transaction[1];
@@ -240,7 +236,7 @@ namespace ChildCareAppParentSide {
                 }
             }
 
-            string sql = "update ChildCareTransaction " +
+            string sql = "update ChildcareTransaction " +
                   "set CheckedOut='" + currentTimeString + "' " + ", TransactionTotal = " + eventFee +" "+
                   "where Allowance_ID ="+ allowanceID +" and CheckedOut is null";
 
@@ -249,39 +245,73 @@ namespace ChildCareAppParentSide {
             command.ExecuteNonQuery();
             conn.Close();
 
+            addToBalance(guardianID, eventFee);
+
             if (isLate) {
                 eventID = "1";
                 double lateFee = getLateFee(eventID);
                 lateFee = lateFee * lateTime;
 
-                int maxTransactionID = getNextPrimary("ChildCareTransaction_ID", "ChildCareTransaction");
+                int maxTransactionID = getNextPrimary("ChildcareTransaction_ID", "ChildcareTransaction");
                     
                 sql = "insert into " +
-                      "ChildCareTransaction (ChildCareTransaction_ID,Event_ID,Allowance_ID,Date,CheckedIn,CheckedOut,TransactionTotal) " +
+                      "ChildcareTransaction (ChildcareTransaction_ID,Event_ID,Allowance_ID,transactionDate,CheckedIn,CheckedOut,TransactionTotal) " +
                       "values ("+maxTransactionID+","+eventID+","+allowanceID+",'"+currentDateString+"','00:00:00','00:00:00',"+lateFee+") ";
 
                 conn.Open();
                 command = new MySqlCommand(sql, conn);
                 command.ExecuteNonQuery();
                 conn.Close();
+
+                addToBalance(guardianID, lateFee);
             }
             
             return true;
         }//end checkOut
 
+        private void addToBalance(string guardianID, double fee) {
+
+            string familyID = guardianID.Remove(guardianID.Length - 1);
+
+            string sql = "update Family " +
+                         "set FamilyTotal = FamilyTotal + " + fee +
+                         " where Family_ID = " + familyID;
+
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            command.ExecuteNonQuery();
+            conn.Close();
+
+        }//end addToBalance
+
+        private string getTransactionAllowanceID(string guardianID, string childID) {
+
+            string familyID = guardianID.Remove(guardianID.Length - 1);
+
+            string sql = "select Allowance_ID " +
+                         "from AllowedConnections natural join ChildcareTransaction " +
+                         "where Family_ID = '" + familyID + "'" + " and Child_ID = " + childID +" and CheckedOut is null " +
+                         "Group By Allowance_ID " +
+                         "HAVING COUNT(*) = 1 ";
+
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            string allowanceID = Convert.ToString(command.ExecuteScalar());
+            conn.Close();
+
+            return allowanceID;
+        }//end getTransactionAllowanceID
+
         public string getClosingTime(string dayOfWeek) {
+
             string sql = "select Closing " +
                          "from OperatingHours " +
                          "where OperatingWeekday = '" + dayOfWeek + "'";
 
             conn.Open();
             MySqlCommand command = new MySqlCommand(sql, conn);
-            MySqlDataAdapter DB = new MySqlDataAdapter(command);
-            DataSet DS = new DataSet();
-            DB.Fill(DS);
-            string closingTime = DS.Tables[0].Rows[0][0].ToString();
+            string closingTime = Convert.ToString(command.ExecuteScalar());
             conn.Close();
-
             return closingTime;
         }// end getClosingTime
 
@@ -293,10 +323,7 @@ namespace ChildCareAppParentSide {
 
             conn.Open();
             MySqlCommand command = new MySqlCommand(sql, conn);
-            MySqlDataAdapter DB = new MySqlDataAdapter(command);
-            DataSet DS = new DataSet();
-            DB.Fill(DS);
-            string fee = DS.Tables[0].Rows[0][0].ToString();
+            string fee = Convert.ToString(command.ExecuteScalar());
             conn.Close();
 
             double lateFee = Convert.ToDouble(fee);
@@ -327,9 +354,13 @@ namespace ChildCareAppParentSide {
 
         public int numberOfCheckedIn(string guardianID) {
 
-            string sql = "select ChildCareTransaction_ID " +
-                         "from AllowedConnections natural join ChildCareTransaction " +
-                         "where Guardian_ID = '" + guardianID + "'" + " and CheckedOut is null";
+            string familyID = guardianID.Remove(guardianID.Length - 1);
+
+            string sql = "select ChildcareTransaction_ID " +
+                         "from AllowedConnections natural join ChildcareTransaction " +
+                         "where Family_ID = '" + familyID + "'" + " and CheckedOut is null " +
+                         "Group By ChildcareTransaction_ID " +
+                         "HAVING COUNT(*) = 1 ";
 
             conn.Open();
             MySqlCommand command = new MySqlCommand(sql, conn);
@@ -346,7 +377,7 @@ namespace ChildCareAppParentSide {
         public string[] findTransaction(string allowanceID) {
 
             string sql = "select * " +
-                         "from ChildCareTransaction "+
+                         "from ChildcareTransaction "+
                          "where Allowance_ID =" + allowanceID + " and CheckedOut is null";
 
             conn.Open();
@@ -365,24 +396,16 @@ namespace ChildCareAppParentSide {
         }//end FindTransaction
 
         public bool isCheckedIn(string childID, string guardianID){
-            
 
-            string sql = "select Allowance_ID " + 
-                         "from AllowedConnections " + 
-                         "where Guardian_ID = '" + guardianID + "' and Child_ID = '" + childID + "'";
+            string familyID = guardianID.Remove(guardianID.Length - 1);
+
+            string sql = "select ChildcareTransaction_ID " +
+                         "from Child natural join AllowedConnections natural join ChildcareTransaction " +
+                         "where Family_ID = '" + familyID + "' and Child_ID = '" + childID + "' and CheckedOut is null ";
 
             conn.Open();
+           
             MySqlCommand command = new MySqlCommand(sql, conn);
-            MySqlDataAdapter DB = new MySqlDataAdapter(command);
-            DataSet DS = new DataSet();
-            DB.Fill(DS);
-            string allowanceID = DS.Tables[0].Rows[0][0].ToString();
-
-            sql = "select ChildCareTransaction_ID " + 
-                  "from ChildCareTransaction " + 
-                  "where Allowance_ID =" + allowanceID + " and CheckedOut is null";
-
-            command = new MySqlCommand(sql, conn);
             object recordFound = command.ExecuteScalar();
 
             if (recordFound != DBNull.Value && recordFound != null) {
