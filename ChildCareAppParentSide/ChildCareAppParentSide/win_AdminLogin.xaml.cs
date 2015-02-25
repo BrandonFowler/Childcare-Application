@@ -30,21 +30,23 @@ namespace ChildCareAppParentSide {
             
         }//end win_LoginWindow
 
-        private void btn_Login_Click(object sender, RoutedEventArgs e) {
+        private void btn_editParent_Click(object sender, RoutedEventArgs e) {
             string UN = txt_UserName.Text;
             string PW = txt_Password.Password;
             bool userFound = this.db.validateAdmin(UN, PW);
             if (string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.txt_Password.Password))
             {
                 MessageBox.Show("Please enter a User Name and a Password.");
-
             }
             else
             {
                 if (userFound)
                 {
-                    DisplayAdminWindow();
-                    this.Close();
+                    string guardianID = getID();
+                    win_AdminEditParentInfo AdminWindow = new win_AdminEditParentInfo(guardianID, this.isTablet);
+                    AdminWindow.Show();
+                    AdminWindow.WindowState = WindowState.Maximized;
+                    this.Close(); 
                 }
                 else
                 {
@@ -52,15 +54,14 @@ namespace ChildCareAppParentSide {
                 }
             }
           
-        }//btn_Login_Click(Class)
+        }//end btn_editParent_Click
 
-        private void DisplayAdminWindow() {
-            win_AdminWindow AdminWindow = new win_AdminWindow();
-            AdminWindow.Show();
-            AdminWindow.WindowState = WindowState.Maximized;
-            this.Close(); 
-
-        }//end DisplayAdminWindow
+        private string getID() {
+            win_EnterID enterID = new win_EnterID(this.isTablet);
+            enterID.WindowState = WindowState.Maximized;
+            bool? done = enterID.ShowDialog();
+            return Convert.ToString(enterID.getID());
+        }//end getID
 
         private void btn_Back_Click(object sender, RoutedEventArgs e) {
             win_LoginWindow loginWindow = new win_LoginWindow();
@@ -91,6 +92,27 @@ namespace ChildCareAppParentSide {
                 string progFiles = @"C:\Program Files\Common Files\Microsoft Shared\ink";
                 string keyboardPath = Path.Combine(progFiles, "TabTip.exe");
                 Process.Start(keyboardPath);
+            }
+        }
+
+        private void btn_editChild_Click(object sender, RoutedEventArgs e) {
+            string UN = txt_UserName.Text;
+            string PW = txt_Password.Password;
+            bool userFound = this.db.validateAdmin(UN, PW);
+            if (string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.txt_Password.Password)) {
+                MessageBox.Show("Please enter a User Name and a Password.");
+            }
+            else {
+                if (userFound) {
+                    string guardianID = getID();
+                    win_AdminEditChildInfo AdminWindow = new win_AdminEditChildInfo(guardianID, this.isTablet);
+                    AdminWindow.Show();
+                    AdminWindow.WindowState = WindowState.Maximized;
+                    this.Close();
+                }
+                else {
+                    MessageBox.Show("User Name or Password does not exist");
+                }
             }
         }//end startKeyBoard
   

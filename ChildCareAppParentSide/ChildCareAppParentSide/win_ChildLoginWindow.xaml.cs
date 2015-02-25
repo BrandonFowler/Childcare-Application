@@ -40,10 +40,10 @@ namespace ChildCareAppParentSide {
             for (int x = 0; x < childrenData.GetLength(0); x++) {
                 Image image = buildImage(childrenData[x, 6], 60);
                 if (!db.isCheckedIn(childrenData[x, 0],this.guardianID)){
-                    lst_CheckInBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0], childrenData[x,3]));
+                    lst_CheckInBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0], childrenData[x, 3], childrenData[x, 4], childrenData[x, 5]));
                 }
                 else{
-                    lst_CheckOutBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0], childrenData[x,3]));
+                    lst_CheckOutBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0], childrenData[x, 3], childrenData[x, 4], childrenData[x, 5]));
                 }
             }
           

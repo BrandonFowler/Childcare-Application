@@ -2,16 +2,16 @@
 
 namespace ChildCareAppParentSide {
   
-    public partial class win_AdminWindow : Window {
+    public partial class win_Settings : Window {
 
         private string ID;
         private ChildCheckInDatabase db;
 
-        public win_AdminWindow() {
+        public win_Settings() {
             InitializeComponent();
         }//end default constructor
 
-        public win_AdminWindow(string ID) {
+        public win_Settings(string ID) {
             InitializeComponent();
             this.ID = ID;
             this.db = new ChildCheckInDatabase();

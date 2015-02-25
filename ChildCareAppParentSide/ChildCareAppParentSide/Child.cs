@@ -5,12 +5,14 @@ namespace ChildCareAppParentSide {
 
         public class Child {
 
-            public Child(string firstName, string lastName, Image Image, string ID, string birthday) {
+            public Child(string firstName, string lastName, Image Image, string ID, string birthday, string medical, string allergies) {
                 this.firstName = firstName;
                 this.lastName = lastName;
                 this.birthday = birthday;
                 this.image = Image;
                 this.ID = ID;
+                this.medical = medical;
+                this.allergies = allergies;
                
             }// end constructor
 
@@ -23,6 +25,10 @@ namespace ChildCareAppParentSide {
             public string ID { get; set; }
 
             public string birthday { get; set; }
+
+            public string medical { get; set; }
+
+            public string allergies { get; set; }
 
         }//end Child(Class)
 }

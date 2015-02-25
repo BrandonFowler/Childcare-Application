@@ -1,0 +1,11 @@
+﻿<Window x:Class="ChildCareAppParentSide.win_Confirmation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="win_DeleteConformation" Height="144" Width="372">
+    <Grid>
+        <Label x:Name="lbl_AreYouSure" Content="{Binding message}" HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="6.2,0.7" Width="344" Height="32" FontSize="11"/>
+        <Button x:Name="btn_Yes" Content="YES" HorizontalAlignment="Left" Margin="71,70,0,0" VerticalAlignment="Top" Width="75" Click="btn_Yes_Click"/>
+        <Button x:Name="btn_No" Content="No" HorizontalAlignment="Left" Margin="210,70,0,0" VerticalAlignment="Top" Width="75" Click="btn_No_Click"/>
+
+    </Grid>
+</Window>

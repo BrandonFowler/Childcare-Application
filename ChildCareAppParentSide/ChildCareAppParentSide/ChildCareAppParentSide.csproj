@@ -63,16 +63,48 @@
     <Compile Include="AdminDatabase.cs" />
     <Compile Include="Child.cs" />
     <Compile Include="DateAndTime.cs" />
+    <Compile Include="win_EnterNewPin.xaml.cs">
+      <DependentUpon>win_EnterNewPin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_EnterID.xaml.cs">
+      <DependentUpon>win_EnterID.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_AdminEditChildInfo.xaml.cs">
+      <DependentUpon>win_AdminEditChildInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_AdminEditParentInfo.xaml.cs">
+      <DependentUpon>win_AdminEditParentInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="win_AdminLogin.xaml.cs">
       <DependentUpon>win_AdminLogin.xaml</DependentUpon>
     </Compile>
     <Compile Include="win_ChildLoginWindow.xaml.cs">
       <DependentUpon>win_ChildLoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="win_AdminWindow.xaml.cs">
-      <DependentUpon>win_AdminWindow.xaml</DependentUpon>
+    <Compile Include="win_Settings.xaml.cs">
+      <DependentUpon>win_Settings.xaml</DependentUpon>
     </Compile>
+    <Page Include="win_EnterNewPin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="win_EnterID.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="win_AdminEditChildInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="win_AdminEditParentInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="win_AdminLogin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="win_Confirmation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -85,6 +117,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ChildCheckInDatabase.cs" />
+    <Compile Include="win_Confirmation.xaml.cs">
+      <DependentUpon>win_Confirmation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="win_LoginWindow.xaml.cs">
       <DependentUpon>win_LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -93,7 +128,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="win_AdminWindow.xaml">
+    <Page Include="win_Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

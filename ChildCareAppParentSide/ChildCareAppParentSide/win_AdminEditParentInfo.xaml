@@ -1,0 +1,36 @@
+﻿<Window x:Class="ChildCareAppParentSide.win_AdminEditParentInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AdminEditParentInfo" Height="800" Width="1280">
+    <Viewbox StretchDirection="Both" Stretch="Uniform">
+        <Grid Width="699" Height="406">
+            <Label x:Name="lbl_Parent" Content="" HorizontalAlignment="Left" Margin="44,15,0,0" VerticalAlignment="Top" Width="98"/>
+            <TextBox x:Name="txt_FirstName" HorizontalAlignment="Left" Height="23" Margin="308,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+            <Label x:Name="lbl_FirstName" Content="First Name:" HorizontalAlignment="Left" Margin="308,15,0,0" VerticalAlignment="Top" Width="83"/>
+            <Label x:Name="lbl_LastName" Content="Last Name:" HorizontalAlignment="Left" Margin="308,64,0,0" VerticalAlignment="Top" Width="83"/>
+            <TextBox x:Name="txt_LastName" HorizontalAlignment="Left" Height="23" Margin="308,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+            <Label x:Name="lbl_UserID" Content="ID Number:" HorizontalAlignment="Left" Margin="186,15,0,0" VerticalAlignment="Top" Width="83"/>
+            <TextBox x:Name="txt_IDNumber" HorizontalAlignment="Left" Height="23" Margin="186,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" IsEnabled="False"/>
+            <Label x:Name="lbl_PhoneNumber" Content="Phone Number:" HorizontalAlignment="Left" Margin="520,15,0,0" VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.502,-0.652"/>
+            <TextBox x:Name="txt_PhoneNumber" HorizontalAlignment="Left" Height="23" Margin="520,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" RenderTransformOrigin="2.101,-2.139"/>
+            <Label x:Name="lbl_Address" Content="Address:" HorizontalAlignment="Left" Margin="308,113,0,0" VerticalAlignment="Top" Width="55" RenderTransformOrigin="2.253,-1.757"/>
+            <TextBox x:Name="txt_Address" HorizontalAlignment="Left" Height="23" Margin="308,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="373"/>
+            <Label x:Name="lbl_City" Content="City:" HorizontalAlignment="Left" Margin="308,167,0,0" VerticalAlignment="Top" Width="34"/>
+            <TextBox x:Name="txt_City" HorizontalAlignment="Left" Height="23" Margin="308,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+            <Label x:Name="lbl_State" Content="State:" HorizontalAlignment="Left" Margin="502,168,0,0" VerticalAlignment="Top" Width="43" RenderTransformOrigin="3.055,-2.074"/>
+            <ComboBox x:Name="cbo_State" HorizontalAlignment="Left" Margin="502,194,0,0" VerticalAlignment="Top" Width="74"/>
+            <Button x:Name="btn_EditChild" Content="Edit Children" HorizontalAlignment="Left" Margin="558,318,0,0" VerticalAlignment="Top" Width="92" Height="40" Click="btn_AddChild_Click"/>
+            <Label x:Name="lbl_Zip" Content="Zip:" HorizontalAlignment="Left" Margin="607,168,0,0" VerticalAlignment="Top" Width="43" RenderTransformOrigin="3.234,-3.762"/>
+            <TextBox x:Name="txt_Zip" HorizontalAlignment="Left" Height="23" Margin="607,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74"/>
+            <Button x:Name="btn_SubmitInfo" Content="Submit Changes" HorizontalAlignment="Left" Margin="215,320,0,0" VerticalAlignment="Top" Width="104" Click="btn_Submit_Click" Height="40"/>
+            <Button x:Name="btn_Finish" Content="Back to Login" HorizontalAlignment="Left" Margin="43,320,0,0" VerticalAlignment="Top" Width="92" Click="btn_Finish_Click" Height="40"/>
+            <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="397,320,0,0" VerticalAlignment="Top" Width="92" Height="38" Click="btn_Delete_Click"/>
+            <Label x:Name="lbl_Email" Content="Email:" HorizontalAlignment="Left" Margin="520,64,0,0" VerticalAlignment="Top" Width="47"/>
+            <TextBox x:Name="txt_Email" HorizontalAlignment="Left" Height="23" Margin="520,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+            <TextBox x:Name="txt_imageName" HorizontalAlignment="Left" Height="23" Margin="115,193,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
+            <Label x:Name="lbl_imageName" Content="Image Name:" HorizontalAlignment="Left" Margin="23,190,0,0" VerticalAlignment="Top" Width="87"/>
+            <Image x:Name="img_ParentPic" HorizontalAlignment="Left" Height="118" Margin="42,41,0,0" VerticalAlignment="Top" Width="121"/>
+            <Button x:Name="btn_Keyboard" Content="Keyboard" HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="103" Click="btn_Keyboard_Click" IsEnabled="False" Visibility="Hidden"/>
+        </Grid>
+    </Viewbox>
+</Window>
