@@ -29,6 +29,7 @@ namespace ChildCareAppParentSide {
             this.txt_LastName.GotFocus += FocusedTextBox;
             this.txt_Medical.GotFocus += FocusedTextBox;
             this.txt_Allergies.GotFocus += FocusedTextBox;
+            this.txt_imageName.GotFocus += FocusedTextBox;
             if (isTablet) {
                 btn_Keyboard.Visibility = Visibility.Visible;
                 btn_Keyboard.IsEnabled = true;
