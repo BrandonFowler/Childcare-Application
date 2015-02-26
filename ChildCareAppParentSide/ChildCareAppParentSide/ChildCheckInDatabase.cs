@@ -235,6 +235,8 @@ namespace ChildCareAppParentSide {
                     isLate = true;
                 }
             }
+      
+            eventFee = eventFee - billingCapCalc(eventID, childID, transaction[3], eventFee);
 
             string sql = "update ChildcareTransaction " +
                   "set CheckedOut='" + currentTimeString + "' " + ", TransactionTotal = " + eventFee +" "+
@@ -268,6 +270,46 @@ namespace ChildCareAppParentSide {
             
             return true;
         }//end checkOut
+
+        private double billingCapCalc(string eventID, string childID, string transactionDate, double eventFee) {
+            double cap = 100.0;
+            DateTime DTStart = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            int daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+            DateTime DTEnd = new DateTime(DateTime.Now.Year, DateTime.Now.Month, daysInMonth);
+            string start = DTStart.ToString("yyyyMMdd");
+            string end = DTEnd.ToString("yyyyMMdd");
+
+            if(eventID.CompareTo("2") == 0 || eventID.CompareTo("3") == 0 ){
+
+                string sql = "select sum(TransactionTotal) " +
+                             "from AllowedConnections natural join ChildcareTransaction natural join Child " +
+                             "where Child_ID = " + childID + " and TransactionDate between " + start + " and " + end;
+
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(sql, conn);
+                object recordFound = command.ExecuteScalar();
+                conn.Close();
+                double sum;
+                if (recordFound == DBNull.Value || recordFound == null) {
+                    return 0;
+                }
+                else {
+                    sum = Convert.ToDouble(recordFound);
+                }
+
+                double total = sum + eventFee;
+
+                double capdiff = total - cap;
+
+                if (capdiff > 0 && capdiff < eventFee) {
+                    return capdiff;
+                }
+                else if (capdiff >= eventFee) {
+                    return eventFee;
+                }
+            }
+            return 0.0;
+        }//end billingCapReached
 
         private void addToBalance(string guardianID, double fee) {
 

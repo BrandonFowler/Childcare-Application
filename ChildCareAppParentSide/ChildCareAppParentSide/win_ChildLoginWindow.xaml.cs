@@ -10,7 +10,7 @@ namespace ChildCareAppParentSide {
 
         private string guardianID;
         private ChildCheckInDatabase db;
-        private DateAndTime updateTime;
+        private DateTime updateTime;
 
         public win_ChildLogin(string ID) {
             InitializeComponent();
@@ -19,8 +19,8 @@ namespace ChildCareAppParentSide {
             setUpCheckInBox();
             setUpParentDisplay();
             eventsSetup();
-            this.updateTime = new DateAndTime();
-            updateTime.Update();
+            this.updateTime = new DateTime();
+            updateTime = DateTime.Now;
             lbl_Time.DataContext = updateTime;
         }//end constructor
 

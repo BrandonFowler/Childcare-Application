@@ -62,7 +62,6 @@
     </ApplicationDefinition>
     <Compile Include="AdminDatabase.cs" />
     <Compile Include="Child.cs" />
-    <Compile Include="DateAndTime.cs" />
     <Compile Include="win_EnterNewPin.xaml.cs">
       <DependentUpon>win_EnterNewPin.xaml</DependentUpon>
     </Compile>
