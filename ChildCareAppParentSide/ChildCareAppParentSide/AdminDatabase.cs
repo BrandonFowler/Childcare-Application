@@ -34,133 +34,170 @@ namespace ChildCareAppParentSide {
 
             string sql = "select AccessLevel " +
                          "from Administrator " + 
-                         "where AdministratorPW='" + password + "' and AdministratorUN='" + userName + "'";
+                         "where AdministratorPW= @password and AdministratorUN= @userName";
+
+            
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            command.Parameters.Add(new MySqlParameter("@password", password));
+            command.Parameters.Add(new MySqlParameter("@userName", userName));
 
             conn.Open();
-            MySqlCommand command = new MySqlCommand(sql, conn);
             object recordFound = command.ExecuteScalar();
+            conn.Close();
 
             if (recordFound != DBNull.Value && recordFound != null) {
                 conn.Close();
                 return true;
             }
-
-            conn.Close();
             return false;
         }//end validateLogin
 
-        public DataSet getParentInfo(string parentID) {
+        public DataSet getParentInfo(string guardianID) {
 
-            conn.Open();
-            string sql = "select * from Guardian where Guardian_ID = " + parentID;
+            string sql = "select * from Guardian where Guardian_ID = @guardianID";
+
             MySqlCommand command = new MySqlCommand(sql, conn);
+            command.Parameters.Add(new MySqlParameter("@guardianID", guardianID));
             MySqlDataAdapter DB = new MySqlDataAdapter(command); 
             DataSet DS = new DataSet();
+
+            conn.Open();
             DB.Fill(DS);
-            conn.Close();        
+            conn.Close();  
+      
             return DS; 
         }//end GetParentInfo
 
-        public void deleteParentInfo(string parentID){
+        public void deleteParentInfo(string guardianID){
 
-            conn.Open();
             try{
-                string sql = "DELETE from Guardian where Guardian_ID = " + parentID;
+                string sql = "DELETE from Guardian where Guardian_ID = @guardianID";
                 
                 MySqlCommand command = new MySqlCommand(sql, conn);
                 command.CommandText = sql;
+                command.Parameters.Add(new MySqlParameter("@guardianID", guardianID));
+
+                conn.Open();
                 command.ExecuteNonQuery();
+                conn.Close();
+
                 MessageBox.Show("Completed");
             }
             catch (MySqlException){
                 MessageBox.Show("Failed");
             }
-            conn.Close();
             
         }//end DeleteParentInfo
 
         public void updateParentInfo(string ID, string firstName, string lastName, string phone, string email, string address, string city, string state, string zip, string imageName) {
             string imagePath = "..\\\\..\\\\..\\\\..\\\\Photos\\\\"+imageName;
-            conn.Open();
             try{
               
-                    string sql = @"UPDATE Guardian SET FirstName = @firstName, LastName = @lastName, Phone = @phone, Email = @email,"+
-                                        "Address1 = @address, City = @city, StateAbrv = @state, Zip  = @zip, PhotoLocation = @imagePath WHERE Guardian_ID = @ID;";
+                string sql = @"UPDATE Guardian "+
+                              "SET FirstName = @firstName, LastName = @lastName, Phone = @phone, Email = @email,"+
+                              "Address1 = @address, City = @city, StateAbrv = @state, Zip  = @zip, PhotoLocation = @imagePath "+ 
+                              "WHERE Guardian_ID = @ID;";
                
-                MySqlCommand mycommand = new MySqlCommand(sql, conn);
-                mycommand.CommandText = sql;
-                mycommand.Parameters.Add(new MySqlParameter("@firstName", firstName));
-                mycommand.Parameters.Add(new MySqlParameter("@lastName", lastName));
-                mycommand.Parameters.Add(new MySqlParameter("@phone", phone));
-                mycommand.Parameters.Add(new MySqlParameter("@email", email));
-                mycommand.Parameters.Add(new MySqlParameter("@address", address));
-                mycommand.Parameters.Add(new MySqlParameter("@city", city));
-                mycommand.Parameters.Add(new MySqlParameter("@state", state));
-                mycommand.Parameters.Add(new MySqlParameter("@zip", zip));
-                mycommand.Parameters.Add(new MySqlParameter("@ID", ID));
-                mycommand.Parameters.Add(new MySqlParameter("@imagePath", imagePath));
-                mycommand.ExecuteNonQuery();
+                MySqlCommand command = new MySqlCommand(sql, conn);
+                command.CommandText = sql;
+                command.Parameters.Add(new MySqlParameter("@firstName", firstName));
+                command.Parameters.Add(new MySqlParameter("@lastName", lastName));
+                command.Parameters.Add(new MySqlParameter("@phone", phone));
+                command.Parameters.Add(new MySqlParameter("@email", email));
+                command.Parameters.Add(new MySqlParameter("@address", address));
+                command.Parameters.Add(new MySqlParameter("@city", city));
+                command.Parameters.Add(new MySqlParameter("@state", state));
+                command.Parameters.Add(new MySqlParameter("@zip", zip));
+                command.Parameters.Add(new MySqlParameter("@ID", ID));
+                command.Parameters.Add(new MySqlParameter("@imagePath", imagePath));
+
+                conn.Open();
+                command.ExecuteNonQuery();
+                conn.Close(); 
+
                 MessageBox.Show("Completed");
             }
-
             catch (MySqlException e) {
                 MessageBox.Show(e.ToString()); 
             }
-            conn.Close();  
+             
         }//end UpdateParentInfo
 
          public int getMaxID() {
-            conn.Open();
+
             string sql = "SELECT MAX(Child_ID) FROM Child;";
+
             MySqlCommand command = new MySqlCommand(sql, conn);
+
+            conn.Open();
             int max = Convert.ToInt32(command.ExecuteScalar());
             conn.Close();
+
             return max;
         }//end getMaxID
 
         public int getMaxConnectionID(){
-            conn.Open();
+            
             string sql = "SELECT MAX(Allowance_ID) FROM AllowedConnections;";
+
             MySqlCommand command = new MySqlCommand(sql, conn);
+
+            conn.Open();
             int max = Convert.ToInt32(command.ExecuteScalar());
             conn.Close();
+
             return max;
         }//end getMaxConnection
 
         public void addNewChild(string cID, string fName, string lName, string birthday, string allergies, string medical, string photo) {
             string imagePath = "..\\\\..\\\\..\\\\..\\\\Photos\\\\"+photo;
-            conn.Open();
-            string sql = "INSERT INTO Child(Child_ID, FirstName, LastName, Birthday, Allergies, Medical, PhotoLocation) "
-                         + "VALUES ('" + cID + "', '" + fName + "', '" + lName + "', '" + birthday + "', '" + allergies + "', '" + medical + "', '" + imagePath + "');";
 
-                MySqlCommand command = new MySqlCommand(sql, conn);
-                command.CommandText = sql;
-                command.ExecuteNonQuery();
-                conn.Close();
+            string sql = "INSERT INTO Child(Child_ID, FirstName, LastName, Birthday, Allergies, Medical, PhotoLocation) "
+                         + "VALUES (@cID, @fName, @lName, @birthday, @allergies, @medical, @photo);";
+
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            command.CommandText = sql;
+            command.Parameters.Add(new MySqlParameter("@cID", cID));
+            command.Parameters.Add(new MySqlParameter("@fName", fName));
+            command.Parameters.Add(new MySqlParameter("@lName", lName));
+            command.Parameters.Add(new MySqlParameter("@birthday", birthday));
+            command.Parameters.Add(new MySqlParameter("@allergies", allergies));
+            command.Parameters.Add(new MySqlParameter("@medical", medical));
+            command.Parameters.Add(new MySqlParameter("@photo", photo));
+
+            conn.Open();
+            command.ExecuteNonQuery();
+            conn.Close();
         }//end addNewChild
 
         public void updateAllowedConnections(string conID, string pID, string cID) {
             string familyID = pID.Remove(pID.Length - 1);
-            conn.Open();
+            
             try{
                 string sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
-                                + "VALUES(" + conID + ", " + pID + ", " + cID + ", " + familyID + ");";
+                                + "VALUES(@conID, @pID, @cID, @familyID);";
 
                 MySqlCommand command = new MySqlCommand(sql, conn);
                 command.CommandText = sql;
+                command.Parameters.Add(new MySqlParameter("@conID", conID));
+                command.Parameters.Add(new MySqlParameter("@pID", pID));
+                command.Parameters.Add(new MySqlParameter("@cID", cID));
+                command.Parameters.Add(new MySqlParameter("@familyID", familyID));
 
+                conn.Open();
                 command.ExecuteNonQuery();
+                conn.Close();
             }
 
             catch (MySqlException e){
                 MessageBox.Show(e.ToString());
             }
-            conn.Close();
+            
         }//end upadateAllowedConnections
 
         public void updateChildInfo(string ID, string firstName, string lastName, string birthday, string medical, string allergies, string imageName) {
             string imagePath = "..\\\\..\\\\..\\\\..\\\\Photos\\\\" + imageName;
-            conn.Open();
+            
             try{
                 string sql = @"UPDATE Child SET FirstName = @firstName, LastName = @lastName, Birthday = @birthday, Allergies = @allergies, Medical = @medical, PhotoLocation = @imagePath WHERE Child_ID = @ID;";
                 
@@ -173,28 +210,40 @@ namespace ChildCareAppParentSide {
                 mycommand.Parameters.Add(new MySqlParameter("@medical", medical));
                 mycommand.Parameters.Add(new MySqlParameter("@ID", ID));
                 mycommand.Parameters.Add(new MySqlParameter("@imagePath", imagePath));
+
+                conn.Open();
                 mycommand.ExecuteNonQuery();
+                conn.Close();
+
                 MessageBox.Show("Completed");
             }
-
             catch (MySqlException e){
                 MessageBox.Show(e.ToString());
             }
-            conn.Close();
+            
         }//end UpdateChildInfo
 
-        public void deleteChildInfo(string childID){
-            conn.Open();
+        public void deleteChildInfo(string childID, string guardianID){
+            
             try{
-                string sql = "DELETE from AllowedConnections where Child_ID = " + childID;
+                string sql = "DELETE from AllowedConnections where Child_ID = @childID and Guardian_ID = @guardianID";
+
                 MySqlCommand command = new MySqlCommand(sql, conn);
                 command.CommandText = sql;
+                command.Parameters.Add(new MySqlParameter("@childID", childID));
+                command.Parameters.Add(new MySqlParameter("@guardianID", guardianID));
+
+                conn.Open();
                 command.ExecuteNonQuery();
 
-                sql = "DELETE from Child where Child_ID = " + childID;
+                sql = "DELETE from Child where Child_ID = @childID";
                 command = new MySqlCommand(sql, conn);
                 command.CommandText = sql;
+                command.Parameters.Add(new MySqlParameter("@childID", childID));
+
                 command.ExecuteNonQuery();
+                conn.Close();
+
                 MessageBox.Show("Completed");
             }
             catch (MySqlException){
@@ -203,16 +252,19 @@ namespace ChildCareAppParentSide {
             conn.Close();
         }//end deleteChildInfo
 
-        public String[,] findChildren(string id) {
-            conn.Open();
+        public String[,] findChildren(string ID) {
 
             string sql = "select Child.* " +
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
-                  "where Guardian_ID = " + id;
+                  "where Guardian_ID = @ID";
 
             MySqlCommand command = new MySqlCommand(sql, conn);
+            command.Parameters.Add(new MySqlParameter("@ID", ID));
+
             MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
+
+            conn.Open();
             DB.Fill(DS);
 
             if (DS.Tables == null) {
@@ -237,33 +289,41 @@ namespace ChildCareAppParentSide {
 
             string sql = "select Guardian_ID " +
                          "from Guardian " +
-                         "where Guardian_ID = " + ID;
+                         "where Guardian_ID = @ID";
+
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            command.Parameters.Add(new MySqlParameter("@ID", ID));
 
             conn.Open();
-            MySqlCommand command = new MySqlCommand(sql, conn);
             object recordFound = command.ExecuteScalar();
+            conn.Close();
 
             if (recordFound != DBNull.Value && recordFound != null) {
                 conn.Close();
                 return true;
             }
 
-            conn.Close();
             return false;
         }//end IDExists
 
         public void addNewParent(string ID) {
             string familyID = ID.Remove(ID.Length-1);
-            string imagePath = "..\\\\..\\\\..\\\\..\\\\Photos\\\\";
-            conn.Open();
-            string sql = "INSERT INTO Guardian VALUES('" + ID + "', '0000', 'First Name', 'Last Name', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', '--', 'Unknown', '" + imagePath + "default.jpg')";
+            string imagePath = "..\\\\..\\\\..\\\\..\\\\Photos\\\\" + "default.jpg";
+            
+            string sql = "INSERT INTO Guardian VALUES(@ID, '0000', 'First Name', 'Last Name', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', '--', 'Unknown', @imagePath)";
             MySqlCommand command = new MySqlCommand(sql, conn);
+            command.Parameters.Add(new MySqlParameter("@ID", ID));
+            command.Parameters.Add(new MySqlParameter("@imagePath", imagePath));
+
+            conn.Open();
             command.ExecuteNonQuery();
 
-            sql = "select Family_ID from Family where Family_ID = " + familyID;
+            sql = "select Family_ID from Family where Family_ID = @familyID";
             command = new MySqlCommand(sql, conn);
-            object recordFound = command.ExecuteScalar();
+            command.Parameters.Add(new MySqlParameter("@familyID", familyID));
 
+            object recordFound = command.ExecuteScalar();
+            
             if (recordFound == DBNull.Value || recordFound == null) {
                 sql = "INSERT INTO Family VALUES(" + familyID + ", 0)";
                 command = new MySqlCommand(sql, conn);
@@ -273,12 +333,17 @@ namespace ChildCareAppParentSide {
 
         }//end addNewParent
 
-        internal void editPin(string ID, string pin) {
-            conn.Open();
+        public void editPin(string ID, string pin) {
+            
             string sql = "update Guardian " +
-                         "set GuardianPin = '" + pin + "' " +
-                         "where Guardian_ID = '" + ID + "'";
+                         "set GuardianPin = @pin " +
+                         "where Guardian_ID = @ID";
+
             MySqlCommand command = new MySqlCommand(sql, conn);
+            command.Parameters.Add(new MySqlParameter("@pin", pin));
+            command.Parameters.Add(new MySqlParameter("@ID", ID));
+
+            conn.Open();
             command.ExecuteNonQuery();
             conn.Close();
         }//end editPin

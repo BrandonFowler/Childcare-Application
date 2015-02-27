@@ -50,6 +50,10 @@ namespace ChildCareAppParentSide {
                         AdminWindow.WindowState = WindowState.Maximized;
                         this.Close();
                     }
+                    else
+                    {
+                        MessageBox.Show("Chould not retrieve valid guardian ID");
+                    }
                 }
                 else
                 {

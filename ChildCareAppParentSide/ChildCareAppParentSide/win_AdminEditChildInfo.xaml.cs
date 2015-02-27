@@ -76,7 +76,7 @@ namespace ChildCareAppParentSide {
             if ((bool)delete == true) {
                
                 string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
-                this.db.deleteChildInfo(cID);
+                this.db.deleteChildInfo(cID, ID);
                 lst_ChildBox.Items.Clear();
                 ClearFields();
                 setChildBox();
