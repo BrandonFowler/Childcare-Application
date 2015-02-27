@@ -154,7 +154,7 @@ namespace ChildCareApp {
                 for (int x = 0; x < childrenData.GetLength(0); x++) {
                     Image image = buildImage(childrenData[x, 6], 60);
                     lst_ChildBox.Items.Add(new Child(childrenData[x, 0], childrenData[x, 1], childrenData[x, 2],
-                                            image, childrenData[x, 3], childrenData[x, 4], childrenData[x, 5]));
+                                            image, childrenData[x, 3], childrenData[x, 4], childrenData[x, 5], childrenData[x, 6]));
                 }
             }
         }//end setUpCheckInBox
@@ -191,16 +191,17 @@ namespace ChildCareApp {
                 dte_Birthday.Text = ((Child)(lst_ChildBox.SelectedItem)).birthday;
                 txt_Medical.Text = ((Child)(lst_ChildBox.SelectedItem)).medical;
                 txt_Allergies.Text = ((Child)(lst_ChildBox.SelectedItem)).allergies;
+                dte_Birthday.SelectedDate = DateTime.Parse(dte_Birthday.Text);
 
-                dte_Birthday.SelectedDate = DateTime.Parse(dte_Birthday.Text); 
+                string imageLink = ((Child)(lst_ChildBox.SelectedItem)).path;
+                ImageBrush ib = new ImageBrush();
+                ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
+                cnv_ChildIcon.Background = ib;
+
             }
             
 
-            //Code for setting the canvas to a picture 
-            /*string imageLink = DS.Tables[0].Rows[0][6].ToString();
-            ImageBrush ib = new ImageBrush();
-            ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
-            cnv_ChildIcon.Background = ib; */
+
         
         }
 
@@ -217,14 +218,14 @@ namespace ChildCareApp {
 
             Image i; 
             i = buildImage("../../../../Photos/default.jpg", 60); 
-            lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None"));
+            lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None", "../../../../Photos/default.jpg"));
 
             DS = this.db.GetMaxConnectionID();
             int connID = Convert.ToInt32(DS.Tables[0].Rows[0][0]);
             connID = connID + 1;
-            string connectionID = connID.ToString(); 
+            string connectionID = connID.ToString();
 
-            this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "somewhere.jpg");
+            this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "../../../../Photos/default.jpg");
 
             this.db.UpdateAllowedConnections(connectionID, ID, mID);
 

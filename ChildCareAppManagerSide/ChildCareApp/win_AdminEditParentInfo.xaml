@@ -9,8 +9,8 @@
         <Label x:Name="lbl_FirstName" Content="First Name:" HorizontalAlignment="Left" Margin="220,38,0,0" VerticalAlignment="Top" Width="83"/>
         <Label x:Name="lbl_LastName" Content="Last Name:" HorizontalAlignment="Left" Margin="220,69,0,0" VerticalAlignment="Top" Width="83"/>
         <TextBox x:Name="txt_LastName" HorizontalAlignment="Left" Height="23" Margin="308,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
-        <Label x:Name="lbl_UserID" Content="ID Number:" HorizontalAlignment="Left" Margin="23,214,0,0" VerticalAlignment="Top" Width="83"/>
-        <TextBox x:Name="txt_IDNumber" HorizontalAlignment="Left" Height="23" Margin="92,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" IsEnabled="False"/>
+        <Label x:Name="lbl_UserID" Content="ID Number:" HorizontalAlignment="Left" Margin="12,195,0,0" VerticalAlignment="Top" Width="83"/>
+        <TextBox x:Name="txt_IDNumber" HorizontalAlignment="Left" Height="23" Margin="81,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" IsEnabled="False"/>
         <Label x:Name="lbl_PhoneNumber" Content="Phone Number:" HorizontalAlignment="Left" Margin="198,108,0,0" VerticalAlignment="Top" Width="96"/>
         <TextBox x:Name="txt_PhoneNumber" HorizontalAlignment="Left" Height="23" Margin="308,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
         <Label x:Name="lbl_Address" Content="Address:" HorizontalAlignment="Left" Margin="230,188,0,0" VerticalAlignment="Top" Width="55"/>

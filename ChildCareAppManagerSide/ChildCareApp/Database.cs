@@ -12,25 +12,47 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using MySql.Data.MySqlClient;
 
 namespace ChildCareApp {
 
     class Database {
 
-        private SQLiteConnection dbCon;
+        
+        private MySql.Data.MySqlClient.MySqlConnection dbCon;
+        private string server;
+        private string port;
+        private string database;
+        private string UID;
+        private string password;
+        private string connectionString;
+
+        public Database()
+        {
+            this.server = "146.187.135.22";
+            this.port = "3306";
+            this.database = "childcare_v5";
+            this.UID = "ccdev";
+            this.password = "devpw821";
+            connectionString = "SERVER="+server+"; PORT="+port+"; DATABASE="+database+"; UID="+UID+"; PASSWORD="+password+";";
+            dbCon = new MySql.Data.MySqlClient.MySqlConnection();
+            dbCon.ConnectionString = connectionString;
+        }//end Database(default constructor)
+
+        /*private SQLiteConnection dbCon;
 
         public Database()
         {
             dbCon = new SQLiteConnection("Data Source=../../ChildCare_v3.s3db;Version=3;");
-        }//end Database
+        }//end Database*/
 
         public bool validateLogin(string ID)
         {
             dbCon.Open();
             string sql = "select Guardian_ID from Guardian WHERE Guardian_ID = " + ID ;
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            MySqlCommand command = new MySqlCommand(sql, dbCon);
 
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
             int count = DS.Tables[0].Rows.Count;
@@ -55,11 +77,11 @@ namespace ChildCareApp {
         public bool validateAdminLogin(string ID, string PIN) 
         {
             dbCon.Open();
-            string sql = "SELECT * FROM administrator WHERE AdministratorUN = \"" + ID + "\" AND AdministratorPW = \"" + PIN + "\";";
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            string sql = "SELECT * FROM Administrator WHERE AdministratorUN = \"" + ID + "\" AND AdministratorPW = \"" + PIN + "\";";
+            MySqlCommand command = new MySqlCommand(sql, this.dbCon);
             //SQLiteDataReader r = command.ExecuteReader();
 
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
             int count = DS.Tables[0].Rows.Count;
@@ -93,7 +115,7 @@ namespace ChildCareApp {
             dbCon.Open();
 
             string sql = "select rowid from child where parentID = " + id;
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            MySqlCommand command = new MySqlCommand(sql, this.dbCon);
             int recordFound = Convert.ToInt32(command.ExecuteScalar());
 
             if (recordFound == 0)
@@ -103,8 +125,8 @@ namespace ChildCareApp {
             }
 
             sql = "select name from child where parentID = " + id;
-            command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            command = new MySqlCommand(sql, this.dbCon);
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
             int count = DS.Tables[0].Rows.Count;
@@ -123,7 +145,7 @@ namespace ChildCareApp {
         {
             dbCon.Open();
             string sql = "update child set checkedIn = 1 where name = '" + name + "'";
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            MySqlCommand command = new MySqlCommand(sql, dbCon);
             command.ExecuteNonQuery();
             dbCon.Close();
             return true;
@@ -133,7 +155,7 @@ namespace ChildCareApp {
         {
             dbCon.Open();
             string sql = "update child set checkedIn = 0 where name = '" + name + "'";
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            MySqlCommand command = new MySqlCommand(sql, dbCon);
             command.ExecuteNonQuery();
             dbCon.Close();
             return true;

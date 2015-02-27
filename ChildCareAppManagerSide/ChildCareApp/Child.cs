@@ -13,7 +13,7 @@ using System.Windows.Controls;
 namespace ChildCareApp {
     class Child {
         public Child(string ID, string firstName, string lastName,
-                        Image image, string birthday, string medical, string allergies) {
+                        Image image, string birthday, string medical, string allergies, string path) {
 						
 				this.ID = ID;
                 this.firstName = firstName;
@@ -22,6 +22,7 @@ namespace ChildCareApp {
                 this.birthday = birthday;
 				this.medical = medical;
 				this.allergies = allergies;
+                this.path = path; 
                
             }// end constructor
 			
@@ -38,5 +39,7 @@ namespace ChildCareApp {
 			public string medical { get; set;}
 			
 			public string allergies { get; set;}
+
+            public string path { get; set; }
     }
 }
