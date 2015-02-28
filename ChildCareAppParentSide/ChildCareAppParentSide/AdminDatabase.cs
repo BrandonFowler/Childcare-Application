@@ -41,15 +41,22 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@password", password));
             command.Parameters.Add(new MySqlParameter("@userName", userName));
 
-            conn.Open();
-            object recordFound = command.ExecuteScalar();
-            conn.Close();
-
-            if (recordFound != DBNull.Value && recordFound != null) {
+            try{
+                conn.Open();
+                object recordFound = command.ExecuteScalar();
                 conn.Close();
-                return true;
+
+                if (recordFound != DBNull.Value && recordFound != null){
+                    conn.Close();
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch (MySqlException e){
+                MessageBox.Show(e.ToString());
+                conn.Close();
+                return false;
+            }
         }//end validateLogin
 
         public DataSet getParentInfo(string guardianID) {
@@ -61,9 +68,15 @@ namespace ChildCareAppParentSide {
             MySqlDataAdapter DB = new MySqlDataAdapter(command); 
             DataSet DS = new DataSet();
 
-            conn.Open();
-            DB.Fill(DS);
-            conn.Close();  
+            try{
+                conn.Open();
+                DB.Fill(DS);
+                conn.Close();
+            }
+            catch (MySqlException){
+                MessageBox.Show("Database connection error: Unable to retrieve information for guardian");
+                conn.Close();
+            }
       
             return DS; 
         }//end GetParentInfo
@@ -81,10 +94,10 @@ namespace ChildCareAppParentSide {
                 command.ExecuteNonQuery();
                 conn.Close();
 
-                MessageBox.Show("Completed");
+                MessageBox.Show("Completed deletion");
             }
             catch (MySqlException){
-                MessageBox.Show("Failed");
+                MessageBox.Show("Database connection error: Failed to delete guardian");
             }
             
         }//end DeleteParentInfo
@@ -117,8 +130,9 @@ namespace ChildCareAppParentSide {
 
                 MessageBox.Show("Completed");
             }
-            catch (MySqlException e) {
-                MessageBox.Show(e.ToString()); 
+            catch (MySqlException) {
+                MessageBox.Show("Database connection error: Failed to update guardian information");
+                conn.Close();
             }
              
         }//end UpdateParentInfo
@@ -129,11 +143,18 @@ namespace ChildCareAppParentSide {
 
             MySqlCommand command = new MySqlCommand(sql, conn);
 
-            conn.Open();
-            int max = Convert.ToInt32(command.ExecuteScalar());
-            conn.Close();
+            try{
+                conn.Open();
+                int max = Convert.ToInt32(command.ExecuteScalar());
+                conn.Close();
 
-            return max;
+                return max;
+            }
+            catch{
+                MessageBox.Show("Database connection error: Failed to retrieve critical information");
+                conn.Close();
+                return -1;
+            }
         }//end getMaxID
 
         public int getMaxConnectionID(){
@@ -142,11 +163,18 @@ namespace ChildCareAppParentSide {
 
             MySqlCommand command = new MySqlCommand(sql, conn);
 
-            conn.Open();
-            int max = Convert.ToInt32(command.ExecuteScalar());
-            conn.Close();
+            try{
+                conn.Open();
+                int max = Convert.ToInt32(command.ExecuteScalar());
+                conn.Close();
 
-            return max;
+                return max;
+            }
+            catch{
+                MessageBox.Show("Database connection error: Failed to retrieve critical information");
+                conn.Close();
+                return -1;
+            }
         }//end getMaxConnection
 
         public void addNewChild(string cID, string fName, string lName, string birthday, string allergies, string medical, string photo) {
@@ -165,19 +193,39 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@medical", medical));
             command.Parameters.Add(new MySqlParameter("@photo", photo));
 
-            conn.Open();
-            command.ExecuteNonQuery();
-            conn.Close();
+            try{
+                conn.Open();
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch{
+                MessageBox.Show("Database connection error: Unable to add new child");
+                conn.Close();
+            }
         }//end addNewChild
 
         public void updateAllowedConnections(string conID, string pID, string cID) {
             string familyID = pID.Remove(pID.Length - 1);
             
             try{
-                string sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
+
+                string sql = "select Allowance_ID from AllowedConnections where Guardian_ID = @pID and Child_ID = @cID";
+                MySqlCommand command = new MySqlCommand(sql, conn);
+                command.Parameters.Add(new MySqlParameter("@pID", pID));
+                command.Parameters.Add(new MySqlParameter("@cID", cID));
+
+                conn.Open();
+                object recordExists = command.ExecuteScalar();
+                conn.Close();
+
+                if (recordExists != DBNull.Value && recordExists != null){
+                    return;
+                }
+
+                sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
                                 + "VALUES(@conID, @pID, @cID, @familyID);";
 
-                MySqlCommand command = new MySqlCommand(sql, conn);
+                command = new MySqlCommand(sql, conn);
                 command.CommandText = sql;
                 command.Parameters.Add(new MySqlParameter("@conID", conID));
                 command.Parameters.Add(new MySqlParameter("@pID", pID));
@@ -190,6 +238,7 @@ namespace ChildCareAppParentSide {
             }
 
             catch (MySqlException e){
+                conn.Close();
                 MessageBox.Show(e.ToString());
             }
             
@@ -217,8 +266,9 @@ namespace ChildCareAppParentSide {
 
                 MessageBox.Show("Completed");
             }
-            catch (MySqlException e){
-                MessageBox.Show(e.ToString());
+            catch (MySqlException){
+                conn.Close();
+                MessageBox.Show("Databse connection error: Unable to update child information");
             }
             
         }//end UpdateChildInfo
@@ -244,10 +294,11 @@ namespace ChildCareAppParentSide {
                 command.ExecuteNonQuery();
                 conn.Close();
 
-                MessageBox.Show("Completed");
+                MessageBox.Show("Completed child deletion");
             }
             catch (MySqlException){
-                MessageBox.Show("Failed");
+                MessageBox.Show("Database connection error: Failed to delete child");
+                conn.Close();
             }
             conn.Close();
         }//end deleteChildInfo
@@ -264,25 +315,32 @@ namespace ChildCareAppParentSide {
             MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
 
-            conn.Open();
-            DB.Fill(DS);
+            try{
+                conn.Open();
+                DB.Fill(DS);
 
-            if (DS.Tables == null) {
+                if (DS.Tables == null){
+                    return null;
+                }
+
+                int cCount = DS.Tables[0].Columns.Count;
+                int rCount = DS.Tables[0].Rows.Count;
+                String[,] data = new string[rCount, cCount];
+
+                for (int x = 0; x < rCount; x++){
+                    for (int y = 0; y < cCount; y++){
+                        data[x, y] = DS.Tables[0].Rows[x][y].ToString();
+                    }
+                }
+
+                conn.Close();
+                return data;
+            }
+            catch (Exception){
+                MessageBox.Show("Database connection error: Unable to retrieve information for children");
+                conn.Close();
                 return null;
             }
-
-            int cCount = DS.Tables[0].Columns.Count;
-            int rCount = DS.Tables[0].Rows.Count;
-            String[,] data = new string[rCount, cCount];
-
-            for (int x = 0; x < rCount; x++) {
-                for (int y = 0; y < cCount; y++) {
-                    data[x, y] = DS.Tables[0].Rows[x][y].ToString();
-                }
-            }
-
-            conn.Close();
-            return data;
         }//end findChildren 
 
         public bool IDExists(string ID) {
@@ -294,13 +352,20 @@ namespace ChildCareAppParentSide {
             MySqlCommand command = new MySqlCommand(sql, conn);
             command.Parameters.Add(new MySqlParameter("@ID", ID));
 
-            conn.Open();
-            object recordFound = command.ExecuteScalar();
-            conn.Close();
-
-            if (recordFound != DBNull.Value && recordFound != null) {
+            try
+            {
+                conn.Open();
+                object recordFound = command.ExecuteScalar();
                 conn.Close();
-                return true;
+
+                if (recordFound != DBNull.Value && recordFound != null){
+                    conn.Close();
+                    return true;
+                }
+            }
+            catch(Exception){
+                MessageBox.Show("Database connection error: Unable to check if ID exists");
+                conn.Close();
             }
 
             return false;
@@ -315,21 +380,28 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@ID", ID));
             command.Parameters.Add(new MySqlParameter("@imagePath", imagePath));
 
-            conn.Open();
-            command.ExecuteNonQuery();
-
-            sql = "select Family_ID from Family where Family_ID = @familyID";
-            command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@familyID", familyID));
-
-            object recordFound = command.ExecuteScalar();
-            
-            if (recordFound == DBNull.Value || recordFound == null) {
-                sql = "INSERT INTO Family VALUES(" + familyID + ", 0)";
-                command = new MySqlCommand(sql, conn);
+            try
+            {
+                conn.Open();
                 command.ExecuteNonQuery();
+
+                sql = "select Family_ID from Family where Family_ID = @familyID";
+                command = new MySqlCommand(sql, conn);
+                command.Parameters.Add(new MySqlParameter("@familyID", familyID));
+
+                object recordFound = command.ExecuteScalar();
+
+                if (recordFound == DBNull.Value || recordFound == null){
+                    sql = "INSERT INTO Family VALUES(" + familyID + ", 0)";
+                    command = new MySqlCommand(sql, conn);
+                    command.ExecuteNonQuery();
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception){
+                MessageBox.Show("Database connection error: Unable to add new guardian");
+                conn.Close();
+            }
 
         }//end addNewParent
 
@@ -343,9 +415,14 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@pin", pin));
             command.Parameters.Add(new MySqlParameter("@ID", ID));
 
-            conn.Open();
-            command.ExecuteNonQuery();
-            conn.Close();
+            try{
+                conn.Open();
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (MySqlException){
+                MessageBox.Show("Database connection error: Unable to change pin");
+            }
         }//end editPin
 
     }//end AdminDatabase(class)

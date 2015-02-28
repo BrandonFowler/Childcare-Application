@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Windows;
 
 namespace ChildCareAppParentSide {
 
@@ -46,13 +47,20 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@ID", ID));
             command.Parameters.Add(new MySqlParameter("@PIN", PIN));
 
-            conn.Open();
-            object recordFound = command.ExecuteScalar();
-            conn.Close();
-
-            if (recordFound != DBNull.Value && recordFound != null) {
+            try{
+                conn.Open();
+                object recordFound = command.ExecuteScalar();
                 conn.Close();
-                return true;
+        
+
+                if (recordFound != DBNull.Value && recordFound != null) {
+                    conn.Close();
+                    return true;
+                }
+            }
+            catch (MySqlException e){
+                MessageBox.Show(e.ToString());
+                conn.Close();
             }
 
             return false;
@@ -69,19 +77,28 @@ namespace ChildCareAppParentSide {
             MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
 
-            conn.Open();
-            DB.Fill(DS);
+            try
+            {
+                conn.Open();
+                DB.Fill(DS);
 
-            int cCount = DS.Tables[0].Columns.Count;
-            string[] data = new String[cCount];
+                int cCount = DS.Tables[0].Columns.Count;
+                string[] data = new String[cCount];
 
-            for (int x = 0; x < cCount; x++) {
-                data[x] = DS.Tables[0].Rows[0][x].ToString();
+                for (int x = 0; x < cCount; x++)
+                {
+                    data[x] = DS.Tables[0].Rows[0][x].ToString();
+                }
+
+                conn.Close();
+
+                return data;
             }
-
-            conn.Close();
-
-            return data;
+            catch(Exception){
+                MessageBox.Show("Database connection error: Unable to retrieve information for guardian");
+                conn.Close();
+                return null;
+            }
         }// end getParentInfo
 
         public String[,] findChildren(string guardianID) {
@@ -95,26 +112,33 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@guardianID", guardianID));
             DataSet DS = new DataSet();
 
-            conn.Open();
-            DB.Fill(DS);
+            try{
+                conn.Open();
+                DB.Fill(DS);
 
-            if (DS.Tables == null) {
+                if (DS.Tables == null){
+                    return null;
+                }
+
+                int cCount = DS.Tables[0].Columns.Count;
+                int rCount = DS.Tables[0].Rows.Count;
+                String[,] data = new string[rCount, cCount];
+
+                for (int x = 0; x < rCount; x++){
+                    for (int y = 0; y < cCount; y++){
+                        data[x, y] = DS.Tables[0].Rows[x][y].ToString();
+                    }
+                }
+
+                conn.Close();
+
+                return data;
+            }
+            catch (Exception){
+                MessageBox.Show("Database connection error: Unable to retrieve information for children");
+                conn.Close();
                 return null;
             }
-
-            int cCount = DS.Tables[0].Columns.Count;
-            int rCount = DS.Tables[0].Rows.Count;
-            String[,] data = new string[rCount,cCount];
-           
-            for(int x = 0; x < rCount; x++) {
-                for(int y = 0; y < cCount; y++) {
-                    data[x, y] = DS.Tables[0].Rows[x][y].ToString();
-                }
-            }
-
-            conn.Close();
-
-            return data;
         }//end findChildren
 
         public string[,] getEvents() {
@@ -135,23 +159,30 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@dayOfWeek", dayOfWeek));
             DataSet DS = new DataSet();
 
-            conn.Open();
-            DB.Fill(DS);
-            int cCount = DS.Tables[0].Columns.Count;
-            int rCount = DS.Tables[0].Rows.Count;
-            string[,] events = new string[rCount, cCount];
-            for (int x = 0; x < rCount; x++) {
-                for (int y = 0; y < cCount; y++) {
-                    events[x, y] = DS.Tables[0].Rows[x][y].ToString();
+            try{
+                conn.Open();
+                DB.Fill(DS);
+                int cCount = DS.Tables[0].Columns.Count;
+                int rCount = DS.Tables[0].Rows.Count;
+                string[,] events = new string[rCount, cCount];
+                for (int x = 0; x < rCount; x++){
+                    for (int y = 0; y < cCount; y++){
+                        events[x, y] = DS.Tables[0].Rows[x][y].ToString();
+                    }
                 }
+
+                conn.Close();
+
+                return events;
             }
-
-            conn.Close();
-
-            return events;
+            catch (Exception){
+                MessageBox.Show("Database connection error: Unable to retrieve information for events");
+                conn.Close();
+                return null;
+            }
         }//end getEvents
 
-        public bool checkIn(string childID, string eventID, string guardianID, string birthday) {
+        public void checkIn(string childID, string eventID, string guardianID, string birthday) {
             DateTime dt = DateTime.Now;
             string dateTime = DateTime.Now.ToString();
             string date = Convert.ToDateTime(dateTime).ToString("yyyy-MM-dd");
@@ -178,11 +209,16 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@date", date));
             command.Parameters.Add(new MySqlParameter("@time", time));
 
-            conn.Open();
-            command.ExecuteNonQuery();
-            conn.Close();
+            try{
+                conn.Open();
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (MySqlException e){
+                MessageBox.Show(e.ToString());
+                conn.Close();
+            }
 
-            return true;
         }//end checkIn
 
         private int getNextPrimary(string column, string table) {
@@ -191,16 +227,24 @@ namespace ChildCareAppParentSide {
             
             MySqlCommand command = new MySqlCommand(sql, conn);
 
-            conn.Open();
-            object max = command.ExecuteScalar();
-            conn.Close();
-
-            if (max != DBNull.Value && max != null) {
+            try
+            {
+                conn.Open();
+                object max = command.ExecuteScalar();
                 conn.Close();
-                return Convert.ToInt32(max) + 1;
+
+                if (max != DBNull.Value && max != null){
+                    conn.Close();
+                    return Convert.ToInt32(max) + 1;
+                }
+
+                return 0;
             }
-            
-            return 0;
+            catch (Exception){
+                MessageBox.Show("Database connection error: Unable to retrieve critical information");
+                conn.Close();
+                return -1;
+            }
         }//end getMaxPrimary
 
         public string getAllowanceID(string guardianID, string childID) {
@@ -213,11 +257,18 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@guardianID", guardianID));
             command.Parameters.Add(new MySqlParameter("@childID", childID));
 
-            conn.Open();
-            string connectionID = Convert.ToString(command.ExecuteScalar());
-            conn.Close();
+            try{
+                conn.Open();
+                string connectionID = Convert.ToString(command.ExecuteScalar());
+                conn.Close();
 
-            return connectionID;
+                return connectionID;
+            }
+            catch (MySqlException){
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve critical information");
+                return null;
+            }
         }//end getConnectionID
 
         public bool checkOut(string childID, string guardianID) {
@@ -227,6 +278,10 @@ namespace ChildCareAppParentSide {
             string currentTimeString = Convert.ToDateTime(dateTimeString).ToString("HH:mm:ss");
             string allowanceID = getTransactionAllowanceID(guardianID, childID);
             string[] transaction = findTransaction(allowanceID);
+            if (transaction == null){
+                MessageBox.Show("Unable to check out child. Please log out then try again.");
+                return false;
+            }
             string transactionID = transaction[0];
             string eventID = transaction[1];
             string checkInTime = transaction[4];
@@ -276,9 +331,16 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@eventFee", eventFee));
             command.Parameters.Add(new MySqlParameter("@allowanceID", allowanceID));
 
-            conn.Open();
-            command.ExecuteNonQuery();
-            conn.Close();
+            try{
+                conn.Open();
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch(MySqlException){
+                MessageBox.Show("Database connection error: Unable to check out child");
+                conn.Close();
+                return false;
+            }
 
             addToBalance(guardianID, eventFee);
 
@@ -300,9 +362,20 @@ namespace ChildCareAppParentSide {
                 command.Parameters.Add(new MySqlParameter("@currentDateString", currentDateString));
                 command.Parameters.Add(new MySqlParameter("@lateFee", lateFee));
 
-                conn.Open();
-                command.ExecuteNonQuery();
-                conn.Close();
+                if (maxTransactionID > -1){
+                    try{
+                        conn.Open();
+                        command.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                    catch(MySqlException){
+                        conn.Close();
+                        MessageBox.Show("Database connection error: Unable to record late fee");
+                    }
+                }
+                else{
+                    MessageBox.Show("Database connection error: Unable to record late fee");
+                }
 
                 addToBalance(guardianID, lateFee);
             }
@@ -327,9 +400,16 @@ namespace ChildCareAppParentSide {
                 MySqlCommand command = new MySqlCommand(sql, conn);
                 command.Parameters.Add(new MySqlParameter("@childID", childID));
 
-                conn.Open();
-                object recordFound = command.ExecuteScalar();
-                conn.Close();
+                object recordFound = null;
+                try{
+                    conn.Open();
+                    recordFound = command.ExecuteScalar();
+                    conn.Close();
+                }
+                catch(MySqlException){
+                    conn.Close();
+                    MessageBox.Show("Database connection error: Unable to check if charge exceeds monthly maximum for normal care.");
+                }
 
                 double sum;
                 if (recordFound == DBNull.Value || recordFound == null) {
@@ -365,9 +445,15 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@fee", fee));
             command.Parameters.Add(new MySqlParameter("@familyID", familyID));
 
-            conn.Open();
-            command.ExecuteNonQuery();
-            conn.Close();
+            try{
+                conn.Open();
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch(MySqlException){
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to add charge to family balance.");
+            }
 
         }//end addToBalance
 
@@ -384,11 +470,18 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@familyID", familyID));
             command.Parameters.Add(new MySqlParameter("@childID", childID));
 
-            conn.Open();
-            string allowanceID = Convert.ToString(command.ExecuteScalar());
-            conn.Close();
+            try{
+                conn.Open();
+                string allowanceID = Convert.ToString(command.ExecuteScalar());
+                conn.Close();
 
-            return allowanceID;
+                return allowanceID;
+            }
+            catch (MySqlException){
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve critical information.");
+                return null;
+            }
         }//end getTransactionAllowanceID
 
         public string getClosingTime(string dayOfWeek) {
@@ -400,11 +493,19 @@ namespace ChildCareAppParentSide {
             MySqlCommand command = new MySqlCommand(sql, conn);
             command.Parameters.Add(new MySqlParameter("@dayOfWeek", dayOfWeek));
 
-            conn.Open();
-            string closingTime = Convert.ToString(command.ExecuteScalar());
-            conn.Close();
+            try{
+                conn.Open();
+                string closingTime = Convert.ToString(command.ExecuteScalar());
+                conn.Close();
 
-            return closingTime;
+                return closingTime;
+            }
+            catch (MySqlException){
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve critical information. Any late fees have not been recorded.");
+                return null;
+            }
+
         }// end getClosingTime
 
         public double getLateFee(string eventID) {
@@ -416,12 +517,19 @@ namespace ChildCareAppParentSide {
             MySqlCommand command = new MySqlCommand(sql, conn);
             command.Parameters.Add(new MySqlParameter("@eventID", eventID));
 
-            conn.Open();
-            string fee = Convert.ToString(command.ExecuteScalar());
-            conn.Close();
+            try{
+                conn.Open();
+                string fee = Convert.ToString(command.ExecuteScalar());
+                conn.Close();
 
-            double lateFee = Convert.ToDouble(fee);
-            return lateFee;
+                double lateFee = Convert.ToDouble(fee);
+                return lateFee;
+            }
+            catch (MySqlException){
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve critical information. Any late fees have not been recorded.");
+                return 0;
+            }
         }//end getLateFee
 
         public string[] getEvent(string eventID) {
@@ -435,17 +543,24 @@ namespace ChildCareAppParentSide {
             MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
 
-            conn.Open();
-            DB.Fill(DS);
+            try{
+                conn.Open();
+                DB.Fill(DS);
 
-            int cCount = DS.Tables[0].Columns.Count;
-            string[] eventData = new string[cCount];
-            for (int x = 0; x < cCount; x++) {
-                eventData[x] = DS.Tables[0].Rows[0][x].ToString();
+                int cCount = DS.Tables[0].Columns.Count;
+                string[] eventData = new string[cCount];
+                for (int x = 0; x < cCount; x++){
+                    eventData[x] = DS.Tables[0].Rows[0][x].ToString();
+                }
+                conn.Close();
+
+                return eventData;
             }
-            conn.Close();
-
-            return eventData;
+            catch (Exception){
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
+                return null;
+            }
         }//end getEvent
 
         public int numberOfCheckedIn(string guardianID) {
@@ -463,12 +578,19 @@ namespace ChildCareAppParentSide {
             MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
 
-            conn.Open();
-            DB.Fill(DS);
-            int count = DS.Tables[0].Rows.Count;
-            conn.Close();
+            try{
+                conn.Open();
+                DB.Fill(DS);
+                int count = DS.Tables[0].Rows.Count;
+                conn.Close();
 
-            return count;
+                return count;
+            }
+            catch (MySqlException){
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
+                return 0;
+            }
         }//end numberOfCheckedIn
 
         public string[] findTransaction(string allowanceID) {
@@ -482,16 +604,24 @@ namespace ChildCareAppParentSide {
             MySqlDataAdapter DB = new MySqlDataAdapter(command);
             DataSet DS = new DataSet();
 
-            conn.Open();
-            DB.Fill(DS);
-            int cCount = DS.Tables[0].Columns.Count;
-            string[] transaction = new string[cCount];
-            for (int x = 0; x < cCount; x++) {
-                transaction[x] = DS.Tables[0].Rows[0][x].ToString();
-            }
-            conn.Close();
+            try{
+                conn.Open();
+                DB.Fill(DS);
+                int cCount = DS.Tables[0].Columns.Count;
+                string[] transaction = new string[cCount];
+                for (int x = 0; x < cCount; x++)
+                {
+                    transaction[x] = DS.Tables[0].Rows[0][x].ToString();
+                }
+                conn.Close();
 
-            return transaction;
+                return transaction;
+            }
+            catch (MySqlException){
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve original transaction.");
+                return null;
+            }
         }//end FindTransaction
 
         public bool isCheckedIn(string childID, string guardianID){
@@ -505,16 +635,24 @@ namespace ChildCareAppParentSide {
             command.Parameters.Add(new MySqlParameter("@familyID", familyID));
             command.Parameters.Add(new MySqlParameter("@childID", childID));
 
-            conn.Open();
-            object recordFound = command.ExecuteScalar();
-            conn.Close();
-
-            if (recordFound != DBNull.Value && recordFound != null) {
+            try{
+                conn.Open();
+                object recordFound = command.ExecuteScalar();
                 conn.Close();
-                return true;
-            }
 
-            return false;
+                if (recordFound != DBNull.Value && recordFound != null)
+                {
+                    conn.Close();
+                    return true;
+                }
+
+                return false;
+            }
+            catch{
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to access find all children. Please log out, then try again.");
+                return false;
+            }
         }//end isCheckedIn
 
         public bool checkInfant(string birthday, string date) {
@@ -542,6 +680,11 @@ namespace ChildCareAppParentSide {
 
         public bool checkIfHourly(string eventID) {
             string[] eventData = getEvent(eventID);
+
+            if (eventData == null){
+                return false;
+            }
+
             if (String.IsNullOrWhiteSpace(eventData[2])) {
                 return false;
             }
@@ -558,6 +701,11 @@ namespace ChildCareAppParentSide {
             }
 
             string[] eventData = getEvent(eventID);
+
+            if (eventData == null)
+            {
+                return 0.0;
+            }
 
             if (discount) {
                 if (String.IsNullOrWhiteSpace(eventData[3])) {

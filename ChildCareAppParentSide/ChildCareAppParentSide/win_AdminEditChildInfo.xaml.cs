@@ -194,7 +194,11 @@ namespace ChildCareAppParentSide {
 
         private void btn_AddChild_Click(object sender, RoutedEventArgs e)
         {
-            int maxID = this.db.getMaxID(); ;
+            int maxID = this.db.getMaxID();
+            int connID = this.db.getMaxConnectionID();
+            if (maxID == -1 || connID == -1){
+                MessageBox.Show("Unable to add new child");
+            }
             maxID = maxID + 1;
             string mID = maxID.ToString();  
 
@@ -202,14 +206,12 @@ namespace ChildCareAppParentSide {
             i = buildImage("../../../../Photos/default.jpg", 60); 
             lst_ChildBox.Items.Add(new Child("First", "Last", i, mID, "2005/01/01", "None", "None"));
 
-            int connID = this.db.getMaxConnectionID();
             connID = connID + 1;
-            string connectionID = connID.ToString(); 
+            string connectionID = connID.ToString();
 
             this.db.addNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "default.jpg");
-
             this.db.updateAllowedConnections(connectionID, ID, mID);
-
+ 
             lst_ChildBox.Items.Clear();
             setChildBox();
         }

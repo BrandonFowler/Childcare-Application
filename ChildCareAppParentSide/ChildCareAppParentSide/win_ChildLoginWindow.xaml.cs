@@ -25,9 +25,7 @@ namespace ChildCareAppParentSide {
         }//end constructor
 
         private void btn_LogOutParent_Click(object sender, RoutedEventArgs e) {
-            win_LoginWindow loginWindow = new win_LoginWindow();
-            loginWindow.Show();
-            this.Close();
+            exitToLogin();
         }//end btn_LogOutParent
 
         private void setUpCheckInBox() {
@@ -100,19 +98,37 @@ namespace ChildCareAppParentSide {
 
         public void setUpParentDisplay() {
             string [] parentInfo = db.getParentInfo(this.guardianID);
-            lbl_ParentName.Content = parentInfo[2]+" "+parentInfo[3];
-            img_ParentPic.Source = (buildImage(parentInfo[11], 150)).Source;
+            if (parentInfo != null){
+                lbl_ParentName.Content = parentInfo[2] + " " + parentInfo[3];
+                img_ParentPic.Source = (buildImage(parentInfo[11], 150)).Source;
+            }
+            else{
+                exitToLogin();
+            }
         }//end setUpParentDisplay
+
+        private void exitToLogin(){
+            win_LoginWindow loginWindow = new win_LoginWindow();
+            loginWindow.Show();
+            this.Close();
+        }//end exitToLogin
 
         public void eventsSetup() {
             string[,] events = db.getEvents();
-            for (int x = 0; x < events.GetLength(0); x++) {
-                ComboBoxItem newEvent = new ComboBoxItem() { Content = events[x, 1], Tag = events[x, 0] };
-                cbo_EventChoice.Items.Add(newEvent);
-            }
 
-            if (events.GetLength(0) == 1) {
-                cbo_EventChoice.SelectedItem = cbo_EventChoice.Items[0];
+            if (events != null)
+            {
+                for (int x = 0; x < events.GetLength(0); x++){
+                    ComboBoxItem newEvent = new ComboBoxItem() { Content = events[x, 1], Tag = events[x, 0] };
+                    cbo_EventChoice.Items.Add(newEvent);
+                }
+
+                if (events.GetLength(0) == 1){
+                    cbo_EventChoice.SelectedItem = cbo_EventChoice.Items[0];
+                }
+            }
+            else{
+                exitToLogin();
             }
         }//end eventSetup
 
