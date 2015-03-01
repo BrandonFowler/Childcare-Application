@@ -88,16 +88,37 @@ namespace ChildCareApp {
             
         }//end GetFirstName
 
+        public void AddNewParent(string ID, string PIN, string firstName, string lastName, string phone, string email, string address, string address2, string city, string state, string zip, string photo) {
+            dbConn.Open();
+
+            try
+            {
+           
+                string sql = @"INSERT INTO Guardian(Guardian_ID, GuardianPIN, FirstName, LastName, Phone, Email, Address1, Address2, City, StateAbrv, Zip, PhotoLocation) "+
+                "VALUES(" + ID + ", " + PIN + ", " + firstName + ", " + lastName + ", " + phone + ", " + email + ", " + address + ", " + address2 + ", " + city + ", " + state + ", " + zip + ", " + photo + ");";
+                MySqlCommand mycommand = new MySqlCommand(sql, dbConn);
+                mycommand.ExecuteNonQuery();
+                MessageBox.Show("Completed");
+            }
+
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.ToString()); 
+            }
+            dbConn.Close();  
+        }
+
+
         public void UpdateParentInfo(string ID, string firstName, string lastName, string phone, string email, string address, string address2, string city, string state, string zip) {
             dbConn.Open();
 
             try
             {
-              
-                    string sql = @"UPDATE Guardian SET FirstName = @firstName, LastName = @lastName, Phone = @phone, Email = @email,"+
-                                        "Address1 = @address, Address2 = @address2, City = @city, State = @state, Zip  = @zip WHERE Guardian_ID = @ID;";
+
+                string sql = @"UPDATE Guardian SET FirstName = @firstName, LastName = @lastName, Phone = @phone, Email = @email," +
+                                    "Address1 = @address, Address2 = @address2, City = @city, StateAbrv = @state, Zip  = @zip WHERE Guardian_ID = @ID;";
                 //SQLiteCommand mycommand = new SQLiteCommand(sql, this.dbConn);
-                    MySqlCommand mycommand = new MySqlCommand(sql, dbConn);
+                MySqlCommand mycommand = new MySqlCommand(sql, dbConn);
                 mycommand.CommandText = sql;
                 mycommand.Parameters.Add(new MySqlParameter("@firstName", firstName));
                 mycommand.Parameters.Add(new MySqlParameter("@lastName", lastName));
@@ -109,18 +130,50 @@ namespace ChildCareApp {
                 mycommand.Parameters.Add(new MySqlParameter("@state", state));
                 mycommand.Parameters.Add(new MySqlParameter("@zip", zip));
                 mycommand.Parameters.Add(new MySqlParameter("@ID", ID));
-                
+
                 mycommand.ExecuteNonQuery();
                 MessageBox.Show("Completed");
             }
 
             catch (MySqlException e)
             {
-                MessageBox.Show(e.ToString()); 
+                MessageBox.Show(e.ToString());
             }
-            dbConn.Close();  
+            dbConn.Close();
         }
-      
+        public DataSet checkIfFamilyExists(string familyID) {
+            dbConn.Open();
+            string sql = "select * from Family where Family_ID = " + familyID;
+            MySqlCommand command = new MySqlCommand(sql, dbConn);
+
+            MySqlDataAdapter DB = new MySqlDataAdapter(command);
+            DataSet DS = new DataSet();
+            DB.Fill(DS);
+
+
+            dbConn.Close();
+            return DS; 
+        }
+        public void AddNewFamily(string familyID, double ballance) {
+
+            dbConn.Open();
+
+            try
+            {
+
+                string sql = @"INSERT INTO Family(Family_ID, FamilyTotal) " +
+                "VALUES(" + familyID + ", " + ballance + ");";
+                MySqlCommand mycommand = new MySqlCommand(sql, dbConn);
+                mycommand.ExecuteNonQuery();
+                MessageBox.Show("Completed");
+            }
+
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            dbConn.Close();
+        }
 
     }//end LoadParentInfoDatabase
 

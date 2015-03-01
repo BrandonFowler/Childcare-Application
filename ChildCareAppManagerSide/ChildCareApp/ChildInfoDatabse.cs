@@ -108,13 +108,13 @@ namespace ChildCareApp
             }*/
             dbCon.Close();
         }
-        public void UpdateAllowedConnections(string conID, string pID, string cID) {
+        public void UpdateAllowedConnections(string conID, string pID, string cID, string famID) {
             dbCon.Open();
 
             try
             {
-                string sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID) "
-                                + "VALUES(" + conID + ", " + pID + ", " + cID + ");";
+                string sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
+                                + "VALUES(" + conID + ", " + pID + ", " + cID + ", " + famID +");";
 
                 //string sql = "INSERT INTO AllowedConnections VALUES(" + conID + ", " + pID + ", " + cID + ");";
                // SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);

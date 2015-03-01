@@ -90,6 +90,9 @@
     <Compile Include="win_EventModificationWindow.xaml.cs">
       <DependentUpon>win_EventModificationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="win_NewParentLogin.xaml.cs">
+      <DependentUpon>win_NewParentLogin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="win_ParentLogin.xaml.cs">
       <DependentUpon>win_ParentLogin.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="win_EventModificationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="win_NewParentLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

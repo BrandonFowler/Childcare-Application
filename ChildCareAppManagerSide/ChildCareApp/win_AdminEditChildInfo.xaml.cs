@@ -75,18 +75,21 @@ namespace ChildCareApp {
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
 
             bool? delete;
-            win_DeleteConformation DeleteConformation = new win_DeleteConformation();
-            delete = DeleteConformation.ShowDialog();
-
-            if ((bool)delete == true)
+            if (lst_ChildBox.SelectedItem != null)
             {
-               
-                string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
-                this.db.DeleteChildInfo(cID);
-                lst_ChildBox.Items.Clear();
-                setChildBox();
-            }
+                win_DeleteConformation DeleteConformation = new win_DeleteConformation();
+                delete = DeleteConformation.ShowDialog();
 
+                if ((bool)delete == true)
+                {
+
+                    string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
+                    this.db.DeleteChildInfo(cID);
+                    lst_ChildBox.Items.Clear();
+                    setChildBox();
+                    ClearFields();
+                }
+            }
 
         }//end btn_Delete_Click
 
@@ -225,14 +228,27 @@ namespace ChildCareApp {
             connID = connID + 1;
             string connectionID = connID.ToString();
 
-            this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "../../../../Photos/default.jpg");
 
-            this.db.UpdateAllowedConnections(connectionID, ID, mID);
+            string famID = getFamilyID(ID);
+            this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "../../../../Photos/default.jpg");
+             
+            this.db.UpdateAllowedConnections(connectionID, ID, mID, famID);
 
             lst_ChildBox.Items.Clear();
             setChildBox();
 
 
+        }
+
+        public string getFamilyID(string pID) {
+            string familyID = ""; 
+
+            for(int x = 0; x < pID.Length - 1; x++)
+            {
+                familyID += pID[x]; 
+            }
+
+            return familyID; 
         }
     }//end class
 
