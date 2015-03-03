@@ -27,11 +27,12 @@
             <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="0,247,0,0" VerticalAlignment="Top" Width="39" Height="38" Click="btn_Delete_Click" IsEnabled="False" Visibility="Hidden"/>
             <Label x:Name="lbl_Email" Content="Email:" HorizontalAlignment="Left" Margin="520,64,0,0" VerticalAlignment="Top" Width="47"/>
             <TextBox x:Name="txt_Email" HorizontalAlignment="Left" Height="23" Margin="520,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
-            <TextBox x:Name="txt_imageName" HorizontalAlignment="Left" Height="23" Margin="115,193,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
-            <Label x:Name="lbl_imageName" Content="Image Name:" HorizontalAlignment="Left" Margin="23,190,0,0" VerticalAlignment="Top" Width="87"/>
-            <Image x:Name="img_ParentPic" HorizontalAlignment="Left" Height="118" Margin="42,41,0,0" VerticalAlignment="Top" Width="121"/>
+            <TextBox x:Name="txt_imageName" HorizontalAlignment="Left" Height="43" Margin="115,193,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
+            <Label x:Name="lbl_imageName" Content="Image Location:" HorizontalAlignment="Left" Margin="16,190,0,0" VerticalAlignment="Top" Width="94"/>
+            <Image x:Name="img_ParentPic" HorizontalAlignment="Left" Height="118" Margin="42,21,0,0" VerticalAlignment="Top" Width="121"/>
             <Button x:Name="btn_Keyboard" Content="Keyboard" HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="103" Click="btn_Keyboard_Click" IsEnabled="False" Visibility="Hidden"/>
             <Button x:Name="btn_ChangePin" Content="Change Pin" HorizontalAlignment="Left" Margin="544,320,0,0" VerticalAlignment="Top" Width="106" Height="40" Click="btn_ChangePin_Click"/>
+            <Button x:Name="btn_chooseImage" Content="Choose New Image" HorizontalAlignment="Left" Margin="52,153,0,0" VerticalAlignment="Top" Width="111" Click="btn_chooseImage_Click"/>
         </Grid>
     </Viewbox>
 </Window>

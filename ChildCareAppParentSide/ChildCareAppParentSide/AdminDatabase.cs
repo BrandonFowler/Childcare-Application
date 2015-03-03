@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SQLite;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 using System.Windows;
-using MySql.Data.MySqlClient;
 
 namespace ChildCareAppParentSide {
 
@@ -18,13 +13,15 @@ namespace ChildCareAppParentSide {
         private string UID;
         private string password;
         private string connectionString;
+        private Settings settings;
 
         public AdminDatabase() {
-            this.server = "146.187.135.22";
-            this.port = "3306";
-            this.database = "childcare_v5";
-            this.UID = "ccdev";
-            this.password = "devpw821";
+            this.settings = Settings.Instance;
+            this.server = settings.server;
+            this.port = settings.port;
+            this.database = settings.databaseName;
+            this.UID = settings.databaseUser;
+            this.password = settings.databasePassword;
             connectionString = "SERVER=" + server + "; PORT=" + port + "; DATABASE=" + database + "; UID=" + UID + "; PASSWORD=" + password + ";";
             conn = new MySql.Data.MySqlClient.MySqlConnection();
             conn.ConnectionString = connectionString;
@@ -102,8 +99,7 @@ namespace ChildCareAppParentSide {
             
         }//end DeleteParentInfo
 
-        public void updateParentInfo(string ID, string firstName, string lastName, string phone, string email, string address, string city, string state, string zip, string imageName) {
-            string imagePath = "..\\\\..\\\\..\\\\..\\\\Photos\\\\"+imageName;
+        public void updateParentInfo(string ID, string firstName, string lastName, string phone, string email, string address, string city, string state, string zip, string imagePath) {
             try{
               
                 string sql = @"UPDATE Guardian "+
@@ -178,7 +174,7 @@ namespace ChildCareAppParentSide {
         }//end getMaxConnection
 
         public void addNewChild(string cID, string fName, string lName, string birthday, string allergies, string medical, string photo) {
-            string imagePath = "..\\\\..\\\\..\\\\..\\\\Photos\\\\"+photo;
+            string imagePath = photo;
 
             string sql = "INSERT INTO Child(Child_ID, FirstName, LastName, Birthday, Allergies, Medical, PhotoLocation) "
                          + "VALUES (@cID, @fName, @lName, @birthday, @allergies, @medical, @photo);";
@@ -244,9 +240,8 @@ namespace ChildCareAppParentSide {
             
         }//end upadateAllowedConnections
 
-        public void updateChildInfo(string ID, string firstName, string lastName, string birthday, string medical, string allergies, string imageName) {
-            string imagePath = "..\\\\..\\\\..\\\\..\\\\Photos\\\\" + imageName;
-            
+        public void updateChildInfo(string ID, string firstName, string lastName, string birthday, string medical, string allergies, string imagePath) {
+        
             try{
                 string sql = @"UPDATE Child SET FirstName = @firstName, LastName = @lastName, Birthday = @birthday, Allergies = @allergies, Medical = @medical, PhotoLocation = @imagePath WHERE Child_ID = @ID;";
                 
@@ -373,7 +368,7 @@ namespace ChildCareAppParentSide {
 
         public void addNewParent(string ID) {
             string familyID = ID.Remove(ID.Length-1);
-            string imagePath = "..\\\\..\\\\..\\\\..\\\\Photos\\\\" + "default.jpg";
+            string imagePath = settings.photoPath + "/default.jpg";
             
             string sql = "INSERT INTO Guardian VALUES(@ID, '0000', 'First Name', 'Last Name', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', '--', 'Unknown', @imagePath)";
             MySqlCommand command = new MySqlCommand(sql, conn);

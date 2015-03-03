@@ -121,6 +121,33 @@ namespace ChildCareAppParentSide {
                     MessageBox.Show("User Name or Password does not exist");
                 }
             }
+        }
+
+        private void btn_settings_Click(object sender, RoutedEventArgs e) {
+            string UN = txt_UserName.Text;
+            string PW = txt_Password.Password;
+            bool userFound;
+            if (Settings.Instance.server == null) {
+                userFound = true;
+            }
+            else {
+                userFound = this.db.validateAdmin(UN, PW);
+            }
+
+            if ((string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.txt_Password.Password)) && Settings.Instance.server != null) {
+                MessageBox.Show("Please enter a User Name and a Password.");
+            }
+            else {
+                if (userFound) {
+                    win_Settings AdminWindow = new win_Settings(this.isTablet);
+                    AdminWindow.Show();
+                    AdminWindow.WindowState = WindowState.Maximized;
+                    this.Close();
+                }
+                else {
+                    MessageBox.Show("User Name or Password does not exist");
+                }
+            }
         }//end startKeyBoard
   
     }//end win_AdminLogin(class)

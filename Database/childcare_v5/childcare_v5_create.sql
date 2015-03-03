@@ -33,7 +33,7 @@ CREATE TABLE Child (
     Birthday date    NOT NULL ,
     Allergies varchar(200)    NULL ,
     Medical varchar(200)    NULL ,
-    PhotoLocation varchar(50)    NOT NULL ,
+    PhotoLocation varchar(200)    NOT NULL ,
     CONSTRAINT Child_pk PRIMARY KEY (Child_ID)
 );
 
@@ -83,7 +83,7 @@ CREATE TABLE Guardian (
     City varchar(50)    NOT NULL ,
     StateAbrv varchar(2)    NOT NULL ,
     Zip varchar(10)    NOT NULL ,
-    PhotoLocation varchar(50)    NOT NULL ,
+    PhotoLocation varchar(200)    NOT NULL ,
     CONSTRAINT Guardian_pk PRIMARY KEY (Guardian_ID)
 );
 

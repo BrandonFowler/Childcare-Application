@@ -14,9 +14,11 @@ namespace ChildCareAppParentSide {
         private AdminDatabase db;
         private string parentID;
         private bool isTablet;
+        private Settings settings;
 
         public win_AdminEditParentInfo(string parentID, bool isTablet) {
             InitializeComponent();
+            this.settings = Settings.Instance;
             AddStates();
             this.parentID = parentID;
             this.isTablet = isTablet;
@@ -69,7 +71,6 @@ namespace ChildCareAppParentSide {
         }//end btn_Finish_Click
 
         private void btn_AddChild_Click(object sender, RoutedEventArgs e) {
-
             string pID = txt_IDNumber.Text; 
             win_AdminEditChildInfo AdminEditChildInfo = new win_AdminEditChildInfo(pID, this.isTablet);
             AdminEditChildInfo.WindowState = WindowState.Maximized;
@@ -177,8 +178,6 @@ namespace ChildCareAppParentSide {
                  txt_Zip.Text =  DS.Tables[0].Rows[0][10].ToString();
                  cbo_State.Text =  DS.Tables[0].Rows[0][9].ToString();
                  string imagePath = DS.Tables[0].Rows[0][11].ToString();
-                 int pos = imagePath.LastIndexOf("\\") + 1;
-                 imagePath = imagePath.Substring(pos, imagePath.Length - pos);
                  txt_imageName.Text = imagePath;
             }
 
@@ -245,9 +244,8 @@ namespace ChildCareAppParentSide {
         }//end AddStates
 
         public void setUpParentDisplay() {
-            string imagePath = "../../../../Photos/";
             lbl_Parent.Content = txt_FirstName.Text + " " + txt_LastName.Text;
-            img_ParentPic.Source = (buildImage(imagePath + txt_imageName.Text, 150)).Source;
+            img_ParentPic.Source = (buildImage(txt_imageName.Text, 150)).Source;
         }//end setUpParentDisplay
 
         private Image buildImage(string path, int size) {
@@ -264,7 +262,7 @@ namespace ChildCareAppParentSide {
                 image.Source = bitmapImage;
             } catch {
                 BitmapImage bitmapImage = new BitmapImage();
-                var fileInfo = new FileInfo(@"../../../../Photos/default.jpg");
+                var fileInfo = new FileInfo(@"" + settings.photoPath + "/default.jpg");
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
@@ -299,6 +297,23 @@ namespace ChildCareAppParentSide {
             win_EnterNewPin pinEntry = new win_EnterNewPin(parentID, isTablet);
             pinEntry.WindowState = WindowState.Maximized;
             done = pinEntry.ShowDialog();
+        }
+
+        private void btn_chooseImage_Click(object sender, RoutedEventArgs e) {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".jpg";
+            dlg.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|GIF Files (*.gif)|*.gif";
+            string path = Path.GetFullPath(settings.photoPath);
+            path = path.Replace(@"/", @"\");
+            dlg.InitialDirectory = path;
+            bool? result = dlg.ShowDialog();
+            if (result == true) {
+                string filename = dlg.FileName;
+                filename = filename.Replace(@"\", @"/");
+                int pos = filename.LastIndexOf("/") + 1;
+                filename = filename.Substring(pos, filename.Length - pos);
+                this.txt_imageName.Text = settings.photoPath + "/" + filename;
+            }
         }//end btn_ChangePin_Click
 
     }//end win_AdminEditParentInfo(class)

@@ -12,7 +12,7 @@
             <Button x:Name="btn_editParent" Content="Add or Edit Parent" Margin="85,146,271,0" VerticalAlignment="Top" Click="btn_editParent_Click" Height="41"/>
             <Button x:Name="btn_Keyboard" Content="Keyboard" HorizontalAlignment="Left" Margin="10,245,0,0" VerticalAlignment="Top" Width="103" Click="btn_Keyboard_Click" IsEnabled="False" Visibility="Hidden"/>
             <Button x:Name="btn_editChild" Content="Add or Edit Child" HorizontalAlignment="Left" Margin="250,146,0,0" VerticalAlignment="Top" Width="96" RenderTransformOrigin="-0.445,1.09" Height="41" Click="btn_editChild_Click"/>
-            <Button x:Name="btn_settings" Content="Settings" HorizontalAlignment="Left" Margin="184,245,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="btn_settings" Content="Settings" HorizontalAlignment="Left" Margin="184,245,0,0" VerticalAlignment="Top" Width="75" Click="btn_settings_Click"/>
         </Grid>
     </Viewbox>
 </Window>

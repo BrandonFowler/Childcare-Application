@@ -15,9 +15,11 @@ namespace ChildCareAppParentSide {
         private string ID;
         private bool isTablet;
         private string imagePath;
+        private Settings settings;
 
         public win_AdminEditChildInfo(string parentID, bool isTablet) {
             InitializeComponent();
+            this.settings = Settings.Instance;
             this.ID = parentID;
             this.db = new AdminDatabase();
             this.isTablet = isTablet;
@@ -164,7 +166,7 @@ namespace ChildCareAppParentSide {
                 image.Source = bitmapImage;
             } catch {
                 BitmapImage bitmapImage = new BitmapImage();
-                var fileInfo = new FileInfo(@"../../../../Photos/default.jpg");
+                var fileInfo = new FileInfo(@""+settings.photoPath+"/default.jpg");
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
@@ -186,9 +188,7 @@ namespace ChildCareAppParentSide {
                 dte_Birthday.SelectedDate = DateTime.Parse(dte_Birthday.Text);
                 img_childPic.Source = ((Child)(lst_ChildBox.SelectedItem)).image.Source;
                 img_childPic.Width = 150;
-                int pos = this.imagePath.LastIndexOf("\\") + 1;
-                string imageName = this.imagePath.Substring(pos, imagePath.Length - pos);
-                txt_imageName.Text = imageName;
+                txt_imageName.Text = this.imagePath;
             }      
         }
 
@@ -203,13 +203,13 @@ namespace ChildCareAppParentSide {
             string mID = maxID.ToString();  
 
             Image i; 
-            i = buildImage("../../../../Photos/default.jpg", 60); 
+            i = buildImage(@""+settings.photoPath+"/default.jpg", 60); 
             lst_ChildBox.Items.Add(new Child("First", "Last", i, mID, "2005/01/01", "None", "None"));
 
             connID = connID + 1;
             string connectionID = connID.ToString();
 
-            this.db.addNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "default.jpg");
+            this.db.addNewChild(mID, "First", "Last", "2005-01-01", "None", "None", settings.photoPath + "/default.jpg");
             this.db.updateAllowedConnections(connectionID, ID, mID);
  
             lst_ChildBox.Items.Clear();
@@ -257,6 +257,23 @@ namespace ChildCareAppParentSide {
             enterID.WindowState = WindowState.Maximized;
             bool? done = enterID.ShowDialog();
             return Convert.ToString(enterID.getID());
+        }
+
+        private void btn_chooseImage_Click(object sender, RoutedEventArgs e) {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".jpg";
+            dlg.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|GIF Files (*.gif)|*.gif";
+            string path = Path.GetFullPath(settings.photoPath);
+            path = path.Replace(@"/", @"\");
+            dlg.InitialDirectory = path;
+            bool? result = dlg.ShowDialog();
+            if (result == true) {
+                string filename = dlg.FileName;
+                filename = filename.Replace(@"\", @"/");
+                int pos = filename.LastIndexOf("/") + 1;
+                filename = filename.Substring(pos, filename.Length - pos);
+                this.txt_imageName.Text = settings.photoPath + "/" + filename;
+            }
         }//end getID
 
     }//end win_AdminEditChildInfo(class)

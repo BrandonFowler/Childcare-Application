@@ -14,13 +14,15 @@ namespace ChildCareAppParentSide {
         private string UID;
         private string password;
         private string connectionString;
+        private Settings settings;
 
         public ChildCheckInDatabase() {
-            this.server = "146.187.135.22";
-            this.port = "3306";
-            this.database = "childcare_v5";
-            this.UID = "ccdev";
-            this.password = "devpw821";
+            this.settings = Settings.Instance;
+            this.server = settings.server;
+            this.port = settings.port;
+            this.database = settings.databaseName;
+            this.UID = settings.databaseUser;
+            this.password = settings.databasePassword;
             connectionString = "SERVER="+server+"; PORT="+port+"; DATABASE="+database+"; UID="+UID+"; PASSWORD="+password+";";
             conn = new MySql.Data.MySqlClient.MySqlConnection();
             conn.ConnectionString = connectionString;
@@ -385,9 +387,9 @@ namespace ChildCareAppParentSide {
 
         private double billingCapCalc(string eventID, string guardianID, string transactionDate, double eventFee) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
-            double cap = 100.0;
-            int billingStart = 20;
-            int billingEnd = 19;
+            double cap = Convert.ToDouble(settings.regularCareCap);
+            int billingStart = Convert.ToInt32(settings.billStart);
+            int billingEnd = Convert.ToInt32(settings.billEnd); ;
             DateTime DTStart;
             DateTime DTEnd;
             if (DateTime.Now.Day > billingEnd) {

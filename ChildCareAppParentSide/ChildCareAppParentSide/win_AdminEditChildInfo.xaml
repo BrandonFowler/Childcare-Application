@@ -39,10 +39,11 @@
             <Button x:Name="btn_AddChild" Content="Add A Child" HorizontalAlignment="Left" Margin="499,222,0,0" VerticalAlignment="Top" Width="97" Height="58" Click="btn_AddChild_Click"/>
             <DatePicker x:Name="dte_Birthday" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="252,99,0,0" DisplayDate="2005-01-01" IsTodayHighlighted="False"/>
             <Button x:Name="btn_Keyboard" Content="Keyboard" HorizontalAlignment="Left" Margin="0,403,0,0" VerticalAlignment="Top" Width="103" Click="btn_Keyboard_Click" IsEnabled="False" Visibility="Hidden" RenderTransformOrigin="5.932,-6.9"/>
-            <Image x:Name="img_childPic" HorizontalAlignment="Left" Height="118" Margin="70,43,0,0" VerticalAlignment="Top" Width="121"/>
+            <Image x:Name="img_childPic" HorizontalAlignment="Left" Height="118" Margin="60,12,0,0" VerticalAlignment="Top" Width="121"/>
             <Button x:Name="btn_linkToGuardian" Content="Link to another guardian" HorizontalAlignment="Left" Margin="483,343,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="-0.581,0.588" Height="51" Click="btn_linkToGuardian_Click"/>
-            <TextBox x:Name="txt_imageName" HorizontalAlignment="Left" Height="23" Margin="93,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
-            <Label x:Name="lbl_imageName" Content="Image Name:" HorizontalAlignment="Left" Margin="10,163,0,0" VerticalAlignment="Top" Width="87"/>
+            <TextBox x:Name="txt_imageName" HorizontalAlignment="Left" Height="43" Margin="93,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
+            <Label x:Name="lbl_imageName" Content="Image Location:" HorizontalAlignment="Left" Margin="0,164,0,0" VerticalAlignment="Top" Width="93"/>
+            <Button x:Name="btn_chooseImage" Content="Choose New Image" HorizontalAlignment="Left" Margin="70,139,0,0" VerticalAlignment="Top" Width="111" Click="btn_chooseImage_Click"/>
         </Grid>
     </Viewbox>
 </Window>
