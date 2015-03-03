@@ -20,6 +20,8 @@ namespace ChildCareAppParentSide {
             this.txt_DatabaseUser.GotFocus += FocusedTextBox;
             this.txt_DatabasePassword.GotFocus += FocusedTextBox;
             this.txt_RegularCareCap.GotFocus += FocusedTextBox;
+            this.txt_BillDateStart.GotFocus += FocusedTextBox;
+            this.txt_BillDateEnd.GotFocus += FocusedTextBox;
             this.settings = Settings.Instance;
             this.txt_Server.Text = settings.server;
             this.txt_Port.Text = settings.port;
