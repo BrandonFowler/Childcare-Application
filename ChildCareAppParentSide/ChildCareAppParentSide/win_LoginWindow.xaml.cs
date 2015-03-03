@@ -30,6 +30,7 @@ namespace ChildCareAppParentSide {
             this.txt_PINEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_PINEntry.GotFocus += OnPINBoxFocus;
             this.txt_IDEntry.Focus();
+            
         }//end win_LoginWindow
 
         private void OnIDBoxFocus(object sender, EventArgs e) {

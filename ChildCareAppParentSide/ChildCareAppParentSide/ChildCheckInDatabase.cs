@@ -320,7 +320,7 @@ namespace ChildCareAppParentSide {
                 }
             }
       
-            eventFee = eventFee - billingCapCalc(eventID, childID, transaction[3], eventFee);
+            eventFee = eventFee - billingCapCalc(eventID, guardianID, transaction[3], eventFee);
 
             string sql = "update ChildcareTransaction " +
                   "set CheckedOut= @currentTimeString, TransactionTotal = @eventFee "+
@@ -383,11 +383,36 @@ namespace ChildCareAppParentSide {
             return true;
         }//end checkOut
 
-        private double billingCapCalc(string eventID, string childID, string transactionDate, double eventFee) {
+        private double billingCapCalc(string eventID, string guardianID, string transactionDate, double eventFee) {
+            string familyID = guardianID.Remove(guardianID.Length - 1);
             double cap = 100.0;
-            DateTime DTStart = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            int daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-            DateTime DTEnd = new DateTime(DateTime.Now.Year, DateTime.Now.Month, daysInMonth);
+            int billingStart = 20;
+            int billingEnd = 19;
+            DateTime DTStart;
+            DateTime DTEnd;
+            if (DateTime.Now.Day > billingEnd) {
+                DTStart = new DateTime(DateTime.Now.Year, DateTime.Now.Month, billingStart);
+                int endMonth = DTStart.Month + 1;
+                if (endMonth == 13) {
+                    int endYear = DTStart.Year + 1;
+                    DTEnd = new DateTime(endYear, 1, billingEnd);
+                }
+                else {
+                    DTEnd = new DateTime(DateTime.Now.Year, endMonth, billingEnd);
+                }
+            }
+            else {
+                DTEnd = new DateTime(DateTime.Now.Year, DateTime.Now.Month, billingEnd);
+                int startMonth = DTEnd.Month - 1;
+                if (startMonth == 0) {
+                    int startYear = DTEnd.Year - 1;
+                    DTStart = new DateTime(startYear, 12, billingStart);
+                }
+                else {
+                    DTStart = new DateTime(DateTime.Now.Year, startMonth, billingStart);
+                }
+            }
+           
             string start = DTStart.ToString("yyyyMMdd");
             string end = DTEnd.ToString("yyyyMMdd");
 
@@ -395,10 +420,10 @@ namespace ChildCareAppParentSide {
 
                 string sql = "select sum(TransactionTotal) " +
                              "from AllowedConnections natural join ChildcareTransaction natural join Child " +
-                             "where Child_ID = @childID and TransactionDate between " + start + " and " + end;
+                             "where Family_ID = @familyID and TransactionDate between " + start + " and " + end;
 
                 MySqlCommand command = new MySqlCommand(sql, conn);
-                command.Parameters.Add(new MySqlParameter("@childID", childID));
+                command.Parameters.Add(new MySqlParameter("@familyID", familyID));
 
                 object recordFound = null;
                 try{
