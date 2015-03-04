@@ -1,5 +1,5 @@
 INSERT INTO EventData
-VALUES (1,
+VALUES ("000001",
         "Late Childcare Fee",
         30,
         NULL,
@@ -10,7 +10,7 @@ VALUES (1,
         NULL);
 
 INSERT INTO EventData
-VALUES (2,
+VALUES ("000002",
         "Regular Childcare",
         5,
         2.25,
@@ -21,7 +21,7 @@ VALUES (2,
         NULL);
 
 INSERT INTO EventData
-VALUES (3,
+VALUES ("000003",
         "Infant Childcare",
         6,
         3.25,
@@ -32,7 +32,7 @@ VALUES (3,
         NULL);
 
 INSERT INTO EventData
-VALUES (4,
+VALUES ("000004",
         "Parent's Night Out",
         NULL,
         NULL,
@@ -43,7 +43,7 @@ VALUES (4,
         "Friday");
 
 INSERT INTO EventData
-VALUES (5,
+VALUES ("000005",
         "Camp",
         NULL,
         NULL,
