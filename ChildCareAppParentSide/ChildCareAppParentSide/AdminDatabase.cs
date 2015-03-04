@@ -135,16 +135,19 @@ namespace ChildCareAppParentSide {
 
          public int getMaxID() {
 
-            string sql = "SELECT MAX(Child_ID) FROM Child;";
+             string sql = "SELECT max(cast(Child_ID as unsigned)) from Child";
 
             MySqlCommand command = new MySqlCommand(sql, conn);
 
             try{
                 conn.Open();
-                int max = Convert.ToInt32(command.ExecuteScalar());
+                object max = command.ExecuteScalar();
+                if (max == DBNull.Value){
+                    conn.Close();
+                    return 0;
+                }
                 conn.Close();
-
-                return max;
+                return Convert.ToInt32(max);
             }
             catch{
                 MessageBox.Show("Database connection error: Failed to retrieve critical information");
@@ -154,17 +157,21 @@ namespace ChildCareAppParentSide {
         }//end getMaxID
 
         public int getMaxConnectionID(){
-            
-            string sql = "SELECT MAX(Allowance_ID) FROM AllowedConnections;";
+
+            string sql = "SELECT max(cast(Allowance_ID as unsigned)) from AllowedConnections";
 
             MySqlCommand command = new MySqlCommand(sql, conn);
 
             try{
                 conn.Open();
-                int max = Convert.ToInt32(command.ExecuteScalar());
+                object max = command.ExecuteScalar();
+                if (max == DBNull.Value)
+                {
+                    conn.Close();
+                    return 0;
+                }
                 conn.Close();
-
-                return max;
+                return Convert.ToInt32(max);
             }
             catch{
                 MessageBox.Show("Database connection error: Failed to retrieve critical information");
@@ -176,8 +183,8 @@ namespace ChildCareAppParentSide {
         public void addNewChild(string cID, string fName, string lName, string birthday, string allergies, string medical, string photo) {
             string imagePath = photo;
 
-            string sql = "INSERT INTO Child(Child_ID, FirstName, LastName, Birthday, Allergies, Medical, PhotoLocation) "
-                         + "VALUES (@cID, @fName, @lName, @birthday, @allergies, @medical, @photo);";
+            string sql = "INSERT INTO Child(Child_ID, FirstName, LastName, Birthday, Allergies, Medical, PhotoLocation, ChildDeletionDate) "
+                         + "VALUES (@cID, @fName, @lName, @birthday, @allergies, @medical, @photo, NULL);";
 
             MySqlCommand command = new MySqlCommand(sql, conn);
             command.CommandText = sql;
@@ -302,7 +309,7 @@ namespace ChildCareAppParentSide {
 
             string sql = "select Child.* " +
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
-                  "where Guardian_ID = @ID";
+                  "where Guardian_ID = @ID and ChildDeletionDate is null";
 
             MySqlCommand command = new MySqlCommand(sql, conn);
             command.Parameters.Add(new MySqlParameter("@ID", ID));
@@ -370,7 +377,7 @@ namespace ChildCareAppParentSide {
             string familyID = ID.Remove(ID.Length-1);
             string imagePath = settings.photoPath + "/default.jpg";
             
-            string sql = "INSERT INTO Guardian VALUES(@ID, '0000', 'First Name', 'Last Name', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', '--', 'Unknown', @imagePath)";
+            string sql = "INSERT INTO Guardian VALUES(@ID, '0000', 'First Name', 'Last Name', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', '--', 'Unknown', @imagePath, NULL)";
             MySqlCommand command = new MySqlCommand(sql, conn);
             command.Parameters.Add(new MySqlParameter("@ID", ID));
             command.Parameters.Add(new MySqlParameter("@imagePath", imagePath));

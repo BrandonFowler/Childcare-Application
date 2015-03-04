@@ -107,7 +107,7 @@ namespace ChildCareAppParentSide {
 
             string sql = "select Child.* " +
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID "+
-                  "where Guardian_ID = @guardianID";
+                  "where Guardian_ID = @guardianID and ChildDeletionDate is null";
 
             MySqlCommand command = new MySqlCommand(sql, conn);
             MySqlDataAdapter DB = new MySqlDataAdapter(command);
@@ -152,7 +152,7 @@ namespace ChildCareAppParentSide {
 
             string sql = "select Event_ID, EventName " + 
                          "from EventData " + 
-                         "where EventDay= @day and EventMonth= @month or EventWeekday= @dayOfWeek or Event_ID='2'";
+                         "where EventDay= @day and EventMonth= @month or EventWeekday= @dayOfWeek or Event_ID='000002'";
 
             MySqlCommand command = new MySqlCommand(sql, conn);
             MySqlDataAdapter DB = new MySqlDataAdapter(command);
@@ -193,7 +193,7 @@ namespace ChildCareAppParentSide {
             if (Convert.ToInt32(eventID) == 2) {
                 isInfant = checkInfant(birthday, date);
                 if (isInfant) {
-                    eventID = "3";
+                    eventID = "000003";
                 }
             }
 
@@ -225,7 +225,7 @@ namespace ChildCareAppParentSide {
 
         private int getNextPrimary(string column, string table) {
 
-            string sql = "Select Max(" + column + ") from " + table;
+            string sql = "Select max(cast("+column+" as unsigned)) from " + table;
             
             MySqlCommand command = new MySqlCommand(sql, conn);
 
@@ -297,7 +297,7 @@ namespace ChildCareAppParentSide {
                double hourDifference = TimeSpanTime.Hours - TimeSpanCheckInTime.Hours;
                double minuteDifference = TimeSpanTime.Minutes - TimeSpanCheckInTime.Minutes;
                double totalCheckedInHours = hourDifference + (minuteDifference/60.0);
-               if ((eventID.CompareTo("2") == 0 || eventID.CompareTo("3") == 0) && totalCheckedInHours > 3) {
+               if ((eventID.CompareTo("000002") == 0 || eventID.CompareTo("000003") == 0) && totalCheckedInHours > 3) {
                     double timeDifference = totalCheckedInHours - 3;
                     if (timeDifference > lateTime) {
                         lateTime = timeDifference;
@@ -323,6 +323,7 @@ namespace ChildCareAppParentSide {
             }
       
             eventFee = eventFee - billingCapCalc(eventID, guardianID, transaction[3], eventFee);
+            string eventFeeRounded = eventFee.ToString("f2");
 
             string sql = "update ChildcareTransaction " +
                   "set CheckedOut= @currentTimeString, TransactionTotal = @eventFee "+
@@ -330,7 +331,7 @@ namespace ChildCareAppParentSide {
 
             MySqlCommand command = new MySqlCommand(sql, conn);
             command.Parameters.Add(new MySqlParameter("@currentTimeString", currentTimeString));
-            command.Parameters.Add(new MySqlParameter("@eventFee", eventFee));
+            command.Parameters.Add(new MySqlParameter("@eventFee", eventFeeRounded));
             command.Parameters.Add(new MySqlParameter("@allowanceID", allowanceID));
 
             try{
@@ -347,7 +348,7 @@ namespace ChildCareAppParentSide {
             addToBalance(guardianID, eventFee);
 
             if (isLate) {
-                eventID = "1";
+                eventID = "000001";
                 double lateFee = getLateFee(eventID);
                 lateFee = lateFee * lateTime;
 
@@ -418,11 +419,11 @@ namespace ChildCareAppParentSide {
             string start = DTStart.ToString("yyyyMMdd");
             string end = DTEnd.ToString("yyyyMMdd");
 
-            if(eventID.CompareTo("2") == 0 || eventID.CompareTo("3") == 0 ){
+            if(eventID.CompareTo("000002") == 0 || eventID.CompareTo("000003") == 0 ){
 
                 string sql = "select sum(TransactionTotal) " +
                              "from AllowedConnections natural join ChildcareTransaction natural join Child " +
-                             "where Family_ID = @familyID and TransactionDate between " + start + " and " + end;
+                             "where Family_ID = @familyID and Event_ID != 000001 and TransactionDate between " + start + " and " + end;
 
                 MySqlCommand command = new MySqlCommand(sql, conn);
                 command.Parameters.Add(new MySqlParameter("@familyID", familyID));
