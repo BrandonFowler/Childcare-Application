@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChildCareAppParentSide.AdminDatabase" Collapsed="true">
+    <Position X="3.75" Y="2.75" Width="1.5" />
+    <AssociationLine Name="Settings" Type="ChildCareAppParentSide.Settings">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="1.152" Y="-2.992" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ABAIAIIAAABEAAhMAIBAAgAAAASAAAgAgQACAgAAUAI=</HashCode>
+      <FileName>AdminDatabase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Settings" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChildCareAppParentSide.ChildCheckInDatabase" Collapsed="true">
+    <Position X="5.75" Y="2.75" Width="1.75" />
+    <AssociationLine Name="Settings" Type="ChildCareAppParentSide.Settings">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.11" Y="-3.242" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAIAIAEBCAQAghUEEAAAAAAAASAAIgAoAIAQoAAUQM=</HashCode>
+      <FileName>ChildCheckInDatabase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Settings" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChildCareAppParentSide.win_AdminEditChildInfo" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="2" />
+    <AssociationLine Name="win_Confirmation" Type="ChildCareAppParentSide.win_Confirmation">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="2.318" Y="-1.169" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="AdminDatabase" Type="ChildCareAppParentSide.AdminDatabase">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.553" Y="-3.721" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>KAAUAEAAEEAQgCCAgAQAEAAAAwGAAQAEACBAAACAEAA=</HashCode>
+      <FileName>win_AdminEditChildInfo.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="win_Confirmation" />
+      <Property Name="AdminDatabase" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChildCareAppParentSide.win_AdminEditParentInfo" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="2" />
+    <AssociationLine Name="AdminDatabase" Type="ChildCareAppParentSide.AdminDatabase" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.125" Y="2.191" />
+        <Point X="2.125" Y="2.345" />
+        <Point X="2.75" Y="2.345" Type="JumpStart" />
+        <Point X="2.917" Y="2.345" Type="JumpEnd" />
+        <Point X="3.031" Y="2.345" Type="JumpStart" />
+        <Point X="3.198" Y="2.345" Type="JumpEnd" />
+        <Point X="4.289" Y="2.345" />
+        <Point X="4.289" Y="2.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.019" Y="-3.992" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="win_Confirmation" Type="ChildCareAppParentSide.win_Confirmation">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-6.249" Y="-1.138" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>KAAQAAAAEEAQACAAAASAkAAAAQGAAQAEAiBAIAAAGAA=</HashCode>
+      <FileName>win_AdminEditParentInfo.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AdminDatabase" />
+      <Property Name="win_Confirmation" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChildCareAppParentSide.win_AdminLogin" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="win_Settings" Type="ChildCareAppParentSide.win_Settings" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="0.875" />
+        <Point X="3.198" Y="0.875" Type="JumpStart" />
+        <Point X="3.031" Y="0.875" Type="JumpEnd" />
+        <Point X="2" Y="0.875" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="1.766" Y="-6.127" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="win_EnterID" Type="ChildCareAppParentSide.win_EnterID" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.578" Y="1.191" />
+        <Point X="4.578" Y="1.939" />
+        <Point X="3.198" Y="1.939" Type="JumpStart" />
+        <Point X="3.031" Y="1.939" Type="JumpEnd" />
+        <Point X="2.833" Y="1.939" />
+        <Point X="2.833" Y="3.875" />
+        <Point X="2.333" Y="3.875" Type="JumpStart" />
+        <Point X="2.167" Y="3.875" Type="JumpEnd" />
+        <Point X="2" Y="3.875" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="3.745" Y="-3.117" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="win_AdminEditParentInfo" Type="ChildCareAppParentSide.win_AdminEditParentInfo" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.77" Y="1.191" />
+        <Point X="3.77" Y="1.563" />
+        <Point X="3.198" Y="1.562" Type="JumpStart" />
+        <Point X="3.031" Y="1.563" Type="JumpEnd" />
+        <Point X="2.438" Y="1.563" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.787" Y="-5.461" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="AdminDatabase" Type="ChildCareAppParentSide.AdminDatabase">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="1.683" Y="-4.263" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="win_AdminEditChildInfo" Type="ChildCareAppParentSide.win_AdminEditChildInfo" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="0.656" />
+        <Point X="3.115" Y="0.656" />
+        <Point X="3.115" Y="2.75" />
+        <Point X="2.917" Y="2.75" Type="JumpStart" />
+        <Point X="2.75" Y="2.75" Type="JumpEnd" />
+        <Point X="2.5" Y="2.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="1.818" Y="-4.013" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAAIAAgAAAAQAICAAAhAAAAAgAEAAQEgACFAAgAAAAA=</HashCode>
+      <FileName>win_AdminLogin.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="win_Settings" />
+      <Property Name="AdminDatabase" />
+      <Property Name="win_EnterID" />
+      <Property Name="win_AdminEditParentInfo" />
+      <Property Name="win_AdminEditChildInfo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChildCareAppParentSide.win_ChildLogin" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Child" Type="ChildCareAppParentSide.Child">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="3.641" Y="-4.252" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ChildCheckInDatabase" Type="ChildCareAppParentSide.ChildCheckInDatabase" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.344" Y="1.191" />
+        <Point X="8.344" Y="2.375" />
+        <Point X="7.312" Y="2.375" />
+        <Point X="7.312" Y="2.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="1.977" Y="-4.036" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEQAAAAAICQAIAAAAAAAAAAAACAEQAAAAAAYAIAhAA=</HashCode>
+      <FileName>win_ChildLoginWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Child" />
+      <Property Name="ChildCheckInDatabase" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChildCareAppParentSide.win_Confirmation" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>win_Confirmation.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChildCareAppParentSide.win_EnterID" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <AssociationLine Name="win_EnterNewPin" Type="ChildCareAppParentSide.win_EnterNewPin">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-1.329" Y="-2.503" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAQgACAAAACAAAAAAGAAQAAAABAAAAAQAA=</HashCode>
+      <FileName>win_EnterID.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="win_EnterNewPin" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChildCareAppParentSide.win_EnterNewPin" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <AssociationLine Name="AdminDatabase" Type="ChildCareAppParentSide.AdminDatabase">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-2.664" Y="3.248" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAQgAAAAAACAAAAAAEAAQAAACBAAAAAAAA=</HashCode>
+      <FileName>win_EnterNewPin.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AdminDatabase" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChildCareAppParentSide.win_LoginWindow" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.75" />
+    <AssociationLine Name="win_AdminLogin" Type="ChildCareAppParentSide.win_AdminLogin" FixedFromPoint="true">
+      <Path>
+        <Point X="5.75" Y="0.812" />
+        <Point X="5" Y="0.812" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.766" Y="-5.94" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="win_ChildLogin" Type="ChildCareAppParentSide.win_ChildLogin">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="5.408" Y="-5.877" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ChildCheckInDatabase" Type="ChildCareAppParentSide.ChildCheckInDatabase">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.703" Y="-4.002" Height="0.182" Width="0.5" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAEJAAAIAAQMAgAAACARAQAAAAABIIBAAAAAIAARAA=</HashCode>
+      <FileName>win_LoginWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="win_AdminLogin" />
+      <Property Name="win_ChildLogin" />
+      <Property Name="ChildCheckInDatabase" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChildCareAppParentSide.win_Settings" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAIAAAAAAAAACQQQAAAABAAAAAAAA=</HashCode>
+      <FileName>win_Settings.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChildCareAppParentSide.Settings" Collapsed="true">
+    <Position X="4.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAgAAAEAAAAAAAQIAAEAAAAAABAAAgAQAEAEAAAAAI=</HashCode>
+      <FileName>Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChildCareAppParentSide.Child" Collapsed="true">
+    <Position X="8" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAABAgAAAAAAAAAwAEAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Child.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
