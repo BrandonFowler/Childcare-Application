@@ -5,7 +5,7 @@ namespace ChildCareAppParentSide {
 
         public class Child {
 
-            public Child(string firstName, string lastName, Image Image, string ID, string birthday, string medical, string allergies) {
+            public Child(string firstName, string lastName, Image Image, string ID, string birthday, string allergies, string medical) {
                 this.firstName = firstName;
                 this.lastName = lastName;
                 this.birthday = birthday;
