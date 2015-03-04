@@ -10,7 +10,7 @@
         </Counter>
         <Counter>
             <Name>column</Name>
-            <Value>60</Value>
+            <Value>62</Value>
             <Prefix>c</Prefix>
         </Counter>
         <Counter>
@@ -90,7 +90,7 @@
             <Columns>
                 <Column Id="c1">
                     <Name>Guardian_ID</Name>
-                    <Type>int</Type>
+                    <Type>varchar(6)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>true</PK>
@@ -100,7 +100,7 @@
                 </Column>
                 <Column Id="c36">
                     <Name>GuardianPIN</Name>
-                    <Type>int</Type>
+                    <Type>varchar(4)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>false</PK>
@@ -200,9 +200,19 @@
                 </Column>
                 <Column Id="c11">
                     <Name>PhotoLocation</Name>
-                    <Type>varchar(50)</Type>
+                    <Type>varchar(200)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
+                    <PK>false</PK>
+                    <DefaultValue></DefaultValue>
+                    <CheckExpression></CheckExpression>
+                    <Properties/>
+                </Column>
+                <Column Id="c61">
+                    <Name>GuardianDeletionDate</Name>
+                    <Type>date</Type>
+                    <Description></Description>
+                    <Nullable>true</Nullable>
                     <PK>false</PK>
                     <DefaultValue></DefaultValue>
                     <CheckExpression></CheckExpression>
@@ -222,7 +232,7 @@
             <Columns>
                 <Column Id="c12">
                     <Name>Child_ID</Name>
-                    <Type>int</Type>
+                    <Type>varchar(6)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>true</PK>
@@ -282,9 +292,19 @@
                 </Column>
                 <Column Id="c18">
                     <Name>PhotoLocation</Name>
-                    <Type>varchar(50)</Type>
+                    <Type>varchar(200)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
+                    <PK>false</PK>
+                    <DefaultValue></DefaultValue>
+                    <CheckExpression></CheckExpression>
+                    <Properties/>
+                </Column>
+                <Column Id="c62">
+                    <Name>ChildDeletionDate</Name>
+                    <Type>date</Type>
+                    <Description></Description>
+                    <Nullable>true</Nullable>
                     <PK>false</PK>
                     <DefaultValue></DefaultValue>
                     <CheckExpression></CheckExpression>
@@ -304,7 +324,7 @@
             <Columns>
                 <Column Id="c23">
                     <Name>Allowance_ID</Name>
-                    <Type>int</Type>
+                    <Type>varchar(6)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>true</PK>
@@ -314,7 +334,7 @@
                 </Column>
                 <Column Id="c21">
                     <Name>Guardian_ID</Name>
-                    <Type>int</Type>
+                    <Type>varchar(6)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>false</PK>
@@ -324,7 +344,7 @@
                 </Column>
                 <Column Id="c22">
                     <Name>Child_ID</Name>
-                    <Type>int</Type>
+                    <Type>varchar(6)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>false</PK>
@@ -334,7 +354,7 @@
                 </Column>
                 <Column Id="c59">
                     <Name>Family_ID</Name>
-                    <Type>int</Type>
+                    <Type>varchar(6)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>false</PK>
@@ -356,7 +376,7 @@
             <Columns>
                 <Column Id="c24">
                     <Name>ChildcareTransaction_ID</Name>
-                    <Type>int</Type>
+                    <Type>varchar(10)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>true</PK>
@@ -366,7 +386,7 @@
                 </Column>
                 <Column Id="c25">
                     <Name>Event_ID</Name>
-                    <Type>int</Type>
+                    <Type>varchar(6)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>false</PK>
@@ -376,7 +396,7 @@
                 </Column>
                 <Column Id="c26">
                     <Name>Allowance_ID</Name>
-                    <Type>int</Type>
+                    <Type>varchar(6)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>false</PK>
@@ -438,7 +458,7 @@
             <Columns>
                 <Column Id="c32">
                     <Name>Event_ID</Name>
-                    <Type>int</Type>
+                    <Type>varchar(6)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>true</PK>
@@ -560,7 +580,7 @@
                 </Column>
                 <Column Id="c39">
                     <Name>AccessLevel</Name>
-                    <Type>int</Type>
+                    <Type>varchar(1)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>false</PK>
@@ -634,7 +654,7 @@
             <Columns>
                 <Column Id="c57">
                     <Name>Family_ID</Name>
-                    <Type>int</Type>
+                    <Type>varchar(6)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>true</PK>
@@ -767,8 +787,8 @@
         <TableDisplay Id="td1">
             <X>4222.5</X>
             <Y>4779.5</Y>
-            <Width>183.0</Width>
-            <Height>202.0</Height>
+            <Width>234.0</Width>
+            <Height>217.0</Height>
             <LineColor>#000000</LineColor>
             <FillColor>#ffffff</FillColor>
             <Table>t1</Table>
@@ -777,8 +797,8 @@
         <TableDisplay Id="td2">
             <X>4225.5</X>
             <Y>5037.5</Y>
-            <Width>190.0</Width>
-            <Height>130.0</Height>
+            <Width>212.0</Width>
+            <Height>145.0</Height>
             <LineColor>#000000</LineColor>
             <FillColor>#ffffff</FillColor>
             <Table>t2</Table>
@@ -787,7 +807,7 @@
         <TableDisplay Id="td3">
             <X>4478.5</X>
             <Y>4897.5</Y>
-            <Width>130.0</Width>
+            <Width>173.0</Width>
             <Height>87.0</Height>
             <LineColor>#000000</LineColor>
             <FillColor>#ffffff</FillColor>
@@ -796,8 +816,8 @@
         </TableDisplay>
         <TableDisplay Id="td4">
             <X>4738.5</X>
-            <Y>4872.5</Y>
-            <Width>204.0</Width>
+            <Y>4871.5</Y>
+            <Width>240.0</Width>
             <Height>130.0</Height>
             <LineColor>#000000</LineColor>
             <FillColor>#ffffff</FillColor>
@@ -837,7 +857,7 @@
         <TableDisplay Id="td8">
             <X>4616.5</X>
             <Y>5041.5</Y>
-            <Width>127.0</Width>
+            <Width>160.0</Width>
             <Height>58.0</Height>
             <LineColor>#000000</LineColor>
             <FillColor>#ffffff</FillColor>
@@ -917,7 +937,7 @@
             </ControlPoint>
             <ControlPoint>
                 <X>4884.5</X>
-                <Y>4915.5</Y>
+                <Y>4914.5</Y>
             </ControlPoint>
             <PkTableDisplay>td5</PkTableDisplay>
             <FkTableDisplay>td4</FkTableDisplay>

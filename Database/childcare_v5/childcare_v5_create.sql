@@ -1,7 +1,7 @@
 -- Created by Vertabelo (http://vertabelo.com)
 -- Script type: create
 -- Scope: [tables, references, sequences, views, procedures]
--- Generated at Mon Feb 23 21:17:17 UTC 2015
+-- Generated at Wed Mar 04 06:24:01 UTC 2015
 
 
 
@@ -11,37 +11,38 @@
 CREATE TABLE Administrator (
     AdministratorUN varchar(50)    NOT NULL ,
     AdministratorPW varchar(20)    NOT NULL ,
-    AccessLevel int    NOT NULL ,
+    AccessLevel varchar(1)    NOT NULL ,
     AdministratorEmail varchar(50)    NOT NULL ,
     CONSTRAINT Administrator_pk PRIMARY KEY (AdministratorUN)
 );
 
 -- Table AllowedConnections
 CREATE TABLE AllowedConnections (
-    Allowance_ID int    NOT NULL ,
-    Guardian_ID int    NOT NULL ,
-    Child_ID int    NOT NULL ,
-    Family_ID int    NOT NULL ,
+    Allowance_ID varchar(6)    NOT NULL ,
+    Guardian_ID varchar(6)    NOT NULL ,
+    Child_ID varchar(6)    NOT NULL ,
+    Family_ID varchar(6)    NOT NULL ,
     CONSTRAINT AllowedConnections_pk PRIMARY KEY (Allowance_ID)
 );
 
 -- Table Child
 CREATE TABLE Child (
-    Child_ID int    NOT NULL ,
+    Child_ID varchar(6)    NOT NULL ,
     FirstName varchar(50)    NOT NULL ,
     LastName varchar(50)    NOT NULL ,
     Birthday date    NOT NULL ,
     Allergies varchar(200)    NULL ,
     Medical varchar(200)    NULL ,
     PhotoLocation varchar(200)    NOT NULL ,
+    ChildDeletionDate date    NULL ,
     CONSTRAINT Child_pk PRIMARY KEY (Child_ID)
 );
 
 -- Table ChildcareTransaction
 CREATE TABLE ChildcareTransaction (
-    ChildcareTransaction_ID int    NOT NULL ,
-    Event_ID int    NOT NULL ,
-    Allowance_ID int    NOT NULL ,
+    ChildcareTransaction_ID varchar(10)    NOT NULL ,
+    Event_ID varchar(6)    NOT NULL ,
+    Allowance_ID varchar(6)    NOT NULL ,
     TransactionDate date    NOT NULL ,
     CheckedIn time    NOT NULL ,
     CheckedOut time    NULL ,
@@ -51,7 +52,7 @@ CREATE TABLE ChildcareTransaction (
 
 -- Table EventData
 CREATE TABLE EventData (
-    Event_ID int    NOT NULL ,
+    Event_ID varchar(6)    NOT NULL ,
     EventName varchar(50)    NOT NULL ,
     HourlyPrice float    NULL ,
     HourlyDiscount float    NULL ,
@@ -65,15 +66,15 @@ CREATE TABLE EventData (
 
 -- Table Family
 CREATE TABLE Family (
-    Family_ID int    NOT NULL ,
+    Family_ID varchar(6)    NOT NULL ,
     FamilyTotal float    NULL ,
     CONSTRAINT Family_pk PRIMARY KEY (Family_ID)
 );
 
 -- Table Guardian
 CREATE TABLE Guardian (
-    Guardian_ID int    NOT NULL ,
-    GuardianPIN int    NOT NULL ,
+    Guardian_ID varchar(6)    NOT NULL ,
+    GuardianPIN varchar(4)    NOT NULL ,
     FirstName varchar(50)    NOT NULL ,
     LastName varchar(50)    NOT NULL ,
     Phone varchar(15)    NOT NULL ,
@@ -84,6 +85,7 @@ CREATE TABLE Guardian (
     StateAbrv varchar(2)    NOT NULL ,
     Zip varchar(10)    NOT NULL ,
     PhotoLocation varchar(200)    NOT NULL ,
+    GuardianDeletionDate date    NULL ,
     CONSTRAINT Guardian_pk PRIMARY KEY (Guardian_ID)
 );
 
