@@ -31,30 +31,6 @@ namespace ChildCareAppParentSide {
             this.txt_PINEntry.GotFocus += OnPINBoxFocus;
             this.txt_IDEntry.Focus();
             
-        }
-
-        public win_AdminLogin win_AdminLogin {
-            get {
-                throw new System.NotImplementedException();
-            }
-            set {
-            }
-        }
-
-        public win_ChildLogin win_ChildLogin {
-            get {
-                throw new System.NotImplementedException();
-            }
-            set {
-            }
-        }
-
-        internal ChildCheckInDatabase ChildCheckInDatabase {
-            get {
-                throw new System.NotImplementedException();
-            }
-            set {
-            }
         }//end win_LoginWindow
 
         private void OnIDBoxFocus(object sender, EventArgs e) {
