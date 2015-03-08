@@ -164,29 +164,58 @@ namespace ChildCareApp
             }
             dbCon.Close();
         }
+        public void DeleteAllowedConnection(string childID, string pID)
+        {
 
+            dbCon.Open();
+            try
+            {
+
+                string sql = "DELETE from AllowedConnections where Child_ID = " + childID +" AND Guardian_ID = " + pID +";" ;
+                MySqlCommand command = new MySqlCommand(sql, dbCon);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+
+                MessageBox.Show("Completed");
+            }
+
+
+            catch (MySqlException e)
+            {
+                MessageBox.Show("Failed");
+            }
+            dbCon.Close();
+
+        }//end GetFirstName
         public void DeleteChildInfo(string childID)
         {
 
             dbCon.Open();
             try
             {
-                string sql = "DELETE from AllowedConnections where Child_ID = " + childID;
-                //command = new SQLiteCommand(sql, this.dbCon);
+
+                string today = DateTime.Now.ToString("yyyy-MM-dd");
+                //string sql = "DELETE from Guardian where Guardian_ID = " + parentID;
+                string sql = @"UPDATE Child SET ChildDeletionDate = @today WHERE Child_ID = @childID;";
+                //SQLiteCommand command = new SQLiteCommand(sql, this.dbConn);
                 MySqlCommand command = new MySqlCommand(sql, dbCon);
                 command.CommandText = sql;
+                command.Parameters.Add(new MySqlParameter("@today", today));
+                command.Parameters.Add(new MySqlParameter("@childID", childID));
                 command.ExecuteNonQuery();
 
-                sql = "DELETE from Child where Child_ID = " + childID;
-                //SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-                command = new MySqlCommand(sql, dbCon);
-                command.CommandText = sql;
-                command.ExecuteNonQuery();
+                string sql2 = "DELETE from AllowedConnections where Child_ID = " + childID;
+                MySqlCommand command2 = new MySqlCommand(sql2, dbCon);
+                command2.CommandText = sql2;
+                command2.ExecuteNonQuery();
 
 
 
-                MessageBox.Show("Completed");
-            }
+
+                    MessageBox.Show("Completed");
+               }
+
+            
             catch (MySqlException e)
             {
                 MessageBox.Show("Failed");

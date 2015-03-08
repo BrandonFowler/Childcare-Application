@@ -99,8 +99,8 @@ namespace ChildCareApp {
             btn_Submit.IsEnabled = false; 
         }
         private void btn_MainMenu_Click(object sender, RoutedEventArgs e) {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            win_AdminMenu adminMenu = new win_AdminMenu();
+            adminMenu.Show();
             this.Close();
         }//end btn_MainMenu_Click
 
@@ -249,6 +249,22 @@ namespace ChildCareApp {
             }
 
             return familyID; 
+        }
+
+        private void btn_LinkChild_Click(object sender, RoutedEventArgs e)
+        {
+            string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
+            int link = 0;
+            win_Link_DeLinkChild linkDelinkChild = new win_Link_DeLinkChild(link, cID);
+            linkDelinkChild.ShowDialog(); //0 = link
+        }
+
+        private void btn_De_LinkChild_Click(object sender, RoutedEventArgs e)
+        {
+            string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
+            int delink = 1; 
+            win_Link_DeLinkChild linkDelinkChild = new win_Link_DeLinkChild(delink, cID);
+            linkDelinkChild.ShowDialog(); //1 = delink
         }
     }//end class
 

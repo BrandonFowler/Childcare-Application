@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Data;
 using System.Windows;
 using MySql.Data.MySqlClient;
+//using System.DateTime; 
 
 namespace ChildCareApp {
 
@@ -73,11 +74,17 @@ namespace ChildCareApp {
             dbConn.Open();
             try
             {
-                string sql = "DELETE from Guardian where Guardian_ID = " + parentID;
+                string today = DateTime.Now.ToString("yyyy-MM-dd"); 
+                //string sql = "DELETE from Guardian where Guardian_ID = " + parentID;
+                string sql = @"UPDATE Guardian SET GuardianDeletionDate = @today WHERE Guardian_ID = @parentID;"; 
                 //SQLiteCommand command = new SQLiteCommand(sql, this.dbConn);
                 MySqlCommand command = new MySqlCommand(sql, dbConn);
                 command.CommandText = sql;
+                command.Parameters.Add(new MySqlParameter("@today", today));
+                command.Parameters.Add(new MySqlParameter("@parentID", parentID));
+
                 command.ExecuteNonQuery();
+
                 MessageBox.Show("Completed");
             }
             catch (MySqlException e)

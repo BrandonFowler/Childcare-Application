@@ -54,8 +54,8 @@ namespace ChildCareApp {
 
         private void btn_Finish_Click(object sender, RoutedEventArgs e) {
 
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            win_AdminMenu adminMenu = new win_AdminMenu();
+            adminMenu.Show();
             this.Close(); 
         }//end btn_Finish_Click
 
@@ -157,23 +157,34 @@ namespace ChildCareApp {
             int count = DS.Tables[0].Rows.Count;
             if(count > 0)
             {
-                 txt_FirstName.Text = DS.Tables[0].Rows[0][2].ToString();
-                 txt_LastName.Text =  DS.Tables[0].Rows[0][3].ToString();
+                string deletionDate = ""; 
+                deletionDate = DS.Tables[0].Rows[0][12].ToString();
 
-                 txt_PhoneNumber.Text =  DS.Tables[0].Rows[0][4].ToString();
-                 txt_Email.Text =  DS.Tables[0].Rows[0][5].ToString();
+                if (String.IsNullOrEmpty(deletionDate))
+                {
+                    txt_FirstName.Text = DS.Tables[0].Rows[0][2].ToString();
+                    txt_LastName.Text = DS.Tables[0].Rows[0][3].ToString();
 
-                 txt_Address.Text =  DS.Tables[0].Rows[0][6].ToString();
-                 txt_Address2.Text = DS.Tables[0].Rows[0][7].ToString();
-                 txt_City.Text =  DS.Tables[0].Rows[0][8].ToString();
-                 txt_Zip.Text =  DS.Tables[0].Rows[0][10].ToString();
-                 cbo_State.Text =  DS.Tables[0].Rows[0][9].ToString();
+                    txt_PhoneNumber.Text = DS.Tables[0].Rows[0][4].ToString();
+                    txt_Email.Text = DS.Tables[0].Rows[0][5].ToString();
 
-                 string imageLink = DS.Tables[0].Rows[0][11].ToString();
-                 ImageBrush ib = new ImageBrush();
-                 ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
-                 cnv_ParentIcon .Background = ib; 
+                    txt_Address.Text = DS.Tables[0].Rows[0][6].ToString();
+                    txt_Address2.Text = DS.Tables[0].Rows[0][7].ToString();
+                    txt_City.Text = DS.Tables[0].Rows[0][8].ToString();
+                    txt_Zip.Text = DS.Tables[0].Rows[0][10].ToString();
+                    cbo_State.Text = DS.Tables[0].Rows[0][9].ToString();
 
+                    string imageLink = DS.Tables[0].Rows[0][11].ToString();
+                    ImageBrush ib = new ImageBrush();
+                    ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
+                    cnv_ParentIcon.Background = ib;
+                }
+                else
+                {            
+                    ClearFields();
+                    DisableForm();
+                    MessageBox.Show("This Parent has already been deleted.");
+                }
             }
 
         }//end LoadParentInfo
