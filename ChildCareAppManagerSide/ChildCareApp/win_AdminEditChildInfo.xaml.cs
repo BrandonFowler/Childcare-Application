@@ -253,18 +253,26 @@ namespace ChildCareApp {
 
         private void btn_LinkChild_Click(object sender, RoutedEventArgs e)
         {
-            string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
-            int link = 0;
-            win_Link_DeLinkChild linkDelinkChild = new win_Link_DeLinkChild(link, cID);
-            linkDelinkChild.ShowDialog(); //0 = link
+            if (lst_ChildBox.SelectedItem != null)
+            {
+                string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
+                int link = 0;
+                win_Link_DeLinkChild linkDelinkChild = new win_Link_DeLinkChild(link, cID);
+                linkDelinkChild.ShowDialog(); //0 = link
+            }
         }
 
         private void btn_De_LinkChild_Click(object sender, RoutedEventArgs e)
         {
-            string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
-            int delink = 1; 
-            win_Link_DeLinkChild linkDelinkChild = new win_Link_DeLinkChild(delink, cID);
-            linkDelinkChild.ShowDialog(); //1 = delink
+            if (lst_ChildBox.SelectedItem != null)
+            {
+                string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
+                int delink = 1;
+                win_Link_DeLinkChild linkDelinkChild = new win_Link_DeLinkChild(delink, cID);
+                linkDelinkChild.ShowDialog(); //1 = delink
+                //lst_ChildBox.Items.Clear();
+                //setChildBox();
+            }
         }
     }//end class
 
