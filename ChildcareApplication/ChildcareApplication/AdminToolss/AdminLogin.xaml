@@ -1,0 +1,13 @@
+﻿<Window x:Name="win_Login" x:Class="AdminTools.AdminLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="291.268" Width="274.149">
+    <Grid>
+        <Button x:Name="btn_Exit" Content="Exit" HorizontalAlignment="Left" Margin="179,230,0,0" VerticalAlignment="Top" Width="77" Click="btn_Exit_Click"/>
+        <Label x:Name="lbl_UserName" Content="User Name" HorizontalAlignment="Left" Margin="40,34,0,0" VerticalAlignment="Top" Width="146"/>
+        <Label x:Name="lbl_Password" Content="Password" HorizontalAlignment="Left" Margin="40,88,0,0" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="txt_UserName" Height="23" Margin="40,60,40,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="btn_Login" Content="Log In" Margin="80,173,80,0" VerticalAlignment="Top" Click="btn_Login_Click"/>
+        <PasswordBox x:Name="txt_Password" HorizontalAlignment="Left" Margin="40,119,0,0" VerticalAlignment="Top" Width="186"/>
+    </Grid>
+</Window>
