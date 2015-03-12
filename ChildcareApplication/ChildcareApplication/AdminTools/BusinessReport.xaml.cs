@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ChildCareApp {
+namespace AdminTools {
     /// <summary>
     /// Interaction logic for BusinessReport.xaml
     /// </summary>

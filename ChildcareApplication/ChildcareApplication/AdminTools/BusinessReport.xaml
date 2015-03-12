@@ -1,4 +1,4 @@
-﻿<Window x:Class="ChildCareApp.BusinessReport"
+﻿<Window x:Class="AdminTools.BusinessReport"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="BusinessReport" Height="528" Width="662">

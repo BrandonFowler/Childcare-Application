@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
 
-namespace ChildCareApp {
+namespace AdminTools {
     /// <summary>
     /// Interaction logic for ParentReport.xaml
     /// </summary>
