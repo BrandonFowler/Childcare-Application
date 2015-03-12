@@ -8,7 +8,7 @@ using System.Data;
 using System.Windows;
 using MySql.Data.MySqlClient;
 
-namespace ChildCareApp
+namespace AdminTools
 {
     class ChildInfoDatabse
     {

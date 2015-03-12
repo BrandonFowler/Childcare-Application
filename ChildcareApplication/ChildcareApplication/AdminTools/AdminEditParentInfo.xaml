@@ -1,4 +1,4 @@
-﻿<Window x:Class="ChildCareApp.AdminEditParentInfo"
+﻿<Window x:Class="AdminTools.AdminEditParentInfo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="win_AdminEditParentInfo" Height="461.194" Width="644.776">

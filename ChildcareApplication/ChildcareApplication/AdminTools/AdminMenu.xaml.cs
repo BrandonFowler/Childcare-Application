@@ -53,7 +53,7 @@ namespace AdminTools
         }
 
         private void btn_EditAddEvents_Click(object sender, RoutedEventArgs e) {
-            win_EditEvents editEvents = new win_EditEvents();
+            EditEvents editEvents = new EditEvents();
             editEvents.Show();
         }
 

@@ -15,7 +15,7 @@ using System.Data;
 using System.Collections;
 using System.IO;
 
-namespace ChildCareApp {
+namespace AdminTools {
     /// <summary>
     /// Interaction logic for win_AdminEditChildInfo.xaml
     /// </summary>

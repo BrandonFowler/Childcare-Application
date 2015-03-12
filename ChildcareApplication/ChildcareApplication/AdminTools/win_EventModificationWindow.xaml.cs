@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ChildCareApp {
+namespace AdminTools {
     /// <summary>
     /// Interaction logic for win_EventModificationWindow.xaml
     /// </summary>
@@ -30,7 +30,7 @@ namespace ChildCareApp {
         }
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
-            win_EditEvents win = new win_EditEvents();
+            EditEvents win = new EditEvents();
             win.Show();
             this.Close();
         }

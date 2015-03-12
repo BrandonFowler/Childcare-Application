@@ -5,7 +5,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 
-namespace ChildCareApp {
+namespace AdminTools {
     /// <summary>
     /// Interaction logic for win_AdminEditParentInfo.xaml
     /// </summary>

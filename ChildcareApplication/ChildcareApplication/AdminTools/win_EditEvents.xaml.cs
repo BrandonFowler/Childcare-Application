@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿//using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,12 +14,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ChildCareApp {
+namespace AdminTools {
     /// <summary>
     /// Interaction logic for win_EditEvents.xaml
     /// </summary>
-    public partial class win_EditEvents : Window {
-        public win_EditEvents() {
+    public partial class EditEvents : Window {
+        public EditEvents() {
             InitializeComponent();
             LoadEvents();
             FillComboBox();

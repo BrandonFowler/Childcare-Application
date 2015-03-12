@@ -14,7 +14,7 @@ using System.Text;
 using System.Windows;
 using MySql.Data.MySqlClient;
 
-namespace ChildCareApp {
+namespace AdminTools {
 
     class Database {
 
