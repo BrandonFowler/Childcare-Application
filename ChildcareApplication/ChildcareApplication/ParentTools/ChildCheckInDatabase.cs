@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SQLite;
 using System;
 using System.Data;
 using System.Windows;
@@ -7,37 +7,12 @@ namespace ParentTools {
 
     class ChildCheckInDatabase {
 
-        private MySql.Data.MySqlClient.MySqlConnection conn;
-        private string server;
-        private string port;
-        private string database;
-        private string UID;
-        private string password;
-        private string connectionString;
-        private Settings settings;
+        private SQLiteConnection conn;
 
         public ChildCheckInDatabase() {
-            this.settings = Settings.Instance;
-            this.server = settings.server;
-            this.port = settings.port;
-            this.database = settings.databaseName;
-            this.UID = settings.databaseUser;
-            this.password = settings.databasePassword;
-            connectionString = "SERVER="+server+"; PORT="+port+"; DATABASE="+database+"; UID="+UID+"; PASSWORD="+password+";";
-            conn = new MySql.Data.MySqlClient.MySqlConnection();
-            conn.ConnectionString = connectionString;
+           string sqliteFile = "../Database/database.db";
+            conn = new SQLiteConnection(sqliteFile);
         }//end Database(default constructor)
-
-        public ChildCheckInDatabase(string server, string port, string database, string UID, string password){
-            this.server = server;
-            this.port = port;
-            this.database = database;
-            this.UID = UID;
-            this.password = password;
-            connectionString = server + "; PORT=" + port + "; DATABASE=" + database + "; UID=" + UID + "; PASSWORD=" + password + ";";
-            conn = new MySql.Data.MySqlClient.MySqlConnection();
-            conn.ConnectionString = connectionString;
-        }//end Database
 
         public bool validateLogin(string ID, string PIN) {
 
@@ -45,7 +20,7 @@ namespace ParentTools {
                          "from Guardian " + 
                          "where Guardian_ID = @ID and GuardianPIN = @PIN";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
+            SQLiteCommand command = new MySqlCommand(sql, conn);
             command.Parameters.Add(new MySqlParameter("@ID", ID));
             command.Parameters.Add(new MySqlParameter("@PIN", PIN));
 
