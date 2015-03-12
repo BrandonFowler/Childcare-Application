@@ -10,7 +10,7 @@ using System.IO;
 using System.Windows.Controls;
 
 
-namespace ChildCareApp {
+namespace AdminTools {
     class Child {
         public Child(string ID, string firstName, string lastName,
                         Image image, string birthday, string medical, string allergies, string path) {
