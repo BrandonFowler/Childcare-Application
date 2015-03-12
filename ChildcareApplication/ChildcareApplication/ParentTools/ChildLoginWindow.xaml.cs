@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using AdminTools;
 
 namespace ParentTools {
    
@@ -38,10 +39,10 @@ namespace ParentTools {
             for (int x = 0; x < childrenData.GetLength(0); x++) {
                 Image image = buildImage(childrenData[x, 6], 60);
                 if (!db.isCheckedIn(childrenData[x, 0],this.guardianID)){
-                    lst_CheckInBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0], childrenData[x, 3], childrenData[x, 4], childrenData[x, 5]));
+                    lst_CheckInBox.Items.Add(new Child(childrenData[x, 0], childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 3], childrenData[x, 4], childrenData[x, 5], childrenData[x, 6]));
                 }
                 else{
-                    lst_CheckOutBox.Items.Add(new Child(childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 0], childrenData[x, 3], childrenData[x, 4], childrenData[x, 5]));
+                    lst_CheckOutBox.Items.Add(new Child(childrenData[x, 0], childrenData[x, 1], childrenData[x, 2], image, childrenData[x, 3], childrenData[x, 4], childrenData[x, 5], childrenData[x, 6]));
                 }
             }
           
@@ -61,7 +62,7 @@ namespace ParentTools {
                 image.Source = bitmapImage;
             } catch {
                 BitmapImage bitmapImage = new BitmapImage();
-                var fileInfo = new FileInfo(@"" + settings.photoPath + "/default.jpg");
+                var fileInfo = new FileInfo(@"../../../../Photos/default.jpg");
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
@@ -108,7 +109,7 @@ namespace ParentTools {
         }//end setUpParentDisplay
 
         private void exitToLogin(){
-            win_LoginWindow loginWindow = new win_LoginWindow();
+            ParentLogin loginWindow = new ParentLogin();
             loginWindow.Show();
             this.Close();
         }//end exitToLogin

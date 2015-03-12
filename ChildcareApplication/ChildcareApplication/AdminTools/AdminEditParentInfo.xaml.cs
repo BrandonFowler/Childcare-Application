@@ -54,7 +54,7 @@ namespace AdminTools {
 
         private void btn_Finish_Click(object sender, RoutedEventArgs e) {
 
-            win_AdminMenu adminMenu = new win_AdminMenu();
+            AdminMenu adminMenu = new AdminMenu();
             adminMenu.Show();
             this.Close(); 
         }//end btn_Finish_Click

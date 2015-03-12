@@ -50,7 +50,7 @@ namespace AdminTools {
                             MakeFamilyID(pID);
                             MessageBox.Show("Made New Parent");
 
-                            win_AdminEditParentInfo adminEditParentInfo = new win_AdminEditParentInfo(pID);
+                            AdminEditParentInfo adminEditParentInfo = new AdminEditParentInfo(pID);
                             adminEditParentInfo.Show();
                             this.Close();
 

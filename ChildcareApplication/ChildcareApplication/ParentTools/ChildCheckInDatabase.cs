@@ -20,9 +20,9 @@ namespace ParentTools {
                          "from Guardian " + 
                          "where Guardian_ID = @ID and GuardianPIN = @PIN";
 
-            SQLiteCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@ID", ID));
-            command.Parameters.Add(new MySqlParameter("@PIN", PIN));
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@ID", ID));
+            command.Parameters.Add(new SQLiteParameter("@PIN", PIN));
 
             try{
                 conn.Open();
@@ -35,7 +35,7 @@ namespace ParentTools {
                     return true;
                 }
             }
-            catch (MySqlException e){
+            catch (SQLiteException e){
                 MessageBox.Show(e.ToString());
                 conn.Close();
             }
@@ -49,9 +49,9 @@ namespace ParentTools {
                          "from Guardian " +
                          "where Guardian_ID = @guardianID";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@guardianID", guardianID));
-            MySqlDataAdapter DB = new MySqlDataAdapter(command);
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@guardianID", guardianID));
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
 
             try
@@ -84,9 +84,9 @@ namespace ParentTools {
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID "+
                   "where Guardian_ID = @guardianID and ChildDeletionDate is null";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            MySqlDataAdapter DB = new MySqlDataAdapter(command);
-            command.Parameters.Add(new MySqlParameter("@guardianID", guardianID));
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            command.Parameters.Add(new SQLiteParameter("@guardianID", guardianID));
             DataSet DS = new DataSet();
 
             try{
@@ -129,11 +129,11 @@ namespace ParentTools {
                          "from EventData " + 
                          "where EventDay= @day and EventMonth= @month or EventWeekday= @dayOfWeek or Event_ID='000002'";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            MySqlDataAdapter DB = new MySqlDataAdapter(command);
-            command.Parameters.Add(new MySqlParameter("@day", day));
-            command.Parameters.Add(new MySqlParameter("@month", month));
-            command.Parameters.Add(new MySqlParameter("@dayOfWeek", dayOfWeek));
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            command.Parameters.Add(new SQLiteParameter("@day", day));
+            command.Parameters.Add(new SQLiteParameter("@month", month));
+            command.Parameters.Add(new SQLiteParameter("@dayOfWeek", dayOfWeek));
             DataSet DS = new DataSet();
 
             try{
@@ -179,19 +179,19 @@ namespace ParentTools {
                          "ChildcareTransaction (ChildcareTransaction_ID,Event_ID,Allowance_ID,transactionDate,CheckedIn) " + 
                          "values (@maxTransactionID, @eventID, @allowanceID, @date, @time)";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@maxTransactionID", maxTransactionID));
-            command.Parameters.Add(new MySqlParameter("@eventID", eventID));
-            command.Parameters.Add(new MySqlParameter("@allowanceID", allowanceID));
-            command.Parameters.Add(new MySqlParameter("@date", date));
-            command.Parameters.Add(new MySqlParameter("@time", time));
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@maxTransactionID", maxTransactionID));
+            command.Parameters.Add(new SQLiteParameter("@eventID", eventID));
+            command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
+            command.Parameters.Add(new SQLiteParameter("@date", date));
+            command.Parameters.Add(new SQLiteParameter("@time", time));
 
             try{
                 conn.Open();
                 command.ExecuteNonQuery();
                 conn.Close();
             }
-            catch (MySqlException e){
+            catch (SQLiteException e){
                 MessageBox.Show(e.ToString());
                 conn.Close();
             }
@@ -202,7 +202,7 @@ namespace ParentTools {
 
             string sql = "Select max(cast("+column+" as unsigned)) from " + table;
             
-            MySqlCommand command = new MySqlCommand(sql, conn);
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
 
             try
             {
@@ -230,9 +230,9 @@ namespace ParentTools {
                          "from AllowedConnections " +
                          "where Guardian_ID = @guardianID and Child_ID = @childID";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@guardianID", guardianID));
-            command.Parameters.Add(new MySqlParameter("@childID", childID));
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@guardianID", guardianID));
+            command.Parameters.Add(new SQLiteParameter("@childID", childID));
 
             try{
                 conn.Open();
@@ -241,7 +241,7 @@ namespace ParentTools {
 
                 return connectionID;
             }
-            catch (MySqlException){
+            catch (SQLiteException){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve critical information");
                 return null;
@@ -304,17 +304,17 @@ namespace ParentTools {
                   "set CheckedOut= @currentTimeString, TransactionTotal = @eventFee "+
                   "where Allowance_ID = @allowanceID and CheckedOut is null";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@currentTimeString", currentTimeString));
-            command.Parameters.Add(new MySqlParameter("@eventFee", eventFeeRounded));
-            command.Parameters.Add(new MySqlParameter("@allowanceID", allowanceID));
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@currentTimeString", currentTimeString));
+            command.Parameters.Add(new SQLiteParameter("@eventFee", eventFeeRounded));
+            command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
 
             try{
                 conn.Open();
                 command.ExecuteNonQuery();
                 conn.Close();
             }
-            catch(MySqlException){
+            catch(SQLiteException){
                 MessageBox.Show("Database connection error: Unable to check out child");
                 conn.Close();
                 return false;
@@ -333,12 +333,12 @@ namespace ParentTools {
                       "ChildcareTransaction (ChildcareTransaction_ID,Event_ID,Allowance_ID,transactionDate,CheckedIn,CheckedOut,TransactionTotal) " +
                       "values (@maxTransactionID, @eventID, @allowanceID, @currentDateString, '00:00:00','00:00:00', @lateFee)";
 
-                command = new MySqlCommand(sql, conn);
-                command.Parameters.Add(new MySqlParameter("@maxTransactionID", maxTransactionID));
-                command.Parameters.Add(new MySqlParameter("@eventID", eventID));
-                command.Parameters.Add(new MySqlParameter("@allowanceID", allowanceID));
-                command.Parameters.Add(new MySqlParameter("@currentDateString", currentDateString));
-                command.Parameters.Add(new MySqlParameter("@lateFee", lateFee));
+                command = new SQLiteCommand(sql, conn);
+                command.Parameters.Add(new SQLiteParameter("@maxTransactionID", maxTransactionID));
+                command.Parameters.Add(new SQLiteParameter("@eventID", eventID));
+                command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
+                command.Parameters.Add(new SQLiteParameter("@currentDateString", currentDateString));
+                command.Parameters.Add(new SQLiteParameter("@lateFee", lateFee));
 
                 if (maxTransactionID > -1){
                     try{
@@ -346,7 +346,7 @@ namespace ParentTools {
                         command.ExecuteNonQuery();
                         conn.Close();
                     }
-                    catch(MySqlException){
+                    catch(SQLiteException){
                         conn.Close();
                         MessageBox.Show("Database connection error: Unable to record late fee");
                     }
@@ -363,9 +363,9 @@ namespace ParentTools {
 
         private double billingCapCalc(string eventID, string guardianID, string transactionDate, double eventFee) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
-            double cap = Convert.ToDouble(settings.regularCareCap);
-            int billingStart = Convert.ToInt32(settings.billStart);
-            int billingEnd = Convert.ToInt32(settings.billEnd); ;
+            double cap = 100;
+            int billingStart = 20;
+            int billingEnd = 19;
             DateTime DTStart;
             DateTime DTEnd;
             if (DateTime.Now.Day > billingEnd) {
@@ -400,8 +400,8 @@ namespace ParentTools {
                              "from AllowedConnections natural join ChildcareTransaction natural join Child " +
                              "where Family_ID = @familyID and Event_ID != 000001 and TransactionDate between " + start + " and " + end;
 
-                MySqlCommand command = new MySqlCommand(sql, conn);
-                command.Parameters.Add(new MySqlParameter("@familyID", familyID));
+                SQLiteCommand command = new SQLiteCommand(sql, conn);
+                command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
 
                 object recordFound = null;
                 try{
@@ -409,7 +409,7 @@ namespace ParentTools {
                     recordFound = command.ExecuteScalar();
                     conn.Close();
                 }
-                catch(MySqlException){
+                catch(SQLiteException){
                     conn.Close();
                     MessageBox.Show("Database connection error: Unable to check if charge exceeds monthly maximum for normal care.");
                 }
@@ -444,16 +444,16 @@ namespace ParentTools {
                          "set FamilyTotal = FamilyTotal + @fee " +
                          "where Family_ID = @familyID";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@fee", fee));
-            command.Parameters.Add(new MySqlParameter("@familyID", familyID));
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@fee", fee));
+            command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
 
             try{
                 conn.Open();
                 command.ExecuteNonQuery();
                 conn.Close();
             }
-            catch(MySqlException){
+            catch(SQLiteException){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to add charge to family balance.");
             }
@@ -469,9 +469,9 @@ namespace ParentTools {
                          "Group By Allowance_ID " +
                          "HAVING COUNT(*) = 1 ";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@familyID", familyID));
-            command.Parameters.Add(new MySqlParameter("@childID", childID));
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
+            command.Parameters.Add(new SQLiteParameter("@childID", childID));
 
             try{
                 conn.Open();
@@ -480,7 +480,7 @@ namespace ParentTools {
 
                 return allowanceID;
             }
-            catch (MySqlException){
+            catch (SQLiteException){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve critical information.");
                 return null;
@@ -493,8 +493,8 @@ namespace ParentTools {
                          "from OperatingHours " +
                          "where OperatingWeekday = @dayOfWeek";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@dayOfWeek", dayOfWeek));
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@dayOfWeek", dayOfWeek));
 
             try{
                 conn.Open();
@@ -503,7 +503,7 @@ namespace ParentTools {
 
                 return closingTime;
             }
-            catch (MySqlException){
+            catch (SQLiteException){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve critical information. Any late fees have not been recorded.");
                 return null;
@@ -517,8 +517,8 @@ namespace ParentTools {
                          "from EventData " +
                          "where Event_ID = @eventID";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@eventID", eventID));
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@eventID", eventID));
 
             try{
                 conn.Open();
@@ -528,7 +528,7 @@ namespace ParentTools {
                 double lateFee = Convert.ToDouble(fee);
                 return lateFee;
             }
-            catch (MySqlException){
+            catch (SQLiteException){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve critical information. Any late fees have not been recorded.");
                 return 0;
@@ -541,9 +541,9 @@ namespace ParentTools {
                   "from EventData " +
                   "where Event_ID = @eventID";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@eventID", eventID));
-            MySqlDataAdapter DB = new MySqlDataAdapter(command);
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@eventID", eventID));
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
 
             try{
@@ -576,9 +576,9 @@ namespace ParentTools {
                          "Group By ChildcareTransaction_ID " +
                          "HAVING COUNT(*) = 1 ";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@familyID", familyID));
-            MySqlDataAdapter DB = new MySqlDataAdapter(command);
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
 
             try{
@@ -589,7 +589,7 @@ namespace ParentTools {
 
                 return count;
             }
-            catch (MySqlException){
+            catch (SQLiteException){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
                 return 0;
@@ -602,9 +602,9 @@ namespace ParentTools {
                          "from ChildcareTransaction "+
                          "where Allowance_ID = @allowanceID and CheckedOut is null";
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@allowanceID", allowanceID));
-            MySqlDataAdapter DB = new MySqlDataAdapter(command);
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
 
             try{
@@ -620,7 +620,7 @@ namespace ParentTools {
 
                 return transaction;
             }
-            catch (MySqlException){
+            catch (SQLiteException){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve original transaction.");
                 return null;
@@ -634,9 +634,9 @@ namespace ParentTools {
                          "from Child natural join AllowedConnections natural join ChildcareTransaction " +
                          "where Family_ID = @familyID and Child_ID = @childID and CheckedOut is null ";
            
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.Parameters.Add(new MySqlParameter("@familyID", familyID));
-            command.Parameters.Add(new MySqlParameter("@childID", childID));
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
+            command.Parameters.Add(new SQLiteParameter("@childID", childID));
 
             try{
                 conn.Open();

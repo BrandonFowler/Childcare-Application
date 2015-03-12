@@ -76,7 +76,7 @@ namespace AdminTools
 
         private void DisplayAdminEditParentWindow(string ID) {
 
-            win_AdminEditParentInfo AdminEditParentWindow = new win_AdminEditParentInfo(ID);
+            AdminEditParentInfo AdminEditParentWindow = new AdminEditParentInfo(ID);
             AdminEditParentWindow.Show();
             this.Close();
         }//end DisplayAdminEditParentWindow

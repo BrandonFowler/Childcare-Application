@@ -13,7 +13,7 @@ using System.Windows.Controls;
 namespace AdminTools {
     class Child {
         public Child(string ID, string firstName, string lastName,
-                        Image image, string birthday, string medical, string allergies, string path) {
+                        Image image, string birthday,string allergies, string medical, string path) {
 						
 				this.ID = ID;
                 this.firstName = firstName;

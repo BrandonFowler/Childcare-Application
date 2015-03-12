@@ -89,7 +89,7 @@ namespace AdminTools {
 
         private void DisplayAdminWindow() {
 
-            win_AdminMenu AdminMenu = new win_AdminMenu();
+            AdminMenu AdminMenu = new AdminMenu();
             AdminMenu.Show();
             this.Close(); 
 

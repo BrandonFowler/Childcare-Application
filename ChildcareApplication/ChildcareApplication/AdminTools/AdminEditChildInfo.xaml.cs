@@ -99,7 +99,7 @@ namespace AdminTools {
             btn_Submit.IsEnabled = false; 
         }
         private void btn_MainMenu_Click(object sender, RoutedEventArgs e) {
-            win_AdminMenu adminMenu = new win_AdminMenu();
+            AdminMenu adminMenu = new AdminMenu();
             adminMenu.Show();
             this.Close();
         }//end btn_MainMenu_Click
