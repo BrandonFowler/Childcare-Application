@@ -165,7 +165,7 @@ namespace ParentTools {
                 string PIN = txt_PINEntry.Password;
                 bool userFound = this.db.validateLogin(ID, PIN);
                 if (userFound) {
-                    win_ChildLogin ChildLoginWindow = new win_ChildLogin(ID);
+                    ChildLogin ChildLoginWindow = new ChildLogin(ID);
                     ChildLoginWindow.Show();
                     ChildLoginWindow.WindowState = WindowState.Maximized;
                     this.Close();
@@ -174,14 +174,6 @@ namespace ParentTools {
                     MessageBox.Show("User ID or PIN does not exist");
                 }
             }
-        }//btn_Login_Click
-
-        private void btn_AdminLogin_Click(object sender, RoutedEventArgs e) {
-            win_AdminLogin adminLogin = new win_AdminLogin();
-            adminLogin.Show();
-            adminLogin.WindowState = WindowState.Maximized;
-            this.Close();
-            
         }//btn_Login_Click
 
     }//end win_LoginWindow(class)

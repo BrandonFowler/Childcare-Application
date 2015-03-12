@@ -11,11 +11,9 @@ namespace ParentTools {
         private string guardianID;
         private ChildCheckInDatabase db;
         private DateTime updateTime;
-        private Settings settings;
 
         public ChildLogin(string ID) {
             InitializeComponent();
-            this.settings = Settings.Instance;
             this.guardianID = ID;
             this.db = new ChildCheckInDatabase();
             setUpCheckInBox();
