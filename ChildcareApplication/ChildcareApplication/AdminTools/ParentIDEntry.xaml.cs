@@ -19,11 +19,11 @@ namespace AdminTools
     /// </summary>
     /// 
 
-    public partial class ParentLogin : Window {
+    public partial class ParentIDEntry : Window {
  
         private Database db;
         private bool editParent; 
-        public ParentLogin(bool editP) {
+        public ParentIDEntry(bool editP) {
             InitializeComponent();
             editParent = editP; 
             this.db = new Database();

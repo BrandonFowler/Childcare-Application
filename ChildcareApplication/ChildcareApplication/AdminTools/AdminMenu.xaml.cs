@@ -24,13 +24,13 @@ namespace AdminTools
 
         private void btn_EditOrDeleteParent_Click(object sender, RoutedEventArgs e) {
             bool editParent = true; 
-            ParentLogin ParentLogin = new ParentLogin(editParent);
+            ParentIDEntry ParentLogin = new ParentIDEntry(editParent);
             ParentLogin.Show();
             this.Close();
         }
 
         private void btn_Logout_Click(object sender, RoutedEventArgs e) {
-            MainWindow loginWindow = new MainWindow();
+            AdminLogin loginWindow = new AdminLogin();
             loginWindow.Show();
             this.Close();
         }
@@ -47,7 +47,7 @@ namespace AdminTools
 
         private void btn_EditOrDeleteChild_Click(object sender, RoutedEventArgs e) {
             bool editParent = false; 
-            ParentLogin ParentLogin = new ParentLogin(editParent);
+            ParentIDEntry ParentLogin = new ParentIDEntry(editParent);
             ParentLogin.Show();
             this.Close();
         }

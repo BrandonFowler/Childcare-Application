@@ -62,6 +62,9 @@
     <Compile Include="AdminTools\BusinessReport.xaml.cs">
       <DependentUpon>BusinessReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserTypeSelection.xaml.cs">
+      <DependentUpon>UserTypeSelection.xaml</DependentUpon>
+    </Compile>
     <Page Include="AdminTools\AdminLogin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -102,7 +105,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AdminTools\ParentLogin.xaml">
+    <Page Include="AdminTools\ParentIDEntry.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -147,8 +150,8 @@
     <Compile Include="AdminTools\Link_DeLinkChild.xaml.cs">
       <DependentUpon>Link_DeLinkChild.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminTools\ParentLogin.xaml.cs">
-      <DependentUpon>ParentLogin.xaml</DependentUpon>
+    <Compile Include="AdminTools\ParentIDEntry.xaml.cs">
+      <DependentUpon>ParentIDEntry.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdminTools\DeleteConformation.xaml.cs">
       <DependentUpon>DeleteConformation.xaml</DependentUpon>
@@ -164,6 +167,10 @@
     <Compile Include="ParentTools\ParentLogin.xaml.cs">
       <DependentUpon>ParentLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="UserTypeSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
