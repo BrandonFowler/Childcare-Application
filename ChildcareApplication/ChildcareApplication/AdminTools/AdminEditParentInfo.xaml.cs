@@ -72,7 +72,7 @@ namespace AdminTools {
 
             bool? delete;
              
-            win_DeleteConformation DeleteConformation = new win_DeleteConformation();
+            DeleteConformation DeleteConformation = new DeleteConformation();
             delete = DeleteConformation.ShowDialog();
             if ((bool)delete == true)
             {

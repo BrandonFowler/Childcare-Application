@@ -18,7 +18,7 @@ namespace AdminTools
     /// Interaction logic for win_Link_DeLinkChild.xaml
     /// </summary>
 
-    public partial class win_Link_DeLinkChild : Window
+    public partial class Link_DeLinkChild : Window
     {
         //private LoadParentInfoDatabase db;
         private ChildInfoDatabse db;
@@ -26,7 +26,7 @@ namespace AdminTools
         string childID;
 
         //private ChildInfoDatabse dbChild;
-        public win_Link_DeLinkChild(int link, string cID)
+        public Link_DeLinkChild(int link, string cID)
         {
             linked = link;
             childID = cID; 

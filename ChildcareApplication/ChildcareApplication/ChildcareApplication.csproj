@@ -90,19 +90,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AdminTools\win_EditEvents.xaml">
+    <Page Include="AdminTools\EditEvents.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AdminTools\win_EventModificationWindow.xaml">
+    <Page Include="AdminTools\EventModificationWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AdminTools\win_Link_DeLinkChild.xaml">
+    <Page Include="AdminTools\Link_DeLinkChild.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AdminTools\win_ParentLogin.xaml">
+    <Page Include="AdminTools\ParentLogin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdminTools\DeleteConformation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -134,17 +138,20 @@
     <Compile Include="AdminTools\AdminEditChildInfo.xaml.cs">
       <DependentUpon>AdminEditChildInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminTools\win_EditEvents.xaml.cs">
-      <DependentUpon>win_EditEvents.xaml</DependentUpon>
+    <Compile Include="AdminTools\EditEvents.xaml.cs">
+      <DependentUpon>EditEvents.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminTools\win_EventModificationWindow.xaml.cs">
-      <DependentUpon>win_EventModificationWindow.xaml</DependentUpon>
+    <Compile Include="AdminTools\EventModificationWindow.xaml.cs">
+      <DependentUpon>EventModificationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminTools\win_Link_DeLinkChild.xaml.cs">
-      <DependentUpon>win_Link_DeLinkChild.xaml</DependentUpon>
+    <Compile Include="AdminTools\Link_DeLinkChild.xaml.cs">
+      <DependentUpon>Link_DeLinkChild.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminTools\win_ParentLogin.xaml.cs">
-      <DependentUpon>win_ParentLogin.xaml</DependentUpon>
+    <Compile Include="AdminTools\ParentLogin.xaml.cs">
+      <DependentUpon>ParentLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminTools\DeleteConformation.xaml.cs">
+      <DependentUpon>DeleteConformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

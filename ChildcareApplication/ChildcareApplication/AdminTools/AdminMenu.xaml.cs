@@ -24,7 +24,7 @@ namespace AdminTools
 
         private void btn_EditOrDeleteParent_Click(object sender, RoutedEventArgs e) {
             bool editParent = true; 
-            win_ParentLogin ParentLogin = new win_ParentLogin(editParent);
+            ParentLogin ParentLogin = new ParentLogin(editParent);
             ParentLogin.Show();
             this.Close();
         }
@@ -47,7 +47,7 @@ namespace AdminTools
 
         private void btn_EditOrDeleteChild_Click(object sender, RoutedEventArgs e) {
             bool editParent = false; 
-            win_ParentLogin ParentLogin = new win_ParentLogin(editParent);
+            ParentLogin ParentLogin = new ParentLogin(editParent);
             ParentLogin.Show();
             this.Close();
         }

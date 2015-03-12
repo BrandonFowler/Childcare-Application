@@ -1,4 +1,4 @@
-﻿<Window x:Class="AdminTools.win_ParentLogin"
+﻿<Window x:Class="AdminTools.ParentLogin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="win_ParentLogin" Height="252.621" Width="378.238">

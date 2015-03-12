@@ -1,7 +1,7 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -99,14 +99,14 @@ namespace AdminTools {
         }
 
         private void LoadReport(String query) {
-            MySqlConnection connection = new MySqlConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
+            SQLiteConnection connection = new SQLiteConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
 
             try {
                 connection.Open();
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
                 cmd.ExecuteNonQuery();
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
                 DataTable table = new DataTable("Parent Report");
                 adapter.Fill(table);
                 BusinessDataGrid.ItemsSource = table.DefaultView;

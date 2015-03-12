@@ -1,7 +1,7 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,13 +18,13 @@ namespace AdminTools {
     /// <summary>
     /// Interaction logic for win_EventModificationWindow.xaml
     /// </summary>
-    public partial class win_EventModificationWindow : Window {
+    public partial class EventModificationWindow : Window {
 
-        public win_EventModificationWindow() {
+        public EventModificationWindow() {
             InitializeComponent();
         }
 
-        public win_EventModificationWindow(String eventID) {
+        public EventModificationWindow(String eventID) {
             InitializeComponent();
             LoadData(eventID);
         }
@@ -56,23 +56,23 @@ namespace AdminTools {
         }
 
         private void LoadData(String eventID) { //TODO: refactor
-            MySqlConnection connection = new MySqlConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
+            SQLiteConnection connection = new SQLiteConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
 
             try {
                 connection.Open();
                 String query = "SELECT * FROM EventData WHERE Event_ID = '" + eventID + "';";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
 
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SQLiteDataReader reader = cmd.ExecuteReader();
                 reader.Read();
 
-                txt_EventName.Text = reader.GetString("EventName");
+                txt_EventName.Text = reader.GetString(1);
 
-                float hourlyPrice = reader.GetFloat("HourlyPrice");
-                float dailyPrice = reader.GetFloat("DailyPrice");
-                int month = reader.GetInt32("EventMonth");
-                int day = reader.GetInt32("EventDay");
-                String dayName = reader.GetString("EventWeekday");
+                float hourlyPrice = reader.GetFloat(2);
+                float dailyPrice = reader.GetFloat(4);
+                int month = reader.GetInt32(6);
+                int day = reader.GetInt32(7);
+                String dayName = reader.GetString(8);
 
                 if (hourlyPrice != null) {
                     cmb_PriceType.SelectedIndex = 0;

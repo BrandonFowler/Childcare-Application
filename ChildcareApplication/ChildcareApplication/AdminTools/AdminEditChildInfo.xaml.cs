@@ -77,7 +77,7 @@ namespace AdminTools {
             bool? delete;
             if (lst_ChildBox.SelectedItem != null)
             {
-                win_DeleteConformation DeleteConformation = new win_DeleteConformation();
+                DeleteConformation DeleteConformation = new DeleteConformation();
                 delete = DeleteConformation.ShowDialog();
 
                 if ((bool)delete == true)
@@ -257,7 +257,7 @@ namespace AdminTools {
             {
                 string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
                 int link = 0;
-                win_Link_DeLinkChild linkDelinkChild = new win_Link_DeLinkChild(link, cID);
+                Link_DeLinkChild linkDelinkChild = new Link_DeLinkChild(link, cID);
                 linkDelinkChild.ShowDialog(); //0 = link
             }
         }
@@ -268,7 +268,7 @@ namespace AdminTools {
             {
                 string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
                 int delink = 1;
-                win_Link_DeLinkChild linkDelinkChild = new win_Link_DeLinkChild(delink, cID);
+                Link_DeLinkChild linkDelinkChild = new Link_DeLinkChild(delink, cID);
                 linkDelinkChild.ShowDialog(); //1 = delink
                 //lst_ChildBox.Items.Clear();
                 //setChildBox();

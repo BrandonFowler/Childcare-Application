@@ -11,8 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MySql.Data.MySqlClient;
 using System.Data;
+using System.Data.SQLite;
 
 namespace AdminTools {
     /// <summary>
@@ -26,14 +26,14 @@ namespace AdminTools {
 
         //Loads a report based on the passed in MySQL query
         private void LoadReport(String query) {
-            MySqlConnection connection = new MySqlConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
+            SQLiteConnection connection = new SQLiteConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
 
             try {
                 connection.Open();
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
                 cmd.ExecuteNonQuery();
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
                 DataTable table = new DataTable("Parent Report");
                 adapter.Fill(table);
                 ParentDataGrid.ItemsSource = table.DefaultView;

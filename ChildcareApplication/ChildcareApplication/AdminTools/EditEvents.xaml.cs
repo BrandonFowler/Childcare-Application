@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,15 +27,15 @@ namespace AdminTools {
         }
 
         private void LoadEvents() {
-            MySqlConnection connection = new MySqlConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
+            SQLiteConnection connection = new SQLiteConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
             String query = "SELECT * FROM EventData;";
 
             try {
                 connection.Open();
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
                 cmd.ExecuteNonQuery();
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
                 DataTable table = new DataTable("Parent Report");
                 adapter.Fill(table);
                 EventViewDataGrid.ItemsSource = table.DefaultView;
@@ -47,17 +48,17 @@ namespace AdminTools {
         }
 
         private void FillComboBox() {
-            MySqlConnection connection = new MySqlConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
+            SQLiteConnection connection = new SQLiteConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
             String query = "SELECT Event_ID FROM EventData;";
 
             try {
                 connection.Open();
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
 
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SQLiteDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read()) {
-                    int eventID = reader.GetInt32("Event_ID");
+                    int eventID = reader.GetInt32(0);
                     ComboBoxItem item = new ComboBoxItem();
                     item.Content = eventID;
                     cmd_EventIDCombo.Items.Add(item);
@@ -69,13 +70,13 @@ namespace AdminTools {
         }
 
         private void btn_EditEvent_Click(object sender, RoutedEventArgs e) {
-            win_EventModificationWindow win = new win_EventModificationWindow(((ComboBoxItem)cmd_EventIDCombo.SelectedItem).Content.ToString());
+            EventModificationWindow win = new EventModificationWindow(((ComboBoxItem)cmd_EventIDCombo.SelectedItem).Content.ToString());
             win.Show();
             this.Close();
         }
 
         private void btn_AddEvent_Click(object sender, RoutedEventArgs e) {
-            win_EventModificationWindow win = new win_EventModificationWindow();
+            EventModificationWindow win = new EventModificationWindow();
             win.Show();
             this.Close();
         }
