@@ -9,10 +9,10 @@ namespace ChildCareApp {
     /// <summary>
     /// Interaction logic for win_AdminEditParentInfo.xaml
     /// </summary>
-    public partial class win_AdminEditParentInfo : Window {
+    public partial class AdminEditParentInfo : Window {
 
         private LoadParentInfoDatabase db;
-        public win_AdminEditParentInfo(string parentID) {
+        public AdminEditParentInfo(string parentID) {
 
             InitializeComponent();
             AddStates();
