@@ -7,7 +7,8 @@ VALUES ("000001",
         NULL,
         NULL,
         NULL,
-        NULL);
+        NULL,
+		NULL);
 
 INSERT INTO EventData
 VALUES ("000002",
@@ -18,7 +19,8 @@ VALUES ("000002",
         NULL,
         NULL,
         NULL,
-        NULL);
+        NULL,
+		NULL);
 
 INSERT INTO EventData
 VALUES ("000003",
@@ -29,7 +31,8 @@ VALUES ("000003",
         NULL,
         NULL,
         NULL,
-        NULL);
+        NULL,
+		NULL);
 
 INSERT INTO EventData
 VALUES ("000004",
@@ -40,7 +43,8 @@ VALUES ("000004",
         7,
         NULL,
         NULL,
-        "Friday");
+        "Friday",
+		NULL);
 
 INSERT INTO EventData
 VALUES ("000005",
@@ -51,7 +55,8 @@ VALUES ("000005",
         26,
         NULL,
         NULL,
-        NULL);
+        NULL,
+		NULL);
 
 INSERT INTO OperatingHours
 VALUES ("Monday", '08:00:00', '19:00:00');
