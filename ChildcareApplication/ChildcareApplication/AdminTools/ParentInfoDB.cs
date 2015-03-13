@@ -11,7 +11,7 @@ namespace AdminTools {
         private SQLiteConnection connection;
 
         public ParentInfoDB() {
-            this.connection = new SQLiteConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
+            this.connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
             try {
                 connection.Open();
             } catch (Exception exception) {
@@ -48,13 +48,13 @@ namespace AdminTools {
 
         //returns a string for the state, zip, and city
         public String GetAddress3(String parentID) {
-            String query = "SELECT City, State, Zip FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
+            String query = "SELECT City, StateAbrv, Zip FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
 
             SQLiteDataReader reader = cmd.ExecuteReader();
             reader.Read();
 
-            String result = reader.GetString(0) + ", " + reader.GetString(1) + " " + reader.GetString(3);
+            String result = reader.GetString(0) + ", " + reader.GetString(1) + " " + reader.GetString(2);
 
             reader.Close();
             return result;

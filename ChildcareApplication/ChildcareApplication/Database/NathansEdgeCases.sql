@@ -6,3 +6,10 @@ INSERT into Child VALUES ("123451", "Frodo", "Baggins", 2005-02-15, "Rings of Po
 
 INSERT into AllowedConnections VALUES ("000001", "123450", "123451", "12345");
 
+Insert into ChildcareTransaction VALUES ("0000000001","000002", "000001", '2015-03-12 12:00:00', '12:00:00', '14:00:00', 10.00);
+
+Insert into ChildcareTransaction VALUES ("0000000002","000002", "000001", '2015-03-12 12:00:00', '12:00:00', '14:00:00', 10.05);
+
+Insert into ChildcareTransaction VALUES ("0000000003","000002", "000001", '2015-03-12 12:00:00', '12:00:00', '14:00:00', 10.50);
+
+Insert into ChildcareTransaction VALUES ("0000000004","000002", "000001", '2015-03-12 12:00:00', '12:00:00', '14:00:00', 10.55);

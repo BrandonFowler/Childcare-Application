@@ -12,12 +12,6 @@ using System.Windows;
 namespace AdminTools {
 
     class Database {
-        private string server;
-        private string port;
-        private string database;
-        private string UID;
-        private string password;
-        private string connectionString;
         private SQLiteConnection dbCon;
 
         public Database() {

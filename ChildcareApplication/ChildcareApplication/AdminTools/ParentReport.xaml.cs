@@ -26,7 +26,7 @@ namespace AdminTools {
 
         //Loads a report based on the passed in MySQL query
         private void LoadReport(String query) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildCare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
 
             try {
                 connection.Open();
@@ -73,24 +73,26 @@ namespace AdminTools {
         }
 
         //builds a query based on passed in values
-        private void BuildQuery(String start, String end) {
-            string query = "SELECT (DATE_FORMAT(ChildCareTransaction.Date, '%m/%d/%Y')) AS Date, Child.FirstName AS First, Child.LastName AS ";
-            query += "Last, EventData.EventName AS 'Event Type', DATE_FORMAT(ChildCareTransaction.CheckedIn, '%h:%i %p') AS 'Check In', ";
-            query += "DATE_FORMAT(ChildCareTransaction.CheckedOut, '%h:%i %p') AS 'Check Out', ";
-            query += "INSERT(FORMAT(ChildCareTransaction.TransactionTotal, 2), 1, 0, '$') AS Total FROM AllowedConnections NATURAL JOIN Child ";
-            query += "NATURAL JOIN ChildCareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = " + txt_ParentID.Text + " ";
-            query += "AND ChildCareTransaction.Date BETWEEN '" + start + "' AND '" + end + "';";
+        private void BuildQuery(String start, String end) { //idea for how to format the transaction price from: http://stackoverflow.com/questions/9149063/sqlite-format-number-with-2-decimal-places-always
+            string query = "SELECT strftime('%m-%d-%Y', ChildcareTransaction.TransactionDate) AS Date, Child.FirstName AS First, Child.LastName AS ";
+            query += "Last, EventData.EventName AS 'Event Type', time(ChildcareTransaction.CheckedIn) AS 'Check In', ";
+            query += "time(ChildcareTransaction.CheckedOut) AS 'Check Out', ";
+            query += "'$' || case WHEN substr(ChildcareTransaction.TransactionTotal, -2, 1) = '.' THEN ChildcareTransaction.TransactionTotal || ";
+            query += "'0' ELSE ChildcareTransaction.TransactionTotal END AS Total FROM AllowedConnections NATURAL JOIN Child ";
+            query += "NATURAL JOIN ChildcareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = " + txt_ParentID.Text + " ";
+            query += "AND ChildcareTransaction.TransactionDate BETWEEN '" + start + "' AND '" + end + "';";
 
             LoadReport(query);
         }
 
         //builds a query string to show all charges
         private void BuildQuery() {
-            string query = "SELECT (DATE_FORMAT(ChildCareTransaction.Date, '%m/%d/%Y')) AS Date, Child.FirstName AS First, Child.LastName AS ";
-            query += "Last, EventData.EventName AS 'Event Type', DATE_FORMAT(ChildCareTransaction.CheckedIn, '%h:%i %p') AS 'Check In', ";
-            query += "DATE_FORMAT(ChildCareTransaction.CheckedOut, '%h:%i %p') AS 'Check Out', ";
-            query += "INSERT(FORMAT(ChildCareTransaction.TransactionTotal, 2), 1, 0, '$') AS Total FROM AllowedConnections NATURAL JOIN Child ";
-            query += "NATURAL JOIN ChildCareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = " + txt_ParentID.Text + ";";
+            string query = "SELECT strftime('%m/%d/%Y', ChildcareTransaction.TransactionDate) AS 'Date', Child.FirstName AS First, Child.LastName AS ";
+            query += "Last, EventData.EventName AS 'Event Type', time(ChildcareTransaction.CheckedIn) AS 'Check In', ";
+            query += "time(ChildcareTransaction.CheckedOut) AS 'Check Out', ";
+            query += "'$' || case WHEN substr(ChildcareTransaction.TransactionTotal, -2, 1) = '.' THEN ChildcareTransaction.TransactionTotal || ";
+            query += "'0' ELSE ChildcareTransaction.TransactionTotal END AS Total FROM AllowedConnections NATURAL JOIN Child ";
+            query += "NATURAL JOIN ChildcareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = " + txt_ParentID.Text + ";";
 
             LoadReport(query);
         }
