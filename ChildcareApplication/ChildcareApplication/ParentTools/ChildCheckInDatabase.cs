@@ -10,8 +10,7 @@ namespace ParentTools {
         private SQLiteConnection conn;
 
         public ChildCheckInDatabase() {
-           string sqliteFile = "../Database/database.db";
-            conn = new SQLiteConnection(sqliteFile);
+            conn = new SQLiteConnection("Data Source=../../Database/ChildCare_v5.s3db;Version=3;");
         }//end Database(default constructor)
 
         public bool validateLogin(string ID, string PIN) {
@@ -266,6 +265,7 @@ namespace ParentTools {
             bool ishourly = checkIfHourly(eventID);
             double eventFee = findEventFee(guardianID, eventID);
             TimeSpan TimeSpanTime = TimeSpan.Parse(currentTimeString);
+            checkInTime = Convert.ToDateTime(checkInTime).ToString("HH:mm:ss");
             TimeSpan TimeSpanCheckInTime = TimeSpan.Parse(checkInTime);
             double lateTime = checkIfPastClosing(currentDateTime.DayOfWeek.ToString(), TimeSpanTime);
             if(ishourly){
@@ -670,6 +670,7 @@ namespace ParentTools {
 
         public double checkIfPastClosing(string dayOfWeek, TimeSpan time) {
             string closingTime = getClosingTime(dayOfWeek);
+            closingTime = Convert.ToDateTime(closingTime).ToString("HH:mm:ss");
             TimeSpan TSClosingTime = TimeSpan.Parse(closingTime);
 
             double hourDifference = time.Hours - TSClosingTime.Hours;
