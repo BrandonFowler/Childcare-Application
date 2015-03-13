@@ -21,21 +21,8 @@ namespace AdminTools {
         private SQLiteConnection dbCon;
 
         public Database() {
-            this.server = "146.187.135.22";
-            this.port = "3306";
-            this.database = "childcare_v5";
-            this.UID = "ccdev";
-            this.password = "devpw821";
-            connectionString = "SERVER=" + server + "; PORT=" + port + "; DATABASE=" + database + "; UID=" + UID + "; PASSWORD=" + password + ";";
-            dbCon = new SQLiteConnection(connectionString);
-        }//end Database(default constructor)
-
-        /*private SQLiteConnection dbCon;
-
-        public Database()
-        {
-            dbCon = new SQLiteConnection("Data Source=../../ChildCare_v3.s3db;Version=3;");
-        }//end Database*/
+            dbCon = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+        }//end Database
 
         public bool validateLogin(string ID) {
             dbCon.Open();
@@ -69,9 +56,9 @@ namespace AdminTools {
             SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             //SQLiteDataReader r = command.ExecuteReader();
 
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            SQLiteDataAdapter db = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
-            DB.Fill(DS);
+            db.Fill(DS);
             int count = DS.Tables[0].Rows.Count;
             if (count > 0) {
                 dbCon.Close();

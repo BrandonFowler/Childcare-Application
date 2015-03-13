@@ -26,7 +26,7 @@ namespace AdminTools {
 
         //Loads a report based on the passed in MySQL query
         private void LoadReport(String query) {
-            SQLiteConnection connection = new SQLiteConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildCare_v5.s3db;Version=3;");
 
             try {
                 connection.Open();
