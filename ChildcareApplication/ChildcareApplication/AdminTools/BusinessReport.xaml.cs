@@ -41,8 +41,8 @@ namespace AdminTools {
         }
 
         private void btn_CurrentMonthReport_Click(object sender, RoutedEventArgs e) {
-            String fromDate = "2015-02-01";
-            String toDate = "2015-02-28";
+            String fromDate = "2015-03-01";
+            String toDate = "2015-03-28";
 
             BuildQuery(fromDate, toDate);
         }
@@ -89,17 +89,18 @@ namespace AdminTools {
 
         private void BuildQuery(String start, String end) {
             string query = "SELECT Guardian.Guardian_ID AS ID, Guardian.FirstName AS First, Guardian.LastName AS Last, ";
-            query += "Guardian.Phone, Guardian.Address1, Guardian.Address2, Guardian.City, Guardian.State, Guardian.Zip, ";
-            query += "INSERT(FORMAT(SUM(ChildCareTransaction.TransactionTotal), 2), 1, 0, '$') AS Total ";
-            query += "From Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ChildCareTransaction ";
-            query += "WHERE ChildCareTransaction.Date BETWEEN '" + start + "' AND '" + end + "' ";
+            query += "Guardian.Phone, Guardian.Address1, Guardian.Address2, Guardian.City, Guardian.StateAbrv AS State, Guardian.Zip, ";
+            query += "'$' || case WHEN substr(ChildcareTransaction.TransactionTotal, -2, 1) = '.' THEN SUM(ChildcareTransaction.TransactionTotal) || ";
+            query += "'0' ELSE SUM(ChildcareTransaction.TransactionTotal) END AS Total ";
+            query += "From Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ChildcareTransaction ";
+            query += "WHERE ChildcareTransaction.TransactionDate BETWEEN '" + start + "' AND '" + end + "' ";
             query += "GROUP BY Guardian.Guardian_ID";
 
             LoadReport(query);
         }
 
         private void LoadReport(String query) {
-            SQLiteConnection connection = new SQLiteConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
 
             try {
                 connection.Open();
@@ -107,10 +108,20 @@ namespace AdminTools {
                 cmd.ExecuteNonQuery();
 
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+                
                 DataTable table = new DataTable("Parent Report");
                 adapter.Fill(table);
+
+                for (int i = 0; i < table.Rows.Count; i++) {
+                    if (((String)table.Rows[i][9]).Split('.')[1].Length == 1) {
+                        table.Rows[i][9] += "0";
+                    }
+                }
+                if ((String)table.Rows[0][9] == "") {
+
+                }
                 BusinessDataGrid.ItemsSource = table.DefaultView;
-                adapter.Update(table);
+                //adapter.Update(table);
 
                 connection.Close();
             } catch (Exception exception) {
