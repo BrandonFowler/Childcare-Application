@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SQLite;
+using ChildcareApplication.AdminTools;
 
 namespace AdminTools {
     /// <summary>
@@ -22,6 +23,7 @@ namespace AdminTools {
         public ParentReport() {
             InitializeComponent();
             cnv_ParentIcon.Background = new SolidColorBrush(Colors.Aqua);
+            this.txt_ParentID.Focus();
         }
 
         //Loads a report based on the passed in MySQL query
@@ -107,10 +109,18 @@ namespace AdminTools {
             lbl_Address2.Content = parentInfo.GetAddress2(txt_ParentID.Text);
             lbl_Address3.Content = parentInfo.GetAddress3(txt_ParentID.Text);
             lbl_Phone.Content = parentInfo.GetPhoneNumber(txt_ParentID.Text);
+            UpdateCurDue(txt_ParentID.Text);
+        }
+
+        private void btn_MakePayment_Click(object sender, RoutedEventArgs e) {
+            PaymentEntry paymentEntry = new PaymentEntry(txt_ParentID.Text, this);
+            paymentEntry.Show();
+        }
+
+        public void UpdateCurDue(String parentID) {
+            ParentInfoDB parentInfo = new ParentInfoDB();
+
+            lbl_CurrentDueValue.Content = parentInfo.GetCurrentDue(txt_ParentID.Text);
         }
     }
 }
-//going to need this query later so ill stash it here for now
-//string query = "SELECT Child.FirstName, Child.LastName, EventData.EventName, ChildCareTransaction.CheckedIn, ChildCareTransaction.CheckedOut, ";
-//                    query += "ChildCareTransaction.TransactionTotal FROM ((AllowedConnections NATURAL JOIN Child) JOIN Guardian ON Guardian.Guardian_ID = AllowedConnections.Guardian_ID) ";
-//                    query += "NATURAL JOIN ChildCareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = " + txt_ParentID.Text + ";";

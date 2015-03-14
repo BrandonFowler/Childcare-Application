@@ -1,0 +1,12 @@
+﻿<Window x:Class="ChildcareApplication.AdminTools.PaymentEntry"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PaymentEntry" Height="225.373" Width="285.075">
+    <Grid>
+        <Label x:Name="lbl_CurrentBalance" Content="Current Balance:" Margin="30,30,31,0" VerticalAlignment="Top" Height="30" Width="217" FontSize="14"/>
+        <TextBox x:Name="txt_PaymentAmount" Height="20" Margin="80,101,80,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="btn_SubmitPayment" Content="Submit Payment" HorizontalAlignment="Left" Margin="141,147,0,0" VerticalAlignment="Top" Width="106" Click="btn_SubmitPayment_Click"/>
+        <Label x:Name="lbl_PaymentAmount" Content="Payment Amount" HorizontalAlignment="Left" Margin="80,75,0,0" VerticalAlignment="Top" Width="117"/>
+
+    </Grid>
+</Window>

@@ -62,6 +62,9 @@
     <Compile Include="AdminTools\BusinessReport.xaml.cs">
       <DependentUpon>BusinessReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminTools\PaymentEntry.xaml.cs">
+      <DependentUpon>PaymentEntry.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserTypeSelection.xaml.cs">
       <DependentUpon>UserTypeSelection.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
     <Page Include="AdminTools\DeleteConformation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdminTools\PaymentEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ParentTools\ChildLoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

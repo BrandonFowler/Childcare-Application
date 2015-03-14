@@ -74,6 +74,40 @@ namespace AdminTools {
             return Convert.ToString(cmd.ExecuteScalar());
         }
 
+        public String GetCurrentDue(String parentID) {
+            String familyID = parentID.Remove(parentID.Length - 1);
+
+            String query = "SELECT FamilyTotal FROM Family WHERE Family_ID = '" + familyID + "';";
+            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+
+            String curDue = "$" + Convert.ToString(cmd.ExecuteScalar());
+
+            if (curDue.IndexOf('.') == curDue.Length - 1) {
+                if (curDue.IndexOf('.') == curDue.Length - 1) {
+                    curDue += "0";
+                }
+            } else if (!curDue.Contains('.')) {
+                curDue += ".00";
+            }
+
+            return curDue;
+        }
+
+        public void UpdateCurBalance(String parentID, double paymentValue) {
+            String familyID = parentID.Remove(parentID.Length - 1);
+
+            String query = "SELECT FamilyTotal FROM Family WHERE Family_ID = '" + familyID + "';";
+            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+
+            Double currentBalance = Convert.ToDouble(cmd.ExecuteScalar());
+
+            query = "Update Family SET FamilyTotal = '" + (currentBalance - paymentValue) + "' WHERE Family_ID = '";
+            query += familyID + "';";
+
+            cmd = new SQLiteCommand(query, connection);
+            cmd.ExecuteNonQuery();
+        }
+
         ~ParentInfoDB() {
             this.connection.Close();
         }
