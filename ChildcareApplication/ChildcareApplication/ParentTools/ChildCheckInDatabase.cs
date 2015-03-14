@@ -34,8 +34,8 @@ namespace ParentTools {
                     return true;
                 }
             }
-            catch (SQLiteException e){
-                MessageBox.Show(e.ToString());
+            catch (Exception){
+                MessageBox.Show("Database Connection Failure");
                 conn.Close();
             }
 
@@ -190,8 +190,8 @@ namespace ParentTools {
                 command.ExecuteNonQuery();
                 conn.Close();
             }
-            catch (SQLiteException e){
-                MessageBox.Show(e.ToString());
+            catch (Exception){
+                MessageBox.Show("Database Connection Error: Unable Check In Child");
                 conn.Close();
             }
 
@@ -240,7 +240,7 @@ namespace ParentTools {
 
                 return connectionID;
             }
-            catch (SQLiteException){
+            catch (Exception){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve critical information");
                 return null;
@@ -314,7 +314,7 @@ namespace ParentTools {
                 command.ExecuteNonQuery();
                 conn.Close();
             }
-            catch(SQLiteException){
+            catch(Exception){
                 MessageBox.Show("Database connection error: Unable to check out child");
                 conn.Close();
                 return false;
@@ -346,7 +346,7 @@ namespace ParentTools {
                         command.ExecuteNonQuery();
                         conn.Close();
                     }
-                    catch(SQLiteException){
+                    catch(Exception){
                         conn.Close();
                         MessageBox.Show("Database connection error: Unable to record late fee");
                     }
@@ -391,14 +391,14 @@ namespace ParentTools {
                 }
             }
            
-            string start = DTStart.ToString("yyyyMMdd");
-            string end = DTEnd.ToString("yyyyMMdd");
+            string start = DTStart.ToString("yyyy-MM-dd");
+            string end = DTEnd.ToString("yyyy-MM-dd");
 
             if(eventID.CompareTo("000002") == 0 || eventID.CompareTo("000003") == 0 ){
 
                 string sql = "select sum(TransactionTotal) " +
-                             "from AllowedConnections natural join ChildcareTransaction natural join Child " +
-                             "where Family_ID = @familyID and Event_ID != 000001 and TransactionDate between " + start + " and " + end;
+                             "from AllowedConnections natural join ChildcareTransaction " +
+                             "where Family_ID = @familyID and Event_ID IN ('000002', '000003') and TransactionDate between '" + start + "' and '" + end + "'";
 
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
@@ -409,7 +409,7 @@ namespace ParentTools {
                     recordFound = command.ExecuteScalar();
                     conn.Close();
                 }
-                catch(SQLiteException){
+                catch(Exception){
                     conn.Close();
                     MessageBox.Show("Database connection error: Unable to check if charge exceeds monthly maximum for normal care.");
                 }
@@ -453,7 +453,7 @@ namespace ParentTools {
                 command.ExecuteNonQuery();
                 conn.Close();
             }
-            catch(SQLiteException){
+            catch(Exception){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to add charge to family balance.");
             }
@@ -480,7 +480,7 @@ namespace ParentTools {
 
                 return allowanceID;
             }
-            catch (SQLiteException){
+            catch (Exception){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve critical information.");
                 return null;
@@ -503,7 +503,7 @@ namespace ParentTools {
 
                 return closingTime;
             }
-            catch (SQLiteException){
+            catch (Exception){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve critical information. Any late fees have not been recorded.");
                 return null;
@@ -528,7 +528,7 @@ namespace ParentTools {
                 double lateFee = Convert.ToDouble(fee);
                 return lateFee;
             }
-            catch (SQLiteException){
+            catch (Exception){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve critical information. Any late fees have not been recorded.");
                 return 0;
@@ -589,7 +589,7 @@ namespace ParentTools {
 
                 return count;
             }
-            catch (SQLiteException){
+            catch (Exception){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
                 return 0;
@@ -620,7 +620,7 @@ namespace ParentTools {
 
                 return transaction;
             }
-            catch (SQLiteException){
+            catch (Exception){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve original transaction.");
                 return null;
@@ -651,7 +651,7 @@ namespace ParentTools {
 
                 return false;
             }
-            catch{
+            catch(Exception){
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to access find all children. Please log out, then try again.");
                 return false;
