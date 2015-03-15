@@ -15,6 +15,7 @@ using System.Data;
 using System.Collections;
 using System.IO;
 
+
 namespace AdminTools {
     /// <summary>
     /// Interaction logic for win_AdminEditChildInfo.xaml
@@ -44,25 +45,23 @@ namespace AdminTools {
 
             if (formNotComplete == false)
             {
-                string cID, firstName, lastName, medical, allergies, birthday;
+                string cID, firstName, lastName, medical, allergies, birthday, filePath;
 
                 firstName = txt_FirstName.Text;
                 lastName = txt_LastName.Text;
-                
-                //birthday = dte_Birthday.SelectedDate.Value.ToShortDateString(); 
                 birthday = dte_Birthday.SelectedDate.Value.ToString("yyyy-MM-dd"); 
-
-                //birthday = "'1/1/2006'"; 
                 medical = txt_Medical.Text;
                 allergies = txt_Allergies.Text;
                 cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
+                filePath = txt_FilePath.Text; 
 
-                this.db.UpdateChildInfo(cID, firstName, lastName, birthday, medical, allergies);
+                this.db.UpdateChildInfo(cID, firstName, lastName, birthday, medical, allergies, filePath);
                 ((Child)(lst_ChildBox.SelectedItem)).firstName = firstName;
                 ((Child)(lst_ChildBox.SelectedItem)).lastName = lastName;
                 ((Child)(lst_ChildBox.SelectedItem)).birthday = birthday;
                 ((Child)(lst_ChildBox.SelectedItem)).medical = medical;
                 ((Child)(lst_ChildBox.SelectedItem)).allergies = allergies;
+                ((Child)(lst_ChildBox.SelectedItem)).path = filePath;
 
                 lst_ChildBox.Items.Clear();
                 setChildBox();
@@ -96,7 +95,10 @@ namespace AdminTools {
         private void DisableForm()
         { 
             btn_Delete.IsEnabled = false;
-            btn_Submit.IsEnabled = false; 
+            btn_Submit.IsEnabled = false;
+            btn_ChangePicture.IsEnabled = false;
+            btn_LinkChild.IsEnabled = false;
+            btn_De_LinkChild.IsEnabled = false; 
         }
         private void btn_MainMenu_Click(object sender, RoutedEventArgs e) {
             AdminMenu adminMenu = new AdminMenu();
@@ -142,6 +144,7 @@ namespace AdminTools {
             txt_Allergies.Clear();
 
             txt_Medical.Clear();
+            txt_FilePath.Clear(); 
             dte_Birthday.Text = "01/01/2005"; 
         }//end ClarFields
 
@@ -195,6 +198,7 @@ namespace AdminTools {
                 txt_Medical.Text = ((Child)(lst_ChildBox.SelectedItem)).medical;
                 txt_Allergies.Text = ((Child)(lst_ChildBox.SelectedItem)).allergies;
                 dte_Birthday.SelectedDate = DateTime.Parse(dte_Birthday.Text);
+                txt_FilePath.Text = ((Child)(lst_ChildBox.SelectedItem)).path;
 
                 string imageLink = ((Child)(lst_ChildBox.SelectedItem)).path;
                 ImageBrush ib = new ImageBrush();
@@ -259,6 +263,7 @@ namespace AdminTools {
                 int link = 0;
                 Link_DeLinkChild linkDelinkChild = new Link_DeLinkChild(link, cID);
                 linkDelinkChild.ShowDialog(); //0 = link
+                
             }
         }
 
@@ -270,9 +275,36 @@ namespace AdminTools {
                 int delink = 1;
                 Link_DeLinkChild linkDelinkChild = new Link_DeLinkChild(delink, cID);
                 linkDelinkChild.ShowDialog(); //1 = delink
-                //lst_ChildBox.Items.Clear();
-                //setChildBox();
+                lst_ChildBox.Items.Clear();
+                setChildBox();
             }
+        }
+
+        private void btn_ChangePicture_Click(object sender, RoutedEventArgs e)
+        {
+            if (lst_ChildBox.SelectedItem != null)
+            {
+                //string dir = @"..\..\..\..\Photos"; 
+                string dir = @"C:\"; 
+                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+                dlg.FileName = "default"; // Default file name
+                dlg.DefaultExt = ".jpg"; // Default file extension
+                dlg.Filter = "Pictures (.jpg)|*.jpg"; // Filter files by extension 
+                dlg.InitialDirectory = dir;
+                Nullable<bool> result = dlg.ShowDialog();
+
+                // Process open file dialog box results 
+                if (result == true)
+                {
+                    // Open document 
+                    string filename = dlg.FileName;
+                    txt_FilePath.Text = filename;
+
+                }
+
+            }
+
         }
     }//end class
 

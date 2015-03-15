@@ -30,7 +30,7 @@ namespace AdminTools {
             //save all information to database
             if (formNotComplete == false)
             {
-                string pID, firstName, lastName, address, address2, city, state, zip, email, phone;
+                string pID, firstName, lastName, address, address2, city, state, zip, email, phone, path;
 
                 pID = txt_IDNumber.Text; 
                 firstName = txt_FirstName.Text;
@@ -44,8 +44,9 @@ namespace AdminTools {
                 city = txt_City.Text;
                 state = cbo_State.Text; //dont know if this will work yet
                 zip = txt_Zip.Text;
+                path = txt_FilePath.Text; 
 
-                this.db.UpdateParentInfo(pID, firstName, lastName, phone, email, address, address2, city, state, zip); 
+                this.db.UpdateParentInfo(pID, firstName, lastName, phone, email, address, address2, city, state, zip, path); 
 
 
                //ClearFields();
@@ -87,7 +88,8 @@ namespace AdminTools {
         private void DisableForm() {
             btn_EditChild.IsEnabled = false;
             btn_Delete.IsEnabled = false;
-            btn_SubmitInfo.IsEnabled = false; 
+            btn_SubmitInfo.IsEnabled = false;
+            btn_ChangePicture.IsEnabled = false; 
         }
 
         private void ClearFields() {
@@ -100,7 +102,8 @@ namespace AdminTools {
             txt_PhoneNumber.Clear();
             txt_Zip.Clear();
             txt_Email.Clear();
-            txt_IDNumber.Clear(); 
+            txt_IDNumber.Clear();
+            txt_FilePath.Clear(); 
         }//end ClearFields
 
         private bool CheckIfNull() {
@@ -174,6 +177,7 @@ namespace AdminTools {
                     txt_Zip.Text = DS.Tables[0].Rows[0][10].ToString();
                     cbo_State.Text = DS.Tables[0].Rows[0][9].ToString();
 
+                    txt_FilePath.Text = DS.Tables[0].Rows[0][11].ToString();
                     string imageLink = DS.Tables[0].Rows[0][11].ToString();
                     ImageBrush ib = new ImageBrush();
                     ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
@@ -246,6 +250,31 @@ namespace AdminTools {
             cbo_State.Items.Add("WV");
             cbo_State.Items.Add("WI");
             cbo_State.Items.Add("WY");
+
+        }
+
+        private void btn_ChangePicture_Click(object sender, RoutedEventArgs e)
+        {
+           
+                //string dir = @"..\..\..\..\Photos"; 
+                string dir = @"C:\";
+                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+                dlg.FileName = "default"; // Default file name
+                dlg.DefaultExt = ".jpg"; // Default file extension
+                dlg.Filter = "Pictures (.jpg)|*.jpg"; // Filter files by extension 
+                dlg.InitialDirectory = dir;
+                Nullable<bool> result = dlg.ShowDialog();
+
+                // Process open file dialog box results 
+                if (result == true)
+                {
+                    // Open document 
+                    string filename = dlg.FileName;
+                    txt_FilePath.Text = filename;
+
+                }
+
 
         }//end AddStates
 

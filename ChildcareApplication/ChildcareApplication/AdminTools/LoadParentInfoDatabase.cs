@@ -14,8 +14,9 @@ namespace AdminTools {
 
         private SQLiteConnection dbCon;
 
-        public LoadParentInfoDatabase() {
-            dbCon = new SQLiteConnection("Data Source=../../Database/ChildCare_v3.s3db;Version=3;");
+        public LoadParentInfoDatabase()
+        {
+            dbCon = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
         }//end Database
 
 
@@ -27,17 +28,6 @@ namespace AdminTools {
         private string password;
         private string connectionString;
 
-        public LoadParentInfoDatabase() {
-            this.server = "146.187.135.22";
-            this.port = "3306";
-            this.database = "childcare_v5";
-            this.UID = "ccdev";
-            this.password = "devpw821";
-            connectionString = "SERVER="+server+"; PORT="+port+"; DATABASE="+database+"; UID="+UID+"; PASSWORD="+password+";";
-            dbConn = new MySql.Data.MySqlClient.MySqlConnection();
-            dbConn.ConnectionString = connectionString;
-        }//end Database(default constructor)*/
-
         public LoadParentInfoDatabase(string server, string port, string database, string UID, string password) {
             /*this.server = server;
             this.port = port;
@@ -47,7 +37,6 @@ namespace AdminTools {
             connectionString = server + "; PORT=" + port + "; DATABASE=" + database + "; UID=" + UID + "; PASSWORD=" + password + ";";
             dbConn = new MySql.Data.MySqlClient.MySqlConnection();
             dbConn.ConnectionString = connectionString;*/
-        }//end Database
 
         public DataSet GetParentInfo(string parentID) {
 
@@ -106,13 +95,13 @@ namespace AdminTools {
         }
 
 
-        public void UpdateParentInfo(string ID, string firstName, string lastName, string phone, string email, string address, string address2, string city, string state, string zip) {
+        public void UpdateParentInfo(string ID, string firstName, string lastName, string phone, string email, string address, string address2, string city, string state, string zip, string path) {
             dbCon.Open();
 
             try {
 
                 string sql = @"UPDATE Guardian SET FirstName = @firstName, LastName = @lastName, Phone = @phone, Email = @email," +
-                                    "Address1 = @address, Address2 = @address2, City = @city, StateAbrv = @state, Zip  = @zip WHERE Guardian_ID = @ID;";
+                                    "Address1 = @address, Address2 = @address2, City = @city, StateAbrv = @state, Zip  = @zip, PhotoLocation = @path WHERE Guardian_ID = @ID;";
                 //SQLiteCommand mycommand = new SQLiteCommand(sql, this.dbConn);
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
                 mycommand.CommandText = sql;
@@ -126,6 +115,7 @@ namespace AdminTools {
                 mycommand.Parameters.Add(new SQLiteParameter("@state", state));
                 mycommand.Parameters.Add(new SQLiteParameter("@zip", zip));
                 mycommand.Parameters.Add(new SQLiteParameter("@ID", ID));
+                mycommand.Parameters.Add(new SQLiteParameter("@path", path));
 
                 mycommand.ExecuteNonQuery();
                 MessageBox.Show("Completed");
