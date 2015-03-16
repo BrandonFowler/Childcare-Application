@@ -52,26 +52,91 @@ namespace AdminTools {
             LoadParentData();
         }
 
-        private void btn_CurrentMonthReport_Click(object sender, RoutedEventArgs e) { //TODO: load for actual month
-            String fromDate = "2015-02-01";
-            String toDate = "2015-02-28";
+        private void btn_CurrentMonthReport_Click(object sender, RoutedEventArgs e) { 
+            ParentInfoDB parentInfo = new ParentInfoDB();
+            String fromDate, toDate;
+            int fromMonth, fromYear, fromDay, toMonth, toYear, toDay;
 
-            BuildQuery(fromDate, toDate);
-            LoadParentData();
+            if (txt_ParentID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_ParentID.Text)) {
+                fromDay = 20;
+                toDay = 19;
+
+                if (DateTime.Now.Day < 20) { //previous month and this month
+                    if (DateTime.Now.Month != 1) {
+                        fromYear = DateTime.Now.Year;
+                        fromMonth = DateTime.Now.Month - 1;
+                    } else {
+                        fromYear = DateTime.Now.Year - 1;
+                        fromMonth = 12;
+                    }
+                    toYear = DateTime.Now.Year;
+                    toMonth = DateTime.Now.Month;
+                } else { //this month and next month
+                    fromYear = DateTime.Now.Year;
+                    fromMonth = DateTime.Now.Month;
+                    if (DateTime.Now.Month != 12) {
+                        toYear = DateTime.Now.Year;
+                        toMonth = DateTime.Now.Month;
+                    } else {
+                        toYear = DateTime.Now.Year + 1;
+                        toMonth = 1;
+                    }
+                }
+                fromDate = BuildDateString(fromYear, fromMonth, fromDay);
+                toDate = BuildDateString(toYear, toMonth, toDay);
+
+                BuildQuery(fromDate, toDate);
+                LoadParentData();
+            } else {
+                MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
+                txt_ParentID.Focus();
+            }
+        }
+
+        private string BuildDateString(int year, int month, int day) {
+            String date;
+
+            date = year + "-";
+
+            if (month < 10) {
+                date += "0" + month;
+            } else {
+                date += month + "-";
+            }
+            if (day < 10) {
+                date += "0" + day;
+            } else {
+                date += day;
+            }
+            return date;
         }
 
         private void btn_DateRangeReport_Click(object sender, RoutedEventArgs e) { //TODO: error checking!
+            ParentInfoDB parentInfo = new ParentInfoDB();
             String initialFrom = txt_FromDate.Text;
-            String initalTo = txt_ToDate.Text;
-
-            String[] fromParts = initialFrom.Split('/');
-            String[] toParts = initalTo.Split('/');
+            String initialTo = txt_ToDate.Text;
             
-            String fromDate = fromParts[2] + "-" + fromParts[0] + "-" + fromParts[1];
-            String toDate = toParts[2] + "-" + toParts[0] + "-" + toParts[1];
+            initialFrom = initialFrom.Substring(0, 10);
+            initialTo = initialTo.Substring(0, 10);
 
-            BuildQuery(fromDate, toDate);
-            LoadParentData();
+            if (initialFrom.Length == 10 && initialTo.Length == 10) {
+                if (txt_ParentID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_ParentID.Text)) {
+                    String[] fromParts = initialFrom.Split('/');
+                    String[] toParts = initialTo.Split('/');
+
+                    String fromDate = fromParts[2] + "-" + fromParts[0] + "-" + fromParts[1];
+                    String toDate = toParts[2] + "-" + toParts[0] + "-" + toParts[1];
+
+                    BuildQuery(fromDate, toDate);
+                    LoadParentData();
+                } else {
+                    MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
+                    txt_ParentID.Focus();
+                }
+            } else {
+                MessageBox.Show("You must enter a valid date range!");
+                txt_FromDate.Focus();
+            }
         }
 
         //builds a query based on passed in values
@@ -119,7 +184,8 @@ namespace AdminTools {
                 PaymentEntry paymentEntry = new PaymentEntry(txt_ParentID.Text, this);
                 paymentEntry.Show();
             } else {
-                MessageBox.Show("You must enter a valid Parent ID in the Guardian ID box.");
+                MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
+                txt_ParentID.Focus();
             }
             
         }

@@ -13,3 +13,5 @@ Insert into ChildcareTransaction VALUES ("0000000002","000002", "000001", '2015-
 Insert into ChildcareTransaction VALUES ("0000000003","000002", "000001", '2015-03-12 12:00:00', '12:00:00', '14:00:00', 10.50);
 
 Insert into ChildcareTransaction VALUES ("0000000004","000002", "000001", '2015-03-12 12:00:00', '12:00:00', '14:00:00', 10.55);
+
+Insert into ChildcareTransaction VALUES ("0000000005","000002", "000001", '2015-02-12 12:00:00', '12:00:00', '14:00:00', 10.55);
