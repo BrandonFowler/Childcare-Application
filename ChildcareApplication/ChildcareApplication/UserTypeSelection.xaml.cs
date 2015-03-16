@@ -26,11 +26,17 @@ namespace ChildcareApplication {
         private void btn_ParentUse_Click(object sender, RoutedEventArgs e) {
             ParentLogin parentLogin = new ParentLogin();
             parentLogin.Show();
+            this.Close();
         }
 
         private void btn_AdminLogin_Click(object sender, RoutedEventArgs e) {
             AdminLogin adminLogin = new AdminLogin();
             adminLogin.Show();
+            this.Close();
+        }
+
+        private void btn_Exit_Click(object sender, RoutedEventArgs e) {
+            Application.Current.Shutdown();
         }
     }
 }

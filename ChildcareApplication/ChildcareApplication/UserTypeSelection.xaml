@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="UserSelection" Height="216" Width="339">
     <Grid>
-        <Button x:Name="btn_ParentUse" Content="Parent Login" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="140" Height="57" FontSize="16" Click="btn_ParentUse_Click"/>
-        <Button x:Name="btn_AdminLogin" Content="Administrator Login" Margin="181,61,10,0" VerticalAlignment="Top" Height="57" FontSize="14" Click="btn_AdminLogin_Click"/>
+        <Button x:Name="btn_ParentUse" Content="_Parent Login" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="140" Height="57" FontSize="16" Click="btn_ParentUse_Click" TabIndex="0"/>
+        <Button x:Name="btn_AdminLogin" Content="_Administrator Login" Margin="181,61,10,0" VerticalAlignment="Top" Height="57" FontSize="14" Click="btn_AdminLogin_Click" TabIndex="1"/>
+        <Button x:Name="btn_Exit" Content="_Exit" HorizontalAlignment="Left" Margin="241,155,0,0" VerticalAlignment="Top" Width="75" Click="btn_Exit_Click" TabIndex="2"/>
 
     </Grid>
 </Window>

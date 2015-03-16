@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChildcareApplication;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,43 +61,46 @@ namespace AdminTools {
         }//end OnPINBoxFocus
 
         private void btn_Login_Click(object sender, RoutedEventArgs e) {
-            if (string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.txt_Password.Password))
-            {
-                MessageBox.Show("Please enter a User Name and a Password.");
+            LoginCheck();
+        }
 
-            }
-            else
-            {
-                
+        private void LoginCheck() {
+            if (string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.txt_Password.Password)) {
+                MessageBox.Show("Please enter a User Name and a Password.");
+            } else {
                 string ID = txt_UserName.Text;
                 string PIN = txt_Password.Password;
                 bool userFound = this.db.validateAdminLogin(ID, PIN);
 
-                if (userFound)
-                {
+                if (userFound) {
                     DisplayAdminWindow();
-                }
-                else
-                {
+                } else {
                     MessageBox.Show("User ID or PIN does not exist");
                 }
-
             }
-            /*
-              Still need to account for admin login
-            */
-        }//btn_Login_Click(Class)
-
+        }
         private void DisplayAdminWindow() {
-
             AdminMenu AdminMenu = new AdminMenu();
             AdminMenu.Show();
             this.Close(); 
-
-        }//end DisplayAdminWindow
+        }
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e) {
-            Application.Current.Shutdown();
-        }//end shortcut click
+            UserSelection userSelect = new UserSelection();
+            userSelect.Show();
+            this.Close();
+        }
+
+        private void txt_UserName_KeyDown(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                txt_Password.Focus();
+            }
+        }
+
+        private void txt_Password_KeyDown(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                LoginCheck();
+            }
+        }
     }
 }

@@ -5,22 +5,23 @@
     <Grid>
         <TextBox x:Name="txt_ParentID" HorizontalAlignment="Left" Height="20" Margin="10,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" TabIndex="0"/>
         <Label x:Name="lbl_ParentID" Content="Parent ID" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btn_CurrentMonthReport" Content="Current Month Report" HorizontalAlignment="Left" Margin="225,51,0,0" VerticalAlignment="Top" Width="134" Click="btn_CurrentMonthReport_Click" TabIndex="2"/>
+        <Button x:Name="btn_CurrentMonthReport" Content="Current Billing Cycle" HorizontalAlignment="Left" Margin="225,51,0,0" VerticalAlignment="Top" Width="134" Click="btn_CurrentMonthReport_Click" TabIndex="2"/>
         <Button x:Name="btn_DateRangeReport" Content="Date Range Report" HorizontalAlignment="Left" Margin="364,51,0,0" VerticalAlignment="Top" Width="123" Click="btn_DateRangeReport_Click" TabIndex="3"/>
-        <DataGrid x:Name="ParentDataGrid" Margin="10,92,0,0" VerticalAlignment="Top" Height="395" HorizontalAlignment="Left" Width="482" CanUserReorderColumns="False"/>
+        <DataGrid x:Name="ParentDataGrid" Margin="10,92,0,0" VerticalAlignment="Top" Height="395" HorizontalAlignment="Left" Width="482" CanUserReorderColumns="False" IsReadOnly="True"/>
         <Button x:Name="btn_LoadAll" Content="Load All Charges" HorizontalAlignment="Left" Margin="105,51,0,0" VerticalAlignment="Top" Width="115" Click="btn_LoadAll_Click" TabIndex="1"/>
         <Canvas x:Name="cnv_ParentIcon" HorizontalAlignment="Left" Height="152" Margin="513,92,0,0" VerticalAlignment="Top" Width="158"/>
-        <Label x:Name="lbl_Name" Content="" HorizontalAlignment="Left" Margin="513,249,0,0" VerticalAlignment="Top" Width="158" Height="26"/>
-        <Label x:Name="lbl_Address1" Content="" HorizontalAlignment="Left" Margin="513,275,0,0" VerticalAlignment="Top" Width="158"/>
-        <Label x:Name="lbl_Address2" Content="" HorizontalAlignment="Left" Margin="513,301,0,0" VerticalAlignment="Top" Width="158"/>
-        <Label x:Name="lbl_Address3" Content="" HorizontalAlignment="Left" Margin="513,332,0,0" VerticalAlignment="Top" Width="158"/>
-        <Label x:Name="lbl_Phone" Content="" HorizontalAlignment="Left" Margin="513,358,0,0" VerticalAlignment="Top" Width="158"/>
-        <Label x:Name="lbl_CurrentDueText" Content="Current Amount Due:" HorizontalAlignment="Left" Margin="513,384,0,0" VerticalAlignment="Top" Width="158"/>
-        <Label x:Name="lbl_CurrentDueValue" Content="" HorizontalAlignment="Left" Margin="513,410,0,0" VerticalAlignment="Top" Width="158"/>
-        <Button x:Name="btn_MakePayment" Content="Submit a Payment" HorizontalAlignment="Left" Margin="531,452,0,0" VerticalAlignment="Top" Width="118" Click="btn_MakePayment_Click" TabIndex="6"/>
-        <TextBox x:Name="txt_FromDate" HorizontalAlignment="Left" Height="20" Margin="492,51,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="84" TabIndex="4"/>
-        <TextBox x:Name="txt_ToDate" HorizontalAlignment="Left" Height="19" Margin="581,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" TabIndex="5"/>
+        <Label x:Name="lbl_Name" Content="" HorizontalAlignment="Left" Margin="513,244,0,0" VerticalAlignment="Top" Width="158" Height="26"/>
+        <Label x:Name="lbl_Address1" Content="" HorizontalAlignment="Left" Margin="513,270,0,0" VerticalAlignment="Top" Width="158"/>
+        <Label x:Name="lbl_Address2" Content="" HorizontalAlignment="Left" Margin="513,296,0,0" VerticalAlignment="Top" Width="158"/>
+        <Label x:Name="lbl_Address3" Content="" HorizontalAlignment="Left" Margin="513,322,0,0" VerticalAlignment="Top" Width="158"/>
+        <Label x:Name="lbl_Phone" Content="" HorizontalAlignment="Left" Margin="513,348,0,0" VerticalAlignment="Top" Width="158"/>
+        <Label x:Name="lbl_CurrentDueText" Content="Current Amount Due:" HorizontalAlignment="Left" Margin="513,379,0,0" VerticalAlignment="Top" Width="158"/>
+        <Label x:Name="lbl_CurrentDueValue" Content="" HorizontalAlignment="Left" Margin="513,405,0,0" VerticalAlignment="Top" Width="158"/>
+        <Button x:Name="btn_MakePayment" Content="Submit a Payment" HorizontalAlignment="Left" Margin="531,436,0,0" VerticalAlignment="Top" Width="118" Click="btn_MakePayment_Click" TabIndex="6"/>
+        <TextBox x:Name="txt_FromDate" HorizontalAlignment="Left" Height="20" Margin="492,51,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="84" TabIndex="4" KeyDown="txt_FromDate_KeyDown"/>
+        <TextBox x:Name="txt_ToDate" HorizontalAlignment="Left" Height="19" Margin="581,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" TabIndex="5" KeyDown="txt_ToDate_KeyDown"/>
         <Label x:Name="lbl_FromExample" Content="(mm/dd/yyyy)" HorizontalAlignment="Left" Margin="497,65,0,0" VerticalAlignment="Top" Height="30" Width="84" FontSize="10"/>
         <Label x:Name="lbl_ToExample" Content="(mm/dd/yyyy)" HorizontalAlignment="Left" Margin="587,65,0,0" VerticalAlignment="Top" Height="30" Width="84" FontSize="10"/>
+        <Button x:Name="btn_Exit" Content="_Exit" HorizontalAlignment="Left" Margin="603,467,0,0" VerticalAlignment="Top" Width="75" TabIndex="7" Click="btn_Exit_Click"/>
     </Grid>
 </Window>

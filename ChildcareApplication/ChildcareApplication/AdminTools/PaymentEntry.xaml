@@ -4,9 +4,10 @@
         Title="PaymentEntry" Height="225.373" Width="285.075">
     <Grid>
         <Label x:Name="lbl_CurrentBalance" Content="Current Balance:" Margin="30,30,31,0" VerticalAlignment="Top" Height="30" Width="217" FontSize="14"/>
-        <TextBox x:Name="txt_PaymentAmount" Height="20" Margin="80,101,80,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button x:Name="btn_SubmitPayment" Content="Submit Payment" HorizontalAlignment="Left" Margin="141,147,0,0" VerticalAlignment="Top" Width="106" Click="btn_SubmitPayment_Click"/>
+        <TextBox x:Name="txt_PaymentAmount" Height="20" Margin="80,101,80,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" KeyDown="txt_PaymentAmount_KeyDown"/>
+        <Button x:Name="btn_SubmitPayment" Content="_Submit Payment" HorizontalAlignment="Left" Margin="155,147,0,0" VerticalAlignment="Top" Width="106" Click="btn_SubmitPayment_Click" TabIndex="2"/>
         <Label x:Name="lbl_PaymentAmount" Content="Payment Amount" HorizontalAlignment="Left" Margin="80,75,0,0" VerticalAlignment="Top" Width="117"/>
+        <Button x:Name="btn_Cancel" Content="_Cancel" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Width="106" TabIndex="3" Click="btn_Cancel_Click"/>
 
     </Grid>
 </Window>

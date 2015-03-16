@@ -16,14 +16,12 @@ using System.Data.SQLite;
 using ChildcareApplication.AdminTools;
 
 namespace AdminTools {
-    /// <summary>
-    /// Interaction logic for ParentReport.xaml
-    /// </summary>
     public partial class ParentReport : Window {
         public ParentReport() {
             InitializeComponent();
             cnv_ParentIcon.Background = new SolidColorBrush(Colors.Aqua);
             this.txt_ParentID.Focus();
+            this.ParentDataGrid.IsTabStop = false;
         }
 
         //Loads a report based on the passed in MySQL query
@@ -39,7 +37,6 @@ namespace AdminTools {
                 DataTable table = new DataTable("Parent Report");
                 adapter.Fill(table);
                 ParentDataGrid.ItemsSource = table.DefaultView;
-                adapter.Update(table);
 
                 connection.Close();
             } catch (Exception exception) {
@@ -111,11 +108,15 @@ namespace AdminTools {
             return date;
         }
 
-        private void btn_DateRangeReport_Click(object sender, RoutedEventArgs e) { //TODO: error checking!
+        private void btn_DateRangeReport_Click(object sender, RoutedEventArgs e) {
+            DateRangeReport();
+        }
+
+        private void DateRangeReport() {
             ParentInfoDB parentInfo = new ParentInfoDB();
             String initialFrom = txt_FromDate.Text;
             String initialTo = txt_ToDate.Text;
-            
+
             initialFrom = initialFrom.Substring(0, 10);
             initialTo = initialTo.Substring(0, 10);
 
@@ -194,6 +195,22 @@ namespace AdminTools {
             ParentInfoDB parentInfo = new ParentInfoDB();
 
             lbl_CurrentDueValue.Content = parentInfo.GetCurrentDue(txt_ParentID.Text);
+        }
+
+        private void btn_Exit_Click(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
+
+        private void txt_FromDate_KeyDown(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                txt_ToDate.Focus();
+            }
+        }
+
+        private void txt_ToDate_KeyDown(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                DateRangeReport();
+            }
         }
     }
 }

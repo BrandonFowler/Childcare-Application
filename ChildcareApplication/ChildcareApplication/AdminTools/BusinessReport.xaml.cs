@@ -41,24 +41,84 @@ namespace AdminTools {
         }
 
         private void btn_CurrentMonthReport_Click(object sender, RoutedEventArgs e) {
-            String fromDate = "2015-03-01";
-            String toDate = "2015-03-28";
+            ParentInfoDB parentInfo = new ParentInfoDB();
+            String fromDate, toDate;
+            int fromMonth, fromYear, fromDay, toMonth, toYear, toDay;
+
+            fromDay = 20;
+            toDay = 19;
+
+            if (DateTime.Now.Day < 20) { //previous month and this month
+                if (DateTime.Now.Month != 1) {
+                    fromYear = DateTime.Now.Year;
+                    fromMonth = DateTime.Now.Month - 1;
+                } else {
+                    fromYear = DateTime.Now.Year - 1;
+                    fromMonth = 12;
+                }
+                toYear = DateTime.Now.Year;
+                toMonth = DateTime.Now.Month;
+            } else { //this month and next month
+                fromYear = DateTime.Now.Year;
+                fromMonth = DateTime.Now.Month;
+                if (DateTime.Now.Month != 12) {
+                    toYear = DateTime.Now.Year;
+                    toMonth = DateTime.Now.Month;
+                } else {
+                    toYear = DateTime.Now.Year + 1;
+                    toMonth = 1;
+                }
+            }
+
+            fromDate = BuildDateString(fromYear, fromMonth, fromDay);
+            toDate = BuildDateString(toYear, toMonth, toDay);
 
             BuildQuery(fromDate, toDate);
         }
 
+        private string BuildDateString(int year, int month, int day) {
+            String date;
+
+            date = year + "-";
+
+            if (month < 10) {
+                date += "0" + month;
+            } else {
+                date += month + "-";
+            }
+            if (day < 10) {
+                date += "0" + day;
+            } else {
+                date += day;
+            }
+            return date;
+        }
+
         private void btn_SpecificMonth_Click(object sender, RoutedEventArgs e) {
             GregorianCalendar cal = new GregorianCalendar();
-            String month = ((ComboBoxItem)cmb_Month.SelectedItem).Content.ToString();
-            String year = ((ComboBoxItem)cmb_Year.SelectedItem).Content.ToString();
 
-            int monthNum = GetMonthNum(month);
+            if (cmb_Month.SelectedIndex != -1 && cmb_Year.SelectedIndex != 1) {
+                String fromDate, toDate;
 
-            String fromDate = year + "-" + monthNum + "-1";
-            String toDate = year + "-" + monthNum + "-";
-            toDate += cal.GetDaysInMonth(Convert.ToInt32(year), monthNum);
+                String month = ((ComboBoxItem)cmb_Month.SelectedItem).Content.ToString();
+                int year = Convert.ToInt32(((ComboBoxItem)cmb_Year.SelectedItem).Content);
 
-            BuildQuery(fromDate, toDate);
+                int monthNum = GetMonthNum(month);
+                int fromDay = 20;
+                int toDay = 19;
+
+                fromDate = BuildDateString(year, monthNum, fromDay);
+
+                if (monthNum != 12) {
+                    toDate = BuildDateString(year, monthNum + 1, toDay);
+                } else {
+                    toDate = BuildDateString(year + 1, monthNum + 1, toDay);
+                }
+
+                BuildQuery(fromDate, toDate);
+            } else {
+                MessageBox.Show("You must select a month and year from the drop down menus.");
+            }
         }
 
         private int GetMonthNum(String month) { //TODO: Find a better way to handle something like this
@@ -128,6 +188,10 @@ namespace AdminTools {
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private void btn_Exit_Click(object sender, RoutedEventArgs e) {
+            this.Close();
         }
     }
 }
