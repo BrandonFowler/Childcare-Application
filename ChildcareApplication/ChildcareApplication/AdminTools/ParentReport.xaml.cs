@@ -113,8 +113,15 @@ namespace AdminTools {
         }
 
         private void btn_MakePayment_Click(object sender, RoutedEventArgs e) {
-            PaymentEntry paymentEntry = new PaymentEntry(txt_ParentID.Text, this);
-            paymentEntry.Show();
+            ParentInfoDB parentinfo = new ParentInfoDB();
+
+            if (txt_ParentID.Text.Length == 6 && parentinfo.GuardianIDExists(txt_ParentID.Text)) {
+                PaymentEntry paymentEntry = new PaymentEntry(txt_ParentID.Text, this);
+                paymentEntry.Show();
+            } else {
+                MessageBox.Show("You must enter a valid Parent ID in the Guardian ID box.");
+            }
+            
         }
 
         public void UpdateCurDue(String parentID) {

@@ -82,10 +82,8 @@ namespace AdminTools {
 
             String curDue = "$" + Convert.ToString(cmd.ExecuteScalar());
 
-            if (curDue.IndexOf('.') == curDue.Length - 1) {
-                if (curDue.IndexOf('.') == curDue.Length - 1) {
-                    curDue += "0";
-                }
+            if (curDue.IndexOf('.') == curDue.Length - 2) {
+                curDue += "0";
             } else if (!curDue.Contains('.')) {
                 curDue += ".00";
             }
@@ -106,6 +104,17 @@ namespace AdminTools {
 
             cmd = new SQLiteCommand(query, connection);
             cmd.ExecuteNonQuery();
+        }
+
+        public bool GuardianIDExists(string guardianID) {
+            String query = "SELECT Guardian_ID FROM Guardian WHERE Guardian_ID = '" + guardianID + "';";
+            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+
+            if(Convert.ToString(cmd.ExecuteScalar()) == guardianID) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
         ~ParentInfoDB() {

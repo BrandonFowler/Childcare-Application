@@ -91,8 +91,8 @@ namespace AdminTools {
             string query = "SELECT Guardian.Guardian_ID AS ID, Guardian.FirstName AS First, Guardian.LastName AS Last, ";
             query += "Guardian.Phone, Guardian.Address1, Guardian.Address2, Guardian.City, Guardian.StateAbrv AS State, Guardian.Zip, ";
             query += "'$' || case WHEN substr(ChildcareTransaction.TransactionTotal, -2, 1) = '.' THEN SUM(ChildcareTransaction.TransactionTotal) || ";
-            query += "'0' ELSE SUM(ChildcareTransaction.TransactionTotal) END AS Total ";
-            query += "From Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ChildcareTransaction ";
+            query += "'0' ELSE SUM(ChildcareTransaction.TransactionTotal) END AS 'Total Charges', '$' || Family.FamilyTotal AS 'Current Due' ";
+            query += "From Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ChildcareTransaction NATURAL JOIN Family ";
             query += "WHERE ChildcareTransaction.TransactionDate BETWEEN '" + start + "' AND '" + end + "' ";
             query += "GROUP BY Guardian.Guardian_ID";
 
@@ -117,11 +117,12 @@ namespace AdminTools {
                         table.Rows[i][9] += "0";
                     }
                 }
-                if ((String)table.Rows[0][9] == "") {
-
+                for (int i = 0; i < table.Rows.Count; i++) {
+                    if (((String)table.Rows[i][10]).Split('.')[1].Length == 1) {
+                        table.Rows[i][10] += "0";
+                    }
                 }
                 BusinessDataGrid.ItemsSource = table.DefaultView;
-                //adapter.Update(table);
 
                 connection.Close();
             } catch (Exception exception) {
