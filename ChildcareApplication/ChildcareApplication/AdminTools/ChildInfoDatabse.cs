@@ -10,13 +10,19 @@ using System.Windows;
 namespace AdminTools {
     class ChildInfoDatabse {
 
-        //private SQLite.Data.SQLiteClient.SQLiteConnection dbCon;
-        private string server;
+        private SQLiteConnection dbCon;
+
+        public ChildInfoDatabse()
+        {
+            dbCon = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+        }//end Database
+
+        /*private string server;
         private string port;
         private string database;
         private string UID;
         private string password;
-        private string connectionString;
+        private string connectionString;*/
 
         /*public ChildInfoDatabse()
         {
@@ -29,12 +35,6 @@ namespace AdminTools {
             dbCon = new SQLite.Data.SQLiteClient.SQLiteConnection();
             dbCon.ConnectionString = connectionString;
         }//end Database(default constructor)*/
-
-        private SQLiteConnection dbCon;
-
-        public ChildInfoDatabse() {
-            dbCon = new SQLiteConnection("Data Source=../../Database/ChildCare_v3.s3db;Version=3;");
-        }//end Database*/
 
         public DataSet GetMaxID() {
             dbCon.Open();
@@ -111,21 +111,22 @@ namespace AdminTools {
                 command.CommandText = sql;
 
                 command.ExecuteNonQuery();
+                MessageBox.Show("Link Completed.");
             } catch (SQLiteException e) {
                 MessageBox.Show(e.ToString());
             }
             dbCon.Close();
         }
 
-        public void UpdateChildInfo(string ID, string firstName, string lastName, string birthday, string medical, string allergies) {
+        public void UpdateChildInfo(string ID, string firstName, string lastName, string birthday, string medical, string allergies, string filePath) {
 
             dbCon.Open();
 
 
 
             try {
-                MessageBox.Show(birthday);
-                string sql = @"UPDATE Child SET FirstName = @firstName, LastName = @lastName, Birthday = @birthday, Allergies = @allergies, Medical = @medical WHERE Child_ID = @ID;";
+               
+                string sql = @"UPDATE Child SET FirstName = @firstName, LastName = @lastName, Birthday = @birthday, Allergies = @allergies, Medical = @medical, PhotoLocation = @filePath WHERE Child_ID = @ID;";
                 //SQLiteCommand mycommand = new SQLiteCommand(sql, this.dbCon);
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
                 mycommand.CommandText = sql;
@@ -134,6 +135,7 @@ namespace AdminTools {
                 mycommand.Parameters.Add(new SQLiteParameter("@birthday", birthday));
                 mycommand.Parameters.Add(new SQLiteParameter("@allergies", allergies));
                 mycommand.Parameters.Add(new SQLiteParameter("@medical", medical));
+                mycommand.Parameters.Add(new SQLiteParameter("@filePath", filePath));
 
                 mycommand.Parameters.Add(new SQLiteParameter("@ID", ID));
 
@@ -154,7 +156,7 @@ namespace AdminTools {
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
 
-                MessageBox.Show("Completed");
+                MessageBox.Show(" Delink Completed");
             } catch (SQLiteException e) {
                 MessageBox.Show("Failed");
             }
