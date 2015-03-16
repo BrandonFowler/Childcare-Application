@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChildcareApplication;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -174,6 +175,13 @@ namespace ParentTools {
                     MessageBox.Show("User ID or PIN does not exist");
                 }
             }
+        }
+
+        private void btn_UserSelect_Click(object sender, RoutedEventArgs e)
+        {
+            UserSelection userSelect = new UserSelection();
+            userSelect.Show();
+            this.Close();
         }//btn_Login_Click
 
     }//end win_LoginWindow(class)
