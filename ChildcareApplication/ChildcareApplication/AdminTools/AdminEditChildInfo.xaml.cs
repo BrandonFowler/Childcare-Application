@@ -298,8 +298,26 @@ namespace AdminTools {
                 if (result == true)
                 {
                     // Open document 
+                    string path = "../../../../Photos/";
                     string filename = dlg.FileName;
-                    txt_FilePath.Text = filename;
+                    string[] words = filename.Split('\\');
+
+                    path += words[words.Length - 1];
+
+
+                    try
+                    {
+                        string imageLink = path;
+                        ImageBrush ib = new ImageBrush();
+                        ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
+                        cnv_ChildIcon.Background = ib;
+                        txt_FilePath.Text = path;
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Could not change picture to" + path);
+
+                    }
 
                 }
 
