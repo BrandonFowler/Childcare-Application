@@ -1,5 +1,5 @@
 INSERT INTO Guardian
-VALUES ("00001",
+VALUES ("000001",
 	"1234",
 	"TestGuardian",
 	"#1",
@@ -14,7 +14,7 @@ VALUES ("00001",
 	NULL);
 
 INSERT INTO Guardian
-VALUES ("00002",
+VALUES ("000002",
 	"1234",
 	"TestGuardian",
 	"#2",
@@ -29,7 +29,7 @@ VALUES ("00002",
 	NULL);
 
 INSERT INTO Guardian
-VALUES ("00003",
+VALUES ("000003",
 	"1234",
 	"TestGuardian",
 	"#3",
@@ -44,7 +44,7 @@ VALUES ("00003",
 	NULL);
 
 INSERT INTO Guardian
-VALUES ("00004",
+VALUES ("000004",
 	"1234",
 	"TestGuardian",
 	"#4",
@@ -59,7 +59,7 @@ VALUES ("00004",
 	NULL);
 
 INSERT INTO Guardian
-VALUES ("00005",
+VALUES ("000005",
 	"1234",
 	"TestGuardian",
 	"#5",
@@ -74,7 +74,7 @@ VALUES ("00005",
 	NULL);
 
 INSERT INTO Guardian
-VALUES ("00006",
+VALUES ("000006",
 	"1234",
 	"TestGuardian",
 	"#6",
@@ -89,7 +89,7 @@ VALUES ("00006",
 	NULL);
 
 INSERT INTO Guardian
-VALUES ("00007",
+VALUES ("000007",
 	"1234",
 	"TestGuardian",
 	"#7",
@@ -104,7 +104,7 @@ VALUES ("00007",
 	NULL);
 
 INSERT INTO Guardian
-VALUES ("00008",
+VALUES ("000008",
 	"1234",
 	"TestGuardian",
 	"#8",
@@ -119,7 +119,7 @@ VALUES ("00008",
 	NULL);
 
 INSERT INTO Guardian
-VALUES ("00009",
+VALUES ("000009",
 	"1234",
 	"TestGuardian",
 	"#9",

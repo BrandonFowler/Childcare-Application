@@ -1,3 +1,9 @@
+INSERT INTO Administrator
+VALUES ("a",
+	"a",
+	"1",
+	"tester@testmail.test");
+
 INSERT INTO EventData
 VALUES ("000001",
         "Late Childcare Fee",
