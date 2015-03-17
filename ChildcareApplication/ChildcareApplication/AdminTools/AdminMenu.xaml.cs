@@ -12,8 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AdminTools
-{
+namespace AdminTools {
     /// <summary>
     /// Interaction logic for win_AdminMenu.xaml
     /// </summary>
@@ -23,7 +22,7 @@ namespace AdminTools
         }//end win_AdminMenu
 
         private void btn_EditOrDeleteParent_Click(object sender, RoutedEventArgs e) {
-            bool editParent = true; 
+            bool editParent = true;
             ParentIDEntry ParentLogin = new ParentIDEntry(editParent);
             ParentLogin.Show();
             this.Close();
@@ -46,7 +45,7 @@ namespace AdminTools
         }
 
         private void btn_EditOrDeleteChild_Click(object sender, RoutedEventArgs e) {
-            bool editParent = false; 
+            bool editParent = false;
             ParentIDEntry ParentLogin = new ParentIDEntry(editParent);
             ParentLogin.Show();
             this.Close();
@@ -57,8 +56,7 @@ namespace AdminTools
             editEvents.Show();
         }
 
-        private void btn_AddNewParent_Click(object sender, RoutedEventArgs e)
-        {
+        private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
             NewParentLogin newParentLogin = new NewParentLogin();
             newParentLogin.ShowDialog();
         }

@@ -62,6 +62,7 @@
     <Compile Include="AdminTools\BusinessReport.xaml.cs">
       <DependentUpon>BusinessReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminTools\EventModificationDB.cs" />
     <Compile Include="AdminTools\PaymentEntry.xaml.cs">
       <DependentUpon>PaymentEntry.xaml</DependentUpon>
     </Compile>

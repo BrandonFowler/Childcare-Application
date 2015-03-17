@@ -1,5 +1,4 @@
-﻿//using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -16,9 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace AdminTools {
-    /// <summary>
-    /// Interaction logic for win_EditEvents.xaml
-    /// </summary>
     public partial class EditEvents : Window {
         public EditEvents() {
             InitializeComponent();
@@ -27,7 +23,7 @@ namespace AdminTools {
         }
 
         private void LoadEvents() {
-            SQLiteConnection connection = new SQLiteConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
             String query = "SELECT * FROM EventData;";
 
             try {
@@ -36,10 +32,10 @@ namespace AdminTools {
                 cmd.ExecuteNonQuery();
 
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
-                DataTable table = new DataTable("Parent Report");
+                DataTable table = new DataTable("Event Info");
                 adapter.Fill(table);
                 EventViewDataGrid.ItemsSource = table.DefaultView;
-                adapter.Update(table);
+                //adapter.Update(table);
 
                 connection.Close();
             } catch (Exception exception) {
@@ -48,7 +44,7 @@ namespace AdminTools {
         }
 
         private void FillComboBox() {
-            SQLiteConnection connection = new SQLiteConnection("Server=146.187.135.22;Uid=ccdev;Pwd=devpw821;Database=childcare_v4;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
             String query = "SELECT Event_ID FROM EventData;";
 
             try {
@@ -58,7 +54,7 @@ namespace AdminTools {
                 SQLiteDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read()) {
-                    int eventID = reader.GetInt32(0);
+                    String eventID = reader.GetString(0);
                     ComboBoxItem item = new ComboBoxItem();
                     item.Content = eventID;
                     cmd_EventIDCombo.Items.Add(item);
@@ -70,14 +66,22 @@ namespace AdminTools {
         }
 
         private void btn_EditEvent_Click(object sender, RoutedEventArgs e) {
-            EventModificationWindow win = new EventModificationWindow(((ComboBoxItem)cmd_EventIDCombo.SelectedItem).Content.ToString());
-            win.Show();
-            this.Close();
+            if (cmd_EventIDCombo.SelectedIndex != -1) {
+                EventModificationWindow win = new EventModificationWindow(((ComboBoxItem)cmd_EventIDCombo.SelectedItem).Content.ToString());
+                win.Show();
+                this.Close();
+            } else {
+                MessageBox.Show("You must select an event ID from the drop down box.");
+            }
         }
 
         private void btn_AddEvent_Click(object sender, RoutedEventArgs e) {
             EventModificationWindow win = new EventModificationWindow();
             win.Show();
+            this.Close();
+        }
+
+        private void btn_Exit_Click(object sender, RoutedEventArgs e) {
             this.Close();
         }
     }

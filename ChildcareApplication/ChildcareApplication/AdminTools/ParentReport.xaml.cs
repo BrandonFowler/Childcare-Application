@@ -116,9 +116,10 @@ namespace AdminTools {
             ParentInfoDB parentInfo = new ParentInfoDB();
             String initialFrom = txt_FromDate.Text;
             String initialTo = txt_ToDate.Text;
-
-            initialFrom = initialFrom.Substring(0, 10);
-            initialTo = initialTo.Substring(0, 10);
+            if (initialFrom.Length >= 10 && initialTo.Length >= 10) {
+                initialFrom = initialFrom.Substring(0, 10);
+                initialTo = initialTo.Substring(0, 10);
+            }
 
             if (initialFrom.Length == 10 && initialTo.Length == 10) {
                 if (txt_ParentID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_ParentID.Text)) {

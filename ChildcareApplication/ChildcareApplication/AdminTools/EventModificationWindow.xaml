@@ -3,28 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="win_EventModificationWindow" Height="309" Width="375">
     <Grid>
-        <ComboBox x:Name="cmb_PriceType" HorizontalAlignment="Left" Margin="55,132,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="cmb_PriceType" HorizontalAlignment="Left" Margin="55,90,0,0" VerticalAlignment="Top" Width="120" TabIndex="1" SelectionChanged="cmb_PriceType_SelectionChanged">
             <ComboBoxItem Content="Hourly"/>
             <ComboBoxItem Content="Daily"/>
         </ComboBox>
-        <ComboBox x:Name="cmb_Occurence" HorizontalAlignment="Left" Margin="55,185,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="cmb_Occurence_DropDownClosed">
+        <ComboBox x:Name="cmb_Occurence" HorizontalAlignment="Left" Margin="55,185,0,0" VerticalAlignment="Top" Width="120" TabIndex="4" SelectionChanged="cmb_Occurence_SelectionChanged">
             <ComboBoxItem Content="Always Available"/>
             <ComboBoxItem Content="Specific Day"/>
             <ComboBoxItem Content="Weekly"/>
         </ComboBox>
-        <Label x:Name="lbl_PriceType" Content="Price Type" HorizontalAlignment="Left" Margin="55,106,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lbl_PriceType" Content="Price Type" HorizontalAlignment="Left" Margin="55,64,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lbl_EventOccurence" Content="Event Occurence" HorizontalAlignment="Left" Margin="55,159,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="lbl_EventName" Content="Event Name" HorizontalAlignment="Left" Margin="55,52,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txt_EventName" HorizontalAlignment="Left" Height="23" Margin="55,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txt_Rate" HorizontalAlignment="Left" Height="22" Margin="234,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="lbl_Rate" Content="Rate:" HorizontalAlignment="Left" Margin="198,132,0,0" VerticalAlignment="Top" Width="36"/>
+        <Label x:Name="lbl_EventName" Content="Event Name" HorizontalAlignment="Left" Margin="55,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txt_EventName" HorizontalAlignment="Left" Height="23" Margin="55,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="0" TextChanged="txt_EventName_TextChanged"/>
+        <TextBox x:Name="txt_Rate" HorizontalAlignment="Left" Height="22" Margin="234,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="2" TextChanged="txt_Rate_TextChanged"/>
+        <Label x:Name="lbl_Rate" Content="Rate:" HorizontalAlignment="Left" Margin="198,90,0,0" VerticalAlignment="Top" Width="36"/>
         <Label x:Name="lbl_DayNum" Content="Day of Month:" HorizontalAlignment="Left" Margin="198,181,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <TextBox x:Name="txt_DayOfMonth" HorizontalAlignment="Left" Height="23" Margin="284,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Visibility="Hidden"/>
+        <TextBox x:Name="txt_DayOfMonth" HorizontalAlignment="Left" Height="23" Margin="284,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Visibility="Hidden" TextChanged="txt_DayOfMonth_TextChanged" TabIndex="6"/>
         <Label x:Name="lbl_MonthNum" Content="Month Number:" HorizontalAlignment="Left" Margin="189,212,0,0" VerticalAlignment="Top" Width="95" Visibility="Hidden"/>
-        <TextBox x:Name="txt_MonthNum" HorizontalAlignment="Left" Height="23" Margin="284,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Visibility="Hidden"/>
-        <Button x:Name="btn_Submit" Content="Submit Changes" HorizontalAlignment="Left" Margin="248,248,0,0" VerticalAlignment="Top" Width="106" Click="btn_Submit_Click"/>
+        <TextBox x:Name="txt_MonthNum" HorizontalAlignment="Left" Height="23" Margin="284,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Visibility="Hidden" TabIndex="6" TextChanged="txt_MonthNum_TextChanged"/>
+        <Button x:Name="btn_Submit" Content="_Submit Changes" HorizontalAlignment="Left" Margin="248,248,0,0" VerticalAlignment="Top" Width="106" Click="btn_Submit_Click" TabIndex="49"/>
         <Label x:Name="lbl_DayName" Content="Day:" HorizontalAlignment="Left" Margin="198,181,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <ComboBox x:Name="cmb_DayName" HorizontalAlignment="Left" Margin="234,185,0,0" VerticalAlignment="Top" Width="120" Visibility="Hidden">
+        <ComboBox x:Name="cmb_DayName" HorizontalAlignment="Left" Margin="234,185,0,0" VerticalAlignment="Top" Width="120" Visibility="Hidden" TabIndex="9">
             <ComboBoxItem Content="Sunday"/>
             <ComboBoxItem Content="Monday"/>
             <ComboBoxItem Content="Tuesday"/>
@@ -33,5 +33,8 @@
             <ComboBoxItem Content="Friday"/>
             <ComboBoxItem Content="Saturday"/>
         </ComboBox>
+        <Button x:Name="btn_Cancel" Content="_Cancel" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="106" TabIndex="50" Click="btn_Cancel_Click"/>
+        <TextBox x:Name="txt_DiscountPrice" HorizontalAlignment="Left" Height="23" Margin="234,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="3"/>
+        <Label x:Name="lbl_Discount" Content="Discount Rate:" HorizontalAlignment="Left" Margin="148,117,0,0" VerticalAlignment="Top" Width="88"/>
     </Grid>
 </Window>
