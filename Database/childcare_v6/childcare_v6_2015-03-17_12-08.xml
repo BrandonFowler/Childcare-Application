@@ -694,22 +694,12 @@
             <Name>ApplicationSettings</Name>
             <Description></Description>
             <Columns>
-                <Column Id="c63">
-                    <Name>SettingID</Name>
-                    <Type>integer</Type>
-                    <Description></Description>
-                    <Nullable>false</Nullable>
-                    <PK>true</PK>
-                    <DefaultValue></DefaultValue>
-                    <CheckExpression></CheckExpression>
-                    <Properties/>
-                </Column>
                 <Column Id="c64">
                     <Name>SettingName</Name>
                     <Type>varchar(20)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
-                    <PK>false</PK>
+                    <PK>true</PK>
                     <DefaultValue></DefaultValue>
                     <CheckExpression></CheckExpression>
                     <Properties/>
@@ -887,8 +877,8 @@
             <FixedSize>false</FixedSize>
         </TableDisplay>
         <TableDisplay Id="td6">
-            <X>4619.5</X>
-            <Y>4728.5</Y>
+            <X>4587.5</X>
+            <Y>4757.5</Y>
             <Width>207.0</Width>
             <Height>87.0</Height>
             <LineColor>#000000</LineColor>
@@ -897,8 +887,8 @@
             <FixedSize>false</FixedSize>
         </TableDisplay>
         <TableDisplay Id="td7">
-            <X>4913.5</X>
-            <Y>4733.5</Y>
+            <X>4914.5</X>
+            <Y>4758.5</Y>
             <Width>209.0</Width>
             <Height>73.0</Height>
             <LineColor>#000000</LineColor>
@@ -917,10 +907,10 @@
             <FixedSize>false</FixedSize>
         </TableDisplay>
         <TableDisplay Id="td9">
-            <X>4766.5</X>
-            <Y>4619.5</Y>
+            <X>4762.5</X>
+            <Y>4665.5</Y>
             <Width>175.0</Width>
-            <Height>73.0</Height>
+            <Height>58.0</Height>
             <LineColor>#000000</LineColor>
             <FillColor>#ffffff</FillColor>
             <Table>t9</Table>

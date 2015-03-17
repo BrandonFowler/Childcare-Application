@@ -1,7 +1,7 @@
 -- Created by Vertabelo (http://vertabelo.com)
 -- Script type: create
 -- Scope: [tables, references, sequences, views, procedures]
--- Generated at Fri Mar 13 21:45:45 UTC 2015
+-- Generated at Tue Mar 17 19:07:45 UTC 2015
 
 
 
@@ -27,8 +27,7 @@ CREATE TABLE AllowedConnections (
 
 -- Table: ApplicationSettings
 CREATE TABLE ApplicationSettings (
-    SettingID integer NOT NULL  PRIMARY KEY,
-    SettingName varchar(20) NOT NULL,
+    SettingName varchar(20) NOT NULL  PRIMARY KEY,
     SettingValue varchar(10) NOT NULL
 );
 
