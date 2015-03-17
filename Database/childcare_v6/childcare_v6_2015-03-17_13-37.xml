@@ -416,7 +416,7 @@
                 </Column>
                 <Column Id="c28">
                     <Name>CheckedIn</Name>
-                    <Type>datetime</Type>
+                    <Type>time</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>false</PK>
@@ -426,7 +426,7 @@
                 </Column>
                 <Column Id="c29">
                     <Name>CheckedOut</Name>
-                    <Type>datetime</Type>
+                    <Type>time</Type>
                     <Description></Description>
                     <Nullable>true</Nullable>
                     <PK>false</PK>
@@ -632,7 +632,7 @@
                 </Column>
                 <Column Id="c55">
                     <Name>Opening</Name>
-                    <Type>datetime</Type>
+                    <Type>time</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>false</PK>
@@ -642,7 +642,7 @@
                 </Column>
                 <Column Id="c56">
                     <Name>Closing</Name>
-                    <Type>datetime</Type>
+                    <Type>time</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>false</PK>
@@ -696,7 +696,7 @@
             <Columns>
                 <Column Id="c64">
                     <Name>SettingName</Name>
-                    <Type>varchar(20)</Type>
+                    <Type>varchar(50)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>true</PK>

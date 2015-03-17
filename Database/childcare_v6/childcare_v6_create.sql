@@ -1,7 +1,7 @@
 -- Created by Vertabelo (http://vertabelo.com)
 -- Script type: create
 -- Scope: [tables, references, sequences, views, procedures]
--- Generated at Tue Mar 17 19:07:45 UTC 2015
+-- Generated at Tue Mar 17 20:37:22 UTC 2015
 
 
 
@@ -27,7 +27,7 @@ CREATE TABLE AllowedConnections (
 
 -- Table: ApplicationSettings
 CREATE TABLE ApplicationSettings (
-    SettingName varchar(20) NOT NULL  PRIMARY KEY,
+    SettingName varchar(50) NOT NULL  PRIMARY KEY,
     SettingValue varchar(10) NOT NULL
 );
 
@@ -49,8 +49,8 @@ CREATE TABLE ChildcareTransaction (
     Event_ID varchar(6) NOT NULL,
     Allowance_ID varchar(6) NOT NULL,
     TransactionDate date NOT NULL,
-    CheckedIn datetime NOT NULL,
-    CheckedOut datetime,
+    CheckedIn time NOT NULL,
+    CheckedOut time,
     TransactionTotal float,
     FOREIGN KEY (Allowance_ID) REFERENCES AllowedConnections (Allowance_ID),
     FOREIGN KEY (Event_ID) REFERENCES EventData (Event_ID)
@@ -96,8 +96,8 @@ CREATE TABLE Guardian (
 -- Table: OperatingHours
 CREATE TABLE OperatingHours (
     OperatingWeekday varchar(10) NOT NULL  PRIMARY KEY,
-    Opening datetime NOT NULL,
-    Closing datetime NOT NULL
+    Opening time NOT NULL,
+    Closing time NOT NULL
 );
 
 
