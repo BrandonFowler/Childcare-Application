@@ -59,6 +59,7 @@ namespace AdminTools {
         private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
             NewParentLogin newParentLogin = new NewParentLogin();
             newParentLogin.ShowDialog();
+            this.Close(); 
         }
     }//end class
 }//end namespace

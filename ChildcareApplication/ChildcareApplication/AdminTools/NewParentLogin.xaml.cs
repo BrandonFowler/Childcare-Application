@@ -48,7 +48,7 @@ namespace AdminTools {
 
                             this.db.AddNewParent(pID, PIN, "\"First\"", "\"Last\"", "\"000-000-0000\"", "\"someEmail@email.com\"", "\"123 Road St\"", "\"none\"", "\"City\"", "\"WA\"", "\"12345\"", "\"../../Pictures/default.jpg\"");
                             MakeFamilyID(pID);
-                            MessageBox.Show("Made New Parent");
+                            //MessageBox.Show("Made New Parent");
 
                             AdminEditParentInfo adminEditParentInfo = new AdminEditParentInfo(pID);
                             adminEditParentInfo.Show();
