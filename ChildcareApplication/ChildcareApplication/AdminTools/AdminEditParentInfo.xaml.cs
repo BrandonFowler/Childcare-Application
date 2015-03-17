@@ -270,7 +270,7 @@ namespace AdminTools {
                 if (result == true)
                 {
                     // Open document 
-                    string path = "../../../../Photos/"; 
+                    string path = "../../Pictures/"; 
                     string filename = dlg.FileName;
                     string[] words = filename.Split('\\');
 

@@ -46,7 +46,7 @@ namespace AdminTools {
                         if (count == 0)//ID does not exist
                         {
 
-                            this.db.AddNewParent(pID, PIN, "\"First\"", "\"Last\"", "\"000-000-0000\"", "\"someEmail@email.com\"", "\"123 Road St\"", "\"none\"", "\"City\"", "\"WA\"", "\"12345\"", "\"../../../../Photos/default.jpg\"");
+                            this.db.AddNewParent(pID, PIN, "\"First\"", "\"Last\"", "\"000-000-0000\"", "\"someEmail@email.com\"", "\"123 Road St\"", "\"none\"", "\"City\"", "\"WA\"", "\"12345\"", "\"../../Pictures/default.jpg\"");
                             MakeFamilyID(pID);
                             MessageBox.Show("Made New Parent");
 

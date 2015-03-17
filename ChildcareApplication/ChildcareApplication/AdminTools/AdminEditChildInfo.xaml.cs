@@ -179,7 +179,7 @@ namespace AdminTools {
                 image.Source = bitmapImage;
             } catch {
                 BitmapImage bitmapImage = new BitmapImage();
-                var fileInfo = new FileInfo(@"../../../../Photos/default.jpg");
+                var fileInfo = new FileInfo(@"../../Pictures/default.jpg");
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
@@ -225,7 +225,7 @@ namespace AdminTools {
 
             Image i; 
             i = buildImage("../../../../Photos/default.jpg", 60); 
-            lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None", "../../../../Photos/default.jpg"));
+            lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None", "../../Pictures/default.jpg"));
 
             DS = this.db.GetMaxConnectionID();
             int connID = Convert.ToInt32(DS.Tables[0].Rows[0][0]);
@@ -234,7 +234,7 @@ namespace AdminTools {
 
 
             string famID = getFamilyID(ID);
-            this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "../../../../Photos/default.jpg");
+            this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "../../Pictures/default.jpg");
              
             this.db.UpdateAllowedConnections(connectionID, ID, mID, famID);
 
@@ -298,7 +298,7 @@ namespace AdminTools {
                 if (result == true)
                 {
                     // Open document 
-                    string path = "../../../../Photos/";
+                    string path = "../../Pictures/";
                     string filename = dlg.FileName;
                     string[] words = filename.Split('\\');
 
