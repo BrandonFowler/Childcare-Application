@@ -1,0 +1,14 @@
+﻿<Window x:Class="AdminTools.EditEvents"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="win_EditEvents" Height="331.5" Width="720.5">
+    <Grid>
+        <DataGrid x:Name="EventViewDataGrid" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Height="240" Width="692"/>
+        <Button x:Name="btn_AddEvent" Content="Add Event" HorizontalAlignment="Left" Margin="46,18,0,0" VerticalAlignment="Top" Width="76" Height="22" Click="btn_AddEvent_Click" TabIndex="0"/>
+        <ComboBox x:Name="cmd_EventIDCombo" HorizontalAlignment="Left" Margin="229,18,0,0" VerticalAlignment="Top" Width="60" TabIndex="2"/>
+        <Button x:Name="btn_EditEvent" Content="Edit Event" HorizontalAlignment="Left" Margin="150,18,0,0" VerticalAlignment="Top" Width="74" Height="22" Click="btn_EditEvent_Click" TabIndex="1"/>
+        <Label x:Name="lbl_EventID" Content="Event ID" HorizontalAlignment="Left" Margin="229,-4,0,0" VerticalAlignment="Top" Width="61"/>
+        <Button x:Name="btn_Exit" Content="_Exit" HorizontalAlignment="Left" Margin="614,18,0,0" VerticalAlignment="Top" Width="75" Height="22" TabIndex="3" Click="btn_Exit_Click"/>
+
+    </Grid>
+</Window>

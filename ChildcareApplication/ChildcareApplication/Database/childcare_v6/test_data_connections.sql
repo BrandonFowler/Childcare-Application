@@ -1,0 +1,600 @@
+INSERT INTO AllowedConnections
+VALUES ("000001", "000056", "000074", "000007");
+
+INSERT INTO AllowedConnections
+VALUES ("000002", "000033", "000058", "000005");
+
+INSERT INTO AllowedConnections
+VALUES ("000003", "000039", "000070", "000021");
+
+INSERT INTO AllowedConnections
+VALUES ("000004", "000044", "000001", "000002");
+
+INSERT INTO AllowedConnections
+VALUES ("000005", "000043", "000043", "000008");
+
+INSERT INTO AllowedConnections
+VALUES ("000006", "000004", "000059", "000025");
+
+INSERT INTO AllowedConnections
+VALUES ("000007", "000050", "000095", "000009");
+
+INSERT INTO AllowedConnections
+VALUES ("000008", "000019", "000032", "000005");
+
+INSERT INTO AllowedConnections
+VALUES ("000009", "000011", "000046", "000031");
+
+INSERT INTO AllowedConnections
+VALUES ("000010", "000001", "000007", "000037");
+
+INSERT INTO AllowedConnections
+VALUES ("000011", "000023", "000099", "000008");
+
+INSERT INTO AllowedConnections
+VALUES ("000012", "000004", "000089", "000019");
+
+INSERT INTO AllowedConnections
+VALUES ("000013", "000019", "000009", "000010");
+
+INSERT INTO AllowedConnections
+VALUES ("000014", "000012", "000087", "000020");
+
+INSERT INTO AllowedConnections
+VALUES ("000015", "000036", "000035", "000030");
+
+INSERT INTO AllowedConnections
+VALUES ("000016", "000050", "000089", "000029");
+
+INSERT INTO AllowedConnections
+VALUES ("000017", "000007", "000099", "000010");
+
+INSERT INTO AllowedConnections
+VALUES ("000018", "000024", "000090", "000015");
+
+INSERT INTO AllowedConnections
+VALUES ("000019", "000046", "000069", "000007");
+
+INSERT INTO AllowedConnections
+VALUES ("000020", "000010", "000060", "000007");
+
+INSERT INTO AllowedConnections
+VALUES ("000021", "000019", "000045", "000040");
+
+INSERT INTO AllowedConnections
+VALUES ("000022", "000015", "000008", "000019");
+
+INSERT INTO AllowedConnections
+VALUES ("000023", "000026", "000040", "000007");
+
+INSERT INTO AllowedConnections
+VALUES ("000024", "000031", "000022", "000038");
+
+INSERT INTO AllowedConnections
+VALUES ("000025", "000018", "000061", "000025");
+
+INSERT INTO AllowedConnections
+VALUES ("000026", "000059", "000079", "000036");
+
+INSERT INTO AllowedConnections
+VALUES ("000027", "000030", "000002", "000021");
+
+INSERT INTO AllowedConnections
+VALUES ("000028", "000014", "000099", "000021");
+
+INSERT INTO AllowedConnections
+VALUES ("000029", "000054", "000079", "000028");
+
+INSERT INTO AllowedConnections
+VALUES ("000030", "000030", "000031", "000027");
+
+INSERT INTO AllowedConnections
+VALUES ("000031", "000056", "000046", "000004");
+
+INSERT INTO AllowedConnections
+VALUES ("000032", "000027", "000027", "000035");
+
+INSERT INTO AllowedConnections
+VALUES ("000033", "000049", "000039", "000040");
+
+INSERT INTO AllowedConnections
+VALUES ("000034", "000046", "000032", "000003");
+
+INSERT INTO AllowedConnections
+VALUES ("000035", "000005", "000054", "000032");
+
+INSERT INTO AllowedConnections
+VALUES ("000036", "000047", "000054", "000006");
+
+INSERT INTO AllowedConnections
+VALUES ("000037", "000037", "000062", "000009");
+
+INSERT INTO AllowedConnections
+VALUES ("000038", "000051", "000054", "000020");
+
+INSERT INTO AllowedConnections
+VALUES ("000039", "000045", "000020", "000019");
+
+INSERT INTO AllowedConnections
+VALUES ("000040", "000049", "000046", "000040");
+
+INSERT INTO AllowedConnections
+VALUES ("000041", "000027", "000086", "000032");
+
+INSERT INTO AllowedConnections
+VALUES ("000042", "000036", "000033", "000023");
+
+INSERT INTO AllowedConnections
+VALUES ("000043", "000003", "000079", "000023");
+
+INSERT INTO AllowedConnections
+VALUES ("000044", "000036", "000091", "000021");
+
+INSERT INTO AllowedConnections
+VALUES ("000045", "000005", "000075", "000037");
+
+INSERT INTO AllowedConnections
+VALUES ("000046", "000012", "000019", "000008");
+
+INSERT INTO AllowedConnections
+VALUES ("000047", "000041", "000012", "000002");
+
+INSERT INTO AllowedConnections
+VALUES ("000048", "000025", "000047", "000001");
+
+INSERT INTO AllowedConnections
+VALUES ("000049", "000012", "000063", "000027");
+
+INSERT INTO AllowedConnections
+VALUES ("000050", "000017", "000020", "000014");
+
+INSERT INTO AllowedConnections
+VALUES ("000051", "000043", "000017", "000039");
+
+INSERT INTO AllowedConnections
+VALUES ("000052", "000005", "000044", "000004");
+
+INSERT INTO AllowedConnections
+VALUES ("000053", "000049", "000079", "000006");
+
+INSERT INTO AllowedConnections
+VALUES ("000054", "000039", "000004", "000039");
+
+INSERT INTO AllowedConnections
+VALUES ("000055", "000022", "000039", "000006");
+
+INSERT INTO AllowedConnections
+VALUES ("000056", "000001", "000073", "000029");
+
+INSERT INTO AllowedConnections
+VALUES ("000057", "000026", "000070", "000033");
+
+INSERT INTO AllowedConnections
+VALUES ("000058", "000011", "000017", "000014");
+
+INSERT INTO AllowedConnections
+VALUES ("000059", "000006", "000024", "000002");
+
+INSERT INTO AllowedConnections
+VALUES ("000060", "000022", "000100", "000020");
+
+INSERT INTO AllowedConnections
+VALUES ("000061", "000006", "000051", "000017");
+
+INSERT INTO AllowedConnections
+VALUES ("000062", "000060", "000087", "000031");
+
+INSERT INTO AllowedConnections
+VALUES ("000063", "000042", "000048", "000037");
+
+INSERT INTO AllowedConnections
+VALUES ("000064", "000023", "000094", "000029");
+
+INSERT INTO AllowedConnections
+VALUES ("000065", "000014", "000061", "000021");
+
+INSERT INTO AllowedConnections
+VALUES ("000066", "000026", "000030", "000030");
+
+INSERT INTO AllowedConnections
+VALUES ("000067", "000056", "000076", "000013");
+
+INSERT INTO AllowedConnections
+VALUES ("000068", "000010", "000024", "000005");
+
+INSERT INTO AllowedConnections
+VALUES ("000069", "000060", "000060", "000022");
+
+INSERT INTO AllowedConnections
+VALUES ("000070", "000048", "000056", "000005");
+
+INSERT INTO AllowedConnections
+VALUES ("000071", "000045", "000063", "000032");
+
+INSERT INTO AllowedConnections
+VALUES ("000072", "000040", "000089", "000012");
+
+INSERT INTO AllowedConnections
+VALUES ("000073", "000053", "000055", "000021");
+
+INSERT INTO AllowedConnections
+VALUES ("000074", "000050", "000089", "000037");
+
+INSERT INTO AllowedConnections
+VALUES ("000075", "000024", "000091", "000021");
+
+INSERT INTO AllowedConnections
+VALUES ("000076", "000060", "000001", "000029");
+
+INSERT INTO AllowedConnections
+VALUES ("000077", "000032", "000089", "000006");
+
+INSERT INTO AllowedConnections
+VALUES ("000078", "000002", "000020", "000001");
+
+INSERT INTO AllowedConnections
+VALUES ("000079", "000043", "000036", "000003");
+
+INSERT INTO AllowedConnections
+VALUES ("000080", "000022", "000054", "000008");
+
+INSERT INTO AllowedConnections
+VALUES ("000081", "000050", "000091", "000028");
+
+INSERT INTO AllowedConnections
+VALUES ("000082", "000049", "000032", "000012");
+
+INSERT INTO AllowedConnections
+VALUES ("000083", "000015", "000063", "000003");
+
+INSERT INTO AllowedConnections
+VALUES ("000084", "000027", "000070", "000016");
+
+INSERT INTO AllowedConnections
+VALUES ("000085", "000006", "000090", "000009");
+
+INSERT INTO AllowedConnections
+VALUES ("000086", "000015", "000092", "000027");
+
+INSERT INTO AllowedConnections
+VALUES ("000087", "000023", "000034", "000002");
+
+INSERT INTO AllowedConnections
+VALUES ("000088", "000006", "000009", "000003");
+
+INSERT INTO AllowedConnections
+VALUES ("000089", "000011", "000019", "000006");
+
+INSERT INTO AllowedConnections
+VALUES ("000090", "000025", "000049", "000028");
+
+INSERT INTO AllowedConnections
+VALUES ("000091", "000055", "000100", "000018");
+
+INSERT INTO AllowedConnections
+VALUES ("000092", "000029", "000069", "000009");
+
+INSERT INTO AllowedConnections
+VALUES ("000093", "000042", "000034", "000040");
+
+INSERT INTO AllowedConnections
+VALUES ("000094", "000046", "000036", "000013");
+
+INSERT INTO AllowedConnections
+VALUES ("000095", "000005", "000043", "000027");
+
+INSERT INTO AllowedConnections
+VALUES ("000096", "000006", "000036", "000011");
+
+INSERT INTO AllowedConnections
+VALUES ("000097", "000038", "000097", "000003");
+
+INSERT INTO AllowedConnections
+VALUES ("000098", "000042", "000073", "000024");
+
+INSERT INTO AllowedConnections
+VALUES ("000099", "000005", "000015", "000017");
+
+INSERT INTO AllowedConnections
+VALUES ("000100", "000010", "000007", "000010");
+
+INSERT INTO AllowedConnections
+VALUES ("000101", "000015", "000087", "000028");
+
+INSERT INTO AllowedConnections
+VALUES ("000102", "000017", "000064", "000031");
+
+INSERT INTO AllowedConnections
+VALUES ("000103", "000002", "000079", "000007");
+
+INSERT INTO AllowedConnections
+VALUES ("000104", "000056", "000006", "000003");
+
+INSERT INTO AllowedConnections
+VALUES ("000105", "000047", "000058", "000028");
+
+INSERT INTO AllowedConnections
+VALUES ("000106", "000035", "000054", "000025");
+
+INSERT INTO AllowedConnections
+VALUES ("000107", "000042", "000006", "000031");
+
+INSERT INTO AllowedConnections
+VALUES ("000108", "000004", "000043", "000038");
+
+INSERT INTO AllowedConnections
+VALUES ("000109", "000058", "000051", "000015");
+
+INSERT INTO AllowedConnections
+VALUES ("000110", "000026", "000076", "000014");
+
+INSERT INTO AllowedConnections
+VALUES ("000111", "000041", "000016", "000025");
+
+INSERT INTO AllowedConnections
+VALUES ("000112", "000055", "000033", "000034");
+
+INSERT INTO AllowedConnections
+VALUES ("000113", "000043", "000050", "000011");
+
+INSERT INTO AllowedConnections
+VALUES ("000114", "000036", "000041", "000004");
+
+INSERT INTO AllowedConnections
+VALUES ("000115", "000044", "000024", "000019");
+
+INSERT INTO AllowedConnections
+VALUES ("000116", "000018", "000042", "000008");
+
+INSERT INTO AllowedConnections
+VALUES ("000117", "000022", "000005", "000001");
+
+INSERT INTO AllowedConnections
+VALUES ("000118", "000013", "000051", "000009");
+
+INSERT INTO AllowedConnections
+VALUES ("000119", "000015", "000081", "000018");
+
+INSERT INTO AllowedConnections
+VALUES ("000120", "000015", "000096", "000012");
+
+INSERT INTO AllowedConnections
+VALUES ("000121", "000032", "000068", "000040");
+
+INSERT INTO AllowedConnections
+VALUES ("000122", "000056", "000005", "000013");
+
+INSERT INTO AllowedConnections
+VALUES ("000123", "000026", "000019", "000029");
+
+INSERT INTO AllowedConnections
+VALUES ("000124", "000011", "000023", "000039");
+
+INSERT INTO AllowedConnections
+VALUES ("000125", "000011", "000073", "000011");
+
+INSERT INTO AllowedConnections
+VALUES ("000126", "000032", "000024", "000011");
+
+INSERT INTO AllowedConnections
+VALUES ("000127", "000045", "000097", "000002");
+
+INSERT INTO AllowedConnections
+VALUES ("000128", "000047", "000016", "000010");
+
+INSERT INTO AllowedConnections
+VALUES ("000129", "000016", "000048", "000008");
+
+INSERT INTO AllowedConnections
+VALUES ("000130", "000030", "000040", "000009");
+
+INSERT INTO AllowedConnections
+VALUES ("000131", "000042", "000009", "000028");
+
+INSERT INTO AllowedConnections
+VALUES ("000132", "000031", "000026", "000003");
+
+INSERT INTO AllowedConnections
+VALUES ("000133", "000002", "000097", "000021");
+
+INSERT INTO AllowedConnections
+VALUES ("000134", "000015", "000036", "000010");
+
+INSERT INTO AllowedConnections
+VALUES ("000135", "000011", "000034", "000004");
+
+INSERT INTO AllowedConnections
+VALUES ("000136", "000013", "000036", "000035");
+
+INSERT INTO AllowedConnections
+VALUES ("000137", "000017", "000061", "000033");
+
+INSERT INTO AllowedConnections
+VALUES ("000138", "000001", "000027", "000027");
+
+INSERT INTO AllowedConnections
+VALUES ("000139", "000034", "000012", "000012");
+
+INSERT INTO AllowedConnections
+VALUES ("000140", "000018", "000073", "000038");
+
+INSERT INTO AllowedConnections
+VALUES ("000141", "000005", "000071", "000018");
+
+INSERT INTO AllowedConnections
+VALUES ("000142", "000057", "000016", "000026");
+
+INSERT INTO AllowedConnections
+VALUES ("000143", "000036", "000021", "000017");
+
+INSERT INTO AllowedConnections
+VALUES ("000144", "000040", "000013", "000028");
+
+INSERT INTO AllowedConnections
+VALUES ("000145", "000008", "000046", "000014");
+
+INSERT INTO AllowedConnections
+VALUES ("000146", "000052", "000064", "000028");
+
+INSERT INTO AllowedConnections
+VALUES ("000147", "000010", "000041", "000006");
+
+INSERT INTO AllowedConnections
+VALUES ("000148", "000028", "000080", "000036");
+
+INSERT INTO AllowedConnections
+VALUES ("000149", "000027", "000090", "000038");
+
+INSERT INTO AllowedConnections
+VALUES ("000150", "000009", "000041", "000026");
+
+INSERT INTO AllowedConnections
+VALUES ("000151", "000018", "000050", "000015");
+
+INSERT INTO AllowedConnections
+VALUES ("000152", "000017", "000061", "000002");
+
+INSERT INTO AllowedConnections
+VALUES ("000153", "000024", "000077", "000040");
+
+INSERT INTO AllowedConnections
+VALUES ("000154", "000016", "000097", "000014");
+
+INSERT INTO AllowedConnections
+VALUES ("000155", "000006", "000052", "000029");
+
+INSERT INTO AllowedConnections
+VALUES ("000156", "000036", "000067", "000033");
+
+INSERT INTO AllowedConnections
+VALUES ("000157", "000040", "000007", "000015");
+
+INSERT INTO AllowedConnections
+VALUES ("000158", "000022", "000089", "000037");
+
+INSERT INTO AllowedConnections
+VALUES ("000159", "000018", "000025", "000033");
+
+INSERT INTO AllowedConnections
+VALUES ("000160", "000012", "000021", "000003");
+
+INSERT INTO AllowedConnections
+VALUES ("000161", "000010", "000035", "000025");
+
+INSERT INTO AllowedConnections
+VALUES ("000162", "000022", "000083", "000038");
+
+INSERT INTO AllowedConnections
+VALUES ("000163", "000001", "000080", "000013");
+
+INSERT INTO AllowedConnections
+VALUES ("000164", "000001", "000048", "000008");
+
+INSERT INTO AllowedConnections
+VALUES ("000165", "000003", "000003", "000009");
+
+INSERT INTO AllowedConnections
+VALUES ("000166", "000032", "000077", "000015");
+
+INSERT INTO AllowedConnections
+VALUES ("000167", "000048", "000075", "000030");
+
+INSERT INTO AllowedConnections
+VALUES ("000168", "000003", "000058", "000038");
+
+INSERT INTO AllowedConnections
+VALUES ("000169", "000047", "000040", "000012");
+
+INSERT INTO AllowedConnections
+VALUES ("000170", "000013", "000089", "000006");
+
+INSERT INTO AllowedConnections
+VALUES ("000171", "000042", "000030", "000037");
+
+INSERT INTO AllowedConnections
+VALUES ("000172", "000033", "000028", "000033");
+
+INSERT INTO AllowedConnections
+VALUES ("000173", "000051", "000015", "000031");
+
+INSERT INTO AllowedConnections
+VALUES ("000174", "000052", "000030", "000033");
+
+INSERT INTO AllowedConnections
+VALUES ("000175", "000029", "000037", "000024");
+
+INSERT INTO AllowedConnections
+VALUES ("000176", "000045", "000099", "000020");
+
+INSERT INTO AllowedConnections
+VALUES ("000177", "000038", "000059", "000012");
+
+INSERT INTO AllowedConnections
+VALUES ("000178", "000013", "000010", "000017");
+
+INSERT INTO AllowedConnections
+VALUES ("000179", "000005", "000078", "000029");
+
+INSERT INTO AllowedConnections
+VALUES ("000180", "000054", "000012", "000024");
+
+INSERT INTO AllowedConnections
+VALUES ("000181", "000055", "000076", "000027");
+
+INSERT INTO AllowedConnections
+VALUES ("000182", "000044", "000063", "000022");
+
+INSERT INTO AllowedConnections
+VALUES ("000183", "000041", "000042", "000001");
+
+INSERT INTO AllowedConnections
+VALUES ("000184", "000027", "000073", "000028");
+
+INSERT INTO AllowedConnections
+VALUES ("000185", "000036", "000006", "000023");
+
+INSERT INTO AllowedConnections
+VALUES ("000186", "000018", "000047", "000036");
+
+INSERT INTO AllowedConnections
+VALUES ("000187", "000050", "000024", "000027");
+
+INSERT INTO AllowedConnections
+VALUES ("000188", "000034", "000014", "000024");
+
+INSERT INTO AllowedConnections
+VALUES ("000189", "000040", "000064", "000023");
+
+INSERT INTO AllowedConnections
+VALUES ("000190", "000018", "000042", "000039");
+
+INSERT INTO AllowedConnections
+VALUES ("000191", "000047", "000095", "000037");
+
+INSERT INTO AllowedConnections
+VALUES ("000192", "000036", "000097", "000014");
+
+INSERT INTO AllowedConnections
+VALUES ("000193", "000024", "000084", "000004");
+
+INSERT INTO AllowedConnections
+VALUES ("000194", "000028", "000090", "000037");
+
+INSERT INTO AllowedConnections
+VALUES ("000195", "000048", "000087", "000036");
+
+INSERT INTO AllowedConnections
+VALUES ("000196", "000023", "000033", "000010");
+
+INSERT INTO AllowedConnections
+VALUES ("000197", "000055", "000059", "000012");
+
+INSERT INTO AllowedConnections
+VALUES ("000198", "000014", "000054", "000033");
+
+INSERT INTO AllowedConnections
+VALUES ("000199", "000029", "000027", "000016");
+
+INSERT INTO AllowedConnections
+VALUES ("000200", "000046", "000044", "000022");
+
