@@ -26,7 +26,7 @@
         </ComboBox>
         <Label x:Name="lbl_Month" Content="Month" HorizontalAlignment="Left" Margin="302,11,0,0" VerticalAlignment="Top" Width="91"/>
         <Label x:Name="lbl_Year" Content="Year" HorizontalAlignment="Left" Margin="427,11,0,0" VerticalAlignment="Top" Width="99"/>
-        <Button x:Name="btn_Exit" Content="_Exit" HorizontalAlignment="Left" Margin="569,39,0,0" VerticalAlignment="Top" Width="75" TabIndex="4" IsHitTestVisible="False" Click="btn_Exit_Click"/>
+        <Button x:Name="btn_Exit" Content="_Exit" HorizontalAlignment="Left" Margin="569,37,0,0" VerticalAlignment="Top" Width="75" Height="22" Click="btn_Exit_Click"/>
 
     </Grid>
 </Window>
