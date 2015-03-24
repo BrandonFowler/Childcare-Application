@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 namespace AdminTools {
     public partial class EventModificationWindow : Window {
         private bool valueChanged;
+        String eventID;
 
         public EventModificationWindow() {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace AdminTools {
             InitializeComponent();
             LoadData(eventID);
             valueChanged = false;
+            this.eventID = eventID;
         }
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
@@ -51,21 +53,23 @@ namespace AdminTools {
                 txt_EventName.Text = reader.GetString(1);
                 
                 if (!reader.IsDBNull(2)) {
-                    double hourlyPrice = reader.GetDouble(2);
                     cmb_PriceType.SelectedIndex = 0;
-                    txt_Rate.Text = "" + hourlyPrice;
+                    txt_Rate.Text = "" + reader.GetDouble(2);
+                    if (!reader.IsDBNull(3)) {
+                        txt_DiscountPrice.Text = "" + reader.GetDouble(3);
+                    }
                 } else if(!reader.IsDBNull(4)) {
-                    Double dailyPrice = reader.GetDouble(4);
                     cmb_PriceType.SelectedIndex = 1;
-                    txt_Rate.Text = "" + dailyPrice;
+                    txt_Rate.Text = "" + reader.GetDouble(4);
+                    if (!reader.IsDBNull(5)) {
+                        txt_DiscountPrice.Text = "" + reader.GetDouble(5);
+                    }
                 }
 
                 if (!reader.IsDBNull(6) && !reader.IsDBNull(7)) {
-                    String month = reader.GetString(6);
-                    String day = reader.GetString(7);
                     cmb_Occurence.SelectedIndex = 1;
-                    txt_MonthNum.Text = "" + month;
-                    txt_DayOfMonth.Text = "" + day;
+                    txt_MonthNum.Text = "" + reader.GetInt32(6);
+                    txt_DayOfMonth.Text = "" + reader.GetInt32(7);
                     lbl_DayNum.Visibility = Visibility.Visible;
                     lbl_MonthNum.Visibility = Visibility.Visible;
                     txt_DayOfMonth.Visibility = Visibility.Visible;
@@ -156,18 +160,34 @@ namespace AdminTools {
         private void ProcessModification() {
             EventModificationDB db = new EventModificationDB();
             if (FormDataValid()) {
-                if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 0) {
-                    db.HourlyPriceAlwaysAvailable(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text));
-                } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 0) {
-                    db.DailyPriceAlwaysAvailable(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text));
-                } else if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 1) {
-                    db.HourlyPriceSpecificDay(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), Convert.ToInt32(txt_MonthNum.Text), Convert.ToInt32(txt_DayOfMonth.Text));
-                } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 1) {
-                    db.DailyPriceSpecificDay(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), Convert.ToInt32(txt_MonthNum.Text), Convert.ToInt32(txt_DayOfMonth.Text));
-                } else if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 2) {
-                    db.HourlyPriceWeeklyOcur(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), ((ComboBoxItem)cmb_DayName.SelectedItem).Content.ToString());
-                } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 2) {
-                    db.DailyPriceWeeklyOcur(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), ((ComboBoxItem)cmb_DayName.SelectedItem).Content.ToString());
+                if (this.eventID == null) {
+                    if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 0) {
+                        db.HourlyPriceAlwaysAvailable(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text));
+                    } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 0) {
+                        db.DailyPriceAlwaysAvailable(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text));
+                    } else if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 1) {
+                        db.HourlyPriceSpecificDay(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), Convert.ToInt32(txt_MonthNum.Text), Convert.ToInt32(txt_DayOfMonth.Text));
+                    } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 1) {
+                        db.DailyPriceSpecificDay(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), Convert.ToInt32(txt_MonthNum.Text), Convert.ToInt32(txt_DayOfMonth.Text));
+                    } else if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 2) {
+                        db.HourlyPriceWeeklyOcur(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), ((ComboBoxItem)cmb_DayName.SelectedItem).Content.ToString());
+                    } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 2) {
+                        db.DailyPriceWeeklyOcur(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), ((ComboBoxItem)cmb_DayName.SelectedItem).Content.ToString());
+                    }
+                } else {
+                    if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 0) {
+                        db.HourlyPriceAlwaysAvailable(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), this.eventID);
+                    } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 0) {
+                        db.DailyPriceAlwaysAvailable(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), this.eventID);
+                    } else if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 1) {
+                        db.HourlyPriceSpecificDay(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), Convert.ToInt32(txt_MonthNum.Text), Convert.ToInt32(txt_DayOfMonth.Text), this.eventID);
+                    } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 1) {
+                        db.DailyPriceSpecificDay(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), Convert.ToInt32(txt_MonthNum.Text), Convert.ToInt32(txt_DayOfMonth.Text), this.eventID);
+                    } else if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 2) {
+                        db.HourlyPriceWeeklyOcur(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), ((ComboBoxItem)cmb_DayName.SelectedItem).Content.ToString(), this.eventID);
+                    } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 2) {
+                        db.DailyPriceWeeklyOcur(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), ((ComboBoxItem)cmb_DayName.SelectedItem).Content.ToString(), this.eventID);
+                    }
                 }
 
                 CloseWindow();

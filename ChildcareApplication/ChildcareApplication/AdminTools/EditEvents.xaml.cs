@@ -67,7 +67,8 @@ namespace AdminTools {
 
         private void btn_EditEvent_Click(object sender, RoutedEventArgs e) {
             if (cmd_EventIDCombo.SelectedIndex != -1) {
-                EventModificationWindow win = new EventModificationWindow(((ComboBoxItem)cmd_EventIDCombo.SelectedItem).Content.ToString());
+                String test = ((ComboBoxItem)cmd_EventIDCombo.SelectedItem).Content.ToString();
+                EventModificationWindow win = new EventModificationWindow(test);
                 win.Show();
                 this.Close();
             } else {

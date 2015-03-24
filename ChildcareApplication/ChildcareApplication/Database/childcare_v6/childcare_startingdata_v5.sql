@@ -5,8 +5,7 @@ VALUES ("a",
 	"tester@testmail.test");
 
 INSERT INTO EventData
-VALUES ("000001",
-        "Late Childcare Fee",
+VALUES ("Late Childcare Fee",
         30,
         NULL,
         NULL,
@@ -17,8 +16,7 @@ VALUES ("000001",
 		NULL);
 
 INSERT INTO EventData
-VALUES ("000002",
-        "Regular Childcare",
+VALUES ("Regular Childcare",
         5,
         2.25,
         NULL,
@@ -29,8 +27,7 @@ VALUES ("000002",
 		NULL);
 
 INSERT INTO EventData
-VALUES ("000003",
-        "Infant Childcare",
+VALUES ("Infant Childcare",
         6,
         3.25,
         NULL,
@@ -41,8 +38,7 @@ VALUES ("000003",
 		NULL);
 
 INSERT INTO EventData
-VALUES ("000004",
-        "Parent's Night Out",
+VALUES ("Parent's Night Out",
         NULL,
         NULL,
         18,
@@ -53,8 +49,7 @@ VALUES ("000004",
 		NULL);
 
 INSERT INTO EventData
-VALUES ("000005",
-        "Camp",
+VALUES ("Camp",
         NULL,
         NULL,
         36,

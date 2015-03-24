@@ -46,20 +46,19 @@ CREATE TABLE Child (
 -- Table: ChildcareTransaction
 CREATE TABLE ChildcareTransaction (
     ChildcareTransaction_ID varchar(10) NOT NULL  PRIMARY KEY,
-    Event_ID varchar(6) NOT NULL,
+    EventName varchar(50) NOT NULL,
     Allowance_ID varchar(6) NOT NULL,
     TransactionDate date NOT NULL,
     CheckedIn time NOT NULL,
     CheckedOut time,
     TransactionTotal float,
     FOREIGN KEY (Allowance_ID) REFERENCES AllowedConnections (Allowance_ID),
-    FOREIGN KEY (Event_ID) REFERENCES EventData (Event_ID)
+    FOREIGN KEY (EventName) REFERENCES EventData (EventName)
 );
 
 -- Table: EventData
 CREATE TABLE EventData (
-    Event_ID varchar(6) NOT NULL  PRIMARY KEY,
-    EventName varchar(50) NOT NULL,
+    EventName varchar(50) NOT NULL PRIMARY KEY,
     HourlyPrice float,
     HourlyDiscount float,
     DailyPrice float,
@@ -72,7 +71,7 @@ CREATE TABLE EventData (
 
 -- Table: Family
 CREATE TABLE Family (
-    Family_ID varchar(6) NOT NULL  PRIMARY KEY,
+    Family_ID varchar(5) NOT NULL  PRIMARY KEY,
     FamilyTotal float
 );
 

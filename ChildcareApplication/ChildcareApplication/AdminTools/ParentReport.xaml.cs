@@ -126,11 +126,16 @@ namespace AdminTools {
                     String[] fromParts = initialFrom.Split('/');
                     String[] toParts = initialTo.Split('/');
 
-                    String fromDate = fromParts[2] + "-" + fromParts[0] + "-" + fromParts[1];
-                    String toDate = toParts[2] + "-" + toParts[0] + "-" + toParts[1];
+                    if (fromParts.Length == 3 && toParts.Length == 3) {
+                        String fromDate = fromParts[2] + "-" + fromParts[0] + "-" + fromParts[1];
+                        String toDate = toParts[2] + "-" + toParts[0] + "-" + toParts[1];
 
-                    BuildQuery(fromDate, toDate);
-                    LoadParentData();
+                        BuildQuery(fromDate, toDate);
+                        LoadParentData();
+                    } else {
+                        MessageBox.Show("You must enter a valid date range!");
+                        txt_FromDate.Focus();
+                    }
                 } else {
                     MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
                     txt_ParentID.Focus();
