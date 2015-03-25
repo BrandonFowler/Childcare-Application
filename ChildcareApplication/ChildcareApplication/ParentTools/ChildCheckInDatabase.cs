@@ -117,16 +117,16 @@ namespace ParentTools {
             }
         }//end findChildren
 
-        public string[,] getEvents() {
+        public string[] getEvents() {
             DateTime dt = DateTime.Now;
             string dateTime = DateTime.Now.ToString();
             string month = Convert.ToDateTime(dateTime).ToString("MM");
             string day = Convert.ToDateTime(dateTime).ToString("dd");
             string dayOfWeek = dt.DayOfWeek.ToString();
 
-            string sql = "select Event_ID, EventName " + 
+            string sql = "select EventName " + 
                          "from EventData " + 
-                         "where EventDay= @day and EventMonth= @month or EventWeekday= @dayOfWeek or Event_ID='000002'";
+                         "where (EventDay= @day and EventMonth= @month or EventWeekday= @dayOfWeek or EventName='Regular Childcare') and EventDeletionDate is NULL";
 
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
@@ -138,13 +138,10 @@ namespace ParentTools {
             try{
                 conn.Open();
                 DB.Fill(DS);
-                int cCount = DS.Tables[0].Columns.Count;
                 int rCount = DS.Tables[0].Rows.Count;
-                string[,] events = new string[rCount, cCount];
-                for (int x = 0; x < rCount; x++){
-                    for (int y = 0; y < cCount; y++){
-                        events[x, y] = DS.Tables[0].Rows[x][y].ToString();
-                    }
+                string[] events = new string[rCount];
+                for (int x = 0; x < rCount; x++){      
+                    events[x] = DS.Tables[0].Rows[x][0].ToString(); 
                 }
 
                 conn.Close();
@@ -158,16 +155,16 @@ namespace ParentTools {
             }
         }//end getEvents
 
-        public void checkIn(string childID, string eventID, string guardianID, string birthday) {
+        public void checkIn(string childID, string eventName, string guardianID, string birthday) {
             DateTime dt = DateTime.Now;
             string dateTime = DateTime.Now.ToString();
             string date = Convert.ToDateTime(dateTime).ToString("yyyy-MM-dd");
             string time = Convert.ToDateTime(dateTime).ToString("HH:mm:ss");
             bool isInfant;
-            if (Convert.ToInt32(eventID) == 2) {
+            if (eventName.CompareTo("Regular Childcare") == 0) {
                 isInfant = checkInfant(birthday, date);
                 if (isInfant) {
-                    eventID = "000003";
+                    eventName = "Infant Childcare";
                 }
             }
 
@@ -175,12 +172,12 @@ namespace ParentTools {
             int maxTransactionID = getNextPrimary("ChildcareTransaction_ID","ChildcareTransaction");
 
             string sql = "insert into " +
-                         "ChildcareTransaction (ChildcareTransaction_ID,Event_ID,Allowance_ID,transactionDate,CheckedIn) " + 
-                         "values (@maxTransactionID, @eventID, @allowanceID, @date, @time)";
+                         "ChildcareTransaction (ChildcareTransaction_ID,EventName,Allowance_ID,transactionDate,CheckedIn) " + 
+                         "values (@maxTransactionID, @eventName, @allowanceID, @date, @time)";
 
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@maxTransactionID", maxTransactionID));
-            command.Parameters.Add(new SQLiteParameter("@eventID", eventID));
+            command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
             command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
             command.Parameters.Add(new SQLiteParameter("@date", date));
             command.Parameters.Add(new SQLiteParameter("@time", time));
@@ -259,11 +256,11 @@ namespace ParentTools {
                 return false;
             }
             string transactionID = transaction[0];
-            string eventID = transaction[1];
+            string eventName = transaction[1];
             string checkInTime = transaction[4];
             bool isLate = false;
-            bool ishourly = checkIfHourly(eventID);
-            double eventFee = findEventFee(guardianID, eventID);
+            bool ishourly = checkIfHourly(eventName);
+            double eventFee = findEventFee(guardianID, eventName);
             TimeSpan TimeSpanTime = TimeSpan.Parse(currentTimeString);
             checkInTime = Convert.ToDateTime(checkInTime).ToString("HH:mm:ss");
             TimeSpan TimeSpanCheckInTime = TimeSpan.Parse(checkInTime);
@@ -272,7 +269,7 @@ namespace ParentTools {
                double hourDifference = TimeSpanTime.Hours - TimeSpanCheckInTime.Hours;
                double minuteDifference = TimeSpanTime.Minutes - TimeSpanCheckInTime.Minutes;
                double totalCheckedInHours = hourDifference + (minuteDifference/60.0);
-               if ((eventID.CompareTo("000002") == 0 || eventID.CompareTo("000003") == 0) && totalCheckedInHours > 3) {
+               if ((eventName.CompareTo("Regular Childcare") == 0 || eventName.CompareTo("Infant Childcare") == 0) && totalCheckedInHours > 3) {
                     double timeDifference = totalCheckedInHours - 3;
                     if (timeDifference > lateTime) {
                         lateTime = timeDifference;
@@ -297,7 +294,7 @@ namespace ParentTools {
                 }
             }
       
-            eventFee = eventFee - billingCapCalc(eventID, guardianID, transaction[3], eventFee);
+            eventFee = eventFee - billingCapCalc(eventName, guardianID, transaction[3], eventFee);
             string eventFeeRounded = eventFee.ToString("f2");
 
             string sql = "update ChildcareTransaction " +
@@ -323,19 +320,19 @@ namespace ParentTools {
             addToBalance(guardianID, eventFee);
 
             if (isLate) {
-                eventID = "000001";
-                double lateFee = getLateFee(eventID);
+                eventName = "Late Childcare Fee";
+                double lateFee = getLateFee(eventName);
                 lateFee = lateFee * lateTime;
 
                 int maxTransactionID = getNextPrimary("ChildcareTransaction_ID", "ChildcareTransaction");
                     
                 sql = "insert into " +
-                      "ChildcareTransaction (ChildcareTransaction_ID,Event_ID,Allowance_ID,transactionDate,CheckedIn,CheckedOut,TransactionTotal) " +
-                      "values (@maxTransactionID, @eventID, @allowanceID, @currentDateString, '00:00:00','00:00:00', @lateFee)";
+                      "ChildcareTransaction (ChildcareTransaction_ID,EventName,Allowance_ID,transactionDate,CheckedIn,CheckedOut,TransactionTotal) " +
+                      "values (@maxTransactionID, @eventName, @allowanceID, @currentDateString, '00:00:00','00:00:00', @lateFee)";
 
                 command = new SQLiteCommand(sql, conn);
                 command.Parameters.Add(new SQLiteParameter("@maxTransactionID", maxTransactionID));
-                command.Parameters.Add(new SQLiteParameter("@eventID", eventID));
+                command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
                 command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
                 command.Parameters.Add(new SQLiteParameter("@currentDateString", currentDateString));
                 command.Parameters.Add(new SQLiteParameter("@lateFee", lateFee));
@@ -361,7 +358,7 @@ namespace ParentTools {
             return true;
         }//end checkOut
 
-        private double billingCapCalc(string eventID, string guardianID, string transactionDate, double eventFee) {
+        private double billingCapCalc(string eventName, string guardianID, string transactionDate, double eventFee) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
             double cap = 100;
             int billingStart = 20;
@@ -394,11 +391,11 @@ namespace ParentTools {
             string start = DTStart.ToString("yyyy-MM-dd");
             string end = DTEnd.ToString("yyyy-MM-dd");
 
-            if(eventID.CompareTo("000002") == 0 || eventID.CompareTo("000003") == 0 ){
+            if(eventName.CompareTo("Regular Childcare") == 0 || eventName.CompareTo("Infant Childcare") == 0 ){
 
                 string sql = "select sum(TransactionTotal) " +
                              "from AllowedConnections natural join ChildcareTransaction " +
-                             "where Family_ID = @familyID and Event_ID IN ('000002', '000003') and TransactionDate between '" + start + "' and '" + end + "'";
+                             "where Family_ID = @familyID and EventName IN ('Regular Childcare', 'Infant Childcare') and TransactionDate between '" + start + "' and '" + end + "'";
 
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
@@ -511,14 +508,14 @@ namespace ParentTools {
 
         }// end getClosingTime
 
-        public double getLateFee(string eventID) {
+        public double getLateFee(string eventName) {
 
             string sql = "select HourlyPrice " +
                          "from EventData " +
-                         "where Event_ID = @eventID";
+                         "where EventName = @eventName";
 
             SQLiteCommand command = new SQLiteCommand(sql, conn);
-            command.Parameters.Add(new SQLiteParameter("@eventID", eventID));
+            command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
 
             try{
                 conn.Open();
@@ -535,14 +532,14 @@ namespace ParentTools {
             }
         }//end getLateFee
 
-        public string[] getEvent(string eventID) {
+        public string[] getEvent(string eventName) {
 
             string sql = "select * " +
                   "from EventData " +
-                  "where Event_ID = @eventID";
+                  "where EventName = @eventName";
 
             SQLiteCommand command = new SQLiteCommand(sql, conn);
-            command.Parameters.Add(new SQLiteParameter("@eventID", eventID));
+            command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
 
@@ -682,14 +679,14 @@ namespace ParentTools {
             return hours;
         }//end checkIfPastClosing
 
-        public bool checkIfHourly(string eventID) {
-            string[] eventData = getEvent(eventID);
+        public bool checkIfHourly(string eventName) {
+            string[] eventData = getEvent(eventName);
 
             if (eventData == null){
                 return false;
             }
 
-            if (String.IsNullOrWhiteSpace(eventData[2])) {
+            if (String.IsNullOrWhiteSpace(eventData[1])) {
                 return false;
             }
             else {
@@ -697,14 +694,14 @@ namespace ParentTools {
             }
         }//end checkIfHourly
 
-        public double findEventFee(string guardianID, string eventID) {
+        public double findEventFee(string guardianID, string eventName) {
             bool discount = false;
             int childrenCheckedIn = numberOfCheckedIn(guardianID);
             if (childrenCheckedIn > 1) {
                 discount = true;
             }
 
-            string[] eventData = getEvent(eventID);
+            string[] eventData = getEvent(eventName);
 
             if (eventData == null)
             {
@@ -712,19 +709,19 @@ namespace ParentTools {
             }
 
             if (discount) {
-                if (String.IsNullOrWhiteSpace(eventData[3])) {
-                    return Convert.ToDouble(eventData[5]);
-                }
-                else {
-                    return Convert.ToDouble(eventData[3]);
-                }
-            }
-            else {
                 if (String.IsNullOrWhiteSpace(eventData[2])) {
                     return Convert.ToDouble(eventData[4]);
                 }
                 else {
                     return Convert.ToDouble(eventData[2]);
+                }
+            }
+            else {
+                if (String.IsNullOrWhiteSpace(eventData[1])) {
+                    return Convert.ToDouble(eventData[3]);
+                }
+                else {
+                    return Convert.ToDouble(eventData[1]);
                 }
             }
         }//end findEventFee
