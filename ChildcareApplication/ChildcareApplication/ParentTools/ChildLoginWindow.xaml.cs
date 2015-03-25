@@ -115,12 +115,12 @@ namespace ParentTools {
         }//end exitToLogin
 
         public void eventsSetup() {
-            string[,] events = db.getEvents();
+            string[] events = db.getEvents();
 
             if (events != null)
             {
                 for (int x = 0; x < events.GetLength(0); x++){
-                    ComboBoxItem newEvent = new ComboBoxItem() { Content = events[x, 1], Tag = events[x, 0] };
+                    ComboBoxItem newEvent = new ComboBoxItem() { Content = events[x], Tag = events[x] };
                     cbo_EventChoice.Items.Add(newEvent);
                 }
 
