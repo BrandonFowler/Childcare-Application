@@ -151,8 +151,7 @@ namespace AdminTools {
             string query = "SELECT strftime('%m-%d-%Y', ChildcareTransaction.TransactionDate) AS Date, Child.FirstName AS First, Child.LastName AS ";
             query += "Last, EventData.EventName AS 'Event Type', time(ChildcareTransaction.CheckedIn) AS 'Check In', ";
             query += "time(ChildcareTransaction.CheckedOut) AS 'Check Out', ";
-            query += "'$' || case WHEN substr(ChildcareTransaction.TransactionTotal, -2, 1) = '.' THEN ChildcareTransaction.TransactionTotal || ";
-            query += "'0' ELSE ChildcareTransaction.TransactionTotal END AS Total FROM AllowedConnections NATURAL JOIN Child ";
+            query += "'$' || printf('%.2f', ChildcareTransaction.TransactionTotal) AS Total FROM AllowedConnections NATURAL JOIN Child ";
             query += "NATURAL JOIN ChildcareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = " + txt_ParentID.Text + " ";
             query += "AND ChildcareTransaction.TransactionDate BETWEEN '" + start + "' AND '" + end + "';";
 
@@ -164,8 +163,7 @@ namespace AdminTools {
             string query = "SELECT strftime('%m/%d/%Y', ChildcareTransaction.TransactionDate) AS 'Date', Child.FirstName AS First, Child.LastName AS ";
             query += "Last, EventData.EventName AS 'Event Type', time(ChildcareTransaction.CheckedIn) AS 'Check In', ";
             query += "time(ChildcareTransaction.CheckedOut) AS 'Check Out', ";
-            query += "'$' || case WHEN substr(ChildcareTransaction.TransactionTotal, -2, 1) = '.' THEN ChildcareTransaction.TransactionTotal || ";
-            query += "'0' ELSE ChildcareTransaction.TransactionTotal END AS Total FROM AllowedConnections NATURAL JOIN Child ";
+            query += "'$' || printf('%.2f', ChildcareTransaction.TransactionTotal) AS Total FROM AllowedConnections NATURAL JOIN Child ";
             query += "NATURAL JOIN ChildcareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = " + txt_ParentID.Text + ";";
 
             LoadReport(query);
