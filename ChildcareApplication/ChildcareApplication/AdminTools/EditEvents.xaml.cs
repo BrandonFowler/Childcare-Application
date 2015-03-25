@@ -45,7 +45,7 @@ namespace AdminTools {
 
         private void FillComboBox() {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
-            String query = "SELECT Event_ID FROM EventData;";
+            String query = "SELECT EventName FROM EventData;";
 
             try {
                 connection.Open();

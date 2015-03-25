@@ -203,11 +203,11 @@ namespace ChildcareApplication.AdminTools {
             }
         }
 
-        public void DailyPriceWeeklyOcur(String eventName, Double dailyPrice, Double dailyDiscount, String weekday, String eventID) { 
+        public void DailyPriceWeeklyOcur(String eventName, Double dailyPrice, Double dailyDiscount, String weekday) { 
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
             String query = "UPDATE EventData SET EventName = '" + eventName + "', DailyPrice = " + dailyPrice + ", ";
             query += "DailyDiscount = " + dailyDiscount + ", EventWeekday = '" + weekday + "', HourlyPrice = null,";
-            query += " HourlyDiscount = null, EventMonth = null, EventDay = null WHERE Event_ID = '" + eventID + "';";
+            query += " HourlyDiscount = null, EventMonth = null, EventDay = null WHERE EventName = '" + eventName + "';";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
