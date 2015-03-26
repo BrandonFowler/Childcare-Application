@@ -24,7 +24,7 @@
         <TextBox x:Name="txt_MonthNum" HorizontalAlignment="Left" Height="23" Margin="284,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Visibility="Hidden" TabIndex="6" TextChanged="txt_MonthNum_TextChanged"/>
         <Button x:Name="btn_Submit" Content="_Submit Changes" HorizontalAlignment="Left" Margin="248,248,0,0" VerticalAlignment="Top" Width="106" Click="btn_Submit_Click" TabIndex="49"/>
         <Label x:Name="lbl_DayName" Content="Day:" HorizontalAlignment="Left" Margin="198,181,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <ComboBox x:Name="cmb_DayName" HorizontalAlignment="Left" Margin="234,185,0,0" VerticalAlignment="Top" Width="120" Visibility="Hidden" TabIndex="9">
+        <ComboBox x:Name="cmb_DayName" HorizontalAlignment="Left" Margin="234,185,0,0" VerticalAlignment="Top" Width="120" Visibility="Hidden" TabIndex="9" SelectionChanged="cmb_DayName_SelectionChanged">
             <ComboBoxItem Content="Sunday"/>
             <ComboBoxItem Content="Monday"/>
             <ComboBoxItem Content="Tuesday"/>
@@ -34,7 +34,7 @@
             <ComboBoxItem Content="Saturday"/>
         </ComboBox>
         <Button x:Name="btn_Cancel" Content="_Cancel" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="106" TabIndex="50" Click="btn_Cancel_Click"/>
-        <TextBox x:Name="txt_DiscountPrice" HorizontalAlignment="Left" Height="23" Margin="234,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="3"/>
+        <TextBox x:Name="txt_DiscountPrice" HorizontalAlignment="Left" Height="23" Margin="234,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="3" TextChanged="txt_DiscountPrice_TextChanged"/>
         <Label x:Name="lbl_Discount" Content="Discount Rate:" HorizontalAlignment="Left" Margin="148,117,0,0" VerticalAlignment="Top" Width="88"/>
     </Grid>
 </Window>
