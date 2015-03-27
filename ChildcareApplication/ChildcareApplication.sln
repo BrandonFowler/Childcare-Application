@@ -7,47 +7,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChildcareApplication", "Chi
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ClassDiagram", "ClassDiagram\ClassDiagram.modelproj", "{92F10783-98E3-4DD9-A123-F7733E2B948A}"
 EndProject
-Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "ChildcareInstaller", "ChildcareInstaller\ChildcareInstaller.isproj", "{A13915B1-CE9C-4B36-A364-6C7973829780}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		CD_ROM|Any CPU = CD_ROM|Any CPU
 		Debug|Any CPU = Debug|Any CPU
-		DVD-5|Any CPU = DVD-5|Any CPU
 		Release|Any CPU = Release|Any CPU
-		SingleImage|Any CPU = SingleImage|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{979F41A0-8DD0-415D-AB4F-9D50EE979F25}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
-		{979F41A0-8DD0-415D-AB4F-9D50EE979F25}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
 		{979F41A0-8DD0-415D-AB4F-9D50EE979F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{979F41A0-8DD0-415D-AB4F-9D50EE979F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{979F41A0-8DD0-415D-AB4F-9D50EE979F25}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
-		{979F41A0-8DD0-415D-AB4F-9D50EE979F25}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
 		{979F41A0-8DD0-415D-AB4F-9D50EE979F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{979F41A0-8DD0-415D-AB4F-9D50EE979F25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{979F41A0-8DD0-415D-AB4F-9D50EE979F25}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
-		{979F41A0-8DD0-415D-AB4F-9D50EE979F25}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{92F10783-98E3-4DD9-A123-F7733E2B948A}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
-		{92F10783-98E3-4DD9-A123-F7733E2B948A}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
 		{92F10783-98E3-4DD9-A123-F7733E2B948A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{92F10783-98E3-4DD9-A123-F7733E2B948A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92F10783-98E3-4DD9-A123-F7733E2B948A}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
-		{92F10783-98E3-4DD9-A123-F7733E2B948A}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
 		{92F10783-98E3-4DD9-A123-F7733E2B948A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92F10783-98E3-4DD9-A123-F7733E2B948A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92F10783-98E3-4DD9-A123-F7733E2B948A}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
-		{92F10783-98E3-4DD9-A123-F7733E2B948A}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{A13915B1-CE9C-4B36-A364-6C7973829780}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
-		{A13915B1-CE9C-4B36-A364-6C7973829780}.CD_ROM|Any CPU.Build.0 = CD_ROM
-		{A13915B1-CE9C-4B36-A364-6C7973829780}.Debug|Any CPU.ActiveCfg = DVD-5
-		{A13915B1-CE9C-4B36-A364-6C7973829780}.Debug|Any CPU.Build.0 = DVD-5
-		{A13915B1-CE9C-4B36-A364-6C7973829780}.DVD-5|Any CPU.ActiveCfg = DVD-5
-		{A13915B1-CE9C-4B36-A364-6C7973829780}.DVD-5|Any CPU.Build.0 = DVD-5
-		{A13915B1-CE9C-4B36-A364-6C7973829780}.Release|Any CPU.ActiveCfg = SingleImage
-		{A13915B1-CE9C-4B36-A364-6C7973829780}.Release|Any CPU.Build.0 = SingleImage
-		{A13915B1-CE9C-4B36-A364-6C7973829780}.SingleImage|Any CPU.ActiveCfg = SingleImage
-		{A13915B1-CE9C-4B36-A364-6C7973829780}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
