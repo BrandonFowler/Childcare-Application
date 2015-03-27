@@ -17,9 +17,23 @@ namespace AdminTools {
     /// Interaction logic for win_AdminMenu.xaml
     /// </summary>
     public partial class AdminMenu : Window {
+        private int accessLevel;
+        public AdminMenu(int accessLevel) {
+            InitializeComponent();
+            this.accessLevel = accessLevel;
+            HideAdminOptions();
+        }
+
         public AdminMenu() {
             InitializeComponent();
-        }//end win_AdminMenu
+        }
+
+        private void HideAdminOptions() {
+            if (accessLevel == 2) {
+                btn_EditAddEvents.IsEnabled = false;
+                btn_EditAddEvents.Visibility = Visibility.Hidden;
+            }
+        }
 
         private void btn_EditOrDeleteParent_Click(object sender, RoutedEventArgs e) {
             bool editParent = true;

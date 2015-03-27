@@ -73,14 +73,15 @@ namespace AdminTools {
                 bool userFound = this.db.validateAdminLogin(ID, PIN);
 
                 if (userFound) {
-                    DisplayAdminWindow();
+                    int accessLevel = db.GetAccessLevel(ID);
+                    DisplayAdminWindow(accessLevel);
                 } else {
                     MessageBox.Show("User ID or PIN does not exist");
                 }
             }
         }
-        private void DisplayAdminWindow() {
-            AdminMenu AdminMenu = new AdminMenu();
+        private void DisplayAdminWindow(int accessLevel) {
+            AdminMenu AdminMenu = new AdminMenu(accessLevel);
             AdminMenu.Show();
             this.Close(); 
         }

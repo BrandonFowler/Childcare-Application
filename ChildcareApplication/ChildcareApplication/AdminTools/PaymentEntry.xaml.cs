@@ -39,7 +39,7 @@ namespace ChildcareApplication.AdminTools {
             ParentInfoDB parentInfoDB = new ParentInfoDB();
             Double num;
 
-            if (Double.TryParse(txt_PaymentAmount.Text, out num)) {
+            if (Double.TryParse(txt_PaymentAmount.Text, out num) && num > 0) {
                 if (num.ToString().Contains('.')) {
                     if (num.ToString().Split('.')[1].Length < 3) {
                         parentInfoDB.UpdateCurBalance(this.guardianID, num);

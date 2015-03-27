@@ -15,13 +15,13 @@
         <Label x:Name="lbl_PriceType" Content="Price Type" HorizontalAlignment="Left" Margin="55,64,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lbl_EventOccurence" Content="Event Occurence" HorizontalAlignment="Left" Margin="55,159,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lbl_EventName" Content="Event Name" HorizontalAlignment="Left" Margin="55,10,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txt_EventName" HorizontalAlignment="Left" Height="23" Margin="55,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="0" TextChanged="txt_EventName_TextChanged"/>
-        <TextBox x:Name="txt_Rate" HorizontalAlignment="Left" Height="22" Margin="234,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="2" TextChanged="txt_Rate_TextChanged"/>
+        <TextBox x:Name="txt_EventName" HorizontalAlignment="Left" Height="23" Margin="55,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" TabIndex="0" TextChanged="txt_EventName_TextChanged" GotFocus="txt_EventName_GotFocus"/>
+        <TextBox x:Name="txt_Rate" HorizontalAlignment="Left" Height="22" Margin="234,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="2" TextChanged="txt_Rate_TextChanged" GotFocus="txt_Rate_GotFocus"/>
         <Label x:Name="lbl_Rate" Content="Rate:" HorizontalAlignment="Left" Margin="198,90,0,0" VerticalAlignment="Top" Width="36"/>
         <Label x:Name="lbl_DayNum" Content="Day of Month:" HorizontalAlignment="Left" Margin="198,181,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <TextBox x:Name="txt_DayOfMonth" HorizontalAlignment="Left" Height="23" Margin="284,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Visibility="Hidden" TextChanged="txt_DayOfMonth_TextChanged" TabIndex="6"/>
+        <TextBox x:Name="txt_DayOfMonth" HorizontalAlignment="Left" Height="23" Margin="284,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Visibility="Hidden" TextChanged="txt_DayOfMonth_TextChanged" TabIndex="6" GotFocus="txt_DayOfMonth_GotFocus"/>
         <Label x:Name="lbl_MonthNum" Content="Month Number:" HorizontalAlignment="Left" Margin="189,212,0,0" VerticalAlignment="Top" Width="95" Visibility="Hidden"/>
-        <TextBox x:Name="txt_MonthNum" HorizontalAlignment="Left" Height="23" Margin="284,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Visibility="Hidden" TabIndex="6" TextChanged="txt_MonthNum_TextChanged"/>
+        <TextBox x:Name="txt_MonthNum" HorizontalAlignment="Left" Height="23" Margin="284,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Visibility="Hidden" TabIndex="6" TextChanged="txt_MonthNum_TextChanged" GotFocus="txt_MonthNum_GotFocus"/>
         <Button x:Name="btn_Submit" Content="_Submit Changes" HorizontalAlignment="Left" Margin="248,248,0,0" VerticalAlignment="Top" Width="106" Click="btn_Submit_Click" TabIndex="49"/>
         <Label x:Name="lbl_DayName" Content="Day:" HorizontalAlignment="Left" Margin="198,181,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <ComboBox x:Name="cmb_DayName" HorizontalAlignment="Left" Margin="234,185,0,0" VerticalAlignment="Top" Width="120" Visibility="Hidden" TabIndex="9" SelectionChanged="cmb_DayName_SelectionChanged">
@@ -34,7 +34,7 @@
             <ComboBoxItem Content="Saturday"/>
         </ComboBox>
         <Button x:Name="btn_Cancel" Content="_Cancel" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="106" TabIndex="50" Click="btn_Cancel_Click"/>
-        <TextBox x:Name="txt_DiscountPrice" HorizontalAlignment="Left" Height="23" Margin="234,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="3" TextChanged="txt_DiscountPrice_TextChanged"/>
+        <TextBox x:Name="txt_DiscountPrice" HorizontalAlignment="Left" Height="23" Margin="234,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="3" TextChanged="txt_DiscountPrice_TextChanged" GotFocus="txt_DiscountPrice_GotFocus"/>
         <Label x:Name="lbl_Discount" Content="Discount Rate:" HorizontalAlignment="Left" Margin="148,117,0,0" VerticalAlignment="Top" Width="88"/>
     </Grid>
 </Window>

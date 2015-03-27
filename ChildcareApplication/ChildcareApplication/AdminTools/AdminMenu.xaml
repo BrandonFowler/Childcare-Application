@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="win_AdminMenu" Height="300" Width="249">
     <Grid>
-        <Button x:Name="btn_EditOrDeleteParent" Content="Edit Parent Info" Margin="40,119,40,0" VerticalAlignment="Top" Height="25" Click="btn_EditOrDeleteParent_Click"/>
-        <Button x:Name="btn_ParentReport" Content="Parent Report" Margin="40,29,40,0" VerticalAlignment="Top" Height="25" Click="btn_ParentReport_Click"/>
-        <Button x:Name="btn_BusinessReport" Content="Business Report" Margin="40,59,40,0" VerticalAlignment="Top" Height="25" Click="btn_BusinessReport_Click"/>
-        <Button x:Name="btn_EditOrDeleteChild" Content="Edit Child Info" Margin="40,149,40,0" VerticalAlignment="Top" Height="25" Click="btn_EditOrDeleteChild_Click"/>
-        <Button x:Name="btn_EditAddEvents" Content="Edit / Add Events" Margin="40,179,40,0" VerticalAlignment="Top" Height="25" Click="btn_EditAddEvents_Click"/>
-        <Button x:Name="btn_Logout" Content="Logout" Margin="139,234,10,0" VerticalAlignment="Top" Height="25" Click="btn_Logout_Click"/>
-        <Button x:Name="btn_AddNewParent" Content="Add New Parent" Margin="40,89,40,0" VerticalAlignment="Top" Height="25" Click="btn_AddNewParent_Click"/>
+        <Button x:Name="btn_EditOrDeleteParent" Content="Edit _Parent Info" Margin="40,119,40,0" VerticalAlignment="Top" Height="25" Click="btn_EditOrDeleteParent_Click" TabIndex="3"/>
+        <Button x:Name="btn_ParentReport" Content="_Parent Report" Margin="40,29,40,0" VerticalAlignment="Top" Height="25" Click="btn_ParentReport_Click" TabIndex="0"/>
+        <Button x:Name="btn_BusinessReport" Content="_Business Report" Margin="40,59,40,0" VerticalAlignment="Top" Height="25" Click="btn_BusinessReport_Click" TabIndex="1"/>
+        <Button x:Name="btn_EditOrDeleteChild" Content="Edit _Child Info" Margin="40,149,40,0" VerticalAlignment="Top" Height="25" Click="btn_EditOrDeleteChild_Click" TabIndex="4"/>
+        <Button x:Name="btn_EditAddEvents" Content="_Edit / Add Events" Margin="40,179,40,0" VerticalAlignment="Top" Height="25" Click="btn_EditAddEvents_Click" TabIndex="5"/>
+        <Button x:Name="btn_Logout" Content="Logout" Margin="139,234,10,0" VerticalAlignment="Top" Height="25" Click="btn_Logout_Click" TabIndex="50"/>
+        <Button x:Name="btn_AddNewParent" Content="_Add New Parent" Margin="40,89,40,0" VerticalAlignment="Top" Height="25" Click="btn_AddNewParent_Click" TabIndex="2"/>
 
     </Grid>
 </Window>

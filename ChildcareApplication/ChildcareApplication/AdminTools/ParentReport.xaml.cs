@@ -216,5 +216,17 @@ namespace AdminTools {
                 DateRangeReport();
             }
         }
+
+        private void txt_ParentID_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)txt_ParentID.SelectAll);
+        }
+
+        private void txt_FromDate_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)txt_FromDate.SelectAll);
+        }
+
+        private void txt_ToDate_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)txt_ToDate.SelectAll);
+        }
     }
 }

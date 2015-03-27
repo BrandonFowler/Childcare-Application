@@ -269,5 +269,25 @@ namespace AdminTools {
         private void txt_DiscountPrice_TextChanged(object sender, TextChangedEventArgs e) {
             this.valueChanged = true;
         }
+
+        private void txt_EventName_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)txt_EventName.SelectAll); //idea found at: http://stackoverflow.com/questions/97459/automatically-select-all-text-on-focus-in-winforms-textbox
+        }
+
+        private void txt_Rate_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)txt_Rate.SelectAll);
+        }
+
+        private void txt_DiscountPrice_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)txt_DiscountPrice.SelectAll);
+        }
+
+        private void txt_MonthNum_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)txt_MonthNum.SelectAll);
+        }
+
+        private void txt_DayOfMonth_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)txt_DayOfMonth.SelectAll);
+        }
     }
 }

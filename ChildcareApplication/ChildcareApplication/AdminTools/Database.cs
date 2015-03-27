@@ -124,5 +124,20 @@ namespace AdminTools {
             return true;
         }//end checkOut
 
+
+        public int GetAccessLevel(string ID) {
+            int accessLevel = -1;
+            String query = "Select AccessLevel from Administrator where AdministratorUN = '" + ID + "';";
+
+
+            try {
+                this.dbCon.Open();
+                SQLiteCommand cmd = new SQLiteCommand(query, this.dbCon);
+                accessLevel = Convert.ToInt32(cmd.ExecuteScalar());
+            } catch (Exception e) {
+                MessageBox.Show(e.Message);
+            }
+            return accessLevel;
+        }
     }//end Database
 }//end namespace

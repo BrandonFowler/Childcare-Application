@@ -25,7 +25,7 @@ namespace AdminTools {
         private void LoadEvents() {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
             String query = "SELECT EventName, HourlyPrice, HourlyDiscount, DailyPrice, DailyDiscount, EventMonth, ";
-            query += "EventDay, EventWeekday FROM EventData;"; // WHERE EventDeletionDate = null;";
+            query += "EventDay, EventWeekday FROM EventData WHERE EventDeletionDate IS null;";
 
             try {
                 connection.Open();
