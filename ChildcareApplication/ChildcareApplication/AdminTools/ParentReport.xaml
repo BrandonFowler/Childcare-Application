@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ParentReport" Height="528" Width="696">
     <Grid>
-        <Label x:Name="lbl_To" Content="To:" HorizontalAlignment="Left" Margin="586,30,0,0" VerticalAlignment="Top" Height="21" Width="84" FontSize="10"/>
         <Label x:Name="lbl_From" Content="From:" HorizontalAlignment="Left" Margin="497,30,0,0" VerticalAlignment="Top" Height="21" Width="84" FontSize="10"/>
+        <Label x:Name="lbl_FromExample" Content="(mm/dd/yyyy)" HorizontalAlignment="Left" Margin="497,65,0,0" VerticalAlignment="Top" Height="30" Width="84" FontSize="10"/>
+        <Label x:Name="lbl_To" Content="To:" HorizontalAlignment="Left" Margin="586,30,0,0" VerticalAlignment="Top" Height="21" Width="84" FontSize="10"/>
         <TextBox x:Name="txt_ParentID" HorizontalAlignment="Left" Height="20" Margin="10,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" TabIndex="0" GotFocus="txt_ParentID_GotFocus"/>
         <Label x:Name="lbl_ParentID" Content="Parent ID" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btn_CurrentMonthReport" Content="Current Billing Cycle" HorizontalAlignment="Left" Margin="225,51,0,0" VerticalAlignment="Top" Width="134" Click="btn_CurrentMonthReport_Click" TabIndex="2"/>
@@ -20,10 +21,9 @@
         <Label x:Name="lbl_CurrentDueText" Content="Current Amount Due:" HorizontalAlignment="Left" Margin="513,379,0,0" VerticalAlignment="Top" Width="158"/>
         <Label x:Name="lbl_CurrentDueValue" Content="" HorizontalAlignment="Left" Margin="513,405,0,0" VerticalAlignment="Top" Width="158"/>
         <Button x:Name="btn_MakePayment" Content="Submit a Payment" HorizontalAlignment="Left" Margin="531,436,0,0" VerticalAlignment="Top" Width="118" Click="btn_MakePayment_Click" TabIndex="6"/>
-        <TextBox x:Name="txt_FromDate" HorizontalAlignment="Left" Height="20" Margin="492,51,0,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="84" TabIndex="4" KeyDown="txt_FromDate_KeyDown" GotFocus="txt_FromDate_GotFocus"/>
-        <TextBox x:Name="txt_ToDate" HorizontalAlignment="Left" Height="19" Margin="581,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" TabIndex="5" KeyDown="txt_ToDate_KeyDown" GotFocus="txt_ToDate_GotFocus"/>
-        <Label x:Name="lbl_FromExample" Content="(mm/dd/yyyy)" HorizontalAlignment="Left" Margin="497,65,0,0" VerticalAlignment="Top" Height="30" Width="84" FontSize="10"/>
         <Label x:Name="lbl_ToExample" Content="(mm/dd/yyyy)" HorizontalAlignment="Left" Margin="587,65,0,0" VerticalAlignment="Top" Height="30" Width="84" FontSize="10"/>
         <Button x:Name="btn_Exit" Content="_Exit" HorizontalAlignment="Left" Margin="603,467,0,0" VerticalAlignment="Top" Width="75" TabIndex="7" Click="btn_Exit_Click"/>
+        <TextBox x:Name="txt_FromDate" HorizontalAlignment="Left" Height="20" Margin="492,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" TabIndex="4" KeyDown="txt_FromDate_KeyDown" GotFocus="txt_FromDate_GotFocus"/>
+        <TextBox x:Name="txt_ToDate" HorizontalAlignment="Left" Height="19" Margin="581,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" TabIndex="5" KeyDown="txt_ToDate_KeyDown" GotFocus="txt_ToDate_GotFocus"/>
     </Grid>
 </Window>

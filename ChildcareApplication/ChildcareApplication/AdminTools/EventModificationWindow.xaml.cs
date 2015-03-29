@@ -205,14 +205,7 @@ namespace AdminTools {
                 return false;
             }
             if (cmb_Occurence.SelectedIndex == 1) {
-                double dayNum = 0;
-                double monthNum = 0;
-                if (!(Double.TryParse(txt_DayOfMonth.Text, out dayNum) && dayNum > 0 && dayNum < 29)) { //TODO: fix somehow
-                    MessageBox.Show("You must enter a valid day number in the Day of Month box.");
-                    return false;
-                }
-                if (!(Double.TryParse(txt_MonthNum.Text, out monthNum) && monthNum > 0 && monthNum < 13)) {
-                    MessageBox.Show("You must enter a valid month number in the Month number box.");
+                if (!DateValid()) {
                     return false;
                 }
             }
@@ -341,6 +334,26 @@ namespace AdminTools {
 
         private void txt_DayOfMonth_GotFocus(object sender, RoutedEventArgs e) {
             Dispatcher.BeginInvoke((Action)txt_DayOfMonth.SelectAll);
+        }
+
+        private bool DateValid() {
+            int dayNum = 0;
+            int monthNum = 0;
+            if (!(Int32.TryParse(txt_DayOfMonth.Text, out dayNum))) { 
+                MessageBox.Show("You must enter a number in the Day of Month box.");
+                return false;
+            }
+            if (!(Int32.TryParse(txt_MonthNum.Text, out monthNum) && monthNum > 0 && monthNum < 13)) {
+                MessageBox.Show("You must enter a number in the Month number box.");
+                return false;
+            }
+            GregorianCalendar cal = new GregorianCalendar();
+            if(dayNum <= cal.GetDaysInMonth(DateTime.Now.Year, monthNum) && dayNum > 0) {
+                return true;
+            } else {
+                MessageBox.Show("You must enter a valid month number and day number in the month number and day number boxes!");
+            }
+            return false;
         }
     }
 }
