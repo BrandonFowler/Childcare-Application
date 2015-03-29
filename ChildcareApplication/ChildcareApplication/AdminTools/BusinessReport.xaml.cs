@@ -150,7 +150,7 @@ namespace AdminTools {
         private void BuildQuery(String start, String end) {
             string query = "SELECT Guardian.Guardian_ID AS ID, Guardian.FirstName AS First, Guardian.LastName AS Last, ";
             query += "Guardian.Phone, Guardian.Address1, Guardian.Address2, Guardian.City, Guardian.StateAbrv AS State, Guardian.Zip, ";
-            query += "'$' || printf('%.2f', ChildcareTransaction.TransactionTotal) AS 'Total Charges', '$' || Family.FamilyTotal AS 'Current Due' ";
+            query += "'$' || printf('%.2f', SUM(ChildcareTransaction.TransactionTotal)) AS 'Total Charges', '$' || Family.FamilyTotal AS 'Current Due' ";
             query += "From Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ChildcareTransaction NATURAL JOIN Family ";
             query += "WHERE ChildcareTransaction.TransactionDate BETWEEN '" + start + "' AND '" + end + "' ";
             query += "GROUP BY Guardian.Guardian_ID";

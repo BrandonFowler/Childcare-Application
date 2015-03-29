@@ -45,8 +45,14 @@ namespace AdminTools {
         }
 
         private void btn_LoadAll_Click(object sender, RoutedEventArgs e) {
-            BuildQuery();
-            LoadParentData();
+            ParentInfoDB parentInfo = new ParentInfoDB();
+            if (txt_ParentID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_ParentID.Text)) {
+                BuildQuery();
+                LoadParentData();
+            } else {
+                MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
+                txt_ParentID.Focus();
+            }
         }
 
         private void btn_CurrentMonthReport_Click(object sender, RoutedEventArgs e) { 

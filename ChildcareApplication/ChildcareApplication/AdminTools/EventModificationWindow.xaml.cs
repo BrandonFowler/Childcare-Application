@@ -41,7 +41,7 @@ namespace AdminTools {
             }
         }
 
-        private void LoadData(String eventName) { //TODO: refactor
+        private void LoadData(String eventName) { 
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
 
             try {
