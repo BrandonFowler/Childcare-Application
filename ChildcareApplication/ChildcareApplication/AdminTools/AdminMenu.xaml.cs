@@ -50,7 +50,7 @@ namespace AdminTools {
 
         private void btn_ParentReport_Click(object sender, RoutedEventArgs e) {
             ParentReport parentReportWin = new ParentReport();
-            parentReportWin.Show();
+            parentReportWin.ShowDialog();
         }
 
         private void btn_BusinessReport_Click(object sender, RoutedEventArgs e) {

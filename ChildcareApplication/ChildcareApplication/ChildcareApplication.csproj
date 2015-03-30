@@ -134,7 +134,7 @@
     <Compile Include="AdminTools\ChildInfoDatabse.cs" />
     <Compile Include="AdminTools\Database.cs" />
     <Compile Include="AdminTools\LoadParentInfoDatabase.cs" />
-    <Compile Include="AdminTools\ParentInfoDB.cs" />
+    <Compile Include="DatabaseTools\ParentInfoDB.cs" />
     <Compile Include="AdminTools\ParentReport.xaml.cs">
       <DependentUpon>ParentReport.xaml</DependentUpon>
     </Compile>

@@ -11,7 +11,8 @@ CREATE TABLE Administrator (
     AdministratorUN varchar(50) NOT NULL  PRIMARY KEY,
     AdministratorPW varchar(20) NOT NULL,
     AccessLevel varchar(1) NOT NULL,
-    AdministratorEmail varchar(50) NOT NULL
+    AdministratorEmail varchar(100) NOT NULL,
+	AdminDeletionDate date
 );
 
 -- Table: AllowedConnections
@@ -20,6 +21,7 @@ CREATE TABLE AllowedConnections (
     Guardian_ID varchar(6) NOT NULL,
     Child_ID varchar(6) NOT NULL,
     Family_ID varchar(6) NOT NULL,
+	ConnectionDeletionDate date,
     FOREIGN KEY (Guardian_ID) REFERENCES Guardian (Guardian_ID),
     FOREIGN KEY (Child_ID) REFERENCES Child (Child_ID),
     FOREIGN KEY (Family_ID) REFERENCES Family (Family_ID)
