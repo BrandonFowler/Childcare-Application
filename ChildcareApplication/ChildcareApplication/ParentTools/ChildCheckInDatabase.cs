@@ -10,7 +10,7 @@ namespace ParentTools {
         private SQLiteConnection conn;
 
         public ChildCheckInDatabase() {
-            conn = new SQLiteConnection("Data Source=../../Database/ChildCare_v5.s3db;Version=3;");
+            conn = new SQLiteConnection("Data Source=../../Database/ChildCareDB.s3db;Version=3;");
         }//end Database(default constructor)
 
         public bool validateLogin(string ID, string PIN) {
@@ -81,7 +81,7 @@ namespace ParentTools {
 
             string sql = "select Child.* " +
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID "+
-                  "where Guardian_ID = @guardianID and ChildDeletionDate is null";
+                  "where Guardian_ID = @guardianID and ChildDeletionDate is null and ConnectionDeletionDate is NULL";
 
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
@@ -220,7 +220,11 @@ namespace ParentTools {
 
                 if (max != DBNull.Value && max != null){
                     conn.Close();
-                    return Convert.ToInt32(max) + 1;
+                    int maxID = Convert.ToInt32(max) + 1;
+                    if(maxID == 2147483647){
+                        maxID = 1;
+                    }
+                    return maxID;
                 }
 
                 return 1;

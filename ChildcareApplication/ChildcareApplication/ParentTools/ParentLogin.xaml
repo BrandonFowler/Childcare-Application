@@ -6,8 +6,8 @@
         <Grid Width="610" Height="368">
             <Label x:Name="lbl_ID" Content="ID" HorizontalAlignment="Left" Margin="51,106,0,0" VerticalAlignment="Top"/>
             <Label x:Name="lbl_PIN" Content="PIN" HorizontalAlignment="Left" Margin="51,180,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txt_IDEntry" HorizontalAlignment="Left" Height="23" Margin="109,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="6"/>
-            <PasswordBox x:Name="txt_PINEntry" HorizontalAlignment="Left" Height="23" Margin="109,183,0,0" VerticalAlignment="Top" Width="120" MaxLength="4"/>
+            <TextBox x:Name="txt_IDEntry" TabIndex="0" HorizontalAlignment="Left" Height="23" Margin="109,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="6"/>
+            <PasswordBox x:Name="txt_PINEntry" TabIndex="1" HorizontalAlignment="Left" Height="23" Margin="109,183,0,0" VerticalAlignment="Top" Width="120" MaxLength="4"/>
             <Button x:Name="btn_Number1" Content="1" HorizontalAlignment="Left" Margin="318,84,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number1_Click"/>
             <Button x:Name="btn_Number2" Content="2" HorizontalAlignment="Left" Margin="373,84,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number2_Click"/>
             <Button x:Name="btn_Number3" Content="3" HorizontalAlignment="Left" Margin="430,84,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="3.417,4.525" Click="btn_Number3_Click"/>
@@ -19,7 +19,7 @@
             <Button x:Name="btn_Number9" Content="9" HorizontalAlignment="Left" Margin="430,166,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number9_Click"/>
             <Button x:Name="btn_Number0" Content="0" HorizontalAlignment="Left" Margin="318,211,0,0" VerticalAlignment="Top" Width="32" Click="btn_Number0_Click"/>
             <Button x:Name="btn_Clear" Content="Clear" HorizontalAlignment="Left" Margin="373,211,0,0" VerticalAlignment="Top" Width="89" Click="btn_Clear_Click"/>
-            <Button x:Name="btn_Login" Content="Log In" HorizontalAlignment="Left" Margin="213,259,0,0" VerticalAlignment="Top" Width="89" Click="btn_Login_Click" Height="50"/>
+            <Button x:Name="btn_Login" TabIndex="3" Content="Log In" HorizontalAlignment="Left" Margin="213,259,0,0" VerticalAlignment="Top" Width="89" Click="btn_Login_Click" Height="50"/>
             <Button x:Name="btn_UExit" Content="Exit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="19" FontSize="10" Click="btn_UserSelect_Click" Margin="559,349,0,0"/>
         </Grid>
     </Viewbox>

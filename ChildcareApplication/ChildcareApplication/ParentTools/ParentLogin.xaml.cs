@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
 
 namespace ParentTools {
    
@@ -31,6 +32,7 @@ namespace ParentTools {
             this.txt_PINEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_PINEntry.GotFocus += OnPINBoxFocus;
             this.txt_IDEntry.Focus();
+            this.btn_Login.GotFocus += OnLoginFocus;
             
         }//end win_LoginWindow
 
@@ -45,8 +47,15 @@ namespace ParentTools {
         }//end OnPINBoxFocus
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e) {
-            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back || e.Key == Key.Tab) {
-
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back || e.Key == Key.Tab || e.Key == Key.Enter) {
+                if (e.Key == Key.Return){
+                    if (IDBoxSelected){
+                        txt_PINEntry.Focus();
+                    }
+                    else if (PINBoxSelected){
+                        btn_Login.Focus();
+                    }
+                }
             }
             else {
                 MessageBox.Show("Please use only numbers.");
@@ -183,6 +192,15 @@ namespace ParentTools {
             userSelect.Show();
             this.Close();
         }//btn_Login_Click
+
+        private void OnLoginFocus(object sender, EventArgs e) {
+            if (String.IsNullOrWhiteSpace(txt_IDEntry.Text.ToString()) || String.IsNullOrWhiteSpace(txt_PINEntry.Password.ToString())) {
+                btn_Login.Background = Brushes.Red;
+            }
+            else {
+                btn_Login.Background = Brushes.Green;
+            }
+        }
 
     }//end win_LoginWindow(class)
 }
