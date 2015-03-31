@@ -126,7 +126,11 @@ namespace ParentTools {
 
             string sql = "select EventName " + 
                          "from EventData " + 
-                         "where (EventDay= @day and EventMonth= @month or EventWeekday= @dayOfWeek or EventName='Regular Childcare') and EventDeletionDate is NULL";
+                         "where ((EventDay= @day and EventMonth= @month or " +
+                         "EventWeekday= @dayOfWeek or EventName='Regular Childcare') " + 
+                         "and EventDeletionDate is NULL) or (EventDay is NULL and EventMonth is NULL " + 
+                         "and EventWeekday is NULL and EventDeletionDate is NULL and " + 
+                         "EventName != 'Late Fee' and EventName != 'Infant Childcare')";
 
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
@@ -175,13 +179,15 @@ namespace ParentTools {
 
             string allowanceID = getAllowanceID(guardianID, childID);
             int maxTransactionID = getNextPrimary("ChildcareTransaction_ID","ChildcareTransaction");
+            string transactionID = Convert.ToString(maxTransactionID);
+            transactionID = transactionID.ToString().PadLeft(10, '0');
 
             string sql = "insert into " +
                          "ChildcareTransaction (ChildcareTransaction_ID,EventName,Allowance_ID,transactionDate,CheckedIn) " + 
-                         "values (@maxTransactionID, @eventName, @allowanceID, @date, @time)";
+                         "values (@transactionID, @eventName, @allowanceID, @date, @time)";
 
             SQLiteCommand command = new SQLiteCommand(sql, conn);
-            command.Parameters.Add(new SQLiteParameter("@maxTransactionID", maxTransactionID));
+            command.Parameters.Add(new SQLiteParameter("@transactionID", transactionID));
             command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
             command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
             command.Parameters.Add(new SQLiteParameter("@date", date));
@@ -217,7 +223,7 @@ namespace ParentTools {
                     return Convert.ToInt32(max) + 1;
                 }
 
-                return 0;
+                return 1;
             }
             catch (Exception){
                 MessageBox.Show("Database connection error: Unable to retrieve critical information");
@@ -326,18 +332,20 @@ namespace ParentTools {
             addToBalance(guardianID, eventFee);
 
             if (isLate) {
-                eventName = "Late Childcare Fee";
+                eventName = "Late Fee";
                 double lateFee = getLateFee(eventName);
                 lateFee = lateFee * lateTime;
 
                 int maxTransactionID = getNextPrimary("ChildcareTransaction_ID", "ChildcareTransaction");
+                string sMaxTransactionID = Convert.ToString(maxTransactionID);
+                sMaxTransactionID = sMaxTransactionID.ToString().PadLeft(10, '0');
                     
                 sql = "insert into " +
                       "ChildcareTransaction (ChildcareTransaction_ID,EventName,Allowance_ID,transactionDate,CheckedIn,CheckedOut,TransactionTotal) " +
-                      "values (@maxTransactionID, @eventName, @allowanceID, @currentDateString, '00:00:00','00:00:00', @lateFee)";
+                      "values (@sMaxTransactionID, @eventName, @allowanceID, @currentDateString, '00:00:00','00:00:00', @lateFee)";
 
                 command = new SQLiteCommand(sql, conn);
-                command.Parameters.Add(new SQLiteParameter("@maxTransactionID", maxTransactionID));
+                command.Parameters.Add(new SQLiteParameter("@sMaxTransactionID", sMaxTransactionID));
                 command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
                 command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
                 command.Parameters.Add(new SQLiteParameter("@currentDateString", currentDateString));
@@ -703,11 +711,11 @@ namespace ParentTools {
         public double findEventFee(string guardianID, string eventName) {
             bool discount = false;
             int childrenCheckedIn = numberOfCheckedIn(guardianID);
-            if (childrenCheckedIn > 1) {
+            string[] eventData = getEvent(eventName);
+
+            if ((childrenCheckedIn > 1) && (eventData[2] != null || eventData[4] != null)){
                 discount = true;
             }
-
-            string[] eventData = getEvent(eventName);
 
             if (eventData == null)
             {
