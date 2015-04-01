@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using AdminTools;
+using System.Windows.Media;
 
 namespace ParentTools {
    
@@ -23,6 +24,8 @@ namespace ParentTools {
             this.updateTime = new DateTime();
             updateTime = DateTime.Now;
             lbl_Time.DataContext = updateTime;
+            lst_CheckInBox.GotFocus += CheckInGotFocus;
+            lst_CheckOutBox.SelectionChanged += CheckOutBoxSelectionChanged;
         }//end constructor
 
         private void btn_LogOutParent_Click(object sender, RoutedEventArgs e) {
@@ -88,6 +91,7 @@ namespace ParentTools {
             else {
                 MessageBox.Show("Please choose and event.");
             }
+            btn_CheckIn.Background = Brushes.Blue;
         }//end btn_CheckIn_Click
 
         private void btn_CheckOut_Click(object sender, RoutedEventArgs e) {
@@ -99,6 +103,7 @@ namespace ParentTools {
                     lst_CheckOutBox.Items.Remove(lst_CheckOutBox.SelectedItem);
                 }
             }
+            btn_CheckOut.Background = Brushes.Blue;
         }//end btn_CheckOut_Click
 
         public void setUpParentDisplay() {
@@ -136,6 +141,15 @@ namespace ParentTools {
                 exitToLogin();
             }
         }//end eventSetup
+
+        private void CheckInGotFocus(object sender, System.EventArgs e) {
+            if (cbo_EventChoice.SelectedItem != null) {
+                btn_CheckIn.Background = Brushes.Green;
+            }
+        }
+        private void CheckOutBoxSelectionChanged(object sender, System.EventArgs e) {
+            btn_CheckOut.Background = Brushes.Green;
+        }
 
     }//end win_ChildLoginWindow(Class)
 }
