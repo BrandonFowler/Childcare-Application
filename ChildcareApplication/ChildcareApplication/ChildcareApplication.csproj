@@ -69,7 +69,7 @@
     <Compile Include="AdminTools\BusinessReport.xaml.cs">
       <DependentUpon>BusinessReport.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseTools\EventModificationDB.cs" />
+    <Compile Include="DatabaseController\EventModificationDB.cs" />
     <Compile Include="AdminTools\PaymentEntry.xaml.cs">
       <DependentUpon>PaymentEntry.xaml</DependentUpon>
     </Compile>
@@ -145,10 +145,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="AdminTools\Child.cs" />
-    <Compile Include="DatabaseTools\ChildInfoDatabse.cs" />
-    <Compile Include="DatabaseTools\Database.cs" />
-    <Compile Include="DatabaseTools\LoadParentInfoDatabase.cs" />
-    <Compile Include="DatabaseTools\ParentInfoDB.cs" />
+    <Compile Include="DatabaseController\ChildInfoDatabse.cs" />
+    <Compile Include="DatabaseController\Database.cs" />
+    <Compile Include="DatabaseController\LoadParentInfoDatabase.cs" />
+    <Compile Include="DatabaseController\ParentInfoDB.cs" />
     <Compile Include="AdminTools\ParentReport.xaml.cs">
       <DependentUpon>ParentReport.xaml</DependentUpon>
     </Compile>
