@@ -7,11 +7,11 @@ using System.Data.SQLite;
 using System.Data;
 using System.Windows;
 
-namespace AdminTools {
+namespace DatabaseController {
     class ChildInfoDatabse {
 
         private SQLiteConnection dbCon;
-
+        
         public ChildInfoDatabse()
         {
             dbCon = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");

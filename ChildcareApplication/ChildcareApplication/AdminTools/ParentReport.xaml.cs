@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SQLite;
 using ChildcareApplication.AdminTools;
+using DatabaseController;
 
 namespace AdminTools {
     public partial class ParentReport : Window {

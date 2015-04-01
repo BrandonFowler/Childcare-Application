@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AdminTools;
+using DatabaseController;
 
 namespace ChildcareApplication.AdminTools {
     public partial class PaymentEntry : Window {

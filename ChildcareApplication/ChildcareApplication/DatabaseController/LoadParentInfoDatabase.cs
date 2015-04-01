@@ -8,7 +8,7 @@ using System.Data;
 using System.Windows;
 //using System.DateTime; 
 
-namespace AdminTools {
+namespace DatabaseController {
 
     class LoadParentInfoDatabase {
 

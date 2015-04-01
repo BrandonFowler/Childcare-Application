@@ -9,7 +9,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows;
 
-namespace AdminTools {
+namespace DatabaseController {
 
     class Database {
         private SQLiteConnection dbCon;
