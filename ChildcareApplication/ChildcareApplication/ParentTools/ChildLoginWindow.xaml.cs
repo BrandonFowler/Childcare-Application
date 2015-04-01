@@ -78,9 +78,11 @@ namespace ParentTools {
                     string eventID = ((ComboBoxItem)cbo_EventChoice.SelectedItem).Tag.ToString();
                     string childID = ((Child)lst_CheckInBox.SelectedItem).ID;
                     string birthday = ((Child)lst_CheckInBox.SelectedItem).birthday;
-                    db.checkIn(childID, eventID, guardianID, birthday);
-                    lst_CheckOutBox.Items.Add(lst_CheckInBox.SelectedItem);
-                    lst_CheckInBox.Items.Remove(lst_CheckInBox.SelectedItem);
+                    bool success = db.checkIn(childID, eventID, guardianID, birthday);
+                    if (success){
+                        lst_CheckOutBox.Items.Add(lst_CheckInBox.SelectedItem);
+                        lst_CheckInBox.Items.Remove(lst_CheckInBox.SelectedItem);
+                    }
                 }
             }
             else {
@@ -91,9 +93,11 @@ namespace ParentTools {
         private void btn_CheckOut_Click(object sender, RoutedEventArgs e) {
             if (lst_CheckOutBox.SelectedItem != null) {
                 string childID = ((Child)lst_CheckOutBox.SelectedItem).ID;
-                db.checkOut(childID, guardianID);
-                lst_CheckInBox.Items.Add(lst_CheckOutBox.SelectedItem);
-                lst_CheckOutBox.Items.Remove(lst_CheckOutBox.SelectedItem);
+                bool success = db.checkOut(childID, guardianID);
+                if (success){
+                    lst_CheckInBox.Items.Add(lst_CheckOutBox.SelectedItem);
+                    lst_CheckOutBox.Items.Remove(lst_CheckOutBox.SelectedItem);
+                }
             }
         }//end btn_CheckOut_Click
 

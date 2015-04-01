@@ -155,11 +155,16 @@ namespace ParentTools {
             }
         }//end getEvents
 
-        public void checkIn(string childID, string eventName, string guardianID, string birthday) {
+        public bool checkIn(string childID, string eventName, string guardianID, string birthday) {
             DateTime dt = DateTime.Now;
             string dateTime = DateTime.Now.ToString();
             string date = Convert.ToDateTime(dateTime).ToString("yyyy-MM-dd");
             string time = Convert.ToDateTime(dateTime).ToString("HH:mm:ss");
+            TimeSpan TSTime = TimeSpan.Parse(time);
+            if (checkIfPastClosing(dt.DayOfWeek.ToString(), TSTime) > 0){
+                MessageBox.Show("Cannot check in a child after normal operating hours");
+                return false;
+            }
             bool isInfant;
             if (eventName.CompareTo("Regular Childcare") == 0) {
                 isInfant = checkInfant(birthday, date);
@@ -190,8 +195,9 @@ namespace ParentTools {
             catch (Exception){
                 MessageBox.Show("Database Connection Error: Unable Check In Child");
                 conn.Close();
+                return false;
             }
-
+            return true;
         }//end checkIn
 
         private int getNextPrimary(string column, string table) {
