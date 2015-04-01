@@ -1,0 +1,13 @@
+﻿<Window x:Class="ChildcareApplication.AdminTools.ApplicationSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ApplicationSettings" Height="300" Width="300">
+    <Grid>
+        <Label x:Name="lbl_BillingStart" Content="Billing Start Date" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_BillingEnd" Content="Billing End Date" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_MaxMonthly" Content="Maximum Monthly Charge for Regular Childcare" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_MaxHours" Content="Maximum Number of Hours Charged for Childcare" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_ExpirationDays" Content="Number of Days to Hold Expired Records" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

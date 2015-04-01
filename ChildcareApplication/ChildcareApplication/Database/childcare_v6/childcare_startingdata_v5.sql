@@ -88,3 +88,6 @@ VALUES ("Regular Care Maximum Monthly Charge", "100");
 
 INSERT INTO ApplicationSettings
 VALUES ("Days to Hold Expired and Deleted Records", "365");
+
+INSERT INTO ApplicationSettings
+VALUES ("Maximum Number of Hours Charged for Childcare", "3");
