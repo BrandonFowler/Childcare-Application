@@ -141,7 +141,7 @@ namespace AdminTools {
             txt_FirstName.Clear();
             txt_LastName.Clear();
 
-            txt_IDNumber.Clear();
+            //txt_IDNumber.Clear();
             txt_Allergies.Clear();
 
             txt_Medical.Clear();

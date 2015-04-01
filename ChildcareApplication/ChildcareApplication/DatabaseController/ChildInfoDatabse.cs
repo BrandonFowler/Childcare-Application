@@ -14,7 +14,7 @@ namespace DatabaseController {
         
         public ChildInfoDatabse()
         {
-            dbCon = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }//end Database
 
         /*private string server;
@@ -149,7 +149,7 @@ namespace DatabaseController {
         public void DeleteAllowedConnection(string childID, string pID) {
 
             dbCon.Open();
-            try {
+           /* try {
 
                 string sql = "DELETE from AllowedConnections where Child_ID = " + childID + " AND Guardian_ID = " + pID + ";";
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
@@ -159,7 +159,27 @@ namespace DatabaseController {
                 MessageBox.Show(" Delink Completed");
             } catch (SQLiteException e) {
                 MessageBox.Show("Failed");
+            }*/
+            try
+            {
+
+                string today = DateTime.Now.ToString("yyyy-MM-dd");
+                //string sql = "DELETE from Guardian where Guardian_ID = " + parentID;
+                string sql = @"UPDATE AllowedCOnnections SET ConnectionDeletionDate = @today WHERE Child_ID = @childID;";
+                //SQLiteCommand command = new SQLiteCommand(sql, this.dbConn);
+                SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+                command.CommandText = sql;
+                command.Parameters.Add(new SQLiteParameter("@today", today));
+                command.Parameters.Add(new SQLiteParameter("@childID", childID));
+                command.ExecuteNonQuery();
+
+                MessageBox.Show("Completed");
             }
+            catch (SQLiteException e)
+            {
+                MessageBox.Show("Failed");
+            }
+
             dbCon.Close();
 
         }//end GetFirstName
@@ -199,7 +219,7 @@ namespace DatabaseController {
 
             string sql = "select Child.* " +
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
-                  "where Guardian_ID = " + id;
+                  "where Guardian_ID = " + id + " AND ConnectionDeletionDate IS null";
 
             // SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             SQLiteCommand command = new SQLiteCommand(sql, dbCon);

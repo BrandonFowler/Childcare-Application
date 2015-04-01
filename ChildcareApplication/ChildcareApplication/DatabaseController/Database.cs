@@ -15,7 +15,7 @@ namespace DatabaseController {
         private SQLiteConnection dbCon;
 
         public Database() {
-            dbCon = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }//end Database
 
         public bool validateLogin(string ID) {
