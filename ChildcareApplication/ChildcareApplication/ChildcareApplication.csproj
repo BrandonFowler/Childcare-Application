@@ -183,7 +183,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ParentTools\ChildCheckInDatabase.cs" />
+    <Compile Include="DatabaseController\ChildCheckInDatabase.cs" />
     <Compile Include="ParentTools\ChildLoginWindow.xaml.cs">
       <DependentUpon>ChildLoginWindow.xaml</DependentUpon>
     </Compile>

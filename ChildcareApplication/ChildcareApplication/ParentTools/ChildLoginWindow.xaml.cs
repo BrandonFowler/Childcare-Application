@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using AdminTools;
 using System.Windows.Media;
+using DatabaseController;
 
 namespace ParentTools {
    
@@ -26,11 +27,11 @@ namespace ParentTools {
             lbl_Time.DataContext = updateTime;
             lst_CheckInBox.GotFocus += CheckInGotFocus;
             lst_CheckOutBox.SelectionChanged += CheckOutBoxSelectionChanged;
-        }//end constructor
+        }
 
         private void btn_LogOutParent_Click(object sender, RoutedEventArgs e) {
             exitToLogin();
-        }//end btn_LogOutParent
+        }
 
         private void setUpCheckInBox() {
             string[,] childrenData = db.findChildren(this.guardianID);
@@ -49,7 +50,7 @@ namespace ParentTools {
                 }
             }
           
-        }//end setUpCheckInBox
+        }
 
         private Image buildImage(string path, int size) {
             Image image = new Image();
@@ -73,7 +74,7 @@ namespace ParentTools {
                 image.Source = bitmapImage;
             }
             return image;
-        }//end buildImage
+        }
 
         private void btn_CheckIn_Click(object sender, RoutedEventArgs e) {
             if (cbo_EventChoice.SelectedItem != null) {
@@ -92,7 +93,7 @@ namespace ParentTools {
                 MessageBox.Show("Please choose and event.");
             }
             btn_CheckIn.Background = Brushes.Blue;
-        }//end btn_CheckIn_Click
+        }
 
         private void btn_CheckOut_Click(object sender, RoutedEventArgs e) {
             if (lst_CheckOutBox.SelectedItem != null) {
@@ -104,7 +105,7 @@ namespace ParentTools {
                 }
             }
             btn_CheckOut.Background = Brushes.Blue;
-        }//end btn_CheckOut_Click
+        }
 
         public void setUpParentDisplay() {
             string [] parentInfo = db.getParentInfo(this.guardianID);
@@ -115,13 +116,13 @@ namespace ParentTools {
             else{
                 exitToLogin();
             }
-        }//end setUpParentDisplay
+        }
 
         private void exitToLogin(){
             ParentLogin loginWindow = new ParentLogin();
             loginWindow.Show();
             this.Close();
-        }//end exitToLogin
+        }
 
         public void eventsSetup() {
             string[] events = db.getEvents();
@@ -140,7 +141,7 @@ namespace ParentTools {
             else{
                 exitToLogin();
             }
-        }//end eventSetup
+        }
 
         private void CheckInGotFocus(object sender, System.EventArgs e) {
             if (cbo_EventChoice.SelectedItem != null) {
@@ -151,5 +152,5 @@ namespace ParentTools {
             btn_CheckOut.Background = Brushes.Green;
         }
 
-    }//end win_ChildLoginWindow(Class)
+    }
 }

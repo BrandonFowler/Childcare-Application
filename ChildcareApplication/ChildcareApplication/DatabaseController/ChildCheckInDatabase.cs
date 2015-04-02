@@ -3,7 +3,7 @@ using System;
 using System.Data;
 using System.Windows;
 
-namespace ParentTools {
+namespace DatabaseController {
 
     class ChildCheckInDatabase {
 
@@ -11,7 +11,7 @@ namespace ParentTools {
 
         public ChildCheckInDatabase() {
             conn = new SQLiteConnection("Data Source=../../Database/ChildCareDB.s3db;Version=3;");
-        }//end Database(default constructor)
+        }
 
         public bool validateLogin(string ID, string PIN) {
 
@@ -40,7 +40,7 @@ namespace ParentTools {
             }
 
             return false;
-        }//end validateLogin
+        }
 
         public string[] getParentInfo(String guardianID) {
 
@@ -75,7 +75,7 @@ namespace ParentTools {
                 conn.Close();
                 return null;
             }
-        }// end getParentInfo
+        }
 
         public String[,] findChildren(string guardianID) {
 
@@ -115,7 +115,7 @@ namespace ParentTools {
                 conn.Close();
                 return null;
             }
-        }//end findChildren
+        }
 
         public string[] getEvents() {
             DateTime dt = DateTime.Now;
@@ -157,7 +157,7 @@ namespace ParentTools {
                 conn.Close();
                 return null;
             }
-        }//end getEvents
+        }
 
         public bool checkIn(string childID, string eventName, string guardianID, string birthday) {
             DateTime dt = DateTime.Now;
@@ -204,7 +204,7 @@ namespace ParentTools {
                 return false;
             }
             return true;
-        }//end checkIn
+        }
 
         private int getNextPrimary(string column, string table) {
 
@@ -234,7 +234,7 @@ namespace ParentTools {
                 conn.Close();
                 return -1;
             }
-        }//end getMaxPrimary
+        }
 
         public string getAllowanceID(string guardianID, string childID) {
 
@@ -258,7 +258,7 @@ namespace ParentTools {
                 MessageBox.Show("Database connection error: Unable to retrieve critical information");
                 return null;
             }
-        }//end getConnectionID
+        }
 
         public bool checkOut(string childID, string guardianID) {
             DateTime currentDateTime = DateTime.Now;
@@ -374,7 +374,7 @@ namespace ParentTools {
             }
             
             return true;
-        }//end checkOut
+        }
 
         private double billingCapCalc(string eventName, string guardianID, string transactionDate, double eventFee) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
@@ -449,7 +449,7 @@ namespace ParentTools {
                 }
             }
             return 0.0;
-        }//end billingCapReached
+        }
 
         private void addToBalance(string guardianID, double fee) {
 
@@ -473,7 +473,7 @@ namespace ParentTools {
                 MessageBox.Show("Database connection error: Unable to add charge to family balance.");
             }
 
-        }//end addToBalance
+        }
 
         private string getTransactionAllowanceID(string guardianID, string childID) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
@@ -500,7 +500,7 @@ namespace ParentTools {
                 MessageBox.Show("Database connection error: Unable to retrieve critical information.");
                 return null;
             }
-        }//end getTransactionAllowanceID
+        }
 
         public string getClosingTime(string dayOfWeek) {
 
@@ -524,7 +524,7 @@ namespace ParentTools {
                 return null;
             }
 
-        }// end getClosingTime
+        }
 
         public double getLateFee(string eventName) {
 
@@ -548,7 +548,7 @@ namespace ParentTools {
                 MessageBox.Show("Database connection error: Unable to retrieve critical information. Any late fees have not been recorded.");
                 return 0;
             }
-        }//end getLateFee
+        }
 
         public string[] getEvent(string eventName) {
 
@@ -579,7 +579,7 @@ namespace ParentTools {
                 MessageBox.Show("Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
                 return null;
             }
-        }//end getEvent
+        }
 
         public int numberOfCheckedIn(string guardianID) {
 
@@ -609,7 +609,7 @@ namespace ParentTools {
                 MessageBox.Show("Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
                 return 0;
             }
-        }//end numberOfCheckedIn
+        }
 
         public string[] findTransaction(string allowanceID) {
 
@@ -640,7 +640,7 @@ namespace ParentTools {
                 MessageBox.Show("Database connection error: Unable to retrieve original transaction.");
                 return null;
             }
-        }//end FindTransaction
+        }
 
         public bool isCheckedIn(string childID, string guardianID){
             string familyID = guardianID.Remove(guardianID.Length - 1);
@@ -671,7 +671,7 @@ namespace ParentTools {
                 MessageBox.Show("Database connection error: Unable to access find all children. Please log out, then try again.");
                 return false;
             }
-        }//end isCheckedIn
+        }
 
         public bool checkInfant(string birthday, string date) {
             DateTime DTBirthday = DateTime.Parse(birthday);
@@ -681,7 +681,7 @@ namespace ParentTools {
                 return true;
             }
             return false;
-        }//end checkInfant
+        }
 
         public double checkIfPastClosing(string dayOfWeek, TimeSpan time) {
             string closingTime = getClosingTime(dayOfWeek);
@@ -695,7 +695,7 @@ namespace ParentTools {
                 return 0;
             }
             return hours;
-        }//end checkIfPastClosing
+        }
 
         public bool checkIfHourly(string eventName) {
             string[] eventData = getEvent(eventName);
@@ -710,7 +710,7 @@ namespace ParentTools {
             else {
                 return true;
             }
-        }//end checkIfHourly
+        }
 
         public double findEventFee(string guardianID, string eventName) {
             bool discount = false;
@@ -742,7 +742,7 @@ namespace ParentTools {
                     return Convert.ToDouble(eventData[1]);
                 }
             }
-        }//end findEventFee
+        }
 
-    }//end Database(Class)
+    }
 }
