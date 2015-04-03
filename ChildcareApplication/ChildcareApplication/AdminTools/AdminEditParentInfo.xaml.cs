@@ -1,10 +1,20 @@
-﻿using DatabaseController;
-using System;
-using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
+using System.Windows.Shapes;
+using System.Data;
+using System.Collections;
+using System.IO;
+using DatabaseController;
 
 namespace AdminTools {
     /// <summary>
@@ -295,7 +305,102 @@ namespace AdminTools {
                 }
 
 
-        }//end AddStates
+        }
+
+        private void txt_GotFocus(object sender, RoutedEventArgs e)
+        {
+            var textBox = e.OriginalSource as TextBox;
+            if (textBox != null)
+            {
+                textBox.SelectAll();
+            }
+        }
+
+        private void txt_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_FirstName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_LastName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_PhoneNumber_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_Email_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_Address_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_Address2_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_City_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_Zip_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_FirstName_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            txt_GotMouseCapture(sender, e);
+        }
+
+        private void txt_LastName_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            txt_GotMouseCapture(sender, e);
+        }
+
+        private void txt_PhoneNumber_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            txt_GotMouseCapture(sender, e);
+        }
+
+        private void txt_Email_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            txt_GotMouseCapture(sender, e);
+        }
+
+        private void txt_Address_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            txt_GotMouseCapture(sender, e);
+        }
+
+        private void txt_Address2_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            txt_GotMouseCapture(sender, e);
+        }
+
+        private void txt_City_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            txt_GotMouseCapture(sender, e);
+        }
+
+        private void txt_Zip_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            txt_GotMouseCapture(sender, e);
+        }
 
 
     }//end class

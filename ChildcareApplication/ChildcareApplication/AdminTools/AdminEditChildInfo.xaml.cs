@@ -241,7 +241,8 @@ namespace AdminTools {
 
             lst_ChildBox.Items.Clear();
             setChildBox();
-
+            lst_ChildBox.SelectedItem = lst_ChildBox.Items[lst_ChildBox.Items.Count - 1];
+            txt_FirstName.Focus(); 
 
         }
 
@@ -324,6 +325,61 @@ namespace AdminTools {
 
             }
 
+        }//end btnChangePicture
+
+        private void txt_GotFocus(object sender, RoutedEventArgs e)
+        {
+            var textBox = e.OriginalSource as TextBox;
+            if (textBox != null)
+            {
+                textBox.SelectAll();
+            }
+        }
+
+        private void txt_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_FirstName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_LastName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_Medical_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_Allergies_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_GotFocus(sender, e);
+        }
+
+        private void txt_FirstName_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            txt_GotMouseCapture(sender, e); 
+        }
+
+        private void txt_LastName_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            txt_GotMouseCapture(sender, e); 
+        }
+
+        private void txt_Medical_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            txt_GotMouseCapture(sender, e); 
+        }
+
+        private void txt_Allergies_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            txt_GotMouseCapture(sender, e); 
         }
     }//end class
 

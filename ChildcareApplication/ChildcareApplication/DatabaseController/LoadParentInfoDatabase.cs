@@ -16,7 +16,7 @@ namespace DatabaseController {
 
         public LoadParentInfoDatabase()
         {
-            dbCon = new SQLiteConnection("Data Source=../../DatabaseChildcareDB.s3db;Version=3;");
+            dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }//end Database
 
 

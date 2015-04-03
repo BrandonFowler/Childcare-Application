@@ -32,7 +32,9 @@ namespace AdminTools {
             {
                 bool sameID = checkIfSame(txt_ParentID1.Text, txt_ParentID2.Text);
                 bool samePIN = checkIfSame(psw_ParentPIN1.Password, psw_ParentPIN2.Password);
-                if (sameID && samePIN)//both IDand PIN are the same vlues
+                bool correctLength = checkLength(txt_ParentID1.Text, txt_ParentID2.Text, 6, 0);
+                bool corretLengthPIN = checkLength(psw_ParentPIN1.Password, psw_ParentPIN2.Password, 4, 1);
+                if (sameID && samePIN && correctLength && corretLengthPIN)//both IDand PIN are the same vlues
                 {
                     bool numbersID = checkIfNumbers(txt_ParentID1.Text, txt_ParentID2.Text);
                     bool numbersPIN = checkIfNumbers(psw_ParentPIN1.Password, psw_ParentPIN2.Password);
@@ -116,6 +118,34 @@ namespace AdminTools {
 
         }
 
+        private bool checkLength(string str1, string str2, int l, int IDorPIN) {
+
+            int len1, len2; 
+
+            len1 = txt_ParentID1.Text.Length;
+            len2 = txt_ParentID2.Text.Length;
+
+            if (len1 == l || len2 == l)
+            {
+                return true;
+            }
+
+            else
+            {
+                if (IDorPIN == 0)
+                {
+                    MessageBox.Show("Guardian ID numbers are not length 6. Please re-enter ID numbers.");
+                    txt_ParentID1.Focus();
+                }
+                if (IDorPIN == 1)
+                {
+                    MessageBox.Show("Guardian PIN numbers are not length 4. Please re-enter PIN numbers.");
+                    psw_ParentPIN1.Focus();
+                }
+                return false;
+            }
+        }
+
         private bool checkIfNumbers(string str1, string str2) {
             int parseNum1, parseNum2;
 
@@ -125,10 +155,37 @@ namespace AdminTools {
             if (isNum1 && isNum2)
                 return true;
             else {
-                MessageBox.Show("Your ID or PIN numbers are not numbers only. Please re-enter.");
+                    
+                        MessageBox.Show("Your ID or PIN numbers are not numbers only. Please re-enter.");
 
                 return false;
             }
+        }
+
+        private void txt_ParentID1_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_ParentID1 != null)
+            {
+                txt_ParentID1.SelectAll();
+            }
+        }
+
+        private void txt_ParentID1_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            txt_ParentID1_GotFocus(sender, e); 
+        }
+
+        private void txt_ParentID2_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txt_ParentID2 != null)
+            {
+                txt_ParentID2.SelectAll();
+            }
+        }
+
+        private void txt_ParentID2_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            txt_ParentID2_GotFocus(sender, e); 
         }
 
     }

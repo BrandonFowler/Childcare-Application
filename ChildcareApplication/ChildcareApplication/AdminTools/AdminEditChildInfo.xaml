@@ -8,17 +8,17 @@
         <Label x:Name="lbl_Child" Content="Child Image" HorizontalAlignment="Left" Margin="44,15,0,0" VerticalAlignment="Top" Width="98"/>
         <Label x:Name="lbl_UserID" Content="Parent ID:" HorizontalAlignment="Left" Margin="23,265,0,0" VerticalAlignment="Top" Width="83"/>
         <TextBox x:Name="txt_IDNumber" HorizontalAlignment="Left" Height="23" Margin="92,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" IsEnabled="False"/>
-        <TextBox x:Name="txt_FirstName" HorizontalAlignment="Left" Height="23" Margin="304,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+        <TextBox x:Name="txt_FirstName" HorizontalAlignment="Left" Height="23" Margin="304,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="0" GotFocus="txt_FirstName_GotFocus" GotMouseCapture="txt_FirstName_GotMouseCapture"/>
         <Label x:Name="lbl_FirstName" Content="First Name:" HorizontalAlignment="Left" Margin="220,38,0,0" VerticalAlignment="Top" Width="83"/>
         <Label x:Name="lbl_LastName" Content="Last Name:" HorizontalAlignment="Left" Margin="220,69,0,0" VerticalAlignment="Top" Width="83"/>
-        <TextBox x:Name="txt_LastName" HorizontalAlignment="Left" Height="23" Margin="304,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+        <TextBox x:Name="txt_LastName" HorizontalAlignment="Left" Height="23" Margin="304,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="1" GotFocus="txt_LastName_GotFocus" GotMouseCapture="txt_LastName_GotMouseCapture"/>
         <Label x:Name="lbl_Medical" Content="Medical Issues:" HorizontalAlignment="Left" Margin="209,210,0,0" VerticalAlignment="Top" Width="89"/>
-        <TextBox x:Name="txt_Medical" HorizontalAlignment="Left" Height="Auto" Margin="209,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187"/>
+        <TextBox x:Name="txt_Medical" HorizontalAlignment="Left" Height="Auto" Margin="209,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187" TabIndex="4" GotFocus="txt_Medical_GotFocus" GotMouseCapture="txt_Medical_GotMouseCapture"/>
         <Label x:Name="lbl_Allergies" Content="Allergies:" HorizontalAlignment="Left" Margin="421,210,0,0" VerticalAlignment="Top" Width="89"/>
-        <TextBox x:Name="txt_Allergies" HorizontalAlignment="Left" Height="Auto" Margin="421,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187"/>
-        <Button x:Name="btn_Submit" Content="Submit" HorizontalAlignment="Left" Margin="243,425,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_Submit_Click"/>
-        <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="421,425,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_Delete_Click"/>
-        <Button x:Name="btn_MainMenu" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="25,425,0,0" VerticalAlignment="Top" Width="109" Height="51" Click="btn_MainMenu_Click"/>
+        <TextBox x:Name="txt_Allergies" HorizontalAlignment="Left" Height="Auto" Margin="421,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187" TabIndex="5" GotFocus="txt_Allergies_GotFocus" GotMouseCapture="txt_Allergies_GotMouseCapture"/>
+        <Button x:Name="btn_Submit" Content="Submit" HorizontalAlignment="Left" Margin="243,425,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_Submit_Click" TabIndex="9"/>
+        <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="421,425,0,0" VerticalAlignment="Top" Width="111" Height="51" Click="btn_Delete_Click" TabIndex="10"/>
+        <Button x:Name="btn_MainMenu" Content="Back to Main Menu" HorizontalAlignment="Left" Margin="25,425,0,0" VerticalAlignment="Top" Width="109" Height="51" Click="btn_MainMenu_Click" TabIndex="15"/>
         <Label x:Name="lbl_Birthday" Content="Birthday:" HorizontalAlignment="Left" Margin="220,130,0,0" VerticalAlignment="Top" Width="68"/>
         <Label x:Name="lbl_Example" Content=" Enter a date or click the Calender. EX: 01/01/2005" HorizontalAlignment="Left" Margin="218,104,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="lst_ChildBox" HorizontalAlignment="Left" Height="124" Margin="137,296,0,0" VerticalAlignment="Top" Width="395">
@@ -37,11 +37,11 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="btn_AddChild" Content="Add A Child" HorizontalAlignment="Left" Margin="35,306,0,0" VerticalAlignment="Top" Width="97" Height="58" Click="btn_AddChild_Click"/>
-        <DatePicker x:Name="dte_Birthday" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="304,130,0,0" DisplayDate="2005-01-01" IsTodayHighlighted="False"/>
-        <Button x:Name="btn_LinkChild" Content="Link This Child" HorizontalAlignment="Left" Margin="545,296,0,0" VerticalAlignment="Top" Width="97" Height="58" Click="btn_LinkChild_Click"/>
-        <Button x:Name="btn_De_LinkChild" Content="De-Link This Child" HorizontalAlignment="Left" Margin="545,371,0,0" VerticalAlignment="Top" Width="97" Height="58" Click="btn_De_LinkChild_Click"/>
-        <Button x:Name="btn_ChangePicture" Content="Change Picture" HorizontalAlignment="Left" Margin="220,171,0,0" VerticalAlignment="Top" Width="107" Click="btn_ChangePicture_Click"/>
+        <Button x:Name="btn_AddChild" Content="Add A Child" HorizontalAlignment="Left" Margin="35,306,0,0" VerticalAlignment="Top" Width="97" Height="58" Click="btn_AddChild_Click" TabIndex="6"/>
+        <DatePicker x:Name="dte_Birthday" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="304,130,0,0" DisplayDate="2005-01-01" IsTodayHighlighted="False" TabIndex="2"/>
+        <Button x:Name="btn_LinkChild" Content="Link This Child" HorizontalAlignment="Left" Margin="545,296,0,0" VerticalAlignment="Top" Width="97" Height="58" Click="btn_LinkChild_Click" TabIndex="7"/>
+        <Button x:Name="btn_De_LinkChild" Content="De-Link This Child" HorizontalAlignment="Left" Margin="545,371,0,0" VerticalAlignment="Top" Width="97" Height="58" Click="btn_De_LinkChild_Click" TabIndex="8"/>
+        <Button x:Name="btn_ChangePicture" Content="Change Picture" HorizontalAlignment="Left" Margin="220,171,0,0" VerticalAlignment="Top" Width="107" Click="btn_ChangePicture_Click" TabIndex="3"/>
         <TextBox x:Name="txt_FilePath" HorizontalAlignment="Left" Height="23" Margin="346,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" IsEnabled="False"/>
     </Grid>
 </Window>
