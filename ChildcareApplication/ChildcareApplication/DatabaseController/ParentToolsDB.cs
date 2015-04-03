@@ -5,30 +5,25 @@ using System.Windows;
 
 namespace DatabaseController {
 
-    class ChildCheckInDatabase {
+    class ParentToolsDB {
 
         private SQLiteConnection conn;
 
-        public ChildCheckInDatabase() {
+        public ParentToolsDB() {
             conn = new SQLiteConnection("Data Source=../../Database/ChildCareDB.s3db;Version=3;");
         }
 
         public bool validateLogin(string ID, string PIN) {
-
             string sql = "select Guardian_ID " +
                          "from Guardian " + 
                          "where Guardian_ID = @ID and GuardianPIN = @PIN";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@ID", ID));
             command.Parameters.Add(new SQLiteParameter("@PIN", PIN));
-
             try{
                 conn.Open();
                 object recordFound = command.ExecuteScalar();
                 conn.Close();
-        
-
                 if (recordFound != DBNull.Value && recordFound != null) {
                     conn.Close();
                     return true;
@@ -38,36 +33,26 @@ namespace DatabaseController {
                 MessageBox.Show("Database Connection Failure");
                 conn.Close();
             }
-
             return false;
         }
 
         public string[] getParentInfo(String guardianID) {
-
             string sql = "select * " +
                          "from Guardian " +
                          "where Guardian_ID = @guardianID";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@guardianID", guardianID));
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
-
-            try
-            {
+            try{
                 conn.Open();
                 DB.Fill(DS);
-
                 int cCount = DS.Tables[0].Columns.Count;
                 string[] data = new String[cCount];
-
-                for (int x = 0; x < cCount; x++)
-                {
+                for (int x = 0; x < cCount; x++){
                     data[x] = DS.Tables[0].Rows[0][x].ToString();
                 }
-
                 conn.Close();
-
                 return data;
             }
             catch(Exception){
@@ -78,36 +63,28 @@ namespace DatabaseController {
         }
 
         public String[,] findChildren(string guardianID) {
-
             string sql = "select Child.* " +
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID "+
                   "where Guardian_ID = @guardianID and ChildDeletionDate is null and ConnectionDeletionDate is NULL";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             command.Parameters.Add(new SQLiteParameter("@guardianID", guardianID));
             DataSet DS = new DataSet();
-
             try{
                 conn.Open();
                 DB.Fill(DS);
-
                 if (DS.Tables == null){
                     return null;
                 }
-
                 int cCount = DS.Tables[0].Columns.Count;
                 int rCount = DS.Tables[0].Rows.Count;
                 String[,] data = new string[rCount, cCount];
-
                 for (int x = 0; x < rCount; x++){
                     for (int y = 0; y < cCount; y++){
                         data[x, y] = DS.Tables[0].Rows[x][y].ToString();
                     }
                 }
-
                 conn.Close();
-
                 return data;
             }
             catch (Exception){
@@ -123,7 +100,6 @@ namespace DatabaseController {
             string month = Convert.ToDateTime(dateTime).ToString("MM");
             string day = Convert.ToDateTime(dateTime).ToString("dd");
             string dayOfWeek = dt.DayOfWeek.ToString();
-
             string sql = "select EventName " + 
                          "from EventData " + 
                          "where ((EventDay= @day and EventMonth= @month or " +
@@ -131,14 +107,12 @@ namespace DatabaseController {
                          "and EventDeletionDate is NULL) or (EventDay is NULL and EventMonth is NULL " + 
                          "and EventWeekday is NULL and EventDeletionDate is NULL and " + 
                          "EventName != 'Late Fee' and EventName != 'Infant Childcare')";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             command.Parameters.Add(new SQLiteParameter("@day", day));
             command.Parameters.Add(new SQLiteParameter("@month", month));
             command.Parameters.Add(new SQLiteParameter("@dayOfWeek", dayOfWeek));
             DataSet DS = new DataSet();
-
             try{
                 conn.Open();
                 DB.Fill(DS);
@@ -147,9 +121,7 @@ namespace DatabaseController {
                 for (int x = 0; x < rCount; x++){      
                     events[x] = DS.Tables[0].Rows[x][0].ToString(); 
                 }
-
                 conn.Close();
-
                 return events;
             }
             catch (Exception){
@@ -170,29 +142,25 @@ namespace DatabaseController {
                 return false;
             }
             bool isInfant;
-            if (eventName.CompareTo("Regular Childcare") == 0) {
+            if (eventName.CompareTo("Regular Childcare") == 0) {//Also check for older child
                 isInfant = checkInfant(birthday, date);
                 if (isInfant) {
                     eventName = "Infant Childcare";
                 }
             }
-
             string allowanceID = getAllowanceID(guardianID, childID);
             int maxTransactionID = getNextPrimary("ChildcareTransaction_ID","ChildcareTransaction");
             string transactionID = Convert.ToString(maxTransactionID);
             transactionID = transactionID.ToString().PadLeft(10, '0');
-
             string sql = "insert into " +
                          "ChildcareTransaction (ChildcareTransaction_ID,EventName,Allowance_ID,transactionDate,CheckedIn) " + 
                          "values (@transactionID, @eventName, @allowanceID, @date, @time)";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@transactionID", transactionID));
             command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
             command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
             command.Parameters.Add(new SQLiteParameter("@date", date));
             command.Parameters.Add(new SQLiteParameter("@time", time));
-
             try{
                 conn.Open();
                 command.ExecuteNonQuery();
@@ -206,18 +174,13 @@ namespace DatabaseController {
             return true;
         }
 
-        private int getNextPrimary(string column, string table) {
-
+        public int getNextPrimary(string column, string table) {
             string sql = "Select max(cast("+column+" as unsigned)) from " + table;
-            
             SQLiteCommand command = new SQLiteCommand(sql, conn);
-
-            try
-            {
+            try{
                 conn.Open();
                 object max = command.ExecuteScalar();
                 conn.Close();
-
                 if (max != DBNull.Value && max != null){
                     conn.Close();
                     int maxID = Convert.ToInt32(max) + 1;
@@ -226,7 +189,6 @@ namespace DatabaseController {
                     }
                     return maxID;
                 }
-
                 return 1;
             }
             catch (Exception){
@@ -237,15 +199,12 @@ namespace DatabaseController {
         }
 
         public string getAllowanceID(string guardianID, string childID) {
-
             string sql = "select Allowance_ID " +
                          "from AllowedConnections " +
                          "where Guardian_ID = @guardianID and Child_ID = @childID";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@guardianID", guardianID));
             command.Parameters.Add(new SQLiteParameter("@childID", childID));
-
             try{
                 conn.Open();
                 string connectionID = Convert.ToString(command.ExecuteScalar());
@@ -260,68 +219,14 @@ namespace DatabaseController {
             }
         }
 
-        public bool checkOut(string childID, string guardianID) {
-            DateTime currentDateTime = DateTime.Now;
-            string dateTimeString = DateTime.Now.ToString();
-            string currentDateString = Convert.ToDateTime(dateTimeString).ToString("yyyy-MM-dd");
-            string currentTimeString = Convert.ToDateTime(dateTimeString).ToString("HH:mm:ss");
-            string allowanceID = getTransactionAllowanceID(guardianID, childID);
-            string[] transaction = findTransaction(allowanceID);
-            if (transaction == null){
-                MessageBox.Show("Unable to check out child. Please log out then try again.");
-                return false;
-            }
-            string transactionID = transaction[0];
-            string eventName = transaction[1];
-            string checkInTime = transaction[4];
-            bool isLate = false;
-            bool ishourly = checkIfHourly(eventName);
-            double eventFee = findEventFee(guardianID, eventName);
-            TimeSpan TimeSpanTime = TimeSpan.Parse(currentTimeString);
-            checkInTime = Convert.ToDateTime(checkInTime).ToString("HH:mm:ss");
-            TimeSpan TimeSpanCheckInTime = TimeSpan.Parse(checkInTime);
-            double lateTime = checkIfPastClosing(currentDateTime.DayOfWeek.ToString(), TimeSpanTime);
-            if(ishourly){
-               double hourDifference = TimeSpanTime.Hours - TimeSpanCheckInTime.Hours;
-               double minuteDifference = TimeSpanTime.Minutes - TimeSpanCheckInTime.Minutes;
-               double totalCheckedInHours = hourDifference + (minuteDifference/60.0);
-               if ((eventName.CompareTo("Regular Childcare") == 0 || eventName.CompareTo("Infant Childcare") == 0) && totalCheckedInHours > 3) {
-                    double timeDifference = totalCheckedInHours - 3;
-                    if (timeDifference > lateTime) {
-                        lateTime = timeDifference;
-                        totalCheckedInHours = 3;
-                    }
-                    else {
-                        totalCheckedInHours = totalCheckedInHours - lateTime;
-                    }
-                    isLate = true;
-               }
-               else if (lateTime > 0) {
-                   totalCheckedInHours = totalCheckedInHours - lateTime;
-                   isLate = true;
-               }
-               
-                eventFee = eventFee * totalCheckedInHours;
-                eventFee = Math.Round(eventFee, 2, MidpointRounding.AwayFromZero);
-            }
-            else {
-                if (lateTime > 0) {
-                    isLate = true;
-                }
-            }
-      
-            eventFee = eventFee - billingCapCalc(eventName, guardianID, transaction[3], eventFee);
-            string eventFeeRounded = eventFee.ToString("f2");
-
+        public bool checkOut(string currentTimeString, string eventFeeRounded, string allowanceID) {
             string sql = "update ChildcareTransaction " +
                   "set CheckedOut= @currentTimeString, TransactionTotal = @eventFee "+
                   "where Allowance_ID = @allowanceID and CheckedOut is null";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@currentTimeString", currentTimeString));
             command.Parameters.Add(new SQLiteParameter("@eventFee", eventFeeRounded));
             command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
-
             try{
                 conn.Open();
                 command.ExecuteNonQuery();
@@ -332,137 +237,65 @@ namespace DatabaseController {
                 conn.Close();
                 return false;
             }
-
-            addToBalance(guardianID, eventFee);
-
-            if (isLate) {
-                eventName = "Late Fee";
-                double lateFee = getLateFee(eventName);
-                lateFee = lateFee * lateTime;
-
-                int maxTransactionID = getNextPrimary("ChildcareTransaction_ID", "ChildcareTransaction");
-                string sMaxTransactionID = Convert.ToString(maxTransactionID);
-                sMaxTransactionID = sMaxTransactionID.ToString().PadLeft(10, '0');
-                    
-                sql = "insert into " +
-                      "ChildcareTransaction (ChildcareTransaction_ID,EventName,Allowance_ID,transactionDate,CheckedIn,CheckedOut,TransactionTotal) " +
-                      "values (@sMaxTransactionID, @eventName, @allowanceID, @currentDateString, '00:00:00','00:00:00', @lateFee)";
-
-                command = new SQLiteCommand(sql, conn);
-                command.Parameters.Add(new SQLiteParameter("@sMaxTransactionID", sMaxTransactionID));
-                command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
-                command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
-                command.Parameters.Add(new SQLiteParameter("@currentDateString", currentDateString));
-                command.Parameters.Add(new SQLiteParameter("@lateFee", lateFee));
-
-                if (maxTransactionID > -1){
-                    try{
-                        conn.Open();
-                        command.ExecuteNonQuery();
-                        conn.Close();
-                    }
-                    catch(Exception){
-                        conn.Close();
-                        MessageBox.Show("Database connection error: Unable to record late fee");
-                    }
-                }
-                else{
-                    MessageBox.Show("Database connection error: Unable to record late fee");
-                }
-
-                addToBalance(guardianID, lateFee);
-            }
-            
             return true;
         }
 
-        private double billingCapCalc(string eventName, string guardianID, string transactionDate, double eventFee) {
-            string familyID = guardianID.Remove(guardianID.Length - 1);
-            double cap = 100;
-            int billingStart = 20;
-            int billingEnd = 19;
-            DateTime DTStart;
-            DateTime DTEnd;
-            if (DateTime.Now.Day > billingEnd) {
-                DTStart = new DateTime(DateTime.Now.Year, DateTime.Now.Month, billingStart);
-                int endMonth = DTStart.Month + 1;
-                if (endMonth == 13) {
-                    int endYear = DTStart.Year + 1;
-                    DTEnd = new DateTime(endYear, 1, billingEnd);
-                }
-                else {
-                    DTEnd = new DateTime(DateTime.Now.Year, endMonth, billingEnd);
-                }
-            }
-            else {
-                DTEnd = new DateTime(DateTime.Now.Year, DateTime.Now.Month, billingEnd);
-                int startMonth = DTEnd.Month - 1;
-                if (startMonth == 0) {
-                    int startYear = DTEnd.Year - 1;
-                    DTStart = new DateTime(startYear, 12, billingStart);
-                }
-                else {
-                    DTStart = new DateTime(DateTime.Now.Year, startMonth, billingStart);
-                }
-            }
-           
-            string start = DTStart.ToString("yyyy-MM-dd");
-            string end = DTEnd.ToString("yyyy-MM-dd");
-
-            if(eventName.CompareTo("Regular Childcare") == 0 || eventName.CompareTo("Infant Childcare") == 0 ){
-
-                string sql = "select sum(TransactionTotal) " +
-                             "from AllowedConnections natural join ChildcareTransaction " +
-                             "where Family_ID = @familyID and EventName IN ('Regular Childcare', 'Infant Childcare') and TransactionDate between '" + start + "' and '" + end + "'";
-
-                SQLiteCommand command = new SQLiteCommand(sql, conn);
-                command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
-
-                object recordFound = null;
+        public bool addLateFee(string sMaxTransactionID, string eventName, string allowanceID, string currentDateString, double lateFee) {
+            string sql = "insert into " +
+                      "ChildcareTransaction (ChildcareTransaction_ID,EventName,Allowance_ID,transactionDate,CheckedIn,CheckedOut,TransactionTotal) " +
+                      "values (@sMaxTransactionID, @eventName, @allowanceID, @currentDateString, '00:00:00','00:00:00', @lateFee)";
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@sMaxTransactionID", sMaxTransactionID));
+            command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
+            command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
+            command.Parameters.Add(new SQLiteParameter("@currentDateString", currentDateString));
+            command.Parameters.Add(new SQLiteParameter("@lateFee", lateFee));
+            if (Convert.ToInt32(sMaxTransactionID) > -1){
                 try{
                     conn.Open();
-                    recordFound = command.ExecuteScalar();
+                    command.ExecuteNonQuery();
                     conn.Close();
                 }
                 catch(Exception){
                     conn.Close();
-                    MessageBox.Show("Database connection error: Unable to check if charge exceeds monthly maximum for normal care.");
-                }
-
-                double sum;
-                if (recordFound == DBNull.Value || recordFound == null) {
-                    return 0;
-                }
-                else {
-                    sum = Convert.ToDouble(recordFound);
-                }
-
-                double total = sum + eventFee;
-
-                double capdiff = total - cap;
-
-                if (capdiff > 0 && capdiff < eventFee) {
-                    return capdiff;
-                }
-                else if (capdiff >= eventFee) {
-                    return eventFee;
+                    MessageBox.Show("Database connection error: Unable to record late fee");
+                    return false;
                 }
             }
-            return 0.0;
+            else{
+                MessageBox.Show("Database connection error: Unable to record late fee");
+                return false;
+            }
+            return true;
         }
 
-        private void addToBalance(string guardianID, double fee) {
+        public object sumRegularCare(string start, string end, string familyID) {
+            string sql = "select sum(TransactionTotal) " +
+                             "from AllowedConnections natural join ChildcareTransaction " +
+                             "where Family_ID = @familyID and EventName IN ('Regular Childcare', 'Infant Childcare') and TransactionDate between '" + start + "' and '" + end + "'";//Add older child
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
+            object recordFound = null;
+            try {
+                conn.Open();
+                recordFound = command.ExecuteScalar();
+                conn.Close();
+            }
+            catch (Exception) {
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to check if charge exceeds monthly maximum for normal care.");
+            }
+            return recordFound;
+        }
 
+        public void addToBalance(string guardianID, double fee) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
-
             string sql = "update Family " +
                          "set FamilyTotal = FamilyTotal + @fee " +
                          "where Family_ID = @familyID";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@fee", fee));
             command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
-
             try{
                 conn.Open();
                 command.ExecuteNonQuery();
@@ -472,27 +305,22 @@ namespace DatabaseController {
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to add charge to family balance.");
             }
-
         }
 
-        private string getTransactionAllowanceID(string guardianID, string childID) {
+        public string getTransactionAllowanceID(string guardianID, string childID) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
-
             string sql = "select Allowance_ID " +
                          "from AllowedConnections natural join ChildcareTransaction " +
                          "where Family_ID = @familyID and Child_ID = @childID and CheckedOut is null " +
                          "Group By Allowance_ID " +
                          "HAVING COUNT(*) = 1 ";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
             command.Parameters.Add(new SQLiteParameter("@childID", childID));
-
             try{
                 conn.Open();
                 string allowanceID = Convert.ToString(command.ExecuteScalar());
                 conn.Close();
-
                 return allowanceID;
             }
             catch (Exception){
@@ -503,14 +331,11 @@ namespace DatabaseController {
         }
 
         public string getClosingTime(string dayOfWeek) {
-
             string sql = "select Closing " +
                          "from OperatingHours " +
                          "where OperatingWeekday = @dayOfWeek";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@dayOfWeek", dayOfWeek));
-
             try{
                 conn.Open();
                 string closingTime = Convert.ToString(command.ExecuteScalar());
@@ -523,18 +348,14 @@ namespace DatabaseController {
                 MessageBox.Show("Database connection error: Unable to retrieve critical information. Any late fees have not been recorded.");
                 return null;
             }
-
         }
 
         public double getLateFee(string eventName) {
-
             string sql = "select HourlyPrice " +
                          "from EventData " +
                          "where EventName = @eventName";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
-
             try{
                 conn.Open();
                 string fee = Convert.ToString(command.ExecuteScalar());
@@ -551,27 +372,22 @@ namespace DatabaseController {
         }
 
         public string[] getEvent(string eventName) {
-
             string sql = "select * " +
                   "from EventData " +
                   "where EventName = @eventName";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
-
             try{
                 conn.Open();
                 DB.Fill(DS);
-
                 int cCount = DS.Tables[0].Columns.Count;
                 string[] eventData = new string[cCount];
                 for (int x = 0; x < cCount; x++){
                     eventData[x] = DS.Tables[0].Rows[0][x].ToString();
                 }
                 conn.Close();
-
                 return eventData;
             }
             catch (Exception){
@@ -582,20 +398,16 @@ namespace DatabaseController {
         }
 
         public int numberOfCheckedIn(string guardianID) {
-
             string familyID = guardianID.Remove(guardianID.Length - 1);
-
             string sql = "select ChildcareTransaction_ID " +
                          "from AllowedConnections natural join ChildcareTransaction " +
                          "where Family_ID = @familyID and CheckedOut is null " +
                          "Group By ChildcareTransaction_ID " +
                          "HAVING COUNT(*) = 1 ";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
-
             try{
                 conn.Open();
                 DB.Fill(DS);
@@ -612,16 +424,13 @@ namespace DatabaseController {
         }
 
         public string[] findTransaction(string allowanceID) {
-
             string sql = "select * " +
                          "from ChildcareTransaction "+
                          "where Allowance_ID = @allowanceID and CheckedOut is null";
-
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
-
             try{
                 conn.Open();
                 DB.Fill(DS);
@@ -632,7 +441,6 @@ namespace DatabaseController {
                     transaction[x] = DS.Tables[0].Rows[0][x].ToString();
                 }
                 conn.Close();
-
                 return transaction;
             }
             catch (Exception){
@@ -644,11 +452,9 @@ namespace DatabaseController {
 
         public bool isCheckedIn(string childID, string guardianID){
             string familyID = guardianID.Remove(guardianID.Length - 1);
-
             string sql = "select ChildcareTransaction_ID " +
                          "from Child natural join AllowedConnections natural join ChildcareTransaction " +
                          "where Family_ID = @familyID and Child_ID = @childID and CheckedOut is null ";
-           
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
             command.Parameters.Add(new SQLiteParameter("@childID", childID));
@@ -663,7 +469,6 @@ namespace DatabaseController {
                     conn.Close();
                     return true;
                 }
-
                 return false;
             }
             catch(Exception){
@@ -677,7 +482,7 @@ namespace DatabaseController {
             DateTime DTBirthday = DateTime.Parse(birthday);
             DateTime DTDate = DateTime.Parse(date);
             TimeSpan difference = DTDate - DTBirthday;
-            if (difference.Days < 1096) {
+            if (difference.Days < 1096) {//Change from hard code
                 return true;
             }
             return false;
@@ -687,7 +492,6 @@ namespace DatabaseController {
             string closingTime = getClosingTime(dayOfWeek);
             closingTime = Convert.ToDateTime(closingTime).ToString("HH:mm:ss");
             TimeSpan TSClosingTime = TimeSpan.Parse(closingTime);
-
             double hourDifference = time.Hours - TSClosingTime.Hours;
             double minuteDifference = time.Minutes - TSClosingTime.Minutes;
             double hours = hourDifference + (minuteDifference / 60.0);
@@ -695,53 +499,6 @@ namespace DatabaseController {
                 return 0;
             }
             return hours;
-        }
-
-        public bool checkIfHourly(string eventName) {
-            string[] eventData = getEvent(eventName);
-
-            if (eventData == null){
-                return false;
-            }
-
-            if (String.IsNullOrWhiteSpace(eventData[1])) {
-                return false;
-            }
-            else {
-                return true;
-            }
-        }
-
-        public double findEventFee(string guardianID, string eventName) {
-            bool discount = false;
-            int childrenCheckedIn = numberOfCheckedIn(guardianID);
-            string[] eventData = getEvent(eventName);
-
-            if ((childrenCheckedIn > 1) && (eventData[2] != null || eventData[4] != null)){
-                discount = true;
-            }
-
-            if (eventData == null)
-            {
-                return 0.0;
-            }
-
-            if (discount) {
-                if (String.IsNullOrWhiteSpace(eventData[2])) {
-                    return Convert.ToDouble(eventData[4]);
-                }
-                else {
-                    return Convert.ToDouble(eventData[2]);
-                }
-            }
-            else {
-                if (String.IsNullOrWhiteSpace(eventData[1])) {
-                    return Convert.ToDouble(eventData[3]);
-                }
-                else {
-                    return Convert.ToDouble(eventData[1]);
-                }
-            }
         }
 
     }

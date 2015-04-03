@@ -22,12 +22,12 @@ namespace ParentTools {
 
         private bool IDBoxSelected = false;
         private bool PINBoxSelected = false;
-        private ChildCheckInDatabase db;
+        private ParentToolsDB db;
 
         public ParentLogin() {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
-            this.db = new ChildCheckInDatabase();
+            this.db = new ParentToolsDB();
             this.txt_IDEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_IDEntry.GotFocus += OnIDBoxFocus;
             this.txt_PINEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
@@ -61,6 +61,57 @@ namespace ParentTools {
             else {
                 MessageBox.Show("Please use only numbers.");
                 e.Handled = true;
+            }
+        }
+
+        private void btn_Clear_Click(object sender, RoutedEventArgs e) {
+            if (IDBoxSelected) {
+                this.txt_IDEntry.Clear();
+                this.txt_IDEntry.Focus();
+            }
+            if (PINBoxSelected) {
+                this.txt_PINEntry.Clear();
+                this.txt_PINEntry.Focus();
+            }
+        }
+
+        private void btn_Login_Click(object sender, RoutedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text) || string.IsNullOrWhiteSpace(this.txt_PINEntry.Password)) {
+                MessageBox.Show("Please enter a User ID and a PIN.");
+
+            }
+            else {
+                guardianLogin();
+            }
+        }
+
+        private void btn_UserSelect_Click(object sender, RoutedEventArgs e){
+            UserSelection userSelect = new UserSelection();
+            userSelect.Show();
+            this.Close();
+        }
+
+        private void OnLoginFocus(object sender, EventArgs e) {
+            if (String.IsNullOrWhiteSpace(txt_IDEntry.Text.ToString()) || String.IsNullOrWhiteSpace(txt_PINEntry.Password.ToString())) {
+                btn_Login.Background = Brushes.Red;
+            }
+            else {
+                btn_Login.Background = Brushes.Green;
+            }
+        }
+
+        private void guardianLogin() {
+            string ID = txt_IDEntry.Text;
+            string PIN = txt_PINEntry.Password;
+            bool userFound = this.db.validateLogin(ID, PIN);
+            if (userFound) {
+                ChildLogin ChildLoginWindow = new ChildLogin(ID);
+                ChildLoginWindow.Show();
+                ChildLoginWindow.WindowState = WindowState.Maximized;
+                this.Close();
+            }
+            else {
+                MessageBox.Show("User ID or PIN does not exist");
             }
         }
 
@@ -151,59 +202,6 @@ namespace ParentTools {
             }
             if (PINBoxSelected && this.txt_PINEntry.Password.Length < 4) {
                 this.txt_PINEntry.Password += "0";
-            }
-        }
-
-        private void btn_Clear_Click(object sender, RoutedEventArgs e) {
-            if (IDBoxSelected) {
-                this.txt_IDEntry.Clear();
-                this.txt_IDEntry.Focus();
-            }
-            if (PINBoxSelected) {
-                this.txt_PINEntry.Clear();
-                this.txt_PINEntry.Focus();
-            }
-        }
-
-        private void btn_Login_Click(object sender, RoutedEventArgs e) {
-
-            if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text) || string.IsNullOrWhiteSpace(this.txt_PINEntry.Password)) {
-                MessageBox.Show("Please enter a User ID and a PIN.");
-
-            }
-            else {
-                guardianLogin();
-            }
-        }
-
-        private void btn_UserSelect_Click(object sender, RoutedEventArgs e)
-        {
-            UserSelection userSelect = new UserSelection();
-            userSelect.Show();
-            this.Close();
-        }
-
-        private void OnLoginFocus(object sender, EventArgs e) {
-            if (String.IsNullOrWhiteSpace(txt_IDEntry.Text.ToString()) || String.IsNullOrWhiteSpace(txt_PINEntry.Password.ToString())) {
-                btn_Login.Background = Brushes.Red;
-            }
-            else {
-                btn_Login.Background = Brushes.Green;
-            }
-        }
-
-        private void guardianLogin() {
-            string ID = txt_IDEntry.Text;
-            string PIN = txt_PINEntry.Password;
-            bool userFound = this.db.validateLogin(ID, PIN);
-            if (userFound) {
-                ChildLogin ChildLoginWindow = new ChildLogin(ID);
-                ChildLoginWindow.Show();
-                ChildLoginWindow.WindowState = WindowState.Maximized;
-                this.Close();
-            }
-            else {
-                MessageBox.Show("User ID or PIN does not exist");
             }
         }
 
