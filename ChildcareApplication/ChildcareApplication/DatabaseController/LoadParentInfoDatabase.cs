@@ -20,32 +20,15 @@ namespace DatabaseController {
         }//end Database
 
 
-        /*private MySql.Data.MySqlClient.MySqlConnection dbConn;
-        private string server;
-        private string port;
-        private string database;
-        private string UID;
-        private string password;
-        private string connectionString;
-
-        public LoadParentInfoDatabase(string server, string port, string database, string UID, string password) {
-            /*this.server = server;
-            this.port = port;
-            this.database = database;
-            this.UID = UID;
-            this.password = password;
-            connectionString = server + "; PORT=" + port + "; DATABASE=" + database + "; UID=" + UID + "; PASSWORD=" + password + ";";
-            dbConn = new MySql.Data.MySqlClient.MySqlConnection();
-            dbConn.ConnectionString = connectionString;*/
 
         public DataSet GetParentInfo(string parentID) {
 
             dbCon.Open();
             string sql = "select * from Guardian where Guardian_ID = " + parentID;
-            //SQLiteCommand command = new SQLiteCommand(sql, this.conn);
+
             SQLiteCommand command = new SQLiteCommand(sql, dbCon);
 
-            //SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
             DB.Fill(DS);
@@ -60,9 +43,9 @@ namespace DatabaseController {
             dbCon.Open();
             try {
                 string today = DateTime.Now.ToString("yyyy-MM-dd");
-                //string sql = "DELETE from Guardian where Guardian_ID = " + parentID;
+
                 string sql = @"UPDATE Guardian SET GuardianDeletionDate = @today WHERE Guardian_ID = @parentID;";
-                //SQLiteCommand command = new SQLiteCommand(sql, this.dbConn);
+
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
                 command.CommandText = sql;
                 command.Parameters.Add(new SQLiteParameter("@today", today));
@@ -102,7 +85,7 @@ namespace DatabaseController {
 
                 string sql = @"UPDATE Guardian SET FirstName = @firstName, LastName = @lastName, Phone = @phone, Email = @email," +
                                     "Address1 = @address, Address2 = @address2, City = @city, StateAbrv = @state, Zip  = @zip, PhotoLocation = @path WHERE Guardian_ID = @ID;";
-                //SQLiteCommand mycommand = new SQLiteCommand(sql, this.dbConn);
+
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
                 mycommand.CommandText = sql;
                 mycommand.Parameters.Add(new SQLiteParameter("@firstName", firstName));

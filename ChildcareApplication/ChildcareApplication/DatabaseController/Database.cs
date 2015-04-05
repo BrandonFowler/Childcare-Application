@@ -32,13 +32,7 @@ namespace DatabaseController {
                 return true;
             }
 
-            /*int recordFound = Convert.ToInt32(command.ExecuteScalar());
 
-            if (recordFound > 0)
-            {
-                dbCon.Close();
-                return true;
-            }*/
 
             dbCon.Close();
             return false;
@@ -48,7 +42,7 @@ namespace DatabaseController {
             dbCon.Open();
             string sql = "SELECT * FROM Administrator WHERE AdministratorUN = \"" + ID + "\" AND AdministratorPW = \"" + PIN + "\";";
             SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            //SQLiteDataReader r = command.ExecuteReader();
+
 
             SQLiteDataAdapter db = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
@@ -58,22 +52,7 @@ namespace DatabaseController {
                 dbCon.Close();
                 return true;
             }
-            // if(DS.)
 
-            /* try
-             {
-                 int recordFound = Convert.ToInt32(command.ExecuteScalar());
-
-                 if (recordFound > 0)
-                 {
-                     dbCon.Close();
-                     return true;
-                 }
-             }
-             catch(SQLiteException){
-                 MessageBox.Show("hi from catch");
-                
-             }*/
             dbCon.Close();
             return false;
         }//end validateLogin

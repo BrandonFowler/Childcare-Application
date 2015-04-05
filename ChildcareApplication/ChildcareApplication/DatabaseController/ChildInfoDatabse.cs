@@ -17,24 +17,6 @@ namespace DatabaseController {
             dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }//end Database
 
-        /*private string server;
-        private string port;
-        private string database;
-        private string UID;
-        private string password;
-        private string connectionString;*/
-
-        /*public ChildInfoDatabse()
-        {
-            this.server = "146.187.135.22";
-            this.port = "3306";
-            this.database = "childcare_v5";
-            this.UID = "ccdev";
-            this.password = "devpw821";
-            connectionString = "SERVER="+server+"; PORT="+port+"; DATABASE="+database+"; UID="+UID+"; PASSWORD="+password+";";
-            dbCon = new SQLite.Data.SQLiteClient.SQLiteConnection();
-            dbCon.ConnectionString = connectionString;
-        }//end Database(default constructor)*/
 
         public DataSet GetMaxID() {
             dbCon.Open();
@@ -42,8 +24,6 @@ namespace DatabaseController {
             try {
                 string sql = "SELECT MAX(Child_ID) FROM Child;";
 
-                //SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-                // SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
                 SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
 
@@ -62,8 +42,6 @@ namespace DatabaseController {
             try {
                 string sql = "SELECT MAX(Allowance_ID) FROM AllowedConnections;";
 
-                // SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-                // SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
                 SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
 
@@ -78,22 +56,20 @@ namespace DatabaseController {
         public void AddNewChild(string cID, string fName, string lName, string birthday, string allergies, string medical, string photo) {
 
             dbCon.Open();
-            //  try
-            //  {
+              try
+              {
 
-            //string sql = "INSERT INTO Child VALUES ("+ cID + ", " + fName + ", " + lName + ", " + birthday + ", " + allergies + ", " + medical + ", " + photo + ");";
-            string sql = "INSERT INTO Child(Child_ID, FirstName, LastName, Birthday, Allergies, Medical, PhotoLocation) "
+                    string sql = "INSERT INTO Child(Child_ID, FirstName, LastName, Birthday, Allergies, Medical, PhotoLocation) "
                         + "VALUES ('" + cID + "', '" + fName + "', '" + lName + "', '" + birthday + "', '" + allergies + "', '" + medical + "', '" + photo + "');";
 
-            // SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             command.CommandText = sql;
             command.ExecuteNonQuery();
-            // }
-            /* catch (SQLiteException e)
+            }
+             catch (SQLiteException e)
              {
                  MessageBox.Show(e.ToString());
-             }*/
+             }
             dbCon.Close();
         }
         public void UpdateAllowedConnections(string conID, string pID, string cID, string famID) {
@@ -103,10 +79,6 @@ namespace DatabaseController {
                 string sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
                                 + "VALUES(" + conID + ", " + pID + ", " + cID + ", " + famID + ");";
 
-                //string sql = "INSERT INTO AllowedConnections VALUES(" + conID + ", " + pID + ", " + cID + ");";
-                // SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-
-                //string sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID) VALUES(@conID, @pID, @cID);";
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
                 command.CommandText = sql;
 
@@ -127,7 +99,7 @@ namespace DatabaseController {
             try {
                
                 string sql = @"UPDATE Child SET FirstName = @firstName, LastName = @lastName, Birthday = @birthday, Allergies = @allergies, Medical = @medical, PhotoLocation = @filePath WHERE Child_ID = @ID;";
-                //SQLiteCommand mycommand = new SQLiteCommand(sql, this.dbCon);
+
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
                 mycommand.CommandText = sql;
                 mycommand.Parameters.Add(new SQLiteParameter("@firstName", firstName));
@@ -149,24 +121,14 @@ namespace DatabaseController {
         public void DeleteAllowedConnection(string childID, string pID) {
 
             dbCon.Open();
-           /* try {
 
-                string sql = "DELETE from AllowedConnections where Child_ID = " + childID + " AND Guardian_ID = " + pID + ";";
-                SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-                command.CommandText = sql;
-                command.ExecuteNonQuery();
-
-                MessageBox.Show(" Delink Completed");
-            } catch (SQLiteException e) {
-                MessageBox.Show("Failed");
-            }*/
             try
             {
 
                 string today = DateTime.Now.ToString("yyyy-MM-dd");
-                //string sql = "DELETE from Guardian where Guardian_ID = " + parentID;
+
                 string sql = @"UPDATE AllowedCOnnections SET ConnectionDeletionDate = @today WHERE Child_ID = @childID;";
-                //SQLiteCommand command = new SQLiteCommand(sql, this.dbConn);
+
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
                 command.CommandText = sql;
                 command.Parameters.Add(new SQLiteParameter("@today", today));
@@ -189,9 +151,9 @@ namespace DatabaseController {
             try {
 
                 string today = DateTime.Now.ToString("yyyy-MM-dd");
-                //string sql = "DELETE from Guardian where Guardian_ID = " + parentID;
+
                 string sql = @"UPDATE Child SET ChildDeletionDate = @today WHERE Child_ID = @childID;";
-                //SQLiteCommand command = new SQLiteCommand(sql, this.dbConn);
+
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
                 command.CommandText = sql;
                 command.Parameters.Add(new SQLiteParameter("@today", today));
@@ -221,10 +183,9 @@ namespace DatabaseController {
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
                   "where Guardian_ID = " + id + " AND ConnectionDeletionDate IS null";
 
-            // SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
             SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
-            // SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+
             DataSet DS = new DataSet();
             DB.Fill(DS);
 
