@@ -75,5 +75,10 @@ namespace AdminTools {
             newParentLogin.ShowDialog();
             this.Close(); 
         }
+
+        private void btn_EditTransaction_Click(object sender, RoutedEventArgs e) {
+            EditTransactionWindow editEvents = new EditTransactionWindow();
+            editEvents.Show();
+        }
     }//end class
-}//end namespace
+}//end namespace 
