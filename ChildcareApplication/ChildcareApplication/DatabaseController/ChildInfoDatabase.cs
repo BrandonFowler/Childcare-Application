@@ -8,14 +8,14 @@ using System.Data;
 using System.Windows;
 
 namespace DatabaseController {
-    class ChildInfoDatabse {
+    class ChildInfoDatabase {
 
         private SQLiteConnection dbCon;
         
-        public ChildInfoDatabse()
+        public ChildInfoDatabase()
         {
             dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
-        }//end Database
+        }
 
 
         public DataSet GetMaxID() {
@@ -205,6 +205,30 @@ namespace DatabaseController {
 
             dbCon.Close();
             return data;
-        }//end findChildren 
+        }//end findChildren
+
+        public String GetChildName(String transactionID) {
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            String result = "";
+
+            try {
+                connection.Open();
+
+                String query = "SELECT FirstName, LastName FROM Child NATURAL JOIN AllowedConnections NATURAL JOIN ";
+                query += "ChildcareTransaction WHERE ChildcareTransaction.ChildcareTransaction_ID = '" + transactionID + "';";
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+
+                SQLiteDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+
+                result = reader.GetString(0) + " " + reader.GetString(1);
+
+                reader.Close();
+                connection.Close();
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
+            return result;
+        }
     }
 }

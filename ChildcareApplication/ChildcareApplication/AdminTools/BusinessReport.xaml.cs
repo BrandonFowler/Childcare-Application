@@ -172,16 +172,6 @@ namespace AdminTools {
                 DataTable table = new DataTable("Parent Report");
                 adapter.Fill(table);
 
-                for (int i = 0; i < table.Rows.Count; i++) {
-                    if (((String)table.Rows[i][9]).Split('.')[1].Length == 1) {
-                        table.Rows[i][9] += "0";
-                    }
-                }
-                for (int i = 0; i < table.Rows.Count; i++) {
-                    if (((String)table.Rows[i][10]).Split('.')[1].Length == 1) {
-                        table.Rows[i][10] += "0";
-                    }
-                }
                 BusinessDataGrid.ItemsSource = table.DefaultView;
 
                 connection.Close();

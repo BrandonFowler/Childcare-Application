@@ -24,14 +24,14 @@ namespace AdminTools {
     /// 
 
     public partial class win_AdminEditChildInfo : Window {
-        private ChildInfoDatabse db;
+        private ChildInfoDatabase db;
         DataSet DS = new DataSet();
         private string ID;
 
         public win_AdminEditChildInfo(string parentID) {
             InitializeComponent();
             this.ID = parentID;
-            this.db = new ChildInfoDatabse();
+            this.db = new ChildInfoDatabase();
             cnv_ChildIcon.Background = new SolidColorBrush(Colors.Aqua); //setting canvas color so we can see it
             btn_Delete.Background = new SolidColorBrush(Colors.Red);
             LoadParentInfo(parentID);

@@ -22,7 +22,7 @@ namespace AdminTools
     public partial class Link_DeLinkChild : Window
     {
         //private LoadParentInfoDatabase db;
-        private ChildInfoDatabse db;
+        private ChildInfoDatabase db;
         int linked;
         string childID;
 
@@ -32,7 +32,7 @@ namespace AdminTools
             linked = link;
             childID = cID; 
             InitializeComponent();
-            this.db = new ChildInfoDatabse();
+            this.db = new ChildInfoDatabase();
         }
 
         private void btn_Enter_Click(object sender, RoutedEventArgs e)
