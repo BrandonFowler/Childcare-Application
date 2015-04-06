@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChildcareApplication.AdminTools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -80,5 +81,16 @@ namespace AdminTools {
             EditTransactionWindow editEvents = new EditTransactionWindow();
             editEvents.Show();
         }
+
+        private void btn_AddEditAdmin_Click(object sender, RoutedEventArgs e) {
+            AdminAddEdit adminedit = new AdminAddEdit();
+            adminedit.ShowDialog();
+        }
+
+        private void btn_AppSettings_Click(object sender, RoutedEventArgs e) {
+            ApplicationSettings appsettings = new ApplicationSettings();
+            appsettings.ShowDialog();
+        }
+
     }//end class
 }//end namespace 
