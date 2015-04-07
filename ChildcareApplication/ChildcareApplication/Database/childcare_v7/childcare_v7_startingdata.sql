@@ -114,4 +114,4 @@ INSERT INTO ApplicationSettings
 VALUES ("Infant Age End", "1");
 
 INSERT INTO ApplicationSettings
-VALUES ("Regular Age End", "7");
+VALUES ("Regular Age End", "8");

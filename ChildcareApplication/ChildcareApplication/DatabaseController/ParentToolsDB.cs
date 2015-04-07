@@ -105,8 +105,8 @@ namespace DatabaseController {
                          "where ((EventDay= @day and EventMonth= @month or " +
                          "EventWeekday= @dayOfWeek or EventName='Regular Childcare') " + 
                          "and EventDeletionDate is NULL) or (EventDay is NULL and EventMonth is NULL " + 
-                         "and EventWeekday is NULL and EventDeletionDate is NULL and " + 
-                         "EventName != 'Late Fee' and EventName != 'Infant Childcare')";
+                         "and EventWeekday is NULL and EventDeletionDate is NULL and " +
+                         "EventName != 'Late Fee' and EventName != 'Infant Childcare' and EventName != 'Adolescent Childcare')";
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             command.Parameters.Add(new SQLiteParameter("@day", day));
@@ -141,11 +141,14 @@ namespace DatabaseController {
                 MessageBox.Show("Cannot check in a child after normal operating hours");
                 return false;
             }
-            bool isInfant;
-            if (eventName.CompareTo("Regular Childcare") == 0) {//Also check for older child
-                isInfant = checkInfant(birthday, date);
-                if (isInfant) {
+            string ageGroup;
+            if (eventName.CompareTo("Regular Childcare") == 0) {
+                ageGroup = checkAgeGroup(birthday, date);
+                if (ageGroup.CompareTo("Infant") == 0) {
                     eventName = "Infant Childcare";
+                }
+                else if (ageGroup.CompareTo("Adolescent") == 0) {
+                    eventName = "Adolescent Childcare";
                 }
             }
             string allowanceID = getAllowanceID(guardianID, childID);
@@ -458,7 +461,6 @@ namespace DatabaseController {
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
             command.Parameters.Add(new SQLiteParameter("@childID", childID));
-
             try{
                 conn.Open();
                 object recordFound = command.ExecuteScalar();
@@ -478,14 +480,144 @@ namespace DatabaseController {
             }
         }
 
-        public bool checkInfant(string birthday, string date) {
+        public double getEventHourCap(string eventName) {
+            String sql = "select EventMaximumHours " +
+                         "from EventData " +
+                         "where EventName = @eventName";
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
+            double eventHasNoMax = 24;
+            try {
+                conn.Open();
+                object recordFound = command.ExecuteScalar();
+                conn.Close();
+
+                if (recordFound != DBNull.Value && recordFound != null) {
+                    conn.Close();
+                    return Convert.ToDouble(recordFound);
+                }
+                return eventHasNoMax;
+            }
+            catch (Exception) {
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve event specifications. Possible late fee calculations could be incorrect.");
+                return eventHasNoMax;
+            }
+        }
+
+        public int getBillingCap() {
+            string settingName = "Regular Care Maximum Monthly Charge";
+            String sql = "select SettingValue " +
+                         "from ApplicationSettings " +
+                         "where SettingName = @settingName";
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@settingName", settingName));
+            try {
+                conn.Open();
+                object recordFound = command.ExecuteScalar();
+                conn.Close();
+                return Convert.ToInt32(recordFound);
+            }
+            catch (Exception) {
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve settings information, fee may be recorded incorrectly.");
+                return 100;
+            }
+        }
+
+        public int getBillingEnd() {
+            string settingName = "Billing End Date";
+            String sql = "select SettingValue " +
+                         "from ApplicationSettings " +
+                         "where SettingName = @settingName";
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@settingName", settingName));
+            try {
+                conn.Open();
+                object recordFound = command.ExecuteScalar();
+                conn.Close();
+                return Convert.ToInt32(recordFound);
+            }
+            catch (Exception) {
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
+                return 19;
+            }
+        }
+
+        public int getBillingStart() {
+            string settingName = "Billing Start Date";
+            String sql = "select SettingValue " +
+                         "from ApplicationSettings " +
+                         "where SettingName = @settingName";
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@settingName", settingName));
+            try {
+                conn.Open();
+                object recordFound = command.ExecuteScalar();
+                conn.Close();
+                return Convert.ToInt32(recordFound);
+            }
+            catch (Exception) {
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
+                return 20;
+            }
+        }
+
+        public int getInfantCap() {
+            string settingName = "Infant Age End";
+            String sql = "select SettingValue " +
+                         "from ApplicationSettings " +
+                         "where SettingName = @settingName";
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@settingName", settingName));
+            try {
+                conn.Open();
+                object recordFound = command.ExecuteScalar();
+                conn.Close();
+                return Convert.ToInt32(recordFound);
+            }
+            catch (Exception) {
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
+                return 1;
+            }
+        }
+
+        public int getRegularChildCap() {
+            string settingName = "Regular Age End";
+            String sql = "select SettingValue " +
+                         "from ApplicationSettings " +
+                         "where SettingName = @settingName";
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@settingName", settingName));
+            try {
+                conn.Open();
+                object recordFound = command.ExecuteScalar();
+                conn.Close();
+                return Convert.ToInt32(recordFound);
+            }
+            catch (Exception) {
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
+                return 8;
+            }
+        }
+
+        public string checkAgeGroup(string birthday, string date) {
             DateTime DTBirthday = DateTime.Parse(birthday);
             DateTime DTDate = DateTime.Parse(date);
             TimeSpan difference = DTDate - DTBirthday;
-            if (difference.Days < 1096) {//Change from hard code
-                return true;
+            double infantDays = getInfantCap() * 365.242;
+            double regularDays = getRegularChildCap() * 365.242;
+            if (difference.Days < infantDays) {
+                return "Infant";
             }
-            return false;
+            else if (difference.Days < regularDays) {
+                return "Regular";
+            }
+            return "Adolescent";
         }
 
         public double checkIfPastClosing(string dayOfWeek, TimeSpan time) {
