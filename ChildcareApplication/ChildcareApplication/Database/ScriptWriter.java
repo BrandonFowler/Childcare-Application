@@ -64,6 +64,6 @@ public class ScriptWriter {
 		int month = gen.nextInt(12) + 1;
 		int year = gen.nextInt(1) + 2014;
 		
-		return "" + year + "-" + month + "-" + day;
+		return "" + year + "-" + String.format("%02d", month) + "-" + String.format("%02d", day);
 	}
 }
