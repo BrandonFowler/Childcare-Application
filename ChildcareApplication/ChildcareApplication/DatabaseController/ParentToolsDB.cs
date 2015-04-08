@@ -14,12 +14,16 @@ namespace DatabaseController {
         }
 
         public bool validateLogin(string ID, string PIN) {
+
+            string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
+
             string sql = "select Guardian_ID " +
                          "from Guardian " + 
                          "where Guardian_ID = @ID and GuardianPIN = @PIN";
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.Parameters.Add(new SQLiteParameter("@ID", ID));
-            command.Parameters.Add(new SQLiteParameter("@PIN", PIN));
+            //command.Parameters.Add(new SQLiteParameter("@PIN", PIN));
+            command.Parameters.Add(new SQLiteParameter("@PIN", hashedPIN));
             try{
                 conn.Open();
                 object recordFound = command.ExecuteScalar();
