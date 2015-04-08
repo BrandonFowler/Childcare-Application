@@ -20,6 +20,7 @@ namespace ParentTools {
             this.guardianID = ID;
             this.db = new ParentToolsDB();
             setUpCheckInBox();
+            cnv_GuardianPic.Background = new SolidColorBrush(Colors.Aqua);
             setUpParentDisplay();
             eventsSetup();
             this.updateTime = new DateTime();
@@ -107,9 +108,14 @@ namespace ParentTools {
 
         public void setUpParentDisplay() {
             string [] parentInfo = db.getParentInfo(this.guardianID);
+            string imageLink = db.getGuardianImagePath(this.guardianID);
             if (parentInfo != null){
                 lbl_ParentName.Content = parentInfo[2] + " " + parentInfo[3];
-                img_ParentPic.Source = (buildImage(parentInfo[11], 150)).Source;
+                if (imageLink != null) {
+                    ImageBrush ib = new ImageBrush();
+                    ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
+                    cnv_GuardianPic.Background = ib;
+                }
             }
             else{
                 exitToLogin();
