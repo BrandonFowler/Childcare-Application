@@ -205,5 +205,11 @@ namespace ParentTools {
             }
         }
 
+        private void btn_AdminLogin_Click(object sender, RoutedEventArgs e) {
+            AdminTools.AdminLogin adminLogin = new AdminTools.AdminLogin("parentTools");
+            adminLogin.Show();
+            this.Close();
+        }
+
     }
 }

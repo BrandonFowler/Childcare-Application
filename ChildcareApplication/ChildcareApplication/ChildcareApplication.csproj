@@ -60,6 +60,7 @@
     <Compile Include="AdminTools\AdminAddEdit.xaml.cs">
       <DependentUpon>AdminAddEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminTools\AdminChildCheckIn.cs" />
     <Compile Include="AdminTools\AdminLogin.xaml.cs">
       <DependentUpon>AdminLogin.xaml</DependentUpon>
     </Compile>
@@ -81,6 +82,9 @@
       <DependentUpon>PaymentEntry.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseController\TransactionDB.cs" />
+    <Compile Include="ParentTools\AdminChildCheckIn.xaml.cs">
+      <DependentUpon>AdminChildCheckIn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserTypeSelection.xaml.cs">
       <DependentUpon>UserTypeSelection.xaml</DependentUpon>
     </Compile>
@@ -149,6 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminTools\TransactionModificationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ParentTools\AdminChildCheckIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

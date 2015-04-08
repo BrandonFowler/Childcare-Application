@@ -21,6 +21,7 @@
             <Button x:Name="btn_Clear" Content="Clear" HorizontalAlignment="Left" Margin="373,211,0,0" VerticalAlignment="Top" Width="89" Click="btn_Clear_Click"/>
             <Button x:Name="btn_Login" TabIndex="3" Content="Log In" HorizontalAlignment="Left" Margin="213,259,0,0" VerticalAlignment="Top" Width="89" Click="btn_Login_Click" Height="50"/>
             <Button x:Name="btn_UExit" Content="Exit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="19" FontSize="10" Click="btn_UserSelect_Click" Margin="559,349,0,0"/>
+            <Button x:Name="btn_AdminLogin" Content="Admin Login" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="21" Click="btn_AdminLogin_Click"/>
         </Grid>
     </Viewbox>
 </Window>
