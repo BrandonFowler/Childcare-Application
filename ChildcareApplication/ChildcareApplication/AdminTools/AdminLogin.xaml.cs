@@ -83,8 +83,7 @@ namespace AdminTools {
             } else {
                 string ID = txt_UserName.Text;
                 string PIN = txt_Password.Password;
-                string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
-                bool userFound = this.db.validateAdminLogin(ID, hashedPIN);
+                bool userFound = this.db.validateAdminLogin(ID, PIN);
 
                 if (userFound) {
                     if (parentTools) {

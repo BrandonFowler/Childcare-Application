@@ -48,9 +48,8 @@ namespace AdminTools {
 
                         if (count == 0)//ID does not exist
                         {
-                            string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
-                            hashedPIN = "\"" + hashedPIN + "\""; 
-                            this.db.AddNewParent(pID, hashedPIN, "\"First\"", "\"Last\"", "\"000-000-0000\"", "\"someEmail@email.com\"", "\"123 Road St\"", "\"none\"", "\"City\"", "\"WA\"", "\"12345\"", "\"../../Pictures/default.jpg\"");
+
+                            this.db.AddNewParent(pID, PIN, "\"First\"", "\"Last\"", "\"000-000-0000\"", "\"someEmail@email.com\"", "\"123 Road St\"", "\"none\"", "\"City\"", "\"WA\"", "\"12345\"", "\"../../Pictures/default.jpg\"");
                             MakeFamilyID(pID);
                             //MessageBox.Show("Made New Parent");
 
@@ -123,10 +122,10 @@ namespace AdminTools {
 
             int len1, len2; 
 
-            len1 = str1.Length;
-            len2 = str2.Length;
+            len1 = txt_ParentID1.Text.Length;
+            len2 = txt_ParentID2.Text.Length;
 
-            if (len1 == l && len2 == l)
+            if (len1 == l || len2 == l)
             {
                 return true;
             }

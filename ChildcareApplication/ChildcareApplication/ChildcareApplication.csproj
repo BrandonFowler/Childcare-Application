@@ -73,7 +73,6 @@
     <Compile Include="AdminTools\BusinessReport.xaml.cs">
       <DependentUpon>BusinessReport.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminTools\Hashing.cs" />
     <Compile Include="AdminTools\TransactionModificationWindow.xaml.cs">
       <DependentUpon>TransactionModificationWindow.xaml</DependentUpon>
     </Compile>

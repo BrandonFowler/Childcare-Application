@@ -130,7 +130,7 @@ namespace DatabaseController {
                 "VALUES(" + familyID + ", " + ballance + ");";
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
                 mycommand.ExecuteNonQuery();
-                //MessageBox.Show("Completed");
+                MessageBox.Show("Completed");
             } catch (SQLiteException e) {
                 MessageBox.Show(e.ToString());
             }
