@@ -37,12 +37,12 @@
             <Button x:Name="btn_CheckOut" Content="Check Out" HorizontalAlignment="Left" Margin="525,81,0,0" VerticalAlignment="Top" Width="75" Height="44" Click="btn_CheckOut_Click" Background="#FF7583B2"/>
             <Label x:Name="lbl_RegisteredChildren" Content="Registered Children" HorizontalAlignment="Left" Margin="42,254,0,0" VerticalAlignment="Top" Width="151" Background="#FFD1D0D0"/>
             <Label x:Name="lbl_CheckedIn" Content="Checked In Children" HorizontalAlignment="Left" Margin="600,28,0,0" VerticalAlignment="Top" Width="143" Background="#FFD3CBCB"/>
-            <Image x:Name="img_ParentPic" HorizontalAlignment="Left" Height="151" Margin="114,54,0,0" VerticalAlignment="Top" Width="151"/>
             <Label x:Name="lbl_ParentName" Content="Parent Name" HorizontalAlignment="Left" Margin="114,28,0,0" VerticalAlignment="Top" Width="151" Cursor="" Background="#FFCDC8C8"/>
             <ComboBox x:Name="cbo_EventChoice" HorizontalAlignment="Left" Margin="334,139,0,0" VerticalAlignment="Top" Width="144"/>
             <Label x:Name="lbl_Events" Content="Events" HorizontalAlignment="Left" Margin="334,113,0,0" VerticalAlignment="Top" Width="90" Background="#FFD8D4D4" RenderTransformOrigin="1.712,1.006"/>
             <Label x:Name="lbl_Time" HorizontalAlignment="Left" Margin="334,59,0,0" VerticalAlignment="Top" Width="133" Content="{Binding Path=Now}" Height="29" Background="#FF9CF99C"/>
             <Label Content="Date/Time" HorizontalAlignment="Left" Margin="334,33,0,0" VerticalAlignment="Top" Width="90" Background="#FFD6D4D4"/>
+            <Canvas x:Name="cnv_GuardianPic" HorizontalAlignment="Left" Height="128" Margin="114,54,0,0" VerticalAlignment="Top" Width="151"/>
         </Grid>
     </Viewbox>
 </Window>

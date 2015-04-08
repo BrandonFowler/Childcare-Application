@@ -441,8 +441,7 @@ namespace DatabaseController {
                 DB.Fill(DS);
                 int cCount = DS.Tables[0].Columns.Count;
                 string[] transaction = new string[cCount];
-                for (int x = 0; x < cCount; x++)
-                {
+                for (int x = 0; x < cCount; x++){
                     transaction[x] = DS.Tables[0].Rows[0][x].ToString();
                 }
                 conn.Close();
@@ -470,7 +469,6 @@ namespace DatabaseController {
 
                 if (recordFound != DBNull.Value && recordFound != null)
                 {
-                    conn.Close();
                     return true;
                 }
                 return false;
@@ -493,9 +491,7 @@ namespace DatabaseController {
                 conn.Open();
                 object recordFound = command.ExecuteScalar();
                 conn.Close();
-
                 if (recordFound != DBNull.Value && recordFound != null) {
-                    conn.Close();
                     return Convert.ToDouble(recordFound);
                 }
                 return eventHasNoMax;
@@ -604,6 +600,82 @@ namespace DatabaseController {
                 conn.Close();
                 MessageBox.Show("Database connection error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
                 return 8;
+            }
+        }
+
+        public string[,] retieveGuardiansByLastName(string name) {
+            string sql = "select FirstName, LastName, Guardian_ID " +
+                         "from Guardian " +
+                         "where LastName = @name";
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@name", name));
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            DataSet DS = new DataSet();
+            try {
+                conn.Open();
+                DB.Fill(DS);
+                if (DS.Tables == null) {
+                    return null;
+                }
+                int cCount = DS.Tables[0].Columns.Count;
+                int rCount = DS.Tables[0].Rows.Count;
+                String[,] data = new string[rCount, cCount];
+                for (int x = 0; x < rCount; x++) {
+                    for (int y = 0; y < cCount; y++) {
+                        data[x, y] = DS.Tables[0].Rows[x][y].ToString();
+                    }
+                }
+                conn.Close();
+                return data;
+            }
+            catch (Exception) {
+                MessageBox.Show("Database connection error: Unable to retrieve information for guardians");
+                conn.Close();
+                return null;
+            }
+        }
+
+        public bool validateGuardianID(string ID) {
+            String sql = "select Guardian_ID " +
+                         "from Guardian " +
+                         "where Guardian_ID = @ID";
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@ID", ID));
+            try {
+                conn.Open();
+                object recordFound = command.ExecuteScalar();
+                conn.Close();
+                if (recordFound != DBNull.Value && recordFound != null) {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception) {
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
+                return false;
+            }
+        }
+
+        public string getGuardianImagePath(string ID) {
+            String sql = "select PhotoLocation " +
+                        "from Guardian " +
+                        "where Guardian_ID = @ID";
+            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            command.Parameters.Add(new SQLiteParameter("@ID", ID));
+            try {
+                conn.Open();
+                object recordFound = command.ExecuteScalar();
+                conn.Close();
+                if (recordFound != DBNull.Value && recordFound != null) {
+                    return (string)recordFound;
+                }
+                return null;
+            }
+            catch (Exception) {
+                conn.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve guardian picture.");
+                return null;
             }
         }
 
