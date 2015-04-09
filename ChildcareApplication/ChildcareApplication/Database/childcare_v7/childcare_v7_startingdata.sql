@@ -1,6 +1,6 @@
 INSERT INTO Administrator
 VALUES ("a",
-	"a",
+	"0CC175B9C0F1B6A831C399E2697726",
 	"1",
 	"tester@testmail.test",
 	NULL);

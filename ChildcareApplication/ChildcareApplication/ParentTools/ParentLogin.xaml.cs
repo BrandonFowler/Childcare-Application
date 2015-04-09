@@ -103,9 +103,8 @@ namespace ParentTools {
         private void guardianLogin() {
             string ID = txt_IDEntry.Text;
             string PIN = txt_PINEntry.Password;
-            //string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);Umcomment to first! I ash your PIN or password! NEATO GANG!
-            bool userFound = this.db.validateLogin(ID, PIN);
-            //bool userFound = this.db.validateLogin(ID, hashedPIN);//Uncoment me to start hashing FUN! Wow, computer securift is RAD! 
+            string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
+            bool userFound = this.db.validateLogin(ID, hashedPIN);
             if (userFound) {
                 ChildLogin ChildLoginWindow = new ChildLogin(ID);
                 ChildLoginWindow.Show();

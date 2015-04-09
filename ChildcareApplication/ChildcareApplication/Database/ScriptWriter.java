@@ -23,10 +23,10 @@ public class ScriptWriter {
 			
 			familySQL += (guardianID / 10) + "', 42);";
 			
-			guardianSQL += guardianID + "', '1234', 'Guardian" + gName + "', '" + gName + "guardian', ";
+			guardianSQL += guardianID + "', '81DC9BDB52D04DC20036DBD8313ED0', 'Guardian" + gName + "', '" + gName + "guardian', ";
 			guardianSQL += "'555-555-5555', 'blah@blah.com', '123 nowhere', null, 'Spokane', 'WA', '99999', '../../Pictures/default.jpg', null);";
 			
-			guardian2SQL += guardian2ID + "', '1234', 'Guardian2" + gName + "', '" + gName + "2guardian', ";
+			guardian2SQL += guardian2ID + "', '81DC9BDB52D04DC20036DBD8313ED0', 'Guardian2" + gName + "', '" + gName + "2guardian', ";
 			guardian2SQL += "'555-555-5555', 'blah@blah.com', '123 nowhere', null, 'Spokane', 'WA', '99999', '../../Pictures/default.jpg', null);";
 			gName++;
 			
