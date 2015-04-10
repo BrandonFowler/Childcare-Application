@@ -87,8 +87,9 @@ namespace ChildcareApplication.DatabaseController {
             SQLiteCommand comm = new SQLiteCommand(sql, conn);
 
             string defaultdata = "default";
+            string newPass = ChildcareApplication.AdminTools.Hashing.HashPass("default");
             comm.Parameters.Add(new SQLiteParameter("@newname", defaultdata));
-            comm.Parameters.Add(new SQLiteParameter("@newpw", defaultdata));
+            comm.Parameters.Add(new SQLiteParameter("@newpw", newPass));
             comm.Parameters.Add(new SQLiteParameter("@newemail", defaultdata));
 
             comm.ExecuteNonQuery();

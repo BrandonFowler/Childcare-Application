@@ -71,7 +71,8 @@ namespace ChildcareApplication.AdminTools
             else if(rdb_Limited.IsChecked == true)
                 db.updateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Email.Text, "2");
 
-            btn_AddAdmin.IsEnabled = true;
+            if(!(txt_LoginName.Text.Equals("default")))
+                btn_AddAdmin.IsEnabled = true;
             lst_AdminList.ItemsSource = db.findAdmins();
             fillForms(txt_LoginName.Text);
         }
