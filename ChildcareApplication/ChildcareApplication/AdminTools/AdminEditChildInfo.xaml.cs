@@ -77,7 +77,7 @@ namespace AdminTools {
             bool? delete;
             if (lst_ChildBox.SelectedItem != null)
             {
-                DeleteConformation DeleteConformation = new DeleteConformation();
+                DeleteConfirmation DeleteConformation = new DeleteConfirmation();
                 delete = DeleteConformation.ShowDialog();
 
                 if ((bool)delete == true)

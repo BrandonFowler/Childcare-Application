@@ -5,14 +5,12 @@
     <Grid>
         <Label x:Name="lbl_BillingDate" Content="Start of Billing Cycle (day of month)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_MaxMonthly" Content="Maximum Monthly Charge for Regular Childcare" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_MaxHours" Content="Maximum Regular Childcare Hours" HorizontalAlignment="Left" Margin="10,128,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_ExpirationDays" Content="Number of Days to Hold Expired Records" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_ExpirationDays" Content="Number of Days to Hold Expired Records" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btn_Confirm" Content="Confirm" HorizontalAlignment="Left" Margin="163,259,0,0" VerticalAlignment="Top" Width="75" TabIndex="5"/>
         <Button x:Name="btn_Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="55,259,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" TabIndex="6"/>
         <TextBox x:Name="txt_MaxMonthlyFee" HorizontalAlignment="Left" Height="23" Margin="55,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="2"/>
         <TextBox x:Name="txt_BillingDate" HorizontalAlignment="Left" Height="23" Margin="55,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="1"/>
-        <TextBox x:Name="txt_MaxHours" HorizontalAlignment="Left" Height="23" Margin="55,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="3"/>
-        <TextBox x:Name="txt_ExpirationDays" HorizontalAlignment="Left" Height="23" Margin="55,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="4"/>
+        <TextBox x:Name="txt_ExpirationDays" HorizontalAlignment="Left" Height="23" Margin="55,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="4"/>
         <Label x:Name="lbl_OperatingHours" Content="Hours of Operation" HorizontalAlignment="Left" Margin="442,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_Monday" Content="Monday:" HorizontalAlignment="Left" Margin="372,72,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_Sunday" Content="Sunday:" HorizontalAlignment="Left" Margin="372,255,0,0" VerticalAlignment="Top"/>

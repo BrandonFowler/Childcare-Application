@@ -18,9 +18,9 @@ namespace AdminTools {
     /// Interaction logic for win_DeleteConformation.xaml
     /// </summary>
     
-    public partial class DeleteConformation : Window {
+    public partial class DeleteConfirmation : Window {
 
-        public DeleteConformation() {
+        public DeleteConfirmation() {
             
             InitializeComponent();
         }//end class
