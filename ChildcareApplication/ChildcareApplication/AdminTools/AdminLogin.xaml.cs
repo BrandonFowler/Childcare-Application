@@ -25,7 +25,8 @@ namespace AdminTools {
         private bool IDBoxSelected = false;
         private bool PINBoxSelected = false;
         private Database db;
-        private string pin; 
+        private string pin;
+        private bool parentTools = false;
 
         public AdminLogin(){
             InitializeComponent();
@@ -35,6 +36,17 @@ namespace AdminTools {
             this.txt_Password.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_Password.GotFocus += OnPINBoxFocus;
             this.txt_UserName.Focus();
+        }//end win_LoginWindow
+
+        public AdminLogin(string login) {
+            InitializeComponent();
+            this.db = new Database();
+            this.txt_UserName.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
+            this.txt_UserName.GotFocus += OnIDBoxFocus;
+            this.txt_Password.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
+            this.txt_Password.GotFocus += OnPINBoxFocus;
+            this.txt_UserName.Focus();
+            this.parentTools = true;
         }//end win_LoginWindow
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e)
@@ -71,16 +83,30 @@ namespace AdminTools {
             } else {
                 string ID = txt_UserName.Text;
                 string PIN = txt_Password.Password;
-                bool userFound = this.db.validateAdminLogin(ID, PIN);
+                string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
+                 
+                bool userFound = this.db.validateAdminLogin(ID, hashedPIN);
 
                 if (userFound) {
-                    int accessLevel = db.GetAccessLevel(ID);
-                    DisplayAdminWindow(accessLevel);
+                    if (parentTools) {
+                        DisplayAdminChildCheckIn();
+                    }
+                    else {
+                        int accessLevel = db.GetAccessLevel(ID);
+                        DisplayAdminWindow(accessLevel);
+                    }
                 } else {
                     MessageBox.Show("User ID or PIN does not exist");
                 }
             }
         }
+
+        private void DisplayAdminChildCheckIn() {
+            ParentTools.AdminChildCheckIn AdminCheckIn = new ParentTools.AdminChildCheckIn();
+            AdminCheckIn.Show();
+            this.Close();
+        }
+
         private void DisplayAdminWindow(int accessLevel) {
             AdminMenu AdminMenu = new AdminMenu(accessLevel);
             AdminMenu.Show();

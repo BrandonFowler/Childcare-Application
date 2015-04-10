@@ -1,6 +1,6 @@
 INSERT INTO Administrator
 VALUES ("a",
-	"a",
+	"0CC175B9C0F1B6A831C399E2697726",
 	"1",
 	"tester@testmail.test",
 	NULL);
@@ -114,4 +114,4 @@ INSERT INTO ApplicationSettings
 VALUES ("Infant Age End", "1");
 
 INSERT INTO ApplicationSettings
-VALUES ("Regular Age End", "7");
+VALUES ("Regular Age End", "8");

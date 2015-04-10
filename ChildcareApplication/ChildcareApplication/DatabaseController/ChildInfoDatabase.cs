@@ -160,10 +160,10 @@ namespace DatabaseController {
                 command.Parameters.Add(new SQLiteParameter("@childID", childID));
                 command.ExecuteNonQuery();
 
-                string sql2 = "DELETE from AllowedConnections where Child_ID = " + childID;
+                /*string sql2 = "DELETE from AllowedConnections where Child_ID = " + childID;
                 SQLiteCommand command2 = new SQLiteCommand(sql2, dbCon);
                 command2.CommandText = sql2;
-                command2.ExecuteNonQuery();
+                command2.ExecuteNonQuery();*/
 
 
 

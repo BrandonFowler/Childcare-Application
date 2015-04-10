@@ -103,7 +103,8 @@ namespace ParentTools {
         private void guardianLogin() {
             string ID = txt_IDEntry.Text;
             string PIN = txt_PINEntry.Password;
-            bool userFound = this.db.validateLogin(ID, PIN);
+            string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
+            bool userFound = this.db.validateLogin(ID, hashedPIN);
             if (userFound) {
                 ChildLogin ChildLoginWindow = new ChildLogin(ID);
                 ChildLoginWindow.Show();
@@ -203,6 +204,12 @@ namespace ParentTools {
             if (PINBoxSelected && this.txt_PINEntry.Password.Length < 4) {
                 this.txt_PINEntry.Password += "0";
             }
+        }
+
+        private void btn_AdminLogin_Click(object sender, RoutedEventArgs e) {
+            AdminTools.AdminLogin adminLogin = new AdminTools.AdminLogin("parentTools");
+            adminLogin.Show();
+            this.Close();
         }
 
     }

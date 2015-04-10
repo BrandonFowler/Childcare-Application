@@ -84,7 +84,9 @@ namespace AdminTools {
                 {
 
                     string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
+                    string pID = txt_IDNumber.Text;
                     this.db.DeleteChildInfo(cID);
+                    this.db.DeleteAllowedConnection(cID, pID);
                     lst_ChildBox.Items.Clear();
                     setChildBox();
                     ClearFields();

@@ -20,6 +20,7 @@ namespace ParentTools {
             this.guardianID = ID;
             this.db = new ParentToolsDB();
             setUpCheckInBox();
+            cnv_GuardianPic.Background = new SolidColorBrush(Colors.Aqua);
             setUpParentDisplay();
             eventsSetup();
             this.updateTime = new DateTime();
@@ -107,9 +108,14 @@ namespace ParentTools {
 
         public void setUpParentDisplay() {
             string [] parentInfo = db.getParentInfo(this.guardianID);
+            string imageLink = db.getGuardianImagePath(this.guardianID);
             if (parentInfo != null){
                 lbl_ParentName.Content = parentInfo[2] + " " + parentInfo[3];
-                img_ParentPic.Source = (buildImage(parentInfo[11], 150)).Source;
+                if (imageLink != null) {
+                    ImageBrush ib = new ImageBrush();
+                    ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
+                    cnv_GuardianPic.Background = ib;
+                }
             }
             else{
                 exitToLogin();
@@ -149,7 +155,7 @@ namespace ParentTools {
             btn_CheckOut.Background = Brushes.Green;
         }
 
-        private bool completeTransaction(string childID, string guardianID) {//This method still requires some cleanup/refactor
+        private bool completeTransaction(string childID, string guardianID) {
             DateTime currentDateTime = DateTime.Now;
             string dateTimeString = DateTime.Now.ToString();
             string currentDateString = Convert.ToDateTime(dateTimeString).ToString("yyyy-MM-dd");
@@ -170,34 +176,31 @@ namespace ParentTools {
             checkInTime = Convert.ToDateTime(checkInTime).ToString("HH:mm:ss");
             TimeSpan TimeSpanCheckInTime = TimeSpan.Parse(checkInTime);
             double lateTime = db.checkIfPastClosing(currentDateTime.DayOfWeek.ToString(), TimeSpanTime);
-            if (ishourly) {
-                double hourDifference = TimeSpanTime.Hours - TimeSpanCheckInTime.Hours;
-                double minuteDifference = TimeSpanTime.Minutes - TimeSpanCheckInTime.Minutes;
-                double totalCheckedInHours = hourDifference + (minuteDifference / 60.0);
-                if ((eventName.CompareTo("Regular Childcare") == 0 || eventName.CompareTo("Infant Childcare") == 0) && totalCheckedInHours > 3) {//Change to way this is done to accomidate dynamic hour cap per event and older child event
-                    double timeDifference = totalCheckedInHours - 3;
-                    if (timeDifference > lateTime) {
-                        lateTime = timeDifference;
-                        totalCheckedInHours = 3;
-                    }
-                    else {
-                        totalCheckedInHours = totalCheckedInHours - lateTime;
-                    }
-                    isLate = true;
+            double hourDifference = TimeSpanTime.Hours - TimeSpanCheckInTime.Hours;
+            double minuteDifference = TimeSpanTime.Minutes - TimeSpanCheckInTime.Minutes;
+            double totalCheckedInHours = hourDifference + (minuteDifference / 60.0);
+            double lateMaximum = db.getEventHourCap(eventName);
+            if (totalCheckedInHours > lateMaximum) {
+                double timeDifference = totalCheckedInHours - lateMaximum;
+                if (timeDifference > lateTime) {
+                    lateTime = timeDifference;
+                    totalCheckedInHours = lateMaximum;
                 }
-                else if (lateTime > 0) {
+                else {
                     totalCheckedInHours = totalCheckedInHours - lateTime;
-                    isLate = true;
                 }
+                isLate = true;
+            }
+            else if (lateTime > 0) {
+                totalCheckedInHours = totalCheckedInHours - lateTime;
+                isLate = true;
+            }
 
+            if (ishourly) {
                 eventFee = eventFee * totalCheckedInHours;
                 eventFee = Math.Round(eventFee, 2, MidpointRounding.AwayFromZero);
             }
-            else {
-                if (lateTime > 0) {
-                    isLate = true;
-                }
-            }
+        
             eventFee = eventFee - billingCapCalc(eventName, guardianID, transaction[3], eventFee);
             string eventFeeRounded = eventFee.ToString("f2");
             db.checkOut(currentTimeString, eventFeeRounded, allowanceID);
@@ -258,9 +261,9 @@ namespace ParentTools {
 
         public double billingCapCalc(string eventName, string guardianID, string transactionDate, double eventFee) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
-            double cap = 100;//Change from hard code
-            int billingStart = 20;//Change from hard code
-            int billingEnd = 19;//Change from hard code
+            double cap = db.getBillingCap();
+            int billingStart = db.getBillingStart();
+            int billingEnd = db.getBillingEnd();
             DateTime DTStart;
             DateTime DTEnd;
             if (DateTime.Now.Day > billingEnd) {
@@ -287,7 +290,7 @@ namespace ParentTools {
             }
             string start = DTStart.ToString("yyyy-MM-dd");
             string end = DTEnd.ToString("yyyy-MM-dd");
-            if (eventName.CompareTo("Regular Childcare") == 0 || eventName.CompareTo("Infant Childcare") == 0) {//Add older child
+            if (eventName.CompareTo("Regular Childcare") == 0 || eventName.CompareTo("Infant Childcare") == 0 || eventName.CompareTo("Adolescent Childcare") == 0) {
                 object recordFound = db.sumRegularCare(start, end, familyID);
                 double sum;
                 if (recordFound == DBNull.Value || recordFound == null) {
