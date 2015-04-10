@@ -10,10 +10,10 @@ namespace DatabaseController {
         private SQLiteConnection conn;
 
         public ParentToolsDB() {
-            conn = new SQLiteConnection("Data Source=../../Database/ChildCareDB.s3db;Version=3;");
+            conn = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }
 
-        public bool validateLogin(string ID, string PIN) {
+        public bool ValidateLogin(string ID, string PIN) {
             string sql = "select Guardian_ID " +
                          "from Guardian " + 
                          "where Guardian_ID = @ID and GuardianPIN = @PIN";
@@ -36,7 +36,7 @@ namespace DatabaseController {
             return false;
         }
 
-        public string[] getParentInfo(String guardianID) {
+        public string[] GetParentInfo(String guardianID) {
             string sql = "select * " +
                          "from Guardian " +
                          "where Guardian_ID = @guardianID";
@@ -62,7 +62,7 @@ namespace DatabaseController {
             }
         }
 
-        public String[,] findChildren(string guardianID) {
+        public String[,] FindChildren(string guardianID) {
             string sql = "select Child.* " +
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID "+
                   "where Guardian_ID = @guardianID and ChildDeletionDate is null and ConnectionDeletionDate is NULL";
@@ -94,7 +94,7 @@ namespace DatabaseController {
             }
         }
 
-        public string[] getEvents() {
+        public string[] GetEvents() {
             DateTime dt = DateTime.Now;
             string dateTime = DateTime.Now.ToString();
             string month = Convert.ToDateTime(dateTime).ToString("MM");
@@ -131,19 +131,19 @@ namespace DatabaseController {
             }
         }
 
-        public bool checkIn(string childID, string eventName, string guardianID, string birthday) {
+        public bool CheckIn(string childID, string eventName, string guardianID, string birthday) {
             DateTime dt = DateTime.Now;
             string dateTime = DateTime.Now.ToString();
             string date = Convert.ToDateTime(dateTime).ToString("yyyy-MM-dd");
             string time = Convert.ToDateTime(dateTime).ToString("HH:mm:ss");
             TimeSpan TSTime = TimeSpan.Parse(time);
-            if (checkIfPastClosing(dt.DayOfWeek.ToString(), TSTime) > 0){
+            if (CheckIfPastClosing(dt.DayOfWeek.ToString(), TSTime) > 0){
                 MessageBox.Show("Cannot check in a child after normal operating hours");
                 return false;
             }
             string ageGroup;
             if (eventName.CompareTo("Regular Childcare") == 0) {
-                ageGroup = checkAgeGroup(birthday, date);
+                ageGroup = CheckAgeGroup(birthday, date);
                 if (ageGroup.CompareTo("Infant") == 0) {
                     eventName = "Infant Childcare";
                 }
@@ -151,8 +151,8 @@ namespace DatabaseController {
                     eventName = "Adolescent Childcare";
                 }
             }
-            string allowanceID = getAllowanceID(guardianID, childID);
-            int maxTransactionID = getNextPrimary("ChildcareTransaction_ID","ChildcareTransaction");
+            string allowanceID = GetAllowanceID(guardianID, childID);
+            int maxTransactionID = GetNextPrimary("ChildcareTransaction_ID","ChildcareTransaction");
             string transactionID = Convert.ToString(maxTransactionID);
             transactionID = transactionID.ToString().PadLeft(10, '0');
             string sql = "insert into " +
@@ -177,7 +177,7 @@ namespace DatabaseController {
             return true;
         }
 
-        public int getNextPrimary(string column, string table) {
+        public int GetNextPrimary(string column, string table) {
             string sql = "Select max(cast("+column+" as unsigned)) from " + table;
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             try{
@@ -201,7 +201,7 @@ namespace DatabaseController {
             }
         }
 
-        public string getAllowanceID(string guardianID, string childID) {
+        public string GetAllowanceID(string guardianID, string childID) {
             string sql = "select Allowance_ID " +
                          "from AllowedConnections " +
                          "where Guardian_ID = @guardianID and Child_ID = @childID";
@@ -222,7 +222,7 @@ namespace DatabaseController {
             }
         }
 
-        public bool checkOut(string currentTimeString, string eventFeeRounded, string allowanceID) {
+        public bool CheckOut(string currentTimeString, string eventFeeRounded, string allowanceID) {
             string sql = "update ChildcareTransaction " +
                   "set CheckedOut= @currentTimeString, TransactionTotal = @eventFee "+
                   "where Allowance_ID = @allowanceID and CheckedOut is null";
@@ -243,7 +243,7 @@ namespace DatabaseController {
             return true;
         }
 
-        public bool addLateFee(string sMaxTransactionID, string eventName, string allowanceID, string currentDateString, double lateFee) {
+        public bool AddLateFee(string sMaxTransactionID, string eventName, string allowanceID, string currentDateString, double lateFee) {
             string sql = "insert into " +
                       "ChildcareTransaction (ChildcareTransaction_ID,EventName,Allowance_ID,transactionDate,CheckedIn,CheckedOut,TransactionTotal) " +
                       "values (@sMaxTransactionID, @eventName, @allowanceID, @currentDateString, '00:00:00','00:00:00', @lateFee)";
@@ -272,7 +272,7 @@ namespace DatabaseController {
             return true;
         }
 
-        public object sumRegularCare(string start, string end, string familyID) {
+        public object SumRegularCare(string start, string end, string familyID) {
             string sql = "select sum(TransactionTotal) " +
                              "from AllowedConnections natural join ChildcareTransaction " +
                              "where Family_ID = @familyID and EventName IN ('Regular Childcare', 'Infant Childcare') and TransactionDate between '" + start + "' and '" + end + "'";//Add older child
@@ -291,7 +291,7 @@ namespace DatabaseController {
             return recordFound;
         }
 
-        public void addToBalance(string guardianID, double fee) {
+        public void AddToBalance(string guardianID, double fee) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
             string sql = "update Family " +
                          "set FamilyTotal = FamilyTotal + @fee " +
@@ -310,7 +310,7 @@ namespace DatabaseController {
             }
         }
 
-        public string getTransactionAllowanceID(string guardianID, string childID) {
+        public string GetTransactionAllowanceID(string guardianID, string childID) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
             string sql = "select Allowance_ID " +
                          "from AllowedConnections natural join ChildcareTransaction " +
@@ -333,7 +333,7 @@ namespace DatabaseController {
             }
         }
 
-        public string getClosingTime(string dayOfWeek) {
+        public string GetClosingTime(string dayOfWeek) {
             string sql = "select Closing " +
                          "from OperatingHours " +
                          "where OperatingWeekday = @dayOfWeek";
@@ -353,7 +353,7 @@ namespace DatabaseController {
             }
         }
 
-        public double getLateFee(string eventName) {
+        public double GetLateFee(string eventName) {
             string sql = "select HourlyPrice " +
                          "from EventData " +
                          "where EventName = @eventName";
@@ -374,7 +374,7 @@ namespace DatabaseController {
             }
         }
 
-        public string[] getEvent(string eventName) {
+        public string[] GetEvent(string eventName) {
             string sql = "select * " +
                   "from EventData " +
                   "where EventName = @eventName";
@@ -400,7 +400,7 @@ namespace DatabaseController {
             }
         }
 
-        public int numberOfCheckedIn(string guardianID) {
+        public int NumberOfCheckedIn(string guardianID) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
             string sql = "select ChildcareTransaction_ID " +
                          "from AllowedConnections natural join ChildcareTransaction " +
@@ -426,7 +426,7 @@ namespace DatabaseController {
             }
         }
 
-        public string[] findTransaction(string allowanceID) {
+        public string[] FindTransaction(string allowanceID) {
             string sql = "select * " +
                          "from ChildcareTransaction "+
                          "where Allowance_ID = @allowanceID and CheckedOut is null";
@@ -452,7 +452,7 @@ namespace DatabaseController {
             }
         }
 
-        public bool isCheckedIn(string childID, string guardianID){
+        public bool IsCheckedIn(string childID, string guardianID){
             string familyID = guardianID.Remove(guardianID.Length - 1);
             string sql = "select ChildcareTransaction_ID " +
                          "from Child natural join AllowedConnections natural join ChildcareTransaction " +
@@ -478,7 +478,7 @@ namespace DatabaseController {
             }
         }
 
-        public double getEventHourCap(string eventName) {
+        public double GetEventHourCap(string eventName) {
             String sql = "select EventMaximumHours " +
                          "from EventData " +
                          "where EventName = @eventName";
@@ -501,7 +501,7 @@ namespace DatabaseController {
             }
         }
 
-        public int getBillingCap() {
+        public int GetBillingCap() {
             string settingName = "Regular Care Maximum Monthly Charge";
             String sql = "select SettingValue " +
                          "from ApplicationSettings " +
@@ -521,7 +521,7 @@ namespace DatabaseController {
             }
         }
 
-        public int getBillingEnd() {
+        public int GetBillingEnd() {
             string settingName = "Billing End Date";
             String sql = "select SettingValue " +
                          "from ApplicationSettings " +
@@ -541,7 +541,7 @@ namespace DatabaseController {
             }
         }
 
-        public int getBillingStart() {
+        public int GetBillingStart() {
             string settingName = "Billing Start Date";
             String sql = "select SettingValue " +
                          "from ApplicationSettings " +
@@ -561,7 +561,7 @@ namespace DatabaseController {
             }
         }
 
-        public int getInfantCap() {
+        public int GetInfantCap() {
             string settingName = "Infant Age End";
             String sql = "select SettingValue " +
                          "from ApplicationSettings " +
@@ -581,7 +581,7 @@ namespace DatabaseController {
             }
         }
 
-        public int getRegularChildCap() {
+        public int GetRegularChildCap() {
             string settingName = "Regular Age End";
             String sql = "select SettingValue " +
                          "from ApplicationSettings " +
@@ -601,7 +601,7 @@ namespace DatabaseController {
             }
         }
 
-        public string[,] retieveGuardiansByLastName(string name) {
+        public string[,] RetieveGuardiansByLastName(string name) {
             string sql = "select FirstName, LastName, Guardian_ID " +
                          "from Guardian " +
                          "where LastName = @name";
@@ -633,7 +633,7 @@ namespace DatabaseController {
             }
         }
 
-        public bool validateGuardianID(string ID) {
+        public bool ValidateGuardianID(string ID) {
             String sql = "select Guardian_ID " +
                          "from Guardian " +
                          "where Guardian_ID = @ID";
@@ -655,7 +655,7 @@ namespace DatabaseController {
             }
         }
 
-        public string getGuardianImagePath(string ID) {
+        public string GetGuardianImagePath(string ID) {
             String sql = "select PhotoLocation " +
                         "from Guardian " +
                         "where Guardian_ID = @ID";
@@ -677,12 +677,12 @@ namespace DatabaseController {
             }
         }
 
-        public string checkAgeGroup(string birthday, string date) {
+        public string CheckAgeGroup(string birthday, string date) {
             DateTime DTBirthday = DateTime.Parse(birthday);
             DateTime DTDate = DateTime.Parse(date);
             TimeSpan difference = DTDate - DTBirthday;
-            double infantDays = getInfantCap() * 365.242;
-            double regularDays = getRegularChildCap() * 365.242;
+            double infantDays = GetInfantCap() * 365.242;
+            double regularDays = GetRegularChildCap() * 365.242;
             if (difference.Days < infantDays) {
                 return "Infant";
             }
@@ -692,8 +692,11 @@ namespace DatabaseController {
             return "Adolescent";
         }
 
-        public double checkIfPastClosing(string dayOfWeek, TimeSpan time) {
-            string closingTime = getClosingTime(dayOfWeek);
+        public double CheckIfPastClosing(string dayOfWeek, TimeSpan time) {
+            string closingTime = GetClosingTime(dayOfWeek);
+            if (string.IsNullOrEmpty(closingTime)) {
+                return 1;
+            }
             closingTime = Convert.ToDateTime(closingTime).ToString("HH:mm:ss");
             TimeSpan TSClosingTime = TimeSpan.Parse(closingTime);
             double hourDifference = time.Hours - TSClosingTime.Hours;
