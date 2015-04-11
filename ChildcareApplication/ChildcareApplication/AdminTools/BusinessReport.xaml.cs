@@ -160,7 +160,7 @@ namespace AdminTools {
         }
 
         private void LoadReport(String query) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
 
             try {
                 connection.Open();

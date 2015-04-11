@@ -23,7 +23,7 @@ namespace AdminTools {
         }
 
         private void LoadEvents() {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT EventName, HourlyPrice, HourlyDiscount, DailyPrice, DailyDiscount, EventMonth, ";
             query += "EventDay, EventWeekday FROM EventData WHERE EventDeletionDate IS null;";
 
@@ -45,7 +45,7 @@ namespace AdminTools {
         }
 
         private void FillComboBox() {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT EventName FROM EventData;";
 
             try {

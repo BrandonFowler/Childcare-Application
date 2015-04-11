@@ -9,7 +9,7 @@ using System.Windows;
 namespace DatabaseController {
     class TransactionDB {
         public bool TransactionExists(String transactionID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             int count = 0;
             try {
                 connection.Open();
@@ -30,7 +30,7 @@ namespace DatabaseController {
         }
 
         public void DeleteTransaction(String transactionID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             
             try {
                 connection.Open();
@@ -46,7 +46,7 @@ namespace DatabaseController {
         }
 
         public String GetEventName(String transactionID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT EventName FROM ChildcareTransaction WHERE ChildcareTransaction_ID = '" + transactionID + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
             String result = "";
@@ -62,7 +62,7 @@ namespace DatabaseController {
         }
 
         public double GetTransactionTotal(String transactionID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT TransactionTotal FROM ChildcareTransaction WHERE ChildcareTransaction_ID = '" + transactionID + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
             double result = 0;

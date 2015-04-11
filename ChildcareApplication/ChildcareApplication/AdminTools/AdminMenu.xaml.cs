@@ -39,7 +39,7 @@ namespace AdminTools {
         private void btn_EditOrDeleteParent_Click(object sender, RoutedEventArgs e) {
             bool editParent = true;
             ParentIDEntry ParentLogin = new ParentIDEntry(editParent);
-            ParentLogin.Show();
+            ParentLogin.ShowDialog();
             this.Close();
         }
 
@@ -56,19 +56,19 @@ namespace AdminTools {
 
         private void btn_BusinessReport_Click(object sender, RoutedEventArgs e) {
             BusinessReport businessReportWin = new BusinessReport();
-            businessReportWin.Show();
+            businessReportWin.ShowDialog();
         }
 
         private void btn_EditOrDeleteChild_Click(object sender, RoutedEventArgs e) {
             bool editParent = false;
             ParentIDEntry ParentLogin = new ParentIDEntry(editParent);
-            ParentLogin.Show();
+            ParentLogin.ShowDialog();
             this.Close();
         }
 
         private void btn_EditAddEvents_Click(object sender, RoutedEventArgs e) {
             EditEvents editEvents = new EditEvents();
-            editEvents.Show();
+            editEvents.ShowDialog();
         }
 
         private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
@@ -79,7 +79,7 @@ namespace AdminTools {
 
         private void btn_EditTransaction_Click(object sender, RoutedEventArgs e) {
             EditTransactionWindow editEvents = new EditTransactionWindow();
-            editEvents.Show();
+            editEvents.ShowDialog();
         }
 
         private void btn_AddEditAdmin_Click(object sender, RoutedEventArgs e) {

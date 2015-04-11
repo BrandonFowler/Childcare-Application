@@ -37,7 +37,7 @@ namespace DatabaseController {
         }
 
         public String GetAddress1(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT Address1 FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             String result = "";
 
@@ -55,7 +55,7 @@ namespace DatabaseController {
         }
 
         public String GetAddress2(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT Address2 FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             String result = "";
 
@@ -74,7 +74,7 @@ namespace DatabaseController {
 
         //returns a string for the state, zip, and city
         public String GetAddress3(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT City, StateAbrv, Zip FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
             String result = "";
@@ -94,7 +94,7 @@ namespace DatabaseController {
         }
 
         public String GetPhoneNumber(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT Phone FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
             String result = "";
@@ -111,7 +111,7 @@ namespace DatabaseController {
         }
 
         public String GetPhotoPath(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT PhotoLocation FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
             String result = "";
@@ -127,7 +127,7 @@ namespace DatabaseController {
         }
 
         public String GetCurrentDue(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String familyID = parentID.Remove(parentID.Length - 1);
 
             String query = "SELECT FamilyTotal FROM Family WHERE Family_ID = '" + familyID + "';";
@@ -152,7 +152,7 @@ namespace DatabaseController {
         }
 
         public void UpdateCurBalance(String parentID, double paymentValue) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String familyID = parentID.Remove(parentID.Length - 1);
 
             String query = "SELECT FamilyTotal FROM Family WHERE Family_ID = '" + familyID + "';";
@@ -174,7 +174,7 @@ namespace DatabaseController {
         }
 
         public bool GuardianIDExists(string guardianID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/Childcare_v5.s3db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT Guardian_ID FROM Guardian WHERE Guardian_ID = '" + guardianID + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
             String result = "";
