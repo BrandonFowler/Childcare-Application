@@ -15,6 +15,7 @@ using System.Data;
 using System.Collections;
 using System.IO;
 using DatabaseController;
+using ChildcareApplication.AdminTools;
 
 namespace AdminTools {
     /// <summary>
@@ -41,28 +42,59 @@ namespace AdminTools {
             //save all information to database
             if (formNotComplete == false)
             {
-                string pID, firstName, lastName, address, address2, city, state, zip, email, phone, path;
+                bool regex = RegexValidation();
 
-                pID = txt_IDNumber.Text; 
-                firstName = txt_FirstName.Text;
-                lastName = txt_LastName.Text;
+                if(regex)
+                {
+                    string pID, firstName, lastName, address, address2, city, state, zip, email, phone, path;
 
-                phone = txt_PhoneNumber.Text; 
-                email = txt_Email.Text; 
+                    pID = txt_IDNumber.Text;
+                    firstName = txt_FirstName.Text;
+                    lastName = txt_LastName.Text;
 
-                address = txt_Address.Text;
-                address2 = txt_Address2.Text; 
-                city = txt_City.Text;
-                state = cbo_State.Text; //dont know if this will work yet
-                zip = txt_Zip.Text;
-                path = txt_FilePath.Text; 
+                    phone = txt_PhoneNumber.Text;
+                    email = txt_Email.Text;
 
-                this.db.UpdateParentInfo(pID, firstName, lastName, phone, email, address, address2, city, state, zip, path); 
+                    address = txt_Address.Text;
+                    address2 = txt_Address2.Text;
+                    city = txt_City.Text;
+                    state = cbo_State.Text; //dont know if this will work yet
+                    zip = txt_Zip.Text;
+                    path = txt_FilePath.Text;
+
+                    this.db.UpdateParentInfo(pID, firstName, lastName, phone, email, address, address2, city, state, zip, path); 
+                }
+               
 
 
                //ClearFields();
             }
         }//end btn_Submit_Click
+
+        private bool RegexValidation()
+        {
+            bool fname = RegExpressions.regexName(txt_FirstName.Text);
+
+            bool lname = RegExpressions.regexName(txt_LastName.Text);
+
+            bool phone = RegExpressions.regexPhoneNumber(txt_PhoneNumber.Text);
+
+            bool email = RegExpressions.regexEmail(txt_Email.Text);
+
+            bool address = RegExpressions.regexAddress(txt_Address.Text);
+
+            bool city = RegExpressions.regexCity(txt_City.Text);
+
+            bool zip = RegExpressions.regexZIP(txt_Zip.Text);
+
+            bool path = RegExpressions.regexFilePath(txt_FilePath.Text);
+
+            if(fname && lname && phone && email && address && city && zip && path)
+                return true;
+
+            return false;
+
+        }
 
         private void btn_Finish_Click(object sender, RoutedEventArgs e) {
 

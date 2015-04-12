@@ -220,8 +220,12 @@ namespace AdminTools {
             //ClearFields();
             DataSet DS = new DataSet();
             DS = this.db.GetMaxID();
+            int maxID = 0; //set maxID = 0
+            if (DS.Tables[0].Rows.Count != 0)//checks if DS is not null, sets maxID to maxCHildID +1
+            {
+                  maxID= Convert.ToInt32(DS.Tables[0].Rows[0][0]);
+            }
 
-            int maxID = Convert.ToInt32(DS.Tables[0].Rows[0][0]);
             maxID = maxID + 1;
             string mID = maxID.ToString();  
 
@@ -230,7 +234,11 @@ namespace AdminTools {
             lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None", "../../Pictures/default.jpg"));
 
             DS = this.db.GetMaxConnectionID();
-            int connID = Convert.ToInt32(DS.Tables[0].Rows[0][0]);
+            int connID = 0;
+            if (DS.Tables[0].Rows.Count != 0)
+            {
+                connID = Convert.ToInt32(DS.Tables[0].Rows[0][0]);
+            }
             connID = connID + 1;
             string connectionID = connID.ToString();
 
