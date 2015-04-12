@@ -25,20 +25,6 @@ namespace ParentTools {
             lst_Guardians.SelectionChanged += lst_Guardians_IndexChange;
             this.db = new ParentToolsDB();
             cnv_GuardianPic.Background = new SolidColorBrush(Colors.DimGray);
-            txt_SearchBox.Focus();
-            this.txt_SearchBox.KeyDown += new KeyEventHandler(KeyPressedEnter);
-            this.lst_Guardians.KeyDown += new KeyEventHandler(KeyPressedEnter);
-        }
-
-        private void KeyPressedEnter(Object o, KeyEventArgs e) {
-                if (e.Key == Key.Return) {
-                    if (txt_SearchBox.IsSelectionActive) {
-                        Search();
-                    }
-                    else if (lst_Guardians.SelectedItem != null) {
-                        Login();
-                    }
-                }    
         }
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e) {
@@ -53,7 +39,7 @@ namespace ParentTools {
             }
             string guardianInfo = lst_Guardians.SelectedItem.ToString();
             this.guardianID = guardianInfo.Substring(guardianInfo.LastIndexOf(' ') + 1);
-            string imageLink = db.GetGuardianImagePath(this.guardianID);
+            string imageLink = db.getGuardianImagePath(this.guardianID);
             if (imageLink != null) {
                 ImageBrush ib = new ImageBrush();
                 ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
@@ -62,11 +48,7 @@ namespace ParentTools {
         }
 
         private void btn_Search_Click(object sender, RoutedEventArgs e) {
-            Search();
-        }
-
-        private void Search() {
-            CleanDisplay();
+            cleanDisplay();
             if (String.IsNullOrWhiteSpace(txt_SearchBox.Text)) {
                 MessageBox.Show("Please enter a name or ID.");
                 return;
@@ -74,7 +56,7 @@ namespace ParentTools {
             int n;
             bool isNumeric = int.TryParse(txt_SearchBox.Text, out n);
             if (isNumeric) {
-                bool validated = db.ValidateGuardianID(txt_SearchBox.Text);
+                bool validated = db.validateGuardianID(txt_SearchBox.Text);
                 if (validated) {
                     ChildLogin ChildLoginWindow = new ChildLogin(txt_SearchBox.Text);
                     ChildLoginWindow.Show();
@@ -86,16 +68,16 @@ namespace ParentTools {
                 }
             }
             else {
-                string[,] guardianInfo = db.RetieveGuardiansByLastName(txt_SearchBox.Text);
+                string[,] guardianInfo = db.retieveGuardiansByLastName(txt_SearchBox.Text);
                 if (guardianInfo == null || guardianInfo.GetLength(0) == 0) {
                     MessageBox.Show("No search results found");
                     return;
                 }
-                SetUpGuardianDisplay(guardianInfo);
+                setUpGuardianDisplay(guardianInfo);
             }
         }
 
-        private void SetUpGuardianDisplay(string[,] guardianInfo){
+        private void setUpGuardianDisplay(string[,] guardianInfo){
             for (int x = 0; x < guardianInfo.GetLength(0); x++) {
                 string firstName = guardianInfo[x,0].PadRight(33);
                 string lastName = guardianInfo[x, 1].PadRight(33);
@@ -106,10 +88,6 @@ namespace ParentTools {
         }
 
         private void btn_Login_Click(object sender, RoutedEventArgs e) {
-            Login();
-        }
-
-        private void Login() {
             if (lst_Guardians.SelectedItem == null) {
                 MessageBox.Show("Please select a guardian.");
                 return;
@@ -120,7 +98,7 @@ namespace ParentTools {
             this.Close();
         }
 
-        private void CleanDisplay() {
+        private void cleanDisplay() {
             cnv_GuardianPic.Background = new SolidColorBrush(Colors.DimGray);
             this.lbl_Categories.Visibility = Visibility.Hidden;
             this.lst_Guardians.Items.Clear();

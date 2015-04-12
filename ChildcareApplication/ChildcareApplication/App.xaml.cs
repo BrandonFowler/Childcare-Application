@@ -15,7 +15,7 @@ namespace ChildcareApplication {
     public partial class App : Application {
         public App() {
             DatabaseController.CleanDB db = new DatabaseController.CleanDB();
-            bool success = db.Clean();
+            bool success = db.clean();
             if (!success) {
                 UserSelection US = new UserSelection();
                 US.Show();

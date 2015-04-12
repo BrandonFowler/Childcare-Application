@@ -13,34 +13,34 @@ namespace ChildcareApplication.DatabaseController {
         private SQLiteConnection conn;
 
         public CleanDB() {
-            conn = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            conn = new SQLiteConnection("Data Source=../../Database/ChildCareDB.s3db;Version=3;");
         }
 
-        public bool Clean() {
+        public bool clean() {
             bool success = true;
-            int daysToKeepRecords = GetRecordExpiration()*(-1);
+            int daysToKeepRecords = getRecordExpiration()*(-1);
             if (daysToKeepRecords == 0) {
                  return false;
             }
             DateTime date = DateTime.Now.AddDays(daysToKeepRecords);
             string expirationDate = date.ToString("yyyy-MM-dd");
-            success = DeleteTransactions(expirationDate);
+            success = deleteTransactions(expirationDate);
             if (!success) {
                 return false;
             }
-            success = DeleteConnections(expirationDate);
+            success = deleteConnections(expirationDate);
             if (!success) {
                 return false;
             }
-            success = DeleteGuardians(expirationDate);
+            success = deleteGuardians(expirationDate);
             if (!success) {
                 return false;
             }
-            success = DeleteChildren(expirationDate);
+            success = deleteChildren(expirationDate);
             return success;
         }
 
-        public int GetRecordExpiration() {
+        public int getRecordExpiration() {
             string settingName = "Days to Hold Expired and Deleted Records";
             String sql = "select SettingValue " +
                          "from ApplicationSettings " +
@@ -58,7 +58,7 @@ namespace ChildcareApplication.DatabaseController {
             }
         }
 
-        public bool DeleteTransactions(string expirationDate) {
+        public bool deleteTransactions(string expirationDate) {
             String sql = "delete " +
                          "from ChildcareTransaction " +
                          "where TransactionDate <= '" + expirationDate + "'";
@@ -76,7 +76,7 @@ namespace ChildcareApplication.DatabaseController {
             return true;
         }
 
-        public bool DeleteConnections(string expirationDate) {
+        public bool deleteConnections(string expirationDate) {
             String sql = "delete " +
                          "from AllowedConnections " +
                          "where ConnectionDeletionDate <= '" + expirationDate + "'";
@@ -93,7 +93,7 @@ namespace ChildcareApplication.DatabaseController {
             return true;
         }
 
-        public bool DeleteGuardians(string expirationDate) {
+        public bool deleteGuardians(string expirationDate) {
             String sql = "delete " +
                          "from Guardian " +
                          "where GuardianDeletionDate <= '" + expirationDate + "'";
@@ -110,7 +110,7 @@ namespace ChildcareApplication.DatabaseController {
             return true;
         }
 
-        public bool DeleteChildren(string expirationDate) {
+        public bool deleteChildren(string expirationDate) {
             String sql = "delete " +
                          "from Child " +
                          "where ChildDeletionDate <= '" + expirationDate + "'";

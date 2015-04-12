@@ -54,7 +54,7 @@ namespace ParentTools {
                         txt_PINEntry.Focus();
                     }
                     else if (PINBoxSelected){
-                        GuardianLogin();
+                        guardianLogin();
                     }
                 }
             }
@@ -81,7 +81,7 @@ namespace ParentTools {
 
             }
             else {
-                GuardianLogin();
+                guardianLogin();
             }
         }
 
@@ -100,11 +100,11 @@ namespace ParentTools {
             }
         }
 
-        private void GuardianLogin() {
+        private void guardianLogin() {
             string ID = txt_IDEntry.Text;
             string PIN = txt_PINEntry.Password;
             string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
-            bool userFound = this.db.ValidateLogin(ID, hashedPIN);
+            bool userFound = this.db.validateLogin(ID, hashedPIN);
             if (userFound) {
                 ChildLogin ChildLoginWindow = new ChildLogin(ID);
                 ChildLoginWindow.Show();
