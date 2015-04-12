@@ -76,5 +76,25 @@ namespace DatabaseController {
             }
             return result;
         }
+
+        public void UpdateTransaction(string transID) {
+            /*SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            String query = "UPDATE EventData SET EventName = '" + eventName + "', DailyPrice = " + dailyPrice + ", ";
+            query += "DailyDiscount = null, EventWeekday = '" + weekday + "', HourlyPrice = null,";
+            query += " HourlyDiscount = null, EventMonth = null, EventDay = null WHERE EventName = '" + oldEventName + "';";
+            try {
+                connection.Open();
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                cmd.ExecuteNonQuery();
+
+                connection.Close();
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }*/
+        }
+
+        public void NewTransaction() {
+
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DatabaseController;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,11 +26,18 @@ namespace AdminTools {
         public TransactionModificationWindow() {
             InitializeComponent();
             LoadEventCMB();
+            this.transactionID = "";
         }
 
         private void btn_OK_Click(object sender, RoutedEventArgs e) {
-            if (VerifyFormData()) {
+            TransactionDB transDB = new TransactionDB();
 
+            if (VerifyFormData()) {
+                if (this.transactionID != "") {
+                    UpdateTransaction();
+                } else {
+                    NewTransaction();
+                }
             }
         }
 
@@ -108,17 +116,57 @@ namespace AdminTools {
 
         private bool ValidTime(string time) {
             String[] splitTime = time.Split(new char[] {' ', ':'});
-            
+            int hour, minute;
 
+            if (splitTime.Length != 3) {
+                return false;
+            }
+
+            if (!Int32.TryParse(splitTime[0], out hour)) {
+                return false;
+            }
+            if (!Int32.TryParse(splitTime[1], out minute)) {
+                return false;
+            }
+            if (!(splitTime[2] == "AM" || splitTime[2] == "PM")) {
+                return false;
+            }
+            if (hour < 1 || hour > 12 || minute < 0 || minute > 59) {
+                return false;
+            }
             return true;
         }
 
         private bool ValidDate(string date) {
-            return false;
+            DateTime dt;
+
+            if(!DateTime.TryParse(date, out dt)) {
+                return false;
+            }
+            return true;
         }
 
         private bool ValidTransactionTotal(string transactionTotal) {
-            return false;
+            int transTotal;
+
+            if (!Int32.TryParse(transactionTotal, out transTotal)) {
+                return false;
+            }
+            
+            return true;
+        }
+
+        private void UpdateTransaction() {
+            TransactionDB transDB = new TransactionDB();
+
+
+        }
+
+        private void NewTransaction() {
+            TransactionDB transDB = new TransactionDB();
+            //string transactionID = transDB.GetNextTransID();
+            
+
         }
     }
 }

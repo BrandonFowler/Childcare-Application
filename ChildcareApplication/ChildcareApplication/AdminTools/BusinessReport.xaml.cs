@@ -17,9 +17,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace AdminTools {
-    /// <summary>
-    /// Interaction logic for BusinessReport.xaml
-    /// </summary>
     public partial class BusinessReport : Window {
         public BusinessReport() {
             InitializeComponent();
@@ -96,8 +93,6 @@ namespace AdminTools {
         }
 
         private void btn_SpecificMonth_Click(object sender, RoutedEventArgs e) {
-            GregorianCalendar cal = new GregorianCalendar();
-
             if (cmb_Month.SelectedIndex != -1 && cmb_Year.SelectedIndex != 1) {
                 String fromDate, toDate;
 
@@ -122,7 +117,7 @@ namespace AdminTools {
             }
         }
 
-        private int GetMonthNum(String month) { //TODO: Find a better way to handle something like this
+        private int GetMonthNum(String month) {
             if (month == "January")
                 return 1;
             if (month == "February")
