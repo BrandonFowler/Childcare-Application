@@ -217,5 +217,36 @@ namespace DatabaseController {
             }
             return result;
         }
+
+        public bool GuardianNameExists(string fullName) {
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            string[] nameAra = fullName.Split(' ');
+            if (nameAra.Length != 2) {
+                return false;
+            }
+            string firstName = nameAra[0];
+            string lastName = nameAra[1];
+            int count = 0;
+
+            if (firstName == null || firstName.Length < 1 || lastName == null || lastName.Length < 1) {
+                return false;
+            }
+            try {
+                connection.Open();
+
+                string query = "Select count(*) from Guardian where FirstName = '" + firstName + "' and LastName = '" + lastName + "';";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+
+                count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (count > 0) {
+                    return true;
+                }
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
+            return false;
+        }
     }
 }

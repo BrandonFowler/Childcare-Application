@@ -153,7 +153,7 @@ namespace AdminTools {
 
 
         private void setChildBox() {
-            string[,] childrenData = db.findChildren(this.ID);
+            string[,] childrenData = db.FindChildren(this.ID);
 
             if (childrenData == null) {
                 return;
@@ -220,7 +220,6 @@ namespace AdminTools {
             //ClearFields();
             DataSet DS = new DataSet();
             DS = this.db.GetMaxID();
-           // MessageBox.Show("FUCK");
 
             int maxID = Convert.ToInt32(DS.Tables[0].Rows[0][0]);
             maxID = maxID + 1;

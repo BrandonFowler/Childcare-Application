@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
@@ -379,6 +380,53 @@ namespace DatabaseController {
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        public bool EventNameExists(string eventName) {
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            int count;
+
+            if (eventName.Length < 1) {
+                return false;
+            }
+            try {
+                connection.Open();
+
+                string query = "Select count(*) from EventData where EventName = '" + eventName + "';";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+
+                count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (count > 0) {
+                    return true;
+                }
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
+            return false;
+        }
+
+        public List<string> GetAllEventNames() {
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            String query = "SELECT EventName FROM EventData;";
+            List<string> results = new List<string>();
+
+            try {
+                connection.Open();
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+
+                SQLiteDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read()) {
+                    String eventName = reader.GetString(0);
+                    results.Add(eventName);
+                }
+                connection.Close();
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
+            return results;
         }
     }
 }

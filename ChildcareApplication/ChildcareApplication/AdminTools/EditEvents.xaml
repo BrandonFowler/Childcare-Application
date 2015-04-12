@@ -7,7 +7,7 @@
         <Button x:Name="btn_AddEvent" Content="Add Event" HorizontalAlignment="Left" Margin="46,18,0,0" VerticalAlignment="Top" Width="76" Height="22" Click="btn_AddEvent_Click" TabIndex="0"/>
         <ComboBox x:Name="cmd_EventIDCombo" HorizontalAlignment="Left" Margin="229,18,0,0" VerticalAlignment="Top" Width="126" TabIndex="2"/>
         <Button x:Name="btn_EditEvent" Content="Edit Event" HorizontalAlignment="Left" Margin="150,18,0,0" VerticalAlignment="Top" Width="74" Height="22" Click="btn_EditEvent_Click" TabIndex="1"/>
-        <Label x:Name="lbl_EventID" Content="Event ID" HorizontalAlignment="Left" Margin="229,-4,0,0" VerticalAlignment="Top" Width="61"/>
+        <Label x:Name="lbl_EventID" Content="Event Name" HorizontalAlignment="Left" Margin="229,-4,0,0" VerticalAlignment="Top" Width="82"/>
         <Button x:Name="btn_Exit" Content="_Exit" HorizontalAlignment="Left" Margin="614,18,0,0" VerticalAlignment="Top" Width="75" Height="22" TabIndex="3" Click="btn_Exit_Click"/>
 
     </Grid>
