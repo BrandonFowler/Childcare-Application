@@ -33,12 +33,9 @@ namespace AdminTools {
             TransactionDB transDB = new TransactionDB();
 
             if (VerifyFormData()) {
-                if (this.transactionID != "") {
-                    UpdateTransaction();
-                } else {
-                    NewTransaction();
-                }
+                SubmitChanges();
             }
+            this.Close();
         }
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e) {
@@ -152,21 +149,41 @@ namespace AdminTools {
             if (!Int32.TryParse(transactionTotal, out transTotal)) {
                 return false;
             }
-            
+            if (transTotal < 0) {
+                return false;
+            }
             return true;
         }
 
-        private void UpdateTransaction() {
+        private void SubmitChanges() {
             TransactionDB transDB = new TransactionDB();
+            string transID, eventName, allowanceID, transDate, checkedIn, checkedOut, transTotal;
 
+            eventName = ((ComboBoxItem)cmb_EventName.SelectedItem).Content.ToString();
+            allowanceID = transDB.GetAllowanceID(txt_GuardianName.Text, txt_ChildName.Text);
+            transDate = txt_Date.Text;
+            checkedIn = FormatTime(txt_CheckIn.Text);
+            checkedOut = FormatTime(txt_CheckOut.Text);
+            transTotal = txt_TransactionTotal.Text;
 
+            if (this.transactionID == "") {
+                transID = transDB.GetNextTransID();
+                transDB.NewTransaction(transID, eventName, allowanceID, transDate, checkedIn, checkedOut, transTotal);
+            } else {
+                transDB.UpdateTransaction(this.transactionID, eventName, allowanceID, transDate, checkedIn, checkedOut, transTotal);
+            }
         }
 
-        private void NewTransaction() {
-            TransactionDB transDB = new TransactionDB();
-            //string transactionID = transDB.GetNextTransID();
+        private string FormatTime(string time) {
+            string[] splitTime = time.Split(new char[] { ' ', ':' });
             
+            if (splitTime[2] == "PM") {
+                int hours = Convert.ToInt32(splitTime[0]);
 
+                splitTime[0] = (hours + 12).ToString();
+            }
+
+            return (splitTime[0] + ":" + splitTime[1] + ":00");
         }
     }
 }
