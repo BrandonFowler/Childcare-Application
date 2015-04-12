@@ -75,20 +75,64 @@ namespace DatabaseController {
             dbCon.Open();
 
             try {
-                string sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
-                                + "VALUES(" + conID + ", " + pID + ", " + cID + ", " + famID + ");";
+
+                string sql = "select Child.* " +
+                  "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
+                  "where Guardian_ID = " + pID + " AND ConnectionDeletionDate IS null";
 
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-                command.CommandText = sql;
+                SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
 
-                command.ExecuteNonQuery();
-                MessageBox.Show("Link Completed.");
+                DataSet DS = new DataSet();
+                DB.Fill(DS);
+                int count = DS.Tables[0].Rows.Count;
+                 if (count > 0) 
+                {
+                    MessageBox.Show("There is already a link to this child and the guardian.");
+                }
+
+                else
+                {
+                    sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
+                                    + "VALUES(" + conID + ", " + pID + ", " + cID + ", " + famID + ");";
+
+                    command = new SQLiteCommand(sql, dbCon);
+                    command.CommandText = sql;
+
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Link Completed.");
+
+                }
             } catch (SQLiteException e) {
                 MessageBox.Show(e.ToString());
             }
             dbCon.Close();
         }
 
+
+        public void UpdateExistingChilderen(string conID, string pID, string cID, string famID)
+        {
+            dbCon.Open();
+
+            try
+            {
+
+                    String sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
+                                    + "VALUES(" + conID + ", " + pID + ", " + cID + ", " + famID + ");";
+
+                    SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+                    command.CommandText = sql;
+
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Link Completed.");
+
+            }
+            catch (SQLiteException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            dbCon.Close();
+        }
         public void UpdateChildInfo(string ID, string firstName, string lastName, string birthday, string medical, string allergies, string filePath) {
 
             dbCon.Open();
@@ -126,12 +170,13 @@ namespace DatabaseController {
 
                 string today = DateTime.Now.ToString("yyyy-MM-dd");
 
-                string sql = @"UPDATE AllowedCOnnections SET ConnectionDeletionDate = @today WHERE Child_ID = @childID;";
+                string sql = @"UPDATE AllowedCOnnections SET ConnectionDeletionDate = @today WHERE Child_ID = @childID AND Guardian_ID = @pID;";
 
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
                 command.CommandText = sql;
                 command.Parameters.Add(new SQLiteParameter("@today", today));
                 command.Parameters.Add(new SQLiteParameter("@childID", childID));
+                command.Parameters.Add(new SQLiteParameter("@pID", pID));
                 command.ExecuteNonQuery();
 
                 MessageBox.Show("Completed");
@@ -198,6 +243,42 @@ namespace DatabaseController {
 
             for (int x = 0; x < rCount; x++) {
                 for (int y = 0; y < cCount; y++) {
+                    data[x, y] = DS.Tables[0].Rows[x][y].ToString();
+                }
+            }
+
+            dbCon.Close();
+            return data;
+        }//end findChildren
+
+
+        public String[,] FindFamilyChildren(string fID, string ID)
+        {
+            dbCon.Open();
+
+            string sql = "select Child.* " +
+                  "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
+                  "where  Family_ID = " + fID + " AND Guardian_ID != " + ID + " AND ConnectionDeletionDate IS null";
+
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+
+            DataSet DS = new DataSet();
+            DB.Fill(DS);
+
+            if (DS.Tables == null)
+            {
+                return null;
+            }
+
+            int cCount = DS.Tables[0].Columns.Count;
+            int rCount = DS.Tables[0].Rows.Count;
+            String[,] data = new string[rCount, cCount];
+
+            for (int x = 0; x < rCount; x++)
+            {
+                for (int y = 0; y < cCount; y++)
+                {
                     data[x, y] = DS.Tables[0].Rows[x][y].ToString();
                 }
             }

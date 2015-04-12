@@ -52,10 +52,14 @@ namespace AdminTools
                              MakeFamilyID(pID);
                              if(linked == 0)//link child
                              {
+                                 int connID = 0;
                                  DataSet DS = new DataSet();
                                  DS = this.db.GetMaxConnectionID();
-                                 int connID = Convert.ToInt32(DS.Tables[0].Rows[0][0]);
-                                 connID = connID + 1;
+                                 if (DS != null)
+                                 {
+                                     connID = Convert.ToInt32(DS.Tables[0].Rows[0][0]);
+                                     connID = connID + 1;
+                                 }
                                  string connectionID = connID.ToString();
                                  fID = MakeFamilyID(pID);
                                  this.db.UpdateAllowedConnections(connectionID, pID, childID, fID);

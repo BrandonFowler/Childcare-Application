@@ -74,6 +74,9 @@
       <DependentUpon>BusinessReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdminTools\Hashing.cs" />
+    <Compile Include="AdminTools\LinkExistingChild.xaml.cs">
+      <DependentUpon>LinkExistingChild.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminTools\RegExpressions.cs" />
     <Compile Include="AdminTools\TransactionModificationWindow.xaml.cs">
       <DependentUpon>TransactionModificationWindow.xaml</DependentUpon>
@@ -111,6 +114,10 @@
     <Page Include="AdminTools\BusinessReport.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdminTools\LinkExistingChild.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminTools\ParentReport.xaml">
       <Generator>MSBuild:Compile</Generator>

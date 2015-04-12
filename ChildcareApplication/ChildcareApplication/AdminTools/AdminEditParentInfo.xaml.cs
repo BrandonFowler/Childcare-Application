@@ -74,20 +74,35 @@ namespace AdminTools {
         private bool RegexValidation()
         {
             bool fname = RegExpressions.regexName(txt_FirstName.Text);
+            if (!fname)
+                txt_FirstName.Focus(); 
 
             bool lname = RegExpressions.regexName(txt_LastName.Text);
+            if (!lname)
+                txt_LastName.Focus(); 
 
             bool phone = RegExpressions.regexPhoneNumber(txt_PhoneNumber.Text);
+            if (!phone)
+                txt_PhoneNumber.Focus(); 
 
             bool email = RegExpressions.regexEmail(txt_Email.Text);
+            if (!email)
+                txt_Email.Focus(); 
 
             bool address = RegExpressions.regexAddress(txt_Address.Text);
+            if (!address)
+                txt_Address.Focus(); 
 
             bool city = RegExpressions.regexCity(txt_City.Text);
+            if (!city)
+                txt_City.Focus(); 
 
             bool zip = RegExpressions.regexZIP(txt_Zip.Text);
+            if (!zip)
+                txt_Zip.Focus(); 
 
             bool path = RegExpressions.regexFilePath(txt_FilePath.Text);
+
 
             if(fname && lname && phone && email && address && city && zip && path)
                 return true;

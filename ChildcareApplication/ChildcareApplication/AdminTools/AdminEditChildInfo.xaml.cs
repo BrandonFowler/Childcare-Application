@@ -15,6 +15,7 @@ using System.Data;
 using System.Collections;
 using System.IO;
 using DatabaseController;
+using ChildcareApplication.AdminTools;
 
 
 namespace AdminTools {
@@ -46,32 +47,58 @@ namespace AdminTools {
 
             if (formNotComplete == false)
             {
-                string cID, firstName, lastName, medical, allergies, birthday, filePath;
 
-                firstName = txt_FirstName.Text;
-                lastName = txt_LastName.Text;
-                birthday = dte_Birthday.SelectedDate.Value.ToString("yyyy-MM-dd"); 
-                medical = txt_Medical.Text;
-                allergies = txt_Allergies.Text;
-                cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
-                filePath = txt_FilePath.Text; 
+                bool regex = RegexValidation();
+                if (regex)
+                {
 
-                this.db.UpdateChildInfo(cID, firstName, lastName, birthday, medical, allergies, filePath);
-                ((Child)(lst_ChildBox.SelectedItem)).firstName = firstName;
-                ((Child)(lst_ChildBox.SelectedItem)).lastName = lastName;
-                ((Child)(lst_ChildBox.SelectedItem)).birthday = birthday;
-                ((Child)(lst_ChildBox.SelectedItem)).medical = medical;
-                ((Child)(lst_ChildBox.SelectedItem)).allergies = allergies;
-                ((Child)(lst_ChildBox.SelectedItem)).path = filePath;
 
-                lst_ChildBox.Items.Clear();
-                setChildBox();
+                    string cID, firstName, lastName, medical, allergies, birthday, filePath;
 
+                    firstName = txt_FirstName.Text;
+                    lastName = txt_LastName.Text;
+                    birthday = dte_Birthday.SelectedDate.Value.ToString("yyyy-MM-dd");
+                    medical = txt_Medical.Text;
+                    allergies = txt_Allergies.Text;
+                    cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
+                    filePath = txt_FilePath.Text;
+
+                    this.db.UpdateChildInfo(cID, firstName, lastName, birthday, medical, allergies, filePath);
+                    ((Child)(lst_ChildBox.SelectedItem)).firstName = firstName;
+                    ((Child)(lst_ChildBox.SelectedItem)).lastName = lastName;
+                    ((Child)(lst_ChildBox.SelectedItem)).birthday = birthday;
+                    ((Child)(lst_ChildBox.SelectedItem)).medical = medical;
+                    ((Child)(lst_ChildBox.SelectedItem)).allergies = allergies;
+                    ((Child)(lst_ChildBox.SelectedItem)).path = filePath;
+
+                    lst_ChildBox.Items.Clear();
+                    setChildBox();
+                }
                // ClearFields();
             }
         }//end btn_Submit_Click
 
 
+        private bool RegexValidation()
+        {
+            bool fname = RegExpressions.regexName(txt_FirstName.Text);
+            if (!fname)
+                txt_FirstName.Focus();
+
+            bool lname = RegExpressions.regexName(txt_LastName.Text);
+            if (!lname)
+                txt_LastName.Focus();
+
+
+            bool path = RegExpressions.regexFilePath(txt_FilePath.Text);
+
+
+            if (fname && lname && path)
+                return true;
+
+            return false;
+
+        }
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
 
             bool? delete;
@@ -288,7 +315,30 @@ namespace AdminTools {
                 linkDelinkChild.ShowDialog(); //1 = delink
                 lst_ChildBox.Items.Clear();
                 setChildBox();
+                ClearFields();
             }
+        }
+
+        private void btn_LinkExistingChild_Click(object sender, RoutedEventArgs e)
+        {
+            string pID = txt_IDNumber.Text;
+            ArrayList connectedChilderen = new ArrayList();
+            connectedChilderen = getConnectedChilderen(connectedChilderen);
+            LinkExistingChild linkExistingChild = new LinkExistingChild(pID, connectedChilderen);
+            linkExistingChild.ShowDialog();
+            lst_ChildBox.Items.Clear();
+            setChildBox();
+            ClearFields(); 
+        }
+
+        private ArrayList getConnectedChilderen(ArrayList list)
+        {
+            for (int i = 0; i < lst_ChildBox.Items.Count; i ++ )
+            {
+                list.Add(((Child)(lst_ChildBox.Items[i])).ID);
+            }
+
+                return list; 
         }
 
         private void btn_ChangePicture_Click(object sender, RoutedEventArgs e)
@@ -390,6 +440,8 @@ namespace AdminTools {
         {
             txt_GotMouseCapture(sender, e); 
         }
+
+
     }//end class
 
 

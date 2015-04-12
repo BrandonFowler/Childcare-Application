@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using DatabaseController;
+using ChildcareApplication.AdminTools;
 
 namespace AdminTools {
     /// <summary>
@@ -32,7 +33,37 @@ namespace AdminTools {
             {
                 bool sameID = checkIfSame(txt_ParentID1.Text, txt_ParentID2.Text);
                 bool samePIN = checkIfSame(psw_ParentPIN1.Password, psw_ParentPIN2.Password);
-                bool correctLength = checkLength(txt_ParentID1.Text, txt_ParentID2.Text, 6, 0);
+
+                bool regexID = RegExpressions.regexID(txt_ParentID1.Text);
+                bool regexPIN = RegExpressions.regexPIN(psw_ParentPIN1.Password);
+
+                if(sameID && samePIN && regexID && regexPIN)
+                {
+                    pID = txt_ParentID1.Text;
+                    PIN = psw_ParentPIN1.Password;
+                    DataSet DS = new DataSet();
+                    DS = this.db.GetParentInfo(pID);
+                    int count = DS.Tables[0].Rows.Count;
+
+                    if (count == 0)//ID does not exist
+                    {
+                        string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
+                        hashedPIN = "\"" + hashedPIN + "\"";
+                        this.db.AddNewParent(pID, hashedPIN, "\"First\"", "\"Last\"", "\"000-000-0000\"", "\"someEmail@email.com\"", "\"123 Road St\"", "\"none\"", "\"City\"", "\"WA\"", "\"12345\"", "\"../../Pictures/default.jpg\"");
+                        MakeFamilyID(pID);
+
+                        AdminEditParentInfo adminEditParentInfo = new AdminEditParentInfo(pID);
+                        adminEditParentInfo.Show();
+                        this.Close();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("A Guardian with this ID already Exists. Please re-enter your ID");
+                    }
+
+                }
+               /* bool correctLength = checkLength(txt_ParentID1.Text, txt_ParentID2.Text, 6, 0);
                 bool corretLengthPIN = checkLength(psw_ParentPIN1.Password, psw_ParentPIN2.Password, 4, 1);
                 if (sameID && samePIN && correctLength && corretLengthPIN)//both IDand PIN are the same vlues
                 {
@@ -62,7 +93,9 @@ namespace AdminTools {
                             MessageBox.Show("A Guardian with this ID already Exists. Please re-enter your ID");
                         }
                     }
-                }
+                }*/
+
+
             }
 
         }
@@ -117,50 +150,6 @@ namespace AdminTools {
                 return false;
             }
 
-        }
-
-        private bool checkLength(string str1, string str2, int l, int IDorPIN) {
-
-            int len1, len2; 
-
-            len1 = str1.Length;
-            len2 = str2.Length;
-
-            if (len1 == l || len2 == l)
-            {
-                return true;
-            }
-
-            else
-            {
-                if (IDorPIN == 0)
-                {
-                    MessageBox.Show("Guardian ID numbers are not length 6. Please re-enter ID numbers.");
-                    txt_ParentID1.Focus();
-                }
-                if (IDorPIN == 1)
-                {
-                    MessageBox.Show("Guardian PIN numbers are not length 4. Please re-enter PIN numbers.");
-                    psw_ParentPIN1.Focus();
-                }
-                return false;
-            }
-        }
-
-        private bool checkIfNumbers(string str1, string str2) {
-            int parseNum1, parseNum2;
-
-            bool isNum1 = int.TryParse(str1, out parseNum1);
-            bool isNum2 = int.TryParse(str1, out parseNum2);
-
-            if (isNum1 && isNum2)
-                return true;
-            else {
-                    
-                        MessageBox.Show("Your ID or PIN numbers are not numbers only. Please re-enter.");
-
-                return false;
-            }
         }
 
         private void txt_ParentID1_GotFocus(object sender, RoutedEventArgs e)

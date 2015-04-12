@@ -24,16 +24,22 @@ namespace DatabaseController {
         public DataSet GetParentInfo(string parentID) {
 
             dbCon.Open();
-            string sql = "select * from Guardian where Guardian_ID = " + parentID;
-
-            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-
-
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
-            DB.Fill(DS);
+            try
+            {
+                string sql = "select * from Guardian where Guardian_ID = " + parentID;
+
+                SQLiteCommand command = new SQLiteCommand(sql, dbCon);
 
 
+                SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+                
+                DB.Fill(DS);
+            }
+            catch (SQLiteException e)
+            {
+                MessageBox.Show("Failed");
+            }
             dbCon.Close();
             return DS;
         }//end GetFirstName
@@ -108,14 +114,23 @@ namespace DatabaseController {
             dbCon.Close();
         }
         public DataSet checkIfFamilyExists(string familyID) {
+
             dbCon.Open();
-            string sql = "select * from Family where Family_ID = " + familyID;
-            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
-            DB.Fill(DS);
+            try
+            {
+                string sql = "select * from Family where Family_ID = " + familyID;
+                SQLiteCommand command = new SQLiteCommand(sql, dbCon);
 
+                SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+                
+                DB.Fill(DS);
+                
+            }
+            catch (SQLiteException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
 
             dbCon.Close();
             return DS;
@@ -130,7 +145,7 @@ namespace DatabaseController {
                 "VALUES(" + familyID + ", " + ballance + ");";
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
                 mycommand.ExecuteNonQuery();
-                MessageBox.Show("Completed");
+
             } catch (SQLiteException e) {
                 MessageBox.Show(e.ToString());
             }
