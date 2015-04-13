@@ -25,6 +25,10 @@ namespace ChildcareApplication.AdminTools
                 string tempUN = lst_AdminList.SelectedItem.ToString();
                 fillForms(tempUN);
                 btn_DelAdmin.IsEnabled = true;
+                txt_LoginName.IsEnabled = true;
+                txt_Email.IsEnabled = true;
+                rdb_Full.IsEnabled = true;
+                rdb_Limited.IsEnabled = true;                
             }
         }
 
@@ -89,6 +93,13 @@ namespace ChildcareApplication.AdminTools
             txt_Email.Clear();
             rdb_Full.IsChecked = false;
             rdb_Limited.IsChecked = false;
+
+            btn_DelAdmin.IsEnabled = false;
+            txt_LoginName.IsEnabled = false;
+            txt_Email.IsEnabled = false;
+            rdb_Full.IsEnabled = false;
+            rdb_Limited.IsEnabled = false;   
+
         }
 
         private void btn_ChangePW_Click(object sender, RoutedEventArgs e)
