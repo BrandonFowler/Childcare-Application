@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ChildcareApplication.AdminTools
 {
@@ -85,31 +86,22 @@ namespace ChildcareApplication.AdminTools
             Properties.Settings.Default.InfantMaxAge = txt_InfantAge.Text;
             Properties.Settings.Default.RegularMaxAge = txt_RegularAge.Text;
 
-
-            try
-            {
-                Properties.Settings.Default.MonOpen = DateTime.Parse(txt_MonOpening.Text);
-                Properties.Settings.Default.MonClose = DateTime.Parse(txt_MonClosing.Text);
-                Properties.Settings.Default.TueOpen = DateTime.Parse(txt_TueOpening.Text);
-                Properties.Settings.Default.TueClose = DateTime.Parse(txt_TueClosing.Text);
-                Properties.Settings.Default.WedOpen = DateTime.Parse(txt_WedOpening.Text);
-                Properties.Settings.Default.WedClose = DateTime.Parse(txt_WedClosing.Text);
-                Properties.Settings.Default.ThuOpen = DateTime.Parse(txt_ThuOpening.Text);
-                Properties.Settings.Default.ThuClose = DateTime.Parse(txt_ThuClosing.Text);
-                Properties.Settings.Default.FriOpen = DateTime.Parse(txt_FriOpening.Text);
-                Properties.Settings.Default.FriClose = DateTime.Parse(txt_FriClosing.Text);
-                Properties.Settings.Default.SatOpen = DateTime.Parse(txt_SatOpening.Text);
-                Properties.Settings.Default.SatClose = DateTime.Parse(txt_SatClosing.Text);
-                Properties.Settings.Default.SunOpen = DateTime.Parse(txt_SunOpening.Text);
-                Properties.Settings.Default.SunClose = DateTime.Parse(txt_SunClosing.Text);
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Please enter time in the format hour:minute:second AM/PM or represented as 24 hour time", "Invalid Time Entered");
-            }
-
+            Properties.Settings.Default.MonOpen = DateTime.Parse(txt_MonOpening.Text);
+            Properties.Settings.Default.MonClose = DateTime.Parse(txt_MonClosing.Text);
+            Properties.Settings.Default.TueOpen = DateTime.Parse(txt_TueOpening.Text);
+            Properties.Settings.Default.TueClose = DateTime.Parse(txt_TueClosing.Text);
+            Properties.Settings.Default.WedOpen = DateTime.Parse(txt_WedOpening.Text);
+            Properties.Settings.Default.WedClose = DateTime.Parse(txt_WedClosing.Text);
+            Properties.Settings.Default.ThuOpen = DateTime.Parse(txt_ThuOpening.Text);
+            Properties.Settings.Default.ThuClose = DateTime.Parse(txt_ThuClosing.Text);
+            Properties.Settings.Default.FriOpen = DateTime.Parse(txt_FriOpening.Text);
+            Properties.Settings.Default.FriClose = DateTime.Parse(txt_FriClosing.Text);
+            Properties.Settings.Default.SatOpen = DateTime.Parse(txt_SatOpening.Text);
+            Properties.Settings.Default.SatClose = DateTime.Parse(txt_SatClosing.Text);
+            Properties.Settings.Default.SunOpen = DateTime.Parse(txt_SunOpening.Text);
+            Properties.Settings.Default.SunClose = DateTime.Parse(txt_SunClosing.Text);
+           
             Properties.Settings.Default.Save();
-            loadSettings();
         }
 
         private void chk_MonClosed_Checked(object sender, RoutedEventArgs e) {
@@ -209,5 +201,291 @@ namespace ChildcareApplication.AdminTools
             txt_SunOpening.IsEnabled = true;
             txt_SunClosing.IsEnabled = true;
         }
+
+        ///////////////////
+        //GotFocus Events//
+        ///////////////////
+
+        private void txt_BillingDate_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_BillingDate.SelectAll();
+        }
+
+        private void txt_MaxMonthlyFee_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_MaxMonthlyFee.SelectAll();
+        }
+
+        private void txt_ExpirationDays_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_ExpirationDays.SelectAll();
+        }
+
+        private void txt_InfantAge_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_InfantAge.SelectAll();
+        }
+
+        private void txt_RegularAge_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_RegularAge.SelectAll();
+        }
+
+        private void txt_MonOpening_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_MonOpening.SelectAll();
+        }
+
+        private void txt_MonClosing_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_MonClosing.SelectAll();
+        }
+
+        private void txt_TueOpening_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_TueOpening.SelectAll();
+        }
+
+        private void txt_TueClosing_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_TueClosing.SelectAll();
+        }
+
+        private void txt_WedOpening_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_WedOpening.SelectAll();
+        }
+
+        private void txt_WedClosing_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_WedClosing.SelectAll();
+        }
+
+        private void txt_ThuOpening_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_ThuOpening.SelectAll();
+        }
+
+        private void txt_ThuClosing_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_ThuClosing.SelectAll();
+        }
+
+        private void txt_FriOpening_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_FriOpening.SelectAll();
+        }
+
+        private void txt_FriClosing_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_FriClosing.SelectAll();
+        }
+
+        private void txt_SatOpening_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_SatOpening.SelectAll();
+        }
+
+        private void txt_SatClosing_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_SatClosing.SelectAll();
+        }
+
+        private void txt_SunOpening_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_SunOpening.SelectAll();
+        }
+
+        private void txt_SunClosing_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_SunClosing.SelectAll();
+        }
+
+        ////////////////////
+        //LostFocus Events//
+        ////////////////////
+
+        private void txt_BillingDate_LostFocus(object sender, RoutedEventArgs e)
+        {
+            int res = -1;
+
+            if (int.TryParse(txt_BillingDate.Text, out res))
+            {
+                if (res < 1 || res > 29)
+                {
+                    MessageBox.Show("Billing date must be from 1 to 29");
+                    txt_BillingDate.Focus();
+                    txt_BillingDate.SelectAll();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid Input. Billing Date must be a number from 1 to 29");
+            }
+        }
+
+        private void txt_MaxMonthlyFee_LostFocus(object sender, RoutedEventArgs e)
+        {
+            int res = -1;
+
+            if (int.TryParse(txt_MaxMonthlyFee.Text, out res))
+            {
+                if (res < 0)
+                {
+                    MessageBox.Show("Maximum Monthly Fee must be a positive number");
+                    txt_MaxMonthlyFee.Focus();
+                    txt_MaxMonthlyFee.SelectAll();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid Input. Maximum Monthly Fee must be a positive number");
+            }
+        }
+
+        private void txt_ExpirationDays_LostFocus(object sender, RoutedEventArgs e)
+        {
+            int res = -1;
+
+            if (int.TryParse(txt_ExpirationDays.Text, out res))
+            {
+                if (res < 0)
+                {
+                    MessageBox.Show("Days to hold expired records must be a positive number");
+                    txt_ExpirationDays.Focus();
+                    txt_ExpirationDays.SelectAll();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid Input. Days to hold expired records must be a positive number");
+            }
+        }
+
+        private void txt_InfantAge_LostFocus(object sender, RoutedEventArgs e)
+        {
+            int res = -1;
+
+            if (int.TryParse(txt_InfantAge.Text, out res))
+            {
+                if (res < 0 || res > int.Parse(Properties.Settings.Default.RegularMaxAge))
+                {
+                    MessageBox.Show("Infant must be a positive number less than Regular Age --- " + res);
+                    txt_ExpirationDays.Focus();
+                    txt_ExpirationDays.SelectAll();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid Input. Infant Age must be a positive number less than Regular Age");
+            }
+        }
+
+        private void txt_RegularAge_LostFocus(object sender, RoutedEventArgs e)
+        {
+            int res = -1;
+
+            if (int.TryParse(txt_RegularAge.Text, out res))
+            {
+                if (res < 0 || res < int.Parse(Properties.Settings.Default.InfantMaxAge))
+                {
+                    MessageBox.Show("Regular must be a positive number greater than Infant Age");
+                    txt_RegularAge.Focus();
+                    txt_RegularAge.SelectAll();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid Input. Regular Age must be a positive number greater than Infant Age");
+            }
+        }
+
+        private void txt_MonOpening_LostFocus(object sender, RoutedEventArgs e)
+        {
+            DateTime res;
+
+            if (DateTime.TryParse(txt_MonOpening.Text, out res))
+            {
+                if (res > Properties.Settings.Default.MonClose)
+                {
+                    MessageBox.Show("Opening time must be less than closing time");
+                }
+                else
+                {
+                    txt_MonOpening.Text = res.TimeOfDay.ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_MonOpening.Text + " is Not a valid time");
+            }
+        }
+
+        private void txt_MonClosing_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_TueOpening_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_TueClosing_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_WedOpening_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_WedClosing_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_ThuOpening_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_ThuClosing_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_FriOpening_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_FriClosing_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_SatOpening_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_SatClosing_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_SunOpening_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txt_SunClosing_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
     }
 }
