@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 
 namespace AdminTools {
     public partial class BusinessReport : Window {
+        private DataTable table;
         public BusinessReport() {
             InitializeComponent();
             InitializeCMB_Year();
@@ -164,10 +165,11 @@ namespace AdminTools {
 
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
                 
-                DataTable table = new DataTable("Parent Report");
+                DataTable table = new DataTable("Business Report");
                 adapter.Fill(table);
+                this.table = table;
 
-                BusinessDataGrid.ItemsSource = table.DefaultView;
+                businessDataGrid.ItemsSource = table.DefaultView;
 
                 connection.Close();
             } catch (Exception exception) {
@@ -177,6 +179,17 @@ namespace AdminTools {
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e) {
             this.Close();
+        }
+
+        private void btn_Print_Click(object sender, RoutedEventArgs e) {
+            PrintDialog printDialog = new PrintDialog();
+
+            if (printDialog.ShowDialog() == true) {
+                var paginator = new ReportsPaginator(this.table.Rows.Count, this.table,
+                  new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight));
+
+                printDialog.PrintDocument(paginator, "Business Report Data Table");
+            }
         }
     }
 }

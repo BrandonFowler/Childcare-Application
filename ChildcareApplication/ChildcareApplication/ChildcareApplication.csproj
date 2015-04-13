@@ -77,7 +77,9 @@
     <Compile Include="AdminTools\LinkExistingChild.xaml.cs">
       <DependentUpon>LinkExistingChild.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminTools\PageElement.cs" />
     <Compile Include="AdminTools\RegExpressions.cs" />
+    <Compile Include="AdminTools\ReportsPaginator.cs" />
     <Compile Include="AdminTools\TransactionModificationWindow.xaml.cs">
       <DependentUpon>TransactionModificationWindow.xaml</DependentUpon>
     </Compile>

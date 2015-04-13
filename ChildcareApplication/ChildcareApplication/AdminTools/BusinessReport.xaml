@@ -4,9 +4,9 @@
         Title="BusinessReport" Height="528" Width="662">
     <Grid>
         <Button x:Name="btn_CurrentMonthReport" Content="_Current Month Report" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="136" Click="btn_CurrentMonthReport_Click" Height="22" TabIndex="0"/>
-        <Button x:Name="btn_SpecificMonth" Content="_Specific Month Report" HorizontalAlignment="Left" Margin="166,37,0,0" VerticalAlignment="Top" Width="131" Height="22" Click="btn_SpecificMonth_Click" TabIndex="1"/>
-        <DataGrid x:Name="BusinessDataGrid" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="403" Width="634" IsReadOnly="True"/>
-        <ComboBox x:Name="cmb_Month" HorizontalAlignment="Left" Margin="302,37,0,0" VerticalAlignment="Top" Width="120" TabIndex="2">
+        <Button x:Name="btn_SpecificMonth" Content="_Specific Month Report" HorizontalAlignment="Left" Margin="151,37,0,0" VerticalAlignment="Top" Width="131" Height="22" Click="btn_SpecificMonth_Click" TabIndex="1"/>
+        <DataGrid x:Name="businessDataGrid" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="403" Width="634" IsReadOnly="True"/>
+        <ComboBox x:Name="cmb_Month" HorizontalAlignment="Left" Margin="287,37,0,0" VerticalAlignment="Top" Width="91" TabIndex="2">
             <ComboBoxItem Content="January"/>
             <ComboBoxItem Content="February"/>
             <ComboBoxItem Content="March"/>
@@ -20,13 +20,14 @@
             <ComboBoxItem Content="November"/>
             <ComboBoxItem Content="December"/>
         </ComboBox>
-        <ComboBox x:Name="cmb_Year" HorizontalAlignment="Left" Margin="427,37,0,0" VerticalAlignment="Top" Width="120" TabIndex="3">
+        <ComboBox x:Name="cmb_Year" HorizontalAlignment="Left" Margin="383,37,0,0" VerticalAlignment="Top" Width="77" TabIndex="3">
             <ComboBoxItem/>
             <ComboBoxItem/>
         </ComboBox>
-        <Label x:Name="lbl_Month" Content="Month" HorizontalAlignment="Left" Margin="302,11,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label x:Name="lbl_Year" Content="Year" HorizontalAlignment="Left" Margin="427,11,0,0" VerticalAlignment="Top" Width="99"/>
-        <Button x:Name="btn_Exit" Content="_Exit" HorizontalAlignment="Left" Margin="569,37,0,0" VerticalAlignment="Top" Width="75" Height="22" Click="btn_Exit_Click"/>
+        <Label x:Name="lbl_Month" Content="Month" HorizontalAlignment="Left" Margin="287,11,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label x:Name="lbl_Year" Content="Year" HorizontalAlignment="Left" Margin="383,11,0,0" VerticalAlignment="Top" Width="77"/>
+        <Button x:Name="btn_Exit" Content="_Exit" HorizontalAlignment="Left" Margin="569,37,0,0" VerticalAlignment="Top" Width="75" Height="22" Click="btn_Exit_Click" TabIndex="5"/>
+        <Button x:Name="btn_Print" Content="_Print" HorizontalAlignment="Left" Margin="477,37,0,0" VerticalAlignment="Top" Width="75" Height="22" TabIndex="4" Click="btn_Print_Click"/>
 
     </Grid>
 </Window>
