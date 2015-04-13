@@ -12,89 +12,77 @@ namespace ParentTools {
 
         public string GetClosingTime(string dayOfWeek) {
             DateTime closingTime;
-            string closing;
-            try {
-                if (dayOfWeek.CompareTo("Monday") == 0) {
-                    closingTime = Settings.Default.MonClose;
-                }
-                else if (dayOfWeek.CompareTo("Tuesday") == 0) {
-                    closingTime = Settings.Default.TueClose;
-                }
-                else if (dayOfWeek.CompareTo("Wednesday") == 0) {
-                    closingTime = Settings.Default.WedClose;
-                }
-                else if (dayOfWeek.CompareTo("Thursday") == 0) {
-                    closingTime = Settings.Default.ThuClose;
-                }
-                else if (dayOfWeek.CompareTo("Friday") == 0) {
-                    closingTime = Settings.Default.FriClose;
-                }
-                else if (dayOfWeek.CompareTo("Saturday") == 0) {
-                    closingTime = Settings.Default.SatClose;
-                }
-                else {
-                    closingTime = Settings.Default.SunClose;
-                }
-                closing = closingTime.ToString("HH:mm:ss");
-                if (closing.CompareTo("00:00:00") == 0) {
-                    return null;
-                }
+            string closing = null;
+            if (dayOfWeek.CompareTo("Monday") == 0) {
+                closingTime = Settings.Default.MonClose;
+            } else if (dayOfWeek.CompareTo("Tuesday") == 0) {
+                closingTime = Settings.Default.TueClose;
+            } else if (dayOfWeek.CompareTo("Wednesday") == 0) {
+                closingTime = Settings.Default.WedClose;
+            } else if (dayOfWeek.CompareTo("Thursday") == 0) {
+                closingTime = Settings.Default.ThuClose;
+            } else if (dayOfWeek.CompareTo("Friday") == 0) {
+                closingTime = Settings.Default.FriClose;
+            } else if (dayOfWeek.CompareTo("Saturday") == 0) {
+                closingTime = Settings.Default.SatClose;
+            } else {
+                closingTime = Settings.Default.SunClose;
             }
-            catch {
-                MessageBox.Show("Error: Unable to retrieve settings for closing time.");
+            closing = closingTime.ToString("HH:mm:ss");
+            if (closing.CompareTo("00:00:00") == 0) {
                 return null;
             }
+            MessageBox.Show("Error: Unable to retrieve settings for closing time.");
             return closing;
         }
 
         public int GetRegularChildCap() {
-            try {
-                return Convert.ToInt32(Settings.Default.RegularMaxAge);
+            int cap;
+            if (Int32.TryParse(Settings.Default.RegularMaxAge, out cap)) {
+                return cap;
             }
-            catch (Exception) {
-                MessageBox.Show("Error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
-                return 8;
-            }
+            MessageBox.Show("Error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
+            return 8;
+
         }
 
         public int GetInfantCap() {
-            try {
-                return Convert.ToInt32(Settings.Default.InfantMaxAge);
+            int cap;
+            if (Int32.TryParse(Settings.Default.InfantMaxAge, out cap)) {
+                return cap;
             }
-            catch (Exception) {
-                MessageBox.Show("Error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
-                return 1;
-            }
+            MessageBox.Show("Error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
+            return 1;
+
         }
 
         public int GetBillingEnd() {
-            try {
-                return Convert.ToInt32(Settings.Default.BillingStartDate) + 1;
+            int cap;
+            if (Int32.TryParse(Settings.Default.BillingStartDate, out cap)) {
+                return cap-1;
             }
-            catch (Exception) {
-                MessageBox.Show("Error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
-                return 19;
-            }
+            MessageBox.Show("Error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
+            return 19;
+
         }
 
         public int GetBillingStart() {
-            try {
-                return Convert.ToInt32(Settings.Default.BillingStartDate);
+            int cap;
+            if (Int32.TryParse(Settings.Default.BillingStartDate, out cap)) {
+                return cap;
             }
-            catch (Exception) {
-                MessageBox.Show("Error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
-                return 20;
-            }
+            MessageBox.Show("Error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
+            return 20;
+
         }
 
         public int GetBillingCap() {
-            try {
-                return Convert.ToInt32(Settings.Default.MaxMonthlyFee);
+            int cap;
+            if (Int32.TryParse(Settings.Default.MaxMonthlyFee, out cap)) {
+                return cap;
             }
-            catch (Exception) {
-                MessageBox.Show("Error: Unable to retrieve settings information, fee may be recorded incorrectly.");
-                return 100;
-            }
+            MessageBox.Show("Error: Unable to retrieve settings information, fee may be recorded incorrectly.");
+            return 100;
         }
 
         public string CheckAgeGroup(string birthday, string date) {
