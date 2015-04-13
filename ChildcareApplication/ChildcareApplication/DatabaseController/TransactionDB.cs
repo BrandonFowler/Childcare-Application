@@ -137,8 +137,9 @@ namespace DatabaseController {
             string allowanceID = "";
 
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
-            String query = "SELECT Allowance_ID FROM Guardian Natural Join AllowedConnections Natural Join ";
-            query += "Child Where Guardian.FirstName = '" + guardianFirst + "' and Guardian.LastName = '" + guardianLast;
+            String query = "SELECT Allowance_ID FROM Guardian Natural Join AllowedConnections Join ";
+            query += "Child ON AllowedConnections.Child_ID = Child.Child_ID Where Guardian.FirstName = '";
+            query += guardianFirst + "' and Guardian.LastName = '" + guardianLast;
             query += "' and Child.FirstName = '" + childFirst + "' and Child.LastName = '" + childLast + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
 
@@ -151,6 +152,60 @@ namespace DatabaseController {
             }
 
             return allowanceID;
+        }
+
+        //returns a time string in 12 hour clock form (AM/PM)
+        public string GetTwelveHourTime(string transID, string fieldName) {
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            String query = "SELECT " + fieldName + " FROM ChildcareTransaction where ChildcareTransaction_ID = '" + transID + "';";
+            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            string time = "";
+
+            try {
+                connection.Open();
+                time = Convert.ToString(cmd.ExecuteScalar());
+                connection.Close();
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
+            time = AMPMFormat(time);
+            return time;
+        }
+
+        //expects time to be of 'MM/DD/YYYY HH:MM:SS AM' format
+        private string AMPMFormat(string time) {
+            string[] splitTime = time.Split(' ');
+
+            return splitTime[1] + " " + splitTime[2];
+        }
+
+        public string GetTransactionDate(string transID) {
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            String query = "SELECT TransactionDate FROM ChildcareTransaction where ChildcareTransaction_ID = '" + transID + "';";
+            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            string date = "";
+
+            try {
+                connection.Open();
+                date = Convert.ToString(cmd.ExecuteScalar());
+                connection.Close();
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
+            date = (date.Replace('-', '/')).Split(' ')[0];
+            return ZeroFillDate(date);
+        }
+
+        private string ZeroFillDate(string date) {
+            string[] splitDate = date.Split('/');
+
+            if (splitDate[0].Length != 2) {
+                splitDate[0] = "0" + splitDate[0];
+            }
+            if (splitDate[1].Length != 2) {
+                splitDate[1] = "0" + splitDate[1];
+            }
+            return splitDate[0] + "/" + splitDate[1] + "/" + splitDate[2];
         }
     }
 }

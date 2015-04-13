@@ -43,11 +43,11 @@ namespace AdminTools {
                 cmd.ExecuteNonQuery();
 
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
-                
+
                 DataTable table = new DataTable("Transactions");
                 adapter.Fill(table);
-                
-                BusinessDataGrid.ItemsSource = table.DefaultView;
+
+                TransactionDataGrid.ItemsSource = table.DefaultView;
 
                 connection.Close();
             } catch (Exception exception) {
@@ -64,10 +64,7 @@ namespace AdminTools {
         }
 
         private void btn_EditTransaction_Click(object sender, RoutedEventArgs e) {
-            if(VerifyTextBox()) {
-                TransactionModificationWindow win = new TransactionModificationWindow(txt_TransactionID.Text);
-                win.ShowDialog();
-            }
+            EditTransaction();
         }
 
         private void btn_DeleteTransaction_Click(object sender, RoutedEventArgs e) {
@@ -100,6 +97,20 @@ namespace AdminTools {
         private void btn_NewTransaction_Click(object sender, RoutedEventArgs e) {
             TransactionModificationWindow win = new TransactionModificationWindow();
             win.ShowDialog();
+        }
+
+        private void txt_TransactionID_KeyUp(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                EditTransaction();
+            }
+        }
+
+        private void EditTransaction() {
+            if (VerifyTextBox()) {
+                TransactionModificationWindow win = new TransactionModificationWindow(txt_TransactionID.Text);
+                win.ShowDialog();
+                this.LoadTransactions();
+            }
         }
     }
 }
