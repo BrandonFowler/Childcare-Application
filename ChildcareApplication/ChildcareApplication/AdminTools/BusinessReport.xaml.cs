@@ -18,9 +18,13 @@ using System.Windows.Shapes;
 
 namespace AdminTools {
     public partial class BusinessReport : Window {
+        private DataTable table;
+        private bool reportLoaded;
+
         public BusinessReport() {
             InitializeComponent();
             InitializeCMB_Year();
+            reportLoaded = false;
         }
 
         private void InitializeCMB_Year() {
@@ -146,7 +150,7 @@ namespace AdminTools {
         private void BuildQuery(String start, String end) {
             string query = "SELECT Guardian.Guardian_ID AS ID, Guardian.FirstName AS First, Guardian.LastName AS Last, ";
             query += "Guardian.Phone, Guardian.Address1, Guardian.Address2, Guardian.City, Guardian.StateAbrv AS State, Guardian.Zip, ";
-            query += "'$' || printf('%.2f', SUM(ChildcareTransaction.TransactionTotal)) AS 'Total Charges', '$' || Family.FamilyTotal AS 'Current Due' ";
+            query += "'$' || printf('%.2f', SUM(ChildcareTransaction.TransactionTotal)) AS 'Total Charges' ";
             query += "From Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ChildcareTransaction NATURAL JOIN Family ";
             query += "WHERE ChildcareTransaction.TransactionDate BETWEEN '" + start + "' AND '" + end + "' ";
             query += "GROUP BY Guardian.Guardian_ID";
@@ -164,10 +168,12 @@ namespace AdminTools {
 
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
                 
-                DataTable table = new DataTable("Parent Report");
+                DataTable table = new DataTable("Business Report");
                 adapter.Fill(table);
+                this.table = table;
 
-                BusinessDataGrid.ItemsSource = table.DefaultView;
+                businessDataGrid.ItemsSource = table.DefaultView;
+                this.reportLoaded = true;
 
                 connection.Close();
             } catch (Exception exception) {
@@ -177,6 +183,21 @@ namespace AdminTools {
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e) {
             this.Close();
+        }
+
+        private void btn_Print_Click(object sender, RoutedEventArgs e) {
+            if (this.reportLoaded) {
+                PrintDialog printDialog = new PrintDialog();
+
+                if (printDialog.ShowDialog() == true) {
+                    var paginator = new ReportsPaginator(this.table.Rows.Count, this.table,
+                      new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight));
+
+                    printDialog.PrintDocument(paginator, "Business Report Data Table");
+                }
+            } else {
+                MessageBox.Show("You must load a report before you can print one!");
+            }
         }
     }
 }

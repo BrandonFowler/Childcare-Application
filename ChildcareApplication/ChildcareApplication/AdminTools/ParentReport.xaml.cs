@@ -18,11 +18,15 @@ using DatabaseController;
 
 namespace AdminTools {
     public partial class ParentReport : Window {
+        private DataTable table;
+        private bool reportLoaded;
+
         public ParentReport() {
             InitializeComponent();
             cnv_ParentIcon.Background = new SolidColorBrush(Colors.Aqua);
             this.txt_ParentID.Focus();
-            this.ParentDataGrid.IsTabStop = false;
+            this.parentDataGrid.IsTabStop = false;
+            this.reportLoaded = false;
         }
 
         //Loads a report based on the passed in MySQL query
@@ -37,8 +41,10 @@ namespace AdminTools {
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
                 DataTable table = new DataTable("Parent Report");
                 adapter.Fill(table);
-                ParentDataGrid.ItemsSource = table.DefaultView;
-
+                this.table = table;
+                parentDataGrid.ItemsSource = table.DefaultView;
+                this.reportLoaded = true;
+                
                 connection.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
@@ -234,6 +240,21 @@ namespace AdminTools {
 
         private void txt_ToDate_GotFocus(object sender, RoutedEventArgs e) {
             Dispatcher.BeginInvoke((Action)txt_ToDate.SelectAll);
+        }
+
+        private void btn_Print_Click(object sender, RoutedEventArgs e) {
+            if (this.reportLoaded) {
+                PrintDialog printDialog = new PrintDialog();
+
+                if (printDialog.ShowDialog() == true) {
+                    var paginator = new ReportsPaginator(this.table.Rows.Count, this.table,
+                      new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight));
+
+                    printDialog.PrintDocument(paginator, "Parent Report Data Table");
+                }
+            } else {
+                MessageBox.Show("You must load a report before you can print one!");
+            }
         }
     }
 }
