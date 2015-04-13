@@ -14,6 +14,7 @@ namespace ParentTools {
         private string guardianID;
         private ParentToolsDB db;
         private DateTime updateTime;
+        private ParentToolsSettings settings;
 
         public ChildLogin(string ID) {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace ParentTools {
             lbl_Time.DataContext = updateTime;
             lst_CheckInBox.GotFocus += CheckInGotFocus;
             lst_CheckOutBox.SelectionChanged += CheckOutBoxSelectionChanged;
+            settings = new ParentToolsSettings(); ;
         }
 
         private void btn_LogOutParent_Click(object sender, RoutedEventArgs e) {
@@ -175,7 +177,7 @@ namespace ParentTools {
             TimeSpan TimeSpanTime = TimeSpan.Parse(currentTimeString);
             checkInTime = Convert.ToDateTime(checkInTime).ToString("HH:mm:ss");
             TimeSpan TimeSpanCheckInTime = TimeSpan.Parse(checkInTime);
-            double lateTime = db.CheckIfPastClosing(currentDateTime.DayOfWeek.ToString(), TimeSpanTime);
+            double lateTime = settings.CheckIfPastClosing(currentDateTime.DayOfWeek.ToString(), TimeSpanTime);
             double hourDifference = TimeSpanTime.Hours - TimeSpanCheckInTime.Hours;
             double minuteDifference = TimeSpanTime.Minutes - TimeSpanCheckInTime.Minutes;
             double totalCheckedInHours = hourDifference + (minuteDifference / 60.0);
@@ -261,9 +263,9 @@ namespace ParentTools {
 
         public double BillingCapCalc(string eventName, string guardianID, string transactionDate, double eventFee) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
-            double cap = db.GetBillingCap();
-            int billingStart = db.GetBillingStart();
-            int billingEnd = db.GetBillingEnd();
+            double cap = settings.GetBillingCap();
+            int billingStart = settings.GetBillingStart();
+            int billingEnd = settings.GetBillingEnd();
             DateTime DTStart;
             DateTime DTEnd;
             if (DateTime.Now.Day > billingEnd) {

@@ -2,15 +2,18 @@
 using System;
 using System.Data;
 using System.Windows;
+using ChildcareApplication.Properties;
 
 namespace DatabaseController {
 
     class ParentToolsDB {
 
         private SQLiteConnection conn;
+        private ParentTools.ParentToolsSettings settings;
 
         public ParentToolsDB() {
             conn = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            settings = new ParentTools.ParentToolsSettings();
         }
 
         public bool ValidateLogin(string ID, string PIN) {
@@ -137,13 +140,13 @@ namespace DatabaseController {
             string date = Convert.ToDateTime(dateTime).ToString("yyyy-MM-dd");
             string time = Convert.ToDateTime(dateTime).ToString("HH:mm:ss");
             TimeSpan TSTime = TimeSpan.Parse(time);
-            if (CheckIfPastClosing(dt.DayOfWeek.ToString(), TSTime) > 0){
+            if (settings.CheckIfPastClosing(dt.DayOfWeek.ToString(), TSTime) > 0){
                 MessageBox.Show("Cannot check in a child after normal operating hours");
                 return false;
             }
             string ageGroup;
             if (eventName.CompareTo("Regular Childcare") == 0) {
-                ageGroup = CheckAgeGroup(birthday, date);
+                ageGroup = settings.CheckAgeGroup(birthday, date);
                 if (ageGroup.CompareTo("Infant") == 0) {
                     eventName = "Infant Childcare";
                 }
@@ -333,26 +336,6 @@ namespace DatabaseController {
             }
         }
 
-        public string GetClosingTime(string dayOfWeek) {
-            string sql = "select Closing " +
-                         "from OperatingHours " +
-                         "where OperatingWeekday = @dayOfWeek";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
-            command.Parameters.Add(new SQLiteParameter("@dayOfWeek", dayOfWeek));
-            try{
-                conn.Open();
-                string closingTime = Convert.ToString(command.ExecuteScalar());
-                conn.Close();
-
-                return closingTime;
-            }
-            catch (Exception){
-                conn.Close();
-                MessageBox.Show("Database connection error: Unable to retrieve critical information. Any late fees have not been recorded.");
-                return null;
-            }
-        }
-
         public double GetLateFee(string eventName) {
             string sql = "select HourlyPrice " +
                          "from EventData " +
@@ -501,106 +484,6 @@ namespace DatabaseController {
             }
         }
 
-        public int GetBillingCap() {
-            string settingName = "Regular Care Maximum Monthly Charge";
-            String sql = "select SettingValue " +
-                         "from ApplicationSettings " +
-                         "where SettingName = @settingName";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
-            command.Parameters.Add(new SQLiteParameter("@settingName", settingName));
-            try {
-                conn.Open();
-                object recordFound = command.ExecuteScalar();
-                conn.Close();
-                return Convert.ToInt32(recordFound);
-            }
-            catch (Exception) {
-                conn.Close();
-                MessageBox.Show("Database connection error: Unable to retrieve settings information, fee may be recorded incorrectly.");
-                return 100;
-            }
-        }
-
-        public int GetBillingEnd() {
-            string settingName = "Billing End Date";
-            String sql = "select SettingValue " +
-                         "from ApplicationSettings " +
-                         "where SettingName = @settingName";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
-            command.Parameters.Add(new SQLiteParameter("@settingName", settingName));
-            try {
-                conn.Open();
-                object recordFound = command.ExecuteScalar();
-                conn.Close();
-                return Convert.ToInt32(recordFound);
-            }
-            catch (Exception) {
-                conn.Close();
-                MessageBox.Show("Database connection error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
-                return 19;
-            }
-        }
-
-        public int GetBillingStart() {
-            string settingName = "Billing Start Date";
-            String sql = "select SettingValue " +
-                         "from ApplicationSettings " +
-                         "where SettingName = @settingName";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
-            command.Parameters.Add(new SQLiteParameter("@settingName", settingName));
-            try {
-                conn.Open();
-                object recordFound = command.ExecuteScalar();
-                conn.Close();
-                return Convert.ToInt32(recordFound);
-            }
-            catch (Exception) {
-                conn.Close();
-                MessageBox.Show("Database connection error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
-                return 20;
-            }
-        }
-
-        public int GetInfantCap() {
-            string settingName = "Infant Age End";
-            String sql = "select SettingValue " +
-                         "from ApplicationSettings " +
-                         "where SettingName = @settingName";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
-            command.Parameters.Add(new SQLiteParameter("@settingName", settingName));
-            try {
-                conn.Open();
-                object recordFound = command.ExecuteScalar();
-                conn.Close();
-                return Convert.ToInt32(recordFound);
-            }
-            catch (Exception) {
-                conn.Close();
-                MessageBox.Show("Database connection error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
-                return 1;
-            }
-        }
-
-        public int GetRegularChildCap() {
-            string settingName = "Regular Age End";
-            String sql = "select SettingValue " +
-                         "from ApplicationSettings " +
-                         "where SettingName = @settingName";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
-            command.Parameters.Add(new SQLiteParameter("@settingName", settingName));
-            try {
-                conn.Open();
-                object recordFound = command.ExecuteScalar();
-                conn.Close();
-                return Convert.ToInt32(recordFound);
-            }
-            catch (Exception) {
-                conn.Close();
-                MessageBox.Show("Database connection error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
-                return 8;
-            }
-        }
-
         public string[,] RetieveGuardiansByLastName(string name) {
             string sql = "select FirstName, LastName, Guardian_ID " +
                          "from Guardian " +
@@ -675,37 +558,6 @@ namespace DatabaseController {
                 MessageBox.Show("Database connection error: Unable to retrieve guardian picture.");
                 return null;
             }
-        }
-
-        public string CheckAgeGroup(string birthday, string date) {
-            DateTime DTBirthday = DateTime.Parse(birthday);
-            DateTime DTDate = DateTime.Parse(date);
-            TimeSpan difference = DTDate - DTBirthday;
-            double infantDays = GetInfantCap() * 365.242;
-            double regularDays = GetRegularChildCap() * 365.242;
-            if (difference.Days < infantDays) {
-                return "Infant";
-            }
-            else if (difference.Days < regularDays) {
-                return "Regular";
-            }
-            return "Adolescent";
-        }
-
-        public double CheckIfPastClosing(string dayOfWeek, TimeSpan time) {
-            string closingTime = GetClosingTime(dayOfWeek);
-            if (string.IsNullOrEmpty(closingTime)) {
-                return 1;
-            }
-            closingTime = Convert.ToDateTime(closingTime).ToString("HH:mm:ss");
-            TimeSpan TSClosingTime = TimeSpan.Parse(closingTime);
-            double hourDifference = time.Hours - TSClosingTime.Hours;
-            double minuteDifference = time.Minutes - TSClosingTime.Minutes;
-            double hours = hourDifference + (minuteDifference / 60.0);
-            if (hours < 0) {
-                return 0;
-            }
-            return hours;
         }
 
     }

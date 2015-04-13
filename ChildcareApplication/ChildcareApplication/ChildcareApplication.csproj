@@ -89,6 +89,7 @@
     <Compile Include="AdminTools\PaymentEntry.xaml.cs">
       <DependentUpon>PaymentEntry.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ParentTools\ParentToolsSettings.cs" />
     <Compile Include="DatabaseController\SettingsDB.cs" />
     <Compile Include="DatabaseController\TransactionDB.cs" />
     <Compile Include="ParentTools\AdminChildCheckIn.xaml.cs">

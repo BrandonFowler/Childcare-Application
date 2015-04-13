@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Windows;
+using ChildcareApplication.Properties;
 
 
 namespace ChildcareApplication.DatabaseController {
@@ -18,7 +19,14 @@ namespace ChildcareApplication.DatabaseController {
 
         public bool Clean() {
             bool success = true;
-            int daysToKeepRecords = GetRecordExpiration()*(-1);
+            int daysToKeepRecords;
+            try {
+                daysToKeepRecords = Convert.ToInt32(Settings.Default.HoldExpiredRecords) * (-1);
+            }
+            catch {
+                MessageBox.Show("Error: Unable to retrieve settings data, database clean up routine failed.");
+                return false;
+            }
             if (daysToKeepRecords == 0) {
                  return false;
             }
