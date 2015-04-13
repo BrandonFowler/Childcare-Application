@@ -19,17 +19,17 @@ namespace AdminTools {
 
         public ReportsPaginator(int rows, DataTable table, Size pageSize) {
             this.rows = rows;
-            PageSize = pageSize;
             this.table = table;
+            PageSize = pageSize;
         }
 
         public override DocumentPage GetPage(int pageNumber) {
             int currentRow = this.rowsPerPage * pageNumber;
 
             var page = new PageElement(currentRow, Math.Min(this.rowsPerPage, this.rows - currentRow), this.table) {
-                  Width = PageSize.Width,
-                  Height = PageSize.Height,
-              };
+                Width = PageSize.Width,
+                Height = PageSize.Height,
+            };
 
             page.Measure(PageSize);
             page.Arrange(new Rect(new Point(0, 0), PageSize));
@@ -51,8 +51,11 @@ namespace AdminTools {
             }
             set {
                 this.pageSize = value;
-
-                this.rowsPerPage = PageElement.RowsPerPage(this.pageSize.Height);
+                if (this.table.TableName == "Business Report") {
+                    this.rowsPerPage = PageElement.RowsPerPage(this.pageSize.Width);
+                } else {
+                    this.rowsPerPage = PageElement.RowsPerPage(this.pageSize.Height);
+                }
 
                 //Can't print anything if you can't fit a row on a page
                 Debug.Assert(this.rowsPerPage > 0);

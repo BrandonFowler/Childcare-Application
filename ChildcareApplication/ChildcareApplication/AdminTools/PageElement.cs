@@ -30,7 +30,7 @@ namespace AdminTools {
         }
 
         public static int RowsPerPage(double height) {
-            return (int)Math.Floor((height - (2 * PageMargin) - HeaderHeight) / LineHeight);
+            return ((int)Math.Floor((height - (2 * PageMargin) - HeaderHeight) / LineHeight));
         }
 
         private static FormattedText MakeText(string text) {
@@ -54,7 +54,7 @@ namespace AdminTools {
 
             for (int i = currentRow; i < currentRow + rows; i++) {
                 for (int j = 0; j < this.table.Columns.Count; j++) {
-                    dc.DrawText(MakeText(this.table.Rows[currentRow].ItemArray[j].ToString()), curPoint);
+                    dc.DrawText(MakeText(this.table.Rows[i].ItemArray[j].ToString()), curPoint);
                     curPoint.X += ColumnWidth;
                 }
                 curPoint.Y += LineHeight;

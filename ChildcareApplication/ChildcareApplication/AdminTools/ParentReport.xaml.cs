@@ -19,11 +19,14 @@ using DatabaseController;
 namespace AdminTools {
     public partial class ParentReport : Window {
         private DataTable table;
+        private bool reportLoaded;
+
         public ParentReport() {
             InitializeComponent();
             cnv_ParentIcon.Background = new SolidColorBrush(Colors.Aqua);
             this.txt_ParentID.Focus();
             this.parentDataGrid.IsTabStop = false;
+            this.reportLoaded = false;
         }
 
         //Loads a report based on the passed in MySQL query
@@ -40,6 +43,7 @@ namespace AdminTools {
                 adapter.Fill(table);
                 this.table = table;
                 parentDataGrid.ItemsSource = table.DefaultView;
+                this.reportLoaded = true;
                 
                 connection.Close();
             } catch (Exception exception) {
@@ -239,13 +243,17 @@ namespace AdminTools {
         }
 
         private void btn_Print_Click(object sender, RoutedEventArgs e) {
-            PrintDialog printDialog = new PrintDialog();
+            if (this.reportLoaded) {
+                PrintDialog printDialog = new PrintDialog();
 
-            if (printDialog.ShowDialog() == true) {
-                var paginator = new ReportsPaginator(this.table.Rows.Count, this.table,
-                  new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight));
+                if (printDialog.ShowDialog() == true) {
+                    var paginator = new ReportsPaginator(this.table.Rows.Count, this.table,
+                      new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight));
 
-                printDialog.PrintDocument(paginator, "Parent Report Data Table");
+                    printDialog.PrintDocument(paginator, "Parent Report Data Table");
+                }
+            } else {
+                MessageBox.Show("You must load a report before you can print one!");
             }
         }
     }
