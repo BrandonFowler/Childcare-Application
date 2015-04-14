@@ -32,7 +32,6 @@ namespace ParentTools {
             if (closing.CompareTo("00:00:00") == 0) {
                 return null;
             }
-            MessageBox.Show("Error: Unable to retrieve settings for closing time.");
             return closing;
         }
 
