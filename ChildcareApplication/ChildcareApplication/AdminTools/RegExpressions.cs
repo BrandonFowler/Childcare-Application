@@ -134,6 +134,18 @@ namespace ChildcareApplication.AdminTools
             return false;
         }//end regexCityState
        
+        public static bool ValidateEventName(string data) {
 
+            Regex regex = new Regex(@"(^([a-zA-Z]+\s?)+$)");
+            Match match = regex.Match(data);
+
+            if (match.Success)
+                return true;
+
+            MessageBox.Show("The word " + data + " is not valid. Please re-enter.");
+            return false;
+            
+
+        }
     }
 }
