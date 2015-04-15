@@ -47,6 +47,7 @@
         <TextBox x:Name="txt_InfantAge" HorizontalAlignment="Left" Height="23" Margin="55,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="4" GotFocus="txt_InfantAge_GotFocus" LostFocus="txt_InfantAge_LostFocus"/>
         <Label x:Name="lbl_RegularAge" Content="Regular Age End (in years)" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txt_RegularAge" HorizontalAlignment="Left" Height="23" Margin="55,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="5" GotFocus="txt_RegularAge_GotFocus" LostFocus="txt_RegularAge_LostFocus"/>
+        <TextBox x:Name="txt_Status" HorizontalAlignment="Left" Height="23" Margin="374,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AllowDrop="False" IsHitTestVisible="False" TabIndex="99" IsUndoEnabled="False" IsReadOnly="True" FontWeight="Bold"/>
 
     </Grid>
 </Window>
