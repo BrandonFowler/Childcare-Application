@@ -191,6 +191,11 @@ namespace AdminTools {
                 txt_EventName.Focus();
                 return false;
             }
+            if (!RegExpressions.ValidateEventName(txt_EventName.Text)) {
+                MessageBox.Show("Event names may only contain letters and spaces.");
+                txt_EventName.Focus();
+                return false;
+            }
             if (cmb_PriceType.SelectedIndex == -1) {
                 MessageBox.Show("You must select a price type from the drop down menu.");
                 cmb_PriceType.Focus();
