@@ -129,11 +129,20 @@ namespace AdminTools {
 
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
 
-            bool? delete;
+            /*bool? delete;
              
             DeleteConfirmation DeleteConformation = new DeleteConfirmation();
             delete = DeleteConformation.ShowDialog();
             if ((bool)delete == true)
+            {
+                string pID = txt_IDNumber.Text;
+                this.db.DeleteParentInfo(pID);
+                ClearFields();
+                DisableForm(); 
+            }*/
+
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you wish to delete this person?", "Deletion Conformation", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
             {
                 string pID = txt_IDNumber.Text;
                 this.db.DeleteParentInfo(pID);

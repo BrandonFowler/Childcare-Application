@@ -101,7 +101,7 @@ namespace AdminTools {
         }
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
 
-            bool? delete;
+            /*bool? delete;
             if (lst_ChildBox.SelectedItem != null)
             {
                 DeleteConfirmation DeleteConformation = new DeleteConfirmation();
@@ -118,7 +118,20 @@ namespace AdminTools {
                     setChildBox();
                     ClearFields();
                 }
+            }*/
+
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you wish to delete this person?", "Deletion Conformation", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
+                string pID = txt_IDNumber.Text;
+                this.db.DeleteChildInfo(cID);
+                this.db.DeleteAllowedConnection(cID, pID);
+                lst_ChildBox.Items.Clear();
+                setChildBox();
+                ClearFields();
             }
+
 
         }//end btn_Delete_Click
 

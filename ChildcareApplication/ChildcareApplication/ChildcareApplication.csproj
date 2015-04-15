@@ -159,10 +159,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AdminTools\DeleteConfirmation.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="AdminTools\PaymentEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -214,9 +210,6 @@
     </Compile>
     <Compile Include="AdminTools\ParentIDEntry.xaml.cs">
       <DependentUpon>ParentIDEntry.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AdminTools\DeleteConfirmation.xaml.cs">
-      <DependentUpon>DeleteConfirmation.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
