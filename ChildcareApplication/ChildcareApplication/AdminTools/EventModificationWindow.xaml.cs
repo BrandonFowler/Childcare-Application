@@ -18,18 +18,20 @@ using System.Windows.Shapes;
 
 namespace AdminTools {
     public partial class EventModificationWindow : Window {
-        private bool valueChanged;
+        private bool valueChanged, maxHoursChanged;
         String oldEventName;
 
         public EventModificationWindow() {
             InitializeComponent();
             valueChanged = false;
+            maxHoursChanged = false;
         }
 
         public EventModificationWindow(String oldEventName) {
             InitializeComponent();
             LoadData(oldEventName);
             valueChanged = false;
+            maxHoursChanged = false;
             this.oldEventName = oldEventName;
         }
 
@@ -49,6 +51,7 @@ namespace AdminTools {
 
             SetPriceCombo(eventData);
             SetAvailability(eventData);
+            SetMaxHours(eventData);
         }
 
         private void SetPriceCombo(string[] eventData) {
@@ -93,6 +96,12 @@ namespace AdminTools {
                 txt_MonthNum.Visibility = Visibility.Hidden;
             } else { //always available
                 cmb_Occurence.SelectedIndex = 0;
+            }
+        }
+
+        private void SetMaxHours(string[] eventInfo) {
+            if (eventInfo[8] != null) {
+                txt_MaxHours.Text = eventInfo[8];
             }
         }
 
@@ -164,7 +173,14 @@ namespace AdminTools {
                 } else {
                     EditEventNoDiscount();
                 }
-
+                if (this.maxHoursChanged) {
+                    EventModificationDB eventDB = new EventModificationDB();
+                    if (txt_MaxHours.Text != "") {
+                        eventDB.UpdateMaxHours(txt_EventName.Text, "'" + txt_MaxHours.Text + "'");
+                    } else {
+                        eventDB.UpdateMaxHours(txt_EventName.Text, "null");
+                    }
+                }
                 CloseWindow();
             }
         }
@@ -172,23 +188,28 @@ namespace AdminTools {
         private bool FormDataValid() {
             if (txt_EventName.Text.Length < 1) {
                 MessageBox.Show("You must enter an event name.");
+                txt_EventName.Focus();
                 return false;
             }
             if (cmb_PriceType.SelectedIndex == -1) {
                 MessageBox.Show("You must select a price type from the drop down menu.");
+                cmb_PriceType.Focus();
                 return false;
             }
             double temp;
             if (!Double.TryParse(txt_Rate.Text, out temp)) {
                 MessageBox.Show("You must enter a valid dollar figure in the Rate box.");
+                txt_Rate.Focus();
                 return false;
             }
             if (txt_DiscountPrice.Text != "" && !Double.TryParse(txt_DiscountPrice.Text, out temp)) {
                 MessageBox.Show("You must enter a valid dollar figure in the Discount Rate box.");
+                txt_DiscountPrice.Focus();
                 return false;
             }
             if (cmb_Occurence.SelectedIndex == -1) {
                 MessageBox.Show("You must select an event occurence from the drop down menu.");
+                cmb_Occurence.Focus();
                 return false;
             }
             if (cmb_Occurence.SelectedIndex == 1) {
@@ -198,6 +219,13 @@ namespace AdminTools {
             }
             if (cmb_Occurence.SelectedIndex == 2 && cmb_DayName.SelectedIndex == -1) {
                 MessageBox.Show("You must select a valid day of the week from the drop down menu.");
+                cmb_Occurence.Focus();
+                return false;
+            }
+            int tempInt;
+            if (txt_MaxHours.Text != "" && !Int32.TryParse(txt_MaxHours.Text, out tempInt)) {
+                MessageBox.Show("You must enter a valid integer in the maximum hours text box.");
+                txt_MaxHours.Focus();
                 return false;
             }
             return true;
@@ -328,10 +356,12 @@ namespace AdminTools {
             int monthNum = 0;
             if (!(Int32.TryParse(txt_DayOfMonth.Text, out dayNum))) { 
                 MessageBox.Show("You must enter a number in the Day of Month box.");
+                txt_DayOfMonth.Focus();
                 return false;
             }
             if (!(Int32.TryParse(txt_MonthNum.Text, out monthNum) && monthNum > 0 && monthNum < 13)) {
                 MessageBox.Show("You must enter a number in the Month number box.");
+                txt_MonthNum.Focus();
                 return false;
             }
             GregorianCalendar cal = new GregorianCalendar();
@@ -339,8 +369,78 @@ namespace AdminTools {
                 return true;
             } else {
                 MessageBox.Show("You must enter a valid month number and day number in the month number and day number boxes!");
+                txt_DayOfMonth.Focus();
             }
             return false;
+        }
+
+        private void txt_MaxHours_TextChanged(object sender, TextChangedEventArgs e) {
+            this.valueChanged = true;
+            this.maxHoursChanged = true;
+        }
+
+        private void txt_MaxHours_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)txt_MaxHours.SelectAll);
+        }
+
+        private void txt_EventName_KeyUp(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                cmb_PriceType.Focus();
+            }
+        }
+
+        private void txt_Rate_KeyUp(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                txt_DiscountPrice.Focus();
+            }
+        }
+
+        private void txt_DiscountPrice_KeyUp(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                cmb_Occurence.Focus();
+            }
+        }
+
+        private void txt_MaxHours_KeyUp(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                btn_Submit.Focus();
+            }
+        }
+
+        private void txt_MonthNum_KeyUp(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                txt_MaxHours.Focus();
+            }
+        }
+
+        private void txt_DayOfMonth_KeyUp(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                txt_MonthNum.Focus();
+            }
+        }
+
+        private void cmb_PriceType_KeyUp(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                txt_Rate.Focus();
+            }
+        }
+
+        private void cmb_Occurence_KeyUp(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                if (cmb_Occurence.SelectedIndex == 0) { //always available
+                    txt_MaxHours.Focus();
+                } else if (cmb_Occurence.SelectedIndex == 1) { //specific day
+                    txt_DayOfMonth.Focus();
+                } else if (cmb_Occurence.SelectedIndex == 2) { //day of week
+                    cmb_DayName.Focus();
+                }
+            }
+        }
+
+        private void cmb_DayName_KeyUp(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                txt_MaxHours.Focus();
+            }
         }
     }
 }

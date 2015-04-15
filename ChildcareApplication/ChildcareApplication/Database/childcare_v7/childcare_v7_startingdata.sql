@@ -54,7 +54,7 @@ VALUES ("Infant Childcare",
 		NULL);
 
 INSERT INTO EventData
-VALUES ("Parent's Night Out",
+VALUES ("Parents Night Out",
         NULL,
         NULL,
         18,

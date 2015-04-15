@@ -14,7 +14,7 @@ namespace DatabaseController {
         public void HourlyPriceAlwaysAvailable(String eventName, Double hourlyPrice, Double hourlyDiscount) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO EventData VALUES ('" + eventName + "', '" + hourlyPrice;
-            query += "', '" + hourlyDiscount + "', null, null, null, null, null, null);";
+            query += "', '" + hourlyDiscount + "', null, null, null, null, null, null, null);";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
@@ -29,7 +29,7 @@ namespace DatabaseController {
         public void DailyPriceAlwaysAvailable(String eventName, Double dailyPrice, Double dailyDiscount) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO EventData VALUES ('" + eventName + "', null ";
-            query += ", null, '" + dailyPrice + "', '" + dailyDiscount + "', null, null, null, null);";
+            query += ", null, '" + dailyPrice + "', '" + dailyDiscount + "', null, null, null, null, null);";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
@@ -44,7 +44,7 @@ namespace DatabaseController {
         public void HourlyPriceSpecificDay(String eventName, Double hourlyPrice, Double hourlyDiscount, int eventMonth, int eventDay) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO EventData VALUES ('" + eventName + "', '" + hourlyPrice;
-            query += "', '" + hourlyDiscount + "', null, null, '" + eventMonth + "', '" + eventDay + "', null, null);";
+            query += "', '" + hourlyDiscount + "', null, null, '" + eventMonth + "', '" + eventDay + "', null, null, null);";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
@@ -59,7 +59,7 @@ namespace DatabaseController {
         public void DailyPriceSpecificDay(String eventName, Double dailyPrice, Double dailyDiscount, int eventMonth, int eventDay) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO EventData VALUES ('" + eventName + "', null ";
-            query += ", null, '" + dailyPrice + "', '" + dailyDiscount + "', '" + eventMonth + "', '" + eventDay + "', null, null);";
+            query += ", null, '" + dailyPrice + "', '" + dailyDiscount + "', '" + eventMonth + "', '" + eventDay + "', null, null, null);";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
@@ -74,7 +74,7 @@ namespace DatabaseController {
         public void HourlyPriceWeeklyOcur(String eventName, Double hourlyPrice, Double hourlyDiscount, String weekday) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO EventData VALUES ('" + eventName + "', '" + hourlyPrice;
-            query += "', '" + hourlyDiscount + "', null, null, null, null, '" + weekday + "', null);";
+            query += "', '" + hourlyDiscount + "', null, null, null, null, '" + weekday + "', null, null);";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
@@ -89,7 +89,7 @@ namespace DatabaseController {
         public void DailyPriceWeeklyOcur(String eventName, Double dailyPrice, Double dailyDiscount, String weekday) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO EventData VALUES ('" + eventName + "', null ";
-            query += ", null, '" + dailyPrice + "', '" + dailyDiscount + "', null, null, '" + weekday + "', null);";
+            query += ", null, '" + dailyPrice + "', '" + dailyDiscount + "', null, null, '" + weekday + "', null, null);";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
@@ -104,7 +104,7 @@ namespace DatabaseController {
         public void HourlyPriceAlwaysAvailable(String eventName, Double hourlyPrice) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO EventData VALUES ('" + eventName + "', '" + hourlyPrice;
-            query += "',  null, null, null, null, null, null, null);";
+            query += "',  null, null, null, null, null, null, null, null);";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
@@ -119,7 +119,7 @@ namespace DatabaseController {
         public void DailyPriceAlwaysAvailable(String eventName, Double dailyPrice) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO EventData VALUES ('" + eventName + "', null ";
-            query += ", null, '" + dailyPrice + "', null, null, null, null, null);";
+            query += ", null, '" + dailyPrice + "', null, null, null, null, null, null);";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
@@ -134,7 +134,7 @@ namespace DatabaseController {
         public void HourlyPriceSpecificDay(String eventName, Double hourlyPrice, int eventMonth, int eventDay) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO EventData VALUES ('" + eventName + "', '" + hourlyPrice;
-            query += "', null, null, null, '" + eventMonth + "', '" + eventDay + "', null, null);";
+            query += "', null, null, null, '" + eventMonth + "', '" + eventDay + "', null, null, null);";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
@@ -149,7 +149,7 @@ namespace DatabaseController {
         public void DailyPriceSpecificDay(String eventName, Double dailyPrice, int eventMonth, int eventDay) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO EventData VALUES ('" + eventName + "', null ";
-            query += ", null, '" + dailyPrice + "', null, '" + eventMonth + "', '" + eventDay + "', null, null);";
+            query += ", null, '" + dailyPrice + "', null, '" + eventMonth + "', '" + eventDay + "', null, null, null);";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
@@ -164,7 +164,7 @@ namespace DatabaseController {
         public void HourlyPriceWeeklyOcur(String eventName, Double hourlyPrice, String weekday) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO EventData VALUES ('" + eventName + "', '" + hourlyPrice;
-            query += "', null, null, null, null, null, '" + weekday + "', null);";
+            query += "', null, null, null, null, null, '" + weekday + "', null, null);";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
@@ -179,7 +179,7 @@ namespace DatabaseController {
         public void DailyPriceWeeklyOcur(String eventName, Double dailyPrice, String weekday) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO EventData VALUES ('" + eventName + "', null ";
-            query += ", null, '" + dailyPrice + "', null, null, null, '" + weekday + "', null);";
+            query += ", null, '" + dailyPrice + "', null, null, null, '" + weekday + "', null, null);";
             try {
                 connection.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
@@ -432,8 +432,9 @@ namespace DatabaseController {
 
         public DataTable GetEvents() {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
-            String query = "SELECT EventName, HourlyPrice, HourlyDiscount, DailyPrice, DailyDiscount, EventMonth, ";
-            query += "EventDay, EventWeekday FROM EventData WHERE EventDeletionDate IS null;";
+            String query = "SELECT EventName AS 'Event Name', HourlyPrice AS 'Hourly Price', HourlyDiscount AS 'Hourly Discount', ";
+            query += "DailyPrice AS 'Daily Price', DailyDiscount AS 'Daily Discount', EventMonth AS 'Event Month', ";
+            query += "EventDay AS 'Event Day', EventWeekday AS 'Event Weekday', EventMaximumHours AS 'Maximum Hours' FROM EventData WHERE EventDeletionDate IS null;";
             DataTable table;
 
             try {
@@ -515,16 +516,30 @@ namespace DatabaseController {
                 eventInfo[7] = null;
             }
             if (!reader.IsDBNull(8)) {
-                eventInfo[8] = reader.GetString(8);
+                eventInfo[8] = "" + reader.GetInt32(8);
             } else {
                 eventInfo[8] = null;
             }
             if (!reader.IsDBNull(9)) {
-                eventInfo[9] = "" + reader.GetInt32(9);
+                eventInfo[9] = reader.GetString(9);
             } else {
                 eventInfo[9] = null;
             }
             return eventInfo;
+        }
+
+        public void UpdateMaxHours(string eventName, string maxHours) {
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            String query = "UPDATE EventData SET EventMaximumHours = " + maxHours + " Where EventName = '" + eventName + "';";
+            try {
+                connection.Open();
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                cmd.ExecuteNonQuery();
+
+                connection.Close();
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
         }
     }
 }
