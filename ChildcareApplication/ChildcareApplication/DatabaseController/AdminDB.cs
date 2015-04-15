@@ -12,9 +12,9 @@ namespace ChildcareApplication.DatabaseController {
 
         public string[] findAdmins() {
             conn.Open();
-            
+
             string sql = "SELECT AdministratorUN from Administrator";
-            
+
             SQLiteCommand comm = new SQLiteCommand(sql, conn);
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
             DataSet adminlist = new DataSet();
@@ -23,18 +23,16 @@ namespace ChildcareApplication.DatabaseController {
             int count = adminlist.Tables[0].Rows.Count;
             String[] names = new string[count];
             int x = 0;
-            while (x < count)
-            {
+            while (x < count) {
                 names[x] = adminlist.Tables[0].Rows[x][0].ToString();
                 x++;
             }
             conn.Close();
-            
+
             return names;
         }
 
-        internal string getAccessLevel(string tempUN)
-        {
+        internal string getAccessLevel(string tempUN) {
             conn.Open();
 
             string sql = @"SELECT AccessLevel FROM Administrator WHERE AdministratorUN = @adminUN;";
@@ -55,8 +53,7 @@ namespace ChildcareApplication.DatabaseController {
             return result;
         }
 
-        internal string getEmail(string tempUN)
-        {
+        internal string getEmail(string tempUN) {
             conn.Open();
 
             string sql = @"SELECT AdministratorEmail FROM Administrator WHERE AdministratorUN = @adminUN;";
@@ -78,8 +75,7 @@ namespace ChildcareApplication.DatabaseController {
         }
 
 
-        internal void addNewAdmin()
-        {
+        internal void addNewAdmin() {
             conn.Open();
 
             string sql = @"INSERT INTO Administrator VALUES (@newname, @newpw, 2, @newemail, null);";
@@ -97,8 +93,7 @@ namespace ChildcareApplication.DatabaseController {
             conn.Close();
         }
 
-        internal void updateAdmin(string oldlogin, string newlogin, string newpw, string email, string access)
-        {
+        internal void updateAdmin(string oldlogin, string newlogin, string newpw, string email, string access) {
             conn.Open();
 
             string sql = @"UPDATE Administrator SET AdministratorUN = @newUN, AdministratorPW = @newPW, AdministratorEmail = @em, AccessLevel = @al WHERE AdministratorUN = @oldUN;";
@@ -110,18 +105,17 @@ namespace ChildcareApplication.DatabaseController {
             comm.Parameters.Add(new SQLiteParameter("@oldUN", oldlogin));
 
             comm.ExecuteNonQuery();
-            
+
             conn.Close();
         }
 
-        internal void deleteAdmin(string user)
-        {
+        internal void deleteAdmin(string user) {
             conn.Open();
 
             string sql = @"DELETE FROM Administrator WHERE AdministratorUN = @delme;";
             SQLiteCommand comm = new SQLiteCommand(sql, conn);
             comm.Parameters.Add(new SQLiteParameter("@delMe", user));
-            
+
             comm.ExecuteNonQuery();
 
             conn.Close();
