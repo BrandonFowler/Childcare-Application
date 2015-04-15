@@ -180,8 +180,6 @@ namespace ChildcareApplication.AdminTools {
             chk_SunClosed.IsEnabled = false;
             txt_SunOpening.IsEnabled = false;
             txt_SunClosing.IsEnabled = false;
-            btn_Confirm.IsEnabled = false;
-            btn_Cancel.IsEnabled = false;
         }
 
         private void enableAll() {
@@ -211,8 +209,6 @@ namespace ChildcareApplication.AdminTools {
             chk_SunClosed.IsEnabled = true;
             txt_SunOpening.IsEnabled = true;
             txt_SunClosing.IsEnabled = true;
-            btn_Confirm.IsEnabled = true;
-            btn_Cancel.IsEnabled = true;
             checkDays();
         }
 
@@ -426,6 +422,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_BillingDate_LostFocus(object sender, RoutedEventArgs e) {
             int res = -1;
+            errorPresent = false;
 
             if (int.TryParse(txt_BillingDate.Text, out res)) {
                 if (res < 1 || res > 29) {
@@ -449,6 +446,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_MaxMonthlyFee_LostFocus(object sender, RoutedEventArgs e) {
             int res = -1;
+            errorPresent = false;
 
             if (int.TryParse(txt_MaxMonthlyFee.Text, out res)) {
                 if (res < 0) {
@@ -472,6 +470,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_ExpirationDays_LostFocus(object sender, RoutedEventArgs e) {
             int res = -1;
+            errorPresent = false;
 
             if (int.TryParse(txt_ExpirationDays.Text, out res)) {
                 if (res < 0) {
@@ -495,6 +494,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_InfantAge_LostFocus(object sender, RoutedEventArgs e) {
             int res = -1;
+            errorPresent = false;
 
             if (int.TryParse(txt_InfantAge.Text, out res)) {
                 if (res < 0 || res > int.Parse(Properties.Settings.Default.RegularMaxAge)) {
@@ -518,6 +518,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_RegularAge_LostFocus(object sender, RoutedEventArgs e) {
             int res = -1;
+            errorPresent = false;
 
             if (int.TryParse(txt_RegularAge.Text, out res)) {
                 if (res < 0 || res < int.Parse(Properties.Settings.Default.InfantMaxAge)) {
@@ -541,6 +542,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_MonOpening_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_MonOpening.Text, out res)) {
                 if (res.TimeOfDay > DateTime.Parse(txt_MonClosing.Text).TimeOfDay) {
@@ -565,6 +567,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_MonClosing_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_MonClosing.Text, out res)) {
                 if (res.TimeOfDay < DateTime.Parse(txt_MonOpening.Text).TimeOfDay) {
@@ -589,6 +592,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_TueOpening_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_TueOpening.Text, out res)) {
                 if (res.TimeOfDay > DateTime.Parse(txt_TueClosing.Text).TimeOfDay) {
@@ -613,6 +617,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_TueClosing_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_TueClosing.Text, out res)) {
                 if (res.TimeOfDay < DateTime.Parse(txt_TueOpening.Text).TimeOfDay) {
@@ -637,6 +642,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_WedOpening_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_WedOpening.Text, out res)) {
                 if (res.TimeOfDay > DateTime.Parse(txt_WedClosing.Text).TimeOfDay) {
@@ -661,6 +667,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_WedClosing_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_WedClosing.Text, out res)) {
                 if (res.TimeOfDay < DateTime.Parse(txt_WedOpening.Text).TimeOfDay) {
@@ -685,6 +692,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_ThuOpening_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_ThuOpening.Text, out res)) {
                 if (res.TimeOfDay > DateTime.Parse(txt_ThuClosing.Text).TimeOfDay) {
@@ -709,6 +717,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_ThuClosing_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_ThuClosing.Text, out res)) {
                 if (res.TimeOfDay < DateTime.Parse(txt_ThuOpening.Text).TimeOfDay) {
@@ -733,6 +742,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_FriOpening_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_FriOpening.Text, out res)) {
                 if (res.TimeOfDay > DateTime.Parse(txt_FriClosing.Text).TimeOfDay) {
@@ -757,6 +767,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_FriClosing_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_FriClosing.Text, out res)) {
                 if (res.TimeOfDay < DateTime.Parse(txt_FriOpening.Text).TimeOfDay) {
@@ -781,6 +792,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_SatOpening_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_SatOpening.Text, out res)) {
                 if (res.TimeOfDay > DateTime.Parse(txt_SatClosing.Text).TimeOfDay) {
@@ -805,6 +817,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_SatClosing_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_SatClosing.Text, out res)) {
                 if (res.TimeOfDay < DateTime.Parse(txt_SatOpening.Text).TimeOfDay) {
@@ -829,6 +842,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_SunOpening_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_SunOpening.Text, out res)) {
                 if (res.TimeOfDay > DateTime.Parse(txt_SunClosing.Text).TimeOfDay) {
@@ -853,6 +867,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_SunClosing_LostFocus(object sender, RoutedEventArgs e) {
             DateTime res;
+            errorPresent = false;
 
             if (DateTime.TryParse(txt_SunClosing.Text, out res)) {
                 if (res.TimeOfDay < DateTime.Parse(txt_SunOpening.Text).TimeOfDay) {
