@@ -9,6 +9,7 @@ namespace ChildcareApplication.AdminTools
     public partial class AdminAddEdit : Window
     {
         private AdminDB db;
+        private bool editingPW;
 
         public AdminAddEdit()
         {
@@ -42,6 +43,7 @@ namespace ChildcareApplication.AdminTools
             txt_Password.Password = tempPW;
             txt_ConfirmPass.Password = tempPW;
             btn_ChangePW.IsEnabled = true;
+            editingPW = false;
             txt_Email.Text = tempEM;
 
             if (accessLevel.Equals("1"))
@@ -71,9 +73,9 @@ namespace ChildcareApplication.AdminTools
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
             if(rdb_Full.IsChecked == true)
-                db.updateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Email.Text, "1");
+                db.updateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "1");
             else if(rdb_Limited.IsChecked == true)
-                db.updateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Email.Text, "2");
+                db.updateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "2");
 
             if(!(txt_LoginName.Text.Equals("default")))
                 btn_AddAdmin.IsEnabled = true;
@@ -104,9 +106,63 @@ namespace ChildcareApplication.AdminTools
 
         private void btn_ChangePW_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("NYI");
-            btn_Save.IsEnabled = true;
-            btn_Cancel.IsEnabled = true;
+            if(!editingPW)
+            {
+                lst_AdminList.IsEnabled = false;
+                btn_AddAdmin.IsEnabled = false;
+                btn_DelAdmin.IsEnabled = false;
+                btn_Save.IsEnabled = false;
+                btn_Cancel.IsEnabled = false;
+                txt_LoginName.IsEnabled = false;
+                txt_Email.IsEnabled = false;
+                rdb_Full.IsEnabled = false;
+                rdb_Limited.IsEnabled = false;
+
+                txt_Password.IsEnabled = true;
+                txt_ConfirmPass.IsEnabled = true;
+                editingPW = true;
+                lbl_PassText.Text = "Confirm Changes";
+            }
+            else if (editingPW)
+            {
+                if(passwordsMatch())
+                {
+                    lst_AdminList.IsEnabled = true;
+                    btn_AddAdmin.IsEnabled = true;
+                    btn_DelAdmin.IsEnabled = true;
+                    btn_Save.IsEnabled = true;
+                    btn_Cancel.IsEnabled = true;
+                    txt_LoginName.IsEnabled = true;
+                    txt_Email.IsEnabled = true;
+                    rdb_Full.IsEnabled = true;
+                    rdb_Limited.IsEnabled = true;
+
+                    txt_Password.IsEnabled = false;
+                    txt_ConfirmPass.IsEnabled = false;
+                    editingPW = false;
+                    lbl_PassText.Text = "Change Password";
+                }
+                else
+                {
+                    MessageBox.Show("Passwords do not match. Please try again");
+                }
+            }
+
+        }
+
+        private bool passwordsMatch()
+        {
+            return txt_Password.Password.Equals(txt_ConfirmPass.Password);
+        }
+
+        private void txt_Password_LostFocus(object sender, RoutedEventArgs e)
+        {
+            txt_Password.Password = AdminTools.Hashing.HashPass(txt_Password.Password);
+        }
+
+        private void txt_ConfirmPass_LostFocus(object sender, RoutedEventArgs e)
+        {
+            txt_ConfirmPass.Password = AdminTools.Hashing.HashPass(txt_ConfirmPass.Password);
         }
 
         private void txt_LoginName_GotFocus(object sender, RoutedEventArgs e)
@@ -116,12 +172,12 @@ namespace ChildcareApplication.AdminTools
 
         private void txt_Password_GotFocus(object sender, RoutedEventArgs e)
         {
-            btn_ChangePW.Focus();
+            txt_Password.Clear();
         }
 
         private void txt_ConfirmPass_GotFocus(object sender, RoutedEventArgs e)
         {
-            btn_ChangePW.Focus();
+            txt_ConfirmPass.Clear();
         }
 
         private void txt_Email_GotFocus(object sender, RoutedEventArgs e)
@@ -152,6 +208,5 @@ namespace ChildcareApplication.AdminTools
             btn_Save.IsEnabled = true;
             btn_Cancel.IsEnabled = true;
         }
-
     }
 }

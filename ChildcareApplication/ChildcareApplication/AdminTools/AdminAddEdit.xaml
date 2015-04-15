@@ -14,13 +14,13 @@
         <Label x:Name="lbl_Email" Content="Administrator Email" HorizontalAlignment="Left" Margin="170,103,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_AccessLevel" Content="Administrator Access Level" HorizontalAlignment="Left" Margin="170,134,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txt_LoginName" HorizontalAlignment="Left" Height="23" Margin="362,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" TabIndex="1" GotFocus="txt_LoginName_GotFocus" TextChanged="txt_LoginName_TextChanged" IsEnabled="False"/>
-        <TextBox x:Name="txt_Email" HorizontalAlignment="Left" Height="23" Margin="362,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" TabIndex="3" GotFocus="txt_Email_GotFocus" TextChanged="txt_Email_TextChanged" IsEnabled="False"/>
+        <TextBox x:Name="txt_Email" HorizontalAlignment="Left" Height="23" Margin="362,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" TabIndex="4" GotFocus="txt_Email_GotFocus" TextChanged="txt_Email_TextChanged" IsEnabled="False"/>
         <RadioButton x:Name="rdb_Full" Content="Full Access" HorizontalAlignment="Left" Margin="362,140,0,0" VerticalAlignment="Top" IsTabStop="False" Unchecked="rdb_Full_Unchecked" IsEnabled="False"/>
         <RadioButton x:Name="rdb_Limited" Content="Limited Access" HorizontalAlignment="Left" Margin="457,140,0,0" VerticalAlignment="Top" IsTabStop="False" Unchecked="rdb_Limited_Unchecked" IsEnabled="False"/>
-        <PasswordBox x:Name="txt_Password" HorizontalAlignment="Left" Margin="362,41,0,0" VerticalAlignment="Top" TabIndex="2" Width="171" Height="23" GotFocus="txt_Password_GotFocus" IsTabStop="False" IsEnabled="False"/>
-        <PasswordBox x:Name="txt_ConfirmPass" HorizontalAlignment="Left" Margin="362,72,0,0" VerticalAlignment="Top" TabIndex="3" Width="171" Height="23" GotFocus="txt_ConfirmPass_GotFocus" IsTabStop="False" IsEnabled="False"/>
-        <Button x:Name="btn_ChangePW" HorizontalAlignment="Left" Margin="538,41,0,0" VerticalAlignment="Top" Width="78" Click="btn_ChangePW_Click" Height="54" IsEnabled="False" TabIndex="2">
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Change Password</TextBlock>
+        <PasswordBox x:Name="txt_Password" HorizontalAlignment="Left" Margin="362,41,0,0" VerticalAlignment="Top" TabIndex="1" Width="171" Height="23" GotFocus="txt_Password_GotFocus" IsEnabled="False" LostFocus="txt_Password_LostFocus"/>
+        <PasswordBox x:Name="txt_ConfirmPass" HorizontalAlignment="Left" Margin="362,72,0,0" VerticalAlignment="Top" TabIndex="2" Width="171" Height="23" GotFocus="txt_ConfirmPass_GotFocus" IsEnabled="False" LostFocus="txt_ConfirmPass_LostFocus"/>
+        <Button x:Name="btn_ChangePW" HorizontalAlignment="Left" Margin="538,41,0,0" VerticalAlignment="Top" Width="78" Click="btn_ChangePW_Click" Height="54" IsEnabled="False" TabIndex="3">
+            <TextBlock x:Name="lbl_PassText" TextWrapping="Wrap" TextAlignment="Center">Change Password</TextBlock>
         </Button>
     </Grid>
 </Window>

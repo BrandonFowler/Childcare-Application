@@ -115,7 +115,10 @@ namespace ChildcareApplication.AdminTools
         private void chk_MonClosed_Unchecked(object sender, RoutedEventArgs e) {
             lbl_Monday.IsEnabled = true;
             txt_MonOpening.IsEnabled = true;
+            txt_MonOpening.Text = "set me";
             txt_MonClosing.IsEnabled = true;
+            txt_MonClosing.Text = "set me";
+            btn_Confirm.IsEnabled = false;
         }
 
         private void chk_TueClosed_Checked(object sender, RoutedEventArgs e) {
@@ -129,7 +132,10 @@ namespace ChildcareApplication.AdminTools
         private void chk_TueClosed_Unchecked(object sender, RoutedEventArgs e) {
             lbl_Tuesday.IsEnabled = true;
             txt_TueOpening.IsEnabled = true;
+            txt_TueOpening.Text = "set me";
             txt_TueClosing.IsEnabled = true;
+            txt_TueClosing.Text = "set me";
+            btn_Confirm.IsEnabled = false;
         }
 
         private void chk_WedClosed_Checked(object sender, RoutedEventArgs e) {
@@ -143,7 +149,10 @@ namespace ChildcareApplication.AdminTools
         private void chk_WedClosed_Unchecked(object sender, RoutedEventArgs e) {
             lbl_Wednesday.IsEnabled = true;
             txt_WedOpening.IsEnabled = true;
+            txt_WedOpening.Text = "set me";
             txt_WedClosing.IsEnabled = true;
+            txt_WedClosing.Text = "set me";
+            btn_Confirm.IsEnabled = false;
         }
 
         private void chk_ThuClosed_Checked(object sender, RoutedEventArgs e) {
@@ -157,7 +166,10 @@ namespace ChildcareApplication.AdminTools
         private void chk_ThuClosed_Unchecked(object sender, RoutedEventArgs e) {
             lbl_Thursday.IsEnabled = true;
             txt_ThuOpening.IsEnabled = true;
+            txt_ThuOpening.Text = "set me";
             txt_ThuClosing.IsEnabled = true;
+            txt_ThuClosing.Text = "set me";
+            btn_Confirm.IsEnabled = false;
         }
 
         private void chk_FriClosed_Checked(object sender, RoutedEventArgs e) {
@@ -171,7 +183,10 @@ namespace ChildcareApplication.AdminTools
         private void chk_FriClosed_Unchecked(object sender, RoutedEventArgs e) {
             lbl_Friday.IsEnabled = true;
             txt_FriOpening.IsEnabled = true;
+            txt_FriOpening.Text = "set me";
             txt_FriClosing.IsEnabled = true;
+            txt_FriClosing.Text = "set me";
+            btn_Confirm.IsEnabled = false;
         }
 
         private void chk_SatClosed_Checked(object sender, RoutedEventArgs e) {
@@ -185,7 +200,10 @@ namespace ChildcareApplication.AdminTools
         private void chk_SatClosed_Unchecked(object sender, RoutedEventArgs e) {
             lbl_Saturday.IsEnabled = true;
             txt_SatOpening.IsEnabled = true;
+            txt_SatOpening.Text = "set me";
             txt_SatClosing.IsEnabled = true;
+            txt_SatClosing.Text = "set me";
+            btn_Confirm.IsEnabled = false;
         }
 
         private void chk_SunClosed_Checked(object sender, RoutedEventArgs e) {
@@ -199,7 +217,10 @@ namespace ChildcareApplication.AdminTools
         private void chk_SunClosed_Unchecked(object sender, RoutedEventArgs e) {
             lbl_Sunday.IsEnabled = true;
             txt_SunOpening.IsEnabled = true;
+            txt_SunOpening.Text = "set me";
             txt_SunClosing.IsEnabled = true;
+            txt_SunClosing.Text = "set me";
+            btn_Confirm.IsEnabled = false;
         }
 
         ///////////////////
@@ -316,11 +337,17 @@ namespace ChildcareApplication.AdminTools
                     MessageBox.Show("Billing date must be from 1 to 29");
                     txt_BillingDate.Focus();
                     txt_BillingDate.SelectAll();
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    btn_Confirm.IsEnabled = true;
                 }
             }
             else
             {
                 MessageBox.Show("Invalid Input. Billing Date must be a number from 1 to 29");
+                btn_Confirm.IsEnabled = false;
             }
         }
 
@@ -335,11 +362,17 @@ namespace ChildcareApplication.AdminTools
                     MessageBox.Show("Maximum Monthly Fee must be a positive number");
                     txt_MaxMonthlyFee.Focus();
                     txt_MaxMonthlyFee.SelectAll();
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    btn_Confirm.IsEnabled = true;
                 }
             }
             else
             {
                 MessageBox.Show("Invalid Input. Maximum Monthly Fee must be a positive number");
+                btn_Confirm.IsEnabled = false;
             }
         }
 
@@ -354,11 +387,17 @@ namespace ChildcareApplication.AdminTools
                     MessageBox.Show("Days to hold expired records must be a positive number");
                     txt_ExpirationDays.Focus();
                     txt_ExpirationDays.SelectAll();
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    btn_Confirm.IsEnabled = true;
                 }
             }
             else
             {
                 MessageBox.Show("Invalid Input. Days to hold expired records must be a positive number");
+                btn_Confirm.IsEnabled = false;
             }
         }
 
@@ -373,11 +412,17 @@ namespace ChildcareApplication.AdminTools
                     MessageBox.Show("Infant must be a positive number less than Regular Age --- " + res);
                     txt_ExpirationDays.Focus();
                     txt_ExpirationDays.SelectAll();
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    btn_Confirm.IsEnabled = true;
                 }
             }
             else
             {
                 MessageBox.Show("Invalid Input. Infant Age must be a positive number less than Regular Age");
+                btn_Confirm.IsEnabled = false;
             }
         }
 
@@ -392,11 +437,17 @@ namespace ChildcareApplication.AdminTools
                     MessageBox.Show("Regular must be a positive number greater than Infant Age");
                     txt_RegularAge.Focus();
                     txt_RegularAge.SelectAll();
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    btn_Confirm.IsEnabled = true;
                 }
             }
             else
             {
                 MessageBox.Show("Invalid Input. Regular Age must be a positive number greater than Infant Age");
+                btn_Confirm.IsEnabled = false;
             }
         }
 
@@ -406,84 +457,334 @@ namespace ChildcareApplication.AdminTools
 
             if (DateTime.TryParse(txt_MonOpening.Text, out res))
             {
-                if (res > Properties.Settings.Default.MonClose)
+                if (res.TimeOfDay > Properties.Settings.Default.MonClose.TimeOfDay)
                 {
                     MessageBox.Show("Opening time must be less than closing time");
+                    btn_Confirm.IsEnabled = false;
                 }
                 else
                 {
                     txt_MonOpening.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
                 }
             }
             else
             {
                 MessageBox.Show(txt_MonOpening.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
             }
         }
 
         private void txt_MonClosing_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_MonClosing.Text, out res))
+            {
+                if (res.TimeOfDay < Properties.Settings.Default.MonOpen.TimeOfDay)
+                {
+                    MessageBox.Show("Closing time must be greater than opening time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_MonClosing.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_MonClosing.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
         private void txt_TueOpening_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_TueOpening.Text, out res))
+            {
+                if (res.TimeOfDay > Properties.Settings.Default.TueClose.TimeOfDay)
+                {
+                    MessageBox.Show("Opening time must be less than closing time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_TueOpening.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_TueOpening.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
         private void txt_TueClosing_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_TueClosing.Text, out res))
+            {
+                if (res.TimeOfDay < Properties.Settings.Default.TueOpen.TimeOfDay)
+                {
+                    MessageBox.Show("Closing time must be greather than opening time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_TueClosing.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_TueClosing.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
         private void txt_WedOpening_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_WedOpening.Text, out res))
+            {
+                if (res.TimeOfDay > Properties.Settings.Default.WedClose.TimeOfDay)
+                {
+                    MessageBox.Show("Opening time must be less than closing time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_WedOpening.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_WedOpening.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
         private void txt_WedClosing_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_WedClosing.Text, out res))
+            {
+                if (res.TimeOfDay < Properties.Settings.Default.WedOpen.TimeOfDay)
+                {
+                    MessageBox.Show("Closing time must be greather than opening time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_WedClosing.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_WedClosing.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
         private void txt_ThuOpening_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_ThuOpening.Text, out res))
+            {
+                if (res.TimeOfDay > Properties.Settings.Default.ThuClose.TimeOfDay)
+                {
+                    MessageBox.Show("Opening time must be less than closing time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_ThuOpening.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_ThuOpening.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
         private void txt_ThuClosing_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_ThuClosing.Text, out res))
+            {
+                if (res.TimeOfDay < Properties.Settings.Default.ThuOpen.TimeOfDay)
+                {
+                    MessageBox.Show("Closing time must be greather than opening time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_ThuClosing.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_ThuClosing.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
         private void txt_FriOpening_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_FriOpening.Text, out res))
+            {
+                if (res.TimeOfDay > Properties.Settings.Default.FriClose.TimeOfDay)
+                {
+                    MessageBox.Show("Opening time must be less than closing time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_FriOpening.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_FriOpening.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
         private void txt_FriClosing_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_FriClosing.Text, out res))
+            {
+                if (res.TimeOfDay < Properties.Settings.Default.FriOpen.TimeOfDay)
+                {
+                    MessageBox.Show("Closing time must be greather than opening time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_FriClosing.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_FriClosing.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
         private void txt_SatOpening_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_SatOpening.Text, out res))
+            {
+                if (res.TimeOfDay > Properties.Settings.Default.SatClose.TimeOfDay)
+                {
+                    MessageBox.Show("Opening time must be less than closing time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_SatOpening.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_SatOpening.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
         private void txt_SatClosing_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_SatClosing.Text, out res))
+            {
+                if (res.TimeOfDay < Properties.Settings.Default.SatOpen.TimeOfDay)
+                {
+                    MessageBox.Show("Closing time must be greather than opening time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_SatClosing.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_SatClosing.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
         private void txt_SunOpening_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_SunOpening.Text, out res))
+            {
+                if (res.TimeOfDay > Properties.Settings.Default.SunClose.TimeOfDay)
+                {
+                    MessageBox.Show("Opening time must be less than closing time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_SunOpening.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_SunOpening.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
         private void txt_SunClosing_LostFocus(object sender, RoutedEventArgs e)
         {
+            DateTime res;
 
+            if (DateTime.TryParse(txt_SunClosing.Text, out res))
+            {
+                if (res.TimeOfDay < Properties.Settings.Default.SunOpen.TimeOfDay)
+                {
+                    MessageBox.Show("Closing time must be greather than opening time");
+                    btn_Confirm.IsEnabled = false;
+                }
+                else
+                {
+                    txt_SunClosing.Text = res.TimeOfDay.ToString();
+                    btn_Confirm.IsEnabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show(txt_SunClosing.Text + " is Not a valid time");
+                btn_Confirm.IsEnabled = false;
+            }
         }
 
 

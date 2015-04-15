@@ -97,13 +97,14 @@ namespace ChildcareApplication.DatabaseController {
             conn.Close();
         }
 
-        internal void updateAdmin(string oldlogin, string newlogin, string email, string access)
+        internal void updateAdmin(string oldlogin, string newlogin, string newpw, string email, string access)
         {
             conn.Open();
 
-            string sql = @"UPDATE Administrator SET AdministratorUN = @newUN, AdministratorEmail = @em, AccessLevel = @al WHERE AdministratorUN = @oldUN;";
+            string sql = @"UPDATE Administrator SET AdministratorUN = @newUN, AdministratorPW = @newPW, AdministratorEmail = @em, AccessLevel = @al WHERE AdministratorUN = @oldUN;";
             SQLiteCommand comm = new SQLiteCommand(sql, conn);
             comm.Parameters.Add(new SQLiteParameter("@newUN", newlogin));
+            comm.Parameters.Add(new SQLiteParameter("@newPW", newpw));
             comm.Parameters.Add(new SQLiteParameter("@em", email));
             comm.Parameters.Add(new SQLiteParameter("@al", access));
             comm.Parameters.Add(new SQLiteParameter("@oldUN", oldlogin));
