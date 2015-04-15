@@ -17,7 +17,7 @@ namespace AdminTools {
         private const int PageMargin = 75;
         private const int HeaderHeight = 25;
         private const int LineHeight = 20;
-        private const int ColumnWidth = 80;
+        private const int ColumnWidth = 65;
 
         private int currentRow;
         private int rows;
@@ -29,7 +29,10 @@ namespace AdminTools {
             this.table = table;
         }
 
-        public static int RowsPerPage(double height) {
+        public static int RowsPerPage(double height, double width) {  //32 rows in landscape
+            if (width > height) {
+                return 32;
+            }
             return ((int)Math.Floor((height - (2 * PageMargin) - HeaderHeight) / LineHeight));
         }
 

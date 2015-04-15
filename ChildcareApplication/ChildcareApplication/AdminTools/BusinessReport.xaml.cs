@@ -20,11 +20,13 @@ namespace AdminTools {
     public partial class BusinessReport : Window {
         private DataTable table;
         private bool reportLoaded;
+        private ChildcareApplication.Properties.Settings settings;
 
         public BusinessReport() {
             InitializeComponent();
             InitializeCMB_Year();
             reportLoaded = false;
+            settings = new ChildcareApplication.Properties.Settings();
         }
 
         private void InitializeCMB_Year() {
@@ -47,8 +49,8 @@ namespace AdminTools {
             String fromDate, toDate;
             int fromMonth, fromYear, fromDay, toMonth, toYear, toDay;
 
-            fromDay = 20; //TODO: load from settings
-            toDay = 19;
+            fromDay = Convert.ToInt32(settings.BillingStartDate);
+            toDay = fromDay - 1;
 
             if (DateTime.Now.Day < fromDay) { //previous month and this month
                 if (DateTime.Now.Month != 1) {
@@ -104,8 +106,8 @@ namespace AdminTools {
                 int year = Convert.ToInt32(((ComboBoxItem)cmb_Year.SelectedItem).Content);
 
                 int monthNum = GetMonthNum(month);
-                int fromDay = 20; //TODO: load from settings
-                int toDay = 19;
+                int fromDay = Convert.ToInt32(settings.BillingStartDate);
+                int toDay = fromDay - 1;
 
                 fromDate = BuildDateString(year, monthNum, fromDay);
 
@@ -160,13 +162,14 @@ namespace AdminTools {
             this.Close();
         }
 
-        private void btn_Print_Click(object sender, RoutedEventArgs e) {
+        private void btn_Print_Click(object sender, RoutedEventArgs e) { //height = 1056, width = 816
             if (this.reportLoaded) {
                 PrintDialog printDialog = new PrintDialog();
+                printDialog.PageRangeSelection = PageRangeSelection.UserPages;
 
                 if (printDialog.ShowDialog() == true) {
                     var paginator = new ReportsPaginator(this.table.Rows.Count, this.table,
-                      new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight));
+                      new Size(printDialog.PrintableAreaHeight, printDialog.PrintableAreaWidth));
 
                     printDialog.PrintDocument(paginator, "Business Report Data Table");
                 }

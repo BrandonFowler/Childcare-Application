@@ -27,12 +27,12 @@ namespace AdminTools {
             int currentRow = this.rowsPerPage * pageNumber;
 
             var page = new PageElement(currentRow, Math.Min(this.rowsPerPage, this.rows - currentRow), this.table) {
-                Width = PageSize.Width,
-                Height = PageSize.Height,
+                Width = this.pageSize.Width,
+                Height = this.pageSize.Height,
             };
 
-            page.Measure(PageSize);
-            page.Arrange(new Rect(new Point(0, 0), PageSize));
+            page.Measure(this.pageSize);
+            page.Arrange(new Rect(new Point(0, 0), this.pageSize));
 
             return new DocumentPage(page);
         }
@@ -52,9 +52,9 @@ namespace AdminTools {
             set {
                 this.pageSize = value;
                 if (this.table.TableName == "Business Report") {
-                    this.rowsPerPage = PageElement.RowsPerPage(this.pageSize.Width);
+                    this.rowsPerPage = PageElement.RowsPerPage(this.pageSize.Width, this.pageSize.Height);
                 } else {
-                    this.rowsPerPage = PageElement.RowsPerPage(this.pageSize.Height);
+                    this.rowsPerPage = PageElement.RowsPerPage(this.pageSize.Height, this.pageSize.Height);
                 }
 
                 //Can't print anything if you can't fit a row on a page
