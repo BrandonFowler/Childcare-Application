@@ -27,12 +27,6 @@ CREATE TABLE AllowedConnections (
     FOREIGN KEY (Family_ID) REFERENCES Family (Family_ID)
 );
 
--- Table: ApplicationSettings
-CREATE TABLE ApplicationSettings (
-    SettingName varchar(50) NOT NULL  PRIMARY KEY,
-    SettingValue varchar(50) NOT NULL
-);
-
 -- Table: Child
 CREATE TABLE Child (
     Child_ID varchar(6) NOT NULL  PRIMARY KEY,
@@ -94,15 +88,6 @@ CREATE TABLE Guardian (
     PhotoLocation varchar(200) NOT NULL,
     GuardianDeletionDate date
 );
-
--- Table: OperatingHours
-CREATE TABLE OperatingHours (
-    OperatingWeekday varchar(10) NOT NULL  PRIMARY KEY,
-    Opening time NOT NULL,
-    Closing time NOT NULL
-);
-
-
 
 
 
