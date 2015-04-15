@@ -19,9 +19,12 @@ namespace AdminTools {
     /// </summary>
     public partial class AdminMenu : Window {
         private int accessLevel;
-        public AdminMenu(int accessLevel) {
+        private string username;
+
+        public AdminMenu(int accessLevel, string usernamne) {
             InitializeComponent();
             this.accessLevel = accessLevel;
+            this.username = username;
             HideAdminOptions();
         }
 
@@ -114,7 +117,7 @@ namespace AdminTools {
         }
 
         private void btn_AddEditAdmin_Click(object sender, RoutedEventArgs e) {
-            AdminAddEdit adminedit = new AdminAddEdit();
+            AdminAddEdit adminedit = new AdminAddEdit(username);
             adminedit.ShowDialog();
         }
 

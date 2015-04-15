@@ -9,12 +9,14 @@ namespace ChildcareApplication.AdminTools
     public partial class AdminAddEdit : Window
     {
         private AdminDB db;
+        private string loggedInAs;
         private bool editingPW;
 
-        public AdminAddEdit()
+        public AdminAddEdit(string username)
         {
             InitializeComponent();
             this.db = new AdminDB();
+            this.loggedInAs = username;
 
             lst_AdminList.ItemsSource = db.findAdmins();
         }
@@ -67,7 +69,16 @@ namespace ChildcareApplication.AdminTools
 
         private void btn_DelAdmin_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("NYI");
+            if (lst_AdminList.SelectedItem.ToString().Equals(loggedInAs))
+            {
+                MessageBox.Show("You cannot delete the currently logged in administrator");
+            }
+            else
+            {
+                db.deleteAdmin(lst_AdminList.SelectedItem.ToString());
+                lst_AdminList.ItemsSource = db.findAdmins();
+                clearForm();
+            }
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
@@ -85,6 +96,11 @@ namespace ChildcareApplication.AdminTools
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
+            clearForm();
+        }
+
+        private void clearForm()
+        {
             if (btn_AddAdmin.IsEnabled == false)
                 btn_AddAdmin.IsEnabled = true;
 
@@ -100,8 +116,9 @@ namespace ChildcareApplication.AdminTools
             txt_LoginName.IsEnabled = false;
             txt_Email.IsEnabled = false;
             rdb_Full.IsEnabled = false;
-            rdb_Limited.IsEnabled = false;   
-
+            rdb_Limited.IsEnabled = false;
+            btn_Save.IsEnabled = false;
+            btn_Cancel.IsEnabled = false;
         }
 
         private void btn_ChangePW_Click(object sender, RoutedEventArgs e)

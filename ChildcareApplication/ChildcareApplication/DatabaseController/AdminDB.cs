@@ -113,5 +113,18 @@ namespace ChildcareApplication.DatabaseController {
             
             conn.Close();
         }
+
+        internal void deleteAdmin(string user)
+        {
+            conn.Open();
+
+            string sql = @"DELETE FROM Administrator WHERE AdministratorUN = @delme;";
+            SQLiteCommand comm = new SQLiteCommand(sql, conn);
+            comm.Parameters.Add(new SQLiteParameter("@delMe", user));
+            
+            comm.ExecuteNonQuery();
+
+            conn.Close();
+        }
     }
 }

@@ -93,22 +93,22 @@ namespace AdminTools {
                     }
                     else {
                         int accessLevel = db.GetAccessLevel(ID);
-                        DisplayAdminWindow(accessLevel);
+                        DisplayAdminWindow(accessLevel, txt_UserName.Text);
                     }
                 } else {
                     MessageBox.Show("User ID or PIN does not exist");
                 }
             }
         }
-
+        
         private void DisplayAdminChildCheckIn() {
             ParentTools.AdminChildCheckIn AdminCheckIn = new ParentTools.AdminChildCheckIn();
             AdminCheckIn.Show();
             this.Close();
         }
 
-        private void DisplayAdminWindow(int accessLevel) {
-            AdminMenu AdminMenu = new AdminMenu(accessLevel);
+        private void DisplayAdminWindow(int accessLevel, string username) {
+            AdminMenu AdminMenu = new AdminMenu(accessLevel, username);
             AdminMenu.Show();
             this.Close(); 
         }
