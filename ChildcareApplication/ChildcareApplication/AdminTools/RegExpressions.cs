@@ -130,7 +130,6 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            MessageBox.Show("The word " + data + " is not valid. Please re-enter.");
             return false;
 
 
