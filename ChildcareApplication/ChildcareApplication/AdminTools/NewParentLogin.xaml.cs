@@ -39,8 +39,8 @@ namespace AdminTools {
 
                 if(sameID && samePIN && regexID && regexPIN)
                 {
-                    pID = txt_ParentID1.Text;
-                    PIN = psw_ParentPIN1.Password;
+                    pID = string.Format("{0:000000}", txt_ParentID1.Text);
+                    PIN = string.Format("{0:0000}", psw_ParentPIN1.Password);
                     DataSet DS = new DataSet();
                     DS = this.db.GetParentInfo(pID);
                     int count = DS.Tables[0].Rows.Count;
