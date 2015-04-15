@@ -1,7 +1,7 @@
-﻿using System;
+﻿using DatabaseController;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,46 +23,20 @@ namespace AdminTools {
         }
 
         private void LoadEvents() {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
-            String query = "SELECT EventName, HourlyPrice, HourlyDiscount, DailyPrice, DailyDiscount, EventMonth, ";
-            query += "EventDay, EventWeekday FROM EventData WHERE EventDeletionDate IS null;";
-
-            try {
-                connection.Open();
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
-                cmd.ExecuteNonQuery();
-
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
-                DataTable table = new DataTable("Event Info");
-                adapter.Fill(table);
-                EventViewDataGrid.ItemsSource = table.DefaultView;
-                //adapter.Update(table);
-
-                connection.Close();
-            } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
-            }
+            EventModificationDB eventDB = new EventModificationDB();
+            DataTable table = eventDB.GetEvents();
+            EventViewDataGrid.ItemsSource = table.DefaultView;
         }
 
         private void FillComboBox() {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
-            String query = "SELECT EventName FROM EventData;";
+            EventModificationDB eventDB = new EventModificationDB();
+            List<string> namesList = eventDB.GetAllEventNames();
 
-            try {
-                connection.Open();
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
-
-                SQLiteDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read()) {
-                    String eventID = reader.GetString(0);
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = eventID;
-                    cmd_EventIDCombo.Items.Add(item);
-                }
-                connection.Close();
-            } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+            for(int i = 0; i < namesList.Count; i++) {
+                String eventID = namesList[i];
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = eventID;
+                cmd_EventIDCombo.Items.Add(item);
             }
         }
 
@@ -73,7 +47,7 @@ namespace AdminTools {
                 win.Show();
                 this.Close();
             } else {
-                MessageBox.Show("You must select an event ID from the drop down box.");
+                MessageBox.Show("You must select an event name from the drop down box.");
             }
         }
 

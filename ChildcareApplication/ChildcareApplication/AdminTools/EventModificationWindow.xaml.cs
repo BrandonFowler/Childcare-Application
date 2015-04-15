@@ -3,7 +3,6 @@ using DatabaseController;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -42,50 +41,37 @@ namespace AdminTools {
             }
         }
 
-        private void LoadData(String eventName) { 
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+        private void LoadData(String eventName) {
+            EventModificationDB eventDB = new EventModificationDB();
+            string[] eventData = eventDB.GetEvent(eventName);
 
-            try {
-                connection.Open();
-                String query = "SELECT * FROM EventData WHERE EventName = '" + eventName + "';";
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            txt_EventName.Text = eventData[0];
 
-                SQLiteDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-
-                txt_EventName.Text = reader.GetString(0);
-
-                SetPriceCombo(reader);
-                SetAvailability(reader);
-
-                reader.Close();
-                connection.Close();
-            } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
-            }
+            SetPriceCombo(eventData);
+            SetAvailability(eventData);
         }
 
-        private void SetPriceCombo(SQLiteDataReader reader) {
-            if (!reader.IsDBNull(1)) { //hourly price
+        private void SetPriceCombo(string[] eventData) {
+            if (eventData[1] != null) { //hourly price
                 cmb_PriceType.SelectedIndex = 0;
-                txt_Rate.Text = "" + reader.GetDouble(1);
-                if (!reader.IsDBNull(2)) {
-                    txt_DiscountPrice.Text = "" + reader.GetDouble(2);
+                txt_Rate.Text = eventData[1];
+                if (eventData[2] != null) {
+                    txt_DiscountPrice.Text = eventData[2];
                 }
-            } else if (!reader.IsDBNull(3)) { //daily price
+            } else if (eventData[3] != null) { //daily price
                 cmb_PriceType.SelectedIndex = 1;
-                txt_Rate.Text = "" + reader.GetDouble(3);
-                if (!reader.IsDBNull(4)) {
-                    txt_DiscountPrice.Text = "" + reader.GetDouble(4);
+                txt_Rate.Text = eventData[3];
+                if (eventData[4] != null) {
+                    txt_DiscountPrice.Text = eventData[4];
                 }
             }
         }
 
-        private void SetAvailability(SQLiteDataReader reader) {
-            if (!reader.IsDBNull(5) && !reader.IsDBNull(6)) { //specific day
+        private void SetAvailability(string[] eventData) {
+            if (eventData[5] != null && eventData[6] != null) { //specific day
                 cmb_Occurence.SelectedIndex = 1;
-                txt_MonthNum.Text = "" + reader.GetInt32(5);
-                txt_DayOfMonth.Text = "" + reader.GetInt32(6);
+                txt_MonthNum.Text = eventData[5];
+                txt_DayOfMonth.Text = eventData[6];
                 lbl_DayNum.Visibility = Visibility.Visible;
                 lbl_MonthNum.Visibility = Visibility.Visible;
                 txt_DayOfMonth.Visibility = Visibility.Visible;
@@ -93,8 +79,8 @@ namespace AdminTools {
 
                 lbl_DayName.Visibility = Visibility.Hidden;
                 cmb_DayName.Visibility = Visibility.Hidden;
-            } else if (!reader.IsDBNull(7)) { //weekday
-                String dayName = reader.GetString(7);
+            } else if (eventData[7] != null) { //weekday
+                String dayName = eventData[7];
                 cmb_Occurence.SelectedIndex = 2;
                 //show day name
                 lbl_DayName.Visibility = Visibility.Visible;

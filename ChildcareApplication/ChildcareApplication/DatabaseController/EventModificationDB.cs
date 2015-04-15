@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -427,6 +428,103 @@ namespace DatabaseController {
                 MessageBox.Show(exception.Message);
             }
             return results;
+        }
+
+        public DataTable GetEvents() {
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            String query = "SELECT EventName, HourlyPrice, HourlyDiscount, DailyPrice, DailyDiscount, EventMonth, ";
+            query += "EventDay, EventWeekday FROM EventData WHERE EventDeletionDate IS null;";
+            DataTable table;
+
+            try {
+                connection.Open();
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                cmd.ExecuteNonQuery();
+
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+                table = new DataTable("Event Info");
+                adapter.Fill(table);
+
+                connection.Close();
+                return table;
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+                return null;
+            }
+        }
+
+        public string[] GetEvent(string eventName) {
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            string[] eventInfo = new string[10];
+            try {
+                connection.Open();
+                String query = "SELECT * FROM EventData WHERE EventName = '" + eventName + "';";
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+
+                SQLiteDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+
+                eventInfo = FillEventInfo(eventInfo, reader);
+
+              connection.Close();
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
+            return eventInfo;
+        }
+
+        private string[] FillEventInfo(string[] eventInfo, SQLiteDataReader reader) {
+            if (!reader.IsDBNull(0)) {
+                eventInfo[0] = reader.GetString(0);
+            } else {
+                eventInfo[0] = null;
+            }
+            if (!reader.IsDBNull(1)) {
+                eventInfo[1] = "" + reader.GetDouble(1);
+            } else {
+                eventInfo[1] = null;
+            }
+            if (!reader.IsDBNull(2)) {
+                eventInfo[2] = "" + reader.GetDouble(2);
+            } else {
+                eventInfo[2] = null;
+            }
+            if (!reader.IsDBNull(3)) {
+                eventInfo[3] = "" + reader.GetDouble(3);
+            } else {
+                eventInfo[3] = null;
+            }
+            if (!reader.IsDBNull(4)) {
+                eventInfo[4] = "" + reader.GetDouble(4);
+            } else {
+                eventInfo[4] = null;
+            }
+            if (!reader.IsDBNull(5)) {
+                eventInfo[5] = "" + reader.GetInt32(5);
+            } else {
+                eventInfo[5] = null;
+            }
+            if (!reader.IsDBNull(6)) {
+                eventInfo[6] = "" + reader.GetInt32(6);
+            } else {
+                eventInfo[6] = null;
+            }
+            if (!reader.IsDBNull(7)) {
+                eventInfo[7] = reader.GetString(7);
+            } else {
+                eventInfo[7] = null;
+            }
+            if (!reader.IsDBNull(8)) {
+                eventInfo[8] = reader.GetString(8);
+            } else {
+                eventInfo[8] = null;
+            }
+            if (!reader.IsDBNull(9)) {
+                eventInfo[9] = "" + reader.GetInt32(9);
+            } else {
+                eventInfo[9] = null;
+            }
+            return eventInfo;
         }
     }
 }

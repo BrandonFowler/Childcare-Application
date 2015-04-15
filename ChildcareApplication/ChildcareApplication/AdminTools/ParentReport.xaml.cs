@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
-using System.Data.SQLite;
 using ChildcareApplication.AdminTools;
 using DatabaseController;
+using ChildcareApplication.DatabaseController;
 
 namespace AdminTools {
     public partial class ParentReport : Window {
@@ -30,31 +30,17 @@ namespace AdminTools {
         }
 
         //Loads a report based on the passed in MySQL query
-        private void LoadReport(String query) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
-
-            try {
-                connection.Open();
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
-                cmd.ExecuteNonQuery();
-
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
-                DataTable table = new DataTable("Parent Report");
-                adapter.Fill(table);
-                this.table = table;
-                parentDataGrid.ItemsSource = table.DefaultView;
-                this.reportLoaded = true;
-                
-                connection.Close();
-            } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
-            }
+        private void LoadReport(params string[] dates) {
+            ReportsDB reportDB = new ReportsDB();
+            this.table = reportDB.GetParentReportTable(this.txt_ParentID.Text, dates);
+            parentDataGrid.ItemsSource = table.DefaultView;
+            this.reportLoaded = true;
         }
 
         private void btn_LoadAll_Click(object sender, RoutedEventArgs e) {
             ParentInfoDB parentInfo = new ParentInfoDB();
             if (txt_ParentID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_ParentID.Text)) {
-                BuildQuery();
+                LoadReport();
                 LoadParentData();
             } else {
                 MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
@@ -95,7 +81,7 @@ namespace AdminTools {
                 fromDate = BuildDateString(fromYear, fromMonth, fromDay);
                 toDate = BuildDateString(toYear, toMonth, toDay);
 
-                BuildQuery(fromDate, toDate);
+                LoadReport(fromDate, toDate);
                 LoadParentData();
             } else {
                 MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
@@ -143,7 +129,7 @@ namespace AdminTools {
                         String fromDate = fromParts[2] + "-" + fromParts[0] + "-" + fromParts[1];
                         String toDate = toParts[2] + "-" + toParts[0] + "-" + toParts[1];
 
-                        BuildQuery(fromDate, toDate);
+                        LoadReport(fromDate, toDate);
                         LoadParentData();
                     } else {
                         MessageBox.Show("You must enter a valid date range!");
@@ -157,29 +143,6 @@ namespace AdminTools {
                 MessageBox.Show("You must enter a valid date range!");
                 txt_FromDate.Focus();
             }
-        }
-
-        //builds a query based on passed in values
-        private void BuildQuery(String start, String end) { //idea for how to format the transaction price from: http://stackoverflow.com/questions/9149063/sqlite-format-number-with-2-decimal-places-always
-            string query = "SELECT strftime('%m-%d-%Y', ChildcareTransaction.TransactionDate) AS Date, Child.FirstName AS First, Child.LastName AS ";
-            query += "Last, EventData.EventName AS 'Event Type', time(ChildcareTransaction.CheckedIn) AS 'Check In', ";
-            query += "time(ChildcareTransaction.CheckedOut) AS 'Check Out', ";
-            query += "'$' || printf('%.2f', ChildcareTransaction.TransactionTotal) AS Total FROM AllowedConnections NATURAL JOIN Child ";
-            query += "NATURAL JOIN ChildcareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = " + txt_ParentID.Text + " ";
-            query += "AND ChildcareTransaction.TransactionDate BETWEEN '" + start + "' AND '" + end + "';";
-
-            LoadReport(query);
-        }
-
-        //builds a query string to show all charges
-        private void BuildQuery() {
-            string query = "SELECT strftime('%m/%d/%Y', ChildcareTransaction.TransactionDate) AS 'Date', Child.FirstName AS First, Child.LastName AS ";
-            query += "Last, EventData.EventName AS 'Event Type', time(ChildcareTransaction.CheckedIn) AS 'Check In', ";
-            query += "time(ChildcareTransaction.CheckedOut) AS 'Check Out', ";
-            query += "'$' || printf('%.2f', ChildcareTransaction.TransactionTotal) AS Total FROM AllowedConnections NATURAL JOIN Child ";
-            query += "NATURAL JOIN ChildcareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = " + txt_ParentID.Text + ";";
-
-            LoadReport(query);
         }
 
         //Loads the information for the parent on to the side of the window

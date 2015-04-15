@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -23,36 +22,10 @@ namespace AdminTools {
             LoadTransactions();
         }
 
-        private string BuildQuery() {
-            string query = "SELECT Guardian.Guardian_ID AS 'Guardian ID', ChildcareTransaction.ChildcareTransaction_ID AS 'Transaction ID', ";
-            query += "strftime('%m/%d/%Y', ChildcareTransaction.TransactionDate) AS Date, Guardian.FirstName AS First, Guardian.LastName AS Last, ";
-            query += "Guardian.Phone, Guardian.Address1, Guardian.Address2, Guardian.City, Guardian.StateAbrv AS State, Guardian.Zip, ";
-            query += "'$' || printf('%.2f', ChildcareTransaction.TransactionTotal) AS 'Total Charges' ";
-            query += "From Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ChildcareTransaction NATURAL JOIN Family ";
-            query += "ORDER BY ChildcareTransaction.TransactionDate;";
-
-            return query;
-        }
-
         private void LoadTransactions() {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
-            String query = BuildQuery();
-            try {
-                connection.Open();
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
-                cmd.ExecuteNonQuery();
-
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
-
-                DataTable table = new DataTable("Transactions");
-                adapter.Fill(table);
-
-                TransactionDataGrid.ItemsSource = table.DefaultView;
-
-                connection.Close();
-            } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
-            }
+            TransactionDB transDB = new TransactionDB();
+            DataTable table = transDB.GetTransactions();
+            TransactionDataGrid.ItemsSource = table.DefaultView;
         }
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e) {

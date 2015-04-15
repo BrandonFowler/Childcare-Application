@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -206,6 +207,39 @@ namespace DatabaseController {
                 splitDate[1] = "0" + splitDate[1];
             }
             return splitDate[0] + "/" + splitDate[1] + "/" + splitDate[2];
+        }
+
+        public DataTable GetTransactions() {
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            String query = BuildTransactionsQuery();
+            DataTable table;
+            try {
+                connection.Open();
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                cmd.ExecuteNonQuery();
+
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+
+                table = new DataTable("Transactions");
+                adapter.Fill(table);
+
+                connection.Close();
+                return table;
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+                return null;
+            }
+        }
+
+        private string BuildTransactionsQuery() {
+            string query = "SELECT Guardian.Guardian_ID AS 'Guardian ID', ChildcareTransaction.ChildcareTransaction_ID AS 'Transaction ID', ";
+            query += "strftime('%m/%d/%Y', ChildcareTransaction.TransactionDate) AS Date, Guardian.FirstName AS First, Guardian.LastName AS Last, ";
+            query += "Guardian.Phone, Guardian.Address1, Guardian.Address2, Guardian.City, Guardian.StateAbrv AS State, Guardian.Zip, ";
+            query += "'$' || printf('%.2f', ChildcareTransaction.TransactionTotal) AS 'Total Charges' ";
+            query += "From Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ChildcareTransaction NATURAL JOIN Family ";
+            query += "ORDER BY ChildcareTransaction.TransactionDate;";
+
+            return query;
         }
     }
 }

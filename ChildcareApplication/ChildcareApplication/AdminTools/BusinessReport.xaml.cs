@@ -1,8 +1,8 @@
-﻿using DatabaseController;
+﻿using ChildcareApplication.DatabaseController;
+using DatabaseController;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -47,10 +47,10 @@ namespace AdminTools {
             String fromDate, toDate;
             int fromMonth, fromYear, fromDay, toMonth, toYear, toDay;
 
-            fromDay = 20;
+            fromDay = 20; //TODO: load from settings
             toDay = 19;
 
-            if (DateTime.Now.Day < 20) { //previous month and this month
+            if (DateTime.Now.Day < fromDay) { //previous month and this month
                 if (DateTime.Now.Month != 1) {
                     fromYear = DateTime.Now.Year;
                     fromMonth = DateTime.Now.Month - 1;
@@ -75,7 +75,7 @@ namespace AdminTools {
             fromDate = BuildDateString(fromYear, fromMonth, fromDay);
             toDate = BuildDateString(toYear, toMonth, toDay);
 
-            BuildQuery(fromDate, toDate);
+            LoadReport(fromDate, toDate);
         }
 
         private string BuildDateString(int year, int month, int day) {
@@ -104,7 +104,7 @@ namespace AdminTools {
                 int year = Convert.ToInt32(((ComboBoxItem)cmb_Year.SelectedItem).Content);
 
                 int monthNum = GetMonthNum(month);
-                int fromDay = 20;
+                int fromDay = 20; //TODO: load from settings
                 int toDay = 19;
 
                 fromDate = BuildDateString(year, monthNum, fromDay);
@@ -115,7 +115,7 @@ namespace AdminTools {
                     toDate = BuildDateString(year + 1, monthNum + 1, toDay);
                 }
 
-                BuildQuery(fromDate, toDate);
+                LoadReport(fromDate, toDate);
             } else {
                 MessageBox.Show("You must select a month and year from the drop down menus.");
             }
@@ -147,38 +147,13 @@ namespace AdminTools {
             return 12;
         }
 
-        private void BuildQuery(String start, String end) {
-            string query = "SELECT Guardian.Guardian_ID AS ID, Guardian.FirstName AS First, Guardian.LastName AS Last, ";
-            query += "Guardian.Phone, Guardian.Address1, Guardian.Address2, Guardian.City, Guardian.StateAbrv AS State, Guardian.Zip, ";
-            query += "'$' || printf('%.2f', SUM(ChildcareTransaction.TransactionTotal)) AS 'Total Charges' ";
-            query += "From Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ChildcareTransaction NATURAL JOIN Family ";
-            query += "WHERE ChildcareTransaction.TransactionDate BETWEEN '" + start + "' AND '" + end + "' ";
-            query += "GROUP BY Guardian.Guardian_ID";
+        private void LoadReport(string startDate, string endDate) {
+            ReportsDB reportsDB = new ReportsDB();
+            DataTable table = reportsDB.GetBusinessReportTable(startDate, endDate);
+            this.table = table;
 
-            LoadReport(query);
-        }
-
-        private void LoadReport(String query) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
-
-            try {
-                connection.Open();
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
-                cmd.ExecuteNonQuery();
-
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
-                
-                DataTable table = new DataTable("Business Report");
-                adapter.Fill(table);
-                this.table = table;
-
-                businessDataGrid.ItemsSource = table.DefaultView;
-                this.reportLoaded = true;
-
-                connection.Close();
-            } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
-            }
+            businessDataGrid.ItemsSource = table.DefaultView;
+            this.reportLoaded = true;
         }
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e) {
