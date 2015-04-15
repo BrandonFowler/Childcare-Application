@@ -20,10 +20,10 @@ namespace AdminTools {
     /// Interaction logic for win_NewParentLogin.xaml
     /// </summary>
     public partial class NewParentLogin : Window {
-        private LoadParentInfoDatabase db;
+        private ParentInfoDB db;
         public NewParentLogin() {
             InitializeComponent();
-            this.db = new LoadParentInfoDatabase();
+            this.db = new ParentInfoDB();
         }
 
         private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
@@ -42,7 +42,7 @@ namespace AdminTools {
                     pID = string.Format("{0:000000}", txt_ParentID1.Text);
                     PIN = string.Format("{0:0000}", psw_ParentPIN1.Password);
                     DataSet DS = new DataSet();
-                    DS = this.db.GetParentInfo(pID);
+                    DS = this.db.GetParentInfoDS(pID);
                     int count = DS.Tables[0].Rows.Count;
 
                     if (count == 0)//ID does not exist

@@ -11,10 +11,10 @@ using System.Windows;
 
 namespace DatabaseController {
 
-    class Database {
+    class LoginDB {
         private SQLiteConnection dbCon;
 
-        public Database() {
+        public LoginDB() {
             dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }//end Database
 
@@ -57,53 +57,6 @@ namespace DatabaseController {
             return false;
         }//end validateLogin
 
-        public String[] findChildren(string id) {
-            dbCon.Open();
-
-            string sql = "select rowid from child where parentID = " + id;
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
-            int recordFound = Convert.ToInt32(command.ExecuteScalar());
-
-            if (recordFound == 0) {
-                dbCon.Close();
-                return null;
-            }
-
-            sql = "select name from child where parentID = " + id;
-            command = new SQLiteCommand(sql, this.dbCon);
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
-            DataSet DS = new DataSet();
-            DB.Fill(DS);
-            int count = DS.Tables[0].Rows.Count;
-            String[] names = new string[count];
-            int x = 0;
-            while (x < count) {
-                names[x] = DS.Tables[0].Rows[x][0].ToString();
-                x++;
-            }
-            dbCon.Close();
-            return names;
-        }//end findChildren
-
-        public bool checkIn(string name) {
-            dbCon.Open();
-            string sql = "update child set checkedIn = 1 where name = '" + name + "'";
-            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-            command.ExecuteNonQuery();
-            dbCon.Close();
-            return true;
-        }
-
-        public bool checkOut(string name) {
-            dbCon.Open();
-            string sql = "update child set checkedIn = 0 where name = '" + name + "'";
-            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-            command.ExecuteNonQuery();
-            dbCon.Close();
-            return true;
-        }//end checkOut
-
-
         public int GetAccessLevel(string ID) {
             int accessLevel = -1;
             String query = "Select AccessLevel from Administrator where AdministratorUN = '" + ID + "';";
@@ -117,6 +70,28 @@ namespace DatabaseController {
                 MessageBox.Show(e.Message);
             }
             return accessLevel;
+        }
+
+        public bool ValidateLogin(string ID, string PIN) {
+            string sql = "select Guardian_ID " +
+                         "from Guardian " +
+                         "where Guardian_ID = @ID and GuardianPIN = @PIN";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@ID", ID));
+            command.Parameters.Add(new SQLiteParameter("@PIN", PIN));
+            try {
+                dbCon.Open();
+                object recordFound = command.ExecuteScalar();
+                dbCon.Close();
+                if (recordFound != DBNull.Value && recordFound != null) {
+                    dbCon.Close();
+                    return true;
+                }
+            } catch (Exception) {
+                MessageBox.Show("Database Connection Failure");
+                dbCon.Close();
+            }
+            return false;
         }
     }//end Database
 }//end namespace

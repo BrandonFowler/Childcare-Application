@@ -37,13 +37,14 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void SubmitPayment() {
-            ParentInfoDB parentInfoDB = new ParentInfoDB();
+            TransactionDB transDB = new TransactionDB();
             Double num;
 
             if (Double.TryParse(txt_PaymentAmount.Text, out num) && num > 0) {
+                num *= -1;
                 if (num.ToString().Contains('.')) {
                     if (num.ToString().Split('.')[1].Length < 3) {
-                        parentInfoDB.UpdateCurBalance(this.guardianID, num);
+                        transDB.UpdateFamilyBalance(this.guardianID, num);
 
                         this.callingWindow.UpdateCurDue(this.guardianID);
                         this.Close();
@@ -51,7 +52,7 @@ namespace ChildcareApplication.AdminTools {
                         MessageBox.Show("You must enter a valid dollar number in the Payment Amount box.");
                     }
                 } else {
-                    parentInfoDB.UpdateCurBalance(this.guardianID, num);
+                    transDB.UpdateFamilyBalance(this.guardianID, num);
 
                     this.callingWindow.UpdateCurDue(this.guardianID);
                     this.Close();

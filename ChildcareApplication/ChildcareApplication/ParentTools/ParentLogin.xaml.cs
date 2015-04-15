@@ -22,12 +22,13 @@ namespace ParentTools {
 
         private bool IDBoxSelected = false;
         private bool PINBoxSelected = false;
-        private ParentToolsDB db;
+        private LoginDB db;
+
 
         public ParentLogin() {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
-            this.db = new ParentToolsDB();
+            this.db = new LoginDB();
             this.txt_IDEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_IDEntry.GotFocus += OnIDBoxFocus;
             this.txt_PINEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);

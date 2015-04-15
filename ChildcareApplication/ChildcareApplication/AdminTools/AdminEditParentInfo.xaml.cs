@@ -23,12 +23,12 @@ namespace AdminTools {
     /// </summary>
     public partial class AdminEditParentInfo : Window {
 
-        private LoadParentInfoDatabase db;
+        private ParentInfoDB db;
         public AdminEditParentInfo(string parentID) {
 
             InitializeComponent();
             AddStates();
-            this.db = new LoadParentInfoDatabase();
+            this.db = new ParentInfoDB();
             cnv_ParentIcon.Background = new SolidColorBrush(Colors.Aqua); //setting canvas color so we can see it
             btn_Delete.Background = new SolidColorBrush(Colors.Red);
             LoadParentInfo(parentID);
@@ -223,7 +223,7 @@ namespace AdminTools {
 
             txt_IDNumber.Text = parentID;
             DataSet DS = new DataSet();
-            DS = this.db.GetParentInfo(parentID);
+            DS = this.db.GetParentInfoDS(parentID);
             int count = DS.Tables[0].Rows.Count;
             if(count > 0)
             {

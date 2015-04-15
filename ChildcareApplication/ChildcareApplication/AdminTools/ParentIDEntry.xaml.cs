@@ -22,12 +22,12 @@ namespace AdminTools
 
     public partial class ParentIDEntry : Window {
  
-        private Database db;
+        private LoginDB db;
         private bool editParent; 
         public ParentIDEntry(bool editP) {
             InitializeComponent();
             editParent = editP; 
-            this.db = new Database();
+            this.db = new LoginDB();
             this.txt_IDEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_IDEntry.Focus();
         }

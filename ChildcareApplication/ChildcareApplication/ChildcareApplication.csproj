@@ -181,8 +181,7 @@
     </Page>
     <Compile Include="AdminTools\Child.cs" />
     <Compile Include="DatabaseController\ChildInfoDatabase.cs" />
-    <Compile Include="DatabaseController\Database.cs" />
-    <Compile Include="DatabaseController\LoadParentInfoDatabase.cs" />
+    <Compile Include="DatabaseController\LoginDB.cs" />
     <Compile Include="DatabaseController\ParentInfoDB.cs" />
     <Compile Include="AdminTools\ParentReport.xaml.cs">
       <DependentUpon>ParentReport.xaml</DependentUpon>
@@ -215,7 +214,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DatabaseController\ParentToolsDB.cs" />
+    <Compile Include="DatabaseController\ConnectionsDB.cs" />
     <Compile Include="ParentTools\ChildLoginWindow.xaml.cs">
       <DependentUpon>ChildLoginWindow.xaml</DependentUpon>
     </Compile>

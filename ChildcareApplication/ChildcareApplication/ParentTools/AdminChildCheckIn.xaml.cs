@@ -18,12 +18,12 @@ namespace ParentTools {
     public partial class AdminChildCheckIn : Window {
 
         private string guardianID;
-        private ParentToolsDB db;
+        private ConnectionsDB db;
 
         public AdminChildCheckIn() {
             InitializeComponent();
             lst_Guardians.SelectionChanged += lst_Guardians_IndexChange;
-            this.db = new ParentToolsDB();
+            this.db = new ConnectionsDB();
             cnv_GuardianPic.Background = new SolidColorBrush(Colors.DimGray);
             txt_SearchBox.Focus();
             this.txt_SearchBox.KeyDown += new KeyEventHandler(KeyPressedEnter);
@@ -51,9 +51,10 @@ namespace ParentTools {
             if (lst_Guardians.SelectedItem == null) {
                 return;
             }
+            ParentInfoDB parentDB = new ParentInfoDB();
             string guardianInfo = lst_Guardians.SelectedItem.ToString();
             this.guardianID = guardianInfo.Substring(guardianInfo.LastIndexOf(' ') + 1);
-            string imageLink = db.GetGuardianImagePath(this.guardianID);
+            string imageLink = parentDB.GetGuardianImagePath(this.guardianID);
             if (imageLink != null) {
                 ImageBrush ib = new ImageBrush();
                 ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
@@ -66,6 +67,7 @@ namespace ParentTools {
         }
 
         private void Search() {
+            ParentInfoDB parentDB = new ParentInfoDB();
             CleanDisplay();
             if (String.IsNullOrWhiteSpace(txt_SearchBox.Text)) {
                 MessageBox.Show("Please enter a name or ID.");
@@ -74,7 +76,7 @@ namespace ParentTools {
             int n;
             bool isNumeric = int.TryParse(txt_SearchBox.Text, out n);
             if (isNumeric) {
-                bool validated = db.ValidateGuardianID(txt_SearchBox.Text);
+                bool validated = parentDB.ValidateGuardianID(txt_SearchBox.Text);
                 if (validated) {
                     ChildLogin ChildLoginWindow = new ChildLogin(txt_SearchBox.Text);
                     ChildLoginWindow.Show();
@@ -86,7 +88,7 @@ namespace ParentTools {
                 }
             }
             else {
-                string[,] guardianInfo = db.RetieveGuardiansByLastName(txt_SearchBox.Text);
+                string[,] guardianInfo = parentDB.RetieveGuardiansByLastName(txt_SearchBox.Text);
                 if (guardianInfo == null || guardianInfo.GetLength(0) == 0) {
                     MessageBox.Show("No search results found");
                     return;

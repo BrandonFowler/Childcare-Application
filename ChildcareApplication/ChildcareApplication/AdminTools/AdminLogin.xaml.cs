@@ -24,13 +24,13 @@ namespace AdminTools {
         
         private bool IDBoxSelected = false;
         private bool PINBoxSelected = false;
-        private Database db;
+        private LoginDB db;
         private string pin;
         private bool parentTools = false;
 
         public AdminLogin(){
             InitializeComponent();
-            this.db = new Database();
+            this.db = new LoginDB();
             this.txt_UserName.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_UserName.GotFocus += OnIDBoxFocus;
             this.txt_Password.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
@@ -40,7 +40,7 @@ namespace AdminTools {
 
         public AdminLogin(string login) {
             InitializeComponent();
-            this.db = new Database();
+            this.db = new LoginDB();
             this.txt_UserName.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_UserName.GotFocus += OnIDBoxFocus;
             this.txt_Password.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);

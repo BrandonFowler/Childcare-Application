@@ -12,14 +12,14 @@ namespace ParentTools {
     public partial class ChildLogin : Window {
 
         private string guardianID;
-        private ParentToolsDB db;
+        private ConnectionsDB db;
         private DateTime updateTime;
         private ParentToolsSettings settings;
 
         public ChildLogin(string ID) {
             InitializeComponent();
             this.guardianID = ID;
-            this.db = new ParentToolsDB();
+            this.db = new ConnectionsDB();
             SetUpCheckInBox();
             cnv_GuardianPic.Background = new SolidColorBrush(Colors.Aqua);
             SetUpParentDisplay();
@@ -29,7 +29,6 @@ namespace ParentTools {
             lbl_Time.DataContext = updateTime;
             lst_CheckInBox.GotFocus += CheckInGotFocus;
             lst_CheckOutBox.SelectionChanged += CheckOutBoxSelectionChanged;
-            settings = new ParentToolsSettings(); ;
         }
 
         private void btn_LogOutParent_Click(object sender, RoutedEventArgs e) {
@@ -37,7 +36,8 @@ namespace ParentTools {
         }
 
         private void SetUpCheckInBox() {
-            string[,] childrenData = db.FindChildren(this.guardianID);
+            ChildInfoDatabase childDB = new ChildInfoDatabase();
+            string[,] childrenData = childDB.FindChildren(this.guardianID);
             if(childrenData == null){
                 return;
             }
@@ -109,8 +109,9 @@ namespace ParentTools {
         }
 
         public void SetUpParentDisplay() {
-            string [] parentInfo = db.GetParentInfo(this.guardianID);
-            string imageLink = db.GetGuardianImagePath(this.guardianID);
+            ParentInfoDB parentDB = new ParentInfoDB();
+            string [] parentInfo = parentDB.GetParentInfo(this.guardianID);
+            string imageLink = parentDB.GetGuardianImagePath(this.guardianID);
             if (parentInfo != null){
                 lbl_ParentName.Content = parentInfo[2] + " " + parentInfo[3];
                 if (imageLink != null) {
@@ -131,7 +132,8 @@ namespace ParentTools {
         }
 
         public void EventsSetup() {
-            string[] events = db.GetEvents();
+            EventModificationDB eventDB = new EventModificationDB();
+            string[] events = eventDB.GetCurrentEvents();
             if (events != null){
                 for (int x = 0; x < events.GetLength(0); x++){
                     ComboBoxItem newEvent = new ComboBoxItem() { Content = events[x], Tag = events[x] };
@@ -158,12 +160,14 @@ namespace ParentTools {
         }
 
         private bool CompleteTransaction(string childID, string guardianID) {
+            TransactionDB transDB = new TransactionDB();
+            EventModificationDB eventDB = new EventModificationDB();
             DateTime currentDateTime = DateTime.Now;
             string dateTimeString = DateTime.Now.ToString();
             string currentDateString = Convert.ToDateTime(dateTimeString).ToString("yyyy-MM-dd");
             string currentTimeString = Convert.ToDateTime(dateTimeString).ToString("HH:mm:ss");
-            string allowanceID = db.GetTransactionAllowanceID(guardianID, childID);
-            string[] transaction = db.FindTransaction(allowanceID);
+            string allowanceID = transDB.GetIncompleteTransAllowanceID(guardianID, childID);
+            string[] transaction = transDB.FindTransaction(allowanceID);
             if (transaction == null || allowanceID == null) {
                 MessageBox.Show("Unable to check out child. Please log out then try again.");
                 return false;
@@ -181,7 +185,7 @@ namespace ParentTools {
             double hourDifference = TimeSpanTime.Hours - TimeSpanCheckInTime.Hours;
             double minuteDifference = TimeSpanTime.Minutes - TimeSpanCheckInTime.Minutes;
             double totalCheckedInHours = hourDifference + (minuteDifference / 60.0);
-            double lateMaximum = db.GetEventHourCap(eventName);
+            double lateMaximum = eventDB.GetEventHourCap(eventName);
             if (totalCheckedInHours > lateMaximum) {
                 double timeDifference = totalCheckedInHours - lateMaximum;
                 if (timeDifference > lateTime) {
@@ -206,22 +210,21 @@ namespace ParentTools {
             eventFee = eventFee - BillingCapCalc(eventName, guardianID, transaction[3], eventFee);
             string eventFeeRounded = eventFee.ToString("f2");
             db.CheckOut(currentTimeString, eventFeeRounded, allowanceID);
-            db.AddToBalance(guardianID, eventFee);
+            transDB.UpdateFamilyBalance(guardianID, eventFee);
             if (isLate) {
                 eventName = "Late Fee";
-                double lateFee = db.GetLateFee(eventName);
+                double lateFee = eventDB.GetLateFee(eventName);
                 lateFee = lateFee * lateTime;
-                int maxTransactionID = db.GetNextPrimary("ChildcareTransaction_ID", "ChildcareTransaction");
-                string sMaxTransactionID = Convert.ToString(maxTransactionID);
-                sMaxTransactionID = sMaxTransactionID.ToString().PadLeft(10, '0');
-                db.AddLateFee(sMaxTransactionID, eventName, allowanceID, currentDateString, lateFee);
-                db.AddToBalance(guardianID, lateFee);
+                string maxTransactionID = transDB.GetNextTransID();
+                transDB.AddLateFee(maxTransactionID, eventName, allowanceID, currentDateString, lateFee);
+                transDB.UpdateFamilyBalance(guardianID, lateFee);
             }
             return true;
         }
 
         public bool CheckIfHourly(string eventName) {
-            string[] eventData = db.GetEvent(eventName);
+            EventModificationDB eventDB = new EventModificationDB();
+            string[] eventData = eventDB.GetEvent(eventName);
             if (eventData == null) {
                 return false;
             }
@@ -234,9 +237,10 @@ namespace ParentTools {
         }
 
         public double FindEventFee(string guardianID, string eventName) {
+            EventModificationDB eventDB = new EventModificationDB();
             bool discount = false;
             int childrenCheckedIn = db.NumberOfCheckedIn(guardianID);
-            string[] eventData = db.GetEvent(eventName);
+            string[] eventData = eventDB.GetEvent(eventName);
             if ((childrenCheckedIn > 1) && (eventData[2] != null || eventData[4] != null)) {
                 discount = true;
             }
@@ -262,6 +266,7 @@ namespace ParentTools {
         }
 
         public double BillingCapCalc(string eventName, string guardianID, string transactionDate, double eventFee) {
+            TransactionDB transDB = new TransactionDB();
             string familyID = guardianID.Remove(guardianID.Length - 1);
             double cap = settings.GetBillingCap();
             int billingStart = settings.GetBillingStart();
@@ -293,7 +298,7 @@ namespace ParentTools {
             string start = DTStart.ToString("yyyy-MM-dd");
             string end = DTEnd.ToString("yyyy-MM-dd");
             if (eventName.CompareTo("Regular Childcare") == 0 || eventName.CompareTo("Infant Childcare") == 0 || eventName.CompareTo("Adolescent Childcare") == 0) {
-                object recordFound = db.SumRegularCare(start, end, familyID);
+                object recordFound = transDB.SumRegularCare(start, end, familyID);
                 double sum;
                 if (recordFound == DBNull.Value || recordFound == null) {
                     return 0;

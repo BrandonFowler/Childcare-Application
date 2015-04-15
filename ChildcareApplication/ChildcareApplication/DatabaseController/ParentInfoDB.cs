@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -8,20 +9,19 @@ using System.Windows;
 
 namespace DatabaseController {
     class ParentInfoDB {
-
+        private SQLiteConnection dbCon;
         public ParentInfoDB() {
-            
+            this.dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }
 
         public String GetParentName(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String result = "";
 
             try {
-                connection.Open();
+                dbCon.Open();
 
                 String query = "SELECT FirstName, LastName FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
 
                 SQLiteDataReader reader = cmd.ExecuteReader();
                 reader.Read();
@@ -29,7 +29,7 @@ namespace DatabaseController {
                 result = reader.GetString(0) + " " + reader.GetString(1);
 
                 reader.Close();
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -37,17 +37,16 @@ namespace DatabaseController {
         }
 
         public String GetAddress1(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT Address1 FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             String result = "";
 
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
 
             try {
-                connection.Open();
+                dbCon.Open();
 
                 result = Convert.ToString(cmd.ExecuteScalar());
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -55,17 +54,16 @@ namespace DatabaseController {
         }
 
         public String GetAddress2(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT Address2 FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             String result = "";
 
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
 
             try {
-                connection.Open();
+                dbCon.Open();
 
                 result = Convert.ToString(cmd.ExecuteScalar());
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -74,19 +72,18 @@ namespace DatabaseController {
 
         //returns a string for the state, zip, and city
         public String GetAddress3(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT City, StateAbrv, Zip FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             String result = "";
 
             try {
-                connection.Open();
+                dbCon.Open();
 
                 SQLiteDataReader reader = cmd.ExecuteReader();
                 reader.Read();
                 result = reader.GetString(0) + ", " + reader.GetString(1) + " " + reader.GetString(2);
                 reader.Close();
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -94,16 +91,15 @@ namespace DatabaseController {
         }
 
         public String GetPhoneNumber(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT Phone FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             String result = "";
 
             try {
-                connection.Open();
+                dbCon.Open();
 
                 result = Convert.ToString(cmd.ExecuteScalar());
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -111,15 +107,14 @@ namespace DatabaseController {
         }
 
         public String GetPhotoPath(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT PhotoLocation FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             String result = "";
 
             try {
-                connection.Open();
+                dbCon.Open();
                 result = Convert.ToString(cmd.ExecuteScalar());
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -127,18 +122,17 @@ namespace DatabaseController {
         }
 
         public String GetCurrentDue(String parentID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String familyID = parentID.Remove(parentID.Length - 1);
 
             String query = "SELECT FamilyTotal FROM Family WHERE Family_ID = '" + familyID + "';";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
 
             String curDue = "$";
 
             try {
-                connection.Open();
+                dbCon.Open();
                 curDue += Convert.ToString(cmd.ExecuteScalar());
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -151,38 +145,15 @@ namespace DatabaseController {
             return curDue;
         }
 
-        public void UpdateCurBalance(String parentID, double paymentValue) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
-            String familyID = parentID.Remove(parentID.Length - 1);
-
-            String query = "SELECT FamilyTotal FROM Family WHERE Family_ID = '" + familyID + "';";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
-
-            try {
-                connection.Open();
-                Double currentBalance = Convert.ToDouble(cmd.ExecuteScalar());
-
-                query = "Update Family SET FamilyTotal = '" + (currentBalance - paymentValue) + "' WHERE Family_ID = '";
-                query += familyID + "';";
-
-                cmd = new SQLiteCommand(query, connection);
-                cmd.ExecuteNonQuery();
-                connection.Close();
-            } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
-            }
-        }
-
         public bool GuardianIDExists(string guardianID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT Guardian_ID FROM Guardian WHERE Guardian_ID = '" + guardianID + "';";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             String result = "";
 
             try {
-                connection.Open();
+                dbCon.Open();
                 result = Convert.ToString(cmd.ExecuteScalar());
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -195,15 +166,14 @@ namespace DatabaseController {
         }
 
         public String GetParentNameFromTrans(String transactionID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String result = "";
 
             try {
-                connection.Open();
+                dbCon.Open();
 
                 String query = "SELECT FirstName, LastName FROM Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ";
                 query += "ChildcareTransaction WHERE ChildcareTransaction.ChildcareTransaction_ID = '" + transactionID + "';";
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
 
                 SQLiteDataReader reader = cmd.ExecuteReader();
                 reader.Read();
@@ -211,7 +181,7 @@ namespace DatabaseController {
                 result = reader.GetString(0) + " " + reader.GetString(1);
 
                 reader.Close();
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -219,7 +189,6 @@ namespace DatabaseController {
         }
 
         public bool GuardianNameExists(string fullName) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             string[] nameAra = fullName.Split(' ');
             if (nameAra.Length != 2) {
                 return false;
@@ -232,11 +201,11 @@ namespace DatabaseController {
                 return false;
             }
             try {
-                connection.Open();
+                dbCon.Open();
 
                 string query = "Select count(*) from Guardian where FirstName = '" + firstName + "' and LastName = '" + lastName + "';";
 
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
 
                 count = Convert.ToInt32(cmd.ExecuteScalar());
 
@@ -247,6 +216,229 @@ namespace DatabaseController {
                 MessageBox.Show(exception.Message);
             }
             return false;
+        }
+
+        public DataSet GetParentInfoDS(string parentID) {
+
+            dbCon.Open();
+            DataSet DS = new DataSet();
+            try {
+                string sql = "select * from Guardian where Guardian_ID = " + parentID;
+
+                SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+
+                SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+
+                DB.Fill(DS);
+            } catch (SQLiteException e) {
+                MessageBox.Show("Failed");
+            }
+            dbCon.Close();
+            return DS;
+        }
+
+        public void DeleteParentInfo(string parentID) {
+
+            dbCon.Open();
+            try {
+                string today = DateTime.Now.ToString("yyyy-MM-dd");
+
+                string sql = @"UPDATE Guardian SET GuardianDeletionDate = @today WHERE Guardian_ID = @parentID;";
+
+                SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+                command.CommandText = sql;
+                command.Parameters.Add(new SQLiteParameter("@today", today));
+                command.Parameters.Add(new SQLiteParameter("@parentID", parentID));
+
+                command.ExecuteNonQuery();
+
+                MessageBox.Show("Completed");
+            } catch (SQLiteException e) {
+                MessageBox.Show("Failed");
+            }
+            dbCon.Close();
+
+        }
+
+        public void AddNewParent(string ID, string PIN, string firstName, string lastName, string phone, string email, string address, string address2, string city, string state, string zip, string photo) {
+            dbCon.Open();
+
+            try {
+
+                string sql = @"INSERT INTO Guardian(Guardian_ID, GuardianPIN, FirstName, LastName, Phone, Email, Address1, Address2, City, StateAbrv, Zip, PhotoLocation) " +
+                "VALUES('" + ID + "', " + PIN + ", " + firstName + ", " + lastName + ", " + phone + ", " + email + ", " + address + ", " + address2 + ", " + city + ", " + state + ", " + zip + ", " + photo + ");";
+                SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
+                mycommand.ExecuteNonQuery();
+                MessageBox.Show("Completed");
+            } catch (SQLiteException e) {
+                MessageBox.Show(e.ToString());
+            }
+            dbCon.Close();
+        }
+
+        public void UpdateParentInfo(string ID, string firstName, string lastName, string phone, string email, string address, string address2, string city, string state, string zip, string path) {
+            dbCon.Open();
+
+            try {
+
+                string sql = @"UPDATE Guardian SET FirstName = @firstName, LastName = @lastName, Phone = @phone, Email = @email," +
+                                    "Address1 = @address, Address2 = @address2, City = @city, StateAbrv = @state, Zip  = @zip, PhotoLocation = @path WHERE Guardian_ID = @ID;";
+
+                SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
+                mycommand.CommandText = sql;
+                mycommand.Parameters.Add(new SQLiteParameter("@firstName", firstName));
+                mycommand.Parameters.Add(new SQLiteParameter("@lastName", lastName));
+                mycommand.Parameters.Add(new SQLiteParameter("@phone", phone));
+                mycommand.Parameters.Add(new SQLiteParameter("@email", email));
+                mycommand.Parameters.Add(new SQLiteParameter("@address", address));
+                mycommand.Parameters.Add(new SQLiteParameter("@address2", address2));
+                mycommand.Parameters.Add(new SQLiteParameter("@city", city));
+                mycommand.Parameters.Add(new SQLiteParameter("@state", state));
+                mycommand.Parameters.Add(new SQLiteParameter("@zip", zip));
+                mycommand.Parameters.Add(new SQLiteParameter("@ID", ID));
+                mycommand.Parameters.Add(new SQLiteParameter("@path", path));
+
+                mycommand.ExecuteNonQuery();
+                MessageBox.Show("Completed");
+            } catch (SQLiteException e) {
+                MessageBox.Show(e.ToString());
+            }
+            dbCon.Close();
+        }
+
+        public DataSet checkIfFamilyExists(string familyID) {
+
+            dbCon.Open();
+            DataSet DS = new DataSet();
+            try {
+                string sql = "select * from Family where Family_ID = " + familyID;
+                SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+
+                SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+
+                DB.Fill(DS);
+
+            } catch (SQLiteException e) {
+                MessageBox.Show(e.ToString());
+            }
+
+            dbCon.Close();
+            return DS;
+        }
+
+        public void AddNewFamily(string familyID, double ballance) {
+
+            dbCon.Open();
+
+            try {
+
+                string sql = @"INSERT INTO Family(Family_ID, FamilyTotal) " +
+                "VALUES(" + familyID + ", " + ballance + ");";
+                SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
+                mycommand.ExecuteNonQuery();
+
+            } catch (SQLiteException e) {
+                MessageBox.Show(e.ToString());
+            }
+            dbCon.Close();
+        }
+
+        public string[] GetParentInfo(String guardianID) {
+            string sql = "select * " +
+                         "from Guardian " +
+                         "where Guardian_ID = @guardianID";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@guardianID", guardianID));
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            DataSet DS = new DataSet();
+            try {
+                dbCon.Open();
+                DB.Fill(DS);
+                int cCount = DS.Tables[0].Columns.Count;
+                string[] data = new String[cCount];
+                for (int x = 0; x < cCount; x++) {
+                    data[x] = DS.Tables[0].Rows[0][x].ToString();
+                }
+                dbCon.Close();
+                return data;
+            } catch (Exception) {
+                MessageBox.Show("Database connection error: Unable to retrieve information for guardian");
+                dbCon.Close();
+                return null;
+            }
+        }
+
+        public string[,] RetieveGuardiansByLastName(string name) {
+            string sql = "select FirstName, LastName, Guardian_ID " +
+                         "from Guardian " +
+                         "where LastName = @name";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@name", name));
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            DataSet DS = new DataSet();
+            try {
+                dbCon.Open();
+                DB.Fill(DS);
+                if (DS.Tables == null) {
+                    return null;
+                }
+                int cCount = DS.Tables[0].Columns.Count;
+                int rCount = DS.Tables[0].Rows.Count;
+                String[,] data = new string[rCount, cCount];
+                for (int x = 0; x < rCount; x++) {
+                    for (int y = 0; y < cCount; y++) {
+                        data[x, y] = DS.Tables[0].Rows[x][y].ToString();
+                    }
+                }
+                dbCon.Close();
+                return data;
+            } catch (Exception) {
+                MessageBox.Show("Database connection error: Unable to retrieve information for guardians");
+                dbCon.Close();
+                return null;
+            }
+        }
+
+        public bool ValidateGuardianID(string ID) {
+            String sql = "select Guardian_ID " +
+                         "from Guardian " +
+                         "where Guardian_ID = @ID";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@ID", ID));
+            try {
+                dbCon.Open();
+                object recordFound = command.ExecuteScalar();
+                dbCon.Close();
+                if (recordFound != DBNull.Value && recordFound != null) {
+                    return true;
+                }
+                return false;
+            } catch (Exception) {
+                dbCon.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
+                return false;
+            }
+        }
+
+        public string GetGuardianImagePath(string ID) {
+            String sql = "select PhotoLocation " +
+                        "from Guardian " +
+                        "where Guardian_ID = @ID";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@ID", ID));
+            try {
+                dbCon.Open();
+                object recordFound = command.ExecuteScalar();
+                dbCon.Close();
+                if (recordFound != DBNull.Value && recordFound != null) {
+                    return (string)recordFound;
+                }
+                return null;
+            } catch (Exception) {
+                dbCon.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve guardian picture.");
+                return null;
+            }
         }
     }
 }

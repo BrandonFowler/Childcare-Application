@@ -9,17 +9,21 @@ using System.Windows;
 
 namespace DatabaseController {
     class TransactionDB {
+        private SQLiteConnection dbCon;
+
+        public TransactionDB() {
+            this.dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+        }
         public bool TransactionExists(String transactionID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             int count = 0;
             try {
-                connection.Open();
+                dbCon.Open();
                 String query = "SELECT count(*) FROM ChildcareTransaction WHERE ChildcareTransaction_ID = '" + transactionID + "';";
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
 
                 count = Convert.ToInt32(cmd.ExecuteScalar());
                 
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -31,31 +35,28 @@ namespace DatabaseController {
         }
 
         public void DeleteTransaction(String transactionID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
-            
             try {
-                connection.Open();
+                dbCon.Open();
                 String query = "DELETE FROM ChildcareTransaction WHERE ChildcareTransaction_ID = '" + transactionID + "';";
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
 
                 cmd.ExecuteNonQuery();
 
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
         }
 
         public String GetEventName(String transactionID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT EventName FROM ChildcareTransaction WHERE ChildcareTransaction_ID = '" + transactionID + "';";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             String result = "";
 
             try {
-                connection.Open();
+                dbCon.Open();
                 result = Convert.ToString(cmd.ExecuteScalar());
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -63,15 +64,14 @@ namespace DatabaseController {
         }
 
         public double GetTransactionTotal(String transactionID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT TransactionTotal FROM ChildcareTransaction WHERE ChildcareTransaction_ID = '" + transactionID + "';";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             double result = 0;
 
             try {
-                connection.Open();
+                dbCon.Open();
                 result = Convert.ToDouble(cmd.ExecuteScalar());
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -79,48 +79,45 @@ namespace DatabaseController {
         }
 
         public void UpdateTransaction(string transID, string eventName, string allowanceID, string transDate, string checkedIn, string checkedOut, string transTotal) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "UPDATE ChildcareTransaction SET EventName = '" + eventName + "', Allowance_ID = '" + allowanceID + "', ";
             query += "TransactionDate = '" + transDate + "', CheckedIn = '" + checkedIn + "', CheckedOut = '" + checkedOut + "', ";
             query += "TransactionTotal = '" + transTotal + "' WHERE ChildcareTransaction_ID = '" + transID + "';";
             try {
-                connection.Open();
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                dbCon.Open();
+                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
                 cmd.ExecuteNonQuery();
 
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
         }
 
         public void NewTransaction(string transID, string eventName, string allowanceID, string transDate, string checkedIn, string checkedOut, string transTotal) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "INSERT INTO ChildcareTransaction VALUES ('" + transID + "', '" + eventName + "', ";
             query += "'" + allowanceID + "', '" + transDate + "', '" + checkedIn + "', '" + checkedOut + "', ";
             query += "'" + transTotal + "')";
             try {
-                connection.Open();
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                dbCon.Open();
+                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
                 cmd.ExecuteNonQuery();
 
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
         }
 
         public string GetNextTransID() {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT MAX(ChildcareTransaction_ID) FROM ChildcareTransaction;";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             string result = "";
             int num = 0;
 
             try {
-                connection.Open();
+                dbCon.Open();
                 num = Convert.ToInt32(cmd.ExecuteScalar());
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -137,17 +134,16 @@ namespace DatabaseController {
             string childLast = splitChildName[1];
             string allowanceID = "";
 
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT Allowance_ID FROM Guardian Natural Join AllowedConnections Join ";
             query += "Child ON AllowedConnections.Child_ID = Child.Child_ID Where Guardian.FirstName = '";
             query += guardianFirst + "' and Guardian.LastName = '" + guardianLast;
             query += "' and Child.FirstName = '" + childFirst + "' and Child.LastName = '" + childLast + "';";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
 
             try {
-                connection.Open();
+                dbCon.Open();
                 allowanceID = Convert.ToString(cmd.ExecuteScalar());
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -157,15 +153,14 @@ namespace DatabaseController {
 
         //returns a time string in 12 hour clock form (AM/PM)
         public string GetTwelveHourTime(string transID, string fieldName) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT " + fieldName + " FROM ChildcareTransaction where ChildcareTransaction_ID = '" + transID + "';";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             string time = "";
 
             try {
-                connection.Open();
+                dbCon.Open();
                 time = Convert.ToString(cmd.ExecuteScalar());
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -181,15 +176,14 @@ namespace DatabaseController {
         }
 
         public string GetTransactionDate(string transID) {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = "SELECT TransactionDate FROM ChildcareTransaction where ChildcareTransaction_ID = '" + transID + "';";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             string date = "";
 
             try {
-                connection.Open();
+                dbCon.Open();
                 date = Convert.ToString(cmd.ExecuteScalar());
-                connection.Close();
+                dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -210,12 +204,11 @@ namespace DatabaseController {
         }
 
         public DataTable GetTransactions() {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             String query = BuildTransactionsQuery();
             DataTable table;
             try {
-                connection.Open();
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                dbCon.Open();
+                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
                 cmd.ExecuteNonQuery();
 
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
@@ -223,7 +216,7 @@ namespace DatabaseController {
                 table = new DataTable("Transactions");
                 adapter.Fill(table);
 
-                connection.Close();
+                dbCon.Close();
                 return table;
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
@@ -240,6 +233,116 @@ namespace DatabaseController {
             query += "ORDER BY ChildcareTransaction.TransactionDate;";
 
             return query;
+        }
+
+        public bool AddLateFee(string sMaxTransactionID, string eventName, string allowanceID, string currentDateString, double lateFee) {
+            string sql = "insert into " +
+                      "ChildcareTransaction (ChildcareTransaction_ID,EventName,Allowance_ID,transactionDate,CheckedIn,CheckedOut,TransactionTotal) " +
+                      "values (@sMaxTransactionID, @eventName, @allowanceID, @currentDateString, '00:00:00','00:00:00', @lateFee)";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@sMaxTransactionID", sMaxTransactionID));
+            command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
+            command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
+            command.Parameters.Add(new SQLiteParameter("@currentDateString", currentDateString));
+            command.Parameters.Add(new SQLiteParameter("@lateFee", lateFee));
+            if (Convert.ToInt32(sMaxTransactionID) > -1) {
+                try {
+                    dbCon.Open();
+                    command.ExecuteNonQuery();
+                    dbCon.Close();
+                } catch (Exception) {
+                    dbCon.Close();
+                    MessageBox.Show("Database connection error: Unable to record late fee");
+                    return false;
+                }
+            } else {
+                MessageBox.Show("Database connection error: Unable to record late fee");
+                return false;
+            }
+            return true;
+        }
+
+        public object SumRegularCare(string start, string end, string familyID) {
+            string sql = "select sum(TransactionTotal) " +
+                             "from AllowedConnections natural join ChildcareTransaction " +
+                             "where Family_ID = @familyID and EventName IN ('Regular Childcare', 'Infant Childcare') and TransactionDate between '" + start + "' and '" + end + "'";//Add older child
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
+            object recordFound = null;
+            try {
+                dbCon.Open();
+                recordFound = command.ExecuteScalar();
+                dbCon.Close();
+            } catch (Exception) {
+                dbCon.Close();
+                MessageBox.Show("Database connection error: Unable to check if charge exceeds monthly maximum for normal care.");
+            }
+            return recordFound;
+        }
+
+        public void UpdateFamilyBalance(string guardianID, double fee) {
+            string familyID = guardianID.Remove(guardianID.Length - 1);
+            string sql = "update Family " +
+                         "set FamilyTotal = FamilyTotal + @fee " +
+                         "where Family_ID = @familyID";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@fee", fee));
+            command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
+            try {
+                dbCon.Open();
+                command.ExecuteNonQuery();
+                dbCon.Close();
+            } catch (Exception) {
+                dbCon.Close();
+                MessageBox.Show("Database connection error: Unable to add charge to family balance.");
+            }
+        }
+
+        public string GetIncompleteTransAllowanceID(string guardianID, string childID) {
+            string familyID = guardianID.Remove(guardianID.Length - 1);
+            string sql = "select Allowance_ID " +
+                         "from AllowedConnections natural join ChildcareTransaction " +
+                         "where Family_ID = @familyID and Child_ID = @childID and CheckedOut is null " +
+                         "Group By Allowance_ID " +
+                         "HAVING COUNT(*) = 1 ";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
+            command.Parameters.Add(new SQLiteParameter("@childID", childID));
+            try {
+                dbCon.Open();
+                string allowanceID = Convert.ToString(command.ExecuteScalar());
+                dbCon.Close();
+                return allowanceID;
+            } catch (Exception) {
+                dbCon.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve critical information.");
+                return null;
+            }
+        }
+
+        public string[] FindTransaction(string allowanceID) {
+            string sql = "select * " +
+                         "from ChildcareTransaction " +
+                         "where Allowance_ID = @allowanceID and CheckedOut is null";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
+            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+            DataSet DS = new DataSet();
+            try {
+                dbCon.Open();
+                DB.Fill(DS);
+                int cCount = DS.Tables[0].Columns.Count;
+                string[] transaction = new string[cCount];
+                for (int x = 0; x < cCount; x++) {
+                    transaction[x] = DS.Tables[0].Rows[0][x].ToString();
+                }
+                dbCon.Close();
+                return transaction;
+            } catch (Exception) {
+                dbCon.Close();
+                MessageBox.Show("Database connection error: Unable to retrieve original transaction.");
+                return null;
+            }
         }
     }
 }
