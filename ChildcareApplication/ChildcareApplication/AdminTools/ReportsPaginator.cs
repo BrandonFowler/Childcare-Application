@@ -30,10 +30,12 @@ namespace AdminTools {
                 Width = this.pageSize.Width,
                 Height = this.pageSize.Height,
             };
-
+            
             page.Measure(this.pageSize);
             page.Arrange(new Rect(new Point(0, 0), this.pageSize));
-
+            DocumentPage pages = new DocumentPage(page);
+            double test = pages.Size.Height; //656
+            double test2 = pages.Size.Width; //816
             return new DocumentPage(page);
         }
 
