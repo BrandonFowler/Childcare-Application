@@ -33,7 +33,7 @@ namespace AdminTools {
             //if (width > height) {
             //    return 32;
             //}
-            return ((int)Math.Floor((height - (2 * PageMargin) - HeaderHeight) / LineHeight) - 8);
+            return ((int)Math.Floor((height - (2 * PageMargin) - HeaderHeight) / LineHeight));
         }
 
         private static FormattedText MakeText(string text) {
