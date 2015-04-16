@@ -109,7 +109,7 @@ namespace GuardianTools {
         }
 
         public void SetUpParentDisplay() {
-            ParentInfoDB parentDB = new ParentInfoDB();
+            GuardianInfoDB parentDB = new GuardianInfoDB();
             string [] parentInfo = parentDB.GetParentInfo(this.guardianID);
             string imageLink = parentDB.GetGuardianImagePath(this.guardianID);
             if (parentInfo != null){
@@ -132,7 +132,7 @@ namespace GuardianTools {
         }
 
         public void EventsSetup() {
-            EventModificationDB eventDB = new EventModificationDB();
+            EventDB eventDB = new EventDB();
             string[] events = eventDB.GetCurrentEvents();
             if (events != null){
                 for (int x = 0; x < events.GetLength(0); x++){

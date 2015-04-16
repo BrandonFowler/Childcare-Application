@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using System.Windows;
 
 namespace DatabaseController {
-    class ParentInfoDB {
+    class GuardianInfoDB {
         private SQLiteConnection dbCon;
-        public ParentInfoDB() {
+        public GuardianInfoDB() {
             this.dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }
 
@@ -165,29 +165,6 @@ namespace DatabaseController {
             }
         }
 
-        public String GetParentNameFromTrans(String transactionID) {
-            String result = "";
-
-            try {
-                dbCon.Open();
-
-                String query = "SELECT FirstName, LastName FROM Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ";
-                query += "ChildcareTransaction WHERE ChildcareTransaction.ChildcareTransaction_ID = '" + transactionID + "';";
-                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
-
-                SQLiteDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-
-                result = reader.GetString(0) + " " + reader.GetString(1);
-
-                reader.Close();
-                dbCon.Close();
-            } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
-            }
-            return result;
-        }
-
         public bool GuardianNameExists(string fullName) {
             string[] nameAra = fullName.Split(' ');
             if (nameAra.Length != 2) {
@@ -231,7 +208,7 @@ namespace DatabaseController {
 
                 DB.Fill(DS);
             } catch (SQLiteException e) {
-                MessageBox.Show("Failed");
+                MessageBox.Show(e.Message);
             }
             dbCon.Close();
             return DS;
@@ -254,7 +231,7 @@ namespace DatabaseController {
 
                 MessageBox.Show("Completed");
             } catch (SQLiteException e) {
-                MessageBox.Show("Failed");
+                MessageBox.Show(e.Message);
             }
             dbCon.Close();
 

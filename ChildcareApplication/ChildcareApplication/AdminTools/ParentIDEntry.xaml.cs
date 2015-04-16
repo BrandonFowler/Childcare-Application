@@ -13,32 +13,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AdminTools
-{
+namespace AdminTools {
     /// <summary>
     /// Interaction logic for win_ParentLogin.xaml
     /// </summary>
     /// 
 
     public partial class ParentIDEntry : Window {
- 
+
         private LoginDB db;
-        private bool editParent; 
+        private bool editParent;
         public ParentIDEntry(bool editP) {
             InitializeComponent();
-            editParent = editP; 
+            editParent = editP;
             this.db = new LoginDB();
             this.txt_IDEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_IDEntry.Focus();
         }
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e) {
-            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back)
-            {
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back) {
 
-            }
-            else
-            {
+            } else {
                 MessageBox.Show("Please use only numbers.");
                 e.Handled = true;
             }
@@ -46,28 +42,22 @@ namespace AdminTools
 
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
-
-            if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text))
-            {
+            GuardianInfoDB parentDB = new GuardianInfoDB();
+            if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text)) {
                 MessageBox.Show("Please enter the parents ID number.");
 
-            }
-            else
-            {
+            } else {
                 string ID = txt_IDEntry.Text;
-                bool userFound = this.db.validateLogin(ID);
 
-                if (userFound)
-                {
-                    
+                if (parentDB.GuardianIDExists(ID)) {
+
                     if (editParent)
                         DisplayAdminEditParentWindow(ID);
 
                     else
                         DisplayAdminEditChildInfo(ID);
                 }//end if
-                else
-                {
+                else {
                     MessageBox.Show("User ID or PIN does not exist");
                 }//end else
 

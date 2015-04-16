@@ -45,7 +45,7 @@ namespace AdminTools {
         }
 
         private void btn_CurrentMonthReport_Click(object sender, RoutedEventArgs e) {
-            ParentInfoDB parentInfo = new ParentInfoDB();
+            GuardianInfoDB parentInfo = new GuardianInfoDB();
             String fromDate, toDate;
             int fromMonth, fromYear, fromDay, toMonth, toYear, toDay;
 

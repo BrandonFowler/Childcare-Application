@@ -23,12 +23,12 @@ namespace AdminTools {
     /// </summary>
     public partial class AdminEditParentInfo : Window {
 
-        private ParentInfoDB db;
+        private GuardianInfoDB db;
         public AdminEditParentInfo(string parentID) {
 
             InitializeComponent();
             AddStates();
-            this.db = new ParentInfoDB();
+            this.db = new GuardianInfoDB();
             cnv_ParentIcon.Background = new SolidColorBrush(Colors.Aqua); //setting canvas color so we can see it
             btn_Delete.Background = new SolidColorBrush(Colors.Red);
             LoadParentInfo(parentID);

@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using System.Windows;
 
 namespace DatabaseController {
-    class EventModificationDB {
+    class EventDB {
         private SQLiteConnection dbCon;
 
-        public EventModificationDB() {
+        public EventDB() {
             this.dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }
         public void HourlyPriceAlwaysAvailable(String eventName, Double hourlyPrice, Double hourlyDiscount) {
@@ -401,6 +401,7 @@ namespace DatabaseController {
                     String eventName = reader.GetString(0);
                     results.Add(eventName);
                 }
+                reader.Close();
                 dbCon.Close();
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
@@ -408,7 +409,7 @@ namespace DatabaseController {
             return results;
         }
 
-        public DataTable GetEvents() {
+        public DataTable GetEventDisplay() {
             String query = "SELECT EventName AS 'Event Name', HourlyPrice AS 'Hourly Price', HourlyDiscount AS 'Hourly Discount', ";
             query += "DailyPrice AS 'Daily Price', DailyDiscount AS 'Daily Discount', EventMonth AS 'Event Month', ";
             query += "EventDay AS 'Event Day', EventWeekday AS 'Event Weekday', EventMaximumHours AS 'Maximum Hours' FROM EventData WHERE EventDeletionDate IS null;";

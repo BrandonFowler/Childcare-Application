@@ -85,13 +85,12 @@
     </Compile>
     <Compile Include="DatabaseController\AdminDB.cs" />
     <Compile Include="DatabaseController\CleanDB.cs" />
-    <Compile Include="DatabaseController\EventModificationDB.cs" />
+    <Compile Include="DatabaseController\EventDB.cs" />
     <Compile Include="AdminTools\PaymentEntry.xaml.cs">
       <DependentUpon>PaymentEntry.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseController\ReportsDB.cs" />
     <Compile Include="GuardianTools\GuardianToolsSettings.cs" />
-    <Compile Include="DatabaseController\SettingsDB.cs" />
     <Compile Include="DatabaseController\TransactionDB.cs" />
     <Compile Include="GuardianTools\AdminChildCheckIn.xaml.cs">
       <DependentUpon>AdminChildCheckIn.xaml</DependentUpon>
@@ -183,7 +182,7 @@
     <Compile Include="AdminTools\Child.cs" />
     <Compile Include="DatabaseController\ChildInfoDatabase.cs" />
     <Compile Include="DatabaseController\LoginDB.cs" />
-    <Compile Include="DatabaseController\ParentInfoDB.cs" />
+    <Compile Include="DatabaseController\GuardianInfoDB.cs" />
     <Compile Include="AdminTools\ParentReport.xaml.cs">
       <DependentUpon>ParentReport.xaml</DependentUpon>
     </Compile>

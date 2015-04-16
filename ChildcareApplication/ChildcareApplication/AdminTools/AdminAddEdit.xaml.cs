@@ -15,7 +15,7 @@ namespace ChildcareApplication.AdminTools {
             this.db = new AdminDB();
             this.loggedInAs = username;
 
-            lst_AdminList.ItemsSource = db.findAdmins();
+            lst_AdminList.ItemsSource = db.FindAdmins();
         }
 
         private void lst_AdminList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
@@ -32,8 +32,8 @@ namespace ChildcareApplication.AdminTools {
 
         private void fillForms(string adminUN) {
             string tempPW = "1234567890";
-            string accessLevel = db.getAccessLevel(adminUN);
-            string tempEM = db.getEmail(adminUN);
+            string accessLevel = db.GetAccessLevel(adminUN);
+            string tempEM = db.GetAdminEmail(adminUN);
 
             txt_LoginName.Text = adminUN;
             txt_Password.Password = tempPW;
@@ -54,8 +54,8 @@ namespace ChildcareApplication.AdminTools {
         private void btn_AddAdmin_Click(object sender, RoutedEventArgs e) {
             //disable add new admin button until the user either submits or cancels the addition
             btn_AddAdmin.IsEnabled = false;
-            this.db.addNewAdmin();
-            lst_AdminList.ItemsSource = db.findAdmins();
+            this.db.AddNewAdmin();
+            lst_AdminList.ItemsSource = db.FindAdmins();
             lst_AdminList.UnselectAll();
 
         }
@@ -65,21 +65,21 @@ namespace ChildcareApplication.AdminTools {
                 MessageBox.Show("You cannot delete the currently logged in administrator");
             }
             else {
-                db.deleteAdmin(lst_AdminList.SelectedItem.ToString());
-                lst_AdminList.ItemsSource = db.findAdmins();
+                db.DeleteAdmin(lst_AdminList.SelectedItem.ToString());
+                lst_AdminList.ItemsSource = db.FindAdmins();
                 clearForm();
             }
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e) {
             if (rdb_Full.IsChecked == true)
-                db.updateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "1");
+                db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "1");
             else if (rdb_Limited.IsChecked == true)
-                db.updateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "2");
+                db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "2");
 
             if (!(txt_LoginName.Text.Equals("default")))
                 btn_AddAdmin.IsEnabled = true;
-            lst_AdminList.ItemsSource = db.findAdmins();
+            lst_AdminList.ItemsSource = db.FindAdmins();
             fillForms(txt_LoginName.Text);
         }
 

@@ -105,7 +105,7 @@ namespace GuardianTools {
             string ID = txt_IDEntry.Text;
             string PIN = txt_PINEntry.Password;
             string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
-            bool userFound = this.db.ValidateLogin(ID, hashedPIN);
+            bool userFound = this.db.ValidateGuardianLogin(ID, hashedPIN);
             if (userFound) {
                 ChildLogin ChildLoginWindow = new ChildLogin(ID);
                 ChildLoginWindow.Show();

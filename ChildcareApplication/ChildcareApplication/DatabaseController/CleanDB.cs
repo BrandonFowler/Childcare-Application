@@ -11,10 +11,10 @@ using ChildcareApplication.Properties;
 namespace ChildcareApplication.DatabaseController {
     class CleanDB {
 
-        private SQLiteConnection conn;
+        private SQLiteConnection dbCon;
 
         public CleanDB() {
-            conn = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }
 
         public bool Clean() {
@@ -53,15 +53,15 @@ namespace ChildcareApplication.DatabaseController {
             String sql = "select SettingValue " +
                          "from ApplicationSettings " +
                          "where SettingName = @settingName";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             command.Parameters.Add(new SQLiteParameter("@settingName", settingName));
             try {
-                conn.Open();
+                dbCon.Open();
                 object recordFound = command.ExecuteScalar();
-                conn.Close();
+                dbCon.Close();
                 return Convert.ToInt32(recordFound);
             } catch (Exception) {
-                conn.Close();
+                dbCon.Close();
                 return 0;
             }
         }
@@ -70,14 +70,14 @@ namespace ChildcareApplication.DatabaseController {
             String sql = "delete " +
                          "from ChildcareTransaction " +
                          "where TransactionDate <= '" + expirationDate + "'";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             try {
-                conn.Open();
+                dbCon.Open();
                 command.ExecuteNonQuery();
-                conn.Close();
+                dbCon.Close();
             }
             catch (Exception) {
-                conn.Close();
+                dbCon.Close();
                 MessageBox.Show("Database Connection Error: Unable to clean old records");
                 return false;
             }
@@ -88,13 +88,13 @@ namespace ChildcareApplication.DatabaseController {
             String sql = "delete " +
                          "from AllowedConnections " +
                          "where ConnectionDeletionDate <= '" + expirationDate + "'";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             try {
-                conn.Open();
+                dbCon.Open();
                 command.ExecuteNonQuery();
-                conn.Close();
+                dbCon.Close();
             } catch (Exception) {
-                conn.Close();
+                dbCon.Close();
                 MessageBox.Show("Database Connection Error: Unable to clean old records");
                 return false;
             }
@@ -105,13 +105,13 @@ namespace ChildcareApplication.DatabaseController {
             String sql = "delete " +
                          "from Guardian " +
                          "where GuardianDeletionDate <= '" + expirationDate + "'";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             try {
-                conn.Open();
+                dbCon.Open();
                 command.ExecuteNonQuery();
-                conn.Close();
+                dbCon.Close();
             } catch (Exception) {
-                conn.Close();
+                dbCon.Close();
                 MessageBox.Show("Database Connection Error: Unable to clean old records");
                 return false;
             }
@@ -122,13 +122,13 @@ namespace ChildcareApplication.DatabaseController {
             String sql = "delete " +
                          "from Child " +
                          "where ChildDeletionDate <= '" + expirationDate + "'";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             try {
-                conn.Open();
+                dbCon.Open();
                 command.ExecuteNonQuery();
-                conn.Close();
+                dbCon.Close();
             } catch (Exception) {
-                conn.Close();
+                dbCon.Close();
                 MessageBox.Show("Database Connection Error: Unable to clean old records");
                 return false;
             }

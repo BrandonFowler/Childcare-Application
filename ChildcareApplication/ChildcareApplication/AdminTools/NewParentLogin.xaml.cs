@@ -20,10 +20,10 @@ namespace AdminTools {
     /// Interaction logic for win_NewParentLogin.xaml
     /// </summary>
     public partial class NewParentLogin : Window {
-        private ParentInfoDB db;
+        private GuardianInfoDB db;
         public NewParentLogin() {
             InitializeComponent();
-            this.db = new ParentInfoDB();
+            this.db = new GuardianInfoDB();
         }
 
         private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {

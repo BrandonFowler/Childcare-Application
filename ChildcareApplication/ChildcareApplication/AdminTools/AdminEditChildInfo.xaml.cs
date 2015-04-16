@@ -45,12 +45,10 @@ namespace AdminTools {
             bool formNotComplete = true;
             formNotComplete = CheckIfNull();
 
-            if (formNotComplete == false)
-            {
+            if (formNotComplete == false) {
 
                 bool regex = RegexValidation();
-                if (regex)
-                {
+                if (regex) {
 
 
                     string cID, firstName, lastName, medical, allergies, birthday, filePath;
@@ -74,13 +72,12 @@ namespace AdminTools {
                     lst_ChildBox.Items.Clear();
                     setChildBox();
                 }
-               // ClearFields();
+                // ClearFields();
             }
         }//end btn_Submit_Click
 
 
-        private bool RegexValidation()
-        {
+        private bool RegexValidation() {
             bool fname = RegExpressions.regexName(txt_FirstName.Text);
             if (!fname)
                 txt_FirstName.Focus();
@@ -100,33 +97,13 @@ namespace AdminTools {
 
         }
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
-
-            /*bool? delete;
-            if (lst_ChildBox.SelectedItem != null)
-            {
-                DeleteConfirmation DeleteConformation = new DeleteConfirmation();
-                delete = DeleteConformation.ShowDialog();
-
-                if ((bool)delete == true)
-                {
-
-                    string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
-                    string pID = txt_IDNumber.Text;
-                    this.db.DeleteChildInfo(cID);
-                    this.db.DeleteAllowedConnection(cID, pID);
-                    lst_ChildBox.Items.Clear();
-                    setChildBox();
-                    ClearFields();
-                }
-            }*/
-
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you wish to delete this person?", "Deletion Conformation", MessageBoxButton.YesNo);
-            if (messageBoxResult == MessageBoxResult.Yes)
-            {
+            if (messageBoxResult == MessageBoxResult.Yes) {
+                ConnectionsDB conDB = new ConnectionsDB();
                 string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
                 string pID = txt_IDNumber.Text;
                 this.db.DeleteChildInfo(cID);
-                this.db.DeleteAllowedConnection(cID, pID);
+                conDB.DeleteAllowedConnection(cID, pID);
                 lst_ChildBox.Items.Clear();
                 setChildBox();
                 ClearFields();
@@ -135,13 +112,12 @@ namespace AdminTools {
 
         }//end btn_Delete_Click
 
-        private void DisableForm()
-        { 
+        private void DisableForm() {
             btn_Delete.IsEnabled = false;
             btn_Submit.IsEnabled = false;
             btn_ChangePicture.IsEnabled = false;
             btn_LinkChild.IsEnabled = false;
-            btn_De_LinkChild.IsEnabled = false; 
+            btn_De_LinkChild.IsEnabled = false;
         }
         private void btn_MainMenu_Click(object sender, RoutedEventArgs e) {
             AdminMenu adminMenu = new AdminMenu();
@@ -157,29 +133,20 @@ namespace AdminTools {
         private bool CheckIfNull() {
 
 
-            if (string.IsNullOrWhiteSpace(this.txt_FirstName.Text))
-            {
+            if (string.IsNullOrWhiteSpace(this.txt_FirstName.Text)) {
                 MessageBox.Show("Please enter your first name.");
                 return true;
-            }
-
-            else if (string.IsNullOrWhiteSpace(this.txt_LastName.Text))
-            {
+            } else if (string.IsNullOrWhiteSpace(this.txt_LastName.Text)) {
                 MessageBox.Show("Please enter your last name.");
                 return true;
-            }
-
-
-            else if ( string.IsNullOrWhiteSpace(this.dte_Birthday.Text))
-            {
+            } else if (string.IsNullOrWhiteSpace(this.dte_Birthday.Text)) {
                 MessageBox.Show("Please enter the birthday. MM/DD/YYYY");
                 return true;
             }
             return false;
         }//end CheckIfNull
 
-        private void ClearFields()
-        {
+        private void ClearFields() {
             txt_FirstName.Clear();
             txt_LastName.Clear();
 
@@ -187,8 +154,8 @@ namespace AdminTools {
             txt_Allergies.Clear();
 
             txt_Medical.Clear();
-            txt_FilePath.Clear(); 
-            dte_Birthday.Text = "01/01/2005"; 
+            txt_FilePath.Clear();
+            dte_Birthday.Text = "01/01/2005";
         }//end ClarFields
 
 
@@ -249,79 +216,58 @@ namespace AdminTools {
                 cnv_ChildIcon.Background = ib;
 
             }
-            
-
-
-        
         }
 
-        private void btn_AddChild_Click(object sender, RoutedEventArgs e)
-        {
-            //ClearFields();
-            DataSet DS = new DataSet();
-            DS = this.db.GetMaxID();
-            int maxID = 0; //set maxID = 0
-            if (DS.Tables[0].Rows.Count != 0)//checks if DS is not null, sets maxID to maxCHildID +1
-            {
-                  maxID= Convert.ToInt32(DS.Tables[0].Rows[0][0]);
-            }
+        private void btn_AddChild_Click(object sender, RoutedEventArgs e) {
+            int maxID = this.db.GetMaxChildID();
+            ConnectionsDB conDB = new ConnectionsDB();
 
             maxID = maxID + 1;
-            string mID = maxID.ToString();  
+            string mID = maxID.ToString();
 
-            Image i; 
-            i = buildImage("../../../../Photos/default.jpg", 60); 
+            Image i;
+            i = buildImage("../../../../Photos/default.jpg", 60);
             lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None", "../../Pictures/default.jpg"));
 
-            DS = this.db.GetMaxConnectionID();
-            int connID = 0;
-            if (DS.Tables[0].Rows.Count != 0)
-            {
-                connID = Convert.ToInt32(DS.Tables[0].Rows[0][0]);
-            }
+            int connID = this.db.GetMaxConnectionID();
+
             connID = connID + 1;
             string connectionID = connID.ToString();
 
-
             string famID = getFamilyID(ID);
             this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "../../Pictures/default.jpg");
-             
-            this.db.UpdateAllowedConnections(connectionID, ID, mID, famID);
+
+            conDB.UpdateAllowedConnections(connectionID, ID, mID, famID);
 
             lst_ChildBox.Items.Clear();
             setChildBox();
             lst_ChildBox.SelectedItem = lst_ChildBox.Items[lst_ChildBox.Items.Count - 1];
-            txt_FirstName.Focus(); 
+            txt_FirstName.Focus();
 
         }
 
         public string getFamilyID(string pID) {
-            string familyID = ""; 
+            string familyID = "";
 
-            for(int x = 0; x < pID.Length - 1; x++)
-            {
-                familyID += pID[x]; 
+            for (int x = 0; x < pID.Length - 1; x++) {
+                familyID += pID[x];
             }
 
-            return familyID; 
+            return familyID;
         }
 
-        private void btn_LinkChild_Click(object sender, RoutedEventArgs e)
-        {
-            if (lst_ChildBox.SelectedItem != null)
-            {
+        private void btn_LinkChild_Click(object sender, RoutedEventArgs e) {
+            if (lst_ChildBox.SelectedItem != null) {
                 string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
                 int link = 0;
                 Link_DeLinkChild linkDelinkChild = new Link_DeLinkChild(link, cID);
                 linkDelinkChild.ShowDialog(); //0 = link
-                
+
             }
         }
 
-        private void btn_De_LinkChild_Click(object sender, RoutedEventArgs e)
-        {
-            if (lst_ChildBox.SelectedItem != null)
-            {
+        private void btn_De_LinkChild_Click(object sender, RoutedEventArgs e) {
+            if (lst_ChildBox.SelectedItem != null) {
                 string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
                 int delink = 1;
                 Link_DeLinkChild linkDelinkChild = new Link_DeLinkChild(delink, cID);
@@ -332,8 +278,7 @@ namespace AdminTools {
             }
         }
 
-        private void btn_LinkExistingChild_Click(object sender, RoutedEventArgs e)
-        {
+        private void btn_LinkExistingChild_Click(object sender, RoutedEventArgs e) {
             string pID = txt_IDNumber.Text;
             ArrayList connectedChilderen = new ArrayList();
             connectedChilderen = getConnectedChilderen(connectedChilderen);
@@ -341,25 +286,21 @@ namespace AdminTools {
             linkExistingChild.ShowDialog();
             lst_ChildBox.Items.Clear();
             setChildBox();
-            ClearFields(); 
+            ClearFields();
         }
 
-        private ArrayList getConnectedChilderen(ArrayList list)
-        {
-            for (int i = 0; i < lst_ChildBox.Items.Count; i ++ )
-            {
+        private ArrayList getConnectedChilderen(ArrayList list) {
+            for (int i = 0; i < lst_ChildBox.Items.Count; i++) {
                 list.Add(((Child)(lst_ChildBox.Items[i])).ID);
             }
 
-                return list; 
+            return list;
         }
 
-        private void btn_ChangePicture_Click(object sender, RoutedEventArgs e)
-        {
-            if (lst_ChildBox.SelectedItem != null)
-            {
+        private void btn_ChangePicture_Click(object sender, RoutedEventArgs e) {
+            if (lst_ChildBox.SelectedItem != null) {
                 //string dir = @"..\..\..\..\Photos"; 
-                string dir = @"C:\"; 
+                string dir = @"C:\";
                 Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
                 dlg.FileName = "default"; // Default file name
@@ -369,8 +310,7 @@ namespace AdminTools {
                 Nullable<bool> result = dlg.ShowDialog();
 
                 // Process open file dialog box results 
-                if (result == true)
-                {
+                if (result == true) {
                     // Open document 
                     string path = "../../Pictures/";
                     string filename = dlg.FileName;
@@ -379,16 +319,13 @@ namespace AdminTools {
                     path += words[words.Length - 1];
 
 
-                    try
-                    {
+                    try {
                         string imageLink = path;
                         ImageBrush ib = new ImageBrush();
                         ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
                         cnv_ChildIcon.Background = ib;
                         txt_FilePath.Text = path;
-                    }
-                    catch (Exception)
-                    {
+                    } catch (Exception) {
                         MessageBox.Show("Could not change picture to" + path);
 
                     }
@@ -399,63 +336,48 @@ namespace AdminTools {
 
         }//end btnChangePicture
 
-        private void txt_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_GotFocus(object sender, RoutedEventArgs e) {
             var textBox = e.OriginalSource as TextBox;
-            if (textBox != null)
-            {
+            if (textBox != null) {
                 textBox.SelectAll();
             }
         }
 
-        private void txt_GotMouseCapture(object sender, MouseEventArgs e)
-        {
-            
+        private void txt_GotMouseCapture(object sender, MouseEventArgs e) {
+
             txt_GotFocus(sender, e);
         }
 
-        private void txt_FirstName_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_FirstName_GotFocus(object sender, RoutedEventArgs e) {
             txt_GotFocus(sender, e);
         }
 
-        private void txt_LastName_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_LastName_GotFocus(object sender, RoutedEventArgs e) {
             txt_GotFocus(sender, e);
         }
 
-        private void txt_Medical_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_Medical_GotFocus(object sender, RoutedEventArgs e) {
             txt_GotFocus(sender, e);
         }
 
-        private void txt_Allergies_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_Allergies_GotFocus(object sender, RoutedEventArgs e) {
             txt_GotFocus(sender, e);
         }
 
-        private void txt_FirstName_GotMouseCapture(object sender, MouseEventArgs e)
-        {
-            txt_GotMouseCapture(sender, e); 
+        private void txt_FirstName_GotMouseCapture(object sender, MouseEventArgs e) {
+            txt_GotMouseCapture(sender, e);
         }
 
-        private void txt_LastName_GotMouseCapture(object sender, MouseEventArgs e)
-        {
-            txt_GotMouseCapture(sender, e); 
+        private void txt_LastName_GotMouseCapture(object sender, MouseEventArgs e) {
+            txt_GotMouseCapture(sender, e);
         }
 
-        private void txt_Medical_GotMouseCapture(object sender, MouseEventArgs e)
-        {
-            txt_GotMouseCapture(sender, e); 
+        private void txt_Medical_GotMouseCapture(object sender, MouseEventArgs e) {
+            txt_GotMouseCapture(sender, e);
         }
 
-        private void txt_Allergies_GotMouseCapture(object sender, MouseEventArgs e)
-        {
-            txt_GotMouseCapture(sender, e); 
+        private void txt_Allergies_GotMouseCapture(object sender, MouseEventArgs e) {
+            txt_GotMouseCapture(sender, e);
         }
-
-
-    }//end class
-
-
-}//end nameSpace
+    }
+}

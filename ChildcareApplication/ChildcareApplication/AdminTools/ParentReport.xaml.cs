@@ -38,7 +38,7 @@ namespace AdminTools {
         }
 
         private void btn_LoadAll_Click(object sender, RoutedEventArgs e) {
-            ParentInfoDB parentInfo = new ParentInfoDB();
+            GuardianInfoDB parentInfo = new GuardianInfoDB();
             if (txt_ParentID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_ParentID.Text)) {
                 LoadReport();
                 LoadParentData();
@@ -49,7 +49,7 @@ namespace AdminTools {
         }
 
         private void btn_CurrentMonthReport_Click(object sender, RoutedEventArgs e) { 
-            ParentInfoDB parentInfo = new ParentInfoDB();
+            GuardianInfoDB parentInfo = new GuardianInfoDB();
             String fromDate, toDate;
             int fromMonth, fromYear, fromDay, toMonth, toYear, toDay;
 
@@ -112,7 +112,7 @@ namespace AdminTools {
         }
 
         private void DateRangeReport() {
-            ParentInfoDB parentInfo = new ParentInfoDB();
+            GuardianInfoDB parentInfo = new GuardianInfoDB();
             String initialFrom = txt_FromDate.Text;
             String initialTo = txt_ToDate.Text;
             if (initialFrom.Length >= 10 && initialTo.Length >= 10) {
@@ -147,7 +147,7 @@ namespace AdminTools {
 
         //Loads the information for the parent on to the side of the window
         private void LoadParentData() {
-            ParentInfoDB parentInfo = new ParentInfoDB();
+            GuardianInfoDB parentInfo = new GuardianInfoDB();
 
             cnv_ParentIcon.Background = new ImageBrush(new BitmapImage(new Uri(parentInfo.GetPhotoPath(txt_ParentID.Text), UriKind.Relative)));
             lbl_Name.Content = parentInfo.GetParentName(txt_ParentID.Text);
@@ -159,7 +159,7 @@ namespace AdminTools {
         }
 
         private void btn_MakePayment_Click(object sender, RoutedEventArgs e) {
-            ParentInfoDB parentinfo = new ParentInfoDB();
+            GuardianInfoDB parentinfo = new GuardianInfoDB();
 
             if (txt_ParentID.Text.Length == 6 && parentinfo.GuardianIDExists(txt_ParentID.Text)) {
                 PaymentEntry paymentEntry = new PaymentEntry(txt_ParentID.Text, this);
@@ -172,7 +172,7 @@ namespace AdminTools {
         }
 
         public void UpdateCurDue(String parentID) {
-            ParentInfoDB parentInfo = new ParentInfoDB();
+            GuardianInfoDB parentInfo = new GuardianInfoDB();
 
             lbl_CurrentDueValue.Content = parentInfo.GetCurrentDue(txt_ParentID.Text);
         }

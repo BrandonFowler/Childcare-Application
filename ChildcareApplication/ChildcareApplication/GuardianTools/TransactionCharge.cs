@@ -38,7 +38,7 @@ namespace GuardianTools {
 
         private bool CalculateTransaction(string checkInTime, string eventName, double eventFee, string allowanceID, string transactionDate) {
             bool isLate = false;
-            EventModificationDB eventDB = new EventModificationDB();
+            EventDB eventDB = new EventDB();
             TimeSpan TimeSpanTime = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
             TimeSpan TimeSpanCheckInTime = TimeSpan.Parse(checkInTime);
             double lateTime = settings.CheckIfPastClosing(DateTime.Now.DayOfWeek.ToString(), TimeSpanTime);
@@ -70,7 +70,7 @@ namespace GuardianTools {
 
         private bool CompleteTransaction(double eventFee, double lateTime, string allowanceID, bool isLate, string eventName) {
             TransactionDB transDB = new TransactionDB();
-            EventModificationDB eventDB = new EventModificationDB();
+            EventDB eventDB = new EventDB();
             string eventFeeRounded = eventFee.ToString("f2");
             db.CheckOut(DateTime.Now.ToString("HH:mm:ss"), eventFeeRounded, allowanceID);
             transDB.UpdateFamilyBalance(guardianID, eventFee);
@@ -86,7 +86,7 @@ namespace GuardianTools {
         }
 
         public bool CheckIfHourly(string eventName) {
-            EventModificationDB eventDB = new EventModificationDB();
+            EventDB eventDB = new EventDB();
             string[] eventData = eventDB.GetEvent(eventName);
             if (eventData == null) {
                 return false;
@@ -100,7 +100,7 @@ namespace GuardianTools {
         }
 
         public double FindEventFee(string guardianID, string eventName) {
-            EventModificationDB eventDB = new EventModificationDB();
+            EventDB eventDB = new EventDB();
             bool discount = false;
             int childrenCheckedIn = db.NumberOfCheckedIn(guardianID);
             string[] eventData = eventDB.GetEvent(eventName);

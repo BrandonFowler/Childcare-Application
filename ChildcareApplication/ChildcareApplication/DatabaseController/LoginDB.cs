@@ -16,46 +16,30 @@ namespace DatabaseController {
 
         public LoginDB() {
             dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
-        }//end Database
-
-        public bool validateLogin(string ID) {
-            dbCon.Open();
-            string sql = "select Guardian_ID from Guardian WHERE Guardian_ID = " + ID;
-            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
-            DataSet DS = new DataSet();
-            DB.Fill(DS);
-            int count = DS.Tables[0].Rows.Count;
-            if (count > 0) {
-                dbCon.Close();
-                return true;
-            }
-
-
-
-            dbCon.Close();
-            return false;
-        }//end validateLogin
+        }
 
         public bool validateAdminLogin(string ID, string PIN) {
-            dbCon.Open();
-            string sql = "SELECT * FROM Administrator WHERE AdministratorUN = \"" + ID + "\" AND AdministratorPW = \"" + PIN + "\";";
-            SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
+            try {
+                dbCon.Open();
+                string sql = "SELECT * FROM Administrator WHERE AdministratorUN = \"" + ID + "\" AND AdministratorPW = \"" + PIN + "\";";
+                SQLiteCommand command = new SQLiteCommand(sql, this.dbCon);
 
 
-            SQLiteDataAdapter db = new SQLiteDataAdapter(command);
-            DataSet DS = new DataSet();
-            db.Fill(DS);
-            int count = DS.Tables[0].Rows.Count;
-            if (count > 0) {
+                SQLiteDataAdapter db = new SQLiteDataAdapter(command);
+                DataSet DS = new DataSet();
+                db.Fill(DS);
+                int count = DS.Tables[0].Rows.Count;
+                if (count > 0) {
+                    dbCon.Close();
+                    return true;
+                }
+
                 dbCon.Close();
-                return true;
+            } catch (Exception e) {
+                MessageBox.Show(e.Message);
             }
-
-            dbCon.Close();
             return false;
-        }//end validateLogin
+        }
 
         public int GetAccessLevel(string ID) {
             int accessLevel = -1;
@@ -72,7 +56,7 @@ namespace DatabaseController {
             return accessLevel;
         }
 
-        public bool ValidateLogin(string ID, string PIN) {
+        public bool ValidateGuardianLogin(string ID, string PIN) {
             string sql = "select Guardian_ID " +
                          "from Guardian " +
                          "where Guardian_ID = @ID and GuardianPIN = @PIN";

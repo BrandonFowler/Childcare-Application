@@ -17,46 +17,59 @@ namespace DatabaseController {
         }
 
 
-        public DataSet GetMaxID() {
+        public int GetMaxChildID() {
             dbCon.Open();
-            DataSet DS = new DataSet();
+            int maxID = 0;
             try {
                 string sql = "SELECT MAX(Child_ID) FROM Child;";
 
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-                SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+                SQLiteDataReader reader = command.ExecuteReader();
+                reader.Read();
 
-                DB.Fill(DS);
+                if (!reader.IsDBNull(0)) {
+                    maxID = Convert.ToInt32(reader.GetString(0));
+                } else {
+                    maxID = 0;
+                }
+                reader.Close();
+                dbCon.Close();
             } catch (SQLiteException e) {
                 MessageBox.Show(e.ToString());
             }
-            dbCon.Close();
-            return DS;
+            return maxID;
         }
 
-        public DataSet GetMaxConnectionID() {
+        public int GetMaxConnectionID() {
             dbCon.Open();
             DataSet DS = new DataSet();
+            int maxID = 0;
 
             try {
                 string sql = "SELECT MAX(Allowance_ID) FROM AllowedConnections;";
 
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-                SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
+                SQLiteDataReader reader = command.ExecuteReader();
+                reader.Read();
 
-                DB.Fill(DS);
+                if (!reader.IsDBNull(0)) {
+                    maxID = Convert.ToInt32(reader.GetString(0));
+                } else {
+                    maxID = 0;
+                }
+                reader.Close();
+                dbCon.Close();
             } catch (SQLiteException e) {
                 MessageBox.Show(e.ToString());
             }
-            dbCon.Close();
-            return DS;
+            return maxID;
         }
 
         public void AddNewChild(string cID, string fName, string lName, string birthday, string allergies, string medical, string photo) {
 
-            dbCon.Open();
+            
             try {
-
+                dbCon.Open();
                 string sql = "INSERT INTO Child(Child_ID, FirstName, LastName, Birthday, Allergies, Medical, PhotoLocation) "
                     + "VALUES ('" + cID + "', '" + fName + "', '" + lName + "', '" + birthday + "', '" + allergies + "', '" + medical + "', '" + photo + "');";
 
@@ -68,40 +81,6 @@ namespace DatabaseController {
             }
             dbCon.Close();
         }
-        public void UpdateAllowedConnections(string conID, string pID, string cID, string famID) {
-            dbCon.Open();
-
-            try {
-
-                string sql = "select Child.* " +
-                  "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
-                  "where Guardian_ID = " + pID + " AND ConnectionDeletionDate IS null";
-
-                SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-                SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
-
-                DataSet DS = new DataSet();
-                DB.Fill(DS);
-                int count = DS.Tables[0].Rows.Count;
-                if (count > 0) {
-                    MessageBox.Show("There is already a link to this child and the guardian.");
-                } else {
-                    sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
-                                    + "VALUES(" + conID + ", " + pID + ", " + cID + ", " + famID + ");";
-
-                    command = new SQLiteCommand(sql, dbCon);
-                    command.CommandText = sql;
-
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("Link Completed.");
-
-                }
-            } catch (SQLiteException e) {
-                MessageBox.Show(e.ToString());
-            }
-            dbCon.Close();
-        }
-
 
         public void UpdateExistingChilderen(string conID, string pID, string cID, string famID) {
             dbCon.Open();
@@ -121,11 +100,10 @@ namespace DatabaseController {
             }
             dbCon.Close();
         }
+
         public void UpdateChildInfo(string ID, string firstName, string lastName, string birthday, string medical, string allergies, string filePath) {
-            dbCon.Open();
-
             try {
-
+                dbCon.Open();
                 string sql = @"UPDATE Child SET FirstName = @firstName, LastName = @lastName, Birthday = @birthday, Allergies = @allergies, Medical = @medical, PhotoLocation = @filePath WHERE Child_ID = @ID;";
 
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
@@ -141,39 +119,15 @@ namespace DatabaseController {
 
                 mycommand.ExecuteNonQuery();
                 MessageBox.Show("Completed");
+                dbCon.Close();
             } catch (SQLiteException e) {
                 MessageBox.Show(e.ToString());
             }
-            dbCon.Close();
         }
-        public void DeleteAllowedConnection(string childID, string pID) {
 
-            dbCon.Open();
-
-            try {
-
-                string today = DateTime.Now.ToString("yyyy-MM-dd");
-
-                string sql = @"UPDATE AllowedCOnnections SET ConnectionDeletionDate = @today WHERE Child_ID = @childID AND Guardian_ID = @pID;";
-
-                SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-                command.CommandText = sql;
-                command.Parameters.Add(new SQLiteParameter("@today", today));
-                command.Parameters.Add(new SQLiteParameter("@childID", childID));
-                command.Parameters.Add(new SQLiteParameter("@pID", pID));
-                command.ExecuteNonQuery();
-
-                MessageBox.Show("Completed");
-            } catch (SQLiteException e) {
-                MessageBox.Show("Failed");
-            }
-
-            dbCon.Close();
-
-        }//end GetFirstName
         public void DeleteChildInfo(string childID) {
-            dbCon.Open();
             try {
+                dbCon.Open();
                 string today = DateTime.Now.ToString("yyyy-MM-dd");
 
                 string sql = @"UPDATE Child SET ChildDeletionDate = @today WHERE Child_ID = @childID;";
@@ -185,11 +139,10 @@ namespace DatabaseController {
                 command.ExecuteNonQuery();
 
                 MessageBox.Show("Completed");
+                dbCon.Close();
             } catch (SQLiteException e) {
-                MessageBox.Show("Failed");
+                MessageBox.Show(e.Message);
             }
-            dbCon.Close();
-
         }//end GetFirstName
 
         public String[,] FindChildren(string guardianID) {
@@ -222,7 +175,6 @@ namespace DatabaseController {
                 return null;
             }
         }
-
 
         public String[,] FindFamilyChildren(string fID, string ID) {
             dbCon.Open();

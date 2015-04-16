@@ -51,7 +51,7 @@ namespace GuardianTools {
             if (lst_Guardians.SelectedItem == null) {
                 return;
             }
-            ParentInfoDB parentDB = new ParentInfoDB();
+            GuardianInfoDB parentDB = new GuardianInfoDB();
             string guardianInfo = lst_Guardians.SelectedItem.ToString();
             this.guardianID = guardianInfo.Substring(guardianInfo.LastIndexOf(' ') + 1);
             string imageLink = parentDB.GetGuardianImagePath(this.guardianID);
@@ -67,7 +67,7 @@ namespace GuardianTools {
         }
 
         private void Search() {
-            ParentInfoDB parentDB = new ParentInfoDB();
+            GuardianInfoDB parentDB = new GuardianInfoDB();
             CleanDisplay();
             if (String.IsNullOrWhiteSpace(txt_SearchBox.Text)) {
                 MessageBox.Show("Please enter a name or ID.");

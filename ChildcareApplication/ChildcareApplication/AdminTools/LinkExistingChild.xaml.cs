@@ -18,41 +18,34 @@ using System.Windows.Shapes;
 using System.Windows.Data;
 using System.Collections;
 
-namespace ChildcareApplication.AdminTools
-{
+namespace ChildcareApplication.AdminTools {
     /// <summary>
     /// Interaction logic for LinkExistingChild.xaml
     /// </summary>
-    public partial class LinkExistingChild : Window
-    {
+    public partial class LinkExistingChild : Window {
 
         private ChildInfoDatabase db;
         DataSet DS = new DataSet();
         private string ID;
-        private ArrayList connectedChildren; 
-        public LinkExistingChild(string pID, ArrayList connectedChildren)
-        {
+        private ArrayList connectedChildren;
+        public LinkExistingChild(string pID, ArrayList connectedChildren) {
             InitializeComponent();
             this.db = new ChildInfoDatabase();
             this.ID = pID;
-            this.connectedChildren = connectedChildren; 
+            this.connectedChildren = connectedChildren;
             setChildBox();
         }
 
-        private void setChildBox()
-        {
+        private void setChildBox() {
             string fID = getFamilyID(this.ID);
             string[,] childrenData = db.FindFamilyChildren(fID, this.ID);
 
-            if (childrenData == null)
-            {
+            if (childrenData == null) {
                 return;
             }
 
-            if (childrenData != null)
-            {
-                for (int x = 0; x < childrenData.GetLength(0); x++)
-                {
+            if (childrenData != null) {
+                for (int x = 0; x < childrenData.GetLength(0); x++) {
                     if (!connectedChildren.Contains(childrenData[x, 0]))//child already has a link to this parent
                     {
                         Image image = buildImage(childrenData[x, 6], 60);
@@ -63,13 +56,11 @@ namespace ChildcareApplication.AdminTools
             }
         }//end setUpCheckInBox
 
-        private Image buildImage(string path, int size)
-        {
+        private Image buildImage(string path, int size) {
             Image image = new Image();
             image.Width = size;
 
-            try
-            {
+            try {
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"" + path);
                 bitmapImage.BeginInit();
@@ -77,9 +68,7 @@ namespace ChildcareApplication.AdminTools
                 bitmapImage.DecodePixelWidth = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            }
-            catch
-            {
+            } catch {
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"../../Pictures/default.jpg");
                 bitmapImage.BeginInit();
@@ -92,44 +81,32 @@ namespace ChildcareApplication.AdminTools
         }//end buildImage	
 
 
-        public string getFamilyID(string pID)
-        {
+        public string getFamilyID(string pID) {
             string familyID = "";
 
-            for (int x = 0; x < pID.Length - 1; x++)
-            {
+            for (int x = 0; x < pID.Length - 1; x++) {
                 familyID += pID[x];
             }
 
             return familyID;
         }
 
-        private void btn_Cancel_Click(object sender, RoutedEventArgs e)
-        {
+        private void btn_Cancel_Click(object sender, RoutedEventArgs e) {
             this.Close();
         }
 
-        private void btn_LinkChild_Click(object sender, RoutedEventArgs e)
-        {
-            if (lst_ChildBox.SelectedItem != null)
-            {
+        private void btn_LinkChild_Click(object sender, RoutedEventArgs e) {
+            if (lst_ChildBox.SelectedItem != null) {
                 string childID = ((Child)(lst_ChildBox.SelectedItem)).ID;
-                int connID = 0;
-                DataSet DS = new DataSet();
-                DS = this.db.GetMaxConnectionID();
-                if (DS != null)
-                {
-                    connID = Convert.ToInt32(DS.Tables[0].Rows[0][0]);
-                    connID = connID + 1;
-                }
+                int connID = this.db.GetMaxConnectionID();
+                connID = connID + 1;
                 string connectionID = connID.ToString();
                 string fID = getFamilyID(this.ID);
                 this.db.UpdateExistingChilderen(connectionID, this.ID, childID, fID);
                 this.connectedChildren.Add(childID);
             }
             lst_ChildBox.Items.Clear();
-            setChildBox(); 
-
+            setChildBox();
         }
     }
 }

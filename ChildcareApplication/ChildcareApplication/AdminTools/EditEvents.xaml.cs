@@ -23,13 +23,13 @@ namespace AdminTools {
         }
 
         private void LoadEvents() {
-            EventModificationDB eventDB = new EventModificationDB();
-            DataTable table = eventDB.GetEvents();
+            EventDB eventDB = new EventDB();
+            DataTable table = eventDB.GetEventDisplay();
             EventViewDataGrid.ItemsSource = table.DefaultView;
         }
 
         private void FillComboBox() {
-            EventModificationDB eventDB = new EventModificationDB();
+            EventDB eventDB = new EventDB();
             List<string> namesList = eventDB.GetAllEventNames();
 
             for(int i = 0; i < namesList.Count; i++) {

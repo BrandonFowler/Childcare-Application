@@ -27,7 +27,7 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void InitializeCurrentBalance() {
-            ParentInfoDB parentInfoDB = new ParentInfoDB();
+            GuardianInfoDB parentInfoDB = new GuardianInfoDB();
 
             lbl_CurrentBalance.Content += " " + parentInfoDB.GetCurrentDue(guardianID);
         }

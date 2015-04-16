@@ -44,7 +44,7 @@ namespace AdminTools {
         }
 
         private void LoadData(String eventName) {
-            EventModificationDB eventDB = new EventModificationDB();
+            EventDB eventDB = new EventDB();
             string[] eventData = eventDB.GetEvent(eventName);
 
             txt_EventName.Text = eventData[0];
@@ -174,7 +174,7 @@ namespace AdminTools {
                     EditEventNoDiscount();
                 }
                 if (this.maxHoursChanged) {
-                    EventModificationDB eventDB = new EventModificationDB();
+                    EventDB eventDB = new EventDB();
                     if (txt_MaxHours.Text != "") {
                         eventDB.UpdateMaxHours(txt_EventName.Text, "'" + txt_MaxHours.Text + "'");
                     } else {
@@ -255,7 +255,7 @@ namespace AdminTools {
         }
 
         private void AddEventDiscount() {
-            EventModificationDB db = new EventModificationDB();
+            EventDB db = new EventDB();
             if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 0) {
                 db.HourlyPriceAlwaysAvailable(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text));
             } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 0) {
@@ -272,7 +272,7 @@ namespace AdminTools {
         }
 
         private void AddEventNoDiscount() {
-            EventModificationDB db = new EventModificationDB();
+            EventDB db = new EventDB();
             if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 0) {
                 db.HourlyPriceAlwaysAvailable(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text));
             } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 0) {
@@ -289,7 +289,7 @@ namespace AdminTools {
         }
 
         private void EditEventDiscount() {
-            EventModificationDB db = new EventModificationDB();
+            EventDB db = new EventDB();
             if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 0) {
                 db.HourlyPriceAlwaysAvailable(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), Convert.ToDouble(txt_DiscountPrice.Text), this.oldEventName);
             } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 0) {
@@ -306,7 +306,7 @@ namespace AdminTools {
         }
 
         private void EditEventNoDiscount() {
-            EventModificationDB db = new EventModificationDB();
+            EventDB db = new EventDB();
             if (cmb_PriceType.SelectedIndex == 0 && cmb_Occurence.SelectedIndex == 0) {
                 db.HourlyPriceAlwaysAvailable(txt_EventName.Text, Convert.ToDouble(txt_Rate.Text), this.oldEventName);
             } else if (cmb_PriceType.SelectedIndex == 1 && cmb_Occurence.SelectedIndex == 0) {

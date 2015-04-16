@@ -54,12 +54,12 @@ namespace AdminTools {
         private void LoadData() {
             ChildInfoDatabase childDB = new ChildInfoDatabase();
             TransactionDB transDB = new TransactionDB();
-            ParentInfoDB parentDB = new ParentInfoDB();
+            GuardianInfoDB parentDB = new GuardianInfoDB();
 
             this.txt_ChildName.Text = childDB.GetChildName(this.transactionID);
-            this.txt_GuardianName.Text = parentDB.GetParentNameFromTrans(this.transactionID);
+            this.txt_GuardianName.Text = transDB.GetParentNameFromTrans(this.transactionID);
             this.txt_TransactionTotal.Text = String.Format("{0:0.00}", transDB.GetTransactionTotal(this.transactionID));
-            string eventName = transDB.GetEventName(this.transactionID);
+            string eventName = transDB.GetTransEventName(this.transactionID);
             LoadEventCMB(eventName);
             this.txt_CheckIn.Text = transDB.GetTwelveHourTime(this.transactionID, "CheckedIn");
             this.txt_CheckOut.Text = transDB.GetTwelveHourTime(this.transactionID, "CheckedOut");
@@ -67,7 +67,7 @@ namespace AdminTools {
         }
 
         private void LoadEventCMB(params string[] selectedName) {
-            EventModificationDB eventDB = new EventModificationDB();
+            EventDB eventDB = new EventDB();
             List<string> eventNames = eventDB.GetAllEventNames();
 
             for (int i = 0; i < eventNames.Count; i++) {
@@ -81,9 +81,9 @@ namespace AdminTools {
         }
 
         private bool VerifyFormData() {
-            ParentInfoDB parentDB = new ParentInfoDB();
+            GuardianInfoDB parentDB = new GuardianInfoDB();
             ChildInfoDatabase childDB = new ChildInfoDatabase();
-            EventModificationDB eventDB = new EventModificationDB();
+            EventDB eventDB = new EventDB();
 
             if (!parentDB.GuardianNameExists(txt_GuardianName.Text)) {
                 MessageBox.Show("The guardian name you entered does not exist in the database!  Please verify you have spelled it correctly.");
@@ -181,10 +181,11 @@ namespace AdminTools {
 
         private void SubmitChanges() {
             TransactionDB transDB = new TransactionDB();
+            ConnectionsDB conDB = new ConnectionsDB();
             string transID, eventName, allowanceID, transDate, checkedIn, checkedOut, transTotal;
 
             eventName = ((ComboBoxItem)cmb_EventName.SelectedItem).Content.ToString();
-            allowanceID = transDB.GetAllowanceID(txt_GuardianName.Text, txt_ChildName.Text);
+            allowanceID = conDB.GetAllowanceIDOnNames(txt_GuardianName.Text, txt_ChildName.Text);
             transDate = FormatDate(txt_Date.Text);
             checkedIn = FormatTime(txt_CheckIn.Text);
             checkedOut = FormatTime(txt_CheckOut.Text);
