@@ -96,6 +96,7 @@
     <Compile Include="ParentTools\AdminChildCheckIn.xaml.cs">
       <DependentUpon>AdminChildCheckIn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ParentTools\TransactionCharge.cs" />
     <Compile Include="UserTypeSelection.xaml.cs">
       <DependentUpon>UserTypeSelection.xaml</DependentUpon>
     </Compile>

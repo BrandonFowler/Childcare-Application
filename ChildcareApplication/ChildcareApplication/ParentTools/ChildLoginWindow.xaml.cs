@@ -14,7 +14,6 @@ namespace ParentTools {
         private string guardianID;
         private ConnectionsDB db;
         private DateTime updateTime;
-        private ParentToolsSettings settings;
 
         public ChildLogin(string ID) {
             InitializeComponent();
@@ -97,9 +96,10 @@ namespace ParentTools {
         }
 
         private void btn_CheckOut_Click(object sender, RoutedEventArgs e) {
+            TransactionCharge transactionCharge = new TransactionCharge(this.guardianID);
             if (lst_CheckOutBox.SelectedItem != null) {
                 string childID = ((Child)lst_CheckOutBox.SelectedItem).ID;
-                bool success = CompleteTransaction(childID, guardianID);
+                bool success = transactionCharge.PrepareTransaction(childID, guardianID);
                 if (success){
                     lst_CheckInBox.Items.Add(lst_CheckOutBox.SelectedItem);
                     lst_CheckOutBox.Items.Remove(lst_CheckOutBox.SelectedItem);
@@ -157,165 +157,6 @@ namespace ParentTools {
 
         private void CheckOutBoxSelectionChanged(object sender, System.EventArgs e) {
             btn_CheckOut.Background = Brushes.Green;
-        }
-
-        private bool CompleteTransaction(string childID, string guardianID) {
-            TransactionDB transDB = new TransactionDB();
-            EventModificationDB eventDB = new EventModificationDB();
-            DateTime currentDateTime = DateTime.Now;
-            string dateTimeString = DateTime.Now.ToString();
-            string currentDateString = Convert.ToDateTime(dateTimeString).ToString("yyyy-MM-dd");
-            string currentTimeString = Convert.ToDateTime(dateTimeString).ToString("HH:mm:ss");
-            string allowanceID = transDB.GetIncompleteTransAllowanceID(guardianID, childID);
-            string[] transaction = transDB.FindTransaction(allowanceID);
-            if (transaction == null || allowanceID == null) {
-                MessageBox.Show("Unable to check out child. Please log out then try again.");
-                return false;
-            }
-            string transactionID = transaction[0];
-            string eventName = transaction[1];
-            string checkInTime = transaction[4];
-            bool isLate = false;
-            bool ishourly = CheckIfHourly(eventName);
-            double eventFee = FindEventFee(guardianID, eventName);
-            TimeSpan TimeSpanTime = TimeSpan.Parse(currentTimeString);
-            checkInTime = Convert.ToDateTime(checkInTime).ToString("HH:mm:ss");
-            TimeSpan TimeSpanCheckInTime = TimeSpan.Parse(checkInTime);
-            double lateTime = settings.CheckIfPastClosing(currentDateTime.DayOfWeek.ToString(), TimeSpanTime);
-            double hourDifference = TimeSpanTime.Hours - TimeSpanCheckInTime.Hours;
-            double minuteDifference = TimeSpanTime.Minutes - TimeSpanCheckInTime.Minutes;
-            double totalCheckedInHours = hourDifference + (minuteDifference / 60.0);
-            double lateMaximum = eventDB.GetEventHourCap(eventName);
-            if (totalCheckedInHours > lateMaximum) {
-                double timeDifference = totalCheckedInHours - lateMaximum;
-                if (timeDifference > lateTime) {
-                    lateTime = timeDifference;
-                    totalCheckedInHours = lateMaximum;
-                }
-                else {
-                    totalCheckedInHours = totalCheckedInHours - lateTime;
-                }
-                isLate = true;
-            }
-            else if (lateTime > 0) {
-                totalCheckedInHours = totalCheckedInHours - lateTime;
-                isLate = true;
-            }
-
-            if (ishourly) {
-                eventFee = eventFee * totalCheckedInHours;
-                eventFee = Math.Round(eventFee, 2, MidpointRounding.AwayFromZero);
-            }
-        
-            eventFee = eventFee - BillingCapCalc(eventName, guardianID, transaction[3], eventFee);
-            string eventFeeRounded = eventFee.ToString("f2");
-            db.CheckOut(currentTimeString, eventFeeRounded, allowanceID);
-            transDB.UpdateFamilyBalance(guardianID, eventFee);
-            if (isLate) {
-                eventName = "Late Fee";
-                double lateFee = eventDB.GetLateFee(eventName);
-                lateFee = lateFee * lateTime;
-                string maxTransactionID = transDB.GetNextTransID();
-                transDB.AddLateFee(maxTransactionID, eventName, allowanceID, currentDateString, lateFee);
-                transDB.UpdateFamilyBalance(guardianID, lateFee);
-            }
-            return true;
-        }
-
-        public bool CheckIfHourly(string eventName) {
-            EventModificationDB eventDB = new EventModificationDB();
-            string[] eventData = eventDB.GetEvent(eventName);
-            if (eventData == null) {
-                return false;
-            }
-            if (String.IsNullOrWhiteSpace(eventData[1])) {
-                return false;
-            }
-            else {
-                return true;
-            }
-        }
-
-        public double FindEventFee(string guardianID, string eventName) {
-            EventModificationDB eventDB = new EventModificationDB();
-            bool discount = false;
-            int childrenCheckedIn = db.NumberOfCheckedIn(guardianID);
-            string[] eventData = eventDB.GetEvent(eventName);
-            if ((childrenCheckedIn > 1) && (eventData[2] != null || eventData[4] != null)) {
-                discount = true;
-            }
-            if (eventData == null) {
-                return 0.0;
-            }
-            if (discount) {
-                if (String.IsNullOrWhiteSpace(eventData[2])) {
-                    return Convert.ToDouble(eventData[4]);
-                }
-                else {
-                    return Convert.ToDouble(eventData[2]);
-                }
-            }
-            else {
-                if (String.IsNullOrWhiteSpace(eventData[1])) {
-                    return Convert.ToDouble(eventData[3]);
-                }
-                else {
-                    return Convert.ToDouble(eventData[1]);
-                }
-            }
-        }
-
-        public double BillingCapCalc(string eventName, string guardianID, string transactionDate, double eventFee) {
-            TransactionDB transDB = new TransactionDB();
-            string familyID = guardianID.Remove(guardianID.Length - 1);
-            double cap = settings.GetBillingCap();
-            int billingStart = settings.GetBillingStart();
-            int billingEnd = settings.GetBillingEnd();
-            DateTime DTStart;
-            DateTime DTEnd;
-            if (DateTime.Now.Day > billingEnd) {
-                DTStart = new DateTime(DateTime.Now.Year, DateTime.Now.Month, billingStart);
-                int endMonth = DTStart.Month + 1;
-                if (endMonth == 13) {
-                    int endYear = DTStart.Year + 1;
-                    DTEnd = new DateTime(endYear, 1, billingEnd);
-                }
-                else {
-                    DTEnd = new DateTime(DateTime.Now.Year, endMonth, billingEnd);
-                }
-            }
-            else {
-                DTEnd = new DateTime(DateTime.Now.Year, DateTime.Now.Month, billingEnd);
-                int startMonth = DTEnd.Month - 1;
-                if (startMonth == 0) {
-                    int startYear = DTEnd.Year - 1;
-                    DTStart = new DateTime(startYear, 12, billingStart);
-                }
-                else {
-                    DTStart = new DateTime(DateTime.Now.Year, startMonth, billingStart);
-                }
-            }
-            string start = DTStart.ToString("yyyy-MM-dd");
-            string end = DTEnd.ToString("yyyy-MM-dd");
-            if (eventName.CompareTo("Regular Childcare") == 0 || eventName.CompareTo("Infant Childcare") == 0 || eventName.CompareTo("Adolescent Childcare") == 0) {
-                object recordFound = transDB.SumRegularCare(start, end, familyID);
-                double sum;
-                if (recordFound == DBNull.Value || recordFound == null) {
-                    return 0;
-                }
-                else {
-                    sum = Convert.ToDouble(recordFound);
-                }
-                double total = sum + eventFee;
-                double capdiff = total - cap;
-                if (capdiff > 0 && capdiff < eventFee) {
-                    return capdiff;
-                }
-                else if (capdiff >= eventFee) {
-                    return eventFee;
-                }
-            }
-            return 0.0;
         }
 
     }
