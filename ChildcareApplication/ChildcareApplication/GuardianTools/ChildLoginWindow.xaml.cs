@@ -7,7 +7,7 @@ using AdminTools;
 using System.Windows.Media;
 using DatabaseController;
 
-namespace ParentTools {
+namespace GuardianTools {
    
     public partial class ChildLogin : Window {
 
@@ -126,7 +126,7 @@ namespace ParentTools {
         }
 
         private void ExitToLogin(){
-            ParentLogin loginWindow = new ParentLogin();
+            GuardianCheckIn loginWindow = new GuardianCheckIn();
             loginWindow.Show();
             this.Close();
         }

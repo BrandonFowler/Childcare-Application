@@ -8,12 +8,12 @@ namespace DatabaseController {
 
     class ConnectionsDB {
         private SQLiteConnection conn;
-        private ParentTools.ParentToolsSettings settings;
+        private GuardianTools.GuardianToolsSettings settings;
         private TransactionDB transDB = new TransactionDB();
 
         public ConnectionsDB() {
             conn = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
-            settings = new ParentTools.ParentToolsSettings();
+            settings = new GuardianTools.GuardianToolsSettings();
         }
 
         public bool CheckIn(string childID, string eventName, string guardianID, string birthday) {

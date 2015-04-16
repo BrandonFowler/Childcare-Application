@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DatabaseController;
 
-namespace ParentTools {
+namespace GuardianTools {
    
     public partial class AdminChildCheckIn : Window {
 
@@ -42,7 +42,7 @@ namespace ParentTools {
         }
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e) {
-            ParentLogin loginWindow = new ParentLogin();
+            GuardianCheckIn loginWindow = new GuardianCheckIn();
             loginWindow.Show();
             this.Close();
         }

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AdminTools;
-using ParentTools;
+using GuardianTools;
 
 namespace ChildcareApplication {
     /// <summary>
@@ -24,7 +24,7 @@ namespace ChildcareApplication {
         }
 
         private void btn_ParentUse_Click(object sender, RoutedEventArgs e) {
-            ParentLogin parentLogin = new ParentLogin();
+            GuardianCheckIn parentLogin = new GuardianCheckIn();
             parentLogin.Show();
             this.Close();
         }

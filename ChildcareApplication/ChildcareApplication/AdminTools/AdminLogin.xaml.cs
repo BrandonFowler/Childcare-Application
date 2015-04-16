@@ -102,7 +102,7 @@ namespace AdminTools {
         }
         
         private void DisplayAdminChildCheckIn() {
-            ParentTools.AdminChildCheckIn AdminCheckIn = new ParentTools.AdminChildCheckIn();
+            GuardianTools.AdminChildCheckIn AdminCheckIn = new GuardianTools.AdminChildCheckIn();
             AdminCheckIn.Show();
             this.Close();
         }

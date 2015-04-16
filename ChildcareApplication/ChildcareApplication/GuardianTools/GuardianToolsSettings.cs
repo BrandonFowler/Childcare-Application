@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using ChildcareApplication.Properties;
 using System.Windows;
 
-namespace ParentTools {
+namespace GuardianTools {
 
-    class ParentToolsSettings {
+    class GuardianToolsSettings {
 
         public string GetClosingTime(string dayOfWeek) {
             DateTime closingTime;

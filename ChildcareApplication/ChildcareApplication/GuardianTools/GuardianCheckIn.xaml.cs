@@ -16,16 +16,16 @@ using System.Windows.Shapes;
 using System.Drawing;
 using DatabaseController;
 
-namespace ParentTools {
+namespace GuardianTools {
    
-    public partial class ParentLogin : Window {
+    public partial class GuardianCheckIn : Window {
 
         private bool IDBoxSelected = false;
         private bool PINBoxSelected = false;
         private LoginDB db;
 
 
-        public ParentLogin() {
+        public GuardianCheckIn() {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
             this.db = new LoginDB();

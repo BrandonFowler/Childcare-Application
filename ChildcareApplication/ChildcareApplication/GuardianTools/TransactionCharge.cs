@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using DatabaseController;
 using System.Windows;
 
-namespace ParentTools {
+namespace GuardianTools {
     class TransactionCharge {
 
-        private ParentToolsSettings settings;
+        private GuardianToolsSettings settings;
         private string guardianID;
         private ConnectionsDB db;
 
         public TransactionCharge(String guardianID) {
-            this.settings = new ParentToolsSettings();
+            this.settings = new GuardianToolsSettings();
             this.guardianID = guardianID;
             this.db = new ConnectionsDB();
         }

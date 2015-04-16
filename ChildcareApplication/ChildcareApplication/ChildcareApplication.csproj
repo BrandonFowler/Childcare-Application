@@ -90,13 +90,13 @@
       <DependentUpon>PaymentEntry.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseController\ReportsDB.cs" />
-    <Compile Include="ParentTools\ParentToolsSettings.cs" />
+    <Compile Include="GuardianTools\GuardianToolsSettings.cs" />
     <Compile Include="DatabaseController\SettingsDB.cs" />
     <Compile Include="DatabaseController\TransactionDB.cs" />
-    <Compile Include="ParentTools\AdminChildCheckIn.xaml.cs">
+    <Compile Include="GuardianTools\AdminChildCheckIn.xaml.cs">
       <DependentUpon>AdminChildCheckIn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ParentTools\TransactionCharge.cs" />
+    <Compile Include="GuardianTools\TransactionCharge.cs" />
     <Compile Include="UserTypeSelection.xaml.cs">
       <DependentUpon>UserTypeSelection.xaml</DependentUpon>
     </Compile>
@@ -168,15 +168,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ParentTools\AdminChildCheckIn.xaml">
+    <Page Include="GuardianTools\AdminChildCheckIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ParentTools\ChildLoginWindow.xaml">
+    <Page Include="GuardianTools\ChildLoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ParentTools\ParentLogin.xaml">
+    <Page Include="GuardianTools\GuardianCheckIn.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -216,11 +216,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatabaseController\ConnectionsDB.cs" />
-    <Compile Include="ParentTools\ChildLoginWindow.xaml.cs">
+    <Compile Include="GuardianTools\ChildLoginWindow.xaml.cs">
       <DependentUpon>ChildLoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ParentTools\ParentLogin.xaml.cs">
-      <DependentUpon>ParentLogin.xaml</DependentUpon>
+    <Compile Include="GuardianTools\GuardianCheckIn.xaml.cs">
+      <DependentUpon>GuardianCheckIn.xaml</DependentUpon>
     </Compile>
     <Page Include="UserTypeSelection.xaml">
       <SubType>Designer</SubType>
