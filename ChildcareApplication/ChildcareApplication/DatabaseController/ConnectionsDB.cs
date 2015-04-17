@@ -26,16 +26,7 @@ namespace DatabaseController {
                 MessageBox.Show("Cannot check in a child after normal operating hours");
                 return false;
             }
-            string ageGroup;
-            if (eventName.CompareTo("Regular Childcare") == 0) {
-                ageGroup = settings.CheckAgeGroup(birthday, date);
-                if (ageGroup.CompareTo("Infant") == 0) {
-                    eventName = "Infant Childcare";
-                }
-                else if (ageGroup.CompareTo("Adolescent") == 0) {
-                    eventName = "Adolescent Childcare";
-                }
-            }
+            eventName = GetAgeGroup(eventName, birthday, date);
             string allowanceID = GetAllowanceIDOnID(guardianID, childID);
             string transactionID = this.transDB.GetNextTransID();
             string sql = "insert into " +
@@ -58,6 +49,18 @@ namespace DatabaseController {
                 return false;
             }
             return true;
+        }
+
+        private String GetAgeGroup(string eventName, string birthday, string date) {
+            if (eventName.CompareTo("Regular Childcare") == 0) {
+                String ageGroup = settings.CheckAgeGroup(birthday, date);
+                if (ageGroup.CompareTo("Infant") == 0) {
+                    eventName = "Infant Childcare";
+                } else if (ageGroup.CompareTo("Adolescent") == 0) {
+                    eventName = "Adolescent Childcare";
+                }
+            }
+            return eventName;
         }
 
         public string GetAllowanceIDOnID(string guardianID, string childID) {
