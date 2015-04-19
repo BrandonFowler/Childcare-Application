@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace ChildcareApplication.AdminTools
-{
-    class Hashing
-    {
+namespace ChildcareApplication.AdminTools {
+    class Hashing {
 
-        public static string HashPass(string pass)
-        {
+        public static string HashPass(string pass) {
 
             string sSourceData;
             byte[] tmpSource;
@@ -29,16 +20,12 @@ namespace ChildcareApplication.AdminTools
             hashed = ByteArrayToString(tmpHash);
 
             return hashed;
-
-
         }
 
-        static string ByteArrayToString(byte[] arrInput)
-        {
+        static string ByteArrayToString(byte[] arrInput) {
             int i;
             StringBuilder sOutput = new StringBuilder(arrInput.Length);
-            for (i = 0; i < arrInput.Length - 1; i++)
-            {
+            for (i = 0; i < arrInput.Length - 1; i++) {
                 sOutput.Append(arrInput[i].ToString("X2"));
             }
             return sOutput.ToString();

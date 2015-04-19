@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Data;
+﻿using ChildcareApplication.AdminTools;
 using DatabaseController;
+using System.Windows;
 namespace AdminTools {
     /// <summary>
     /// Interaction logic for win_Link_DeLinkChild.xaml
@@ -39,31 +27,25 @@ namespace AdminTools {
             if (!formNotComplete)//form is completed
              {
                 bool sameID = checkIfSame(txt_GuardianID.Text, txt_GuardianID2.Text);
-                if (sameID)//both IDand PIN are the same vlues
+                bool regexID = RegExpressions.RegexID(txt_GuardianID.Text);
+                if (sameID && regexID)//both IDand PIN are the same vlues
                  {
-                    bool numbersID = checkIfNumbers(txt_GuardianID.Text, txt_GuardianID2.Text);
-                    if (numbersID)//both ID and PIN are numbers
-                     {
-                        pID = txt_GuardianID.Text;
+                    pID = txt_GuardianID.Text;
 
-                        MakeFamilyID(pID);
-                        if (linked == 0)//link child
-                             {
-                            int connID = this.db.GetMaxConnectionID();
-                            connID = connID + 1;
+                    MakeFamilyID(pID);
+                    if (linked == 0) {//link child
+ 
+                        int connID = this.db.GetMaxConnectionID();
+                        connID = connID + 1;
 
-                            string connectionID = connID.ToString();
-                            fID = MakeFamilyID(pID);
-                            conDB.UpdateAllowedConnections(connectionID, pID, childID, fID);
-                        } else if (linked == 1)//delink child
-                             {
+                        string connectionID = connID.ToString();
+                        fID = MakeFamilyID(pID);
+                        conDB.UpdateAllowedConnections(connectionID, pID, childID, fID);
+                    } else if (linked == 1) {//delink child
 
-                            conDB.DeleteAllowedConnection(childID, pID);
-                        }
-
-                        this.Close();
-
+                        conDB.DeleteAllowedConnection(childID, pID);
                     }
+                    this.Close();
                 }
             }
         }
