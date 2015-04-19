@@ -5,7 +5,7 @@
     <Grid>
         <TextBox x:Name="txt_ParentID1" HorizontalAlignment="Left" Height="23" Margin="81,53,0,0" TextWrapping="Wrap" Text="Enter your ID" VerticalAlignment="Top" Width="120" GotFocus="txt_ParentID1_GotFocus" GotMouseCapture="txt_ParentID1_GotMouseCapture"/>
         <TextBox x:Name="txt_ParentID2" HorizontalAlignment="Left" Height="23" Margin="81,92,0,0" TextWrapping="Wrap" Text="Enter you ID again" VerticalAlignment="Top" Width="120" GotFocus="txt_ParentID2_GotFocus" GotMouseCapture="txt_ParentID2_GotMouseCapture"/>
-        <PasswordBox x:Name="psw_ParentPIN1" HorizontalAlignment="Left" Margin="298,56,0,0" VerticalAlignment="Top" Width="84"/>
+        <PasswordBox x:Name="psw_ParentPIN1" HorizontalAlignment="Left" Margin="298,56,0,0" VerticalAlignment="Top" Width="84" GotFocus="psw_ParentPIN1_GotFocus" GotMouseCapture="psw_ParentPIN1_GotMouseCapture"/>
         <PasswordBox x:Name="psw_ParentPIN2" HorizontalAlignment="Left" Margin="298,92,0,0" VerticalAlignment="Top" Width="84"/>
         <Label Content="Parent ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0"/>
         <Label Content="Parent ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,89,0,0"/>

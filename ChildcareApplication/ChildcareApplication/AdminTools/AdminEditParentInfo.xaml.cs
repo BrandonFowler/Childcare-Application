@@ -65,43 +65,40 @@ namespace AdminTools {
                     this.db.UpdateParentInfo(pID, firstName, lastName, phone, email, address, address2, city, state, zip, path); 
                 }
                
-
-
-               //ClearFields();
             }
         }//end btn_Submit_Click
 
         private bool RegexValidation()
         {
-            bool fname = RegExpressions.regexName(txt_FirstName.Text);
+            bool fname = RegExpressions.RegexName(txt_FirstName.Text);
             if (!fname)
                 txt_FirstName.Focus(); 
 
-            bool lname = RegExpressions.regexName(txt_LastName.Text);
+            bool lname = RegExpressions.RegexName(txt_LastName.Text);
             if (!lname)
                 txt_LastName.Focus(); 
 
-            bool phone = RegExpressions.regexPhoneNumber(txt_PhoneNumber.Text);
+            bool phone = RegExpressions.RegexPhoneNumber(txt_PhoneNumber.Text);
             if (!phone)
                 txt_PhoneNumber.Focus(); 
 
-            bool email = RegExpressions.regexEmail(txt_Email.Text);
+            bool email = RegExpressions.RegexEmail(txt_Email.Text);
             if (!email)
                 txt_Email.Focus(); 
 
-            bool address = RegExpressions.regexAddress(txt_Address.Text);
+            bool address = RegExpressions.RegexAddress(txt_Address.Text);
             if (!address)
                 txt_Address.Focus(); 
 
-            bool city = RegExpressions.regexCity(txt_City.Text);
+            bool city = RegExpressions.RegexCity(txt_City.Text);
             if (!city)
                 txt_City.Focus(); 
 
-            bool zip = RegExpressions.regexZIP(txt_Zip.Text);
+            bool zip = RegExpressions.RegexZIP(txt_Zip.Text);
             if (!zip)
                 txt_Zip.Focus(); 
 
-            bool path = RegExpressions.regexFilePath(txt_FilePath.Text);
+            bool path = RegExpressions.RegexFilePath(txt_FilePath.Text);
 
 
             if(fname && lname && phone && email && address && city && zip && path)
@@ -129,18 +126,6 @@ namespace AdminTools {
 
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
 
-            /*bool? delete;
-             
-            DeleteConfirmation DeleteConformation = new DeleteConfirmation();
-            delete = DeleteConformation.ShowDialog();
-            if ((bool)delete == true)
-            {
-                string pID = txt_IDNumber.Text;
-                this.db.DeleteParentInfo(pID);
-                ClearFields();
-                DisableForm(); 
-            }*/
-
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you wish to delete this person?", "Deletion Conformation", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
@@ -149,7 +134,6 @@ namespace AdminTools {
                 ClearFields();
                 DisableForm(); 
             }
-
 
         }//end btn_Delete_Click
         private void DisableForm() {
@@ -322,15 +306,16 @@ namespace AdminTools {
 
         private void btn_ChangePicture_Click(object sender, RoutedEventArgs e)
         {
-           
-                //string dir = @"..\..\..\..\Photos"; 
-                string dir = @"C:\";
+
+                string imagePath = System.IO.Path.GetFullPath("../../Pictures");
+                imagePath = imagePath.Replace(@"/", @"\");
+                
                 Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
                 dlg.FileName = "default"; // Default file name
                 dlg.DefaultExt = ".jpg"; // Default file extension
                 dlg.Filter = "Pictures (.jpg)|*.jpg"; // Filter files by extension 
-                dlg.InitialDirectory = dir;
+                dlg.InitialDirectory = imagePath;
                 Nullable<bool> result = dlg.ShowDialog();
 
                 // Process open file dialog box results 
@@ -342,8 +327,7 @@ namespace AdminTools {
                     string[] words = filename.Split('\\');
 
                     path += words[words.Length - 1]; 
-                    
-
+                
                     try
                     {
                         string imageLink = path;
@@ -359,7 +343,6 @@ namespace AdminTools {
                     }
 
                 }
-
 
         }
 

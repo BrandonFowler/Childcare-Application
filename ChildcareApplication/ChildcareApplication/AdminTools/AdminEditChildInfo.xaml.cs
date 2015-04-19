@@ -78,16 +78,16 @@ namespace AdminTools {
 
 
         private bool RegexValidation() {
-            bool fname = RegExpressions.regexName(txt_FirstName.Text);
+            bool fname = RegExpressions.RegexName(txt_FirstName.Text);
             if (!fname)
                 txt_FirstName.Focus();
 
-            bool lname = RegExpressions.regexName(txt_LastName.Text);
+            bool lname = RegExpressions.RegexName(txt_LastName.Text);
             if (!lname)
                 txt_LastName.Focus();
 
 
-            bool path = RegExpressions.regexFilePath(txt_FilePath.Text);
+            bool path = RegExpressions.RegexFilePath(txt_FilePath.Text);
 
 
             if (fname && lname && path)
@@ -149,10 +149,7 @@ namespace AdminTools {
         private void ClearFields() {
             txt_FirstName.Clear();
             txt_LastName.Clear();
-
-            //txt_IDNumber.Clear();
             txt_Allergies.Clear();
-
             txt_Medical.Clear();
             txt_FilePath.Clear();
             dte_Birthday.Text = "01/01/2005";
@@ -234,7 +231,7 @@ namespace AdminTools {
             connID = connID + 1;
             string connectionID = connID.ToString();
 
-            string famID = getFamilyID(ID);
+            string famID = GetFamilyID(ID);
             this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "../../Pictures/default.jpg");
 
             conDB.UpdateAllowedConnections(connectionID, ID, mID, famID);
@@ -246,7 +243,7 @@ namespace AdminTools {
 
         }
 
-        public string getFamilyID(string pID) {
+        public string GetFamilyID(string pID) {
             string familyID = "";
 
             for (int x = 0; x < pID.Length - 1; x++) {
@@ -299,14 +296,15 @@ namespace AdminTools {
 
         private void btn_ChangePicture_Click(object sender, RoutedEventArgs e) {
             if (lst_ChildBox.SelectedItem != null) {
-                //string dir = @"..\..\..\..\Photos"; 
-                string dir = @"C:\";
+               
+                string imagePath = System.IO.Path.GetFullPath("../../Pictures");
+                imagePath = imagePath.Replace(@"/", @"\");
                 Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
                 dlg.FileName = "default"; // Default file name
                 dlg.DefaultExt = ".jpg"; // Default file extension
                 dlg.Filter = "Pictures (.jpg)|*.jpg"; // Filter files by extension 
-                dlg.InitialDirectory = dir;
+                dlg.InitialDirectory = imagePath;
                 Nullable<bool> result = dlg.ShowDialog();
 
                 // Process open file dialog box results 

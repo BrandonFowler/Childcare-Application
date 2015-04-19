@@ -191,7 +191,7 @@ namespace AdminTools {
                 txt_EventName.Focus();
                 return false;
             }
-            if (!RegExpressions.ValidateEventName(txt_EventName.Text)) {
+            if (!RegExpressions.RegexValidateEventName(txt_EventName.Text)) {
                 MessageBox.Show("Event names may only contain letters and spaces.");
                 txt_EventName.Focus();
                 return false;
