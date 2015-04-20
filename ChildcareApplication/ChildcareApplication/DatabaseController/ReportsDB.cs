@@ -38,7 +38,7 @@ namespace ChildcareApplication.DatabaseController {
             query += "'$' || printf('%.2f', SUM(ChildcareTransaction.TransactionTotal)) AS 'Total Charges' ";
             query += "From Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ChildcareTransaction NATURAL JOIN Family ";
             query += "WHERE ChildcareTransaction.TransactionDate BETWEEN '" + startDate + "' AND '" + endDate + "' ";
-            query += "GROUP BY Guardian.Guardian_ID";
+            query += "GROUP BY AllowedConnections.Family_ID ORDER BY Guardian.Guardian_ID;";
 
             return query;
         }
