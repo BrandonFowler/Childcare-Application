@@ -65,12 +65,11 @@ namespace AdminTools {
             for (int x = 0; x < ID.Length - 1; x++) {
                 familyID += ID[x];
             }
-            DataSet DS = new DataSet();
-            DS = this.db.checkIfFamilyExists(familyID);
+            //DataSet DS = new DataSet();
+            //DS = this.db.checkIfFamilyExists(familyID);
+            string fID = this.db.checkIfFamilyExists(familyID);
 
-            int count = DS.Tables[0].Rows.Count;
-
-            if (count == 0)//FamilyID does not exist
+            if (string.IsNullOrWhiteSpace(fID))//FamilyID does not exist
              {
                 this.db.AddNewFamily(familyID, 0.0);
             }

@@ -196,14 +196,15 @@ namespace DatabaseController {
         }
 
         public DataSet GetParentInfoDS(string parentID) {
-
-            dbCon.Open();
             DataSet DS = new DataSet();
             try {
-                string sql = "select * from Guardian where Guardian_ID = " + parentID;
+                dbCon.Open();
+
+
+                string sql = "select * from Guardian where Guardian_ID = @parentID";
 
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-
+                command.Parameters.Add(new SQLiteParameter("@parentID", parentID));
                 SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
 
                 DB.Fill(DS);
@@ -283,36 +284,47 @@ namespace DatabaseController {
             dbCon.Close();
         }
 
-        public DataSet checkIfFamilyExists(string familyID) {
+        public string checkIfFamilyExists(string familyID) {
 
-            dbCon.Open();
-            DataSet DS = new DataSet();
+
+            //DataSet DS = new DataSet();
+            string result = ""; 
             try {
-                string sql = "select * from Family where Family_ID = " + familyID;
-                SQLiteCommand command = new SQLiteCommand(sql, dbCon);
 
+                dbCon.Open();
+                string sql = "select * from Family where Family_ID = @familyID;";
+                SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+                command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
                 SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
 
-                DB.Fill(DS);
+                object res = command.ExecuteScalar();
+                if (res != DBNull.Value) {
+
+                    dbCon.Close();
+                    return (string)res;
+
+                }
+
 
             } catch (SQLiteException e) {
                 MessageBox.Show(e.ToString());
             }
 
             dbCon.Close();
-            return DS;
+            return result;
         }
 
         public void AddNewFamily(string familyID, double ballance) {
 
-            dbCon.Open();
-
             try {
-
+                dbCon.Open();
                 string sql = @"INSERT INTO Family(Family_ID, FamilyTotal) " +
-                "VALUES(" + familyID + ", " + ballance + ");";
-                SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
-                mycommand.ExecuteNonQuery();
+                "VALUES(@familyID, @ballance);";
+                SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+                command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
+                command.Parameters.Add(new SQLiteParameter("@ballance", ballance));
+
+                command.ExecuteNonQuery();
 
             } catch (SQLiteException e) {
                 MessageBox.Show(e.ToString());

@@ -215,7 +215,7 @@ namespace AdminTools {
             string mID = maxID.ToString();
 
             Image i;
-            i = buildImage("../../../../Photos/default.jpg", 60);
+            i = buildImage("../../Pictures/default.jpg", 60);
             lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None", "../../Pictures/default.jpg"));
 
             int connID = this.db.GetMaxConnectionID();

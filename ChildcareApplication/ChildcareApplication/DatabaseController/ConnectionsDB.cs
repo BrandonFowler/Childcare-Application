@@ -160,14 +160,17 @@ namespace DatabaseController {
         public void UpdateAllowedConnections(string conID, string pID, string cID, string famID) {
 
             try {
-                dbCon.Open();
-                if (!ConnectionExists(pID)) {
+                
+                if (!ConnectionExists(pID, cID)) {
+                    dbCon.Open();
                     string sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
-                                        + "VALUES(" + conID + ", " + pID + ", " + cID + ", " + famID + ");";
+                                        + "VALUES( @conID, @pID, @cID, @famID);";
 
                     SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-                    command.CommandText = sql;
-
+                    command.Parameters.Add(new SQLiteParameter("@conID", conID));
+                    command.Parameters.Add(new SQLiteParameter("@pID", pID));
+                    command.Parameters.Add(new SQLiteParameter("@cID", cID));
+                    command.Parameters.Add(new SQLiteParameter("@famID", famID));
                     command.ExecuteNonQuery();
                     MessageBox.Show("Link Completed.");
                 } else {
@@ -179,26 +182,31 @@ namespace DatabaseController {
             dbCon.Close();
         }
 
-        private bool ConnectionExists(string pID) {
+        private bool ConnectionExists(string pID, string cID) {
             try {
                 dbCon.Open();
                 string sql = "select Child.* " +
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
-                  "where Guardian_ID = " + pID + " AND ConnectionDeletionDate IS null";
+                  "where Guardian_ID = @pID AND Child.Child_ID = @cID AND ConnectionDeletionDate IS null";
 
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+                command.Parameters.Add(new SQLiteParameter("@pID", pID));
+                command.Parameters.Add(new SQLiteParameter("@cID", cID));
                 SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
 
                 DataSet DS = new DataSet();
                 DB.Fill(DS);
                 int count = DS.Tables[0].Rows.Count;
                 if (count > 0) {
-                    return false;
+                    dbCon.Close(); 
+                    return true;
                 }
-                return true;
+                dbCon.Close();
+                return false;
             } catch (Exception e) {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(e.ToString());
             }
+            dbCon.Close();
             return false;
         }
 
