@@ -34,7 +34,7 @@ namespace GuardianTools {
             ExitToLogin();
         }
 
-        private void SetUpCheckInBox() {
+        public void SetUpCheckInBox() {
             ChildInfoDatabase childDB = new ChildInfoDatabase();
             string[,] childrenData = childDB.FindChildren(this.guardianID);
             if(childrenData == null){
@@ -53,7 +53,7 @@ namespace GuardianTools {
             } 
         }
 
-        private Image BuildImage(string path, int size) {
+        public Image BuildImage(string path, int size) {
             Image image = new Image();
             image.Width = size;
             try {

@@ -36,7 +36,7 @@ namespace GuardianTools {
             return true;
         }
 
-        private double CalculateTransaction(string checkInTime, string eventName, double eventFee, string allowanceID, string transactionDate) {
+        public double CalculateTransaction(string checkInTime, string eventName, double eventFee, string allowanceID, string transactionDate) {
             bool isLate = false;
             EventDB eventDB = new EventDB();
             TimeSpan TimeSpanTime = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
@@ -68,7 +68,7 @@ namespace GuardianTools {
             return CompleteTransaction(eventFee, lateTime, allowanceID, isLate, eventName);
         }
 
-        private double CompleteTransaction(double eventFee, double lateTime, string allowanceID, bool isLate, string eventName) {
+        public double CompleteTransaction(double eventFee, double lateTime, string allowanceID, bool isLate, string eventName) {
             TransactionDB transDB = new TransactionDB();
             string eventFeeRounded = eventFee.ToString("f2");
             if (eventFee < 0) {
@@ -155,7 +155,7 @@ namespace GuardianTools {
             return BillingCapCalc(DTStart, DTEnd, eventName, familyID, eventFee);
         }
 
-        private double BillingCapCalc(DateTime DTStart, DateTime DTEnd, string eventName, string familyID, double eventFee) {
+        public double BillingCapCalc(DateTime DTStart, DateTime DTEnd, string eventName, string familyID, double eventFee) {
             TransactionDB transDB = new TransactionDB();
             double cap = settings.GetBillingCap();
             string start = DTStart.ToString("yyyy-MM-dd");
@@ -181,7 +181,7 @@ namespace GuardianTools {
             return 0.0;
         }
 
-        private DateTime FindBillingEnd(DateTime DTStart, int billingEnd) {
+        public DateTime FindBillingEnd(DateTime DTStart, int billingEnd) {
             DateTime DTEnd;
             int endMonth = DTStart.Month + 1;
             if (endMonth == 13) {
@@ -194,7 +194,7 @@ namespace GuardianTools {
             return DTEnd;
         }
 
-        private DateTime FindBillingStart(DateTime DTEnd, int billingStart) {
+        public DateTime FindBillingStart(DateTime DTEnd, int billingStart) {
             DateTime DTStart;
             int startMonth = DTEnd.Month - 1;
             if (startMonth == 0) {

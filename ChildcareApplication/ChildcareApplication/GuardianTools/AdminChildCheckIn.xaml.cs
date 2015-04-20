@@ -66,7 +66,7 @@ namespace GuardianTools {
             Search();
         }
 
-        private void Search() {
+        public void Search() {
             GuardianInfoDB parentDB = new GuardianInfoDB();
             CleanDisplay();
             if (String.IsNullOrWhiteSpace(txt_SearchBox.Text)) {
@@ -97,7 +97,7 @@ namespace GuardianTools {
             }
         }
 
-        private void SetUpGuardianDisplay(string[,] guardianInfo){
+        public void SetUpGuardianDisplay(string[,] guardianInfo) {
             for (int x = 0; x < guardianInfo.GetLength(0); x++) {
                 string firstName = guardianInfo[x,0].PadRight(33);
                 string lastName = guardianInfo[x, 1].PadRight(33);
