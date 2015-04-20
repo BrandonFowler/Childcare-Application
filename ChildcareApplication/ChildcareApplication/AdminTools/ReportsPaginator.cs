@@ -55,7 +55,7 @@ namespace AdminTools {
                 if (this.table.TableName == "Business Report") {
                     this.rowsPerPage = PageElement.RowsPerPage(this.pageSize.Width, this.pageSize.Height);
                 } else {
-                    this.rowsPerPage = PageElement.RowsPerPage(this.pageSize.Height, this.pageSize.Height);
+                    this.rowsPerPage = PageElement.RowsPerPage(this.pageSize.Height, this.pageSize.Width);
                 }
 
                 //Can't print anything if you can't fit a row on a page

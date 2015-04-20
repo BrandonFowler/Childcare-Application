@@ -165,7 +165,6 @@ namespace AdminTools {
         private void btn_Print_Click(object sender, RoutedEventArgs e) { //height = 1056, width = 816
             if (this.reportLoaded) {
                 PrintDialog printDialog = new PrintDialog();
-                printDialog.PageRangeSelection = PageRangeSelection.UserPages;
 
                 if (printDialog.ShowDialog() == true) {
                     var paginator = new ReportsPaginator(this.table.Rows.Count, this.table,

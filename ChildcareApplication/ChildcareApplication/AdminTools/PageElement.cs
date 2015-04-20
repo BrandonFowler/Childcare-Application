@@ -30,9 +30,6 @@ namespace AdminTools {
         }
 
         public static int RowsPerPage(double height, double width) {  //32 rows in landscape
-            //if (width > height) {
-            //    return 32;
-            //}
             return ((int)Math.Floor((height - (2 * PageMargin) - HeaderHeight) / LineHeight));
         }
 
