@@ -9,7 +9,7 @@
         <Button x:Name="btn_Confirm" Content="Confirm" HorizontalAlignment="Left" Margin="163,320,0,0" VerticalAlignment="Top" Width="75" TabIndex="5" Click="btn_Confirm_Click" IsTabStop="False"/>
         <Button x:Name="btn_Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="55,320,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" TabIndex="6" IsTabStop="False"/>
         <TextBox x:Name="txt_MaxMonthlyFee" HorizontalAlignment="Left" Height="23" Margin="55,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="2" GotFocus="txt_MaxMonthlyFee_GotFocus" LostFocus="txt_MaxMonthlyFee_LostFocus"/>
-        <TextBox x:Name="txt_BillingDate" HorizontalAlignment="Left" Height="23" Margin="55,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="1" GotFocus="txt_BillingDate_GotFocus" LostFocus="txt_BillingDate_LostFocus"/>
+        <TextBox x:Name="txt_BillingDate" HorizontalAlignment="Left" Height="23" Margin="55,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="1" GotFocus="txt_BillingDate_GotFocus" LostFocus="txt_BillingDate_LostFocus" KeyUp="txt_BillingDate_KeyUp"/>
         <TextBox x:Name="txt_ExpirationDays" HorizontalAlignment="Left" Height="23" Margin="55,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="3" GotFocus="txt_ExpirationDays_GotFocus" LostFocus="txt_ExpirationDays_LostFocus"/>
         <Label x:Name="lbl_OperatingHours" Content="Hours of Operation" HorizontalAlignment="Left" Margin="442,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_Monday" Content="Monday:" HorizontalAlignment="Left" Margin="372,72,0,0" VerticalAlignment="Top"/>

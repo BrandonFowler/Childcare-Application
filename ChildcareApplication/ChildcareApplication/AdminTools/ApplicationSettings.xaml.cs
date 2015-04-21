@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace ChildcareApplication.AdminTools {
@@ -341,79 +342,79 @@ namespace ChildcareApplication.AdminTools {
         ///////////////////
 
         private void txt_BillingDate_GotFocus(object sender, RoutedEventArgs e) {
-            txt_BillingDate.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_BillingDate.SelectAll);
         }
 
         private void txt_MaxMonthlyFee_GotFocus(object sender, RoutedEventArgs e) {
-            txt_MaxMonthlyFee.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_MaxMonthlyFee.SelectAll);
         }
 
         private void txt_ExpirationDays_GotFocus(object sender, RoutedEventArgs e) {
-            txt_ExpirationDays.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_ExpirationDays.SelectAll);
         }
 
         private void txt_InfantAge_GotFocus(object sender, RoutedEventArgs e) {
-            txt_InfantAge.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_InfantAge.SelectAll);
         }
 
         private void txt_RegularAge_GotFocus(object sender, RoutedEventArgs e) {
-            txt_RegularAge.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_RegularAge.SelectAll);
         }
 
         private void txt_MonOpening_GotFocus(object sender, RoutedEventArgs e) {
-            txt_MonOpening.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_MonOpening.SelectAll);
         }
 
         private void txt_MonClosing_GotFocus(object sender, RoutedEventArgs e) {
-            txt_MonClosing.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_MonClosing.SelectAll);
         }
 
         private void txt_TueOpening_GotFocus(object sender, RoutedEventArgs e) {
-            txt_TueOpening.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_TueOpening.SelectAll);
         }
 
         private void txt_TueClosing_GotFocus(object sender, RoutedEventArgs e) {
-            txt_TueClosing.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_TueClosing.SelectAll);
         }
 
         private void txt_WedOpening_GotFocus(object sender, RoutedEventArgs e) {
-            txt_WedOpening.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_WedOpening.SelectAll);
         }
 
         private void txt_WedClosing_GotFocus(object sender, RoutedEventArgs e) {
-            txt_WedClosing.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_WedClosing.SelectAll);
         }
 
         private void txt_ThuOpening_GotFocus(object sender, RoutedEventArgs e) {
-            txt_ThuOpening.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_ThuOpening.SelectAll);
         }
 
         private void txt_ThuClosing_GotFocus(object sender, RoutedEventArgs e) {
-            txt_ThuClosing.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_ThuClosing.SelectAll);
         }
 
         private void txt_FriOpening_GotFocus(object sender, RoutedEventArgs e) {
-            txt_FriOpening.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_FriOpening.SelectAll);
         }
 
         private void txt_FriClosing_GotFocus(object sender, RoutedEventArgs e) {
-            txt_FriClosing.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_FriClosing.SelectAll);
         }
 
         private void txt_SatOpening_GotFocus(object sender, RoutedEventArgs e) {
-            txt_SatOpening.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_SatOpening.SelectAll);
         }
 
         private void txt_SatClosing_GotFocus(object sender, RoutedEventArgs e) {
-            txt_SatClosing.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_SatClosing.SelectAll);
         }
 
         private void txt_SunOpening_GotFocus(object sender, RoutedEventArgs e) {
-            txt_SunOpening.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_SunOpening.SelectAll);
         }
 
         private void txt_SunClosing_GotFocus(object sender, RoutedEventArgs e) {
-            txt_SunClosing.SelectAll();
+            Dispatcher.BeginInvoke((Action)txt_SunClosing.SelectAll);
         }
 
         ////////////////////
@@ -887,6 +888,12 @@ namespace ChildcareApplication.AdminTools {
                 disableAll();
                 statusBad();
                 txt_SunClosing.IsEnabled = true;
+            }
+        }
+
+        private void txt_BillingDate_KeyUp(object sender, System.Windows.Input.KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                MessageBox.Show("NYI");
             }
         }
     }
