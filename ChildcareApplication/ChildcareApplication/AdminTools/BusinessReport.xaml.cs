@@ -165,10 +165,10 @@ namespace AdminTools {
         private void btn_Print_Click(object sender, RoutedEventArgs e) { //height = 1056, width = 816
             if (this.reportLoaded) {
                 PrintDialog printDialog = new PrintDialog();
-
+                printDialog.PrintTicket.PageOrientation = System.Printing.PageOrientation.Landscape;
                 if (printDialog.ShowDialog() == true) {
                     var paginator = new ReportsPaginator(this.table.Rows.Count, this.table,
-                      new Size(printDialog.PrintableAreaHeight, printDialog.PrintableAreaWidth));
+                      new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight));
 
                     printDialog.PrintDocument(paginator, "Business Report Data Table");
                 }

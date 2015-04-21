@@ -17,7 +17,7 @@ namespace AdminTools {
         private const int PageMargin = 75;
         private const int HeaderHeight = 25;
         private const int LineHeight = 20;
-        private const int ColumnWidth = 65;
+        private const int ColumnWidth = 93;
 
         private int currentRow;
         private int rows;
