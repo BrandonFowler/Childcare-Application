@@ -59,8 +59,7 @@ namespace AdminTools {
             }
         }//end btn_Submit_Click
 
-        private bool RegexValidation()
-        {
+        public bool RegexValidation(){
             bool fname = RegExpressions.RegexName(txt_FirstName.Text);
             if (!fname)
                 txt_FirstName.Focus(); 
@@ -148,7 +147,7 @@ namespace AdminTools {
             txt_FilePath.Clear(); 
         }//end ClearFields
 
-        private bool CheckIfNull() {
+        public bool CheckIfNull() {
 
             if (string.IsNullOrWhiteSpace(this.txt_Address.Text))
             {
