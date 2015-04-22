@@ -64,7 +64,7 @@ namespace AdminTools {
 
         private void DisplayAdminEditChildInfo(string ID) {
 
-            win_AdminEditChildInfo AdminEditChildInfo = new win_AdminEditChildInfo(ID);
+            AdminEditChildInfo AdminEditChildInfo = new AdminEditChildInfo(ID);
             AdminEditChildInfo.Show();
             this.Close();
         }//end DisplayAdminEditChildInfo

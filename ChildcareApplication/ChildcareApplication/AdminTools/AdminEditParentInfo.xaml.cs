@@ -27,16 +27,14 @@ namespace AdminTools {
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
 
-            bool formNotComplete = true; 
-            formNotComplete = CheckIfNull(); 
+            bool formNotComplete = true;
+            formNotComplete = CheckIfNull();
 
             //save all information to database
-            if (formNotComplete == false)
-            {
+            if (formNotComplete == false) {
                 bool regex = RegexValidation();
 
-                if(regex)
-                {
+                if (regex) {
                     string pID, firstName, lastName, address, address2, city, state, zip, email, phone, path;
 
                     pID = txt_IDNumber.Text;
@@ -53,45 +51,45 @@ namespace AdminTools {
                     zip = txt_Zip.Text;
                     path = txt_FilePath.Text;
 
-                    this.db.UpdateParentInfo(pID, firstName, lastName, phone, email, address, address2, city, state, zip, path); 
+                    this.db.UpdateParentInfo(pID, firstName, lastName, phone, email, address, address2, city, state, zip, path);
                 }
-               
+
             }
         }//end btn_Submit_Click
 
-        public bool RegexValidation(){
+        public bool RegexValidation() {
             bool fname = RegExpressions.RegexName(txt_FirstName.Text);
             if (!fname)
-                txt_FirstName.Focus(); 
+                txt_FirstName.Focus();
 
             bool lname = RegExpressions.RegexName(txt_LastName.Text);
             if (!lname)
-                txt_LastName.Focus(); 
+                txt_LastName.Focus();
 
             bool phone = RegExpressions.RegexPhoneNumber(txt_PhoneNumber.Text);
             if (!phone)
-                txt_PhoneNumber.Focus(); 
+                txt_PhoneNumber.Focus();
 
             bool email = RegExpressions.RegexEmail(txt_Email.Text);
             if (!email)
-                txt_Email.Focus(); 
+                txt_Email.Focus();
 
             bool address = RegExpressions.RegexAddress(txt_Address.Text);
             if (!address)
-                txt_Address.Focus(); 
+                txt_Address.Focus();
 
             bool city = RegExpressions.RegexCity(txt_City.Text);
             if (!city)
-                txt_City.Focus(); 
+                txt_City.Focus();
 
             bool zip = RegExpressions.RegexZIP(txt_Zip.Text);
             if (!zip)
-                txt_Zip.Focus(); 
+                txt_Zip.Focus();
 
             bool path = RegExpressions.RegexFilePath(txt_FilePath.Text);
 
 
-            if(fname && lname && phone && email && address && city && zip && path)
+            if (fname && lname && phone && email && address && city && zip && path)
                 return true;
 
             return false;
@@ -102,13 +100,13 @@ namespace AdminTools {
 
             AdminMenu adminMenu = new AdminMenu();
             adminMenu.Show();
-            this.Close(); 
+            this.Close();
         }//end btn_Finish_Click
 
         private void btn_AddChild_Click(object sender, RoutedEventArgs e) {
 
-            string pID = txt_IDNumber.Text; 
-            win_AdminEditChildInfo AdminEditChildInfo = new win_AdminEditChildInfo(pID);
+            string pID = txt_IDNumber.Text;
+            AdminEditChildInfo AdminEditChildInfo = new AdminEditChildInfo(pID);
             AdminEditChildInfo.Show();
             this.Close();
 
@@ -117,12 +115,11 @@ namespace AdminTools {
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
 
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you wish to delete this person?", "Deletion Conformation", MessageBoxButton.YesNo);
-            if (messageBoxResult == MessageBoxResult.Yes)
-            {
+            if (messageBoxResult == MessageBoxResult.Yes) {
                 string pID = txt_IDNumber.Text;
                 this.db.DeleteParentInfo(pID);
                 ClearFields();
-                DisableForm(); 
+                DisableForm();
             }
 
         }//end btn_Delete_Click
@@ -130,12 +127,12 @@ namespace AdminTools {
             btn_EditChild.IsEnabled = false;
             btn_Delete.IsEnabled = false;
             btn_SubmitInfo.IsEnabled = false;
-            btn_ChangePicture.IsEnabled = false; 
+            btn_ChangePicture.IsEnabled = false;
         }
 
         private void ClearFields() {
             txt_Address.Clear();
-            txt_Address2.Clear(); 
+            txt_Address2.Clear();
             txt_City.Clear();
             txt_FirstName.Clear();
             txt_LastName.Clear();
@@ -144,53 +141,46 @@ namespace AdminTools {
             txt_Zip.Clear();
             txt_Email.Clear();
             txt_IDNumber.Clear();
-            txt_FilePath.Clear(); 
+            txt_FilePath.Clear();
         }//end ClearFields
 
         public bool CheckIfNull() {
 
-            if (string.IsNullOrWhiteSpace(this.txt_Address.Text))
-            {
+            if (string.IsNullOrWhiteSpace(this.txt_Address.Text)) {
                 MessageBox.Show("Please enter your address.");
-                return true; 
+                return true;
             }
 
-            else if (string.IsNullOrWhiteSpace(this.txt_City.Text))
-            {
+            else if (string.IsNullOrWhiteSpace(this.txt_City.Text)) {
                 MessageBox.Show("Please enter your city.");
-                return true; 
+                return true;
             }
 
-            else if (string.IsNullOrWhiteSpace(this.txt_Zip.Text))
-            {
+            else if (string.IsNullOrWhiteSpace(this.txt_Zip.Text)) {
                 MessageBox.Show("Please enter your zip.");
-                return true;     
+                return true;
             }
 
-            else if (string.IsNullOrWhiteSpace(this.txt_FirstName.Text))
-            {
+            else if (string.IsNullOrWhiteSpace(this.txt_FirstName.Text)) {
                 MessageBox.Show("Please enter your first name.");
                 return true;
             }
 
-            else if (string.IsNullOrWhiteSpace(this.txt_LastName.Text))
-            {
+            else if (string.IsNullOrWhiteSpace(this.txt_LastName.Text)) {
                 MessageBox.Show("Please enter your last name.");
                 return true;
             }
 
-            else if (string.IsNullOrWhiteSpace(this.cbo_State.Text))
-            {
+            else if (string.IsNullOrWhiteSpace(this.cbo_State.Text)) {
                 MessageBox.Show("Please enter your state.");
                 return true;
             }
 
-            else if (string.IsNullOrWhiteSpace(this.txt_Email.Text))
-            {
+            else if (string.IsNullOrWhiteSpace(this.txt_Email.Text)) {
                 MessageBox.Show("Please enter your e-mail.");
                 return true;
             }
-            return false; 
+            return false;
         }//end checkIfNull
 
         private void LoadParentInfo(string parentID) {
@@ -199,13 +189,11 @@ namespace AdminTools {
             DataSet DS = new DataSet();
             DS = this.db.GetParentInfoDS(parentID);
             int count = DS.Tables[0].Rows.Count;
-            if(count > 0)
-            {
-                string deletionDate = ""; 
+            if (count > 0) {
+                string deletionDate = "";
                 deletionDate = DS.Tables[0].Rows[0][12].ToString();
 
-                if (String.IsNullOrEmpty(deletionDate))
-                {
+                if (String.IsNullOrEmpty(deletionDate)) {
                     txt_FirstName.Text = DS.Tables[0].Rows[0][2].ToString();
                     txt_LastName.Text = DS.Tables[0].Rows[0][3].ToString();
 
@@ -224,8 +212,7 @@ namespace AdminTools {
                     ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
                     cnv_ParentIcon.Background = ib;
                 }
-                else
-                {            
+                else {
                     ClearFields();
                     DisableForm();
                     MessageBox.Show("This Parent has already been deleted.");
@@ -236,7 +223,7 @@ namespace AdminTools {
         private void AddStates() {
 
             cbo_State.SelectedIndex = 46;
-            
+
             cbo_State.Items.Add("AL");
             cbo_State.Items.Add("AK");
             cbo_State.Items.Add("AZ");
@@ -294,140 +281,117 @@ namespace AdminTools {
 
         }
 
-        private void btn_ChangePicture_Click(object sender, RoutedEventArgs e)
-        {
+        private void btn_ChangePicture_Click(object sender, RoutedEventArgs e) {
 
-                string imagePath = System.IO.Path.GetFullPath("../../Pictures");
-                imagePath = imagePath.Replace(@"/", @"\");
-                
-                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            string imagePath = System.IO.Path.GetFullPath("../../Pictures");
+            imagePath = imagePath.Replace(@"/", @"\");
 
-                dlg.FileName = "default"; // Default file name
-                dlg.DefaultExt = ".jpg"; // Default file extension
-                dlg.Filter = "Pictures (.jpg)|*.jpg"; // Filter files by extension 
-                dlg.InitialDirectory = imagePath;
-                Nullable<bool> result = dlg.ShowDialog();
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
-                // Process open file dialog box results 
-                if (result == true)
-                {
-                    // Open document 
-                    string path = "../../Pictures/"; 
-                    string filename = dlg.FileName;
-                    string[] words = filename.Split('\\');
+            dlg.FileName = "default"; // Default file name
+            dlg.DefaultExt = ".jpg"; // Default file extension
+            dlg.Filter = "Pictures (.jpg)|*.jpg"; // Filter files by extension 
+            dlg.InitialDirectory = imagePath;
+            Nullable<bool> result = dlg.ShowDialog();
 
-                    path += words[words.Length - 1]; 
-                
-                    try
-                    {
-                        string imageLink = path;
-                        ImageBrush ib = new ImageBrush();
-                        ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
-                        cnv_ParentIcon.Background = ib;
-                        txt_FilePath.Text = path;
-                    }
-                    catch(Exception)
-                    {
-                        MessageBox.Show("Could not change picture to" + path);
+            // Process open file dialog box results 
+            if (result == true) {
+                // Open document 
+                string path = "../../Pictures/";
+                string filename = dlg.FileName;
+                string[] words = filename.Split('\\');
 
-                    }
+                path += words[words.Length - 1];
+
+                try {
+                    string imageLink = path;
+                    ImageBrush ib = new ImageBrush();
+                    ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
+                    cnv_ParentIcon.Background = ib;
+                    txt_FilePath.Text = path;
+                }
+                catch (Exception) {
+                    MessageBox.Show("Could not change picture to" + path);
 
                 }
 
+            }
+
         }
 
-        private void txt_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_GotFocus(object sender, RoutedEventArgs e) {
             var textBox = e.OriginalSource as TextBox;
-            if (textBox != null)
-            {
+            if (textBox != null) {
                 textBox.SelectAll();
             }
         }
 
-        private void txt_GotMouseCapture(object sender, MouseEventArgs e)
-        {
+        private void txt_GotMouseCapture(object sender, MouseEventArgs e) {
 
             txt_GotFocus(sender, e);
         }
 
-        private void txt_FirstName_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_FirstName_GotFocus(object sender, RoutedEventArgs e) {
             txt_GotFocus(sender, e);
         }
 
-        private void txt_LastName_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_LastName_GotFocus(object sender, RoutedEventArgs e) {
             txt_GotFocus(sender, e);
         }
 
-        private void txt_PhoneNumber_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_PhoneNumber_GotFocus(object sender, RoutedEventArgs e) {
             txt_GotFocus(sender, e);
         }
 
-        private void txt_Email_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_Email_GotFocus(object sender, RoutedEventArgs e) {
             txt_GotFocus(sender, e);
         }
 
-        private void txt_Address_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_Address_GotFocus(object sender, RoutedEventArgs e) {
             txt_GotFocus(sender, e);
         }
 
-        private void txt_Address2_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_Address2_GotFocus(object sender, RoutedEventArgs e) {
             txt_GotFocus(sender, e);
         }
 
-        private void txt_City_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_City_GotFocus(object sender, RoutedEventArgs e) {
             txt_GotFocus(sender, e);
         }
 
-        private void txt_Zip_GotFocus(object sender, RoutedEventArgs e)
-        {
+        private void txt_Zip_GotFocus(object sender, RoutedEventArgs e) {
             txt_GotFocus(sender, e);
         }
 
-        private void txt_FirstName_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
-        {
+        private void txt_FirstName_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
             txt_GotMouseCapture(sender, e);
         }
 
-        private void txt_LastName_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
-        {
+        private void txt_LastName_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
             txt_GotMouseCapture(sender, e);
         }
 
-        private void txt_PhoneNumber_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
-        {
+        private void txt_PhoneNumber_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
             txt_GotMouseCapture(sender, e);
         }
 
-        private void txt_Email_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
-        {
+        private void txt_Email_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
             txt_GotMouseCapture(sender, e);
         }
 
-        private void txt_Address_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
-        {
+        private void txt_Address_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
             txt_GotMouseCapture(sender, e);
         }
 
-        private void txt_Address2_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
-        {
+        private void txt_Address2_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
             txt_GotMouseCapture(sender, e);
         }
 
-        private void txt_City_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
-        {
+        private void txt_City_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
             txt_GotMouseCapture(sender, e);
         }
 
-        private void txt_Zip_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
-        {
+        private void txt_Zip_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
             txt_GotMouseCapture(sender, e);
         }
 

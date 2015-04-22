@@ -16,12 +16,12 @@ namespace AdminTools {
     /// </summary>
     /// 
 
-    public partial class win_AdminEditChildInfo : Window {
+    public partial class AdminEditChildInfo : Window {
         private ChildInfoDatabase db;
         DataSet DS = new DataSet();
         private string ID;
 
-        public win_AdminEditChildInfo(string parentID) {
+        public AdminEditChildInfo(string parentID) {
             InitializeComponent();
             this.ID = parentID;
             this.db = new ChildInfoDatabase();
@@ -69,7 +69,7 @@ namespace AdminTools {
         }//end btn_Submit_Click
 
 
-        private bool RegexValidation() {
+        public bool RegexValidation() {
             bool fname = RegExpressions.RegexName(txt_FirstName.Text);
             if (!fname)
                 txt_FirstName.Focus();
@@ -122,7 +122,7 @@ namespace AdminTools {
 
         }//end LoadParentInfo
 
-        private bool CheckIfNull() {
+        public bool CheckIfNull() {
 
 
             if (string.IsNullOrWhiteSpace(this.txt_FirstName.Text)) {
