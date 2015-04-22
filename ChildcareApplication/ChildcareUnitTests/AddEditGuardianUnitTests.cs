@@ -27,6 +27,24 @@ namespace ChildcareUnitTests {
             AddEditParent = new AdminTools.AdminEditParentInfo("123450");
             AddEditParent.txt_Zip.Text = "";
             Assert.IsTrue(AddEditParent.CheckIfNull());//Check that empty zip is caught
+            AddEditParent = new AdminTools.AdminEditParentInfo("123450");
+            AddEditParent.txt_FirstName.Text = null;
+            Assert.IsTrue(AddEditParent.CheckIfNull());//Check that null first name is caught
+            AddEditParent = new AdminTools.AdminEditParentInfo("123450");
+            AddEditParent.txt_LastName.Text = null;
+            Assert.IsTrue(AddEditParent.CheckIfNull());//Check that null last name is caught
+            AddEditParent = new AdminTools.AdminEditParentInfo("123450");
+            AddEditParent.txt_Email.Text = null;
+            Assert.IsTrue(AddEditParent.CheckIfNull());//Check that null email is caught
+            AddEditParent = new AdminTools.AdminEditParentInfo("123450");
+            AddEditParent.txt_Address.Text = null;
+            Assert.IsTrue(AddEditParent.CheckIfNull());//Check that null address is caught
+            AddEditParent = new AdminTools.AdminEditParentInfo("123450");
+            AddEditParent.txt_City.Text = null;
+            Assert.IsTrue(AddEditParent.CheckIfNull());//Check that null city is caught
+            AddEditParent = new AdminTools.AdminEditParentInfo("123450");
+            AddEditParent.txt_Zip.Text = null;
+            Assert.IsTrue(AddEditParent.CheckIfNull());//Check that null zip is caught
         }
 
         [TestMethod]

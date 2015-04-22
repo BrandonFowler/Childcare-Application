@@ -15,6 +15,13 @@ namespace ChildcareUnitTests {
             AddEditChild.lst_ChildBox.SelectedItem = AddEditChild.lst_ChildBox.Items[0];
             AddEditChild.txt_LastName.Text = "";
             Assert.IsTrue(AddEditChild.CheckIfNull());//Check that empty last name is caught
+            AddEditChild = new AdminTools.AdminEditChildInfo("123450");
+            AddEditChild.txt_FirstName.Text = null;
+            Assert.IsTrue(AddEditChild.CheckIfNull());//Check that null first name is caught
+            AddEditChild = new AdminTools.AdminEditChildInfo("123450");
+            AddEditChild.lst_ChildBox.SelectedItem = AddEditChild.lst_ChildBox.Items[0];
+            AddEditChild.txt_LastName.Text = null;
+            Assert.IsTrue(AddEditChild.CheckIfNull());//Check that null last name is caught
         }
 
         [TestMethod]
