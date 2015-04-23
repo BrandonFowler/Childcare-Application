@@ -33,12 +33,12 @@ namespace ChildcareApplication.DatabaseController {
 
         private string BuildBusinessReportQuery(string startDate, string endDate) {
 
-            string query = "SELECT Guardian.Guardian_ID AS ID, Guardian.FirstName AS First, Guardian.LastName AS Last, ";
-            query += "Guardian.Phone, Guardian.Address1, Guardian.Address2, Guardian.City, Guardian.StateAbrv AS State, Guardian.Zip, ";
-            query += "'$' || printf('%.2f', SUM(ChildcareTransaction.TransactionTotal)) AS 'Total Charges' ";
+            string query = "SELECT Guardian.Guardian_ID AS ID, Guardian.FirstName AS 'First Name', Guardian.LastName AS 'Last Name', ";
+            query += "ChildcareTransaction.EventName AS 'Event Name', ";
+            query += "'$' || printf('%.2f', SUM(ChildcareTransaction.TransactionTotal)) AS 'Charges' ";
             query += "From Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ChildcareTransaction NATURAL JOIN Family ";
             query += "WHERE ChildcareTransaction.TransactionDate BETWEEN '" + startDate + "' AND '" + endDate + "' ";
-            query += "GROUP BY AllowedConnections.Family_ID ORDER BY Guardian.Guardian_ID;";
+            query += "GROUP BY Guardian.Guardian_ID, ChildcareTransaction.EventName ORDER BY Guardian.Guardian_ID;";
 
             return query;
         }

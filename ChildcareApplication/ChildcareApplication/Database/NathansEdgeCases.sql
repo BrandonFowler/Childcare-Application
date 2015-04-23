@@ -74,16 +74,21 @@ Insert into ChildcareTransaction VALUES ("0000000034","Regular Childcare", "0000
 
 Insert into ChildcareTransaction VALUES ("0000000050","Regular Childcare", "000001", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
 
-Insert into ChildcareTransaction VALUES ("0000000054","Regular Childcare", "000002", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
-Insert into ChildcareTransaction VALUES ("0000000051","Regular Childcare", "000002", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
-Insert into ChildcareTransaction VALUES ("0000000052","Regular Childcare", "000003", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
-Insert into ChildcareTransaction VALUES ("0000000053","Regular Childcare", "000003", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
+Insert into ChildcareTransaction VALUES ("0000000054","Regular Childcare", "001000", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
+Insert into ChildcareTransaction VALUES ("0000000051","Regular Childcare", "001000", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
+Insert into ChildcareTransaction VALUES ("0000000052","Regular Childcare", "001001", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
+Insert into ChildcareTransaction VALUES ("0000000053","Regular Childcare", "001001", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
 
-INSERT into Guardian VALUES ("123440", "81DC9BDB52D04DC20036DBD8313ED0", "Bilbo", "Baggins", "555-123-4567", "myprecious@theshire.com", "123 Bag End", "Hole A", "Shire", "ME", "99999", "../../Pictures/Bilbo_Baggins.jpg", null);
-INSERT into Guardian VALUES ("123441", "81DC9BDB52D04DC20036DBD8313ED0", "Gandalf", "The Grey", "555-123-4567", "myprecious@theshire.com", "123 Bag End", "Hole A", "Shire", "ME", "99999", "../../Pictures/Gandalf.jpg", null);
-INSERT into Child VALUES ("123442", "Frodo", "Baggins", '2005-02-15', "Rings of Power", "Addicted to the Ring of power", "../../Pictures/Frodo_Baggins.jpg", null);
-INSERT into AllowedConnections VALUES ("000002", "123440", "123442", "12344", NULL);
-INSERT into AllowedConnections VALUES ("000003", "123441", "123442", "12344", NULL);
-Insert into Family VALUES ('12344', 51.65);
+Insert into ChildcareTransaction VALUES ("0000000055","Infant Childcare", "001000", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
+Insert into ChildcareTransaction VALUES ("0000000056","Camp", "001000", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
+Insert into ChildcareTransaction VALUES ("0000000057","Infant Childcare", "001001", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
+Insert into ChildcareTransaction VALUES ("0000000058","Camp", "001001", '2015-04-21 12:00:00', '12:00:00', '14:00:00', 10.55);
+
+INSERT into Guardian VALUES ("100040", "81DC9BDB52D04DC20036DBD8313ED0", "Bilbo", "Baggins", "555-123-4567", "myprecious@theshire.com", "123 Bag End", "Hole A", "Shire", "ME", "99999", "../../Pictures/Bilbo_Baggins.jpg", null);
+INSERT into Guardian VALUES ("100041", "81DC9BDB52D04DC20036DBD8313ED0", "Gandalf", "The Grey", "555-123-4567", "myprecious@theshire.com", "123 Bag End", "Hole A", "Shire", "ME", "99999", "../../Pictures/Gandalf.jpg", null);
+INSERT into Child VALUES ("100042", "Frodo", "Baggins", '2005-02-15', "Rings of Power", "Addicted to the Ring of power", "../../Pictures/Frodo_Baggins.jpg", null);
+INSERT into AllowedConnections VALUES ("001000", "100040", "100042", "10004", NULL);
+INSERT into AllowedConnections VALUES ("001001", "100041", "100042", "10004", NULL);
+Insert into Family VALUES ('10004', 51.65);
 
 Insert into Family VALUES ('12345', 51.65);

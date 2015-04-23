@@ -61,7 +61,6 @@
     <Compile Include="AddEditChildUnitTests.cs" />
     <Compile Include="AddEditGuardianUnitTests.cs" />
     <Compile Include="AdminLoginUnitTests.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

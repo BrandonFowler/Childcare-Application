@@ -206,7 +206,7 @@ namespace AdminTools {
         }
 
         private void btn_Print_Click(object sender, RoutedEventArgs e) {
-            if (this.reportLoaded) {
+            if (this.reportLoaded && this.table.Rows.Count > 0) {
                 PrintDialog printDialog = new PrintDialog();
 
                 if (printDialog.ShowDialog() == true) {

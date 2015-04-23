@@ -163,7 +163,7 @@ namespace AdminTools {
         }
 
         private void btn_Print_Click(object sender, RoutedEventArgs e) { //height = 1056, width = 816
-            if (this.reportLoaded) {
+            if (this.reportLoaded && this.table.Rows.Count > 0) {
                 PrintDialog printDialog = new PrintDialog();
                 printDialog.PrintTicket.PageOrientation = System.Printing.PageOrientation.Landscape;
                 if (printDialog.ShowDialog() == true) {

@@ -152,11 +152,23 @@ namespace DatabaseController {
             return time;
         }
 
-        //expects time to be of 'MM/DD/YYYY HH:MM:SS AM' format
+        //expects time to be of 'MM/DD/YYYY HH:MM:SS AM' format or 'MM/DD/YYYY HH:MM:SS'
         private string AMPMFormat(string time) {
-            string[] splitTime = time.Split(' ');
+            string[] splitDateTime = time.Split(' ');
 
-            return splitTime[1] + " " + splitTime[2];
+            if (splitDateTime.Length == 3) {
+                return splitDateTime[1] + " " + splitDateTime[2];
+            } else {
+                string[] splitTime = splitDateTime[1].Split(':');
+                int hour = Convert.ToInt32(splitTime[0]);
+                string formattedTime = "";
+                if (hour > 12) {
+                    formattedTime += (hour - 12) + ":" + splitTime[1] + ":" + splitTime[2] + " PM";
+                } else {
+                    formattedTime = splitDateTime[1] + " AM";
+                }
+                return formattedTime;
+            }
         }
 
         public string GetTransactionDate(string transID) {
