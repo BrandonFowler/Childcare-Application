@@ -65,16 +65,19 @@ namespace GuardianTools {
                 eventFee = Math.Round(eventFee, 2, MidpointRounding.AwayFromZero);
             }
             eventFee = eventFee - GetBillingCap(eventName, guardianID, transactionDate, eventFee);
+            if (totalCheckedInHours < 0) {
+                eventFee = -1;
+            }
             return CompleteTransaction(eventFee, lateTime, allowanceID, isLate, eventName);
         }
 
         public double CompleteTransaction(double eventFee, double lateTime, string allowanceID, bool isLate, string eventName) {
             TransactionDB transDB = new TransactionDB();
-            string eventFeeRounded = eventFee.ToString("f2");
             if (eventFee < 0) {
                 MessageBox.Show("Negative value calculated for childcare charge. Please check your system clock for currency");
                 eventFee = 0;
             }
+            string eventFeeRounded = eventFee.ToString("f2");
             db.CheckOut(DateTime.Now.ToString("HH:mm:ss"), eventFeeRounded, allowanceID);
             transDB.UpdateFamilyBalance(guardianID, eventFee);
             if (isLate) {
