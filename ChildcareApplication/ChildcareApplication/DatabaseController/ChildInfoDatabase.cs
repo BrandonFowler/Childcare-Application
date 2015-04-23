@@ -169,15 +169,16 @@ namespace DatabaseController {
                 }
                 dbCon.Close();
                 return data;
-            } catch (Exception) {
-                MessageBox.Show("Database connection error: Unable to retrieve information for children");
+            } catch (Exception e) {
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for children");
                 dbCon.Close();
                 return null;
             }
         }
 
         public String[,] FindFamilyChildren(string fID, string ID) {
-            dbCon.Open();
+
+
 
             string sql = "select Child.* " +
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
@@ -187,7 +188,15 @@ namespace DatabaseController {
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
 
             DataSet DS = new DataSet();
-            DB.Fill(DS);
+            try {
+                dbCon.Open();
+                DB.Fill(DS);
+                dbCon.Close();
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for children");
+                dbCon.Close();
+            }
 
             if (DS.Tables == null) {
                 return null;
@@ -203,7 +212,6 @@ namespace DatabaseController {
                 }
             }
 
-            dbCon.Close();
             return data;
         }//end findChildren
 

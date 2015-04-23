@@ -176,7 +176,9 @@ namespace AdminTools {
                 bitmapImage.DecodePixelWidth = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            } catch {
+            } 
+            catch(Exception e) {
+                MessageBox.Show(e.Message + "\n\n Error: Invalid photo path, attempting to load default photo.");
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"../../Pictures/default.jpg");
                 bitmapImage.BeginInit();

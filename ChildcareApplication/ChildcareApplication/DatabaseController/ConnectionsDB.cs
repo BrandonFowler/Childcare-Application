@@ -43,8 +43,8 @@ namespace DatabaseController {
                 command.ExecuteNonQuery();
                 dbCon.Close();
             }
-            catch (Exception){
-                MessageBox.Show("Database Connection Error: Unable Check In Child");
+            catch (Exception e){
+                MessageBox.Show(e.Message + "\n\n Database Connection Error: Unable Check In Child");
                 dbCon.Close();
                 return false;
             }
@@ -77,9 +77,9 @@ namespace DatabaseController {
 
                 return connectionID;
             }
-            catch (Exception){
+            catch (Exception e){
                 dbCon.Close();
-                MessageBox.Show("Database connection error: Unable to retrieve critical information");
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information");
                 return null;
             }
         }
@@ -97,8 +97,8 @@ namespace DatabaseController {
                 command.ExecuteNonQuery();
                 dbCon.Close();
             }
-            catch(Exception){
-                MessageBox.Show("Database connection error: Unable to check out child");
+            catch(Exception e){
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to check out child");
                 dbCon.Close();
                 return false;
             }
@@ -124,9 +124,9 @@ namespace DatabaseController {
 
                 return count;
             }
-            catch (Exception){
+            catch (Exception e){
                 dbCon.Close();
-                MessageBox.Show("Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
                 return 0;
             }
         }
@@ -150,9 +150,9 @@ namespace DatabaseController {
                 }
                 return false;
             }
-            catch(Exception){
+            catch(Exception e){
                 dbCon.Close();
-                MessageBox.Show("Database connection error: Unable to access find all children. Please log out, then try again.");
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to access find all children. Please log out, then try again.");
                 return false;
             }
         }

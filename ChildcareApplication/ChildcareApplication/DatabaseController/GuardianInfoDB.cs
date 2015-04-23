@@ -350,8 +350,8 @@ namespace DatabaseController {
                 }
                 dbCon.Close();
                 return data;
-            } catch (Exception) {
-                MessageBox.Show("Database connection error: Unable to retrieve information for guardian");
+            } catch (Exception e) {
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for guardian");
                 dbCon.Close();
                 return null;
             }
@@ -381,8 +381,8 @@ namespace DatabaseController {
                 }
                 dbCon.Close();
                 return data;
-            } catch (Exception) {
-                MessageBox.Show("Database connection error: Unable to retrieve information for guardians");
+            } catch (Exception e) {
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for guardians");
                 dbCon.Close();
                 return null;
             }
@@ -402,9 +402,9 @@ namespace DatabaseController {
                     return true;
                 }
                 return false;
-            } catch (Exception) {
+            } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show("Database connection error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
                 return false;
             }
         }
@@ -423,9 +423,9 @@ namespace DatabaseController {
                     return (string)recordFound;
                 }
                 return null;
-            } catch (Exception) {
+            } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show("Database connection error: Unable to retrieve guardian picture.");
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve guardian picture.");
                 return null;
             }
         }

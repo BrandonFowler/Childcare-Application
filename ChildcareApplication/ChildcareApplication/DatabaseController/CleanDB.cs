@@ -23,8 +23,8 @@ namespace ChildcareApplication.DatabaseController {
             try {
                 daysToKeepRecords = Convert.ToInt32(Settings.Default.HoldExpiredRecords) * (-1);
             }
-            catch {
-                MessageBox.Show("Error: Unable to retrieve settings data, database clean up routine failed.");
+            catch(Exception e){
+                MessageBox.Show(e.Message + "\n\n Error: Unable to retrieve settings data, database clean up routine failed.");
                 return false;
             }
             if (daysToKeepRecords == 0) {
@@ -60,7 +60,8 @@ namespace ChildcareApplication.DatabaseController {
                 object recordFound = command.ExecuteScalar();
                 dbCon.Close();
                 return Convert.ToInt32(recordFound);
-            } catch (Exception) {
+            } catch (Exception e) {
+                MessageBox.Show(e.Message + "\n\n Error: Unable to retrieve settings data, database clean up routine failed.");
                 dbCon.Close();
                 return 0;
             }
@@ -76,9 +77,9 @@ namespace ChildcareApplication.DatabaseController {
                 command.ExecuteNonQuery();
                 dbCon.Close();
             }
-            catch (Exception) {
+            catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show("Database Connection Error: Unable to clean old records");
+                MessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
                 return false;
             }
             return true;
@@ -93,9 +94,9 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Open();
                 command.ExecuteNonQuery();
                 dbCon.Close();
-            } catch (Exception) {
+            } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show("Database Connection Error: Unable to clean old records");
+                MessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
                 return false;
             }
             return true;
@@ -110,9 +111,9 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Open();
                 command.ExecuteNonQuery();
                 dbCon.Close();
-            } catch (Exception) {
+            } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show("Database Connection Error: Unable to clean old records");
+                MessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
                 return false;
             }
             return true;
@@ -127,9 +128,9 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Open();
                 command.ExecuteNonQuery();
                 dbCon.Close();
-            } catch (Exception) {
+            } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show("Database Connection Error: Unable to clean old records");
+                MessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
                 return false;
             }
             return true;

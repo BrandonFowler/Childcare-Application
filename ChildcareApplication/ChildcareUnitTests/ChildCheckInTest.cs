@@ -34,14 +34,14 @@ namespace ChildcareUnitTests {
         [TestMethod]
         public void TestGetRegularChildCap() {
             GuardianTools.GuardianToolsSettings guardianTools = new GuardianTools.GuardianToolsSettings();
-            Assert.AreEqual(guardianTools.GetRegularChildCap(), Settings.Default.RegularMaxAge);
+            Assert.AreEqual(guardianTools.GetRegularChildCap(), Int32.Parse(Settings.Default.RegularMaxAge));
             Assert.AreNotEqual(guardianTools.GetRegularChildCap(), Int32.Parse(Settings.Default.RegularMaxAge) + 1);
         }
         
         [TestMethod]
         public void TestGetInfantCap() {
             GuardianTools.GuardianToolsSettings guardianTools = new GuardianTools.GuardianToolsSettings();
-            Assert.AreEqual(guardianTools.GetInfantCap(), Settings.Default.InfantMaxAge);
+            Assert.AreEqual(guardianTools.GetInfantCap(), Int32.Parse(Settings.Default.InfantMaxAge));
             Assert.AreNotEqual(guardianTools.GetInfantCap(), Int32.Parse(Settings.Default.InfantMaxAge) + 1);
         }
 
@@ -55,7 +55,7 @@ namespace ChildcareUnitTests {
         [TestMethod]
         public void TestGetBillingStart() {
             GuardianTools.GuardianToolsSettings guardianTools = new GuardianTools.GuardianToolsSettings();
-            Assert.AreEqual(guardianTools.GetBillingStart(), Settings.Default.BillingStartDate);
+            Assert.AreEqual(guardianTools.GetBillingStart(), Int32.Parse(Settings.Default.BillingStartDate));
             Assert.AreNotEqual(guardianTools.GetBillingStart(), Int32.Parse(Settings.Default.BillingStartDate) - 1);
         }
 

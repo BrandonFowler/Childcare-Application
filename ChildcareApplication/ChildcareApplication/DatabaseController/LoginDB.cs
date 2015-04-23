@@ -71,8 +71,8 @@ namespace DatabaseController {
                     dbCon.Close();
                     return true;
                 }
-            } catch (Exception) {
-                MessageBox.Show("Database Connection Failure");
+            } catch (Exception e) {
+                MessageBox.Show(e.Message + "\n\n Database Connection Failure");
                 dbCon.Close();
             }
             return false;

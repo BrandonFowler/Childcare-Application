@@ -64,7 +64,9 @@ namespace GuardianTools {
                 bitmapImage.DecodePixelWidth = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            } catch {
+            } 
+            catch(Exception e){
+                MessageBox.Show(e.Message + "\n\n Error: Invalid photo path, attempting to load default photo.");
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"../../Pictures/default.jpg");
                 bitmapImage.BeginInit();
@@ -96,9 +98,11 @@ namespace GuardianTools {
         }
 
         private void btn_CheckOut_Click(object sender, RoutedEventArgs e) {
-            TransactionCharge transactionCharge = new TransactionCharge(this.guardianID);
+            TransactionDB transDB = new TransactionDB();
             if (lst_CheckOutBox.SelectedItem != null) {
                 string childID = ((Child)lst_CheckOutBox.SelectedItem).ID;
+                string allowanceID = transDB.GetIncompleteTransAllowanceID(guardianID, childID);
+                TransactionCharge transactionCharge = new TransactionCharge(this.guardianID, allowanceID);
                 bool success = transactionCharge.PrepareTransaction(childID, guardianID);
                 if (success){
                     lst_CheckInBox.Items.Add(lst_CheckOutBox.SelectedItem);

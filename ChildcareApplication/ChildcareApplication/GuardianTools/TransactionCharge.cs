@@ -12,18 +12,21 @@ namespace GuardianTools {
         private GuardianToolsSettings settings;
         private string guardianID;
         private ConnectionsDB db;
+        private string allowanceID;
+        private double lateTime;
+        private bool isLate = false;
 
-        public TransactionCharge(String guardianID) {
+        public TransactionCharge(String guardianID, String allowanceID) {
             this.settings = new GuardianToolsSettings();
             this.guardianID = guardianID;
+            this.allowanceID = allowanceID;
             this.db = new ConnectionsDB();
         }
 
         public bool PrepareTransaction(string childID, string guardianID) {
             TransactionDB transDB = new TransactionDB();
-            string allowanceID = transDB.GetIncompleteTransAllowanceID(guardianID, childID);
-            string[] transaction = transDB.FindTransaction(allowanceID);
-            if (transaction == null || allowanceID == null) {
+            string[] transaction = transDB.FindTransaction(this.allowanceID);
+            if (transaction == null || this.allowanceID == null) {
                 MessageBox.Show("Unable to check out child. Please log out then try again.");
                 return false;
             }
@@ -31,69 +34,69 @@ namespace GuardianTools {
             string transactionDate = transaction[3];
             string checkInTime = transaction[4];
             checkInTime = Convert.ToDateTime(checkInTime).ToString("HH:mm:ss");
+            string checkOutTime = DateTime.Now.ToString("HH:mm:ss");
             double eventFee = FindEventFee(guardianID, eventName);
-            double finalFee = CalculateTransaction(checkInTime, eventName, eventFee, allowanceID, transactionDate);
+            eventFee = CalculateTransaction(checkInTime, checkOutTime, eventName, eventFee);
+            CompleteTransaction(eventFee);
             return true;
         }
 
-        public double CalculateTransaction(string checkInTime, string eventName, double eventFee, string allowanceID, string transactionDate) {
-            bool isLate = false;
+        public double CalculateTransaction(string checkInTime, string checkOutTime, string eventName, double eventFee) {
             EventDB eventDB = new EventDB();
-            TimeSpan TimeSpanTime = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
-            TimeSpan TimeSpanCheckInTime = TimeSpan.Parse(checkInTime);
-            double lateTime = settings.CheckIfPastClosing(DateTime.Now.DayOfWeek.ToString(), TimeSpanTime);
-            double totalCheckedInHours = (TimeSpanTime.Hours - TimeSpanCheckInTime.Hours) + ((TimeSpanTime.Minutes - TimeSpanCheckInTime.Minutes) / 60.0);
+            TimeSpan TimeSpanCheckOut = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
+            TimeSpan TimeSpanCheckIn = TimeSpan.Parse(checkInTime);
+            this.lateTime = settings.CheckIfPastClosing(DateTime.Now.DayOfWeek.ToString(), TimeSpanCheckOut);
+            double totalCheckedInHours = (TimeSpanCheckOut.Hours - TimeSpanCheckIn.Hours) + ((TimeSpanCheckOut.Minutes - TimeSpanCheckIn.Minutes) / 60.0);
             double lateMaximum = eventDB.GetEventHourCap(eventName);
             if (totalCheckedInHours > lateMaximum) {
                 double timeDifference = totalCheckedInHours - lateMaximum;
-                if (timeDifference > lateTime) {
-                    lateTime = timeDifference;
+                if (timeDifference > this.lateTime) {
+                    this.lateTime = timeDifference;
                     totalCheckedInHours = lateMaximum;
                 }
                 else {
-                    totalCheckedInHours = totalCheckedInHours - lateTime;
+                    totalCheckedInHours = totalCheckedInHours - this.lateTime;
                 }
-                isLate = true;
+                this.isLate = true;
             }
-            else if (lateTime > 0) {
-                totalCheckedInHours = totalCheckedInHours - lateTime;
-                isLate = true;
+            else if (this.lateTime > 0) {
+                totalCheckedInHours = totalCheckedInHours - this.lateTime;
+                this.isLate = true;
             }
+            return getCharge(eventFee, eventName, totalCheckedInHours);
+        }
 
+        public double getCharge(double eventFee, string eventName, double totalCheckedInHours){
             if (CheckIfHourly(eventName)) {
                 eventFee = eventFee * totalCheckedInHours;
                 eventFee = Math.Round(eventFee, 2, MidpointRounding.AwayFromZero);
             }
-            eventFee = eventFee - GetBillingCap(eventName, guardianID, transactionDate, eventFee);
+            eventFee = eventFee - GetBillingCap(eventName, guardianID, eventFee);
             if (totalCheckedInHours < 0) {
-                eventFee = -1;
-            }
-            return CompleteTransaction(eventFee, lateTime, allowanceID, isLate, eventName);
-        }
-
-        public double CompleteTransaction(double eventFee, double lateTime, string allowanceID, bool isLate, string eventName) {
-            TransactionDB transDB = new TransactionDB();
-            if (eventFee < 0) {
                 MessageBox.Show("Negative value calculated for childcare charge. Please check your system clock for currency");
                 eventFee = 0;
-            }
-            string eventFeeRounded = eventFee.ToString("f2");
-            db.CheckOut(DateTime.Now.ToString("HH:mm:ss"), eventFeeRounded, allowanceID);
-            transDB.UpdateFamilyBalance(guardianID, eventFee);
-            if (isLate) {
-                double lateFee = CalculateLateFee(lateTime, allowanceID);
             }
             return eventFee;
         }
 
-        public double CalculateLateFee(double lateTime, string allowanceID) {
+        public void CompleteTransaction(double eventFee) {
+            TransactionDB transDB = new TransactionDB();
+            string eventFeeRounded = eventFee.ToString("f2");
+            db.CheckOut(DateTime.Now.ToString("HH:mm:ss"), eventFeeRounded, this.allowanceID);
+            transDB.UpdateFamilyBalance(guardianID, eventFee);
+            if (this.isLate) {
+                double lateFee = CalculateLateFee();
+            }
+        }
+
+        public double CalculateLateFee() {
             TransactionDB transDB = new TransactionDB();
             EventDB eventDB = new EventDB();
-            String eventName = "Late Fee";
-            double lateFee = eventDB.GetLateFee(eventName);
-            lateFee = lateFee * lateTime;
+            String name = "Late Fee";
+            double lateFee = eventDB.GetLateFee(name);
+            lateFee = lateFee * this.lateTime;
             string maxTransactionID = transDB.GetNextTransID();
-            transDB.AddLateFee(maxTransactionID, eventName, allowanceID, DateTime.Now.ToString("yyyy-MM-dd"), lateFee);
+            transDB.AddLateFee(maxTransactionID, name, this.allowanceID, DateTime.Now.ToString("yyyy-MM-dd"), lateFee);
             transDB.UpdateFamilyBalance(guardianID, lateFee);
             return lateFee;
         }
@@ -141,7 +144,7 @@ namespace GuardianTools {
             }
         }
 
-        public double GetBillingCap(string eventName, string guardianID, string transactionDate, double eventFee) {
+        public double GetBillingCap(string eventName, string guardianID, double eventFee) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
             int billingStart = settings.GetBillingStart();
             int billingEnd = settings.GetBillingEnd();

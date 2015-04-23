@@ -246,9 +246,9 @@ namespace DatabaseController {
                     dbCon.Open();
                     command.ExecuteNonQuery();
                     dbCon.Close();
-                } catch (Exception) {
+                } catch (Exception e) {
                     dbCon.Close();
-                    MessageBox.Show("Database connection error: Unable to record late fee");
+                    MessageBox.Show(e.Message + "\n\n Database connection error: Unable to record late fee");
                     return false;
                 }
             } else {
@@ -269,9 +269,9 @@ namespace DatabaseController {
                 dbCon.Open();
                 recordFound = command.ExecuteScalar();
                 dbCon.Close();
-            } catch (Exception) {
+            } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show("Database connection error: Unable to check if charge exceeds monthly maximum for normal care.");
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to check if charge exceeds monthly maximum for normal care.");
             }
             return recordFound;
         }
@@ -288,9 +288,9 @@ namespace DatabaseController {
                 dbCon.Open();
                 command.ExecuteNonQuery();
                 dbCon.Close();
-            } catch (Exception) {
+            } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show("Database connection error: Unable to add charge to family balance.");
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to add charge to family balance.");
             }
         }
 
@@ -309,9 +309,9 @@ namespace DatabaseController {
                 string allowanceID = Convert.ToString(command.ExecuteScalar());
                 dbCon.Close();
                 return allowanceID;
-            } catch (Exception) {
+            } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show("Database connection error: Unable to retrieve critical information.");
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information.");
                 return null;
             }
         }
@@ -334,9 +334,9 @@ namespace DatabaseController {
                 }
                 dbCon.Close();
                 return transaction;
-            } catch (Exception) {
+            } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show("Database connection error: Unable to retrieve original transaction.");
+                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve original transaction.");
                 return null;
             }
         }
