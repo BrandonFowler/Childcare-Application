@@ -55,23 +55,23 @@ namespace AdminTools {
         }
 
         private void SetPriceCombo(string[] eventData) {
-            if (eventData[1] != null) { //hourly price
+            if (eventData[1] != "") { //hourly price
                 cmb_PriceType.SelectedIndex = 0;
                 txt_Rate.Text = eventData[1];
-                if (eventData[2] != null) {
+                if (eventData[2] != "") {
                     txt_DiscountPrice.Text = eventData[2];
                 }
-            } else if (eventData[3] != null) { //daily price
+            } else if (eventData[3] != "") { //daily price
                 cmb_PriceType.SelectedIndex = 1;
                 txt_Rate.Text = eventData[3];
-                if (eventData[4] != null) {
+                if (eventData[4] != "") {
                     txt_DiscountPrice.Text = eventData[4];
                 }
             }
         }
 
         private void SetAvailability(string[] eventData) {
-            if (eventData[5] != null && eventData[6] != null) { //specific day
+            if (eventData[5] != "" && eventData[6] != "") { //specific day
                 cmb_Occurence.SelectedIndex = 1;
                 txt_MonthNum.Text = eventData[5];
                 txt_DayOfMonth.Text = eventData[6];
@@ -82,7 +82,7 @@ namespace AdminTools {
 
                 lbl_DayName.Visibility = Visibility.Hidden;
                 cmb_DayName.Visibility = Visibility.Hidden;
-            } else if (eventData[7] != null) { //weekday
+            } else if (eventData[7] != "") { //weekday
                 String dayName = eventData[7];
                 cmb_Occurence.SelectedIndex = 2;
                 //show day name
@@ -186,13 +186,7 @@ namespace AdminTools {
         }
 
         private bool FormDataValid() {
-            if (txt_EventName.Text.Length < 1) {
-                MessageBox.Show("You must enter an event name.");
-                txt_EventName.Focus();
-                return false;
-            }
-            if (!RegExpressions.RegexValidateEventName(txt_EventName.Text)) {
-                MessageBox.Show("Event names may only contain letters and spaces.");
+            if (!EventNameValid(txt_EventName.Text)) {
                 txt_EventName.Focus();
                 return false;
             }
@@ -201,14 +195,13 @@ namespace AdminTools {
                 cmb_PriceType.Focus();
                 return false;
             }
-            double temp;
-            if (!Double.TryParse(txt_Rate.Text, out temp)) {
-                MessageBox.Show("You must enter a valid dollar figure in the Rate box.");
+            if (!ValidDoubleGreaterThanZero(txt_Rate.Text)) {
+                MessageBox.Show("You must enter a valid dollar figure greater than zero in the Rate box.");
                 txt_Rate.Focus();
                 return false;
             }
-            if (txt_DiscountPrice.Text != "" && !Double.TryParse(txt_DiscountPrice.Text, out temp)) {
-                MessageBox.Show("You must enter a valid dollar figure in the Discount Rate box.");
+            if (txt_DiscountPrice.Text != "" && !ValidDoubleGreaterThanZero(txt_DiscountPrice.Text)) {
+                MessageBox.Show("You must enter a valid dollar figure greater than zero in the Discount Price box.");
                 txt_DiscountPrice.Focus();
                 return false;
             }
@@ -227,15 +220,36 @@ namespace AdminTools {
                 cmb_Occurence.Focus();
                 return false;
             }
-            int tempInt;
-            if (txt_MaxHours.Text != "" && !Int32.TryParse(txt_MaxHours.Text, out tempInt)) {
-                MessageBox.Show("You must enter a valid integer in the maximum hours text box.");
+            if (txt_MaxHours.Text != "" && !ValidDoubleGreaterThanZero(txt_MaxHours.Text)) {
+                MessageBox.Show("You must enter a valid number greater than zero in the maximum hours text box.");
                 txt_MaxHours.Focus();
                 return false;
             }
             return true;
         }
 
+        private bool EventNameValid(string eventName) {
+            if (eventName.Length < 1) {
+                MessageBox.Show("You must enter an event name.");
+                return false;
+            }
+            if (!RegExpressions.RegexValidateEventName(eventName)) {
+                MessageBox.Show("Event names may only contain letters and spaces.");
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidDoubleGreaterThanZero(string rate) {
+            double temp;
+            if (!Double.TryParse(rate, out temp)) {
+                return false;
+            }
+            if (temp < 0) {
+                return false;
+            }
+            return true;
+        }
         private int GetDayIndex(String eventDay) {
             if (eventDay == "Sunday") {
                 return 0;
