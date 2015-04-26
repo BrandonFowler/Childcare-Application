@@ -75,5 +75,14 @@ namespace ChildcareUnitTests {
             date = "02/02/2001";
             Assert.AreEqual(guardianTools.CheckAgeGroup(birthday, date), "Regular");
         }
+
+        /*[TestMethod]
+        public void TestCheckIfPastClosing() {
+            GuardianTools.GuardianToolsSettings guardianTools = new GuardianTools.GuardianToolsSettings();
+            string dayOfWeek =  "Monday";
+            string closingTime = guardianTools.GetClosingTime(dayOfWeek);
+            
+            
+        }*/
     }
 }
