@@ -82,6 +82,7 @@
     <Compile Include="AdminTools\PageElement.cs" />
     <Compile Include="AdminTools\RegExpressions.cs" />
     <Compile Include="AdminTools\ReportsPaginator.cs" />
+    <Compile Include="AdminTools\SettingsValidation.cs" />
     <Compile Include="AdminTools\TransactionModificationWindow.xaml.cs">
       <DependentUpon>TransactionModificationWindow.xaml</DependentUpon>
     </Compile>

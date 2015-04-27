@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -9,11 +10,18 @@ namespace ChildcareApplication.AdminTools {
     /// </summary>
     public partial class ApplicationSettings : Window {
         
-        private string closed = "00:00:00";
+        private string closedString;
+        private string defaultOpen;
+        private string defaultClose;
         private bool errorPresent = false;
 
         public ApplicationSettings() {
             InitializeComponent();
+
+            closedString = "00:00:00";
+            defaultOpen = "09:00:00";
+            defaultClose = "17:00:00";
+            errorPresent = false;
 
             loadSettings();
         }
@@ -44,31 +52,38 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void checkDays() {
-            if ((txt_MonOpening.Text == closed && txt_MonClosing.Text == closed) || (txt_MonOpening.Text == "closed" && txt_MonClosing.Text == "closed")) {
+            if ((txt_MonOpening.Text == closedString && txt_MonClosing.Text == closedString) || 
+                (txt_MonOpening.Text == "closed" && txt_MonClosing.Text == "closed")) {
                 chk_MonClosed_Checked(null, null);
                 chk_MonClosed.IsChecked = true;
             }
-            if ((txt_TueOpening.Text == closed && txt_TueClosing.Text == closed) || (txt_TueOpening.Text == "closed" && txt_TueClosing.Text == "closed")) {
+            if ((txt_TueOpening.Text == closedString && txt_TueClosing.Text == closedString) || 
+                (txt_TueOpening.Text == "closed" && txt_TueClosing.Text == "closed")) {
                 chk_TueClosed_Checked(null, null);
                 chk_TueClosed.IsChecked = true;
             }
-            if ((txt_WedOpening.Text == closed && txt_WedClosing.Text == closed) || (txt_WedOpening.Text == "closed" && txt_WedClosing.Text == "closed")) {
+            if ((txt_WedOpening.Text == closedString && txt_WedClosing.Text == closedString) || 
+                (txt_WedOpening.Text == "closed" && txt_WedClosing.Text == "closed")) {
                 chk_WedClosed_Checked(null, null);
                 chk_WedClosed.IsChecked = true;
             }
-            if ((txt_ThuOpening.Text == closed && txt_ThuClosing.Text == closed) || (txt_ThuOpening.Text == "closed" && txt_ThuClosing.Text == "closed")) {
+            if ((txt_ThuOpening.Text == closedString && txt_ThuClosing.Text == closedString) || 
+                (txt_ThuOpening.Text == "closed" && txt_ThuClosing.Text == "closed")) {
                 chk_ThuClosed_Checked(null, null);
                 chk_ThuClosed.IsChecked = true;
             }
-            if ((txt_FriOpening.Text == closed && txt_FriClosing.Text == closed) || (txt_FriOpening.Text == "closed" && txt_FriClosing.Text == "closed")) {
+            if ((txt_FriOpening.Text == closedString && txt_FriClosing.Text == closedString) || 
+                (txt_FriOpening.Text == "closed" && txt_FriClosing.Text == "closed")) {
                 chk_FriClosed_Checked(null, null);
                 chk_FriClosed.IsChecked = true;
             }
-            if ((txt_SatOpening.Text == closed && txt_SatClosing.Text == closed) || (txt_SatOpening.Text == "closed" && txt_SatClosing.Text == "closed")) {
+            if ((txt_SatOpening.Text == closedString && txt_SatClosing.Text == closedString) || 
+                (txt_SatOpening.Text == "closed" && txt_SatClosing.Text == "closed")) {
                 chk_SatClosed_Checked(null, null);
                 chk_SatClosed.IsChecked = true;
             }
-            if ((txt_SunOpening.Text == closed && txt_SunClosing.Text == closed) || (txt_SunOpening.Text == "closed" && txt_SunClosing.Text == "closed")) {
+            if ((txt_SunOpening.Text == closedString && txt_SunClosing.Text == closedString) || 
+                (txt_SunOpening.Text == "closed" && txt_SunClosing.Text == "closed")) {
                 chk_SunClosed_Checked(null, null);
                 chk_SunClosed.IsChecked = true;
             }
@@ -82,72 +97,72 @@ namespace ChildcareApplication.AdminTools {
             Properties.Settings.Default.RegularMaxAge = txt_RegularAge.Text;
 
             if(txt_MonOpening.Text.Equals("closed"))
-                Properties.Settings.Default.MonOpen = DateTime.Parse(closed);
+                Properties.Settings.Default.MonOpen = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.MonOpen = DateTime.Parse(txt_MonOpening.Text);
 
             if (txt_MonClosing.Text.Equals("closed"))
-                Properties.Settings.Default.MonClose = DateTime.Parse(closed); 
+                Properties.Settings.Default.MonClose = DateTime.Parse(closedString); 
             else
                 Properties.Settings.Default.MonClose = DateTime.Parse(txt_MonClosing.Text);
 
             if (txt_TueOpening.Text.Equals("closed"))
-                Properties.Settings.Default.TueOpen = DateTime.Parse(closed);
+                Properties.Settings.Default.TueOpen = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.TueOpen = DateTime.Parse(txt_TueOpening.Text);
 
             if (txt_TueClosing.Text.Equals("closed"))
-                Properties.Settings.Default.TueClose = DateTime.Parse(closed);
+                Properties.Settings.Default.TueClose = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.TueClose = DateTime.Parse(txt_TueClosing.Text);
 
             if (txt_WedOpening.Text.Equals("closed"))
-                Properties.Settings.Default.WedOpen = DateTime.Parse(closed);
+                Properties.Settings.Default.WedOpen = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.WedOpen = DateTime.Parse(txt_WedOpening.Text);
 
             if (txt_WedClosing.Text.Equals("closed"))
-                Properties.Settings.Default.WedClose = DateTime.Parse(closed);
+                Properties.Settings.Default.WedClose = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.WedClose = DateTime.Parse(txt_WedClosing.Text);
 
             if (txt_ThuOpening.Text.Equals("closed"))
-                Properties.Settings.Default.ThuOpen = DateTime.Parse(closed);
+                Properties.Settings.Default.ThuOpen = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.ThuOpen = DateTime.Parse(txt_ThuOpening.Text);
 
             if (txt_ThuClosing.Text.Equals("closed"))
-                Properties.Settings.Default.ThuClose = DateTime.Parse(closed);
+                Properties.Settings.Default.ThuClose = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.ThuClose = DateTime.Parse(txt_ThuClosing.Text);
 
             if (txt_FriOpening.Text.Equals("closed"))
-                Properties.Settings.Default.FriOpen = DateTime.Parse(closed);
+                Properties.Settings.Default.FriOpen = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.FriOpen = DateTime.Parse(txt_FriOpening.Text);
 
             if (txt_FriClosing.Text.Equals("closed"))
-                Properties.Settings.Default.FriClose = DateTime.Parse(closed);
+                Properties.Settings.Default.FriClose = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.FriClose = DateTime.Parse(txt_FriClosing.Text);
 
             if (txt_SatOpening.Text.Equals("closed"))
-                Properties.Settings.Default.SatOpen = DateTime.Parse(closed);
+                Properties.Settings.Default.SatOpen = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.SatOpen = DateTime.Parse(txt_SatOpening.Text);
 
             if (txt_SatClosing.Text.Equals("closed"))
-                Properties.Settings.Default.SatClose = DateTime.Parse(closed);
+                Properties.Settings.Default.SatClose = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.SatClose = DateTime.Parse(txt_SatClosing.Text);
 
             if (txt_SunOpening.Text.Equals("closed"))
-                Properties.Settings.Default.SunOpen = DateTime.Parse(closed);
+                Properties.Settings.Default.SunOpen = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.SunOpen = DateTime.Parse(txt_SunOpening.Text);
 
             if (txt_SunClosing.Text.Equals("closed"))
-                Properties.Settings.Default.SunClose = DateTime.Parse(closed);
+                Properties.Settings.Default.SunClose = DateTime.Parse(closedString);
             else
                 Properties.Settings.Default.SunClose = DateTime.Parse(txt_SunClosing.Text);
 
@@ -210,131 +225,124 @@ namespace ChildcareApplication.AdminTools {
             chk_SunClosed.IsEnabled = true;
             txt_SunOpening.IsEnabled = true;
             txt_SunClosing.IsEnabled = true;
+            txt_BillingDate.Foreground = Brushes.Black;
+            txt_MaxMonthlyFee.Foreground = Brushes.Black;
+            txt_ExpirationDays.Foreground = Brushes.Black;
+            txt_InfantAge.Foreground = Brushes.Black;
+            txt_RegularAge.Foreground = Brushes.Black;
+            txt_MonOpening.Foreground = Brushes.Black;
+            txt_MonClosing.Foreground = Brushes.Black;
+            txt_TueOpening.Foreground = Brushes.Black;
+            txt_TueClosing.Foreground = Brushes.Black;
+            txt_WedOpening.Foreground = Brushes.Black;
+            txt_WedClosing.Foreground = Brushes.Black;
+            txt_ThuOpening.Foreground = Brushes.Black;
+            txt_ThuClosing.Foreground = Brushes.Black;
+            txt_FriOpening.Foreground = Brushes.Black;
+            txt_FriClosing.Foreground = Brushes.Black;
+            txt_SatOpening.Foreground = Brushes.Black;
+            txt_SatClosing.Foreground = Brushes.Black;
+            txt_SunOpening.Foreground = Brushes.Black;
+            txt_SunClosing.Foreground = Brushes.Black;
             checkDays();
         }
 
         private void statusGood() {
+            enableAll();
             txt_Status.Text = "OK";
             txt_Status.Foreground = Brushes.LightGreen;
             errorPresent = false;
         }
 
         private void statusBad() {
+            disableAll();
             txt_Status.Text = "ERROR";
             txt_Status.Foreground = Brushes.Red;
             errorPresent = true;
         }
 
+        private void statusBad(TextBox errorBox) {
+            statusBad();
+            errorBox.IsEnabled = true;
+            errorBox.Foreground = Brushes.Red;
+        }
+
+        private void statusBad(TextBox errorBox1, TextBox errorBox2) {
+            statusBad();
+            errorBox1.IsEnabled = true;
+            errorBox1.Foreground = Brushes.Red;
+            errorBox2.IsEnabled = true;
+            errorBox2.Foreground = Brushes.Red;
+        }
+
         private void chk_MonClosed_Checked(object sender, RoutedEventArgs e) {
-            lbl_Monday.IsEnabled = false;
-            txt_MonOpening.Text = "closed";
-            txt_MonOpening.IsEnabled = false;
-            txt_MonClosing.Text = "closed";
-            txt_MonClosing.IsEnabled = false;
+            DayIsClosed(txt_MonOpening, txt_MonClosing);
         }
 
         private void chk_MonClosed_Unchecked(object sender, RoutedEventArgs e) {
-            lbl_Monday.IsEnabled = true;
-            txt_MonOpening.IsEnabled = true;
-            txt_MonOpening.Text = "09:00:00";
-            txt_MonClosing.IsEnabled = true;
-            txt_MonClosing.Text = "17:00:00";
+            DayIsOpen(txt_MonOpening, txt_MonClosing);
         }
 
         private void chk_TueClosed_Checked(object sender, RoutedEventArgs e) {
-            lbl_Tuesday.IsEnabled = false;
-            txt_TueOpening.Text = "closed";
-            txt_TueOpening.IsEnabled = false;
-            txt_TueClosing.Text = "closed";
-            txt_TueClosing.IsEnabled = false;
+            DayIsClosed(txt_TueOpening, txt_TueClosing);
         }
 
         private void chk_TueClosed_Unchecked(object sender, RoutedEventArgs e) {
-            lbl_Tuesday.IsEnabled = true;
-            txt_TueOpening.IsEnabled = true;
-            txt_TueOpening.Text = "09:00:00";
-            txt_TueClosing.IsEnabled = true;
-            txt_TueClosing.Text = "17:00:00";
+            DayIsOpen(txt_TueOpening, txt_TueClosing);
         }
 
         private void chk_WedClosed_Checked(object sender, RoutedEventArgs e) {
-            lbl_Wednesday.IsEnabled = false;
-            txt_WedOpening.Text = "closed";
-            txt_WedOpening.IsEnabled = false;
-            txt_WedClosing.Text = "closed";
-            txt_WedClosing.IsEnabled = false;
+            DayIsClosed(txt_WedOpening, txt_WedClosing);
         }
 
         private void chk_WedClosed_Unchecked(object sender, RoutedEventArgs e) {
-            lbl_Wednesday.IsEnabled = true;
-            txt_WedOpening.IsEnabled = true;
-            txt_WedOpening.Text = "09:00:00";
-            txt_WedClosing.IsEnabled = true;
-            txt_WedClosing.Text = "17:00:00";
+            DayIsOpen(txt_WedOpening, txt_WedClosing);
         }
 
         private void chk_ThuClosed_Checked(object sender, RoutedEventArgs e) {
-            lbl_Thursday.IsEnabled = false;
-            txt_ThuOpening.Text = "closed";
-            txt_ThuOpening.IsEnabled = false;
-            txt_ThuClosing.Text = "closed";
-            txt_ThuClosing.IsEnabled = false;
+            DayIsClosed(txt_ThuOpening, txt_ThuClosing);
         }
 
         private void chk_ThuClosed_Unchecked(object sender, RoutedEventArgs e) {
-            lbl_Thursday.IsEnabled = true;
-            txt_ThuOpening.IsEnabled = true;
-            txt_ThuOpening.Text = "09:00:00";
-            txt_ThuClosing.IsEnabled = true;
-            txt_ThuClosing.Text = "17:00:00";
+            DayIsOpen(txt_ThuOpening, txt_ThuClosing);
         }
 
         private void chk_FriClosed_Checked(object sender, RoutedEventArgs e) {
-            lbl_Friday.IsEnabled = false;
-            txt_FriOpening.Text = "closed";
-            txt_FriOpening.IsEnabled = false;
-            txt_FriClosing.Text = "closed";
-            txt_FriClosing.IsEnabled = false;
+            DayIsClosed(txt_FriOpening, txt_FriClosing);
         }
 
         private void chk_FriClosed_Unchecked(object sender, RoutedEventArgs e) {
-            lbl_Friday.IsEnabled = true;
-            txt_FriOpening.IsEnabled = true;
-            txt_FriOpening.Text = "09:00:00";
-            txt_FriClosing.IsEnabled = true;
-            txt_FriClosing.Text = "17:00:00";
+            DayIsOpen(txt_FriOpening, txt_FriClosing);
         }
 
         private void chk_SatClosed_Checked(object sender, RoutedEventArgs e) {
-            lbl_Saturday.IsEnabled = false;
-            txt_SatOpening.Text = "closed";
-            txt_SatOpening.IsEnabled = false;
-            txt_SatClosing.Text = "closed";
-            txt_SatClosing.IsEnabled = false;
+            DayIsClosed(txt_SatOpening, txt_SatClosing);
         }
 
         private void chk_SatClosed_Unchecked(object sender, RoutedEventArgs e) {
-            lbl_Saturday.IsEnabled = true;
-            txt_SatOpening.IsEnabled = true;
-            txt_SatOpening.Text = "09:00:00";
-            txt_SatClosing.IsEnabled = true;
-            txt_SatClosing.Text = "17:00:00";
+            DayIsOpen(txt_SatOpening, txt_SatClosing);
         }
 
         private void chk_SunClosed_Checked(object sender, RoutedEventArgs e) {
-            lbl_Sunday.IsEnabled = false;
-            txt_SunOpening.Text = "closed";
-            txt_SunOpening.IsEnabled = false;
-            txt_SunClosing.Text = "closed";
-            txt_SunClosing.IsEnabled = false;
+            DayIsClosed(txt_SunOpening, txt_SunClosing);
         }
 
         private void chk_SunClosed_Unchecked(object sender, RoutedEventArgs e) {
-            lbl_Sunday.IsEnabled = true;
-            txt_SunOpening.IsEnabled = true;
-            txt_SunOpening.Text = "09:00:00";
-            txt_SunClosing.IsEnabled = true;
-            txt_SunClosing.Text = "17:00:00";
+            DayIsOpen(txt_SunOpening, txt_SunClosing);
+        }
+
+        private void DayIsClosed(TextBox dayOpens, TextBox dayCloses) {
+            dayOpens.Text = "closed";
+            dayOpens.IsEnabled = false;
+            dayCloses.Text = "closed";
+            dayCloses.IsEnabled = false;
+        }
+
+        private void DayIsOpen(TextBox dayOpens, TextBox dayCloses) {
+            dayOpens.IsEnabled = true;
+            dayOpens.Text = defaultOpen;
+            dayCloses.IsEnabled = true;
+            dayCloses.Text = defaultClose;
         }
 
         ///////////////////
@@ -422,122 +430,47 @@ namespace ChildcareApplication.AdminTools {
         ////////////////////
 
         private void txt_BillingDate_LostFocus(object sender, RoutedEventArgs e) {
-            int res = -1;
-            errorPresent = false;
-
-            if (int.TryParse(txt_BillingDate.Text, out res)) {
-                if (res < 1 || res > 29) {
-                    MessageBox.Show("Billing date must be from 1 to 29");
-                    disableAll();
-                    statusBad();
-                    txt_BillingDate.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
+            if (SettingsValidation.ValidBillingDate(txt_BillingDate.Text)) {
+                statusGood();
+            } else {
                 MessageBox.Show("Invalid Input. Billing Date must be a number from 1 to 29");
-                disableAll();
-                statusBad();
-                txt_BillingDate.IsEnabled = true;
+                statusBad(txt_BillingDate);
             }
         }
 
         private void txt_MaxMonthlyFee_LostFocus(object sender, RoutedEventArgs e) {
-            int res = -1;
-            errorPresent = false;
-
-            if (int.TryParse(txt_MaxMonthlyFee.Text, out res)) {
-                if (res < 0) {
-                    MessageBox.Show("Maximum Monthly Fee must be a positive number");
-                    disableAll();
-                    statusBad();
-                    txt_MaxMonthlyFee.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
+            if (SettingsValidation.PositiveInteger(txt_MaxMonthlyFee.Text)) {
+                statusGood();
+            } else {
                 MessageBox.Show("Invalid Input. Maximum Monthly Fee must be a positive number");
-                disableAll();
-                statusBad();
-                txt_MaxMonthlyFee.IsEnabled = true;
+                statusBad(txt_MaxMonthlyFee);
             }
         }
 
         private void txt_ExpirationDays_LostFocus(object sender, RoutedEventArgs e) {
-            int res = -1;
-            errorPresent = false;
-
-            if (int.TryParse(txt_ExpirationDays.Text, out res)) {
-                if (res < 0) {
-                    MessageBox.Show("Days to hold expired records must be a positive number");
-                    disableAll();
-                    statusBad();
-                    txt_ExpirationDays.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
+            if (SettingsValidation.PositiveInteger(txt_ExpirationDays.Text)) {
+                statusGood();
+            } else {
                 MessageBox.Show("Invalid Input. Days to hold expired records must be a positive number");
-                disableAll();
                 statusBad();
-                txt_ExpirationDays.IsEnabled = true;
             }
         }
 
         private void txt_InfantAge_LostFocus(object sender, RoutedEventArgs e) {
-            int res = -1;
-            errorPresent = false;
-
-            if (int.TryParse(txt_InfantAge.Text, out res)) {
-                if (res < 0 || res > int.Parse(Properties.Settings.Default.RegularMaxAge)) {
-                    MessageBox.Show("Infant must be a positive number less than Regular Age");
-                    disableAll();
-                    statusBad();
-                    txt_InfantAge.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
+            if (SettingsValidation.ValidAge(txt_InfantAge.Text, txt_RegularAge.Text)) {
+                statusGood();
+            } else {
                 MessageBox.Show("Invalid Input. Infant Age must be a positive number less than Regular Age");
-                disableAll();
-                statusBad();
-                txt_InfantAge.IsEnabled = true;
+                statusBad(txt_InfantAge, txt_RegularAge);
             }
         }
 
         private void txt_RegularAge_LostFocus(object sender, RoutedEventArgs e) {
-            int res = -1;
-            errorPresent = false;
-
-            if (int.TryParse(txt_RegularAge.Text, out res)) {
-                if (res < 0 || res < int.Parse(Properties.Settings.Default.InfantMaxAge)) {
-                    MessageBox.Show("Regular must be a positive number greater than Infant Age");
-                    disableAll();
-                    statusBad();
-                    txt_RegularAge.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
+            if (SettingsValidation.ValidAge(txt_InfantAge.Text, txt_RegularAge.Text)) {
+                statusGood();
+            } else {
                 MessageBox.Show("Invalid Input. Regular Age must be a positive number greater than Infant Age");
-                disableAll();
-                statusBad();
-                txt_RegularAge.IsEnabled = true;
+                statusBad(txt_InfantAge, txt_RegularAge);
             }
         }
 
