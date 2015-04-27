@@ -90,83 +90,89 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void btn_Confirm_Click(object sender, RoutedEventArgs e) {
-            Properties.Settings.Default.BillingStartDate = txt_BillingDate.Text;
-            Properties.Settings.Default.MaxMonthlyFee = txt_MaxMonthlyFee.Text;
-            Properties.Settings.Default.HoldExpiredRecords = txt_ExpirationDays.Text;
-            Properties.Settings.Default.InfantMaxAge = txt_InfantAge.Text;
-            Properties.Settings.Default.RegularMaxAge = txt_RegularAge.Text;
+            if (!errorPresent) {
 
-            if(txt_MonOpening.Text.Equals("closed"))
-                Properties.Settings.Default.MonOpen = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.MonOpen = DateTime.Parse(txt_MonOpening.Text);
+                Properties.Settings.Default.BillingStartDate = txt_BillingDate.Text;
+                Properties.Settings.Default.MaxMonthlyFee = txt_MaxMonthlyFee.Text;
+                Properties.Settings.Default.HoldExpiredRecords = txt_ExpirationDays.Text;
+                Properties.Settings.Default.InfantMaxAge = txt_InfantAge.Text;
+                Properties.Settings.Default.RegularMaxAge = txt_RegularAge.Text;
 
-            if (txt_MonClosing.Text.Equals("closed"))
-                Properties.Settings.Default.MonClose = DateTime.Parse(closedString); 
-            else
-                Properties.Settings.Default.MonClose = DateTime.Parse(txt_MonClosing.Text);
+                if (txt_MonOpening.Text.Equals("closed"))
+                    Properties.Settings.Default.MonOpen = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.MonOpen = DateTime.Parse(txt_MonOpening.Text);
 
-            if (txt_TueOpening.Text.Equals("closed"))
-                Properties.Settings.Default.TueOpen = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.TueOpen = DateTime.Parse(txt_TueOpening.Text);
+                if (txt_MonClosing.Text.Equals("closed"))
+                    Properties.Settings.Default.MonClose = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.MonClose = DateTime.Parse(txt_MonClosing.Text);
 
-            if (txt_TueClosing.Text.Equals("closed"))
-                Properties.Settings.Default.TueClose = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.TueClose = DateTime.Parse(txt_TueClosing.Text);
+                if (txt_TueOpening.Text.Equals("closed"))
+                    Properties.Settings.Default.TueOpen = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.TueOpen = DateTime.Parse(txt_TueOpening.Text);
 
-            if (txt_WedOpening.Text.Equals("closed"))
-                Properties.Settings.Default.WedOpen = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.WedOpen = DateTime.Parse(txt_WedOpening.Text);
+                if (txt_TueClosing.Text.Equals("closed"))
+                    Properties.Settings.Default.TueClose = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.TueClose = DateTime.Parse(txt_TueClosing.Text);
 
-            if (txt_WedClosing.Text.Equals("closed"))
-                Properties.Settings.Default.WedClose = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.WedClose = DateTime.Parse(txt_WedClosing.Text);
+                if (txt_WedOpening.Text.Equals("closed"))
+                    Properties.Settings.Default.WedOpen = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.WedOpen = DateTime.Parse(txt_WedOpening.Text);
 
-            if (txt_ThuOpening.Text.Equals("closed"))
-                Properties.Settings.Default.ThuOpen = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.ThuOpen = DateTime.Parse(txt_ThuOpening.Text);
+                if (txt_WedClosing.Text.Equals("closed"))
+                    Properties.Settings.Default.WedClose = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.WedClose = DateTime.Parse(txt_WedClosing.Text);
 
-            if (txt_ThuClosing.Text.Equals("closed"))
-                Properties.Settings.Default.ThuClose = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.ThuClose = DateTime.Parse(txt_ThuClosing.Text);
+                if (txt_ThuOpening.Text.Equals("closed"))
+                    Properties.Settings.Default.ThuOpen = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.ThuOpen = DateTime.Parse(txt_ThuOpening.Text);
 
-            if (txt_FriOpening.Text.Equals("closed"))
-                Properties.Settings.Default.FriOpen = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.FriOpen = DateTime.Parse(txt_FriOpening.Text);
+                if (txt_ThuClosing.Text.Equals("closed"))
+                    Properties.Settings.Default.ThuClose = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.ThuClose = DateTime.Parse(txt_ThuClosing.Text);
 
-            if (txt_FriClosing.Text.Equals("closed"))
-                Properties.Settings.Default.FriClose = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.FriClose = DateTime.Parse(txt_FriClosing.Text);
+                if (txt_FriOpening.Text.Equals("closed"))
+                    Properties.Settings.Default.FriOpen = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.FriOpen = DateTime.Parse(txt_FriOpening.Text);
 
-            if (txt_SatOpening.Text.Equals("closed"))
-                Properties.Settings.Default.SatOpen = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.SatOpen = DateTime.Parse(txt_SatOpening.Text);
+                if (txt_FriClosing.Text.Equals("closed"))
+                    Properties.Settings.Default.FriClose = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.FriClose = DateTime.Parse(txt_FriClosing.Text);
 
-            if (txt_SatClosing.Text.Equals("closed"))
-                Properties.Settings.Default.SatClose = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.SatClose = DateTime.Parse(txt_SatClosing.Text);
+                if (txt_SatOpening.Text.Equals("closed"))
+                    Properties.Settings.Default.SatOpen = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.SatOpen = DateTime.Parse(txt_SatOpening.Text);
 
-            if (txt_SunOpening.Text.Equals("closed"))
-                Properties.Settings.Default.SunOpen = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.SunOpen = DateTime.Parse(txt_SunOpening.Text);
+                if (txt_SatClosing.Text.Equals("closed"))
+                    Properties.Settings.Default.SatClose = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.SatClose = DateTime.Parse(txt_SatClosing.Text);
 
-            if (txt_SunClosing.Text.Equals("closed"))
-                Properties.Settings.Default.SunClose = DateTime.Parse(closedString);
-            else
-                Properties.Settings.Default.SunClose = DateTime.Parse(txt_SunClosing.Text);
+                if (txt_SunOpening.Text.Equals("closed"))
+                    Properties.Settings.Default.SunOpen = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.SunOpen = DateTime.Parse(txt_SunOpening.Text);
 
-            Properties.Settings.Default.Save();
+                if (txt_SunClosing.Text.Equals("closed"))
+                    Properties.Settings.Default.SunClose = DateTime.Parse(closedString);
+                else
+                    Properties.Settings.Default.SunClose = DateTime.Parse(txt_SunClosing.Text);
+
+                Properties.Settings.Default.Save();
+                MessageBox.Show("Your new settings have been saved.", "Settings Saved!");
+            } else {
+                MessageBox.Show("There is an error in the settings window, please fix all errors before submitting settings.", "ERROR!");
+            }
         }
 
         private void disableAll() {
@@ -248,6 +254,7 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void statusGood() {
+            btn_Confirm.Content = "Confirm";
             enableAll();
             txt_Status.Text = "OK";
             txt_Status.Foreground = Brushes.LightGreen;
@@ -255,6 +262,7 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void statusBad() {
+            btn_Confirm.Content = "Fix Errors";
             disableAll();
             txt_Status.Text = "ERROR";
             txt_Status.Foreground = Brushes.Red;
@@ -475,352 +483,67 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void txt_MonOpening_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_MonOpening.Text, out res)) {
-                if (res.TimeOfDay > DateTime.Parse(txt_MonClosing.Text).TimeOfDay) {
-                    MessageBox.Show("Opening time must be less than closing time");
-                    disableAll();
-                    statusBad();
-                    txt_MonOpening.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_MonOpening.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_MonOpening.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_MonOpening.IsEnabled = true;
-            }
+            TimeChecking(txt_MonOpening, txt_MonClosing);
         }
 
         private void txt_MonClosing_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_MonClosing.Text, out res)) {
-                if (res.TimeOfDay < DateTime.Parse(txt_MonOpening.Text).TimeOfDay) {
-                    MessageBox.Show("Closing time must be greater than opening time");
-                    disableAll();
-                    statusBad();
-                    txt_MonClosing.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_MonClosing.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_MonClosing.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_MonClosing.IsEnabled = true;
-            }
+            TimeChecking(txt_MonOpening, txt_MonClosing);
         }
 
         private void txt_TueOpening_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_TueOpening.Text, out res)) {
-                if (res.TimeOfDay > DateTime.Parse(txt_TueClosing.Text).TimeOfDay) {
-                    MessageBox.Show("Opening time must be less than closing time");
-                    disableAll();
-                    statusBad();
-                    txt_TueOpening.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_TueOpening.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_TueOpening.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_TueOpening.IsEnabled = true;
-            }
+            TimeChecking(txt_TueOpening, txt_TueClosing);
         }
 
         private void txt_TueClosing_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_TueClosing.Text, out res)) {
-                if (res.TimeOfDay < DateTime.Parse(txt_TueOpening.Text).TimeOfDay) {
-                    MessageBox.Show("Closing time must be greather than opening time");
-                    disableAll();
-                    statusBad();
-                    txt_TueClosing.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_TueClosing.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_TueClosing.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_TueClosing.IsEnabled = true;
-            }
+            TimeChecking(txt_TueOpening, txt_TueClosing);
         }
 
         private void txt_WedOpening_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_WedOpening.Text, out res)) {
-                if (res.TimeOfDay > DateTime.Parse(txt_WedClosing.Text).TimeOfDay) {
-                    MessageBox.Show("Opening time must be less than closing time");
-                    disableAll();
-                    statusBad();
-                    txt_WedOpening.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_WedOpening.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_WedOpening.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_WedOpening.IsEnabled = true;
-            }
+            TimeChecking(txt_WedOpening, txt_WedClosing);
         }
 
         private void txt_WedClosing_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_WedClosing.Text, out res)) {
-                if (res.TimeOfDay < DateTime.Parse(txt_WedOpening.Text).TimeOfDay) {
-                    MessageBox.Show("Closing time must be greather than opening time");
-                    disableAll();
-                    statusBad();
-                    txt_WedClosing.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_WedClosing.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_WedClosing.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_WedClosing.IsEnabled = true;
-            }
+            TimeChecking(txt_WedOpening, txt_WedClosing);
         }
 
         private void txt_ThuOpening_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_ThuOpening.Text, out res)) {
-                if (res.TimeOfDay > DateTime.Parse(txt_ThuClosing.Text).TimeOfDay) {
-                    MessageBox.Show("Opening time must be less than closing time");
-                    disableAll();
-                    statusBad();
-                    txt_ThuOpening.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_ThuOpening.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_ThuOpening.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_ThuOpening.IsEnabled = true;
-            }
+            TimeChecking(txt_ThuOpening, txt_ThuClosing);
         }
 
         private void txt_ThuClosing_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_ThuClosing.Text, out res)) {
-                if (res.TimeOfDay < DateTime.Parse(txt_ThuOpening.Text).TimeOfDay) {
-                    MessageBox.Show("Closing time must be greather than opening time");
-                    disableAll();
-                    statusBad();
-                    txt_ThuClosing.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_ThuClosing.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_ThuClosing.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_ThuClosing.IsEnabled = true;
-            }
+            TimeChecking(txt_ThuOpening, txt_ThuClosing);
         }
 
         private void txt_FriOpening_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_FriOpening.Text, out res)) {
-                if (res.TimeOfDay > DateTime.Parse(txt_FriClosing.Text).TimeOfDay) {
-                    MessageBox.Show("Opening time must be less than closing time");
-                    disableAll();
-                    statusBad();
-                    txt_FriOpening.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_FriOpening.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_FriOpening.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_FriOpening.IsEnabled = true;
-            }
+            TimeChecking(txt_FriOpening, txt_FriClosing);
         }
 
         private void txt_FriClosing_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_FriClosing.Text, out res)) {
-                if (res.TimeOfDay < DateTime.Parse(txt_FriOpening.Text).TimeOfDay) {
-                    MessageBox.Show("Closing time must be greather than opening time");
-                    disableAll();
-                    statusBad();
-                    txt_FriClosing.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_FriClosing.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_FriClosing.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_FriClosing.IsEnabled = true;
-            }
+            TimeChecking(txt_FriOpening, txt_FriClosing);
         }
 
         private void txt_SatOpening_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_SatOpening.Text, out res)) {
-                if (res.TimeOfDay > DateTime.Parse(txt_SatClosing.Text).TimeOfDay) {
-                    MessageBox.Show("Opening time must be less than closing time");
-                    disableAll();
-                    statusBad();
-                    txt_SatOpening.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_SatOpening.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_SatOpening.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_SatOpening.IsEnabled = true;
-            }
+            TimeChecking(txt_SatOpening, txt_SatClosing);
         }
 
         private void txt_SatClosing_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_SatClosing.Text, out res)) {
-                if (res.TimeOfDay < DateTime.Parse(txt_SatOpening.Text).TimeOfDay) {
-                    MessageBox.Show("Closing time must be greather than opening time");
-                    disableAll();
-                    statusBad();
-                    txt_SatClosing.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_SatClosing.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_SatClosing.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_SatClosing.IsEnabled = true;
-            }
+            TimeChecking(txt_SatOpening, txt_SatClosing);
         }
 
         private void txt_SunOpening_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
-
-            if (DateTime.TryParse(txt_SunOpening.Text, out res)) {
-                if (res.TimeOfDay > DateTime.Parse(txt_SunClosing.Text).TimeOfDay) {
-                    MessageBox.Show("Opening time must be less than closing time");
-                    disableAll();
-                    statusBad();
-                    txt_SunOpening.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_SunOpening.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_SunOpening.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_SunOpening.IsEnabled = true;
-            }
+            TimeChecking(txt_SunOpening, txt_SunClosing);
         }
 
         private void txt_SunClosing_LostFocus(object sender, RoutedEventArgs e) {
-            DateTime res;
-            errorPresent = false;
+            TimeChecking(txt_SunOpening, txt_SunClosing);
+        }
 
-            if (DateTime.TryParse(txt_SunClosing.Text, out res)) {
-                if (res.TimeOfDay < DateTime.Parse(txt_SunOpening.Text).TimeOfDay) {
-                    MessageBox.Show("Closing time must be greather than opening time");
-                    disableAll();
-                    statusBad();
-                    txt_SunClosing.IsEnabled = true;
-                }
-                else if (!errorPresent) {
-                    txt_SunClosing.Text = res.TimeOfDay.ToString();
-                    enableAll();
-                    statusGood();
-                }
-            }
-            else {
-                MessageBox.Show(txt_SunClosing.Text + " is Not a valid time");
-                disableAll();
-                statusBad();
-                txt_SunClosing.IsEnabled = true;
+        private void TimeChecking(TextBox openTime, TextBox closeTime) {
+            if (SettingsValidation.ValidHours(openTime.Text, openTime.Text)) {
+                statusGood();
+            } else {
+                MessageBox.Show("Invalid Input. Must be a valid time less than closing time");
+                statusBad(openTime, closeTime);
             }
         }
 
