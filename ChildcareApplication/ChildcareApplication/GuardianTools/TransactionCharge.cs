@@ -23,6 +23,14 @@ namespace GuardianTools {
             this.db = new ConnectionsDB();
         }
 
+        public void setLateTime(double lateTime) {
+            this.lateTime = lateTime;
+        }
+
+        public void setIsLate(bool isLate) {
+            this.isLate = isLate;
+        }
+
         public bool PrepareTransaction(string childID, string guardianID) {
             TransactionDB transDB = new TransactionDB();
             string[] transaction = transDB.FindTransaction(this.allowanceID);
