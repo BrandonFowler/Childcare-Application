@@ -21,7 +21,7 @@ namespace AdminTools {
         private int accessLevel;
         private string username;
 
-        public AdminMenu(int accessLevel, string usernamne) {
+        public AdminMenu(int accessLevel, string username) {
             InitializeComponent();
             this.accessLevel = accessLevel;
             this.username = username;
