@@ -49,7 +49,8 @@ namespace GuardianTools {
         }
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e) {
-            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back || e.Key == Key.Tab || e.Key == Key.Enter) {
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) 
+                || e.Key == Key.Back || e.Key == Key.Tab || e.Key == Key.Enter || e.Key == Key.NumLock) {
                 if (e.Key == Key.Return){
                     if (IDBoxSelected){
                         txt_PINEntry.Focus();
