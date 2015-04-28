@@ -5,7 +5,7 @@
         Title="Child Check In" Height="800" Width="1280">
     <Viewbox StretchDirection="Both" Stretch="Uniform">
         <Grid Width="792" Height="475">
-            <Button x:Name="btn_LogOutParent" Content="Log Out" HorizontalAlignment="Left" Margin="14,28,0,0" VerticalAlignment="Top" Width="95" Click="btn_LogOutParent_Click" Background="#FF697CB0" Height="47"/>
+            <Button x:Name="btn_LogOutParent" Content="Log Out" HorizontalAlignment="Left" Margin="14,28,0,0" VerticalAlignment="Top" Width="95" Click="btn_LogOutParent_Click" Background="Blue" Height="47" FontWeight="Bold"/>
             <ListBox x:Name="lst_CheckInBox" HorizontalAlignment="Left" Height="130" Margin="42,280,0,0" VerticalAlignment="Top" Width="531" ScrollViewer.HorizontalScrollBarVisibility="Auto" BorderBrush="#FF204CCF" BorderThickness="2">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -33,8 +33,8 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button x:Name="btn_CheckIn" Content="Check In" HorizontalAlignment="Left" Margin="232,233,0,0" VerticalAlignment="Top" Width="74" Height="47" Click="btn_CheckIn_Click" Background="#FF7382B8"/>
-            <Button x:Name="btn_CheckOut" Content="Check Out" HorizontalAlignment="Left" Margin="525,81,0,0" VerticalAlignment="Top" Width="75" Height="44" Click="btn_CheckOut_Click" Background="#FF7583B2"/>
+            <Button x:Name="btn_CheckIn" Content="Check In" HorizontalAlignment="Left" Margin="232,233,0,0" VerticalAlignment="Top" Width="74" Height="47" Click="btn_CheckIn_Click" Background="Blue" FontWeight="Bold"/>
+            <Button x:Name="btn_CheckOut" Content="Check Out" HorizontalAlignment="Left" Margin="525,81,0,0" VerticalAlignment="Top" Width="75" Height="44" Click="btn_CheckOut_Click" Background="Blue" FontWeight="Bold"/>
             <Label x:Name="lbl_RegisteredChildren" Content="Registered Children" HorizontalAlignment="Left" Margin="42,254,0,0" VerticalAlignment="Top" Width="151" Background="#FFD1D0D0"/>
             <Label x:Name="lbl_CheckedIn" Content="Checked In Children" HorizontalAlignment="Left" Margin="600,28,0,0" VerticalAlignment="Top" Width="143" Background="#FFD3CBCB"/>
             <Label x:Name="lbl_ParentName" Content="Parent Name" HorizontalAlignment="Left" Margin="114,28,0,0" VerticalAlignment="Top" Width="151" Cursor="" Background="#FFCDC8C8"/>
