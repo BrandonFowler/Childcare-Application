@@ -7,19 +7,19 @@ namespace ChildcareUnitTests {
     public class AdminLoginUnitTests {
 
         [TestMethod]
-        public void testValidateAdminLogin() {
+        public void TestValidateAdminLogin() {
             DatabaseController.LoginDB db = new DatabaseController.LoginDB();
-            Assert.IsTrue(db.validateAdminLogin("a", "0CC175B9C0F1B6A831C399E2697726"));//Check validation works with good data
-            Assert.IsFalse(db.validateAdminLogin("a", "JunkPIN"));//Check bad PIN is caught
-            Assert.IsFalse(db.validateAdminLogin("JunkID", "0CC175B9C0F1B6A831C399E2697726"));//Check bad ID is caught
-            Assert.IsFalse(db.validateAdminLogin("JunkID", "JunkPIN"));//Check bad ID and bad PIN are caught
+            Assert.IsTrue(db.validateAdminLogin("a", "0CC175B9C0F1B6A831C399E2697726"));
+            Assert.IsFalse(db.validateAdminLogin("a", "JunkPIN"));
+            Assert.IsFalse(db.validateAdminLogin("JunkID", "0CC175B9C0F1B6A831C399E2697726"));
+            Assert.IsFalse(db.validateAdminLogin("JunkID", "JunkPIN"));
         }
 
         [TestMethod]
-        public void testValidateAdminAccessLevel() {
+        public void TestValidateAdminAccessLevel() {
             DatabaseController.LoginDB db = new DatabaseController.LoginDB();
-            Assert.AreEqual(db.GetAccessLevel("a"), 1);//Check that correct access level is returned
-            Assert.AreEqual(db.GetAccessLevel("JunkID"), -1);//Check that bad admin ID is caught
+            Assert.AreEqual(db.GetAccessLevel("a"), 1);
+            Assert.AreEqual(db.GetAccessLevel("JunkID"), -1);
         }
     }
 }

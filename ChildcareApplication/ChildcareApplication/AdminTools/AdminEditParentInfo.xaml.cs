@@ -130,7 +130,7 @@ namespace AdminTools {
             btn_ChangePicture.IsEnabled = false;
         }
 
-        private void ClearFields() {
+        public void ClearFields() {
             txt_Address.Clear();
             txt_Address2.Clear();
             txt_City.Clear();
@@ -140,7 +140,6 @@ namespace AdminTools {
             txt_PhoneNumber.Clear();
             txt_Zip.Clear();
             txt_Email.Clear();
-            txt_IDNumber.Clear();
             txt_FilePath.Clear();
         }//end ClearFields
 

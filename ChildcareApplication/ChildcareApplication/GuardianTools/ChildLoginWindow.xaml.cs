@@ -41,7 +41,7 @@ namespace GuardianTools {
                 return;
             }
             for (int x = 0; x < childrenData.GetLength(0); x++) {
-                Image image = BuildImage(childrenData[x, 6], 60);
+                Image image = BuildImage(childrenData[x, 6], 120);
                 if (!db.IsCheckedIn(childrenData[x, 0],this.guardianID)){
                     lst_CheckInBox.Items.Add(new Child(childrenData[x, 0], childrenData[x, 1], childrenData[x, 2], 
                         image, childrenData[x, 3], childrenData[x, 4], childrenData[x, 5], childrenData[x, 6]));
@@ -62,6 +62,7 @@ namespace GuardianTools {
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
+                bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
             } 
@@ -72,6 +73,7 @@ namespace GuardianTools {
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
+                bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
             }

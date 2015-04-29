@@ -48,25 +48,6 @@ namespace ChildcareApplication.DatabaseController {
             return success;
         }
 
-        public int GetRecordExpiration() {
-            string settingName = "Days to Hold Expired and Deleted Records";
-            String sql = "select SettingValue " +
-                         "from ApplicationSettings " +
-                         "where SettingName = @settingName";
-            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-            command.Parameters.Add(new SQLiteParameter("@settingName", settingName));
-            try {
-                dbCon.Open();
-                object recordFound = command.ExecuteScalar();
-                dbCon.Close();
-                return Convert.ToInt32(recordFound);
-            } catch (Exception e) {
-                MessageBox.Show(e.Message + "\n\n Error: Unable to retrieve settings data, database clean up routine failed.");
-                dbCon.Close();
-                return 0;
-            }
-        }
-
         public bool DeleteTransactions(string expirationDate) {
             String sql = "delete " +
                          "from ChildcareTransaction " +

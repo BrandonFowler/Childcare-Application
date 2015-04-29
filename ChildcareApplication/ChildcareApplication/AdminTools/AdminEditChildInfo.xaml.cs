@@ -138,7 +138,7 @@ namespace AdminTools {
             return false;
         }//end CheckIfNull
 
-        private void ClearFields() {
+        public void ClearFields() {
             txt_FirstName.Clear();
             txt_LastName.Clear();
             txt_Allergies.Clear();
@@ -174,6 +174,7 @@ namespace AdminTools {
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
+                bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
             } 
@@ -184,6 +185,7 @@ namespace AdminTools {
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
+                bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
             }
@@ -272,7 +274,7 @@ namespace AdminTools {
         private void btn_LinkExistingChild_Click(object sender, RoutedEventArgs e) {
             string pID = txt_IDNumber.Text;
             ArrayList connectedChilderen = new ArrayList();
-            connectedChilderen = getConnectedChilderen(connectedChilderen);
+            connectedChilderen = GetConnectedChildren(connectedChilderen);
             LinkExistingChild linkExistingChild = new LinkExistingChild(pID, connectedChilderen);
             linkExistingChild.ShowDialog();
             lst_ChildBox.Items.Clear();
@@ -280,7 +282,7 @@ namespace AdminTools {
             ClearFields();
         }
 
-        private ArrayList getConnectedChilderen(ArrayList list) {
+        public ArrayList GetConnectedChildren(ArrayList list) {
             for (int i = 0; i < lst_ChildBox.Items.Count; i++) {
                 list.Add(((Child)(lst_ChildBox.Items[i])).ID);
             }

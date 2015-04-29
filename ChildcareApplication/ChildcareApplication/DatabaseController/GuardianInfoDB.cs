@@ -284,7 +284,7 @@ namespace DatabaseController {
             dbCon.Close();
         }
 
-        public string checkIfFamilyExists(string familyID) {
+        public string CheckIfFamilyExists(string familyID) {
 
 
             //DataSet DS = new DataSet();

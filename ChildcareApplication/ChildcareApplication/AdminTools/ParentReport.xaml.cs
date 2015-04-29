@@ -27,6 +27,7 @@ namespace AdminTools {
             this.txt_ParentID.Focus();
             this.parentDataGrid.IsTabStop = false;
             this.reportLoaded = false;
+
         }
 
         //Loads a report based on the passed in MySQL query
@@ -108,13 +109,19 @@ namespace AdminTools {
         }
 
         private void btn_DateRangeReport_Click(object sender, RoutedEventArgs e) {
-            DateRangeReport();
+            DateTime dt;
+            if (DateTime.TryParse(dte_fromDate.Text, out dt) && DateTime.TryParse(dte_toDate.Text, out dt)) {
+                DateRangeReport();
+            }
+            else {
+                MessageBox.Show("Please enter valid dates!");
+            }
         }
 
         private void DateRangeReport() {
             GuardianInfoDB parentInfo = new GuardianInfoDB();
-            String initialFrom = txt_FromDate.Text;
-            String initialTo = txt_ToDate.Text;
+            String initialFrom = Convert.ToDateTime(dte_fromDate.Text).ToString("dd/MM/yyyy");
+            String initialTo = Convert.ToDateTime(dte_toDate.Text).ToString("dd/MM/yyyy");
             if (initialFrom.Length >= 10 && initialTo.Length >= 10) {
                 initialFrom = initialFrom.Substring(0, 10);
                 initialTo = initialTo.Substring(0, 10);
@@ -133,7 +140,7 @@ namespace AdminTools {
                         LoadParentData();
                     } else {
                         MessageBox.Show("You must enter a valid date range!");
-                        txt_FromDate.Focus();
+                        dte_fromDate.Focus();
                     }
                 } else {
                     MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
@@ -141,7 +148,7 @@ namespace AdminTools {
                 }
             } else {
                 MessageBox.Show("You must enter a valid date range!");
-                txt_FromDate.Focus();
+                dte_fromDate.Focus();
             }
         }
 
@@ -183,7 +190,7 @@ namespace AdminTools {
 
         private void txt_FromDate_KeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
-                txt_ToDate.Focus();
+                dte_toDate.Focus();
             }
         }
 
@@ -197,13 +204,13 @@ namespace AdminTools {
             Dispatcher.BeginInvoke((Action)txt_ParentID.SelectAll);
         }
 
-        private void txt_FromDate_GotFocus(object sender, RoutedEventArgs e) {
+        /*private void txt_FromDate_GotFocus(object sender, RoutedEventArgs e) {
             Dispatcher.BeginInvoke((Action)txt_FromDate.SelectAll);
-        }
+        }This method is probably no longer necessary and doesn't currently compile*/
 
-        private void txt_ToDate_GotFocus(object sender, RoutedEventArgs e) {
+        /*private void txt_ToDate_GotFocus(object sender, RoutedEventArgs e) {
             Dispatcher.BeginInvoke((Action)txt_ToDate.SelectAll);
-        }
+        }This method is probably no longer necessary and doesn't currently compile*/
 
         private void btn_Print_Click(object sender, RoutedEventArgs e) {
             if (this.reportLoaded && this.table.Rows.Count > 0) {

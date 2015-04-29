@@ -27,7 +27,7 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void setChildBox() {
-            string fID = getFamilyID(this.ID);
+            string fID = GetFamilyID(this.ID);
             string[,] childrenData = db.FindFamilyChildren(fID, this.ID);
 
             if (childrenData == null) {
@@ -71,7 +71,7 @@ namespace ChildcareApplication.AdminTools {
         }//end buildImage	
 
 
-        public string getFamilyID(string pID) {
+        public string GetFamilyID(string pID) {
             string familyID = "";
 
             for (int x = 0; x < pID.Length - 1; x++) {
@@ -91,7 +91,7 @@ namespace ChildcareApplication.AdminTools {
                 int connID = this.db.GetMaxConnectionID();
                 connID = connID + 1;
                 string connectionID = connID.ToString();
-                string fID = getFamilyID(this.ID);
+                string fID = GetFamilyID(this.ID);
                 this.db.UpdateExistingChilderen(connectionID, this.ID, childID, fID);
                 this.connectedChildren.Add(childID);
             }

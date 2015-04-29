@@ -4,9 +4,9 @@
         xmlns:local="clr-namespace:AdminTools"
         Title="Child Check In" Height="800" Width="1280">
     <Viewbox StretchDirection="Both" Stretch="Uniform">
-        <Grid Width="792" Height="475">
-            <Button x:Name="btn_LogOutParent" Content="Log Out" HorizontalAlignment="Left" Margin="14,28,0,0" VerticalAlignment="Top" Width="95" Click="btn_LogOutParent_Click" Background="Blue" Height="47" FontWeight="Bold"/>
-            <ListBox x:Name="lst_CheckInBox" HorizontalAlignment="Left" Height="130" Margin="42,280,0,0" VerticalAlignment="Top" Width="531" ScrollViewer.HorizontalScrollBarVisibility="Auto" BorderBrush="#FF204CCF" BorderThickness="2">
+        <Grid Width="1280" Height="800">
+            <Button x:Name="btn_LogOutParent" Content="Log Out" HorizontalAlignment="Left" Margin="29,118,0,0" VerticalAlignment="Top" Width="143" Click="btn_LogOutParent_Click" Background="Blue" Height="93" FontWeight="Bold" FontSize="20"/>
+            <ListBox x:Name="lst_CheckInBox" HorizontalAlignment="Left" Height="214" Margin="177,525,0,0" VerticalAlignment="Top" Width="734" ScrollViewer.HorizontalScrollBarVisibility="Auto" BorderBrush="#FF204CCF" BorderThickness="2" FontSize="20">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal" />
@@ -22,7 +22,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <ListBox x:Name="lst_CheckOutBox" HorizontalAlignment="Left" Height="356" Margin="600,54,0,0" VerticalAlignment="Top" Width="143" ScrollViewer.HorizontalScrollBarVisibility="Auto" BorderBrush="#FF2751CD" BorderThickness="2">
+            <ListBox x:Name="lst_CheckOutBox" HorizontalAlignment="Left" Height="618" Margin="993,121,0,0" VerticalAlignment="Top" Width="160" ScrollViewer.HorizontalScrollBarVisibility="Auto" BorderBrush="#FF2751CD" BorderThickness="2" FontSize="20">
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type local:Child}">
                         <StackPanel>
@@ -33,16 +33,16 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button x:Name="btn_CheckIn" Content="Check In" HorizontalAlignment="Left" Margin="232,233,0,0" VerticalAlignment="Top" Width="74" Height="47" Click="btn_CheckIn_Click" Background="Blue" FontWeight="Bold"/>
-            <Button x:Name="btn_CheckOut" Content="Check Out" HorizontalAlignment="Left" Margin="525,81,0,0" VerticalAlignment="Top" Width="75" Height="44" Click="btn_CheckOut_Click" Background="Blue" FontWeight="Bold"/>
-            <Label x:Name="lbl_RegisteredChildren" Content="Registered Children" HorizontalAlignment="Left" Margin="42,254,0,0" VerticalAlignment="Top" Width="151" Background="#FFD1D0D0"/>
-            <Label x:Name="lbl_CheckedIn" Content="Checked In Children" HorizontalAlignment="Left" Margin="600,28,0,0" VerticalAlignment="Top" Width="143" Background="#FFD3CBCB"/>
-            <Label x:Name="lbl_ParentName" Content="Parent Name" HorizontalAlignment="Left" Margin="114,28,0,0" VerticalAlignment="Top" Width="151" Cursor="" Background="#FFCDC8C8"/>
-            <ComboBox x:Name="cbo_EventChoice" HorizontalAlignment="Left" Margin="334,139,0,0" VerticalAlignment="Top" Width="144"/>
-            <Label x:Name="lbl_Events" Content="Events" HorizontalAlignment="Left" Margin="334,113,0,0" VerticalAlignment="Top" Width="90" Background="#FFD8D4D4" RenderTransformOrigin="1.712,1.006"/>
-            <Label x:Name="lbl_Time" HorizontalAlignment="Left" Margin="334,59,0,0" VerticalAlignment="Top" Width="133" Content="{Binding Path=Now}" Height="29" Background="#FF9CF99C"/>
-            <Label Content="Date/Time" HorizontalAlignment="Left" Margin="334,33,0,0" VerticalAlignment="Top" Width="90" Background="#FFD6D4D4"/>
-            <Canvas x:Name="cnv_GuardianPic" HorizontalAlignment="Left" Height="128" Margin="114,54,0,0" VerticalAlignment="Top" Width="151"/>
+            <Button x:Name="btn_CheckIn" Content="Check In" HorizontalAlignment="Left" Margin="31,566,0,0" VerticalAlignment="Top" Width="143" Height="93" Click="btn_CheckIn_Click" Background="Blue" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.486,1.523"/>
+            <Button x:Name="btn_CheckOut" Content="Check Out" HorizontalAlignment="Left" Margin="845,125,0,0" VerticalAlignment="Top" Width="143" Height="93" Click="btn_CheckOut_Click" Background="Blue" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.223,0.835"/>
+            <Label x:Name="lbl_RegisteredChildren" Content="Eligible For Check In" HorizontalAlignment="Left" Margin="177,479,0,0" VerticalAlignment="Top" Width="197" Background="#FFD1D0D0" Height="41" FontSize="20"/>
+            <Label x:Name="lbl_CheckedIn" Content="Checked In" HorizontalAlignment="Left" Margin="993,71,0,0" VerticalAlignment="Top" Width="160" Background="#FFD1D0D0" Height="43" FontSize="20"/>
+            <Label x:Name="lbl_ParentName" Content="Parent Name" HorizontalAlignment="Left" Margin="177,73,0,0" VerticalAlignment="Top" Width="150" Cursor="" Background="#FFD1D0D0" Height="43" FontSize="20" RenderTransformOrigin="1.036,1.51"/>
+            <ComboBox x:Name="cbo_EventChoice" HorizontalAlignment="Left" Margin="540,222,0,0" VerticalAlignment="Top" Width="248" Height="37" FontSize="20"/>
+            <Label x:Name="lbl_Events" Content="Events" HorizontalAlignment="Left" Margin="540,180,0,0" VerticalAlignment="Top" Width="90" Background="#FFD1D0D0" RenderTransformOrigin="1.712,1.006" FontSize="20"/>
+            <Label x:Name="lbl_Time" HorizontalAlignment="Left" Margin="540,119,0,0" VerticalAlignment="Top" Width="192" Content="{Binding Path=Now}" Height="43" Background="#FF9CF99C" RenderTransformOrigin="0.557,2.18" FontSize="20"/>
+            <Label Content="Date/Time" HorizontalAlignment="Left" Margin="540,71,0,0" VerticalAlignment="Top" Width="130" Background="#FFD1D0D0" Height="43" RenderTransformOrigin="2.002,0.912" FontSize="20"/>
+            <Canvas x:Name="cnv_GuardianPic" HorizontalAlignment="Left" Height="224" Margin="177,119,0,0" VerticalAlignment="Top" Width="279"/>
         </Grid>
     </Viewbox>
 </Window>

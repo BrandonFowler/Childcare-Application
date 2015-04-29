@@ -67,7 +67,7 @@ namespace AdminTools {
             }
             //DataSet DS = new DataSet();
             //DS = this.db.checkIfFamilyExists(familyID);
-            string fID = this.db.checkIfFamilyExists(familyID);
+            string fID = this.db.CheckIfFamilyExists(familyID);
 
             if (string.IsNullOrWhiteSpace(fID))//FamilyID does not exist
              {
@@ -75,7 +75,7 @@ namespace AdminTools {
             }
 
         }
-        private bool CheckIfNull() {
+        public bool CheckIfNull() {
 
             if (string.IsNullOrWhiteSpace(this.txt_ParentID1.Text)) {
                 MessageBox.Show("Please enter your ID number.");
@@ -93,7 +93,7 @@ namespace AdminTools {
             return false;
         }//end CheckIfNull
 
-        private bool CheckIfSame(string str1, string str2) {
+        public bool CheckIfSame(string str1, string str2) {
 
             if (str1.Equals(str2))
                 return true;

@@ -26,7 +26,7 @@ namespace AdminTools {
             bool formNotComplete = CheckIfNull();
             if (!formNotComplete)//form is completed
              {
-                bool sameID = checkIfSame(txt_GuardianID.Text, txt_GuardianID2.Text);
+                bool sameID = CheckIfSame(txt_GuardianID.Text, txt_GuardianID2.Text);
                 bool regexID = RegExpressions.RegexID(txt_GuardianID.Text);
                 if (sameID && regexID)//both IDand PIN are the same vlues
                  {
@@ -53,7 +53,7 @@ namespace AdminTools {
         private void btn_Cancel_Click(object sender, RoutedEventArgs e) {
             this.Close();
         }
-        private string MakeFamilyID(string ID) {
+        public string MakeFamilyID(string ID) {
             string familyID = "";
 
             for (int x = 0; x < ID.Length - 1; x++) {
@@ -61,7 +61,7 @@ namespace AdminTools {
             }
             return familyID;
         }
-        private bool CheckIfNull() {
+        public bool CheckIfNull() {
 
 
             if (string.IsNullOrWhiteSpace(this.txt_GuardianID.Text)) {
@@ -75,7 +75,7 @@ namespace AdminTools {
             return false;
         }//end CheckIfNull
 
-        private bool checkIfSame(string str1, string str2) {
+        public bool CheckIfSame(string str1, string str2) {
 
             if (str1.Equals(str2))
                 return true;
@@ -87,11 +87,11 @@ namespace AdminTools {
 
         }
 
-        private bool checkIfNumbers(string str1, string str2) {
+        public bool CheckIfNumbers(string str1, string str2) {
             int parseNum1, parseNum2;
 
             bool isNum1 = int.TryParse(str1, out parseNum1);
-            bool isNum2 = int.TryParse(str1, out parseNum2);
+            bool isNum2 = int.TryParse(str2, out parseNum2);
 
             if (isNum1 && isNum2)
                 return true;
