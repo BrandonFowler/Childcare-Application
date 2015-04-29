@@ -121,7 +121,7 @@ namespace GuardianTools {
         private void CleanDisplay() {
             var bc = new BrushConverter();
             cnv_GuardianPic.Background = (Brush)bc.ConvertFrom("#FFFFFFFF");
-            this.dta_GuardianList.Items.Clear();
+            this.dta_GuardianList.ItemsSource = null;
         }
 
         private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
