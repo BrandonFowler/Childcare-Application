@@ -86,7 +86,7 @@ namespace AdminTools {
             date = year + "-";
 
             if (month < 10) {
-                date += "0" + month;
+                date += "0" + month + "-";
             } else {
                 date += month + "-";
             }
@@ -114,7 +114,7 @@ namespace AdminTools {
                 if (monthNum != 12) {
                     toDate = BuildDateString(year, monthNum + 1, toDay);
                 } else {
-                    toDate = BuildDateString(year + 1, monthNum + 1, toDay);
+                    toDate = BuildDateString(year + 1, 1, toDay);
                 }
 
                 LoadReport(fromDate, toDate);
