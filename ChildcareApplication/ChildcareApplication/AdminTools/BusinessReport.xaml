@@ -5,7 +5,7 @@
     <Grid>
         <Button x:Name="btn_CurrentMonthReport" Content="_Current Month Report" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="136" Click="btn_CurrentMonthReport_Click" Height="22" TabIndex="0"/>
         <Button x:Name="btn_SpecificMonth" Content="_Specific Month Report" HorizontalAlignment="Left" Margin="151,37,0,0" VerticalAlignment="Top" Width="131" Height="22" Click="btn_SpecificMonth_Click" TabIndex="1"/>
-        <DataGrid x:Name="businessDataGrid" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="403" Width="634" IsReadOnly="True"/>
+        <DataGrid x:Name="businessDataGrid" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="403" Width="634" IsReadOnly="True" ColumnWidth="Auto"/>
         <ComboBox x:Name="cmb_Month" HorizontalAlignment="Left" Margin="287,37,0,0" VerticalAlignment="Top" Width="91" TabIndex="2">
             <ComboBoxItem Content="January"/>
             <ComboBoxItem Content="February"/>

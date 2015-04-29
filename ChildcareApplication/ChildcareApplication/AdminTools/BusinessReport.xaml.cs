@@ -155,6 +155,7 @@ namespace AdminTools {
             this.table = table;
 
             businessDataGrid.ItemsSource = table.DefaultView;
+
             this.reportLoaded = true;
         }
 

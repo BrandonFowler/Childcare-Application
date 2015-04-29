@@ -35,6 +35,7 @@ namespace AdminTools {
             ReportsDB reportDB = new ReportsDB();
             this.table = reportDB.GetParentReportTable(this.txt_ParentID.Text, dates);
             parentDataGrid.ItemsSource = table.DefaultView;
+            
             this.reportLoaded = true;
             //parentDataGrid.CellStyle.
         }

@@ -9,7 +9,7 @@
         <Label x:Name="lbl_ParentID" Content="Parent ID" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btn_CurrentMonthReport" Content="Current Billing Cycle" HorizontalAlignment="Left" Margin="225,51,0,0" VerticalAlignment="Top" Width="134" Click="btn_CurrentMonthReport_Click" TabIndex="2"/>
         <Button x:Name="btn_DateRangeReport" Content="Date Range Report" HorizontalAlignment="Left" Margin="364,51,0,0" VerticalAlignment="Top" Width="123" Click="btn_DateRangeReport_Click" TabIndex="3"/>
-        <DataGrid x:Name="parentDataGrid" Margin="10,92,0,0" VerticalAlignment="Top" Height="395" HorizontalAlignment="Left" Width="482" CanUserReorderColumns="False" IsReadOnly="True"/>
+        <DataGrid x:Name="parentDataGrid" Margin="10,92,0,0" VerticalAlignment="Top" Height="395" HorizontalAlignment="Left" Width="482" CanUserReorderColumns="False" IsReadOnly="True" ColumnWidth="Auto"/>
         <Button x:Name="btn_LoadAll" Content="Load All Charges" HorizontalAlignment="Left" Margin="105,51,0,0" VerticalAlignment="Top" Width="115" Click="btn_LoadAll_Click" TabIndex="1"/>
         <Canvas x:Name="cnv_ParentIcon" HorizontalAlignment="Left" Height="152" Margin="513,92,0,0" VerticalAlignment="Top" Width="158"/>
         <Label x:Name="lbl_Name" Content="" HorizontalAlignment="Left" Margin="513,244,0,0" VerticalAlignment="Top" Width="158" Height="26"/>

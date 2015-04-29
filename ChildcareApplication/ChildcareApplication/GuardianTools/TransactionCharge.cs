@@ -128,7 +128,7 @@ namespace GuardianTools {
             bool discount = false;
             int childrenCheckedIn = db.NumberOfCheckedIn(guardianID);
             string[] eventData = eventDB.GetEvent(eventName);
-            if ((childrenCheckedIn > 1) && (eventData[2] != null || eventData[4] != null)) {
+            if ((childrenCheckedIn > 1) && (!String.IsNullOrWhiteSpace(eventData[2]) || !String.IsNullOrWhiteSpace(eventData[4]))) {
                 discount = true;
             }
             if (eventData == null) {
