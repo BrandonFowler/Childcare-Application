@@ -76,13 +76,23 @@ namespace ChildcareUnitTests {
             Assert.AreEqual(guardianTools.CheckAgeGroup(birthday, date), "Regular");
         }
 
-        /*[TestMethod]
+        
+        [TestMethod]
+        public void TestGetBillingCap() {
+            GuardianTools.GuardianToolsSettings guardianTools = new GuardianTools.GuardianToolsSettings();
+            Assert.AreEqual(guardianTools.GetBillingCap(), 100); 
+            
+            
+        }
+        [TestMethod]
         public void TestCheckIfPastClosing() {
             GuardianTools.GuardianToolsSettings guardianTools = new GuardianTools.GuardianToolsSettings();
             string dayOfWeek =  "Monday";
             string closingTime = guardianTools.GetClosingTime(dayOfWeek);
-            
-            
-        }*/
+            TimeSpan ts = TimeSpan.Parse("17:00:00");
+            Assert.AreEqual(guardianTools.CheckIfPastClosing(dayOfWeek, ts), 0.0);
+            ts = TimeSpan.Parse("20:00:00");
+            Assert.AreEqual(guardianTools.CheckIfPastClosing(dayOfWeek, ts), 1.0);
+        }
     }
 }

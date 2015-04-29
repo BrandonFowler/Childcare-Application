@@ -51,7 +51,7 @@ namespace GuardianTools {
 
         public double CalculateTransaction(string checkInTime, string checkOutTime, string eventName, double eventFee) {
             EventDB eventDB = new EventDB();
-            TimeSpan TimeSpanCheckOut = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
+            TimeSpan TimeSpanCheckOut = TimeSpan.Parse(checkOutTime);
             TimeSpan TimeSpanCheckIn = TimeSpan.Parse(checkInTime);
             this.lateTime = settings.CheckIfPastClosing(DateTime.Now.DayOfWeek.ToString(), TimeSpanCheckOut);
             double totalCheckedInHours = (TimeSpanCheckOut.Hours - TimeSpanCheckIn.Hours) + ((TimeSpanCheckOut.Minutes - TimeSpanCheckIn.Minutes) / 60.0);
