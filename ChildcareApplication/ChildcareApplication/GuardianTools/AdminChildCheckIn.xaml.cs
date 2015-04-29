@@ -28,6 +28,7 @@ namespace GuardianTools {
             txt_SearchBox.Focus();
             this.txt_SearchBox.KeyDown += new KeyEventHandler(KeyPressedEnter);
             this.lst_Guardians.KeyDown += new KeyEventHandler(KeyPressedEnter);
+            this.MouseDown += WindowMouseDown;
         }
 
         private void KeyPressedEnter(Object o, KeyEventArgs e) {
@@ -59,6 +60,7 @@ namespace GuardianTools {
                 ImageBrush ib = new ImageBrush();
                 ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
                 cnv_GuardianPic.Background = ib;
+                cnv_GuardianPic.Visibility = System.Windows.Visibility.Visible;
             }
         }
 
@@ -126,6 +128,11 @@ namespace GuardianTools {
             cnv_GuardianPic.Background = new SolidColorBrush(Colors.DimGray);
             this.lbl_Categories.Visibility = Visibility.Hidden;
             this.lst_Guardians.Items.Clear();
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
 
     }
