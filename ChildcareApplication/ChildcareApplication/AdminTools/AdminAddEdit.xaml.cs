@@ -52,12 +52,13 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void btn_AddAdmin_Click(object sender, RoutedEventArgs e) {
-            //disable add new admin button until the user either submits or cancels the addition
-            btn_AddAdmin.IsEnabled = false;
-            this.db.AddNewAdmin();
-            lst_AdminList.ItemsSource = db.FindAdmins();
-            lst_AdminList.UnselectAll();
-
+            if (lst_AdminList.Items.Contains("default")) {
+                MessageBox.Show("You cannot add a new administrator while there is still a default administrator.\nPlease edit the default administrator before adding a new one");
+            } else {
+                this.db.AddNewAdmin();
+                lst_AdminList.ItemsSource = db.FindAdmins();
+                lst_AdminList.UnselectAll();
+            }
         }
 
         private void btn_DelAdmin_Click(object sender, RoutedEventArgs e) {
@@ -65,9 +66,16 @@ namespace ChildcareApplication.AdminTools {
                 MessageBox.Show("You cannot delete the currently logged in administrator");
             }
             else {
-                db.DeleteAdmin(lst_AdminList.SelectedItem.ToString());
-                lst_AdminList.ItemsSource = db.FindAdmins();
-                clearForm();
+                MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you wish to delete this administrator?", "Deletion Conformation", MessageBoxButton.OKCancel);
+                if (messageBoxResult == MessageBoxResult.OK) {
+                    MessageBox.Show(lst_AdminList.SelectedItem.ToString() + " has been deleted from the administrator list");
+                    db.DeleteAdmin(lst_AdminList.SelectedItem.ToString());
+                    lst_AdminList.ItemsSource = db.FindAdmins();
+                    clearForm();
+                } else {
+                    MessageBox.Show("Deletion canceled");
+                }
+
             }
         }
 
@@ -77,8 +85,6 @@ namespace ChildcareApplication.AdminTools {
             else if (rdb_Limited.IsChecked == true)
                 db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "2");
 
-            if (!(txt_LoginName.Text.Equals("default")))
-                btn_AddAdmin.IsEnabled = true;
             lst_AdminList.ItemsSource = db.FindAdmins();
             fillForms(txt_LoginName.Text);
         }
@@ -88,9 +94,6 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void clearForm() {
-            if (btn_AddAdmin.IsEnabled == false)
-                btn_AddAdmin.IsEnabled = true;
-
             lst_AdminList.SelectedItem = null;
             txt_LoginName.Clear();
             txt_Password.Clear();
@@ -98,7 +101,7 @@ namespace ChildcareApplication.AdminTools {
             txt_Email.Clear();
             rdb_Full.IsChecked = false;
             rdb_Limited.IsChecked = false;
-
+            btn_AddAdmin.IsEnabled = true;
             btn_DelAdmin.IsEnabled = false;
             txt_LoginName.IsEnabled = false;
             txt_Email.IsEnabled = false;
