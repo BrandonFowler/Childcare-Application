@@ -357,30 +357,23 @@ namespace DatabaseController {
             }
         }
 
-        public string[,] RetieveGuardiansByLastName(string name) {
-            string sql = "select FirstName, LastName, Guardian_ID " +
+        public DataTable RetieveGuardiansByLastName(string name) {
+            string sql = "select LastName as 'First Name', FirstName as 'Last Name', Guardian_ID as ID " +
                          "from Guardian " +
                          "where LastName = @name";
-            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
-            command.Parameters.Add(new SQLiteParameter("@name", name));
-            SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
-            DataSet DS = new DataSet();
-            try {
-                dbCon.Open();
-                DB.Fill(DS);
-                if (DS.Tables == null) {
-                    return null;
-                }
-                int cCount = DS.Tables[0].Columns.Count;
-                int rCount = DS.Tables[0].Rows.Count;
-                String[,] data = new string[rCount, cCount];
-                for (int x = 0; x < rCount; x++) {
-                    for (int y = 0; y < cCount; y++) {
-                        data[x, y] = DS.Tables[0].Rows[x][y].ToString();
-                    }
-                }
-                dbCon.Close();
-                return data;
+            SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
+            DataTable table;
+            try
+            {
+                connection.Open();
+                SQLiteCommand cmd = new SQLiteCommand(sql, connection);
+                cmd.Parameters.Add(new SQLiteParameter("@name", name));
+                cmd.ExecuteNonQuery();
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+                table = new DataTable("Parent Report");
+                adapter.Fill(table);
+                connection.Close();
+                return table;
             } catch (Exception e) {
                 MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for guardians");
                 dbCon.Close();

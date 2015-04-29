@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DatabaseController;
+using System.Data;
 
 namespace GuardianTools {
    
@@ -22,11 +23,11 @@ namespace GuardianTools {
 
         public AdminChildCheckIn() {
             InitializeComponent();
-            lst_Guardians.SelectionChanged += lst_Guardians_IndexChange;
+            dta_GuardianList.SelectionChanged += lst_Guardians_IndexChange;
             this.db = new ConnectionsDB();
             txt_SearchBox.Focus();
             this.txt_SearchBox.KeyDown += new KeyEventHandler(KeyPressedEnter);
-            this.lst_Guardians.KeyDown += new KeyEventHandler(KeyPressedEnter);
+            this.dta_GuardianList.KeyDown += new KeyEventHandler(KeyPressedEnter);
             this.MouseDown += WindowMouseDown;
         }
 
@@ -35,7 +36,7 @@ namespace GuardianTools {
                     if (txt_SearchBox.IsSelectionActive) {
                         Search();
                     }
-                    else if (lst_Guardians.SelectedItem != null) {
+                    else if (dta_GuardianList.SelectedItem != null) {
                         Login();
                     }
                 }    
@@ -48,12 +49,16 @@ namespace GuardianTools {
         }
 
         private void lst_Guardians_IndexChange(object sender, System.EventArgs e) {
-            if (lst_Guardians.SelectedItem == null) {
+            if (dta_GuardianList.SelectedItem == null) {
                 return;
             }
             GuardianInfoDB parentDB = new GuardianInfoDB();
-            string guardianInfo = lst_Guardians.SelectedItem.ToString();
-            this.guardianID = guardianInfo.Substring(guardianInfo.LastIndexOf(' ') + 1);
+            String guardianInfo = "";
+            for (int i = 0; i < dta_GuardianList.SelectedItems.Count; i++){
+                System.Data.DataRowView selectedFile = (System.Data.DataRowView)dta_GuardianList.SelectedItems[i];
+                guardianInfo = Convert.ToString(selectedFile.Row.ItemArray[2]);
+            }
+            this.guardianID = guardianInfo;
             string imageLink = parentDB.GetGuardianImagePath(this.guardianID);
             if (imageLink != null) {
                 ImageBrush ib = new ImageBrush();
@@ -89,23 +94,13 @@ namespace GuardianTools {
                 }
             }
             else {
-                string[,] guardianInfo = parentDB.RetieveGuardiansByLastName(txt_SearchBox.Text);
-                if (guardianInfo == null || guardianInfo.GetLength(0) == 0) {
+                DataTable guardianInfo = parentDB.RetieveGuardiansByLastName(txt_SearchBox.Text);
+                if (guardianInfo == null) {
                     MessageBox.Show("No search results found");
                     return;
                 }
-                SetUpGuardianDisplay(guardianInfo);
+                dta_GuardianList.ItemsSource = guardianInfo.DefaultView;
             }
-        }
-
-        public void SetUpGuardianDisplay(string[,] guardianInfo) {
-            for (int x = 0; x < guardianInfo.GetLength(0); x++) {
-                string firstName = guardianInfo[x,0].PadRight(33);
-                string lastName = guardianInfo[x, 1].PadRight(33);
-                string ID = guardianInfo[x, 2];
-                lst_Guardians.Items.Add(firstName + lastName + ID);
-            }
-            this.lbl_Categories.Visibility = Visibility.Visible;
         }
 
         private void btn_Login_Click(object sender, RoutedEventArgs e) {
@@ -113,7 +108,7 @@ namespace GuardianTools {
         }
 
         private void Login() {
-            if (lst_Guardians.SelectedItem == null) {
+            if (dta_GuardianList.SelectedItem == null) {
                 MessageBox.Show("Please select a guardian.");
                 return;
             }
@@ -125,9 +120,8 @@ namespace GuardianTools {
 
         private void CleanDisplay() {
             var bc = new BrushConverter();
-            cnv_GuardianPic.Background = (Brush)bc.ConvertFrom("#FFE3F5CA");
-            this.lbl_Categories.Visibility = Visibility.Hidden;
-            this.lst_Guardians.Items.Clear();
+            cnv_GuardianPic.Background = (Brush)bc.ConvertFrom("#FFFFFFFF");
+            this.dta_GuardianList.Items.Clear();
         }
 
         private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
