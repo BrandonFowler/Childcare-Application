@@ -9,8 +9,8 @@
                     <Border x:Name="ButtonBorder" 
                   CornerRadius="25,25,25,25" 
                   BorderThickness="4,4,4,4" 
-                  Background="#FF957C49"  
-                  BorderBrush="#FF95742E"
+                  Background="#FF69AEA4"  
+                  BorderBrush="#FF69AEA4"
                   RenderTransformOrigin="0.5,0.5">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -20,8 +20,8 @@
                             <Border Grid.Row="0" CornerRadius="23,23,0,0">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <GradientStop Color="#FF95740E" Offset="0"/>
-                                        <GradientStop Color="#FF95742F" Offset="1"/>
+                                        <GradientStop Color="#FF266A67" Offset="0"/>
+                                        <GradientStop Color="#FF69AEA4" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Border.Background>
                             </Border>

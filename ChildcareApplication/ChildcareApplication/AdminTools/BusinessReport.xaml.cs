@@ -166,6 +166,8 @@ namespace AdminTools {
             if (this.reportLoaded && this.table.Rows.Count > 0) {
                 PrintDialog printDialog = new PrintDialog();
                 printDialog.PrintTicket.PageOrientation = System.Printing.PageOrientation.Landscape;
+                printDialog.UserPageRangeEnabled = true;
+
                 if (printDialog.ShowDialog() == true) {
                     var paginator = new ReportsPaginator(this.table.Rows.Count, this.table,
                       new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight));

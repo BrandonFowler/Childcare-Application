@@ -53,9 +53,6 @@ namespace AdminTools {
             set {
                 this.pageSize = value;
                 this.rowsPerPage = PageElement.RowsPerPage(this.pageSize.Height, this.pageSize.Width);
-
-                //Can't print anything if you can't fit a row on a page
-                Debug.Assert(this.rowsPerPage > 0);
             }
         }
 

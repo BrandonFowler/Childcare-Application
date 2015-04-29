@@ -36,6 +36,7 @@ namespace AdminTools {
             this.table = reportDB.GetParentReportTable(this.txt_ParentID.Text, dates);
             parentDataGrid.ItemsSource = table.DefaultView;
             this.reportLoaded = true;
+            //parentDataGrid.CellStyle.
         }
 
         private void btn_LoadAll_Click(object sender, RoutedEventArgs e) {
@@ -215,6 +216,7 @@ namespace AdminTools {
         private void btn_Print_Click(object sender, RoutedEventArgs e) {
             if (this.reportLoaded && this.table.Rows.Count > 0) {
                 PrintDialog printDialog = new PrintDialog();
+                printDialog.UserPageRangeEnabled = true;
 
                 if (printDialog.ShowDialog() == true) {
                     var paginator = new ReportsPaginator(this.table.Rows.Count, this.table,
