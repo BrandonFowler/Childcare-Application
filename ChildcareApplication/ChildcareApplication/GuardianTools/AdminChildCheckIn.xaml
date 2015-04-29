@@ -14,7 +14,7 @@
             <Button Style="{DynamicResource GlassButton}"  x:Name="btn_Search" Content="Search" HorizontalAlignment="Left" Margin="874,139,0,0" VerticalAlignment="Top" Width="131" FontSize="20" Height="67" Click="btn_Search_Click" Background="#FF95742E" FontWeight="Bold"/>
             <ListBox x:Name="lst_Guardians"  HorizontalAlignment="Left" Height="192" Margin="82,435,0,0" VerticalAlignment="Top" Width="867" FontSize="20" FontFamily="Consolas" Background="#FFE3F5CA"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Login" Content="Login As Selected Guardian" HorizontalAlignment="Left" Margin="362,632,0,0" VerticalAlignment="Top" Width="290" Height="78" FontSize="20" Click="btn_Login_Click" RenderTransformOrigin="0.5,0.5" FontWeight="Bold"/>
-            <Canvas x:Name="cnv_GuardianPic" HorizontalAlignment="Left" Height="284" Margin="82,97,0,0" VerticalAlignment="Top" Width="338" Background="#FFE3F5CA" Visibility="Hidden"/>
+            <Canvas x:Name="cnv_GuardianPic" HorizontalAlignment="Left" Height="284" Margin="82,97,0,0" VerticalAlignment="Top" Width="338" Background="#FFE3F5CA"/>
             <Label x:Name="lbl_Categories" Content="First Name                      | Last Name                      | Member ID  " HorizontalAlignment="Left" Margin="82,402,0,0" VerticalAlignment="Top" FontSize="20" Width="867" FontWeight="Bold" Background="#FFE3F5CA" FontFamily="Consolas" Visibility="Hidden"/>
         </Grid>
     </Border>

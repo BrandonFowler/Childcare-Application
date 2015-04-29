@@ -24,7 +24,6 @@ namespace GuardianTools {
             InitializeComponent();
             lst_Guardians.SelectionChanged += lst_Guardians_IndexChange;
             this.db = new ConnectionsDB();
-            cnv_GuardianPic.Background = new SolidColorBrush(Colors.DimGray);
             txt_SearchBox.Focus();
             this.txt_SearchBox.KeyDown += new KeyEventHandler(KeyPressedEnter);
             this.lst_Guardians.KeyDown += new KeyEventHandler(KeyPressedEnter);
@@ -125,7 +124,8 @@ namespace GuardianTools {
         }
 
         private void CleanDisplay() {
-            cnv_GuardianPic.Background = new SolidColorBrush(Colors.DimGray);
+            var bc = new BrushConverter();
+            cnv_GuardianPic.Background = (Brush)bc.ConvertFrom("#FFE3F5CA");
             this.lbl_Categories.Visibility = Visibility.Hidden;
             this.lst_Guardians.Items.Clear();
         }
