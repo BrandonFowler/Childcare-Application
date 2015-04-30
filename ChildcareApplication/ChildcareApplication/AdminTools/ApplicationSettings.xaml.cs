@@ -353,84 +353,9 @@ namespace ChildcareApplication.AdminTools {
             dayCloses.Text = defaultClose;
         }
 
-        ///////////////////
-        //GotFocus Events//
-        ///////////////////
-
-        private void txt_BillingDate_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_BillingDate.SelectAll);
-        }
-
-        private void txt_MaxMonthlyFee_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_MaxMonthlyFee.SelectAll);
-        }
-
-        private void txt_ExpirationDays_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_ExpirationDays.SelectAll);
-        }
-
-        private void txt_InfantAge_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_InfantAge.SelectAll);
-        }
-
-        private void txt_RegularAge_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_RegularAge.SelectAll);
-        }
-
-        private void txt_MonOpening_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_MonOpening.SelectAll);
-        }
-
-        private void txt_MonClosing_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_MonClosing.SelectAll);
-        }
-
-        private void txt_TueOpening_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_TueOpening.SelectAll);
-        }
-
-        private void txt_TueClosing_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_TueClosing.SelectAll);
-        }
-
-        private void txt_WedOpening_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_WedOpening.SelectAll);
-        }
-
-        private void txt_WedClosing_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_WedClosing.SelectAll);
-        }
-
-        private void txt_ThuOpening_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_ThuOpening.SelectAll);
-        }
-
-        private void txt_ThuClosing_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_ThuClosing.SelectAll);
-        }
-
-        private void txt_FriOpening_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_FriOpening.SelectAll);
-        }
-
-        private void txt_FriClosing_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_FriClosing.SelectAll);
-        }
-
-        private void txt_SatOpening_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_SatOpening.SelectAll);
-        }
-
-        private void txt_SatClosing_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_SatClosing.SelectAll);
-        }
-
-        private void txt_SunOpening_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_SunOpening.SelectAll);
-        }
-
-        private void txt_SunClosing_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_SunClosing.SelectAll);
+        private void SelectAllonFocus(object sender, RoutedEventArgs e) {
+            TextBox tb = (TextBox)sender;
+            Dispatcher.BeginInvoke((Action)(tb.SelectAll));
         }
 
         ////////////////////
