@@ -14,6 +14,7 @@ namespace ChildcareUnitTests {
         [TestMethod]
         public void TestCalculateTransaction() {
             GuardianTools.TransactionCharge tCharge = new GuardianTools.TransactionCharge("123450", "000001");
+            tCharge.setLateTime(0.0);
             Assert.AreEqual(tCharge.CalculateTransaction("12:00:00", "13:00:00", "Regular Childcare", 5.0), 5.0);
         }
 

@@ -44,6 +44,7 @@ namespace GuardianTools {
             checkInTime = Convert.ToDateTime(checkInTime).ToString("HH:mm:ss");
             string checkOutTime = DateTime.Now.ToString("HH:mm:ss");
             double eventFee = FindEventFee(guardianID, eventName);
+            this.lateTime = settings.CheckIfPastClosing(DateTime.Now.DayOfWeek.ToString(), TimeSpan.Parse(checkOutTime));
             eventFee = CalculateTransaction(checkInTime, checkOutTime, eventName, eventFee);
             CompleteTransaction(eventFee);
             return true;
@@ -53,7 +54,6 @@ namespace GuardianTools {
             EventDB eventDB = new EventDB();
             TimeSpan TimeSpanCheckOut = TimeSpan.Parse(checkOutTime);
             TimeSpan TimeSpanCheckIn = TimeSpan.Parse(checkInTime);
-            this.lateTime = settings.CheckIfPastClosing(DateTime.Now.DayOfWeek.ToString(), TimeSpanCheckOut);
             double totalCheckedInHours = (TimeSpanCheckOut.Hours - TimeSpanCheckIn.Hours) + ((TimeSpanCheckOut.Minutes - TimeSpanCheckIn.Minutes) / 60.0);
             double lateMaximum = eventDB.GetEventHourCap(eventName);
             if (totalCheckedInHours > lateMaximum) {
