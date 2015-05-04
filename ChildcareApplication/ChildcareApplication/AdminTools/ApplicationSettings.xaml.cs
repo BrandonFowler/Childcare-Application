@@ -368,6 +368,7 @@ namespace ChildcareApplication.AdminTools {
             } else {
                 MessageBox.Show("Invalid Input. Billing Date must be a number from 1 to 29");
                 statusBad(txt_BillingDate);
+                
             }
         }
 
@@ -385,7 +386,7 @@ namespace ChildcareApplication.AdminTools {
                 statusGood();
             } else {
                 MessageBox.Show("Invalid Input. Days to hold expired records must be a positive number");
-                statusBad();
+                statusBad(txt_ExpirationDays);
             }
         }
 
@@ -464,7 +465,7 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void TimeChecking(TextBox openTime, TextBox closeTime) {
-            if (SettingsValidation.ValidHours(openTime.Text, openTime.Text)) {
+            if (SettingsValidation.ValidHours(openTime.Text, closeTime.Text)) {
                 statusGood();
             } else {
                 MessageBox.Show("Invalid Input. Must be a valid time less than closing time");

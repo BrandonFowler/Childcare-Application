@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Add/Edit/Delete Administrators" Height="292" Width="646" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListBox x:Name="lst_AdminList" HorizontalAlignment="Left" Height="203" Margin="10,10,0,0" VerticalAlignment="Top" Width="155" SelectionChanged="lst_AdminList_SelectionChanged"/>
+        <ListBox x:Name="lst_AdminList" HorizontalAlignment="Left" Height="203" Margin="10,10,0,0" VerticalAlignment="Top" Width="155" SelectionChanged="lst_AdminList_SelectionChanged" IsTextSearchEnabled="False"/>
         <Button x:Name="btn_AddAdmin" Content="Add New" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top" Width="75" IsTabStop="False" Click="btn_AddAdmin_Click"/>
         <Button x:Name="btn_DelAdmin" Content="Delete" HorizontalAlignment="Left" Margin="90,218,0,0" VerticalAlignment="Top" Width="75" IsTabStop="False" Click="btn_DelAdmin_Click" IsEnabled="False"/>
         <Button x:Name="btn_Cancel" Content="Cancel Changes" HorizontalAlignment="Left" Margin="437,198,0,0" VerticalAlignment="Top" Width="96" IsTabStop="False" IsEnabled="False" Click="btn_Cancel_Click"/>

@@ -27,6 +27,8 @@ namespace ChildcareApplication.AdminTools {
                 txt_Email.IsEnabled = true;
                 rdb_Full.IsEnabled = true;
                 rdb_Limited.IsEnabled = true;
+            } else {
+                clearForm();
             }
         }
 
@@ -86,7 +88,7 @@ namespace ChildcareApplication.AdminTools {
                 db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "2");
 
             lst_AdminList.ItemsSource = db.FindAdmins();
-            fillForms(txt_LoginName.Text);
+            clearForm();  
         }
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e) {
