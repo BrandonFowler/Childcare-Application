@@ -39,12 +39,10 @@ namespace DatabaseController {
         public String GetAddress1(String parentID) {
             String query = "SELECT Address1 FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             String result = "";
-
-            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
-
             try {
-                dbCon.Open();
 
+                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
+                dbCon.Open();
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception exception) {
@@ -56,10 +54,8 @@ namespace DatabaseController {
         public String GetAddress2(String parentID) {
             String query = "SELECT Address2 FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             String result = "";
-
-            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
-
             try {
+                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
                 dbCon.Open();
 
                 result = Convert.ToString(cmd.ExecuteScalar());
@@ -239,26 +235,26 @@ namespace DatabaseController {
         }
 
         public void AddNewParent(string ID, string PIN, string firstName, string lastName, string phone, string email, string address, string address2, string city, string state, string zip, string photo) {
-            dbCon.Open();
+            
 
             try {
-
+                dbCon.Open();
                 string sql = @"INSERT INTO Guardian(Guardian_ID, GuardianPIN, FirstName, LastName, Phone, Email, Address1, Address2, City, StateAbrv, Zip, PhotoLocation) " +
                 "VALUES('" + ID + "', " + PIN + ", " + firstName + ", " + lastName + ", " + phone + ", " + email + ", " + address + ", " + address2 + ", " + city + ", " + state + ", " + zip + ", " + photo + ");";
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
                 mycommand.ExecuteNonQuery();
                 MessageBox.Show("Completed");
             } catch (SQLiteException e) {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
             }
             dbCon.Close();
         }
 
         public void UpdateParentInfo(string ID, string firstName, string lastName, string phone, string email, string address, string address2, string city, string state, string zip, string path) {
-            dbCon.Open();
+            
 
             try {
-
+                dbCon.Open();
                 string sql = @"UPDATE Guardian SET FirstName = @firstName, LastName = @lastName, Phone = @phone, Email = @email," +
                                     "Address1 = @address, Address2 = @address2, City = @city, StateAbrv = @state, Zip  = @zip, PhotoLocation = @path WHERE Guardian_ID = @ID;";
 
@@ -279,15 +275,12 @@ namespace DatabaseController {
                 mycommand.ExecuteNonQuery();
                 MessageBox.Show("Completed");
             } catch (SQLiteException e) {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
             }
             dbCon.Close();
         }
 
         public string CheckIfFamilyExists(string familyID) {
-
-
-            //DataSet DS = new DataSet();
             string result = ""; 
             try {
 
@@ -307,7 +300,7 @@ namespace DatabaseController {
 
 
             } catch (SQLiteException e) {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
             }
 
             dbCon.Close();
@@ -327,7 +320,7 @@ namespace DatabaseController {
                 command.ExecuteNonQuery();
 
             } catch (SQLiteException e) {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
             }
             dbCon.Close();
         }

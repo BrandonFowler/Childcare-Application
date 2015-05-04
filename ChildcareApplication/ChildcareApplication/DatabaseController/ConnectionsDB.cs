@@ -177,7 +177,7 @@ namespace DatabaseController {
                     MessageBox.Show("There is already a link to this child and the guardian.");
                 }
             } catch (SQLiteException e) {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
             }
             dbCon.Close();
         }
@@ -204,7 +204,7 @@ namespace DatabaseController {
                 dbCon.Close();
                 return false;
             } catch (Exception e) {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
             }
             dbCon.Close();
             return false;
@@ -224,7 +224,6 @@ namespace DatabaseController {
                 command.Parameters.Add(new SQLiteParameter("@pID", pID));
                 command.ExecuteNonQuery();
 
-                MessageBox.Show("Completed");
                 dbCon.Close();
             } catch (SQLiteException e) {
                 MessageBox.Show(e.Message);

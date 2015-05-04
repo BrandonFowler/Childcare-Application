@@ -18,9 +18,10 @@ namespace DatabaseController {
 
 
         public int GetMaxChildID() {
-            dbCon.Open();
+
             int maxID = 0;
             try {
+                dbCon.Open();
                 string sql = "SELECT MAX(Child_ID) FROM Child;";
 
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
@@ -35,17 +36,18 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (SQLiteException e) {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
             }
             return maxID;
         }
 
         public int GetMaxConnectionID() {
-            dbCon.Open();
+            
             DataSet DS = new DataSet();
             int maxID = 0;
 
             try {
+                dbCon.Open();
                 string sql = "SELECT MAX(Allowance_ID) FROM AllowedConnections;";
 
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
@@ -60,7 +62,7 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (SQLiteException e) {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
             }
             return maxID;
         }
@@ -77,15 +79,15 @@ namespace DatabaseController {
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
             } catch (SQLiteException e) {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
             }
             dbCon.Close();
         }
 
         public void UpdateExistingChilderen(string conID, string pID, string cID, string famID) {
-            dbCon.Open();
 
             try {
+                dbCon.Open();
                 String sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
                                 + "VALUES(" + conID + ", " + pID + ", " + cID + ", " + famID + ");";
 
@@ -96,7 +98,7 @@ namespace DatabaseController {
                 MessageBox.Show("Link Completed.");
 
             } catch (SQLiteException e) {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
             }
             dbCon.Close();
         }
@@ -121,7 +123,7 @@ namespace DatabaseController {
                 MessageBox.Show("Completed");
                 dbCon.Close();
             } catch (SQLiteException e) {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
             }
         }
 
