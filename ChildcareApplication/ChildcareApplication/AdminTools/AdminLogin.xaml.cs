@@ -36,6 +36,7 @@ namespace AdminTools {
             this.txt_Password.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_Password.GotFocus += OnPINBoxFocus;
             this.txt_UserName.Focus();
+            this.MouseDown += WindowMouseDown;
         }//end win_LoginWindow
 
         public AdminLogin(string login) {
@@ -47,6 +48,7 @@ namespace AdminTools {
             this.txt_Password.GotFocus += OnPINBoxFocus;
             this.txt_UserName.Focus();
             this.parentTools = true;
+            this.MouseDown += WindowMouseDown;
         }//end win_LoginWindow
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e)
@@ -129,6 +131,11 @@ namespace AdminTools {
             if (e.Key == Key.Enter) {
                 LoginCheck();
             }
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

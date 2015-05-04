@@ -24,6 +24,7 @@ namespace ChildcareApplication.AdminTools {
             errorPresent = false;
 
             loadSettings();
+            this.MouseDown += WindowMouseDown;
         }
 
         private void loadSettings() {
@@ -477,6 +478,11 @@ namespace ChildcareApplication.AdminTools {
             if (e.Key == Key.Enter) {
                 MessageBox.Show("NYI");
             }
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

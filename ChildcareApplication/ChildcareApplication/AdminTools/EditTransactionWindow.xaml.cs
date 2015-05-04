@@ -20,6 +20,7 @@ namespace AdminTools {
         public EditTransactionWindow() {
             InitializeComponent();
             LoadTransactions();
+            this.MouseDown += WindowMouseDown;
         }
 
         private void LoadTransactions() {
@@ -91,6 +92,11 @@ namespace AdminTools {
                 DataRowView row = (DataRowView)TransactionDataGrid.SelectedItem;
                 txt_TransactionID.Text = row.Row[1].ToString();
             }
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

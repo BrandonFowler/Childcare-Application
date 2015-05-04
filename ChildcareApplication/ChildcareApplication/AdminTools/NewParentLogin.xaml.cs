@@ -14,6 +14,7 @@ namespace AdminTools {
         public NewParentLogin() {
             InitializeComponent();
             this.db = new GuardianInfoDB();
+            this.MouseDown += WindowMouseDown;
         }
 
         private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
@@ -157,6 +158,11 @@ namespace AdminTools {
 
         private void psw_ParentPIN2_GotMouseCapture(object sender, MouseEventArgs e) {
             psw_GotMouseCapture(sender, e);
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
 
     }

@@ -25,11 +25,18 @@ namespace AdminTools {
             InitializeComponent();
             this.ID = parentID;
             this.db = new ChildInfoDatabase();
-            cnv_ChildIcon.Background = new SolidColorBrush(Colors.Aqua); //setting canvas color so we can see it
+            var bc = new BrushConverter();
+            cnv_ChildIcon.Background = (Brush)bc.ConvertFrom("#FFE6EAE0"); //setting canvas color so we can see it
             btn_Delete.Background = new SolidColorBrush(Colors.Red);
             LoadParentInfo(parentID);
             setChildBox();
             lst_ChildBox.SelectionChanged += ListBoxSelectionChanged;
+            this.MouseDown += WindowMouseDown;
+            this.dte_Birthday.Loaded += delegate{
+                var textBox = (TextBox)dte_Birthday.Template.FindName("PART_TextBox", dte_Birthday);
+                textBox.Background = dte_Birthday.Background;
+            };
+          
         }
 
 
@@ -372,6 +379,11 @@ namespace AdminTools {
 
         private void txt_Allergies_GotMouseCapture(object sender, MouseEventArgs e) {
             txt_GotMouseCapture(sender, e);
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

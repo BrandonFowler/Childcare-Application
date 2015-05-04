@@ -120,7 +120,7 @@ namespace GuardianTools {
 
         private void CleanDisplay() {
             var bc = new BrushConverter();
-            cnv_GuardianPic.Background = (Brush)bc.ConvertFrom("#FFFFFFFF");
+            cnv_GuardianPic.Background = (Brush)bc.ConvertFrom("#FFE6EAE0");
             this.dta_GuardianList.ItemsSource = null;
         }
 

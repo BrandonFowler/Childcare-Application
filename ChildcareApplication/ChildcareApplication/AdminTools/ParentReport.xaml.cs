@@ -27,7 +27,15 @@ namespace AdminTools {
             this.txt_ParentID.Focus();
             this.parentDataGrid.IsTabStop = false;
             this.reportLoaded = false;
-
+            this.dte_fromDate.Loaded += delegate{
+                var textBox = (TextBox)dte_fromDate.Template.FindName("PART_TextBox", dte_fromDate);
+                textBox.Background = dte_fromDate.Background;
+            };
+            this.dte_toDate.Loaded += delegate{
+                var textBox = (TextBox)dte_toDate.Template.FindName("PART_TextBox", dte_toDate);
+                textBox.Background = dte_toDate.Background;
+            };
+            this.MouseDown += WindowMouseDown;
         }
 
         //Loads a report based on the passed in MySQL query
@@ -228,6 +236,11 @@ namespace AdminTools {
             } else {
                 MessageBox.Show("You must load a report before you can print one!");
             }
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

@@ -25,6 +25,7 @@ namespace AdminTools {
             InitializeComponent();
             valueChanged = false;
             maxHoursChanged = false;
+            this.MouseDown += WindowMouseDown;
         }
 
         public EventModificationWindow(String oldEventName) {
@@ -33,6 +34,7 @@ namespace AdminTools {
             valueChanged = false;
             maxHoursChanged = false;
             this.oldEventName = oldEventName;
+            this.MouseDown += WindowMouseDown;
         }
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
@@ -460,6 +462,11 @@ namespace AdminTools {
             if (e.Key == Key.Enter) {
                 txt_MaxHours.Focus();
             }
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace AdminTools {
             InitializeComponent();
             LoadEvents();
             FillComboBox();
+            this.MouseDown += WindowMouseDown;
         }
 
         private void LoadEvents() {
@@ -59,6 +60,11 @@ namespace AdminTools {
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e) {
             this.Close();
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

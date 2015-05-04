@@ -9,11 +9,11 @@
     <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="1280" Height="700" ClipToBounds="True">
         <Grid Margin="4,8,-2,-8">
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="1030,584,0,0" VerticalAlignment="Top" Width="142" Click="btn_Cancel_Click" RenderTransformOrigin="11.947,11.825" Height="65" FontSize="20" FontWeight="Bold"/>
-            <Label x:Name="lbl_searchLable" Content="Search By Last Name or Guardian ID" HorizontalAlignment="Left" Margin="467,99,0,0" VerticalAlignment="Top" Height="38" Width="354" FontSize="20" RenderTransformOrigin="0.5,0.5" FontWeight="Bold"/>
+            <Label x:Name="lbl_searchLable" Content="Search By Last Name or Guardian ID" HorizontalAlignment="Left" Margin="467,99,0,0" VerticalAlignment="Top" Height="38" Width="354" FontSize="20" RenderTransformOrigin="0.5,0.5"/>
             <TextBox x:Name="txt_SearchBox" HorizontalAlignment="Left" Height="41" Margin="467,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="354" FontSize="20" Background="#FFE6EAE0"/>
             <Button Style="{DynamicResource GlassButton}"  x:Name="btn_Search" Content="Search" HorizontalAlignment="Left" Margin="877,116,0,0" VerticalAlignment="Top" Width="131" FontSize="20" Height="67" Click="btn_Search_Click" Background="#FF83CDCD" FontWeight="Bold"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Login" Content="Login As Selected Guardian" HorizontalAlignment="Left" Margin="347,584,0,0" VerticalAlignment="Top" Width="290" Height="78" FontSize="20" Click="btn_Login_Click" RenderTransformOrigin="0.5,0.5" FontWeight="Bold"/>
-            <Canvas x:Name="cnv_GuardianPic" HorizontalAlignment="Left" Height="284" Margin="82,58,0,0" VerticalAlignment="Top" Width="338" Background="White"/>
+            <Canvas x:Name="cnv_GuardianPic" HorizontalAlignment="Left" Height="284" Margin="82,58,0,0" VerticalAlignment="Top" Width="338" Background="#FFE6EAE0"/>
             <DataGrid x:Name="dta_GuardianList" HorizontalAlignment="Left" Margin="82,389,0,0" VerticalAlignment="Top" Height="187" Width="835" Background="#FFE6EAE0" IsReadOnly="True" FontSize="20" FontWeight="Bold" RowBackground="#FFE6EAE0" ColumnWidth="*"/>
         </Grid>
     </Border>

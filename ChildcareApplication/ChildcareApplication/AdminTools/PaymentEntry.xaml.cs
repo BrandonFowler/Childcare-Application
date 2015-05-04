@@ -24,6 +24,7 @@ namespace ChildcareApplication.AdminTools {
             this.callingWindow = parentReport;
             InitializeCurrentBalance();
             this.txt_PaymentAmount.Focus();
+            this.MouseDown += WindowMouseDown;
         }
 
         private void InitializeCurrentBalance() {
@@ -70,6 +71,11 @@ namespace ChildcareApplication.AdminTools {
             if (e.Key == Key.Enter) {
                 SubmitPayment();
             }
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

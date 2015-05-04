@@ -1,53 +1,59 @@
 ﻿<Window x:Class="ChildcareApplication.AdminTools.ApplicationSettings"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Application Settings" Height="402.353" Width="712" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Label x:Name="lbl_BillingDate" Content="Start of Billing Cycle (day of month)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_MaxMonthly" Content="Maximum Monthly Charge for Regular Childcare" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_ExpirationDays" Content="Number of Days to Hold Expired Records" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btn_Confirm" Content="Confirm" HorizontalAlignment="Left" Margin="163,320,0,0" VerticalAlignment="Top" Width="75" TabIndex="5" Click="btn_Confirm_Click" IsTabStop="False"/>
-        <Button x:Name="btn_Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="55,320,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" TabIndex="6" IsTabStop="False"/>
-        <TextBox x:Name="txt_MaxMonthlyFee" HorizontalAlignment="Left" Height="23" Margin="55,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="2" GotFocus="SelectAllonFocus" LostFocus="txt_MaxMonthlyFee_LostFocus"/>
-        <TextBox x:Name="txt_BillingDate" HorizontalAlignment="Left" Height="23" Margin="55,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="1" GotFocus="SelectAllonFocus" LostFocus="txt_BillingDate_LostFocus" KeyUp="txt_BillingDate_KeyUp"/>
-        <TextBox x:Name="txt_ExpirationDays" HorizontalAlignment="Left" Height="23" Margin="55,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="3" GotFocus="SelectAllonFocus" LostFocus="txt_ExpirationDays_LostFocus"/>
-        <Label x:Name="lbl_OperatingHours" Content="Hours of Operation" HorizontalAlignment="Left" Margin="442,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_Monday" Content="Monday:" HorizontalAlignment="Left" Margin="372,72,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_Sunday" Content="Sunday:" HorizontalAlignment="Left" Margin="372,255,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_Saturday" Content="Saturday:" HorizontalAlignment="Left" Margin="374,224,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_Friday" Content="Friday:" HorizontalAlignment="Left" Margin="374,193,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_Thursday" Content="Thursday:" HorizontalAlignment="Left" Margin="372,162,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_Wednesday" Content="Wednesday:" HorizontalAlignment="Left" Margin="372,131,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_Tuesday" Content="Tuesday:" HorizontalAlignment="Left" Margin="372,100,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_Open" Content="Opening" HorizontalAlignment="Left" Margin="474,41,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_Close" Content="Closing" HorizontalAlignment="Left" Margin="596,41,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lbl_Closed" Content="Closed" HorizontalAlignment="Left" Margin="332,41,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="chk_MonClosed" Content="" HorizontalAlignment="Left" Margin="347,72,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_MonClosed_Checked" Unchecked="chk_MonClosed_Unchecked"/>
-        <CheckBox x:Name="chk_TueClosed" Content="" HorizontalAlignment="Left" Margin="347,100,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_TueClosed_Checked" Unchecked="chk_TueClosed_Unchecked"/>
-        <CheckBox x:Name="chk_WedClosed" Content="" HorizontalAlignment="Left" Margin="347,131,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_WedClosed_Checked" Unchecked="chk_WedClosed_Unchecked"/>
-        <CheckBox x:Name="chk_ThuClosed" Content="" HorizontalAlignment="Left" Margin="347,162,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_ThuClosed_Checked" Unchecked="chk_ThuClosed_Unchecked"/>
-        <CheckBox x:Name="chk_FriClosed" Content="" HorizontalAlignment="Left" Margin="347,193,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_FriClosed_Checked" Unchecked="chk_FriClosed_Unchecked"/>
-        <CheckBox x:Name="chk_SatClosed" Content="" HorizontalAlignment="Left" Margin="347,224,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_SatClosed_Checked" Unchecked="chk_SatClosed_Unchecked"/>
-        <CheckBox x:Name="chk_SunClosed" Content="" HorizontalAlignment="Left" Margin="347,255,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_SunClosed_Checked" Unchecked="chk_SunClosed_Unchecked"/>
-        <TextBox x:Name="txt_MonOpening" HorizontalAlignment="Left" Height="23" Margin="451,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="6" LostFocus="txt_MonOpening_LostFocus" GotFocus="SelectAllonFocus"/>
-        <TextBox x:Name="txt_WedOpening" HorizontalAlignment="Left" Height="23" Margin="451,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="10" GotFocus="SelectAllonFocus" LostFocus="txt_WedOpening_LostFocus"/>
-        <TextBox x:Name="txt_TueOpening" HorizontalAlignment="Left" Height="23" Margin="451,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="8" GotFocus="SelectAllonFocus" LostFocus="txt_TueOpening_LostFocus"/>
-        <TextBox x:Name="txt_ThuOpening" HorizontalAlignment="Left" Height="23" Margin="451,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="12" GotFocus="SelectAllonFocus" LostFocus="txt_ThuOpening_LostFocus"/>
-        <TextBox x:Name="txt_FriOpening" HorizontalAlignment="Left" Height="23" Margin="451,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="14" GotFocus="SelectAllonFocus" LostFocus="txt_FriOpening_LostFocus"/>
-        <TextBox x:Name="txt_SatOpening" HorizontalAlignment="Left" Height="23" Margin="451,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="16" GotFocus="SelectAllonFocus" LostFocus="txt_SatOpening_LostFocus"/>
-        <TextBox x:Name="txt_SunOpening" HorizontalAlignment="Left" Height="23" Margin="451,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="18" GotFocus="SelectAllonFocus" LostFocus="txt_SunOpening_LostFocus"/>
-        <TextBox x:Name="txt_MonClosing" HorizontalAlignment="Left" Height="23" Margin="572,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="7" GotFocus="SelectAllonFocus" LostFocus="txt_MonClosing_LostFocus"/>
-        <TextBox x:Name="txt_WedClosing" HorizontalAlignment="Left" Height="23" Margin="572,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="11" GotFocus="SelectAllonFocus" LostFocus="txt_WedClosing_LostFocus"/>
-        <TextBox x:Name="txt_TueClosing" HorizontalAlignment="Left" Height="23" Margin="572,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="9" GotFocus="SelectAllonFocus" LostFocus="txt_TueClosing_LostFocus"/>
-        <TextBox x:Name="txt_ThuClosing" HorizontalAlignment="Left" Height="23" Margin="572,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="13" GotFocus="SelectAllonFocus" LostFocus="txt_ThuClosing_LostFocus"/>
-        <TextBox x:Name="txt_FriClosing" HorizontalAlignment="Left" Height="23" Margin="572,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="15" GotFocus="SelectAllonFocus" LostFocus="txt_FriClosing_LostFocus"/>
-        <TextBox x:Name="txt_SatClosing" HorizontalAlignment="Left" Height="23" Margin="572,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="17" GotFocus="SelectAllonFocus" LostFocus="txt_SatClosing_LostFocus"/>
-        <TextBox x:Name="txt_SunClosing" HorizontalAlignment="Left" Height="23" Margin="572,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="19" GotFocus="SelectAllonFocus" LostFocus="txt_SunClosing_LostFocus"/>
-        <Label x:Name="lbl_InfantAge" Content="Infant Age End (in years)" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_InfantAge" HorizontalAlignment="Left" Height="23" Margin="55,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="4" GotFocus="SelectAllonFocus" LostFocus="txt_InfantAge_LostFocus"/>
-        <Label x:Name="lbl_RegularAge" Content="Regular Age End (in years)" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_RegularAge" HorizontalAlignment="Left" Height="23" Margin="55,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="5" GotFocus="SelectAllonFocus" LostFocus="txt_RegularAge_LostFocus"/>
-        <TextBox x:Name="txt_Status" HorizontalAlignment="Left" Height="23" Margin="374,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AllowDrop="False" IsHitTestVisible="False" TabIndex="99" IsUndoEnabled="False" IsReadOnly="True" FontWeight="Bold"/>
+        Title="Application Settings" Height="402.353" Width="712" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Padding="0"
+        Background="#FFE4E8EE">
+    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="712" Height="402.353" ClipToBounds="True">
+        <Grid>
+            <Label x:Name="lbl_BillingDate" Content="Start of Billing Cycle (day of month)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbl_MaxMonthly" Content="Maximum Monthly Charge for Regular Childcare" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbl_ExpirationDays" Content="Number of Days to Hold Expired Records" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Confirm" Content="Confirm" HorizontalAlignment="Left" Margin="163,320,0,0" VerticalAlignment="Top" Width="75" TabIndex="5" Click="btn_Confirm_Click" IsTabStop="False"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="55,320,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" TabIndex="6" IsTabStop="False"/>
+            <TextBox x:Name="txt_MaxMonthlyFee" HorizontalAlignment="Left" Height="23" Margin="55,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="2" GotFocus="SelectAllonFocus" LostFocus="txt_MaxMonthlyFee_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_BillingDate" HorizontalAlignment="Left" Height="23" Margin="55,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="1" GotFocus="SelectAllonFocus" LostFocus="txt_BillingDate_LostFocus" KeyUp="txt_BillingDate_KeyUp" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_ExpirationDays" HorizontalAlignment="Left" Height="23" Margin="55,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="3" GotFocus="SelectAllonFocus" LostFocus="txt_ExpirationDays_LostFocus" Background="#FFE6EAE0"/>
+            <Label x:Name="lbl_OperatingHours" Content="Hours of Operation" HorizontalAlignment="Left" Margin="442,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbl_Monday" Content="Monday:" HorizontalAlignment="Left" Margin="372,72,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbl_Sunday" Content="Sunday:" HorizontalAlignment="Left" Margin="372,255,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbl_Saturday" Content="Saturday:" HorizontalAlignment="Left" Margin="374,224,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbl_Friday" Content="Friday:" HorizontalAlignment="Left" Margin="374,193,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbl_Thursday" Content="Thursday:" HorizontalAlignment="Left" Margin="372,162,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbl_Wednesday" Content="Wednesday:" HorizontalAlignment="Left" Margin="372,131,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbl_Tuesday" Content="Tuesday:" HorizontalAlignment="Left" Margin="372,100,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbl_Open" Content="Opening" HorizontalAlignment="Left" Margin="474,41,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbl_Close" Content="Closing" HorizontalAlignment="Left" Margin="596,41,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbl_Closed" Content="Closed" HorizontalAlignment="Left" Margin="332,41,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="chk_MonClosed" Content="" HorizontalAlignment="Left" Margin="347,72,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_MonClosed_Checked" Unchecked="chk_MonClosed_Unchecked" Background="#FFE6EAE0"/>
+            <CheckBox x:Name="chk_TueClosed" Content="" HorizontalAlignment="Left" Margin="347,100,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_TueClosed_Checked" Unchecked="chk_TueClosed_Unchecked" Background="#FFE6EAE0"/>
+            <CheckBox x:Name="chk_WedClosed" Content="" HorizontalAlignment="Left" Margin="347,131,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_WedClosed_Checked" Unchecked="chk_WedClosed_Unchecked" Background="#FFE6EAE0"/>
+            <CheckBox x:Name="chk_ThuClosed" Content="" HorizontalAlignment="Left" Margin="347,162,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_ThuClosed_Checked" Unchecked="chk_ThuClosed_Unchecked" Background="#FFE6EAE0"/>
+            <CheckBox x:Name="chk_FriClosed" Content="" HorizontalAlignment="Left" Margin="347,193,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_FriClosed_Checked" Unchecked="chk_FriClosed_Unchecked" Background="#FFE6EAE0"/>
+            <CheckBox x:Name="chk_SatClosed" Content="" HorizontalAlignment="Left" Margin="347,224,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_SatClosed_Checked" Unchecked="chk_SatClosed_Unchecked" Background="#FFE6EAE0"/>
+            <CheckBox x:Name="chk_SunClosed" Content="" HorizontalAlignment="Left" Margin="347,255,0,0" VerticalAlignment="Top" IsTabStop="False" Checked="chk_SunClosed_Checked" Unchecked="chk_SunClosed_Unchecked" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_MonOpening" HorizontalAlignment="Left" Height="23" Margin="451,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="6" LostFocus="txt_MonOpening_LostFocus" GotFocus="SelectAllonFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_WedOpening" HorizontalAlignment="Left" Height="23" Margin="451,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="10" GotFocus="SelectAllonFocus" LostFocus="txt_WedOpening_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_TueOpening" HorizontalAlignment="Left" Height="23" Margin="451,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="8" GotFocus="SelectAllonFocus" LostFocus="txt_TueOpening_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_ThuOpening" HorizontalAlignment="Left" Height="23" Margin="451,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="12" GotFocus="SelectAllonFocus" LostFocus="txt_ThuOpening_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_FriOpening" HorizontalAlignment="Left" Height="23" Margin="451,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="14" GotFocus="SelectAllonFocus" LostFocus="txt_FriOpening_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_SatOpening" HorizontalAlignment="Left" Height="23" Margin="451,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="16" GotFocus="SelectAllonFocus" LostFocus="txt_SatOpening_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_SunOpening" HorizontalAlignment="Left" Height="23" Margin="451,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="18" GotFocus="SelectAllonFocus" LostFocus="txt_SunOpening_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_MonClosing" HorizontalAlignment="Left" Height="23" Margin="572,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="7" GotFocus="SelectAllonFocus" LostFocus="txt_MonClosing_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_WedClosing" HorizontalAlignment="Left" Height="23" Margin="572,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="11" GotFocus="SelectAllonFocus" LostFocus="txt_WedClosing_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_TueClosing" HorizontalAlignment="Left" Height="23" Margin="572,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="9" GotFocus="SelectAllonFocus" LostFocus="txt_TueClosing_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_ThuClosing" HorizontalAlignment="Left" Height="23" Margin="572,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="13" GotFocus="SelectAllonFocus" LostFocus="txt_ThuClosing_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_FriClosing" HorizontalAlignment="Left" Height="23" Margin="572,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="15" GotFocus="SelectAllonFocus" LostFocus="txt_FriClosing_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_SatClosing" HorizontalAlignment="Left" Height="23" Margin="572,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="17" GotFocus="SelectAllonFocus" LostFocus="txt_SatClosing_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_SunClosing" HorizontalAlignment="Left" Height="23" Margin="572,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="19" GotFocus="SelectAllonFocus" LostFocus="txt_SunClosing_LostFocus" Background="#FFE6EAE0"/>
+            <Label x:Name="lbl_InfantAge" Content="Infant Age End (in years)" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txt_InfantAge" HorizontalAlignment="Left" Height="23" Margin="55,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="4" GotFocus="SelectAllonFocus" LostFocus="txt_InfantAge_LostFocus" Background="#FFE6EAE0"/>
+            <Label x:Name="lbl_RegularAge" Content="Regular Age End (in years)" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txt_RegularAge" HorizontalAlignment="Left" Height="23" Margin="55,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" TabIndex="5" GotFocus="SelectAllonFocus" LostFocus="txt_RegularAge_LostFocus" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_Status" HorizontalAlignment="Left" Height="23" Margin="374,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AllowDrop="False" IsHitTestVisible="False" TabIndex="99" IsUndoEnabled="False" IsReadOnly="True" FontWeight="Bold" Background="#FFE6EAE0"/>
 
-    </Grid>
+        </Grid>
+    </Border>
 </Window>

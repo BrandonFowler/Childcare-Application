@@ -27,6 +27,7 @@ namespace AdminTools {
             InitializeCMB_Year();
             reportLoaded = false;
             settings = new ChildcareApplication.Properties.Settings();
+            this.MouseDown += WindowMouseDown;
         }
 
         private void InitializeCMB_Year() {
@@ -99,7 +100,7 @@ namespace AdminTools {
         }
 
         private void btn_SpecificMonth_Click(object sender, RoutedEventArgs e) {
-            if (cmb_Month.SelectedIndex != -1 && cmb_Year.SelectedIndex != 1) {
+            if (cmb_Month.SelectedIndex != -1 && cmb_Year.SelectedIndex != -1) {
                 String fromDate, toDate;
 
                 String month = ((ComboBoxItem)cmb_Month.SelectedItem).Content.ToString();
@@ -178,6 +179,11 @@ namespace AdminTools {
             } else {
                 MessageBox.Show("You must load a report before you can print one!");
             }
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

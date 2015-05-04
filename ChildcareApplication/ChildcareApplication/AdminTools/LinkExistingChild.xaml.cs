@@ -7,6 +7,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Windows.Input;
 
 namespace ChildcareApplication.AdminTools {
     /// <summary>
@@ -24,6 +25,7 @@ namespace ChildcareApplication.AdminTools {
             this.ID = pID;
             this.connectedChildren = connectedChildren;
             setChildBox();
+            this.MouseDown += WindowMouseDown;
         }
 
         private void setChildBox() {
@@ -97,6 +99,11 @@ namespace ChildcareApplication.AdminTools {
             }
             lst_ChildBox.Items.Clear();
             setChildBox();
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

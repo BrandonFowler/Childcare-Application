@@ -26,10 +26,12 @@ namespace AdminTools {
             this.accessLevel = accessLevel;
             this.username = username;
             HideAdminOptions();
+            this.MouseDown += WindowMouseDown;
         }
 
         public AdminMenu() {
             InitializeComponent();
+            this.MouseDown += WindowMouseDown;
         }
 
         private void HideAdminOptions() {
@@ -124,6 +126,11 @@ namespace AdminTools {
         private void btn_AppSettings_Click(object sender, RoutedEventArgs e) {
             ApplicationSettings appsettings = new ApplicationSettings();
             appsettings.ShowDialog();
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
 
     }//end class

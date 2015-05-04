@@ -1,6 +1,7 @@
 ﻿using ChildcareApplication.AdminTools;
 using DatabaseController;
 using System.Windows;
+using System.Windows.Input;
 namespace AdminTools {
     /// <summary>
     /// Interaction logic for win_Link_DeLinkChild.xaml
@@ -18,6 +19,7 @@ namespace AdminTools {
             childID = cID;
             InitializeComponent();
             this.db = new ChildInfoDatabase();
+            this.MouseDown += WindowMouseDown;
         }
 
         private void btn_Enter_Click(object sender, RoutedEventArgs e) {
@@ -100,6 +102,11 @@ namespace AdminTools {
 
                 return false;
             }
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

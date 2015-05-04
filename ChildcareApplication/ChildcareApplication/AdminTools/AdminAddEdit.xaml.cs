@@ -1,5 +1,6 @@
 ﻿using ChildcareApplication.DatabaseController;
 using System.Windows;
+using System.Windows.Input;
 
 namespace ChildcareApplication.AdminTools {
     /// <summary>
@@ -16,6 +17,7 @@ namespace ChildcareApplication.AdminTools {
             this.loggedInAs = username;
 
             lst_AdminList.ItemsSource = db.FindAdmins();
+            this.MouseDown += WindowMouseDown;
         }
 
         private void lst_AdminList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
@@ -200,6 +202,11 @@ namespace ChildcareApplication.AdminTools {
         private void rdb_Limited_Unchecked(object sender, RoutedEventArgs e) {
             btn_Save.IsEnabled = true;
             btn_Cancel.IsEnabled = true;
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

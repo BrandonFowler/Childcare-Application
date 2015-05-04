@@ -21,6 +21,7 @@ namespace ChildcareApplication {
     public partial class UserSelection : Window {
         public UserSelection() {
             InitializeComponent();
+            this.MouseDown += WindowMouseDown;
         }
 
         private void btn_ParentUse_Click(object sender, RoutedEventArgs e) {
@@ -37,6 +38,11 @@ namespace ChildcareApplication {
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e) {
             Application.Current.Shutdown();
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

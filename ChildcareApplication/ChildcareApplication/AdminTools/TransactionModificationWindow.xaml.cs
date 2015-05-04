@@ -24,6 +24,7 @@ namespace AdminTools {
             this.transactionID = transactionID;
             LoadData();
             this.dataChanged = false;
+            this.MouseDown += WindowMouseDown;
         }
 
         public TransactionModificationWindow() {
@@ -31,6 +32,7 @@ namespace AdminTools {
             LoadEventCMB();
             this.transactionID = "";
             this.dataChanged = false;
+            this.MouseDown += WindowMouseDown;
         }
 
         private void btn_OK_Click(object sender, RoutedEventArgs e) {
@@ -308,6 +310,11 @@ namespace AdminTools {
 
         private void txt_TransactionTotal_TextChanged(object sender, TextChangedEventArgs e) {
             this.dataChanged = true;
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

@@ -2,28 +2,33 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:AdminTools"
-        Title="LinkExistingChild" Height="314" Width="555">
+        Title="LinkExistingChild" Height="314" Width="555"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Padding="0"
+        WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
+    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="555" Height="314" ClipToBounds="True">
+        <Grid>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_LinkChild" Content="Link Child" HorizontalAlignment="Left" Margin="66,210,0,0" VerticalAlignment="Top" Width="109" Height="51" Click="btn_LinkChild_Click"/>
+            <ListBox x:Name="lst_ChildBox" HorizontalAlignment="Left" Height="124" Margin="66,70,0,0" VerticalAlignment="Top" Width="395" Background="#FFE6EAE0">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type local:Child}">
+                        <StackPanel>
+                            <TextBlock Margin="3" Text="{Binding firstName}"/>
+                            <TextBlock Margin="3" Text="{Binding lastName}"/>
+                            <ContentControl Margin="3" Content="{Binding image}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="Back" HorizontalAlignment="Left" Margin="362,210,0,0" VerticalAlignment="Top" Width="99" Height="51" Click="btn_Cancel_Click"/>
+            <Label x:Name="lbl_LinkExistingCHild" Content="Click a child from your family to link to yourself. Then hit &quot;Link Child&quot;." HorizontalAlignment="Left" Margin="66,26,0,0" VerticalAlignment="Top" Width="395"/>
 
-    <Grid>
-        <Button x:Name="btn_LinkChild" Content="Link Child" HorizontalAlignment="Left" Margin="66,210,0,0" VerticalAlignment="Top" Width="109" Height="51" Click="btn_LinkChild_Click"/>
-        <ListBox x:Name="lst_ChildBox" HorizontalAlignment="Left" Height="124" Margin="66,70,0,0" VerticalAlignment="Top" Width="395">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type local:Child}">
-                    <StackPanel>
-                        <TextBlock Margin="3" Text="{Binding firstName}"/>
-                        <TextBlock Margin="3" Text="{Binding lastName}"/>
-                        <ContentControl Margin="3" Content="{Binding image}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <Button x:Name="btn_Cancel" Content="Back" HorizontalAlignment="Left" Margin="362,210,0,0" VerticalAlignment="Top" Width="99" Height="51" Click="btn_Cancel_Click"/>
-        <Label x:Name="lbl_LinkExistingCHild" Content="Click a child from your family to link to yourself. Then hit &quot;Link Child&quot;." HorizontalAlignment="Left" Margin="66,26,0,0" VerticalAlignment="Top" Width="395"/>
-
-    </Grid>
+        </Grid>
+    </Border>
 </Window>

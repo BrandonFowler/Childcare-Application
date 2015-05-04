@@ -20,9 +20,9 @@ namespace AdminTools {
             InitializeComponent();
             AddStates();
             this.db = new GuardianInfoDB();
-            cnv_ParentIcon.Background = new SolidColorBrush(Colors.Aqua); //setting canvas color so we can see it
             btn_Delete.Background = new SolidColorBrush(Colors.Red);
             LoadParentInfo(parentID);
+            this.MouseDown += WindowMouseDown;
         }
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
@@ -392,6 +392,11 @@ namespace AdminTools {
 
         private void txt_Zip_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
             txt_GotMouseCapture(sender, e);
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
 
 

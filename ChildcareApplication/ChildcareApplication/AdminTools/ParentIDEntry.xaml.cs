@@ -19,6 +19,7 @@ namespace AdminTools {
             this.db = new LoginDB();
             this.txt_IDEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_IDEntry.Focus();
+            this.MouseDown += WindowMouseDown;
         }
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e) {
@@ -68,5 +69,10 @@ namespace AdminTools {
             AdminEditChildInfo.Show();
             this.Close();
         }//end DisplayAdminEditChildInfo
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
+        }
     }
 }

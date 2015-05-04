@@ -1,18 +1,24 @@
 ﻿<Window x:Name="win_NewParent" x:Class="AdminTools.NewParentLogin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="win_NewParentLogin" Height="278" Width="449">
-    <Grid>
-        <TextBox x:Name="txt_ParentID1" HorizontalAlignment="Left" Height="23" Margin="81,53,0,0" TextWrapping="Wrap" Text="Enter your ID" VerticalAlignment="Top" Width="120" GotFocus="txt_ParentID1_GotFocus" GotMouseCapture="txt_ParentID1_GotMouseCapture"/>
-        <TextBox x:Name="txt_ParentID2" HorizontalAlignment="Left" Height="23" Margin="81,92,0,0" TextWrapping="Wrap" Text="Enter you ID again" VerticalAlignment="Top" Width="120" GotFocus="txt_ParentID2_GotFocus" GotMouseCapture="txt_ParentID2_GotMouseCapture"/>
-        <PasswordBox x:Name="psw_ParentPIN1" HorizontalAlignment="Left" Margin="298,56,0,0" VerticalAlignment="Top" Width="84" GotFocus="psw_ParentPIN1_GotFocus" GotMouseCapture="psw_ParentPIN1_GotMouseCapture"/>
-        <PasswordBox x:Name="psw_ParentPIN2" HorizontalAlignment="Left" Margin="298,92,0,0" VerticalAlignment="Top" Width="84"/>
-        <Label Content="Parent ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0"/>
-        <Label Content="Parent ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,89,0,0"/>
-        <Label Content="Parent PIN" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="227,50,0,0"/>
-        <Label Content="Parent PIN" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="227,92,0,0"/>
-        <Button x:Name="btn_AddNewParent" Content="Add New Parent" HorizontalAlignment="Left" Margin="159,123,0,0" VerticalAlignment="Top" Width="117" Height="63" Click="btn_AddNewParent_Click"/>
-        <Button x:Name="btn_Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="342,202,0,0" VerticalAlignment="Top" Width="75" Click="btn_Cancel_Click"/>
+        Title="win_NewParentLogin" Height="278" Width="449"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Padding="0"
+        WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
+    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="449" Height="278" ClipToBounds="True">
+        <Grid>
+            <TextBox x:Name="txt_ParentID1" HorizontalAlignment="Left" Height="23" Margin="81,53,0,0" TextWrapping="Wrap" Text="Enter your ID" VerticalAlignment="Top" Width="120" GotFocus="txt_ParentID1_GotFocus" GotMouseCapture="txt_ParentID1_GotMouseCapture" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_ParentID2" HorizontalAlignment="Left" Height="23" Margin="81,92,0,0" TextWrapping="Wrap" Text="Enter you ID again" VerticalAlignment="Top" Width="120" GotFocus="txt_ParentID2_GotFocus" GotMouseCapture="txt_ParentID2_GotMouseCapture" Background="#FFE6EAE0"/>
+            <PasswordBox x:Name="psw_ParentPIN1" HorizontalAlignment="Left" Margin="298,56,0,0" VerticalAlignment="Top" Width="84" GotFocus="psw_ParentPIN1_GotFocus" GotMouseCapture="psw_ParentPIN1_GotMouseCapture" Background="#FFE6EAE0"/>
+            <PasswordBox x:Name="psw_ParentPIN2" HorizontalAlignment="Left" Margin="298,92,0,0" VerticalAlignment="Top" Width="84" Background="#FFE6EAE0"/>
+            <Label Content="Parent ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0"/>
+            <Label Content="Parent ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,89,0,0"/>
+            <Label Content="Parent PIN" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="227,50,0,0"/>
+            <Label Content="Parent PIN" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="227,92,0,0"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddNewParent" Content="Add New Parent" HorizontalAlignment="Left" Margin="159,123,0,0" VerticalAlignment="Top" Width="117" Height="63" Click="btn_AddNewParent_Click"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="342,202,0,0" VerticalAlignment="Top" Width="75" Click="btn_Cancel_Click"/>
 
-    </Grid>
+        </Grid>
+    </Border>
 </Window>
