@@ -166,7 +166,7 @@ namespace ChildcareApplication.AdminTools {
              * Event
              */
 
-            Regex regex = new Regex(@"(^([a-zA-Z]+\s?)+$)");
+            Regex regex = new Regex(@"(^([a-zA-Z0-9]+\s?)+$)");
             Match match = regex.Match(data);
 
             if (match.Success)
