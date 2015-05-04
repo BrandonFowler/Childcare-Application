@@ -6,6 +6,7 @@ using System.Windows.Media.Imaging;
 using AdminTools;
 using System.Windows.Media;
 using DatabaseController;
+using System.Windows.Input;
 
 namespace GuardianTools {
    
@@ -20,14 +21,12 @@ namespace GuardianTools {
             this.guardianID = ID;
             this.db = new ConnectionsDB();
             SetUpCheckInBox();
-            cnv_GuardianPic.Background = new SolidColorBrush(Colors.Aqua);
             SetUpParentDisplay();
             EventsSetup();
             this.updateTime = new DateTime();
             updateTime = DateTime.Now;
             lbl_Time.DataContext = updateTime;
-            lst_CheckInBox.GotFocus += CheckInGotFocus;
-            lst_CheckOutBox.SelectionChanged += CheckOutBoxSelectionChanged;
+            this.MouseDown += WindowMouseDown;
         }
 
         private void btn_LogOutParent_Click(object sender, RoutedEventArgs e) {
@@ -96,7 +95,6 @@ namespace GuardianTools {
             else {
                 MessageBox.Show("Please choose and event.");
             }
-            btn_CheckIn.Background = Brushes.Blue;
         }
 
         private void btn_CheckOut_Click(object sender, RoutedEventArgs e) {
@@ -111,7 +109,6 @@ namespace GuardianTools {
                     lst_CheckOutBox.Items.Remove(lst_CheckOutBox.SelectedItem);
                 }
             }
-            btn_CheckOut.Background = Brushes.Blue;
         }
 
         public void SetUpParentDisplay() {
@@ -155,14 +152,9 @@ namespace GuardianTools {
             }
         }
 
-        private void CheckInGotFocus(object sender, System.EventArgs e) {
-            if (cbo_EventChoice.SelectedItem != null) {
-                btn_CheckIn.Background = Brushes.Green;
-            }
-        }
-
-        private void CheckOutBoxSelectionChanged(object sender, System.EventArgs e) {
-            btn_CheckOut.Background = Brushes.Green;
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
 
     }
