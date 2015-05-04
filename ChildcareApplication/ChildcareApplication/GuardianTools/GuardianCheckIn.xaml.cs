@@ -35,7 +35,7 @@ namespace GuardianTools {
             this.txt_PINEntry.GotFocus += OnPINBoxFocus;
             this.txt_IDEntry.Focus();
             this.btn_Login.GotFocus += OnLoginFocus;
-            
+            this.MouseDown += WindowMouseDown;
         }
 
         private void OnIDBoxFocus(object sender, EventArgs e) {
@@ -214,5 +214,9 @@ namespace GuardianTools {
             this.Close();
         }
 
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
+        }
     }
 }

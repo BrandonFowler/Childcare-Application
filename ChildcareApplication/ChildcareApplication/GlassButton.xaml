@@ -26,6 +26,7 @@
                                 </Border.Background>
                             </Border>
                             <ContentPresenter x:Name="ButtonContentPresenter"
+                                RecognizesAccessKey="True"
                                 VerticalAlignment="Center"  
                                 Grid.RowSpan="2" 
                                 HorizontalAlignment="Center"/>
