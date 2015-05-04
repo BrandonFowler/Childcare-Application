@@ -226,7 +226,7 @@ namespace DatabaseController {
             query += "Guardian.Phone, Guardian.Address1, Guardian.Address2, Guardian.City, Guardian.StateAbrv AS State, Guardian.Zip, ";
             query += "'$' || printf('%.2f', ChildcareTransaction.TransactionTotal) AS 'Total Charges' ";
             query += "From Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ChildcareTransaction NATURAL JOIN Family ";
-            query += "ORDER BY ChildcareTransaction.TransactionDate;";
+            query += "ORDER BY ChildcareTransaction.TransactionDate DESC;";
 
             return query;
         }

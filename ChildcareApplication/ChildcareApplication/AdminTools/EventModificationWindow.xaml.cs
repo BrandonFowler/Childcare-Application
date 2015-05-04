@@ -374,12 +374,12 @@ namespace AdminTools {
             int dayNum = 0;
             int monthNum = 0;
             if (!(Int32.TryParse(txt_DayOfMonth.Text, out dayNum))) { 
-                MessageBox.Show("You must enter a number in the Day of Month box.");
+                MessageBox.Show("You must enter a valid number in the Day of Month box.");
                 txt_DayOfMonth.Focus();
                 return false;
             }
             if (!(Int32.TryParse(txt_MonthNum.Text, out monthNum) && monthNum > 0 && monthNum < 13)) {
-                MessageBox.Show("You must enter a number in the Month number box.");
+                MessageBox.Show("You must enter a valid number in the Month number box.");
                 txt_MonthNum.Focus();
                 return false;
             }

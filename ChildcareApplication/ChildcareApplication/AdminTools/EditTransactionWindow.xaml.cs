@@ -85,5 +85,12 @@ namespace AdminTools {
                 this.LoadTransactions();
             }
         }
+
+        private void TransactionDataGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
+            if (TransactionDataGrid.HasItems) {
+                DataRowView row = (DataRowView)TransactionDataGrid.SelectedItem;
+                txt_TransactionID.Text = row.Row[1].ToString();
+            }
+        }
     }
 }

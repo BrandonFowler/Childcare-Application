@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="BusinessReport" Height="528" Width="838.12">
     <Grid>
-        <DataGrid x:Name="TransactionDataGrid" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="403" Width="810" IsReadOnly="True"/>
+        <DataGrid x:Name="TransactionDataGrid" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="403" Width="810" IsReadOnly="True" MouseLeftButtonUp="TransactionDataGrid_MouseLeftButtonUp"/>
         <Button x:Name="btn_Exit" Content="_Exit" HorizontalAlignment="Left" Margin="745,37,0,0" VerticalAlignment="Top" Width="75" Height="22" Click="btn_Exit_Click" TabIndex="4"/>
         <Button x:Name="btn_EditTransaction" Content="Edit _Transaction" HorizontalAlignment="Left" Margin="180,37,0,0" VerticalAlignment="Top" Width="110" Height="22" Click="btn_EditTransaction_Click" TabIndex="1"/>
         <TextBox x:Name="txt_TransactionID" HorizontalAlignment="Left" Height="22" Margin="40,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" GotFocus="txt_TransactionID_GotFocus" TabIndex="0" KeyUp="txt_TransactionID_KeyUp"/>
