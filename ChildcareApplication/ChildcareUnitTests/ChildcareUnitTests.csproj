@@ -63,6 +63,11 @@
     <Compile Include="AdminLoginUnitTests.cs" />
     <Compile Include="ChildCheckInTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TransactionChargeUnitTest.cs" />
     <Compile Include="SettingsValidationUnitTests.cs" />
   </ItemGroup>
@@ -71,6 +76,12 @@
       <Project>{979f41a0-8dd0-415d-ab4f-9d50ee979f25}</Project>
       <Name>ChildcareApplication</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
