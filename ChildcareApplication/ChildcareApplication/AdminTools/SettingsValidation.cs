@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ChildcareApplication.AdminTools {
     class SettingsValidation {
 
-        internal static bool ValidBillingDate(string inputDate) {
+        public static bool ValidBillingDate(string inputDate) {
             int result;
             if (Int32.TryParse(inputDate, out result)) {
                 if (result < 1 || result > 29) {
@@ -20,7 +20,7 @@ namespace ChildcareApplication.AdminTools {
             }
         }
 
-        internal static bool PositiveInteger(string inputInt) {
+        public static bool PositiveInteger(string inputInt) {
             int result;
             if (Int32.TryParse(inputInt, out result)) {
                 if (result < 1) {
@@ -33,7 +33,7 @@ namespace ChildcareApplication.AdminTools {
             }
         }
 
-        internal static bool ValidAge(string lowerAge, string higherAge) {
+        public static bool ValidAge(string lowerAge, string higherAge) {
             int lowerResult;
             int higherResult;
             if (Int32.TryParse(lowerAge, out lowerResult) && Int32.TryParse(higherAge, out higherResult)) {
@@ -47,7 +47,7 @@ namespace ChildcareApplication.AdminTools {
             }
         }
 
-        internal static bool ValidHours(string openingInput, string closingInput) {
+        public static bool ValidHours(string openingInput, string closingInput) {
             DateTime openingTime;
             DateTime closingTime;
             if (DateTime.TryParse(openingInput, out openingTime) && DateTime.TryParse(closingInput, out closingTime)) {
