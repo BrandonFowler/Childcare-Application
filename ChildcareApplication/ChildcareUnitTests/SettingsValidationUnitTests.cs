@@ -40,7 +40,7 @@ namespace ChildcareUnitTests {
             Assert.IsFalse(SettingsValidation.ValidAge("0", "-1"));
             Assert.IsFalse(SettingsValidation.ValidAge("4", "2"));
             Assert.IsFalse(SettingsValidation.ValidAge("-1", "0"));
-            Assert.IsFalse(SettingsValidation.ValidAge("0", "0"));
+            Assert.IsTrue(SettingsValidation.ValidAge("0", "0"));
             Assert.IsFalse(SettingsValidation.ValidAge(null, null));
             Assert.IsTrue(SettingsValidation.ValidAge("0", "4"));
             Assert.IsTrue(SettingsValidation.ValidAge("1", "2"));
@@ -49,6 +49,25 @@ namespace ChildcareUnitTests {
         [TestMethod]
         public void TestValidHours() {
             Assert.IsFalse(SettingsValidation.ValidHours("", ""));
+            Assert.IsFalse(SettingsValidation.ValidHours("a", ""));
+            Assert.IsFalse(SettingsValidation.ValidHours("", "a"));
+            Assert.IsFalse(SettingsValidation.ValidHours("a", "a"));
+            Assert.IsFalse(SettingsValidation.ValidHours("2", "2"));
+            Assert.IsFalse(SettingsValidation.ValidHours("2", "3"));
+            Assert.IsFalse(SettingsValidation.ValidHours("0", "2"));
+            Assert.IsFalse(SettingsValidation.ValidHours("2", "0"));
+            Assert.IsFalse(SettingsValidation.ValidHours("-2", "1"));
+            Assert.IsFalse(SettingsValidation.ValidHours("-12:00:00", "-14:00:00"));
+            Assert.IsFalse(SettingsValidation.ValidHours("-14:00:00", "-12:00:00"));
+            Assert.IsFalse(SettingsValidation.ValidHours("2:00:00", "1:00:00"));
+            Assert.IsFalse(SettingsValidation.ValidHours("23:00:00", "25:00:00"));
+            Assert.IsFalse(SettingsValidation.ValidHours("25:00:00", "23:00:00"));
+            Assert.IsFalse(SettingsValidation.ValidHours(null, null));
+            Assert.IsTrue(SettingsValidation.ValidHours("00:00:00", "00:00:00"));
+            Assert.IsFalse(SettingsValidation.ValidHours("20:00:00", "24:00:00"));
+            Assert.IsTrue(SettingsValidation.ValidHours("2:00:00", "5:00:00"));
+            Assert.IsTrue(SettingsValidation.ValidHours("00:00:00", "2:00:00"));
+            Assert.IsTrue(SettingsValidation.ValidHours("12:00:00", "23:59:59"));
         }
     }
 }

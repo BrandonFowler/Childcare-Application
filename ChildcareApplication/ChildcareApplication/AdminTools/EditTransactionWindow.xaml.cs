@@ -21,6 +21,7 @@ namespace AdminTools {
             InitializeComponent();
             LoadTransactions();
             this.MouseDown += WindowMouseDown;
+            txt_TransactionID.Focus();
         }
 
         private void LoadTransactions() {
