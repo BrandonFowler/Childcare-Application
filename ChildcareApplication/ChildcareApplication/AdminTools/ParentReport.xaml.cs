@@ -23,7 +23,6 @@ namespace AdminTools {
 
         public ParentReport() {
             InitializeComponent();
-            cnv_ParentIcon.Background = new SolidColorBrush(Colors.Aqua);
             this.txt_ParentID.Focus();
             this.parentDataGrid.IsTabStop = false;
             this.reportLoaded = false;
