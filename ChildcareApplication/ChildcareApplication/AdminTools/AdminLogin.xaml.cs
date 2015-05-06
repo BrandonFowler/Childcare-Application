@@ -32,7 +32,7 @@ namespace AdminTools {
             InitializeComponent();
             this.db = new LoginDB();
             this.txt_UserName.GotFocus += OnIDBoxFocus;
-            this.txt_Password.GotFocus += OnPINBoxFocus;
+            this.pwd_Password.GotFocus += OnPINBoxFocus;
             this.txt_UserName.Focus();
             this.MouseDown += WindowMouseDown;
         }
@@ -41,7 +41,7 @@ namespace AdminTools {
             InitializeComponent();
             this.db = new LoginDB();
             this.txt_UserName.GotFocus += OnIDBoxFocus;
-            this.txt_Password.GotFocus += OnPINBoxFocus;
+            this.pwd_Password.GotFocus += OnPINBoxFocus;
             this.txt_UserName.Focus();
             this.parentTools = true;
             this.MouseDown += WindowMouseDown;
@@ -62,11 +62,11 @@ namespace AdminTools {
         }
 
         private void LoginCheck() {
-            if (string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.txt_Password.Password)) {
+            if (string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.pwd_Password.Password)) {
                 MessageBox.Show("Please enter a User Name and a Password.");
             } else {
                 string ID = txt_UserName.Text;
-                string PIN = txt_Password.Password;
+                string PIN = pwd_Password.Password;
                 string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
                  
                 bool userFound = this.db.validateAdminLogin(ID, hashedPIN);
@@ -105,11 +105,11 @@ namespace AdminTools {
 
         private void txt_UserName_KeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
-                txt_Password.Focus();
+                pwd_Password.Focus();
             }
         }
 
-        private void txt_Password_KeyDown(object sender, KeyEventArgs e) {
+        private void pwd_Password_KeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
                 LoginCheck();
             }
@@ -122,6 +122,10 @@ namespace AdminTools {
 
         private void txt_GotFocus(object sender, RoutedEventArgs e) {
             Dispatcher.BeginInvoke((Action)((TextBox)sender).SelectAll);
+        }
+
+        private void pwd_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)pwd_Password.SelectAll);
         }
     }
 }

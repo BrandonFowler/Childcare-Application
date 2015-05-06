@@ -13,7 +13,7 @@
             <Label x:Name="lbl_Password" Content="Password" HorizontalAlignment="Left" Margin="40,88,0,0" VerticalAlignment="Top" Width="121"/>
             <TextBox x:Name="txt_UserName" Height="23" Margin="40,60,40,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" KeyDown="txt_UserName_KeyDown" Background="#FFE6EAE0" GotFocus="txt_GotFocus"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Login" Content="Log In" Margin="80,173,80,0" VerticalAlignment="Top" Click="btn_Login_Click" TabIndex="2" FontSize="16"/>
-            <PasswordBox x:Name="txt_Password" HorizontalAlignment="Left" Margin="40,114,0,0" VerticalAlignment="Top" Width="186" Height="23" TabIndex="1" KeyDown="txt_Password_KeyDown" Background="#FFE6EAE0" GotFocus="txt_GotFocus"/>
+            <PasswordBox x:Name="pwd_Password" HorizontalAlignment="Left" Margin="40,114,0,0" VerticalAlignment="Top" Width="186" Height="23" TabIndex="1" KeyDown="pwd_Password_KeyDown" Background="#FFE6EAE0" GotFocus="pwd_GotFocus"/>
         </Grid>
     </Border>
 </Window>
