@@ -14,14 +14,14 @@
                 <TextBox x:Name="txt_IDEntry" TabIndex="0" HorizontalAlignment="Left" Height="58" Margin="409,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" MaxLength="6" FontSize="36" Background="#FFE6EAE0">
                     <TextBox.ToolTip>
                         <ToolTip Background="#FFE6EAE0">
-                            <TextBlock Name="IDTip" Text="Please enter your six digit member number" FontSize="20" Background="#FFE6EAE0"/>
+                            <TextBlock Name="IDTip" Text="Six digit member number" FontSize="20" Background="#FFE6EAE0"/>
                         </ToolTip>
                     </TextBox.ToolTip>
                 </TextBox>
                 <PasswordBox x:Name="txt_PINEntry" TabIndex="1" HorizontalAlignment="Left" Height="58" Margin="409,297,0,0" VerticalAlignment="Top" Width="256" MaxLength="4" FontSize="36" RenderTransformOrigin="1.781,2.629" Background="#FFE6EAE0">
                     <PasswordBox.ToolTip>
                         <ToolTip Background="#FFE6EAE0">
-                            <TextBlock Name="PINTip" Text="Please enter your four digit PIN number" FontSize="20" Background="#FFE6EAE0"/>
+                            <TextBlock Name="PINTip" Text="Four digit PIN number" FontSize="20" Background="#FFE6EAE0"/>
                         </ToolTip>
                     </PasswordBox.ToolTip>
                 </PasswordBox>
@@ -35,9 +35,9 @@
                 <Button Style="{DynamicResource GlassButton}" x:Name="btn_Number8" Content="_8" HorizontalAlignment="Left" Margin="859,375,0,0" VerticalAlignment="Top" Width="61" Click="btn_Number8_Click" FontSize="36" RenderTransformOrigin="0.066,0.513"/>
                 <Button Style="{DynamicResource GlassButton}" x:Name="btn_Number9" Content="_9" HorizontalAlignment="Left" Margin="946,375,0,0" VerticalAlignment="Top" Width="61" Click="btn_Number9_Click" FontSize="36" RenderTransformOrigin="1.809,0.573"/>
                 <Button Style="{DynamicResource GlassButton}" x:Name="btn_Number0" Content="_0" HorizontalAlignment="Left" Margin="769,454,0,0" VerticalAlignment="Top" Width="61" Click="btn_Number0_Click" FontSize="36"/>
-                <Button Style="{DynamicResource GlassButton}" x:Name="btn_Clear" Content="_Clear" HorizontalAlignment="Left" Margin="889,454,0,0" VerticalAlignment="Top" Width="118" Click="btn_Clear_Click" FontSize="36"/>
+                <Button Style="{DynamicResource GlassButton}" x:Name="btn_Clear" Content="Clea_r" HorizontalAlignment="Left" Margin="889,454,0,0" VerticalAlignment="Top" Width="118" Click="btn_Clear_Click" FontSize="36"/>
                 <Button Style="{DynamicResource GlassButton}" x:Name="btn_Login" TabIndex="3" Content="_Log In" HorizontalAlignment="Left" Margin="447,414,0,0" VerticalAlignment="Top" Width="168" Click="btn_Login_Click" Height="92" FontSize="36"/>
-                <Button Style="{DynamicResource GlassButton}" x:Name="btn_UExit" Content="_Exit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="60" Click="btn_UserSelect_Click" Margin="1150,630,0,0" FontSize="36" RenderTransformOrigin="1.417,1.558"/>
+                <Button Style="{DynamicResource GlassButton}" x:Name="btn_UExit" Content="_Close" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="60" Click="btn_UserSelect_Click" Margin="1150,630,0,0" FontSize="36" RenderTransformOrigin="1.417,1.558"/>
                 <Button Style="{DynamicResource GlassButton}" x:Name="btn_AdminLogin" Content="_Admin Login" HorizontalAlignment="Left" VerticalAlignment="Top" Width="223" Height="61" Click="btn_AdminLogin_Click" Margin="10,10,0,0" FontSize="36"/>
             </Grid>
         </Viewbox>
