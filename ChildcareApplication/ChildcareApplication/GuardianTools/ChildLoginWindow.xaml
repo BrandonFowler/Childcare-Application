@@ -10,7 +10,7 @@
     <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="1280" Height="700" ClipToBounds="True">
         <Viewbox StretchDirection="Both" Stretch="Uniform" Width="1280" Height="700">
             <Grid Width="1280" Height="700">
-                <Button Style="{DynamicResource GlassButton}" x:Name="btn_LogOutParent" Content="Log Out" HorizontalAlignment="Left" Margin="24,125,0,0" VerticalAlignment="Top" Width="143" Click="btn_LogOutParent_Click" Height="93" FontSize="20" KeyboardNavigation.TabIndex="5"/>
+                <Button Style="{DynamicResource GlassButton}" x:Name="btn_LogOutParent" Content="_Log Out" HorizontalAlignment="Left" Margin="24,125,0,0" VerticalAlignment="Top" Width="143" Click="btn_LogOutParent_Click" Height="93" FontSize="20" KeyboardNavigation.TabIndex="5"/>
                 <ListBox x:Name="lst_CheckInBox" HorizontalAlignment="Left" Height="214" Margin="174,461,0,0" VerticalAlignment="Top" Width="734" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Background="#FFE6EAE0" KeyboardNavigation.TabIndex="1">
                     <ListBox.ToolTip>
                         <ToolTip Background="#FFE6EAE0">
@@ -48,8 +48,8 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Button Style="{DynamicResource GlassButton}" x:Name="btn_CheckIn" Content="Check In" HorizontalAlignment="Left" Margin="26,548,0,0" VerticalAlignment="Top" Width="143" Height="93" Click="btn_CheckIn_Click" FontSize="20" RenderTransformOrigin="0.486,1.523" KeyboardNavigation.TabIndex="2"/>
-                <Button Style="{DynamicResource GlassButton}" x:Name="btn_CheckOut" Content="Check Out" HorizontalAlignment="Left" Margin="845,125,0,0" VerticalAlignment="Top" Width="143" Height="93" Click="btn_CheckOut_Click" FontSize="20" RenderTransformOrigin="0.223,0.835" KeyboardNavigation.TabIndex="4"/>
+                <Button Style="{DynamicResource GlassButton}" x:Name="btn_CheckIn" Content="Check _In" HorizontalAlignment="Left" Margin="26,548,0,0" VerticalAlignment="Top" Width="143" Height="93" Click="btn_CheckIn_Click" FontSize="20" RenderTransformOrigin="0.486,1.523" KeyboardNavigation.TabIndex="2"/>
+                <Button Style="{DynamicResource GlassButton}" x:Name="btn_CheckOut" Content="Check _Out" HorizontalAlignment="Left" Margin="845,125,0,0" VerticalAlignment="Top" Width="143" Height="93" Click="btn_CheckOut_Click" FontSize="20" RenderTransformOrigin="0.223,0.835" KeyboardNavigation.TabIndex="4"/>
                 <Label x:Name="lbl_RegisteredChildren" Content="Eligible For Check In" HorizontalAlignment="Left" Margin="177,415,0,0" VerticalAlignment="Top" Width="197" Background="#FFE4E8EE" Height="41" FontSize="20"/>
                 <Label x:Name="lbl_CheckedIn" Content="Checked In" HorizontalAlignment="Left" Margin="993,14,0,0" VerticalAlignment="Top" Width="160" Background="#FFE4E8EE" Height="43" FontSize="20"/>
                 <Label x:Name="lbl_ParentName" Content="Parent Name" HorizontalAlignment="Left" Margin="174,14,0,0" VerticalAlignment="Top" Width="150" Cursor="" Background="#FFE4E8EE" Height="43" FontSize="20" RenderTransformOrigin="1.036,1.51"/>

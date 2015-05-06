@@ -22,6 +22,7 @@ namespace GuardianTools {
 
         private bool IDBoxSelected = false;
         private bool PINBoxSelected = false;
+        private bool altKeyPressed = false;
         private LoginDB db;
 
 
@@ -53,8 +54,12 @@ namespace GuardianTools {
         }
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e) {
-            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) 
-                || e.Key == Key.Back || e.Key == Key.Tab || e.Key == Key.Enter || e.Key == Key.NumLock) {
+            if (e.SystemKey == Key.LeftAlt || e.SystemKey == Key.RightAlt) {
+                this.altKeyPressed = true;
+            }
+            else if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) 
+                || e.Key == Key.Back || e.Key == Key.Tab || e.Key == Key.Enter || e.Key == Key.NumLock 
+                || this.altKeyPressed) {
                 if (e.Key == Key.Return){
                     if (IDBoxSelected){
                         this.txt_PINEntry.Focus();
@@ -63,10 +68,12 @@ namespace GuardianTools {
                         GuardianLogin();
                     }
                 }
+                this.altKeyPressed = false;
             }
             else {
                 MessageBox.Show("Please use only numbers.");
                 e.Handled = true;
+                this.altKeyPressed = false;
             }
         }
 
