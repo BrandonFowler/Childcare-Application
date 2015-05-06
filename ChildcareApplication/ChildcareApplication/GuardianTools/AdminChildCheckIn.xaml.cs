@@ -26,12 +26,12 @@ namespace GuardianTools {
             dta_GuardianList.SelectionChanged += lst_Guardians_IndexChange;
             this.db = new ConnectionsDB();
             txt_SearchBox.Focus();
-            this.txt_SearchBox.KeyDown += new KeyEventHandler(KeyPressedEnter);
-            this.dta_GuardianList.KeyDown += new KeyEventHandler(KeyPressedEnter);
+            this.txt_SearchBox.KeyDown += new KeyEventHandler(KeyPressed);
+            this.dta_GuardianList.KeyDown += new KeyEventHandler(KeyPressed);
             this.MouseDown += WindowMouseDown;
         }
 
-        private void KeyPressedEnter(Object o, KeyEventArgs e) {
+        private void KeyPressed(Object o, KeyEventArgs e) {
                 if (e.Key == Key.Return) {
                     if (txt_SearchBox.IsSelectionActive) {
                         Search();
@@ -113,8 +113,8 @@ namespace GuardianTools {
                 return;
             }
             ChildLogin ChildLoginWindow = new ChildLogin(this.guardianID);
-            ChildLoginWindow.Show();
             ChildLoginWindow.WindowState = WindowState.Maximized;
+            ChildLoginWindow.Show();
             this.Close();
         }
 

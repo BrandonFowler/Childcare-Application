@@ -18,6 +18,7 @@ namespace GuardianTools {
 
         public ChildLogin(string ID) {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
             this.guardianID = ID;
             this.db = new ConnectionsDB();
             SetUpCheckInBox();
@@ -26,11 +27,26 @@ namespace GuardianTools {
             this.updateTime = new DateTime();
             updateTime = DateTime.Now;
             lbl_Time.DataContext = updateTime;
+            this.lst_CheckInBox.GotFocus += listBoxFocus;
+            this.lst_CheckOutBox.GotFocus += listBoxFocus;
             this.MouseDown += WindowMouseDown;
         }
 
         private void btn_LogOutParent_Click(object sender, RoutedEventArgs e) {
             ExitToLogin();
+        }
+
+        private void listBoxFocus(object sender, RoutedEventArgs e){
+            if ((sender as ListBox) != null && (sender as ListBox).Name.CompareTo("lst_CheckInBox") == 0) {
+                if (this.lst_CheckInBox.HasItems) {
+                    this.lst_CheckInBox.SelectedIndex = 0;
+                }
+            }
+            else {
+                if (this.lst_CheckOutBox.HasItems) {
+                    this.lst_CheckOutBox.SelectedIndex = 0;
+                }
+            }
         }
 
         public void SetUpCheckInBox() {

@@ -30,22 +30,26 @@ namespace GuardianTools {
             this.WindowState = WindowState.Maximized;
             this.db = new LoginDB();
             this.txt_IDEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
-            this.txt_IDEntry.GotFocus += OnIDBoxFocus;
             this.txt_PINEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
-            this.txt_PINEntry.GotFocus += OnPINBoxFocus;
+            this.txt_IDEntry.GotFocus += OnBoxFocus;
+            this.txt_PINEntry.GotFocus += OnBoxFocus;
+            this.txt_IDEntry.GotMouseCapture += new System.Windows.Input.MouseEventHandler(OnBoxFocus);
+            this.txt_PINEntry.GotMouseCapture += new System.Windows.Input.MouseEventHandler(OnBoxFocus);
             this.txt_IDEntry.Focus();
-            this.btn_Login.GotFocus += OnLoginFocus;
             this.MouseDown += WindowMouseDown;
         }
 
-        private void OnIDBoxFocus(object sender, EventArgs e) {
-            this.IDBoxSelected = true;
-            this.PINBoxSelected = false;
-        }
-
-        private void OnPINBoxFocus(object sender, EventArgs e) {
-            this.PINBoxSelected = true;
-            this.IDBoxSelected = false;
+        private void OnBoxFocus(object sender, RoutedEventArgs e) {
+            if (e.OriginalSource as TextBox != null) {
+                this.IDBoxSelected = true;
+                this.PINBoxSelected = false;
+                this.txt_IDEntry.SelectAll();
+            }
+            else {
+                this.PINBoxSelected = true;
+                this.IDBoxSelected = false;
+                this.txt_PINEntry.SelectAll();
+            }
         }
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e) {
@@ -53,7 +57,7 @@ namespace GuardianTools {
                 || e.Key == Key.Back || e.Key == Key.Tab || e.Key == Key.Enter || e.Key == Key.NumLock) {
                 if (e.Key == Key.Return){
                     if (IDBoxSelected){
-                        txt_PINEntry.Focus();
+                        this.txt_PINEntry.Focus();
                     }
                     else if (PINBoxSelected){
                         GuardianLogin();
@@ -91,15 +95,6 @@ namespace GuardianTools {
             UserSelection userSelect = new UserSelection();
             userSelect.Show();
             this.Close();
-        }
-
-        private void OnLoginFocus(object sender, EventArgs e) {
-            if (String.IsNullOrWhiteSpace(txt_IDEntry.Text.ToString()) || String.IsNullOrWhiteSpace(txt_PINEntry.Password.ToString())) {
-                btn_Login.Background = Brushes.Red;
-            }
-            else {
-                btn_Login.Background = Brushes.Green;
-            }
         }
 
         private void GuardianLogin() {

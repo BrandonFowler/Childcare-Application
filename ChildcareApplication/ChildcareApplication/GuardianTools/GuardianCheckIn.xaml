@@ -6,13 +6,25 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="1280" Height="700" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="1280" Height="700" ClipToBounds="True">
         <Viewbox StretchDirection="Both" Stretch="Uniform">
             <Grid Width="1280" Height="700">
                 <Label x:Name="lbl_ID" Content="ID" HorizontalAlignment="Left" Margin="263,218,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.836,7.284" Height="52" Width="72" FontSize="36"/>
                 <Label x:Name="lbl_PIN" Content="PIN" HorizontalAlignment="Left" Margin="263,297,0,0" VerticalAlignment="Top" FontSize="36" Width="84" RenderTransformOrigin="1.907,1.076"/>
-                <TextBox x:Name="txt_IDEntry" TabIndex="0" HorizontalAlignment="Left" Height="58" Margin="409,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" MaxLength="6" FontSize="36" Background="#FFE6EAE0"/>
-                <PasswordBox x:Name="txt_PINEntry" TabIndex="1" HorizontalAlignment="Left" Height="58" Margin="409,297,0,0" VerticalAlignment="Top" Width="256" MaxLength="4" FontSize="36" RenderTransformOrigin="1.781,2.629" Background="#FFE6EAE0"/>
+                <TextBox x:Name="txt_IDEntry" TabIndex="0" HorizontalAlignment="Left" Height="58" Margin="409,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" MaxLength="6" FontSize="36" Background="#FFE6EAE0">
+                    <TextBox.ToolTip>
+                        <ToolTip Background="#FFE6EAE0">
+                            <TextBlock Name="IDTip" Text="Please enter your six digit member number" FontSize="20" Background="#FFE6EAE0"/>
+                        </ToolTip>
+                    </TextBox.ToolTip>
+                </TextBox>
+                <PasswordBox x:Name="txt_PINEntry" TabIndex="1" HorizontalAlignment="Left" Height="58" Margin="409,297,0,0" VerticalAlignment="Top" Width="256" MaxLength="4" FontSize="36" RenderTransformOrigin="1.781,2.629" Background="#FFE6EAE0">
+                    <PasswordBox.ToolTip>
+                        <ToolTip Background="#FFE6EAE0">
+                            <TextBlock Name="PINTip" Text="Please enter your four digit PIN number" FontSize="20" Background="#FFE6EAE0"/>
+                        </ToolTip>
+                    </PasswordBox.ToolTip>
+                </PasswordBox>
                 <Button Style="{DynamicResource GlassButton}" x:Name="btn_Number1" Content="1" HorizontalAlignment="Left" Margin="769,218,0,0" VerticalAlignment="Top" Width="61" Click="btn_Number1_Click" FontSize="36"/>
                 <Button Style="{DynamicResource GlassButton}" x:Name="btn_Number2" Content="2" HorizontalAlignment="Left" Margin="859,218,0,0" VerticalAlignment="Top" Width="61" Click="btn_Number2_Click" FontSize="36" RenderTransformOrigin="0.872,-0.603"/>
                 <Button Style="{DynamicResource GlassButton}" x:Name="btn_Number3" Content="3" HorizontalAlignment="Left" Margin="946,218,0,0" VerticalAlignment="Top" Width="61" RenderTransformOrigin="3.417,4.525" Click="btn_Number3_Click" FontSize="36"/>

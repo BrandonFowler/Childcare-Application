@@ -3,14 +3,14 @@
   <SequenceDesignerModelMoniker Id="c4e7f1e4-08fb-4e19-8a4d-ae9e364d9b9c" />
   <nestedChildShapes>
     <lifelineShape Id="ccc30b97-360c-4c34-b907-ac3ef0cade36" absoluteBounds="3.075, 1, 0.15, 5.1006161073530514" visible="true" visualStyleMode="Modified">
-      <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+      <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
       <relativeChildShapes>
-        <dotNetLifelineHeadShape Id="4c39ca47-e536-4905-9dc7-e7aa7e24cf13" absoluteBounds="2.4922746849060058, 0.6, 1.3154506301879883, 0.4" customColor="184, 204, 215" visualStyleMode="Modified">
-          <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+        <dotNetLifelineHeadShape Id="4c39ca47-e536-4905-9dc7-e7aa7e24cf13" absoluteBounds="2.337462408542633, 0.6, 1.6250751829147339, 0.4" customColor="184, 204, 215" visualStyleMode="Modified">
+          <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
           <relativeChildShapes />
         </dotNetLifelineHeadShape>
         <lifelineHoverShape Id="c4e46abd-86bb-45b7-8876-bb9c6d8d076a" absoluteBounds="3.075, 1, 0, 5.125">
-          <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+          <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
         </lifelineHoverShape>
         <dotNetExecutionSpecificationShape Id="fd904e76-26ec-4136-9751-b6b3bf409d3d" absoluteBounds="3.075, 1.3, 0.125, 1.6316764777638444" customColor="184, 204, 215" visualStyleMode="Modified">
           <behaviorExecutionSpecificationMoniker Id="d8ea99bf-8d6d-49cd-8b54-cce676d78785" LastKnownName="BehaviorExecutionSpecification" />
@@ -21,14 +21,14 @@
       </relativeChildShapes>
     </lifelineShape>
     <lifelineShape Id="c5eb7832-27e6-4a24-a9cc-943346ffdce8" absoluteBounds="5.6971035821225753, 1, 0.15, 5.1235002506379539" visible="true" visualStyleMode="Modified">
-      <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="win_ChildLoginWindow" />
+      <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="Child Login Window" />
       <relativeChildShapes>
-        <dotNetLifelineHeadShape Id="8c5f0ea9-391d-4913-a37d-1538de8380cd" absoluteBounds="4.9689789945867169, 0.6, 1.6062491750717163, 0.4" customColor="184, 204, 215" visualStyleMode="Modified">
-          <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="win_ChildLoginWindow" />
+        <dotNetLifelineHeadShape Id="8c5f0ea9-391d-4913-a37d-1538de8380cd" absoluteBounds="5.0766992504384625, 0.6, 1.3908086633682251, 0.4" customColor="184, 204, 215" visualStyleMode="Modified">
+          <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="Child Login Window" />
           <relativeChildShapes />
         </dotNetLifelineHeadShape>
         <lifelineHoverShape Id="7ae90fe0-efea-42e2-8129-55d402bbee9a" absoluteBounds="5.6971035821225753, 1, 0, 5.125">
-          <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="win_ChildLoginWindow" />
+          <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="Child Login Window" />
         </lifelineHoverShape>
         <dotNetExecutionSpecificationShape Id="303d0904-ef19-4227-b485-eec173cc62e7" absoluteBounds="5.6971035821225753, 2.6316764777638446, 0.125, 2.5459327403790826" customColor="184, 204, 215" visualStyleMode="Modified">
           <behaviorExecutionSpecificationMoniker Id="167cec71-9c5d-4f68-a652-0d7d7636f2f7" LastKnownName="BehaviorExecutionSpecification" />
@@ -36,14 +36,14 @@
       </relativeChildShapes>
     </lifelineShape>
     <lifelineShape Id="234afbd6-90df-41b6-9ef5-712cfe1a03b5" absoluteBounds="1.025, 1, 0.15, 0.60000000000000009" visible="true" visualStyleMode="Modified">
-      <lifelineMoniker Id="691a7443-f8b3-4416-9a81-896a50f8f08e" LastKnownName="Application Start" />
+      <lifelineMoniker Id="691a7443-f8b3-4416-9a81-896a50f8f08e" LastKnownName="User Selection" />
       <relativeChildShapes>
-        <dotNetLifelineHeadShape Id="34e28e52-069a-4615-a4d1-63a7a510fd83" absoluteBounds="0.49359851598739612, 0.6, 1.2128029680252075, 0.4" customColor="184, 204, 215" visualStyleMode="Modified">
-          <lifelineMoniker Id="691a7443-f8b3-4416-9a81-896a50f8f08e" LastKnownName="Application Start" />
+        <dotNetLifelineHeadShape Id="34e28e52-069a-4615-a4d1-63a7a510fd83" absoluteBounds="0.56458913803100574, 0.6, 1.0708217239379883, 0.4" customColor="184, 204, 215" visualStyleMode="Modified">
+          <lifelineMoniker Id="691a7443-f8b3-4416-9a81-896a50f8f08e" LastKnownName="User Selection" />
           <relativeChildShapes />
         </dotNetLifelineHeadShape>
         <lifelineHoverShape Id="35a5fcb9-b99a-4eef-8203-ad9960222a4b" absoluteBounds="1.025, 1, 0, 0.625">
-          <lifelineMoniker Id="691a7443-f8b3-4416-9a81-896a50f8f08e" LastKnownName="Application Start" />
+          <lifelineMoniker Id="691a7443-f8b3-4416-9a81-896a50f8f08e" LastKnownName="User Selection" />
         </lifelineHoverShape>
       </relativeChildShapes>
     </lifelineShape>

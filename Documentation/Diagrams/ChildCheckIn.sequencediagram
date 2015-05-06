@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" dslVersion="1.0.0.0" Id="c4e7f1e4-08fb-4e19-8a4d-ae9e364d9b9c" name="Child Check-In Sequence Diagram" mode="DotNet" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" dslVersion="1.0.0.0" Id="c4e7f1e4-08fb-4e19-8a4d-ae9e364d9b9c" name=" Guardian-Child Check In Sequence Diagram" mode="DotNet" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
   <packagedElements>
     <packageHasNamedElement>
-      <interaction Id="b389612e-b9f7-4964-99ba-8958a48cb5af" name="Child Check-In Sequence Diagram" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+      <interaction Id="b389612e-b9f7-4964-99ba-8958a48cb5af" name=" Guardian-Child Check In Sequence Diagram" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
         <ownedCommentsInternal>
           <comment Id="3362597a-4340-4ea9-8766-2dbd713a98fd">
             <body>Application can end here or continue.</body>
@@ -14,7 +14,7 @@
         <fragments>
           <behaviorExecutionSpecification Id="d8ea99bf-8d6d-49cd-8b54-cce676d78785" name="BehaviorExecutionSpecification">
             <coveredLifelines>
-              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
             </coveredLifelines>
             <finish>
               <executionOccurrenceSpecificationMoniker Id="74b9af20-ab08-4b45-b053-963d30b27a5c" LastKnownName="ExecutionOccurrenceSpecification" />
@@ -36,17 +36,17 @@
               </executionOccurrenceSpecificationReferencesEvent>
             </event>
             <covered>
-              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification Id="0e9910a1-0eba-49df-afbd-b0d8ddc9fbfa" name="MessageOccurrenceSpecification">
             <covered>
-              <lifelineMoniker Id="691a7443-f8b3-4416-9a81-896a50f8f08e" LastKnownName="Application Start" />
+              <lifelineMoniker Id="691a7443-f8b3-4416-9a81-896a50f8f08e" LastKnownName="User Selection" />
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="510885d8-1137-40a1-9f24-0494932518bc" name="MessageOccurrenceSpecification">
             <covered>
-              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
             </covered>
           </messageOccurrenceSpecification>
           <behaviorExecutionSpecification Id="831e5a2e-040f-4535-8b5b-608da3d40f3a" name="BehaviorExecutionSpecification">
@@ -76,7 +76,7 @@
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification Id="705a1597-2f08-4309-a904-fbde920aa5c0" name="MessageOccurrenceSpecification">
             <covered>
-              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="6cd362e6-fcbe-4cdf-9034-732fdf52c817" name="MessageOccurrenceSpecification">
@@ -91,7 +91,7 @@
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="3e8f5fc6-05b8-4a62-be28-539ef35376fa" name="MessageOccurrenceSpecification">
             <covered>
-              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="955baa91-f320-4e3b-a014-9af9101b7186" name="ExecutionOccurrenceSpecification">
@@ -106,7 +106,7 @@
           </executionOccurrenceSpecification>
           <behaviorExecutionSpecification Id="167cec71-9c5d-4f68-a652-0d7d7636f2f7" name="BehaviorExecutionSpecification">
             <coveredLifelines>
-              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="win_ChildLoginWindow" />
+              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="Child Login Window" />
             </coveredLifelines>
             <finish>
               <executionOccurrenceSpecificationMoniker Id="3493414a-5d93-4756-9c93-47cfb7bb96c5" LastKnownName="ExecutionOccurrenceSpecification" />
@@ -130,17 +130,17 @@
               </executionOccurrenceSpecificationReferencesEvent>
             </event>
             <covered>
-              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="win_ChildLoginWindow" />
+              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="Child Login Window" />
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification Id="21d9b712-8aba-496f-8579-64604ad71658" name="MessageOccurrenceSpecification">
             <covered>
-              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="8a1c5d8f-ffc3-4e70-9ff5-53d134e4fc32" name="MessageOccurrenceSpecification">
             <covered>
-              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="win_ChildLoginWindow" />
+              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="Child Login Window" />
             </covered>
           </messageOccurrenceSpecification>
           <behaviorExecutionSpecification Id="b6800c28-43c3-41db-9c96-c9d98fa7a7b5" name="BehaviorExecutionSpecification">
@@ -158,16 +158,6 @@
               <messageOccurrenceSpecificationMoniker Id="7b30b488-2a9e-41c6-a7bb-36b8154f8a21" LastKnownName="MessageOccurrenceSpecification" />
             </nestedOccurrences>
           </behaviorExecutionSpecification>
-          <executionOccurrenceSpecification Id="74b9af20-ab08-4b45-b053-963d30b27a5c" name="ExecutionOccurrenceSpecification">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker Id="19a3396d-ab9c-4780-83e9-8bd705aa096b" LastKnownName="ExecutionEvent" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
-            </covered>
-          </executionOccurrenceSpecification>
           <executionOccurrenceSpecification Id="ee4cafdd-91ba-427d-9ab8-0e1457cafede" name="ExecutionOccurrenceSpecification">
             <event>
               <executionOccurrenceSpecificationReferencesEvent>
@@ -178,6 +168,16 @@
               <lifelineMoniker Id="34c68fae-3ec2-45ee-b98d-e0bfeb5a851a" LastKnownName="Database" />
             </covered>
           </executionOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="74b9af20-ab08-4b45-b053-963d30b27a5c" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="19a3396d-ab9c-4780-83e9-8bd705aa096b" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
+            </covered>
+          </executionOccurrenceSpecification>
           <messageOccurrenceSpecification Id="530ac1fd-c1ec-4f0e-9a97-6a1082c92257" name="MessageOccurrenceSpecification">
             <covered>
               <lifelineMoniker Id="34c68fae-3ec2-45ee-b98d-e0bfeb5a851a" LastKnownName="Database" />
@@ -185,7 +185,7 @@
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="6b8ba064-5416-4896-a6fe-71b83cbf5eac" name="MessageOccurrenceSpecification">
             <covered>
-              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="win_ChildLoginWindow" />
+              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="Child Login Window" />
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="7b30b488-2a9e-41c6-a7bb-36b8154f8a21" name="MessageOccurrenceSpecification">
@@ -195,7 +195,7 @@
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="07ccc5bd-99a3-4e5a-9099-af49cdd5b924" name="MessageOccurrenceSpecification">
             <covered>
-              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="win_ChildLoginWindow" />
+              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="Child Login Window" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="ffa97f88-05a1-4bf3-87f7-28bec099ad66" name="ExecutionOccurrenceSpecification">
@@ -233,19 +233,19 @@
               <lifelineMoniker Id="34c68fae-3ec2-45ee-b98d-e0bfeb5a851a" LastKnownName="Database" />
             </covered>
           </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="b87d6199-3370-4390-9451-5a71c064b1a0" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="Child Login Window" />
+            </covered>
+          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="2b2a9d97-58a5-4f2e-a8a0-30919e5cb93c" name="MessageOccurrenceSpecification">
             <covered>
               <lifelineMoniker Id="34c68fae-3ec2-45ee-b98d-e0bfeb5a851a" LastKnownName="Database" />
             </covered>
           </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="b87d6199-3370-4390-9451-5a71c064b1a0" name="MessageOccurrenceSpecification">
-            <covered>
-              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="win_ChildLoginWindow" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="1566646d-b65c-42d5-be95-dd268aa8f661" name="MessageOccurrenceSpecification">
             <covered>
-              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="win_ChildLoginWindow" />
+              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="Child Login Window" />
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="30d99ba9-6729-425a-be41-f9dc1f6fbcaf" name="MessageOccurrenceSpecification">
@@ -265,7 +265,7 @@
           </executionOccurrenceSpecification>
           <behaviorExecutionSpecification Id="60d9c8d3-72a6-413c-980d-76269941959b" name="BehaviorExecutionSpecification">
             <coveredLifelines>
-              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
             </coveredLifelines>
             <finish>
               <executionOccurrenceSpecificationMoniker Id="cbf8cd62-bdfd-4e98-bb82-28cd376107ea" LastKnownName="ExecutionOccurrenceSpecification" />
@@ -284,17 +284,17 @@
               </executionOccurrenceSpecificationReferencesEvent>
             </event>
             <covered>
-              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification Id="a6f1768a-853c-4816-96c5-b370583fcf66" name="MessageOccurrenceSpecification">
             <covered>
-              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="win_ChildLoginWindow" />
+              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="Child Login Window" />
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="d61090fb-0a78-41d2-a369-f6881df0d681" name="MessageOccurrenceSpecification">
             <covered>
-              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="3493414a-5d93-4756-9c93-47cfb7bb96c5" name="ExecutionOccurrenceSpecification">
@@ -304,7 +304,7 @@
               </executionOccurrenceSpecificationReferencesEvent>
             </event>
             <covered>
-              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="win_ChildLoginWindow" />
+              <lifelineMoniker Id="22cf12db-7059-4c52-9737-39b2a3052e06" LastKnownName="Child Login Window" />
             </covered>
           </executionOccurrenceSpecification>
           <executionOccurrenceSpecification Id="cbf8cd62-bdfd-4e98-bb82-28cd376107ea" name="ExecutionOccurrenceSpecification">
@@ -314,17 +314,17 @@
               </executionOccurrenceSpecificationReferencesEvent>
             </event>
             <covered>
-              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="win_LoginWindow" />
+              <lifelineMoniker Id="5576c996-4e13-419c-9b7e-43e928f88355" LastKnownName="Guardian Login Window" />
             </covered>
           </executionOccurrenceSpecification>
         </fragments>
         <lifelines>
-          <lifeline Id="691a7443-f8b3-4416-9a81-896a50f8f08e" name="Application Start" isActor="false" lifelineDisplayName="Application Start">
+          <lifeline Id="691a7443-f8b3-4416-9a81-896a50f8f08e" name="User Selection" isActor="false" lifelineDisplayName="User Selection">
             <topLevelOccurrences>
               <messageOccurrenceSpecificationMoniker Id="0e9910a1-0eba-49df-afbd-b0d8ddc9fbfa" LastKnownName="MessageOccurrenceSpecification" />
             </topLevelOccurrences>
           </lifeline>
-          <lifeline Id="5576c996-4e13-419c-9b7e-43e928f88355" name="win_LoginWindow" isActor="false" lifelineDisplayName="win_LoginWindow">
+          <lifeline Id="5576c996-4e13-419c-9b7e-43e928f88355" name="Guardian Login Window" isActor="false" lifelineDisplayName="Guardian Login Window">
             <topLevelOccurrences>
               <executionOccurrenceSpecificationMoniker Id="d854c806-4669-4fc0-9355-214ec2e77fef" LastKnownName="ExecutionOccurrenceSpecification" />
               <executionOccurrenceSpecificationMoniker Id="74b9af20-ab08-4b45-b053-963d30b27a5c" LastKnownName="ExecutionOccurrenceSpecification" />
@@ -332,7 +332,7 @@
               <executionOccurrenceSpecificationMoniker Id="cbf8cd62-bdfd-4e98-bb82-28cd376107ea" LastKnownName="ExecutionOccurrenceSpecification" />
             </topLevelOccurrences>
           </lifeline>
-          <lifeline Id="22cf12db-7059-4c52-9737-39b2a3052e06" name="win_ChildLoginWindow" isActor="false" lifelineDisplayName="win_ChildLoginWindow">
+          <lifeline Id="22cf12db-7059-4c52-9737-39b2a3052e06" name="Child Login Window" isActor="false" lifelineDisplayName="Child Login Window">
             <topLevelOccurrences>
               <executionOccurrenceSpecificationMoniker Id="4f9a2eb5-e172-4a2e-b3f8-6392dc3e1da1" LastKnownName="ExecutionOccurrenceSpecification" />
               <executionOccurrenceSpecificationMoniker Id="3493414a-5d93-4756-9c93-47cfb7bb96c5" LastKnownName="ExecutionOccurrenceSpecification" />
