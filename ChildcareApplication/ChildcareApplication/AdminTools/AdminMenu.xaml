@@ -6,18 +6,18 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="249" Height="394" ClipToBounds="True">
-        <Grid Margin="-2,0">
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditOrDeleteParent" Content="Edit _Parent Info" Margin="35,134,35,0" VerticalAlignment="Top" Height="30" Click="btn_EditOrDeleteParent_Click" TabIndex="3" FontSize="14"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_ParentReport" Content="_Parent Report" Margin="35,29,35,0" Click="btn_ParentReport_Click" TabIndex="0" FontSize="14" Height="30" VerticalAlignment="Top"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_BusinessReport" Content="_Business Report" Margin="35,64,35,0" VerticalAlignment="Top" Height="30" Click="btn_BusinessReport_Click" TabIndex="1" FontSize="14"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditOrDeleteChild" Content="Edit _Child Info" Margin="35,169,35,0" VerticalAlignment="Top" Height="30" Click="btn_EditOrDeleteChild_Click" TabIndex="4" FontSize="14"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditAddEvents" Content="_Edit / Add Events" Margin="35,204,35,0" VerticalAlignment="Top" Height="30" Click="btn_EditAddEvents_Click" TabIndex="5" FontSize="14"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Logout" Content="Logout" Margin="149,360,0,0" VerticalAlignment="Top" Height="30" Click="btn_Logout_Click" TabIndex="50" FontSize="14"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddNewParent" Content="_Add New Parent" Margin="35,99,35,0" VerticalAlignment="Top" Height="30" Click="btn_AddNewParent_Click" TabIndex="2" FontSize="14"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditTransactions" Content="Edit _Transaction" Margin="35,239,35,0" VerticalAlignment="Top" Height="30" Click="btn_EditTransaction_Click" TabIndex="6" FontSize="14"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddEditAdmin" Content="Edit / Add Administrators" Margin="35,274,35,0" VerticalAlignment="Top" Height="30" TabIndex="7" Click="btn_AddEditAdmin_Click" FontSize="14"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_AppSettings" Content="Application Settings" Margin="35,309,35,0" VerticalAlignment="Top" Height="30" TabIndex="8" Click="btn_AppSettings_Click" FontSize="14"/>
+    <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True" HorizontalAlignment="Left" Width="289" Height="419" VerticalAlignment="Top">
+        <Grid Margin="-2,-2,-2,0" Height="417" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="289">
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditOrDeleteParent" Content="Edit _Parent Info" Margin="35,134,35,0" VerticalAlignment="Top" Height="30" Click="btn_EditOrDeleteParent_Click" TabIndex="3" FontSize="14" Width="199"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_ParentReport" Content="_Parent Report" Margin="35,29,35,0" Click="btn_ParentReport_Click" TabIndex="0" FontSize="14" Height="30" VerticalAlignment="Top" Width="199"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_BusinessReport" Content="_Business Report" Margin="35,64,35,0" VerticalAlignment="Top" Height="30" Click="btn_BusinessReport_Click" TabIndex="1" FontSize="14" Width="199"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditOrDeleteChild" Content="Edit _Child Info" Margin="35,169,35,0" VerticalAlignment="Top" Height="30" Click="btn_EditOrDeleteChild_Click" TabIndex="4" FontSize="14" Width="199"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditAddEvents" Content="_Edit / Add Events" Margin="35,204,35,0" VerticalAlignment="Top" Height="30" Click="btn_EditAddEvents_Click" TabIndex="5" FontSize="14" Width="199"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Logout" Content="Logout" Margin="159,377,10,0" VerticalAlignment="Top" Height="30" Click="btn_Logout_Click" TabIndex="50" FontSize="14" Width="120"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddNewParent" Content="_Add New Parent" Margin="35,99,35,0" VerticalAlignment="Top" Height="30" Click="btn_AddNewParent_Click" TabIndex="2" FontSize="14" Width="199"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditTransactions" Content="Edit _Transaction" Margin="35,239,35,0" VerticalAlignment="Top" Height="30" Click="btn_EditTransaction_Click" TabIndex="6" FontSize="14" Width="199"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddEditAdmin" Content="Edit / Add Administrators" Margin="35,274,35,0" VerticalAlignment="Top" Height="30" TabIndex="7" Click="btn_AddEditAdmin_Click" FontSize="14" Width="199"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_AppSettings" Content="Application Settings" Margin="35,309,35,0" VerticalAlignment="Top" Height="30" TabIndex="8" Click="btn_AppSettings_Click" FontSize="14" Width="199"/>
 
         </Grid>
     </Border>

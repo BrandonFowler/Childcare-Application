@@ -6,7 +6,7 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" ClipToBounds="True">
+    <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True">
         <Grid Height="224" VerticalAlignment="Bottom" Margin="8,0,8,8">
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_ParentUse" Content="_Guardian Login" Margin="33,27,34,0" VerticalAlignment="Top" Height="57" FontSize="16" Click="btn_ParentUse_Click" TabIndex="0"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_AdminLogin" Content="_Administrator Login" Margin="33,107,34,0" VerticalAlignment="Top" Height="57" FontSize="16" Click="btn_AdminLogin_Click" TabIndex="1"/>
