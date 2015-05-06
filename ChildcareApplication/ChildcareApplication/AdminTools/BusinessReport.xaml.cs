@@ -185,5 +185,9 @@ namespace AdminTools {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
+
+        private void btn_Save_Click(object sender, RoutedEventArgs e) {
+            MessageBox.Show("TODO: implement save to PDF");
+        }
     }
 }

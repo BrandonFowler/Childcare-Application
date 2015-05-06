@@ -1,18 +1,18 @@
 ﻿<Window x:Class="ChildcareApplication.AdminTools.PaymentEntry"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PaymentEntry" Height="225.373" Width="285.075"
+        Title="PaymentEntry" Height="257.717" Width="317.418"
         AllowsTransparency="True"
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
     <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="285.075" Height="225.373" ClipToBounds="True">
-        <Grid>
-            <Label x:Name="lbl_CurrentBalance" Content="Current Balance:" Margin="30,30,31,0" VerticalAlignment="Top" Height="30" Width="217" FontSize="14"/>
-            <TextBox x:Name="txt_PaymentAmount" Height="20" Margin="80,101,80,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" KeyDown="txt_PaymentAmount_KeyDown" Background="#FFE6EAE0" GotFocus="txt_PaymentAmount_GotFocus"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_SubmitPayment" Content="_Submit Payment" HorizontalAlignment="Left" Margin="155,147,0,0" VerticalAlignment="Top" Width="106" Click="btn_SubmitPayment_Click" TabIndex="2"/>
-            <Label x:Name="lbl_PaymentAmount" Content="Payment Amount" HorizontalAlignment="Left" Margin="80,75,0,0" VerticalAlignment="Top" Width="117"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="_Cancel" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Width="106" TabIndex="3" Click="btn_Cancel_Click"/>
+        <Grid Margin="-2">
+            <Label x:Name="lbl_CurrentBalance" Content="Current Balance:" Margin="30,30,31,0" VerticalAlignment="Top" Height="30" Width="217" FontSize="16"/>
+            <TextBox x:Name="txt_PaymentAmount" Margin="80,101,80,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" KeyDown="txt_PaymentAmount_KeyDown" Background="#FFE6EAE0" GotFocus="txt_PaymentAmount_GotFocus" FontSize="14"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_SubmitPayment" Content="_Submit Payment" HorizontalAlignment="Left" Margin="145,155,0,0" VerticalAlignment="Top" Width="140" Click="btn_SubmitPayment_Click" TabIndex="2" FontSize="16"/>
+            <Label x:Name="lbl_PaymentAmount" Content="Payment Amount" HorizontalAlignment="Left" Margin="80,72,0,0" VerticalAlignment="Top" Width="117" FontSize="14"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="_Cancel" HorizontalAlignment="Left" Margin="0,155,0,0" VerticalAlignment="Top" Width="140" TabIndex="3" Click="btn_Cancel_Click" FontSize="16"/>
 
         </Grid>
     </Border>
