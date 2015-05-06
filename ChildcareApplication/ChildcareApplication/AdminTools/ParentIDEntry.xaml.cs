@@ -69,5 +69,11 @@ namespace AdminTools {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
+
+        private void btn_Close_Click(object sender, RoutedEventArgs e) {
+            AdminMenu adminMenu = new AdminMenu();
+            adminMenu.Show();
+            this.Close(); 
+        }
     }
 }

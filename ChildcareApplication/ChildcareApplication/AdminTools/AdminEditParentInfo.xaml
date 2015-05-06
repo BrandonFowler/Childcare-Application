@@ -1,46 +1,46 @@
 ﻿<Window x:Class="AdminTools.AdminEditParentInfo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="win_AdminEditParentInfo" Height="461.194" Width="644.776"
+        Title="win_AdminEditParentInfo" Height="660" Width="800"
         AllowsTransparency="True"
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="644.776" Height="461.194" ClipToBounds="True">
-        <Grid Margin="2.4,-7.6,-2.4,7.6">
+    <Border BorderBrush="LightBlue" BorderThickness="2" Width="800" Height="660" ClipToBounds="True">
+        <Grid Margin="2,-2,-2,2">
             <Canvas x:Name="cnv_ParentIcon" HorizontalAlignment="Left" Height="152" Margin="23,41,0,0" VerticalAlignment="Top" Width="158" Background="#FFE6EAE0"/>
-            <Label x:Name="lbl_Parent" Content="Parent Image" HorizontalAlignment="Left" Margin="44,15,0,0" VerticalAlignment="Top" Width="98"/>
-            <TextBox x:Name="txt_FirstName" HorizontalAlignment="Left" Height="23" Margin="308,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="0" GotFocus="txt_FirstName_GotFocus" GotMouseCapture="txt_FirstName_GotMouseCapture" Background="#FFE6EAE0"/>
-            <Label x:Name="lbl_FirstName" Content="First Name:" HorizontalAlignment="Left" Margin="220,38,0,0" VerticalAlignment="Top" Width="83"/>
-            <Label x:Name="lbl_LastName" Content="Last Name:" HorizontalAlignment="Left" Margin="220,69,0,0" VerticalAlignment="Top" Width="83"/>
-            <TextBox x:Name="txt_LastName" HorizontalAlignment="Left" Height="23" Margin="308,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="1" GotFocus="txt_LastName_GotFocus" GotMouseCapture="txt_LastName_GotMouseCapture" Background="#FFE6EAE0"/>
-            <Label x:Name="lbl_UserID" Content="ID Number:" HorizontalAlignment="Left" Margin="12,195,0,0" VerticalAlignment="Top" Width="83"/>
-            <TextBox x:Name="txt_IDNumber" HorizontalAlignment="Left" Height="23" Margin="81,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" IsEnabled="False" Background="#FFE6EAE0"/>
-            <Label x:Name="lbl_PhoneNumber" Content="Phone Number:" HorizontalAlignment="Left" Margin="198,108,0,0" VerticalAlignment="Top" Width="96"/>
-            <TextBox x:Name="txt_PhoneNumber" HorizontalAlignment="Left" Height="23" Margin="308,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="2" GotFocus="txt_PhoneNumber_GotFocus" GotMouseCapture="txt_PhoneNumber_GotMouseCapture" Background="#FFE6EAE0"/>
-            <Label x:Name="lbl_Address" Content="Address:" HorizontalAlignment="Left" Margin="230,188,0,0" VerticalAlignment="Top" Width="55"/>
-            <TextBox x:Name="txt_Address" HorizontalAlignment="Left" Height="23" Margin="301,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286" TabIndex="4" GotFocus="txt_Address_GotFocus" GotMouseCapture="txt_Address_GotMouseCapture" Background="#FFE6EAE0"/>
-            <Label x:Name="lbl_City" Content="City:" HorizontalAlignment="Left" Margin="251,249,0,0" VerticalAlignment="Top" Width="34"/>
-            <TextBox x:Name="txt_City" HorizontalAlignment="Left" Height="23" Margin="301,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="6" GotFocus="txt_City_GotFocus" GotMouseCapture="txt_City_GotMouseCapture" Background="#FFE6EAE0"/>
-            <Label x:Name="lbl_State" Content="State:" HorizontalAlignment="Left" Margin="472,249,0,0" VerticalAlignment="Top" Width="43"/>
-            <ComboBox x:Name="cbo_State" HorizontalAlignment="Left" Margin="520,253,0,0" VerticalAlignment="Top" Width="74" TabIndex="7" Background="#FFE6EAE0">
+            <Label x:Name="lbl_Parent" Content="Guardian Image:" HorizontalAlignment="Left" Margin="44,15,0,0" VerticalAlignment="Top" Width="118" FontSize="14"/>
+            <TextBox x:Name="txt_FirstName" HorizontalAlignment="Left" Height="29" Margin="308,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" TabIndex="0" GotFocus="txt_FirstName_GotFocus" GotMouseCapture="txt_FirstName_GotMouseCapture" Background="#FFE6EAE0" FontSize="14"/>
+            <Label x:Name="lbl_FirstName" Content="First Name:" HorizontalAlignment="Left" Margin="201,41,0,0" VerticalAlignment="Top" Width="83" FontSize="14"/>
+            <Label x:Name="lbl_LastName" Content="Last Name:" HorizontalAlignment="Left" Margin="201,89,0,0" VerticalAlignment="Top" Width="83" FontSize="14"/>
+            <TextBox x:Name="txt_LastName" HorizontalAlignment="Left" Height="29" Margin="308,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" TabIndex="1" GotFocus="txt_LastName_GotFocus" GotMouseCapture="txt_LastName_GotMouseCapture" Background="#FFE6EAE0" FontSize="14"/>
+            <Label x:Name="lbl_UserID" Content="ID Number:" HorizontalAlignment="Left" Margin="12,195,0,0" VerticalAlignment="Top" Width="83" FontSize="14"/>
+            <TextBox x:Name="txt_IDNumber" HorizontalAlignment="Left" Height="29" Margin="100,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" IsEnabled="False" Background="#FFE6EAE0"/>
+            <Label x:Name="lbl_PhoneNumber" Content="Phone Number:" HorizontalAlignment="Left" Margin="188,145,0,0" VerticalAlignment="Top" Width="96" FontSize="14"/>
+            <TextBox x:Name="txt_PhoneNumber" HorizontalAlignment="Left" Height="29" Margin="301,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" TabIndex="2" GotFocus="txt_PhoneNumber_GotFocus" GotMouseCapture="txt_PhoneNumber_GotMouseCapture" Background="#FFE6EAE0" FontSize="14"/>
+            <Label x:Name="lbl_Address" Content="Address:" HorizontalAlignment="Left" Margin="115,251,0,0" VerticalAlignment="Top" Width="55" FontSize="14"/>
+            <TextBox x:Name="txt_Address" HorizontalAlignment="Left" Height="29" Margin="182,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" TabIndex="4" GotFocus="txt_Address_GotFocus" GotMouseCapture="txt_Address_GotMouseCapture" Background="#FFE6EAE0" FontSize="14"/>
+            <Label x:Name="lbl_City" Content="City:" HorizontalAlignment="Left" Margin="129,340,0,0" VerticalAlignment="Top" Width="41" FontSize="14"/>
+            <TextBox x:Name="txt_City" HorizontalAlignment="Left" Height="29" Margin="188,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217" TabIndex="6" GotFocus="txt_City_GotFocus" GotMouseCapture="txt_City_GotMouseCapture" Background="#FFE6EAE0" FontSize="14"/>
+            <Label x:Name="lbl_State" Content="State:" HorizontalAlignment="Left" Margin="440,340,0,0" VerticalAlignment="Top" Width="43" FontSize="14"/>
+            <ComboBox x:Name="cbo_State" HorizontalAlignment="Left" Margin="505,340,0,0" VerticalAlignment="Top" Height="29" Width="74" TabIndex="7" Background="#FFE6EAE0" FontSize="14">
                 <ComboBox.Resources>
                     <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FFE6EAE0" />
                 </ComboBox.Resources>
             </ComboBox>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditChild" Content="Edit My Child" HorizontalAlignment="Left" Margin="502,376,0,0" VerticalAlignment="Top" Width="92" Height="45" Click="btn_AddChild_Click" TabIndex="11"/>
-            <Label x:Name="lbl_Zip" Content="Zip:" HorizontalAlignment="Left" Margin="483,283,0,0" VerticalAlignment="Top" Width="43"/>
-            <TextBox x:Name="txt_Zip" HorizontalAlignment="Left" Height="23" Margin="520,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" TabIndex="8" GotFocus="txt_Zip_GotFocus" GotMouseCapture="txt_Zip_GotMouseCapture" Background="#FFE6EAE0"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_SubmitInfo" Content="Submit Changes" HorizontalAlignment="Left" Margin="247,376,0,0" VerticalAlignment="Top" Width="121" Click="btn_Submit_Click" Height="45" TabIndex="10"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Finish" Content="Back to Login" HorizontalAlignment="Left" Margin="23,338,0,0" VerticalAlignment="Top" Width="99" Click="btn_Finish_Click" TabIndex="13"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="23,379,0,0" VerticalAlignment="Top" Width="92" Height="38" Click="btn_Delete_Click" TabIndex="12"/>
-            <Label x:Name="lbl_Email" Content="Email:" HorizontalAlignment="Left" Margin="247,148,0,0" VerticalAlignment="Top" Width="47"/>
-            <TextBox x:Name="txt_Email" HorizontalAlignment="Left" Height="23" Margin="308,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="3" GotFocus="txt_Email_GotFocus" GotMouseCapture="txt_Email_GotMouseCapture" Background="#FFE6EAE0"/>
-            <Label x:Name="lbl_Address2" Content="Address 2:" HorizontalAlignment="Left" Margin="221,217,0,0" VerticalAlignment="Top" Width="64"/>
-            <TextBox x:Name="txt_Address2" HorizontalAlignment="Left" Height="23" Margin="301,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286" TabIndex="5" GotFocus="txt_Address2_GotFocus" GotMouseCapture="txt_Address2_GotMouseCapture" Background="#FFE6EAE0"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_ChangePicture" Content="Change Picture" HorizontalAlignment="Left" Margin="23,259,0,0" VerticalAlignment="Top" Width="99" Click="btn_ChangePicture_Click" TabIndex="9"/>
-            <TextBox x:Name="txt_FilePath" HorizontalAlignment="Left" Height="23" Margin="23,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" IsEnabled="False" Background="#FFE6EAE0"/>
-            <Label x:Name="lbl_path" Content="Path:" HorizontalAlignment="Left" Margin="134,255,0,0" VerticalAlignment="Top"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditChild" Content="Edit My Child" Margin="487,479,159,0" VerticalAlignment="Top" Height="60" Click="btn_AddChild_Click" TabIndex="11" FontSize="16"/>
+            <Label x:Name="lbl_Zip" Content="Zip:" HorizontalAlignment="Left" Margin="600,340,0,0" VerticalAlignment="Top" Width="43" FontSize="14"/>
+            <TextBox x:Name="txt_Zip" HorizontalAlignment="Left" Height="29" Margin="650,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" TabIndex="8" GotFocus="txt_Zip_GotFocus" GotMouseCapture="txt_Zip_GotMouseCapture" Background="#FFE6EAE0" FontSize="14"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_SubmitInfo" Content="Submit Changes" HorizontalAlignment="Left" Margin="159,479,0,0" VerticalAlignment="Top" Width="150" Height="60" Click="btn_Submit_Click"  TabIndex="10" FontSize="16"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Finish" Content="Close" Margin="634,574,12,22" Click="btn_Finish_Click" TabIndex="13" FontSize="16"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Delete" Content="Delete" Margin="12,574,634,22" Click="btn_Delete_Click" TabIndex="12" FontSize="16"/>
+            <Label x:Name="lbl_Email" Content="Email:" HorizontalAlignment="Left" Margin="237,192,0,0" VerticalAlignment="Top" Width="47" FontSize="14"/>
+            <TextBox x:Name="txt_Email" HorizontalAlignment="Left" Height="29" Margin="308,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" TabIndex="3" GotFocus="txt_Email_GotFocus" GotMouseCapture="txt_Email_GotMouseCapture" Background="#FFE6EAE0" FontSize="14"/>
+            <Label x:Name="lbl_Address2" Content="Address 2:" HorizontalAlignment="Left" Margin="100,293,0,0" VerticalAlignment="Top" Width="76" FontSize="14"/>
+            <TextBox x:Name="txt_Address2" HorizontalAlignment="Left" Height="29" Margin="182,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" TabIndex="5" GotFocus="txt_Address2_GotFocus" GotMouseCapture="txt_Address2_GotMouseCapture" Background="#FFE6EAE0" FontSize="14"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_ChangePicture" Content="Change Picture" HorizontalAlignment="Left" Margin="12,383,0,0" VerticalAlignment="Top" Width="150" Height="60" Click="btn_ChangePicture_Click" TabIndex="9" FontSize="16"/>
+            <TextBox x:Name="txt_FilePath" HorizontalAlignment="Left" Height="29" Margin="251,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" IsEnabled="False" Background="#FFE6EAE0" FontSize="14"/>
+            <Label x:Name="lbl_path" Content="Path:" HorizontalAlignment="Left" Margin="182,395,0,0" VerticalAlignment="Top" FontSize="14"/>
 
         </Grid>
     </Border>

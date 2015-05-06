@@ -9,8 +9,8 @@
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
     <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="555" Height="314" ClipToBounds="True">
         <Grid>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_LinkChild" Content="Link Child" HorizontalAlignment="Left" Margin="66,210,0,0" VerticalAlignment="Top" Width="109" Height="51" Click="btn_LinkChild_Click"/>
-            <ListBox x:Name="lst_ChildBox" HorizontalAlignment="Left" Height="124" Margin="66,70,0,0" VerticalAlignment="Top" Width="395" Background="#FFE6EAE0">
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_LinkChild" Content="Link Child" Margin="67,210,334,40" Click="btn_LinkChild_Click" FontSize="16"/>
+            <ListBox x:Name="lst_ChildBox" Height="124" Margin="67,70,66,0" VerticalAlignment="Top" Background="#FFE6EAE0">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal" />
@@ -26,7 +26,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="Back" HorizontalAlignment="Left" Margin="362,210,0,0" VerticalAlignment="Top" Width="99" Height="51" Click="btn_Cancel_Click"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="Close" Margin="335,210,66,40" Click="btn_Cancel_Click" FontSize="16"/>
             <Label x:Name="lbl_LinkExistingCHild" Content="Click a child from your family to link to yourself. Then hit &quot;Link Child&quot;." HorizontalAlignment="Left" Margin="66,26,0,0" VerticalAlignment="Top" Width="395"/>
 
         </Grid>
