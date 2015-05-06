@@ -4,10 +4,6 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace AdminTools {
-    /// <summary>
-    /// Interaction logic for win_ParentLogin.xaml
-    /// </summary>
-    /// 
 
     public partial class ParentIDEntry : Window {
 
@@ -23,16 +19,20 @@ namespace AdminTools {
         }
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e) {
-            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back) {
-
-            } else {
+            if (e.Key == Key.Enter) {
+                SubmitID();
+            } else if (!((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back)) {
                 MessageBox.Show("Please use only numbers.");
                 e.Handled = true;
             }
-        }//end KeyPressedValidateNumber
+        }
 
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
+            SubmitID();
+        }
+
+        private void SubmitID() {
             GuardianInfoDB parentDB = new GuardianInfoDB();
             if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text)) {
                 MessageBox.Show("Please enter the parents ID number.");
@@ -41,20 +41,15 @@ namespace AdminTools {
                 string ID = txt_IDEntry.Text;
 
                 if (parentDB.GuardianIDExists(ID)) {
-
                     if (editParent)
                         DisplayAdminEditParentWindow(ID);
-
                     else
                         DisplayAdminEditChildInfo(ID);
-                }//end if
-                else {
+                } else {
                     MessageBox.Show("User ID or PIN does not exist");
-                }//end else
-
-            }//end else
-
-        }//end submit click
+                }
+            }
+        }
 
         private void DisplayAdminEditParentWindow(string ID) {
 
