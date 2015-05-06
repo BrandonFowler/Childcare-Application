@@ -7,7 +7,7 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="555" Height="314" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="555" Height="314" ClipToBounds="True">
         <Grid>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_LinkChild" Content="Link Child" HorizontalAlignment="Left" Margin="66,210,0,0" VerticalAlignment="Top" Width="109" Height="51" Click="btn_LinkChild_Click"/>
             <ListBox x:Name="lst_ChildBox" HorizontalAlignment="Left" Height="124" Margin="66,70,0,0" VerticalAlignment="Top" Width="395" Background="#FFE6EAE0">

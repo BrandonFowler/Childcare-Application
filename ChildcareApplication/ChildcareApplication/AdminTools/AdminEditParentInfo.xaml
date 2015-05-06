@@ -6,7 +6,7 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="644.776" Height="461.194" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="644.776" Height="461.194" ClipToBounds="True">
         <Grid Margin="2.4,-7.6,-2.4,7.6">
             <Canvas x:Name="cnv_ParentIcon" HorizontalAlignment="Left" Height="152" Margin="23,41,0,0" VerticalAlignment="Top" Width="158" Background="#FFE6EAE0"/>
             <Label x:Name="lbl_Parent" Content="Parent Image" HorizontalAlignment="Left" Margin="44,15,0,0" VerticalAlignment="Top" Width="98"/>
@@ -23,13 +23,10 @@
             <Label x:Name="lbl_City" Content="City:" HorizontalAlignment="Left" Margin="251,249,0,0" VerticalAlignment="Top" Width="34"/>
             <TextBox x:Name="txt_City" HorizontalAlignment="Left" Height="23" Margin="301,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="6" GotFocus="txt_City_GotFocus" GotMouseCapture="txt_City_GotMouseCapture" Background="#FFE6EAE0"/>
             <Label x:Name="lbl_State" Content="State:" HorizontalAlignment="Left" Margin="472,249,0,0" VerticalAlignment="Top" Width="43"/>
-            <ComboBox x:Name="cbo_State" HorizontalAlignment="Left" Margin="520,253,0,0" VerticalAlignment="Top" Width="74" TabIndex="7">
-                <ComboBox.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                        <GradientStop Color="#FFE6EAE0" Offset="1"/>
-                    </LinearGradientBrush>
-                </ComboBox.Background>
+            <ComboBox x:Name="cbo_State" HorizontalAlignment="Left" Margin="520,253,0,0" VerticalAlignment="Top" Width="74" TabIndex="7" Background="#FFE6EAE0">
+                <ComboBox.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FFE6EAE0" />
+                </ComboBox.Resources>
             </ComboBox>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditChild" Content="Edit My Child" HorizontalAlignment="Left" Margin="502,376,0,0" VerticalAlignment="Top" Width="92" Height="45" Click="btn_AddChild_Click" TabIndex="11"/>
             <Label x:Name="lbl_Zip" Content="Zip:" HorizontalAlignment="Left" Margin="483,283,0,0" VerticalAlignment="Top" Width="43"/>

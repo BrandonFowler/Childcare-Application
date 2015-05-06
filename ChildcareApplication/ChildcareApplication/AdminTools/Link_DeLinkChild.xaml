@@ -6,7 +6,7 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="499" Height="300" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="499" Height="300" ClipToBounds="True">
         <Grid>
             <TextBox x:Name="txt_GuardianID" HorizontalAlignment="Left" Height="23" Margin="192,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFE6EAE0"/>
             <TextBox x:Name="txt_GuardianID2" HorizontalAlignment="Left" Height="23" Margin="192,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFE6EAE0"/>

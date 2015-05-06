@@ -6,7 +6,7 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="234.329" Height="329.851" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="234.329" Height="329.851" ClipToBounds="True">
         <Grid>
             <Label x:Name="lbl_FromExample" Content="(mm/dd/yyyy)" HorizontalAlignment="Left" Margin="20,245,0,0" VerticalAlignment="Top" Height="30" Width="84" FontSize="10"/>
 

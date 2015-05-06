@@ -6,7 +6,7 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="378.238" Height="252.621" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="378.238" Height="252.621" ClipToBounds="True">
         <Grid>
             <TextBox x:Name="txt_IDEntry" HorizontalAlignment="Left" Height="23" Margin="125,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFE6EAE0"/>
             <Label x:Name="lbl_ID" Content="Parent ID" HorizontalAlignment="Left" Margin="125,44,0,0" VerticalAlignment="Top"/>

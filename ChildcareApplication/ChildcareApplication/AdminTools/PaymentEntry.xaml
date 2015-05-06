@@ -6,7 +6,7 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="285.075" Height="225.373" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="285.075" Height="225.373" ClipToBounds="True">
         <Grid Margin="-2">
             <Label x:Name="lbl_CurrentBalance" Content="Current Balance:" Margin="30,30,31,0" VerticalAlignment="Top" Height="30" Width="217" FontSize="16"/>
             <TextBox x:Name="txt_PaymentAmount" Margin="80,101,80,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" KeyDown="txt_PaymentAmount_KeyDown" Background="#FFE6EAE0" GotFocus="txt_PaymentAmount_GotFocus" FontSize="14"/>

@@ -7,7 +7,7 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="702.538" Height="566.583" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="702.538" Height="566.583" ClipToBounds="True">
         <Grid>
             <Canvas x:Name="cnv_ChildIcon" HorizontalAlignment="Left" Height="152" Margin="23,41,0,0" VerticalAlignment="Top" Width="158" Background="#FFE6EAE0"/>
             <Label x:Name="lbl_Child" Content="Child Image" HorizontalAlignment="Left" Margin="44,15,0,0" VerticalAlignment="Top" Width="98"/>

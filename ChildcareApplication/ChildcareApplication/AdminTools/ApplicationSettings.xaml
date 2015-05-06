@@ -6,7 +6,7 @@
         WindowStyle="None"
         Padding="0"
         Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="712" Height="402.353" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="712" Height="402.353" ClipToBounds="True">
         <Grid>
             <Label x:Name="lbl_BillingDate" Content="Start of Billing Cycle (day of month)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <Label x:Name="lbl_MaxMonthly" Content="Maximum Monthly Charge for Regular Childcare" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>

@@ -6,7 +6,7 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="274.149" Height="291.268" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="274.149" Height="291.268" ClipToBounds="True">
         <Grid>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Exit" Content="Exit" HorizontalAlignment="Left" Margin="179,230,0,0" VerticalAlignment="Top" Width="77" Click="btn_Exit_Click" FontSize="16"/>
             <Label x:Name="lbl_UserName" Content="User Name" HorizontalAlignment="Left" Margin="40,34,0,0" VerticalAlignment="Top" Width="146"/>

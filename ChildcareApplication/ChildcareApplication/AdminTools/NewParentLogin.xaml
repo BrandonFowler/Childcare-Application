@@ -6,7 +6,7 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="449" Height="278" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="449" Height="278" ClipToBounds="True">
         <Grid>
             <TextBox x:Name="txt_ParentID1" HorizontalAlignment="Left" Height="23" Margin="81,53,0,0" TextWrapping="Wrap" Text="Enter your ID" VerticalAlignment="Top" Width="120" GotFocus="txt_ParentID1_GotFocus" GotMouseCapture="txt_ParentID1_GotMouseCapture" Background="#FFE6EAE0"/>
             <TextBox x:Name="txt_ParentID2" HorizontalAlignment="Left" Height="23" Margin="81,92,0,0" TextWrapping="Wrap" Text="Enter you ID again" VerticalAlignment="Top" Width="120" GotFocus="txt_ParentID2_GotFocus" GotMouseCapture="txt_ParentID2_GotMouseCapture" Background="#FFE6EAE0"/>

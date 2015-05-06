@@ -6,7 +6,7 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="249" Height="394" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="249" Height="394" ClipToBounds="True">
         <Grid Margin="-2,0">
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditOrDeleteParent" Content="Edit _Parent Info" Margin="35,134,35,0" VerticalAlignment="Top" Height="30" Click="btn_EditOrDeleteParent_Click" TabIndex="3" FontSize="14"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_ParentReport" Content="_Parent Report" Margin="35,29,35,0" Click="btn_ParentReport_Click" TabIndex="0" FontSize="14" Height="30" VerticalAlignment="Top"/>

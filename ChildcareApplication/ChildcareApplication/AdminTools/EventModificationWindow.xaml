@@ -6,7 +6,7 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="375" Height="334.373" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="375" Height="334.373" ClipToBounds="True">
         <Grid>
             <Label x:Name="lbl_EventMaxHours" Content="Maximum Hours" HorizontalAlignment="Left" Margin="55,209,0,0" VerticalAlignment="Top" Width="120"/>
             <ComboBox x:Name="cmb_PriceType" HorizontalAlignment="Left" Margin="55,90,0,0" VerticalAlignment="Top" Width="120" TabIndex="1" SelectionChanged="cmb_PriceType_SelectionChanged" KeyUp="cmb_PriceType_KeyUp">

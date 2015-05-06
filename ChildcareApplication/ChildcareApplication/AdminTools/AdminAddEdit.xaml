@@ -6,7 +6,7 @@
         WindowStyle="None"
         Padding="0"
         Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="646" Height="292" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="646" Height="292" ClipToBounds="True">
         <Grid>
             <ListBox x:Name="lst_AdminList" HorizontalAlignment="Left" Height="203" Margin="10,10,0,0" VerticalAlignment="Top" Width="155" SelectionChanged="lst_AdminList_SelectionChanged" IsTextSearchEnabled="False" Background="#FFE6EAE0"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddAdmin" Content="Add New" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top" Width="75" IsTabStop="False" Click="btn_AddAdmin_Click"/>

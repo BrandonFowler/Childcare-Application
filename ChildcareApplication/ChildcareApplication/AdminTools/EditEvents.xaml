@@ -6,9 +6,9 @@
         WindowStyle="None"
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
-    <Border BorderBrush="#FFE4ECEE" BorderThickness="2" Width="810.052" Height="331.5" ClipToBounds="True">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="810.052" Height="331.5" ClipToBounds="True">
         <Grid>
-            <DataGrid x:Name="EventViewDataGrid" Margin="10,51,10,0" VerticalAlignment="Top" Height="240" Background="#FFE6EAE0"/>
+            <DataGrid x:Name="EventViewDataGrid" Margin="10,51,10,0" VerticalAlignment="Top" Height="240" Background="#FFE6EAE0" RowBackground="#FFE6EAE0"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddEvent" Content="Add Event" HorizontalAlignment="Left" Margin="46,18,0,0" VerticalAlignment="Top" Width="76" Height="22" Click="btn_AddEvent_Click" TabIndex="0"/>
             <ComboBox x:Name="cmd_EventIDCombo" HorizontalAlignment="Left" Margin="224,18,0,0" VerticalAlignment="Top" Width="126" TabIndex="2">
                 <ComboBox.Background>
