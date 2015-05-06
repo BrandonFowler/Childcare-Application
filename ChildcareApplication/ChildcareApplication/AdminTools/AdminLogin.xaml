@@ -11,9 +11,9 @@
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Exit" Content="Exit" HorizontalAlignment="Left" Margin="179,230,0,0" VerticalAlignment="Top" Width="77" Click="btn_Exit_Click" FontSize="16"/>
             <Label x:Name="lbl_UserName" Content="User Name" HorizontalAlignment="Left" Margin="40,34,0,0" VerticalAlignment="Top" Width="146"/>
             <Label x:Name="lbl_Password" Content="Password" HorizontalAlignment="Left" Margin="40,88,0,0" VerticalAlignment="Top" Width="121"/>
-            <TextBox x:Name="txt_UserName" Height="23" Margin="40,60,40,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" KeyDown="txt_UserName_KeyDown" Background="#FFE6EAE0"/>
+            <TextBox x:Name="txt_UserName" Height="23" Margin="40,60,40,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" KeyDown="txt_UserName_KeyDown" Background="#FFE6EAE0" GotFocus="txt_GotFocus"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Login" Content="Log In" Margin="80,173,80,0" VerticalAlignment="Top" Click="btn_Login_Click" TabIndex="2" FontSize="16"/>
-            <PasswordBox x:Name="txt_Password" HorizontalAlignment="Left" Margin="40,114,0,0" VerticalAlignment="Top" Width="186" Height="23" TabIndex="1" KeyDown="txt_Password_KeyDown" Background="#FFE6EAE0"/>
+            <PasswordBox x:Name="txt_Password" HorizontalAlignment="Left" Margin="40,114,0,0" VerticalAlignment="Top" Width="186" Height="23" TabIndex="1" KeyDown="txt_Password_KeyDown" Background="#FFE6EAE0" GotFocus="txt_GotFocus"/>
         </Grid>
     </Border>
 </Window>

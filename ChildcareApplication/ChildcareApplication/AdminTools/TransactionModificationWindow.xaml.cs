@@ -228,28 +228,8 @@ namespace AdminTools {
             return splitDate[2] + "-" + splitDate[0] + "-" + splitDate[1];
         }
 
-        private void txt_GuardianName_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_GuardianName.SelectAll);
-        }
-
-        private void txt_ChildName_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_ChildName.SelectAll);
-        }
-
-        private void txt_CheckIn_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_CheckIn.SelectAll);
-        }
-
-        private void txt_CheckOut_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_CheckOut.SelectAll);
-        }
-
-        private void txt_Date_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_Date.SelectAll);
-        }
-
-        private void txt_TransactionTotal_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_TransactionTotal.SelectAll);
+        private void txt_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)((TextBox)sender).SelectAll);
         }
 
         private void txt_GuardianName_KeyUp(object sender, KeyEventArgs e) {

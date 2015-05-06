@@ -213,14 +213,6 @@ namespace AdminTools {
             Dispatcher.BeginInvoke((Action)txt_ParentID.SelectAll);
         }
 
-        /*private void txt_FromDate_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_FromDate.SelectAll);
-        }This method is probably no longer necessary and doesn't currently compile*/
-
-        /*private void txt_ToDate_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_ToDate.SelectAll);
-        }This method is probably no longer necessary and doesn't currently compile*/
-
         private void btn_Print_Click(object sender, RoutedEventArgs e) {
             if (this.reportLoaded && this.table.Rows.Count > 0) {
                 PrintDialog printDialog = new PrintDialog();

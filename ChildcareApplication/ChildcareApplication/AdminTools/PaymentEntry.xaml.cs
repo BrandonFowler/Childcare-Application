@@ -77,5 +77,9 @@ namespace ChildcareApplication.AdminTools {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
+
+        private void txt_PaymentAmount_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)((TextBox)sender).SelectAll);
+        }
     }
 }

@@ -31,49 +31,31 @@ namespace AdminTools {
         public AdminLogin(){
             InitializeComponent();
             this.db = new LoginDB();
-            this.txt_UserName.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_UserName.GotFocus += OnIDBoxFocus;
-            this.txt_Password.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_Password.GotFocus += OnPINBoxFocus;
             this.txt_UserName.Focus();
             this.MouseDown += WindowMouseDown;
-        }//end win_LoginWindow
+        }
 
         public AdminLogin(string login) {
             InitializeComponent();
             this.db = new LoginDB();
-            this.txt_UserName.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_UserName.GotFocus += OnIDBoxFocus;
-            this.txt_Password.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_Password.GotFocus += OnPINBoxFocus;
             this.txt_UserName.Focus();
             this.parentTools = true;
             this.MouseDown += WindowMouseDown;
-        }//end win_LoginWindow
-
-        private void KeyPressedValidateNumber(Object o, KeyEventArgs e)
-        {
-           /* if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back)
-            {
-
-            }
-            else
-            {
-                MessageBox.Show("Please use only numbers.");
-                e.Handled = true;
-            }*/
-  
-        }//end KeyPressedValidateNumber
+        }
 
         private void OnIDBoxFocus(object sender, EventArgs e) {
             this.IDBoxSelected = true;
             this.PINBoxSelected = false;
-        }//end OnTDBoxFocus
+        }
 
         private void OnPINBoxFocus(object sender, EventArgs e) {
             this.PINBoxSelected = true;
             this.IDBoxSelected = false;
-        }//end OnPINBoxFocus
+        }
 
         private void btn_Login_Click(object sender, RoutedEventArgs e) {
             LoginCheck();
@@ -136,6 +118,10 @@ namespace AdminTools {
         private void WindowMouseDown(object sender, MouseButtonEventArgs e){
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
+        }
+
+        private void txt_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)((TextBox)sender).SelectAll);
         }
     }
 }

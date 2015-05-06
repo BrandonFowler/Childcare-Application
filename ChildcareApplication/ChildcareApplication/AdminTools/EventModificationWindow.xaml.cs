@@ -353,7 +353,7 @@ namespace AdminTools {
         }
 
         private void txt_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)((TextBox )sender).SelectAll); //idea found at: http://stackoverflow.com/questions/97459/automatically-select-all-text-on-focus-in-winforms-textbox
+            Dispatcher.BeginInvoke((Action)((TextBox)sender).SelectAll); //idea found at: http://stackoverflow.com/questions/97459/automatically-select-all-text-on-focus-in-winforms-textbox
         }
 
         private bool DateValid() {

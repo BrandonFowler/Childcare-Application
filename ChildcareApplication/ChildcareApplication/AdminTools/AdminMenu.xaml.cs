@@ -14,9 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace AdminTools {
-    /// <summary>
-    /// Interaction logic for win_AdminMenu.xaml
-    /// </summary>
     public partial class AdminMenu : Window {
         private int accessLevel;
         private string username;
@@ -133,5 +130,5 @@ namespace AdminTools {
                 DragMove();
         }
 
-    }//end class
-}//end namespace 
+    }
+}
