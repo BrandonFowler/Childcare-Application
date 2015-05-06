@@ -113,15 +113,7 @@ namespace AdminTools {
             this.Close();
         }
 
-        private void txt_EventName_TextChanged(object sender, TextChangedEventArgs e) {
-            this.valueChanged = true;
-        }
-
-        private void cmb_PriceType_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            this.valueChanged = true;
-        }
-
-        private void txt_Rate_TextChanged(object sender, TextChangedEventArgs e) {
+        private void DataChanged_Event(object sender, TextChangedEventArgs e) {
             this.valueChanged = true;
         }
 
@@ -152,14 +144,6 @@ namespace AdminTools {
                 txt_DayOfMonth.Visibility = Visibility.Hidden;
                 txt_MonthNum.Visibility = Visibility.Hidden;
             }
-        }
-
-        private void txt_DayOfMonth_TextChanged(object sender, TextChangedEventArgs e) {
-            this.valueChanged = true;
-        }
-
-        private void txt_MonthNum_TextChanged(object sender, TextChangedEventArgs e) {
-            this.valueChanged = true;
         }
 
         private void ProcessModification() {
@@ -344,14 +328,6 @@ namespace AdminTools {
             this.Close();
         }
 
-        private void cmb_DayName_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            this.valueChanged = true;
-        }
-
-        private void txt_DiscountPrice_TextChanged(object sender, TextChangedEventArgs e) {
-            this.valueChanged = true;
-        }
-
         private void txt_GotFocus(object sender, RoutedEventArgs e) {
             Dispatcher.BeginInvoke((Action)((TextBox)sender).SelectAll); //idea found at: http://stackoverflow.com/questions/97459/automatically-select-all-text-on-focus-in-winforms-textbox
         }
@@ -384,67 +360,17 @@ namespace AdminTools {
             this.maxHoursChanged = true;
         }
 
-        private void txt_MaxHours_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_MaxHours.SelectAll);
-        }
-
-        private void txt_EventName_KeyUp(object sender, KeyEventArgs e) {
+        private void KeyUp_Event(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
-                cmb_PriceType.Focus();
-            }
-        }
-
-        private void txt_Rate_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                txt_DiscountPrice.Focus();
-            }
-        }
-
-        private void txt_DiscountPrice_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                cmb_Occurence.Focus();
-            }
-        }
-
-        private void txt_MaxHours_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                btn_Submit.Focus();
-            }
-        }
-
-        private void txt_MonthNum_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                txt_MaxHours.Focus();
-            }
-        }
-
-        private void txt_DayOfMonth_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                txt_MonthNum.Focus();
+                TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next); //Found at: http://stackoverflow.com/questions/23008670/wpf-and-mvvm-how-to-move-focus-to-the-next-control-automatically
+                request.Wrapped = true;
+                ((Control)e.Source).MoveFocus(request);
             }
         }
 
         private void cmb_PriceType_KeyUp(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
                 txt_Rate.Focus();
-            }
-        }
-
-        private void cmb_Occurence_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                if (cmb_Occurence.SelectedIndex == 0) { //always available
-                    txt_MaxHours.Focus();
-                } else if (cmb_Occurence.SelectedIndex == 1) { //specific day
-                    txt_DayOfMonth.Focus();
-                } else if (cmb_Occurence.SelectedIndex == 2) { //day of week
-                    cmb_DayName.Focus();
-                }
-            }
-        }
-
-        private void cmb_DayName_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                txt_MaxHours.Focus();
             }
         }
 

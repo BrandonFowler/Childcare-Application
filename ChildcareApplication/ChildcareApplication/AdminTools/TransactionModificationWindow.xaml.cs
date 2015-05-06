@@ -232,63 +232,15 @@ namespace AdminTools {
             Dispatcher.BeginInvoke((Action)((TextBox)sender).SelectAll);
         }
 
-        private void txt_GuardianName_KeyUp(object sender, KeyEventArgs e) {
+        private void KeyUp_Event(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
-                txt_ChildName.Focus();
+                TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next); //Found at: http://stackoverflow.com/questions/23008670/wpf-and-mvvm-how-to-move-focus-to-the-next-control-automatically
+                request.Wrapped = true;
+                ((Control)e.Source).MoveFocus(request);
             }
         }
 
-        private void txt_ChildName_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                txt_CheckIn.Focus();
-            }
-        }
-
-        private void txt_CheckIn_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                txt_CheckOut.Focus();
-            }
-        }
-
-        private void txt_CheckOut_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                txt_Date.Focus();
-            }
-        }
-
-        private void txt_Date_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                txt_TransactionTotal.Focus();
-            }
-        }
-
-        private void txt_TransactionTotal_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                btn_OK_Click(this, e);
-            }
-        }
-
-        private void txt_GuardianName_TextChanged(object sender, TextChangedEventArgs e) {
-            this.dataChanged = true;
-        }
-
-        private void txt_ChildName_TextChanged(object sender, TextChangedEventArgs e) {
-            this.dataChanged = true;
-        }
-
-        private void txt_CheckIn_TextChanged(object sender, TextChangedEventArgs e) {
-            this.dataChanged = true;
-        }
-
-        private void txt_CheckOut_TextChanged(object sender, TextChangedEventArgs e) {
-            this.dataChanged = true;
-        }
-
-        private void txt_Date_TextChanged(object sender, TextChangedEventArgs e) {
-            this.dataChanged = true;
-        }
-
-        private void txt_TransactionTotal_TextChanged(object sender, TextChangedEventArgs e) {
+        private void TextChanged_Event(object sender, TextChangedEventArgs e) {
             this.dataChanged = true;
         }
 

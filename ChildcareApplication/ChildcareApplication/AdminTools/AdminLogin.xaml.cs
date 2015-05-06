@@ -103,15 +103,11 @@ namespace AdminTools {
             this.Close();
         }
 
-        private void txt_UserName_KeyDown(object sender, KeyEventArgs e) {
+        private void KeyUp_Event(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
-                pwd_Password.Focus();
-            }
-        }
-
-        private void pwd_Password_KeyDown(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                LoginCheck();
+                TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next); //Found at: http://stackoverflow.com/questions/23008670/wpf-and-mvvm-how-to-move-focus-to-the-next-control-automatically
+                request.Wrapped = true;
+                ((Control)e.Source).MoveFocus(request);
             }
         }
 
