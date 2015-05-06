@@ -9,7 +9,7 @@
     <Border BorderBrush="#FFE4E8EE" BorderThickness="2" Width="375" Height="334.373" ClipToBounds="True">
         <Grid>
             <Label x:Name="lbl_EventMaxHours" Content="Maximum Hours" HorizontalAlignment="Left" Margin="55,209,0,0" VerticalAlignment="Top" Width="120"/>
-            <ComboBox x:Name="cmb_PriceType" HorizontalAlignment="Left" Margin="55,90,0,0" VerticalAlignment="Top" Width="120" TabIndex="1" SelectionChanged="DataChanged_Event" KeyUp="cmb_PriceType_KeyUp">
+            <ComboBox x:Name="cmb_PriceType" HorizontalAlignment="Left" Margin="55,90,0,0" VerticalAlignment="Top" Width="120" TabIndex="1" SelectionChanged="cmb_SelectionChanged" KeyUp="cmb_PriceType_KeyUp">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -42,7 +42,7 @@
             <TextBox x:Name="txt_MonthNum" HorizontalAlignment="Left" Height="23" Margin="284,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Visibility="Hidden" TabIndex="6" TextChanged="DataChanged_Event" GotFocus="txt_GotFocus" KeyUp="KeyUp_Event"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Submit" Content="_Submit Changes" HorizontalAlignment="Left" Margin="248,273,0,0" VerticalAlignment="Top" Width="106" Click="btn_Submit_Click" TabIndex="49"/>
             <Label x:Name="lbl_DayName" Content="Day:" HorizontalAlignment="Left" Margin="198,181,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-            <ComboBox x:Name="cmb_DayName" HorizontalAlignment="Left" Margin="234,185,0,0" VerticalAlignment="Top" Width="120" Visibility="Hidden" TabIndex="9" SelectionChanged="DataChanged_Event" KeyUp="KeyUp_Event">
+            <ComboBox x:Name="cmb_DayName" HorizontalAlignment="Left" Margin="234,185,0,0" VerticalAlignment="Top" Width="120" Visibility="Hidden" TabIndex="9" SelectionChanged="cmb_SelectionChanged" KeyUp="KeyUp_Event">
                 <ComboBoxItem Content="Sunday"/>
                 <ComboBoxItem Content="Monday"/>
                 <ComboBoxItem Content="Tuesday"/>

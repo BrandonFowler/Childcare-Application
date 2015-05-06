@@ -146,6 +146,10 @@ namespace AdminTools {
             }
         }
 
+        private void cmb_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            this.valueChanged = true;
+        }
+
         private void ProcessModification() {
             if (FormDataValid()) {
                 if (this.oldEventName == null) {
