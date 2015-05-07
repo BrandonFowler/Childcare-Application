@@ -8,8 +8,8 @@
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
     <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True">
         <Grid Height="638" VerticalAlignment="Center" HorizontalAlignment="Center" ClipToBounds="False" Margin="0,-2,0,0">
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_CurrentMonthReport" Content="_Current Month Report" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="184" Click="btn_CurrentMonthReport_Click" TabIndex="0"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_SpecificMonth" Content="Specific _Month Report" HorizontalAlignment="Left" Margin="199,37,0,0" VerticalAlignment="Top" Width="185" Click="btn_SpecificMonth_Click" TabIndex="1"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_CurrentMonthReport" Content="Current _Month Report" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="184" Click="btn_CurrentMonthReport_Click" TabIndex="0"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_SpecificMonth" Content="Specific Month _Report" HorizontalAlignment="Left" Margin="199,37,0,0" VerticalAlignment="Top" Width="185" Click="btn_SpecificMonth_Click" TabIndex="1"/>
             <DataGrid x:Name="businessDataGrid" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="497" Width="552" IsReadOnly="True" ColumnWidth="Auto" Background="#FFE6EAE0" FontSize="14" RowBackground="#FFE6EAE0"/>
             <ComboBox x:Name="cmb_Month" HorizontalAlignment="Left" Margin="392,39,0,0" VerticalAlignment="Top" Width="100" TabIndex="2" FontSize="14">
                 <ComboBox.Background>
@@ -43,7 +43,7 @@
             </ComboBox>
             <Label x:Name="lbl_Month" Content="Month" HorizontalAlignment="Left" Margin="392,13,0,0" VerticalAlignment="Top" Width="91"/>
             <Label x:Name="lbl_Year" Content="Year" HorizontalAlignment="Left" Margin="497,13,0,0" VerticalAlignment="Top" Width="77"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Exit" Content="_Exit" HorizontalAlignment="Left" Margin="487,599,0,0" VerticalAlignment="Top" Width="75" Click="btn_Exit_Click" TabIndex="5"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Exit" Content="_Close" HorizontalAlignment="Left" Margin="487,599,0,0" VerticalAlignment="Top" Width="75" Click="btn_Exit_Click" TabIndex="5"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Print" Content="_Print" HorizontalAlignment="Left" Margin="286,599,0,0" VerticalAlignment="Top" Width="75" TabIndex="4" Click="btn_Print_Click"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Save" Content="_Save" HorizontalAlignment="Left" Margin="366,599,0,0" VerticalAlignment="Top" Width="75" TabIndex="4" Click="btn_Save_Click"/>
 
