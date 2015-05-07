@@ -3919,14 +3919,14 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
-		<row><td>ChildcareApplicati_0FAB571B915847CA931172AF1C19CC42.exe</td><td/><td>D:\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
-		<row><td>ChildcareApplicati_167E9733FB3548BEBB194139D1105ED0.exe</td><td/><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
-		<row><td>ChildcareApplicati_2CC225757CB042B494BB8A19A1D64312.exe</td><td/><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
-		<row><td>ChildcareApplicati_5CD9939E6135418AACFB30A3DA1AC969.exe</td><td/><td>D:\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
-		<row><td>ChildcareApplicati_9FD07330974E4DB7947ADC23038D84E1.exe</td><td/><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
-		<row><td>ChildcareApplicati_A69559987A2E4A8480B4F80BCB4D6E6E.exe</td><td/><td>D:\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
+		<row><td>ChildcareApplicati_0FAB571B915847CA931172AF1C19CC42.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
+		<row><td>ChildcareApplicati_167E9733FB3548BEBB194139D1105ED0.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
+		<row><td>ChildcareApplicati_2CC225757CB042B494BB8A19A1D64312.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
+		<row><td>ChildcareApplicati_5CD9939E6135418AACFB30A3DA1AC969.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
+		<row><td>ChildcareApplicati_9FD07330974E4DB7947ADC23038D84E1.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
+		<row><td>ChildcareApplicati_A69559987A2E4A8480B4F80BCB4D6E6E.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
 		<row><td>ChildcareApplicati_A8C6F373FD3E462FBD0DDB2E155A7B47.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
-		<row><td>ChildcareApplicati_AD70FCD5FA5C46CE8981D653FB9BD79B.exe</td><td/><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
+		<row><td>ChildcareApplicati_AD70FCD5FA5C46CE8981D653FB9BD79B.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
