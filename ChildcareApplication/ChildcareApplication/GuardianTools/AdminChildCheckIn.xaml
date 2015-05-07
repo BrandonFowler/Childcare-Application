@@ -9,8 +9,8 @@
     <Border BorderBrush="LightBlue" BorderThickness="2" Width="800" Height="660" ClipToBounds="True">
         <Grid Margin="-1.6,-1.6,-2.4,-2.4">
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="_Close" HorizontalAlignment="Left" Margin="683,583,0,0" VerticalAlignment="Top" Width="107" Click="btn_Cancel_Click" RenderTransformOrigin="11.947,11.825" Height="67" FontSize="16"/>
-            <Label x:Name="lbl_searchLable" Content="Search By Last Name or Guardian ID" HorizontalAlignment="Left" Margin="340,130,0,0" VerticalAlignment="Top" Height="38" Width="278" FontSize="16" RenderTransformOrigin="0.5,0.5"/>
-            <TextBox x:Name="txt_SearchBox" HorizontalAlignment="Left" Height="31" Margin="340,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" FontSize="16" Background="#FFE6EAE0">
+            <Label x:Name="lbl_searchLable" Content="Search By Last Name or Guardian ID" HorizontalAlignment="Left" Margin="340,130,0,0" VerticalAlignment="Top" Height="38" Width="278" FontSize="14" RenderTransformOrigin="0.5,0.5"/>
+            <TextBox x:Name="txt_SearchBox" HorizontalAlignment="Left" Height="25" Margin="340,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" FontSize="14" Background="#FFE6EAE0">
                 <TextBox.ToolTip>
                     <ToolTip Background="#FFE6EAE0">
                         <TextBlock Name="SearchTip" Text="Last name or member number of guardian" FontSize="14" Background="#FFE6EAE0"/>
@@ -20,7 +20,27 @@
             <Button Style="{DynamicResource GlassButton}"  x:Name="btn_Search" Content="_Search" HorizontalAlignment="Left" Margin="650,148,0,445" Width="106" FontSize="16" Click="btn_Search_Click" Background="#FF83CDCD" RenderTransformOrigin="0.526,1.731"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Login" Content="_Login As Selected Guardian" HorizontalAlignment="Left" Margin="264,543,0,0" VerticalAlignment="Top" Width="254" Height="67" FontSize="16" Click="btn_Login_Click" RenderTransformOrigin="0.5,0.5"/>
             <Canvas x:Name="cnv_GuardianPic" HorizontalAlignment="Left" Height="232" Margin="41,60,0,0" VerticalAlignment="Top" Width="259" Background="#FFE6EAE0"/>
-            <DataGrid x:Name="dta_GuardianList" HorizontalAlignment="Left" Margin="41,345,0,0" VerticalAlignment="Top" Height="167" Width="715" Background="#FFE6EAE0" IsReadOnly="True" FontSize="16" FontWeight="Bold" RowBackground="#FFE6EAE0" ColumnWidth="*">
+            <DataGrid x:Name="dta_GuardianList" HorizontalAlignment="Left" Margin="41,345,0,0" VerticalAlignment="Top" Height="167" Width="715" Background="#FFE6EAE0" IsReadOnly="True" FontSize="14" RowBackground="#FFE6EAE0" ColumnWidth="*">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0.5,0.909" StartPoint="0.5,0.091">
+                                    <GradientStop Color="#FF264F6A" Offset="1"/>
+                                    <GradientStop Color="#FF6981AE" Offset="0.488"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0, 0, 1, 0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                    <Style TargetType="DataGridRowHeader">
+                        <Setter Property="Background" Value="#FFE6EAE0"/>
+                    </Style>
+                </DataGrid.Resources>
                 <DataGrid.ToolTip>
                     <ToolTip Background="#FFE6EAE0">
                         <TextBlock Name="GridTip" Text="Selection of registered guardians" FontSize="14" Background="#FFE6EAE0"/>
