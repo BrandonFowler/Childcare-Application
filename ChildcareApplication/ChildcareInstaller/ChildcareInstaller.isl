@@ -340,15 +340,15 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>ChildcareApplication.exe</td><td>{F3F3254D-5FA2-4991-B9A1-6A568369984D}</td><td>DEBUG</td><td>2</td><td/><td>childcareapplication.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ChildcareApplication.vshost.exe</td><td>{D0D9C388-19A9-4295-A032-8F755F8E6D34}</td><td>DEBUG</td><td>2</td><td/><td>childcareapplication.vshost.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT</td><td>{AD24329A-BF5D-4E10-8151-80B22A1F5E74}</td><td>BIN</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{ABB0C3C9-CA00-4D8D-9313-E0B42D3B8437}</td><td>DEBUG</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ChildcareApplication.exe</td><td>{D8CF26FE-0B1F-4FBE-A09C-17E172C03228}</td><td>DEBUG</td><td>2</td><td/><td>childcareapplication.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ChildcareApplication.vshost.exe</td><td>{8FA720F4-19B5-47EC-9618-2F40E1B9F8BA}</td><td>DEBUG</td><td>2</td><td/><td>childcareapplication.vshost.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT</td><td>{A019AE2F-1F1D-43F5-96F5-1FE964D6CF08}</td><td>BIN</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{51DCE8F7-596E-4DC0-9FFF-55F6E9583DB7}</td><td>DEBUG</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{0D9F905A-7548-4F26-9078-B4EC7DD7DB82}</td><td>DATABASEDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT3</td><td>{A40205ED-581B-4B78-AC54-D1C8B069CE04}</td><td>PICTURES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT4</td><td>{F3AE8DD4-1EAE-443B-92DE-E682D0CCA73B}</td><td>RELEASE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>System.Data.SQLite.dll</td><td>{210713AC-D9A0-41FA-B705-5B77222E328C}</td><td>DEBUG</td><td>2</td><td/><td>system.data.sqlite.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>System.Data.SQLite.dll1</td><td>{9B8FD5F0-34BD-4E77-B36A-7C5733BFA44A}</td><td>DATABASEDIR</td><td>2</td><td/><td>system.data.sqlite.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT3</td><td>{4D1104CA-33DF-4A50-B9EA-4CF4CB4AC446}</td><td>RELEASE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT4</td><td>{BB6DA6CE-ED1C-4A61-A4F5-44C15B6533E8}</td><td>PICTURES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>System.Data.SQLite.dll</td><td>{631412EF-CA0E-4F37-B9E1-5D002B3FF2DC}</td><td>DATABASEDIR</td><td>2</td><td/><td>system.data.sqlite.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>System.Data.SQLite.dll1</td><td>{7D459290-EE99-40A0-840E-F86FEA7218E1}</td><td>DEBUG</td><td>2</td><td/><td>system.data.sqlite.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1058,7 +1058,7 @@
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>BIN</td><td>ISX_DEFAULTCOMPONENT</td></row>
-		<row><td>RELEASE</td><td>ISX_DEFAULTCOMPONENT4</td></row>
+		<row><td>RELEASE</td><td>ISX_DEFAULTCOMPONENT3</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1151,14 +1151,12 @@
 		<row><td>FavoritesFolder</td><td>TARGETDIR</td><td>.:FAVORI~1|Favorites</td><td/><td>0</td><td/></row>
 		<row><td>FontsFolder</td><td>TARGETDIR</td><td>.:Fonts</td><td/><td>0</td><td/></row>
 		<row><td>GlobalAssemblyCache</td><td>TARGETDIR</td><td>.:Global~1|GlobalAssemblyCache</td><td/><td>0</td><td/></row>
-		<row><td>INSTALLDIR</td><td>SPOKANE_CLUB_CHILDCARE1</td><td>.</td><td/><td>0</td><td/></row>
+		<row><td>INSTALLDIR</td><td>NEW_DIRECTORY1</td><td>.</td><td/><td>0</td><td/></row>
 		<row><td>ISCommonFilesFolder</td><td>CommonFilesFolder</td><td>Instal~1|InstallShield</td><td/><td>0</td><td/></row>
-		<row><td>ISMyCompanyDir</td><td>ProgramFilesFolder</td><td>MYCOMP~1|My Company Name</td><td/><td>0</td><td/></row>
-		<row><td>ISMyProductDir</td><td>ISMyCompanyDir</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
 		<row><td>ISYourDataBaseDir</td><td>INSTALLDIR</td><td>Database</td><td/><td>0</td><td/></row>
 		<row><td>LocalAppDataFolder</td><td>TARGETDIR</td><td>.:LocalA~1|LocalAppData</td><td/><td>0</td><td/></row>
-		<row><td>MY_PRODUCT_NAME</td><td>SPOKANE_CLUB</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
 		<row><td>MyPicturesFolder</td><td>TARGETDIR</td><td>.:MyPict~1|MyPictures</td><td/><td>0</td><td/></row>
+		<row><td>NEW_DIRECTORY1</td><td>ProgramFilesFolder</td><td>SPOKAN~1|Spokane Club Childcare</td><td/><td>0</td><td/></row>
 		<row><td>NetHoodFolder</td><td>TARGETDIR</td><td>.:NetHood</td><td/><td>0</td><td/></row>
 		<row><td>PICTURES</td><td>INSTALLDIR</td><td>Pictures</td><td/><td>0</td><td/></row>
 		<row><td>PersonalFolder</td><td>TARGETDIR</td><td>.:Personal</td><td/><td>0</td><td/></row>
@@ -1169,9 +1167,7 @@
 		<row><td>ProgramMenuFolder</td><td>TARGETDIR</td><td>.:Programs</td><td/><td>3</td><td/></row>
 		<row><td>RELEASE</td><td>BIN</td><td>Release</td><td/><td>0</td><td/></row>
 		<row><td>RecentFolder</td><td>TARGETDIR</td><td>.:Recent</td><td/><td>0</td><td/></row>
-		<row><td>SPOKANE_CLUB</td><td>ProgramFilesFolder</td><td>SPOKAN~1|Spokane Club</td><td/><td>0</td><td/></row>
 		<row><td>SPOKANE_CLUB1</td><td>DIRPROPERTY1</td><td>SPOKAN~1|Spokane Club</td><td/><td>0</td><td/></row>
-		<row><td>SPOKANE_CLUB_CHILDCARE</td><td>SPOKANE_CLUB</td><td>SPOKAN~1|Spokane Club Childcare</td><td/><td>0</td><td/></row>
 		<row><td>SPOKANE_CLUB_CHILDCARE1</td><td>SPOKANE_CLUB1</td><td>SPOKAN~1|Spokane Club Childcare</td><td/><td>0</td><td/></row>
 		<row><td>SendToFolder</td><td>TARGETDIR</td><td>.:SendTo</td><td/><td>3</td><td/></row>
 		<row><td>StartMenuFolder</td><td>TARGETDIR</td><td>.:STARTM~1|Start Menu</td><td/><td>3</td><td/></row>
@@ -1901,34 +1897,34 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>_2.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>12.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\12.jpg</td><td>1</td><td/></row>
-		<row><td>_2.jpg1</td><td>ISX_DEFAULTCOMPONENT3</td><td>22.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\22.jpg</td><td>1</td><td/></row>
-		<row><td>_2.jpg2</td><td>ISX_DEFAULTCOMPONENT3</td><td>32.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\32.jpg</td><td>1</td><td/></row>
-		<row><td>_52.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>152.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\152.jpg</td><td>1</td><td/></row>
-		<row><td>beckyarmstrong.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>BECKYA~1.JPG|BeckyArmstrong.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\BeckyArmstrong.jpg</td><td>1</td><td/></row>
-		<row><td>bilbo_baggins.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>BILBO_~1.JPG|Bilbo_Baggins.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\Bilbo_Baggins.jpg</td><td>1</td><td/></row>
-		<row><td>billyarmstrong.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>BILLYA~1.JPG|BillyArmstrong.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\BillyArmstrong.jpg</td><td>1</td><td/></row>
-		<row><td>child.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>Child.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\Child.jpg</td><td>1</td><td/></row>
-		<row><td>childcareapplication.exe</td><td>ChildcareApplication.exe</td><td>CHILDC~1.EXE|ChildcareApplication.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>1</td><td/></row>
-		<row><td>childcareapplication.exe.con</td><td>ISX_DEFAULTCOMPONENT1</td><td>CHILDC~1.CON|ChildcareApplication.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe.config</td><td>1</td><td/></row>
-		<row><td>childcareapplication.pdb</td><td>ISX_DEFAULTCOMPONENT1</td><td>CHILDC~1.PDB|ChildcareApplication.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.pdb</td><td>1</td><td/></row>
-		<row><td>childcareapplication.vshost.</td><td>ChildcareApplication.vshost.exe</td><td>CHILDC~1.EXE|ChildcareApplication.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.vshost.exe</td><td>1</td><td/></row>
-		<row><td>childcareapplication.vshost.1</td><td>ISX_DEFAULTCOMPONENT1</td><td>CHILDC~1.CON|ChildcareApplication.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.vshost.exe.config</td><td>1</td><td/></row>
-		<row><td>childcaredb.s3db</td><td>ISX_DEFAULTCOMPONENT2</td><td>CHILDC~1.S3D|ChildcareDB.s3db</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Database\ChildcareDB.s3db</td><td>1</td><td/></row>
-		<row><td>default.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>default.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\default.jpg</td><td>1</td><td/></row>
-		<row><td>ewu.gif</td><td>ISX_DEFAULTCOMPONENT3</td><td>EWU.gif</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\EWU.gif</td><td>1</td><td/></row>
-		<row><td>frodo_baggins.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>FRODO_~1.JPG|Frodo_Baggins.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\Frodo_Baggins.jpg</td><td>1</td><td/></row>
-		<row><td>gandalf.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>Gandalf.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\Gandalf.jpg</td><td>1</td><td/></row>
-		<row><td>lillyarmstrong.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>LILLYA~1.JPG|LillyArmstrong.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\LillyArmstrong.jpg</td><td>1</td><td/></row>
-		<row><td>parent.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>Parent.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\Parent.jpg</td><td>1</td><td/></row>
-		<row><td>quincyarmstrong.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>QUINCY~1.JPG|QuincyArmstrong.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\QuincyArmstrong.jpg</td><td>1</td><td/></row>
-		<row><td>smeagol.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>Smeagol.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\Smeagol.jpg</td><td>1</td><td/></row>
-		<row><td>spokaneclub.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>SPOKAN~1.JPG|SpokaneClub.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\SpokaneClub.jpg</td><td>1</td><td/></row>
-		<row><td>spokaneclubicon.ico</td><td>ISX_DEFAULTCOMPONENT3</td><td>SPOKAN~1.ICO|SpokaneClubIcon.ico</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\SpokaneClubIcon.ico</td><td>1</td><td/></row>
-		<row><td>system.data.sqlite.dll</td><td>System.Data.SQLite.dll</td><td>SYSTEM~1.DLL|System.Data.SQLite.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\System.Data.SQLite.dll</td><td>1</td><td/></row>
-		<row><td>system.data.sqlite.dll.cur</td><td>ISX_DEFAULTCOMPONENT2</td><td>SYSTEM~1.CUR|System.Data.SQLite.dll.cur</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Database\System.Data.SQLite.dll.cur</td><td>1</td><td/></row>
-		<row><td>system.data.sqlite.dll1</td><td>System.Data.SQLite.dll1</td><td>SYSTEM~1.DLL|System.Data.SQLite.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Database\System.Data.SQLite.dll</td><td>1</td><td/></row>
-		<row><td>tauriel.jpg</td><td>ISX_DEFAULTCOMPONENT3</td><td>Tauriel.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\Pictures\Tauriel.jpg</td><td>1</td><td/></row>
+		<row><td>_2.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>12.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\12.jpg</td><td>1</td><td/></row>
+		<row><td>_2.jpg1</td><td>ISX_DEFAULTCOMPONENT4</td><td>22.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\22.jpg</td><td>1</td><td/></row>
+		<row><td>_2.jpg2</td><td>ISX_DEFAULTCOMPONENT4</td><td>32.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\32.jpg</td><td>1</td><td/></row>
+		<row><td>_52.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>152.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\152.jpg</td><td>1</td><td/></row>
+		<row><td>beckyarmstrong.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>BECKYA~1.JPG|BeckyArmstrong.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\BeckyArmstrong.jpg</td><td>1</td><td/></row>
+		<row><td>bilbo_baggins.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>BILBO_~1.JPG|Bilbo_Baggins.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Bilbo_Baggins.jpg</td><td>1</td><td/></row>
+		<row><td>billyarmstrong.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>BILLYA~1.JPG|BillyArmstrong.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\BillyArmstrong.jpg</td><td>1</td><td/></row>
+		<row><td>child.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>Child.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Child.jpg</td><td>1</td><td/></row>
+		<row><td>childcareapplication.exe</td><td>ChildcareApplication.exe</td><td>CHILDC~1.EXE|ChildcareApplication.exe</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>1</td><td/></row>
+		<row><td>childcareapplication.exe.con</td><td>ISX_DEFAULTCOMPONENT1</td><td>CHILDC~1.CON|ChildcareApplication.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe.config</td><td>1</td><td/></row>
+		<row><td>childcareapplication.pdb</td><td>ISX_DEFAULTCOMPONENT1</td><td>CHILDC~1.PDB|ChildcareApplication.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.pdb</td><td>1</td><td/></row>
+		<row><td>childcareapplication.vshost.</td><td>ChildcareApplication.vshost.exe</td><td>CHILDC~1.EXE|ChildcareApplication.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.vshost.exe</td><td>1</td><td/></row>
+		<row><td>childcareapplication.vshost.1</td><td>ISX_DEFAULTCOMPONENT1</td><td>CHILDC~1.CON|ChildcareApplication.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.vshost.exe.config</td><td>1</td><td/></row>
+		<row><td>childcaredb.s3db</td><td>ISX_DEFAULTCOMPONENT2</td><td>CHILDC~1.S3D|ChildcareDB.s3db</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Database\ChildcareDB.s3db</td><td>1</td><td/></row>
+		<row><td>default.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>default.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\default.jpg</td><td>1</td><td/></row>
+		<row><td>ewu.gif</td><td>ISX_DEFAULTCOMPONENT4</td><td>EWU.gif</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\EWU.gif</td><td>1</td><td/></row>
+		<row><td>frodo_baggins.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>FRODO_~1.JPG|Frodo_Baggins.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Frodo_Baggins.jpg</td><td>1</td><td/></row>
+		<row><td>gandalf.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>Gandalf.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Gandalf.jpg</td><td>1</td><td/></row>
+		<row><td>lillyarmstrong.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>LILLYA~1.JPG|LillyArmstrong.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\LillyArmstrong.jpg</td><td>1</td><td/></row>
+		<row><td>parent.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>Parent.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Parent.jpg</td><td>1</td><td/></row>
+		<row><td>quincyarmstrong.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>QUINCY~1.JPG|QuincyArmstrong.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\QuincyArmstrong.jpg</td><td>1</td><td/></row>
+		<row><td>smeagol.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>Smeagol.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Smeagol.jpg</td><td>1</td><td/></row>
+		<row><td>spokaneclub.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>SPOKAN~1.JPG|SpokaneClub.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\SpokaneClub.jpg</td><td>1</td><td/></row>
+		<row><td>spokaneclubicon.ico</td><td>ISX_DEFAULTCOMPONENT4</td><td>SPOKAN~1.ICO|SpokaneClubIcon.ico</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\SpokaneClubIcon.ico</td><td>1</td><td/></row>
+		<row><td>system.data.sqlite.dll</td><td>System.Data.SQLite.dll</td><td>SYSTEM~1.DLL|System.Data.SQLite.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Database\System.Data.SQLite.dll</td><td>1</td><td/></row>
+		<row><td>system.data.sqlite.dll.cur</td><td>ISX_DEFAULTCOMPONENT2</td><td>SYSTEM~1.CUR|System.Data.SQLite.dll.cur</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Database\System.Data.SQLite.dll.cur</td><td>1</td><td/></row>
+		<row><td>system.data.sqlite.dll1</td><td>System.Data.SQLite.dll1</td><td>SYSTEM~1.DLL|System.Data.SQLite.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\System.Data.SQLite.dll</td><td>1</td><td/></row>
+		<row><td>tauriel.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>Tauriel.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Tauriel.jpg</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2072,15 +2068,15 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>ChildcareApplication.exe</td><td/><td/><td>_73A899FC_0DD1_4B8F_81F6_6018DB5B1819_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ChildcareApplication.vshost.exe</td><td/><td/><td>_2390A16B_3D4B_45FE_836A_4B1C32F9F8E9_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_71EDC87C_DD9F_4B24_BDAA_8B34E5F2856D_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_DBADDEBC_A332_41FB_911D_57876B1E01C5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ChildcareApplication.exe</td><td/><td/><td>_CB7FDC07_DCB1_4E2D_9A10_F79A26BCC111_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ChildcareApplication.vshost.exe</td><td/><td/><td>_11BA971A_98BA_4326_8A5A_5D8CDFA4EDE7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_D3469327_7FE9_4840_8D64_6D6C441695BF_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_83C0D019_6832_4949_A297_E381E8068108_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_D5C67873_1517_4A00_B3DF_4B8EC4E7B163_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT3</td><td/><td/><td>_18EBC393_0428_4EC5_B757_03A8AE1991CC_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT4</td><td/><td/><td>_2C288A93_0008_4A0D_BD07_6ED581547250_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>System.Data.SQLite.dll</td><td/><td/><td>_6CEBFB94_26E6_4F22_B7D1_1FBF1E39BEC8_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>System.Data.SQLite.dll1</td><td/><td/><td>_55AD2873_5638_4B9F_B3D4_B2A37C4E0048_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT3</td><td/><td/><td>_29CBAAFE_AAFE_438E_979D_D635D29D951F_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT4</td><td/><td/><td>_726C8779_153F_4342_A167_E921EE7EAB31_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>System.Data.SQLite.dll</td><td/><td/><td>_EFB86ECF_F0A3_49D4_8CE7_81A1CB3034CE_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>System.Data.SQLite.dll1</td><td/><td/><td>_7765D744_6216_4F46_8880_FE5CFD1C8940_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2382,6 +2378,7 @@
 		<col def="S255">Value</col>
 		<col def="S255">TestValue</col>
 		<col def="i4">Type</col>
+		<row><td>ChildcareApplication</td><td>ChildcareApplication\ChildcareApplication.csproj</td><td/><td>2</td></row>
 		<row><td>CommonFilesFolder</td><td/><td/><td>1</td></row>
 		<row><td>ISPROJECTDIR</td><td/><td/><td>1</td></row>
 		<row><td>ISProductFolder</td><td/><td/><td>1</td></row>
@@ -2450,13 +2447,13 @@
 		<col def="S255">DotNetBuildConfiguration</col>
 		<col def="S255">MsiCommandLine</col>
 		<col def="I4">ISSetupPrerequisiteLocation</col>
-		<row><td>CD_ROM</td><td>Express</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareInstaller</td><td>Default</td><td>0</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>650</td><td>0</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
+		<row><td>CD_ROM</td><td>Express</td><td>&lt;ISProjectFolder&gt;</td><td>Default</td><td>0</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>650</td><td>0</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
 		<row><td>Custom</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>2</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>100</td><td>0</td><td>1024</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
 		<row><td>DVD-10</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>8.75</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
 		<row><td>DVD-18</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>15.83</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
-		<row><td>DVD-5</td><td>Express</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareInstaller</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>4.38</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
+		<row><td>DVD-5</td><td>Express</td><td>&lt;ISProjectFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>4.38</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
 		<row><td>DVD-9</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>7.95</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
-		<row><td>SingleImage</td><td>Express</td><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareInstaller</td><td>PackageName</td><td>1</td><td>1033</td><td>0</td><td>1</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>108573</td><td/><td/><td/><td>3</td></row>
+		<row><td>SingleImage</td><td>Express</td><td>&lt;ISProjectFolder&gt;</td><td>PackageName</td><td>1</td><td>1033</td><td>0</td><td>1</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>108573</td><td/><td/><td/><td>3</td></row>
 		<row><td>WebDeployment</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>PackageName</td><td>4</td><td>1033</td><td>2</td><td>1</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>124941</td><td/><td/><td/><td>3</td></row>
 	</table>
 
@@ -3516,6 +3513,10 @@
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.vshost.exe</td><td>0</td><td/><td>849600946</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME3</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>849571442</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME4</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.vshost.exe</td><td>0</td><td/><td>849571442</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME5</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>849550741</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.vshost.exe</td><td>0</td><td/><td>849550741</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>849588021</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.vshost.exe</td><td>0</td><td/><td>849588021</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>849543570</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>849543570</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>849543570</td></row>
@@ -3809,6 +3810,7 @@
 		<row><td>ID_STRING3</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>849545714</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>849600691</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>849602739</td></row>
+		<row><td>ID_STRING6</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>849577813</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>849543570</td></row>
 	</table>
 
@@ -3917,9 +3919,13 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
+		<row><td>ChildcareApplicati_0FAB571B915847CA931172AF1C19CC42.exe</td><td/><td>D:\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
 		<row><td>ChildcareApplicati_167E9733FB3548BEBB194139D1105ED0.exe</td><td/><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
 		<row><td>ChildcareApplicati_2CC225757CB042B494BB8A19A1D64312.exe</td><td/><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
+		<row><td>ChildcareApplicati_5CD9939E6135418AACFB30A3DA1AC969.exe</td><td/><td>D:\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
 		<row><td>ChildcareApplicati_9FD07330974E4DB7947ADC23038D84E1.exe</td><td/><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
+		<row><td>ChildcareApplicati_A69559987A2E4A8480B4F80BCB4D6E6E.exe</td><td/><td>D:\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
+		<row><td>ChildcareApplicati_A8C6F373FD3E462FBD0DDB2E155A7B47.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>ChildcareApplicati_AD70FCD5FA5C46CE8981D653FB9BD79B.exe</td><td/><td>C:\Users\Brandon Fowler\Documents\GitHub\ChildcareApp\ChildcareApplication\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
 	</table>
 
@@ -4053,7 +4059,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{59E6030B-4108-4A99-8A4A-D8543FF6C393}</td></row>
 		<row><td>ISUSSignature</td><td>{C50CCEFE-50F9-4045-AD74-4D43AF8B6C8C}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewRelease,viewProject,viewRealSetupDesign,viewSetupDesign,viewSetupTypes,viewISToday</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewRelease,viewProject,viewRealSetupDesign,viewSetupDesign,viewSetupTypes,viewISToday,viewUpgradePaths,viewAppFiles,viewFeatureFiles,viewDependencies</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4366,7 +4372,6 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ARPURLINFOABOUT</td><td>##ID_STRING1##</td><td/></row>
 		<row><td>AgreeToLicense</td><td>No</td><td/></row>
 		<row><td>ApplicationUsers</td><td>AllUsers</td><td/></row>
-		<row><td>DIRPROPERTY1</td><td>C:\</td><td/></row>
 		<row><td>DWUSINTERVAL</td><td>30</td><td/></row>
 		<row><td>DWUSLINK</td><td>CECB57D8999BF0E8BEAC879FA9BC978FD97C578F59FCA7D8CEAB509FBE8B976889FB909FC9AC</td><td/></row>
 		<row><td>DefaultUIFont</td><td>ExpressDefault</td><td/></row>
@@ -4592,8 +4597,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>ChildcareApplication.exe</td><td>spokan_1_spokane_club_childcare</td><td>##IDS_SHORTCUT_DISPLAY_NAME3##</td><td>ChildcareApplication.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ChildcareApplicati_9FD07330974E4DB7947ADC23038D84E1.exe</td><td>1</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>ChildcareApplication.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME3##</td><td>ChildcareApplication.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ChildcareApplicati_2CC225757CB042B494BB8A19A1D64312.exe</td><td>1</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ChildcareApplication.exe</td><td>spokan_1_spokane_club_childcare</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>ChildcareApplication.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ChildcareApplicati_A69559987A2E4A8480B4F80BCB4D6E6E.exe</td><td>1</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ChildcareApplication.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>ChildcareApplication.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ChildcareApplicati_0FAB571B915847CA931172AF1C19CC42.exe</td><td>1</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

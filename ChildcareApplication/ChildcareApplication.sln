@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChildcareUnitTests", "ChildcareUnitTests\ChildcareUnitTests.csproj", "{A4ED7CC8-EBD7-4380-9BF1-3A9C3BCBCC68}"
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "ChildcareInstaller", "ChildcareInstaller\ChildcareInstaller.isproj", "{243DCE91-4376-48EB-BAC1-B4FB4F813CC3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{979F41A0-8DD0-415D-AB4F-9D50EE979F25} = {979F41A0-8DD0-415D-AB4F-9D50EE979F25}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

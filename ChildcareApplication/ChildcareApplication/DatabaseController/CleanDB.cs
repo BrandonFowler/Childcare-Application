@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Windows;
 using ChildcareApplication.Properties;
+using System.IO;
 
 
 namespace ChildcareApplication.DatabaseController {
@@ -18,6 +19,8 @@ namespace ChildcareApplication.DatabaseController {
         }
 
         public bool Clean() {
+            var dirInfo = new DirectoryInfo("../../Database");
+            dirInfo.Attributes &= ~FileAttributes.ReadOnly;
             bool success = true;
             int daysToKeepRecords;
             try {
