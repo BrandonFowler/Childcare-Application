@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
     <Border BorderBrush="LightBlue" BorderThickness="2" Width="274.149" Height="291.268" ClipToBounds="True">
         <Grid>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Exit" Content="Exit" HorizontalAlignment="Left" Margin="179,230,0,0" VerticalAlignment="Top" Width="77" Click="btn_Exit_Click" FontSize="16"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Close" Content="_Close" HorizontalAlignment="Left" Margin="179,230,0,0" VerticalAlignment="Top" Width="77" Click="btn_Exit_Click" FontSize="16"/>
             <Label x:Name="lbl_UserName" Content="User Name" HorizontalAlignment="Left" Margin="40,34,0,0" VerticalAlignment="Top" Width="146"/>
             <Label x:Name="lbl_Password" Content="Password" HorizontalAlignment="Left" Margin="40,88,0,0" VerticalAlignment="Top" Width="121"/>
             <TextBox x:Name="txt_UserName" Height="23" Margin="40,60,40,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" KeyUp="KeyUp_Event_USRName" Background="#FFE6EAE0" GotFocus="txt_GotFocus"/>

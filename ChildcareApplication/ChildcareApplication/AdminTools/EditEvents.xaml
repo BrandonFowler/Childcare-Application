@@ -8,7 +8,28 @@
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
     <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True">
         <Grid Margin="-2">
-            <DataGrid x:Name="EventViewDataGrid" Margin="10,87,10,15" VerticalAlignment="Center" Height="273" Background="#FFE6EAE0" RowBackground="#FFE6EAE0" HorizontalAlignment="Center" Width="830"/>
+            <DataGrid x:Name="EventViewDataGrid" Margin="10,87,10,15" VerticalAlignment="Center" Height="273" Background="#FFE6EAE0" RowBackground="#FFE6EAE0" HorizontalAlignment="Center" Width="830">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0.5,0.909" StartPoint="0.5,0.091">
+                                    <GradientStop Color="#FF264F6A" Offset="1"/>
+                                    <GradientStop Color="#FF6981AE" Offset="0.488"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="#FF6981AE"/>
+                        <Setter Property="BorderThickness" Value="0, 0, 1, 0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                    <Style TargetType="DataGridRowHeader">
+                        <Setter Property="Background" Value="#FFE6EAE0"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddEvent" Content="_Add Event" HorizontalAlignment="Left" Margin="24,36,0,0" VerticalAlignment="Top" Width="100" Click="btn_AddEvent_Click" TabIndex="0"/>
             <ComboBox x:Name="cmd_EventIDCombo" HorizontalAlignment="Left" Margin="270,38,0,0" VerticalAlignment="Top" Width="126" TabIndex="2" FontSize="14">
                 <ComboBox.Background>

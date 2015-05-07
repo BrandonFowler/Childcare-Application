@@ -10,7 +10,28 @@
         <Grid Height="638" VerticalAlignment="Center" HorizontalAlignment="Center" ClipToBounds="False" Margin="0,-2,0,0">
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_CurrentMonthReport" Content="Current _Month Report" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="184" Click="btn_CurrentMonthReport_Click" TabIndex="0"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_SpecificMonth" Content="Specific Month _Report" HorizontalAlignment="Left" Margin="199,37,0,0" VerticalAlignment="Top" Width="185" Click="btn_SpecificMonth_Click" TabIndex="1"/>
-            <DataGrid x:Name="businessDataGrid" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="497" Width="552" IsReadOnly="True" ColumnWidth="Auto" Background="#FFE6EAE0" FontSize="14" RowBackground="#FFE6EAE0"/>
+            <DataGrid x:Name="businessDataGrid" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="497" Width="552" IsReadOnly="True" ColumnWidth="Auto" Background="#FFE6EAE0" FontSize="14" RowBackground="#FFE6EAE0">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0.5,0.909" StartPoint="0.5,0.091">
+                                    <GradientStop Color="#FF264F6A" Offset="1"/>
+                                    <GradientStop Color="#FF6981AE" Offset="0.488"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="#FF6981AE"/>
+                        <Setter Property="BorderThickness" Value="0, 0, 1, 0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                    <Style TargetType="DataGridRowHeader">
+                        <Setter Property="Background" Value="#FFE6EAE0"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
             <ComboBox x:Name="cmb_Month" HorizontalAlignment="Left" Margin="392,39,0,0" VerticalAlignment="Top" Width="100" TabIndex="2" FontSize="14">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">

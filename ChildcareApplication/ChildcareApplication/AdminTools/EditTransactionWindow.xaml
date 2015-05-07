@@ -8,7 +8,28 @@
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE" ResizeMode="NoResize">
     <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True">
         <Grid>
-            <DataGrid x:Name="TransactionDataGrid" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Height="551" Width="776" IsReadOnly="True" MouseLeftButtonUp="TransactionDataGrid_MouseLeftButtonUp" Background="#FFE6EAE0" RowBackground="#FFE6EAE0" FontSize="14" SelectionMode="Single"/>
+            <DataGrid x:Name="TransactionDataGrid" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Height="551" Width="776" IsReadOnly="True" MouseLeftButtonUp="TransactionDataGrid_MouseLeftButtonUp" Background="#FFE6EAE0" RowBackground="#FFE6EAE0" FontSize="14" SelectionMode="Single">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0.5,0.909" StartPoint="0.5,0.091">
+                                    <GradientStop Color="#FF264F6A" Offset="1"/>
+                                    <GradientStop Color="#FF6981AE" Offset="0.488"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="#FF6981AE"/>
+                        <Setter Property="BorderThickness" Value="0, 0, 1, 0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                    <Style TargetType="DataGridRowHeader">
+                        <Setter Property="Background" Value="#FFE6EAE0"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Close" Content="_Close" HorizontalAlignment="Left" Margin="706,40,0,0" VerticalAlignment="Top" Width="80" Click="btn_Exit_Click" TabIndex="4"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditTransaction" Content="_Edit Transaction" HorizontalAlignment="Left" Margin="158,40,0,0" VerticalAlignment="Top" Width="165" Click="btn_EditTransaction_Click" TabIndex="1"/>
             <TextBox x:Name="txt_TransactionID" HorizontalAlignment="Left" Margin="10,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" GotFocus="txt_TransactionID_GotFocus" TabIndex="0" KeyUp="txt_TransactionID_KeyUp" Background="#FFE6EAE0" FontSize="14" Height="25"/>
