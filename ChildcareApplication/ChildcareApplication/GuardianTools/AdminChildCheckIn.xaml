@@ -33,7 +33,7 @@
                             </Setter.Value>
                         </Setter>
                         <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderBrush" Value="#FF6981AE"/>
                         <Setter Property="BorderThickness" Value="0, 0, 1, 0"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
                     </Style>
