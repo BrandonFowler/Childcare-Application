@@ -17,22 +17,13 @@ using System.Windows.Shapes;
 
 
 namespace AdminTools {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class AdminLogin : Window {
-        
-        private bool IDBoxSelected = false;
-        private bool PINBoxSelected = false;
         private LoginDB db;
-        private string pin;
         private bool parentTools = false;
 
         public AdminLogin(){
             InitializeComponent();
             this.db = new LoginDB();
-            this.txt_UserName.GotFocus += OnIDBoxFocus;
-            this.pwd_Password.GotFocus += OnPINBoxFocus;
             this.txt_UserName.Focus();
             this.MouseDown += WindowMouseDown;
         }
@@ -40,21 +31,9 @@ namespace AdminTools {
         public AdminLogin(string login) {
             InitializeComponent();
             this.db = new LoginDB();
-            this.txt_UserName.GotFocus += OnIDBoxFocus;
-            this.pwd_Password.GotFocus += OnPINBoxFocus;
             this.txt_UserName.Focus();
             this.parentTools = true;
             this.MouseDown += WindowMouseDown;
-        }
-
-        private void OnIDBoxFocus(object sender, EventArgs e) {
-            this.IDBoxSelected = true;
-            this.PINBoxSelected = false;
-        }
-
-        private void OnPINBoxFocus(object sender, EventArgs e) {
-            this.PINBoxSelected = true;
-            this.IDBoxSelected = false;
         }
 
         private void btn_Login_Click(object sender, RoutedEventArgs e) {
