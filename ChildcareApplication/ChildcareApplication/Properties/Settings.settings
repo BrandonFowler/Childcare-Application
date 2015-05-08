@@ -59,5 +59,8 @@
     <Setting Name="SunClose" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)">2015-04-13</Value>
     </Setting>
+    <Setting Name="DefaultSaveFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

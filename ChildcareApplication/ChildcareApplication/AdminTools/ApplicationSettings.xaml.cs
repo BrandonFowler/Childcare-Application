@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -271,15 +272,14 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void statusBad(TextBox errorBox) {
+            Dispatcher.BeginInvoke((ThreadStart)delegate { errorBox.Focus(); });
             statusBad();
             errorBox.IsEnabled = true;
             errorBox.Foreground = Brushes.Red;
         }
 
         private void statusBad(TextBox errorBox1, TextBox errorBox2) {
-            statusBad();
-            errorBox1.IsEnabled = true;
-            errorBox1.Foreground = Brushes.Red;
+            statusBad(errorBox1);
             errorBox2.IsEnabled = true;
             errorBox2.Foreground = Brushes.Red;
         }
@@ -369,7 +369,6 @@ namespace ChildcareApplication.AdminTools {
             } else {
                 MessageBox.Show("Invalid Input. Billing Date must be a number from 1 to 29");
                 statusBad(txt_BillingDate);
-                
             }
         }
 
@@ -407,6 +406,15 @@ namespace ChildcareApplication.AdminTools {
                 MessageBox.Show("Invalid Input. Regular Age must be a positive number greater than Infant Age");
                 statusBad(txt_InfantAge, txt_RegularAge);
             }
+        }
+
+        private void btn_selectFolder_Click(object sender, RoutedEventArgs e) {
+            System.Windows.Forms.FolderBrowserDialog folderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            folderDialog.SelectedPath = "C:\\";
+
+            System.Windows.Forms.DialogResult result = folderDialog.ShowDialog();
+            if (result.ToString() == "OK")
+                txt_defaultReportFolder.Text = folderDialog.SelectedPath;
         }
 
         private void txt_MonOpening_LostFocus(object sender, RoutedEventArgs e) {

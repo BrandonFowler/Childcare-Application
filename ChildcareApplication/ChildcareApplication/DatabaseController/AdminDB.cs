@@ -13,7 +13,7 @@ namespace ChildcareApplication.DatabaseController {
         public string[] FindAdmins() {
             dbCon.Open();
 
-            string sql = "SELECT AdministratorUN from Administrator";
+            string sql = "SELECT AdministratorUN from Administrator WHERE NOT AccessLevel='0'";
 
             SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
@@ -100,6 +100,21 @@ namespace ChildcareApplication.DatabaseController {
             SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
             comm.Parameters.Add(new SQLiteParameter("@newUN", newlogin));
             comm.Parameters.Add(new SQLiteParameter("@newPW", newpw));
+            comm.Parameters.Add(new SQLiteParameter("@em", email));
+            comm.Parameters.Add(new SQLiteParameter("@al", access));
+            comm.Parameters.Add(new SQLiteParameter("@oldUN", oldlogin));
+
+            comm.ExecuteNonQuery();
+
+            dbCon.Close();
+        }
+
+        internal void UpdateAdmin(string oldlogin, string newlogin, string email, string access) {
+            dbCon.Open();
+
+            string sql = @"UPDATE Administrator SET AdministratorUN = @newUN, AdministratorEmail = @em, AccessLevel = @al WHERE AdministratorUN = @oldUN;";
+            SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
+            comm.Parameters.Add(new SQLiteParameter("@newUN", newlogin));
             comm.Parameters.Add(new SQLiteParameter("@em", email));
             comm.Parameters.Add(new SQLiteParameter("@al", access));
             comm.Parameters.Add(new SQLiteParameter("@oldUN", oldlogin));

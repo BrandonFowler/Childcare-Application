@@ -250,5 +250,17 @@ namespace ChildcareApplication.Properties {
                 this["SunClose"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DefaultSaveFolder {
+            get {
+                return ((string)(this["DefaultSaveFolder"]));
+            }
+            set {
+                this["DefaultSaveFolder"] = value;
+            }
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using ChildcareApplication.DatabaseController;
+using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ChildcareApplication.AdminTools {
@@ -10,6 +12,7 @@ namespace ChildcareApplication.AdminTools {
         private AdminDB db;
         private string loggedInAs;
         private bool editingPW;
+        private bool pwChanged;
 
         public AdminAddEdit(string username) {
             InitializeComponent();
@@ -29,6 +32,7 @@ namespace ChildcareApplication.AdminTools {
                 txt_Email.IsEnabled = true;
                 rdb_Full.IsEnabled = true;
                 rdb_Limited.IsEnabled = true;
+                pwChanged = false;
             } else {
                 clearForm();
             }
@@ -84,10 +88,23 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e) {
-            if (rdb_Full.IsChecked == true)
-                db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "1");
-            else if (rdb_Limited.IsChecked == true)
-                db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "2");
+            //this check will ensure that if the user is logged in as the currently selected administrator and changes their name it won't break functionality
+            if (lst_AdminList.SelectedItem.ToString().Equals(loggedInAs)) {
+                loggedInAs = txt_LoginName.Text;
+            }
+
+            if (pwChanged) {
+                if (rdb_Full.IsChecked == true)
+                    db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "1");
+                else if (rdb_Limited.IsChecked == true)
+                    db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "2");
+            } else {
+                if (rdb_Full.IsChecked == true)
+                    db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Email.Text, "1");
+                else if (rdb_Limited.IsChecked == true)
+                    db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Email.Text, "2");
+            }
+
 
             lst_AdminList.ItemsSource = db.FindAdmins();
             clearForm();  
@@ -148,6 +165,7 @@ namespace ChildcareApplication.AdminTools {
                     txt_ConfirmPass.IsEnabled = false;
                     editingPW = false;
                     lbl_PassText.Text = "Change Password";
+                    pwChanged = true;
                 }
                 else {
                     MessageBox.Show("Passwords do not match. Please try again");
@@ -168,10 +186,6 @@ namespace ChildcareApplication.AdminTools {
             txt_ConfirmPass.Password = AdminTools.Hashing.HashPass(txt_ConfirmPass.Password);
         }
 
-        private void txt_LoginName_GotFocus(object sender, RoutedEventArgs e) {
-            txt_LoginName.SelectAll();
-        }
-
         private void txt_Password_GotFocus(object sender, RoutedEventArgs e) {
             txt_Password.Clear();
         }
@@ -180,8 +194,9 @@ namespace ChildcareApplication.AdminTools {
             txt_ConfirmPass.Clear();
         }
 
-        private void txt_Email_GotFocus(object sender, RoutedEventArgs e) {
-            txt_Email.SelectAll();
+        private void SelectAllonFocus(object sender, RoutedEventArgs e) {
+            TextBox tb = (TextBox)sender;
+            Dispatcher.BeginInvoke((Action)(tb.SelectAll));
         }
 
         private void txt_LoginName_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
@@ -207,6 +222,13 @@ namespace ChildcareApplication.AdminTools {
         private void WindowMouseDown(object sender, MouseButtonEventArgs e){
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
+        }
+
+        private void txt_LoginName_LostFocus(object sender, RoutedEventArgs e) {
+            if (lst_AdminList.Items.Contains(txt_LoginName.Text) && !(lst_AdminList.SelectedItem.ToString().Equals(txt_LoginName.Text))) {
+                MessageBox.Show("An administrator with that name already exists. Please change the login name to be unique before continuing");
+                btn_Save.IsEnabled = false;
+            }
         }
     }
 }
