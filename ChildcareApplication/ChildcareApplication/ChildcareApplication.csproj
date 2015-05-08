@@ -41,6 +41,33 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MigraDoc.DocumentObjectModel-WPF">
+      <HintPath>Resources\MigraDoc.DocumentObjectModel-WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.DocumentObjectModel-WPF.resources">
+      <HintPath>Resources\de\MigraDoc.DocumentObjectModel-WPF.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering-WPF">
+      <HintPath>Resources\MigraDoc.Rendering-WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering-WPF.resources">
+      <HintPath>Resources\de\MigraDoc.Rendering-WPF.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.RtfRendering-WPF">
+      <HintPath>Resources\MigraDoc.RtfRendering-WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.RtfRendering-WPF.resources">
+      <HintPath>Resources\de\MigraDoc.RtfRendering-WPF.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp-WPF">
+      <HintPath>Resources\PdfSharp-WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp-WPF.resources">
+      <HintPath>Resources\de\PdfSharp-WPF.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting-WPF">
+      <HintPath>Resources\PdfSharp.Charting-WPF.dll</HintPath>
+    </Reference>
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -87,6 +114,7 @@
       <DependentUpon>LinkExistingChild.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdminTools\PageElement.cs" />
+    <Compile Include="AdminTools\PDFCreator.cs" />
     <Compile Include="AdminTools\RegExpressions.cs" />
     <Compile Include="AdminTools\ReportsPaginator.cs" />
     <Compile Include="AdminTools\SettingsValidation.cs" />

@@ -1,8 +1,11 @@
 ﻿using ChildcareApplication.DatabaseController;
 using DatabaseController;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -218,7 +221,9 @@ namespace AdminTools {
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show("TODO: implement save to PDF");
+            PDFCreator pdfCreator = new PDFCreator(this.table);
+            PdfDocument pdf = pdfCreator.CreatePDF();
+            pdfCreator.SavePDF(pdf);
         }
     }
 }
