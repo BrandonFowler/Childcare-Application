@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE" ResizeMode="NoResize">
     <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True">
         <Grid>
-            <DataGrid x:Name="TransactionDataGrid" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Height="551" Width="776" IsReadOnly="True" MouseLeftButtonUp="TransactionDataGrid_MouseLeftButtonUp" Background="#FFE6EAE0" RowBackground="#FFE6EAE0" FontSize="14" SelectionMode="Single">
+            <DataGrid x:Name="TransactionDataGrid" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Height="551" Width="776" IsReadOnly="True" MouseLeftButtonUp="TransactionDataGrid_MouseLeftButtonUp" Background="#FFE6EAE0" RowBackground="#FFE6EAE0" FontSize="14" SelectionMode="Single" ToolTip="Click an event to load the transaction ID into the above box.">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -31,10 +31,11 @@
                 </DataGrid.Resources>
             </DataGrid>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Close" Content="_Close" HorizontalAlignment="Left" Margin="706,40,0,0" VerticalAlignment="Top" Width="80" Click="btn_Exit_Click" TabIndex="4"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditTransaction" Content="_Edit Transaction" HorizontalAlignment="Left" Margin="158,40,0,0" VerticalAlignment="Top" Width="165" Click="btn_EditTransaction_Click" TabIndex="1"/>
-            <TextBox x:Name="txt_TransactionID" HorizontalAlignment="Left" Margin="10,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" GotFocus="txt_TransactionID_GotFocus" TabIndex="0" KeyUp="txt_TransactionID_KeyUp" Background="#FFE6EAE0" FontSize="14" Height="25"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_DeleteTransaction" Content="_Delete Transaction" HorizontalAlignment="Left" Margin="328,40,0,0" VerticalAlignment="Top" Width="165" Click="btn_DeleteTransaction_Click" TabIndex="2"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_NewTransaction" Content="_New Transaction" HorizontalAlignment="Left" Margin="498,40,0,0" VerticalAlignment="Top" Width="165" Click="btn_NewTransaction_Click" TabIndex="3" Height="29"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditTransaction" Content="_Edit Transaction" HorizontalAlignment="Left" Margin="158,40,0,0" VerticalAlignment="Top" Width="165" Click="btn_EditTransaction_Click" TabIndex="1" ToolTip="Edit the selected transaction."/>
+            <TextBox x:Name="txt_TransactionID" HorizontalAlignment="Left" Margin="10,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" GotFocus="txt_TransactionID_GotFocus" TabIndex="0" KeyUp="txt_TransactionID_KeyUp" Background="#FFE6EAE0" FontSize="14" Height="25" ToolTip="Transaction ID"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_DeleteTransaction" Content="_Delete Transaction" HorizontalAlignment="Left" Margin="328,40,0,0" VerticalAlignment="Top" Width="165" Click="btn_DeleteTransaction_Click" TabIndex="2" ToolTip="Delete the selected transaction."/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_NewTransaction" Content="_New Transaction" HorizontalAlignment="Left" Margin="498,40,0,0" VerticalAlignment="Top" Width="165" Click="btn_NewTransaction_Click" TabIndex="3" Height="29" ToolTip="Create a new transaction."/>
+            <Label x:Name="lbl_TransactionID" Content="Transaction ID" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" FontSize="14"/>
 
         </Grid>
     </Border>

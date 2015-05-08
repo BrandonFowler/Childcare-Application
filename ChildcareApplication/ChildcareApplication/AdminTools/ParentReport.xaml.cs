@@ -23,7 +23,7 @@ namespace AdminTools {
 
         public ParentReport() {
             InitializeComponent();
-            this.txt_ParentID.Focus();
+            this.txt_GuardianID.Focus();
             this.parentDataGrid.IsTabStop = false;
             this.reportLoaded = false;
             this.dte_fromDate.Loaded += delegate{
@@ -40,7 +40,7 @@ namespace AdminTools {
         //Loads a report based on the passed in MySQL query
         private void LoadReport(params string[] dates) {
             ReportsDB reportDB = new ReportsDB();
-            this.table = reportDB.GetParentReportTable(this.txt_ParentID.Text, dates);
+            this.table = reportDB.GetParentReportTable(this.txt_GuardianID.Text, dates);
             parentDataGrid.ItemsSource = table.DefaultView;
             
             this.reportLoaded = true;
@@ -49,12 +49,12 @@ namespace AdminTools {
 
         private void btn_LoadAll_Click(object sender, RoutedEventArgs e) {
             GuardianInfoDB parentInfo = new GuardianInfoDB();
-            if (txt_ParentID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_ParentID.Text)) {
+            if (txt_GuardianID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_GuardianID.Text)) {
                 LoadReport();
                 LoadParentData();
             } else {
                 MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
-                txt_ParentID.Focus();
+                txt_GuardianID.Focus();
             }
         }
 
@@ -63,7 +63,7 @@ namespace AdminTools {
             String fromDate, toDate;
             int fromMonth, fromYear, fromDay, toMonth, toYear, toDay;
 
-            if (txt_ParentID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_ParentID.Text)) {
+            if (txt_GuardianID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_GuardianID.Text)) {
                 fromDay = 20;
                 toDay = 19;
 
@@ -95,7 +95,7 @@ namespace AdminTools {
                 LoadParentData();
             } else {
                 MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
-                txt_ParentID.Focus();
+                txt_GuardianID.Focus();
             }
         }
 
@@ -137,7 +137,7 @@ namespace AdminTools {
             }
 
             if (initialFrom.Length == 10 && initialTo.Length == 10) {
-                if (txt_ParentID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_ParentID.Text)) {
+                if (txt_GuardianID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_GuardianID.Text)) {
                     String[] fromParts = initialFrom.Split('/');
                     String[] toParts = initialTo.Split('/');
 
@@ -153,7 +153,7 @@ namespace AdminTools {
                     }
                 } else {
                     MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
-                    txt_ParentID.Focus();
+                    txt_GuardianID.Focus();
                 }
             } else {
                 MessageBox.Show("You must enter a valid date range!");
@@ -165,24 +165,24 @@ namespace AdminTools {
         private void LoadParentData() {
             GuardianInfoDB parentInfo = new GuardianInfoDB();
 
-            cnv_ParentIcon.Background = new ImageBrush(new BitmapImage(new Uri(parentInfo.GetPhotoPath(txt_ParentID.Text), UriKind.Relative)));
-            lbl_Name.Content = parentInfo.GetParentName(txt_ParentID.Text);
-            lbl_Address1.Content = parentInfo.GetAddress1(txt_ParentID.Text);
-            lbl_Address2.Content = parentInfo.GetAddress2(txt_ParentID.Text);
-            lbl_Address3.Content = parentInfo.GetAddress3(txt_ParentID.Text);
-            lbl_Phone.Content = parentInfo.GetPhoneNumber(txt_ParentID.Text);
-            UpdateCurDue(txt_ParentID.Text);
+            cnv_ParentIcon.Background = new ImageBrush(new BitmapImage(new Uri(parentInfo.GetPhotoPath(txt_GuardianID.Text), UriKind.Relative)));
+            lbl_Name.Content = parentInfo.GetParentName(txt_GuardianID.Text);
+            lbl_Address1.Content = parentInfo.GetAddress1(txt_GuardianID.Text);
+            lbl_Address2.Content = parentInfo.GetAddress2(txt_GuardianID.Text);
+            lbl_Address3.Content = parentInfo.GetAddress3(txt_GuardianID.Text);
+            lbl_Phone.Content = parentInfo.GetPhoneNumber(txt_GuardianID.Text);
+            UpdateCurDue(txt_GuardianID.Text);
         }
 
         private void btn_MakePayment_Click(object sender, RoutedEventArgs e) {
             GuardianInfoDB parentinfo = new GuardianInfoDB();
 
-            if (txt_ParentID.Text.Length == 6 && parentinfo.GuardianIDExists(txt_ParentID.Text)) {
-                PaymentEntry paymentEntry = new PaymentEntry(txt_ParentID.Text, this);
+            if (txt_GuardianID.Text.Length == 6 && parentinfo.GuardianIDExists(txt_GuardianID.Text)) {
+                PaymentEntry paymentEntry = new PaymentEntry(txt_GuardianID.Text, this);
                 paymentEntry.ShowDialog();
             } else {
                 MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
-                txt_ParentID.Focus();
+                txt_GuardianID.Focus();
             }
             
         }
@@ -190,7 +190,7 @@ namespace AdminTools {
         public void UpdateCurDue(String parentID) {
             GuardianInfoDB parentInfo = new GuardianInfoDB();
 
-            lbl_CurrentDueValue.Content = parentInfo.GetCurrentDue(txt_ParentID.Text);
+            lbl_CurrentDueValue.Content = parentInfo.GetCurrentDue(txt_GuardianID.Text);
         }
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e) {
@@ -209,8 +209,8 @@ namespace AdminTools {
             }
         }
 
-        private void txt_ParentID_GotFocus(object sender, RoutedEventArgs e) {
-            Dispatcher.BeginInvoke((Action)txt_ParentID.SelectAll);
+        private void txt_GuardianID_GotFocus(object sender, RoutedEventArgs e) {
+            Dispatcher.BeginInvoke((Action)txt_GuardianID.SelectAll);
         }
 
         private void btn_Print_Click(object sender, RoutedEventArgs e) {

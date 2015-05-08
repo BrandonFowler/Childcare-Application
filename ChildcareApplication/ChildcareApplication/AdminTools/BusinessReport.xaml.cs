@@ -28,6 +28,7 @@ namespace AdminTools {
             reportLoaded = false;
             settings = new ChildcareApplication.Properties.Settings();
             this.MouseDown += WindowMouseDown;
+            this.btn_CurrentMonthReport.ToolTip = GetCurMonthToolTip(DateTime.Now);
         }
 
         private void InitializeCMB_Year() {
@@ -45,9 +46,39 @@ namespace AdminTools {
             cmb_Year.Items.Add(cmbCur);
         }
 
+        private string GetCurMonthToolTip(DateTime now) {
+            int fromMonth, fromYear, fromDay, toMonth, toYear, toDay;
+
+            fromDay = Convert.ToInt32(settings.BillingStartDate);
+            toDay = fromDay - 1;
+
+            if (DateTime.Now.Day < fromDay) { //previous month and this month
+                if (DateTime.Now.Month != 1) {
+                    fromYear = DateTime.Now.Year;
+                    fromMonth = DateTime.Now.Month - 1;
+                } else {
+                    fromYear = DateTime.Now.Year - 1;
+                    fromMonth = 12;
+                }
+                toYear = DateTime.Now.Year;
+                toMonth = DateTime.Now.Month;
+            } else { //this month and next month
+                fromYear = DateTime.Now.Year;
+                fromMonth = DateTime.Now.Month;
+                if (DateTime.Now.Month != 12) {
+                    toYear = DateTime.Now.Year;
+                    toMonth = DateTime.Now.Month;
+                } else {
+                    toYear = DateTime.Now.Year + 1;
+                    toMonth = 1;
+                }
+            }
+
+            return "From " + fromMonth + "/" + fromDay + "/" + fromYear + " to " + toMonth + "/" + toDay + "/" + toYear;
+        }
+
         private void btn_CurrentMonthReport_Click(object sender, RoutedEventArgs e) {
-            GuardianInfoDB parentInfo = new GuardianInfoDB();
-            String fromDate, toDate;
+            string fromDate, toDate;
             int fromMonth, fromYear, fromDay, toMonth, toYear, toDay;
 
             fromDay = Convert.ToInt32(settings.BillingStartDate);
