@@ -14,7 +14,7 @@
                 <ListBox x:Name="lst_CheckInBox" HorizontalAlignment="Left" Height="214" Margin="174,461,0,0" VerticalAlignment="Top" Width="734" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Background="#FFE6EAE0" KeyboardNavigation.TabIndex="1">
                     <ListBox.ToolTip>
                         <ToolTip Background="#FFE6EAE0">
-                            <TextBlock Name="CheckInTip" Text="Selection of children that are eligible for check in" FontSize="20" Background="#FFE6EAE0"/>
+                            <TextBlock Name="CheckInTip" Text="Select a child that is eligible for check in" FontSize="20" Background="#FFE6EAE0"/>
                         </ToolTip>
                     </ListBox.ToolTip>
                     <ListBox.ItemsPanel>
@@ -35,7 +35,7 @@
                 <ListBox x:Name="lst_CheckOutBox" HorizontalAlignment="Left" Height="618" Margin="993,57,0,0" VerticalAlignment="Top" Width="160" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Background="#FFE6EAE0" KeyboardNavigation.TabIndex="3">
                     <ListBox.ToolTip>
                         <ToolTip Background="#FFE6EAE0">
-                            <TextBlock Name="CheckOutTip" Text="Selection of children that are eligible for check out" FontSize="20" Background="#FFE6EAE0"/>
+                            <TextBlock Name="CheckOutTip" Text="Select a child that is eligible for check out" FontSize="20" Background="#FFE6EAE0"/>
                         </ToolTip>
                     </ListBox.ToolTip>
                     <ListBox.ItemTemplate>
@@ -59,7 +59,7 @@
                     </ComboBox.Resources>
                     <ComboBox.ToolTip>
                         <ToolTip Background="#FFE6EAE0">
-                            <TextBlock Name="IDTip" Text="Childcare event selection" FontSize="20" Background="#FFE6EAE0"/>
+                            <TextBlock Name="IDTip" Text="Select a childcare event type before check in" FontSize="20" Background="#FFE6EAE0"/>
                         </ToolTip>
                     </ComboBox.ToolTip>
                 </ComboBox>

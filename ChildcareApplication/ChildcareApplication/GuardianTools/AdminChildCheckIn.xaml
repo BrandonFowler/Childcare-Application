@@ -43,7 +43,7 @@
                 </DataGrid.Resources>
                 <DataGrid.ToolTip>
                     <ToolTip Background="#FFE6EAE0">
-                        <TextBlock Name="GridTip" Text="Selection of registered guardians" FontSize="14" Background="#FFE6EAE0"/>
+                        <TextBlock Name="GridTip" Text="Select a registered guardian" FontSize="14" Background="#FFE6EAE0"/>
                     </ToolTip>
                 </DataGrid.ToolTip>
             </DataGrid>
