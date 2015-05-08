@@ -41,32 +41,41 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MigraDoc.DocumentObjectModel-WPF">
-      <HintPath>Resources\MigraDoc.DocumentObjectModel-WPF.dll</HintPath>
+    <Reference Include="MigraDoc.DocumentObjectModel-WPF, Version=1.31.3066.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>PDFResources\MigraDoc.DocumentObjectModel-WPF.dll</HintPath>
     </Reference>
-    <Reference Include="MigraDoc.DocumentObjectModel-WPF.resources">
-      <HintPath>Resources\de\MigraDoc.DocumentObjectModel-WPF.resources.dll</HintPath>
+    <Reference Include="MigraDoc.DocumentObjectModel-WPF.resources, Version=1.31.3066.0, Culture=de, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>PDFResources\MigraDoc.DocumentObjectModel-WPF.resources.dll</HintPath>
     </Reference>
-    <Reference Include="MigraDoc.Rendering-WPF">
-      <HintPath>Resources\MigraDoc.Rendering-WPF.dll</HintPath>
+    <Reference Include="MigraDoc.Rendering-WPF, Version=1.31.3066.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>PDFResources\MigraDoc.Rendering-WPF.dll</HintPath>
     </Reference>
-    <Reference Include="MigraDoc.Rendering-WPF.resources">
-      <HintPath>Resources\de\MigraDoc.Rendering-WPF.resources.dll</HintPath>
+    <Reference Include="MigraDoc.Rendering-WPF.resources, Version=1.31.3066.0, Culture=de, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>PDFResources\MigraDoc.Rendering-WPF.resources.dll</HintPath>
     </Reference>
-    <Reference Include="MigraDoc.RtfRendering-WPF">
-      <HintPath>Resources\MigraDoc.RtfRendering-WPF.dll</HintPath>
+    <Reference Include="MigraDoc.RtfRendering-WPF, Version=1.31.3066.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>PDFResources\MigraDoc.RtfRendering-WPF.dll</HintPath>
     </Reference>
-    <Reference Include="MigraDoc.RtfRendering-WPF.resources">
-      <HintPath>Resources\de\MigraDoc.RtfRendering-WPF.resources.dll</HintPath>
+    <Reference Include="MigraDoc.RtfRendering-WPF.resources, Version=1.31.3066.0, Culture=de, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>PDFResources\MigraDoc.RtfRendering-WPF.resources.dll</HintPath>
     </Reference>
-    <Reference Include="PdfSharp-WPF">
-      <HintPath>Resources\PdfSharp-WPF.dll</HintPath>
+    <Reference Include="PdfSharp-WPF, Version=1.31.1789.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>PDFResources\PdfSharp-WPF.dll</HintPath>
     </Reference>
-    <Reference Include="PdfSharp-WPF.resources">
-      <HintPath>Resources\de\PdfSharp-WPF.resources.dll</HintPath>
+    <Reference Include="PdfSharp-WPF.resources, Version=1.31.1789.0, Culture=de, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>PDFResources\PdfSharp-WPF.resources.dll</HintPath>
     </Reference>
-    <Reference Include="PdfSharp.Charting-WPF">
-      <HintPath>Resources\PdfSharp.Charting-WPF.dll</HintPath>
+    <Reference Include="PdfSharp.Charting-WPF, Version=1.31.1789.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>PDFResources\PdfSharp.Charting-WPF.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
