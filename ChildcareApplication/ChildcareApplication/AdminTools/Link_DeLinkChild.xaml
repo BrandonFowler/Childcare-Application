@@ -10,11 +10,11 @@
         <Grid>
             <TextBox x:Name="txt_GuardianID" Height="29" Margin="188,58,187,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE6EAE0"/>
             <TextBox x:Name="txt_GuardianID2" Height="29" Margin="188,110,187,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE6EAE0"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Enter" Content="Enter" Margin="40,186,305,50" Click="btn_Enter_Click" FontSize="16"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Enter" Content="Enter" Margin="40,186,305,50" Click="btn_Enter_Click" FontSize="16" ToolTip="Links or De-Links the child from the Guardian ID entered above."/>
             <Label Content="Please enter the Guardian ID of the person you with to link or delink your child." Margin="11,10,11,0" VerticalAlignment="Top" FontSize="14"/>
-            <Label Content="Guardian ID" HorizontalAlignment="Left" Margin="98,58,0,0" VerticalAlignment="Top" FontSize="14"/>
-            <Label Content="Re-enter Guardian ID" HorizontalAlignment="Left" Margin="40,107,0,0" VerticalAlignment="Top" FontSize="14"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="Cancel" Margin="305,186,40,50" Click="btn_Cancel_Click" FontSize="16"/>
+            <Label Content="Guardian ID:" HorizontalAlignment="Left" Margin="98,58,0,0" VerticalAlignment="Top" FontSize="14"/>
+            <Label Content="Re-enter Guardian ID:" HorizontalAlignment="Left" Margin="40,107,0,0" VerticalAlignment="Top" FontSize="14"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="Close" Margin="305,186,40,50" Click="btn_Cancel_Click" FontSize="16" ToolTip="Closes the window. Does not save. "/>
         </Grid>
     </Border>
 </Window>
