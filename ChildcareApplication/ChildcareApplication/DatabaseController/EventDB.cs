@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using MessageBoxUtils;
 
 namespace DatabaseController {
     class EventDB {
@@ -25,7 +26,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -39,7 +40,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -53,7 +54,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -67,7 +68,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -81,7 +82,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -95,7 +96,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -109,7 +110,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -123,7 +124,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -137,7 +138,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -151,7 +152,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -165,7 +166,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -179,7 +180,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -194,7 +195,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -209,7 +210,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -224,7 +225,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -239,7 +240,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -254,7 +255,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -269,7 +270,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -284,7 +285,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -299,7 +300,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -314,7 +315,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -329,7 +330,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -344,7 +345,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -359,7 +360,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -382,7 +383,7 @@ namespace DatabaseController {
                     return true;
                 }
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return false;
         }
@@ -404,7 +405,7 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return results;
         }
@@ -427,7 +428,7 @@ namespace DatabaseController {
                 dbCon.Close();
                 return table;
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
                 return null;
             }
         }
@@ -452,7 +453,7 @@ namespace DatabaseController {
                 return eventData;
             } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
                 return null;
             }
         }
@@ -466,7 +467,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -487,7 +488,7 @@ namespace DatabaseController {
                 return eventHasNoMax;
             } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve event specifications. Possible late fee calculations could be incorrect.");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve event specifications. Possible late fee calculations could be incorrect.");
                 return eventHasNoMax;
             }
         }
@@ -522,7 +523,7 @@ namespace DatabaseController {
                 dbCon.Close();
                 return events;
             } catch (Exception e) {
-                MessageBox.Show(e.Message + "\n\n Database dbCon error: Unable to retrieve information for events");
+                WPFMessageBox.Show(e.Message + "\n\n Database dbCon error: Unable to retrieve information for events");
                 dbCon.Close();
                 return null;
             }
@@ -543,7 +544,7 @@ namespace DatabaseController {
                 return lateFee;
             } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information. Any late fees have not been recorded.");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information. Any late fees have not been recorded.");
                 return 0;
             }
         }

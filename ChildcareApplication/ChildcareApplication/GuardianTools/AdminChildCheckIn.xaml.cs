@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DatabaseController;
 using System.Data;
+using MessageBoxUtils;
 
 namespace GuardianTools {
    
@@ -76,7 +77,7 @@ namespace GuardianTools {
             GuardianInfoDB parentDB = new GuardianInfoDB();
             CleanDisplay();
             if (String.IsNullOrWhiteSpace(txt_SearchBox.Text)) {
-                MessageBox.Show("Please enter a name or ID.");
+                WPFMessageBox.Show("Please enter a name or ID.");
                 return;
             }
             int n;
@@ -90,13 +91,13 @@ namespace GuardianTools {
                     this.Close();
                 }
                 else {
-                    MessageBox.Show("No search results found");
+                    WPFMessageBox.Show("No search results found");
                 }
             }
             else {
                 DataTable guardianInfo = parentDB.RetieveGuardiansByLastName(txt_SearchBox.Text);
                 if (guardianInfo == null) {
-                    MessageBox.Show("No search results found");
+                    WPFMessageBox.Show("No search results found");
                     return;
                 }
                 dta_GuardianList.ItemsSource = guardianInfo.DefaultView;
@@ -109,7 +110,7 @@ namespace GuardianTools {
 
         private void Login() {
             if (dta_GuardianList.SelectedItem == null) {
-                MessageBox.Show("Please select a guardian.");
+                WPFMessageBox.Show("Please select a guardian.");
                 return;
             }
             ChildLogin ChildLoginWindow = new ChildLogin(this.guardianID);

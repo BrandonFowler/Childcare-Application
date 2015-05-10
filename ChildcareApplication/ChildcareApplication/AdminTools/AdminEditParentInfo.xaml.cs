@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using MessageBoxUtils;
 
 namespace AdminTools {
     /// <summary>
@@ -114,7 +115,7 @@ namespace AdminTools {
 
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
 
-            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you wish to delete this person?", "Deletion Conformation", MessageBoxButton.YesNo);
+            MessageBoxResult messageBoxResult = WPFMessageBox.Show("Are you sure you wish to delete this person?", "Deletion Conformation", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes) {
                 string pID = txt_IDNumber.Text;
                 this.db.DeleteParentInfo(pID);
@@ -146,37 +147,37 @@ namespace AdminTools {
         public bool CheckIfNull() {
 
             if (string.IsNullOrWhiteSpace(this.txt_Address.Text)) {
-                MessageBox.Show("Please enter your address.");
+                WPFMessageBox.Show("Please enter your address.");
                 return true;
             }
 
             else if (string.IsNullOrWhiteSpace(this.txt_City.Text)) {
-                MessageBox.Show("Please enter your city.");
+                WPFMessageBox.Show("Please enter your city.");
                 return true;
             }
 
             else if (string.IsNullOrWhiteSpace(this.txt_Zip.Text)) {
-                MessageBox.Show("Please enter your zip.");
+                WPFMessageBox.Show("Please enter your zip.");
                 return true;
             }
 
             else if (string.IsNullOrWhiteSpace(this.txt_FirstName.Text)) {
-                MessageBox.Show("Please enter your first name.");
+                WPFMessageBox.Show("Please enter your first name.");
                 return true;
             }
 
             else if (string.IsNullOrWhiteSpace(this.txt_LastName.Text)) {
-                MessageBox.Show("Please enter your last name.");
+                WPFMessageBox.Show("Please enter your last name.");
                 return true;
             }
 
             else if (string.IsNullOrWhiteSpace(this.cbo_State.Text)) {
-                MessageBox.Show("Please enter your state.");
+                WPFMessageBox.Show("Please enter your state.");
                 return true;
             }
 
             else if (string.IsNullOrWhiteSpace(this.txt_Email.Text)) {
-                MessageBox.Show("Please enter your e-mail.");
+                WPFMessageBox.Show("Please enter your e-mail.");
                 return true;
             }
             return false;
@@ -214,7 +215,7 @@ namespace AdminTools {
                 else {
                     ClearFields();
                     DisableForm();
-                    MessageBox.Show("This Parent has already been deleted.");
+                    WPFMessageBox.Show("This Parent has already been deleted.");
                 }
             }
 
@@ -310,7 +311,7 @@ namespace AdminTools {
                     txt_FilePath.Text = path;
                 }
                 catch (Exception) {
-                    MessageBox.Show("Could not change picture to" + path);
+                    WPFMessageBox.Show("Could not change picture to" + path);
 
                 }
 

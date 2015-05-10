@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using MessageBoxUtils;
 
 namespace DatabaseController {
     class TransactionDB {
@@ -25,7 +26,7 @@ namespace DatabaseController {
                 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             if (count == 0) {
                 return false;
@@ -44,7 +45,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -58,7 +59,7 @@ namespace DatabaseController {
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return result;
         }
@@ -73,7 +74,7 @@ namespace DatabaseController {
                 result = Convert.ToDouble(cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return result;
         }
@@ -89,7 +90,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -104,7 +105,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
         }
 
@@ -128,7 +129,7 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             result = "" + num;
             String.Format("{0:0000000000}", result);
@@ -146,7 +147,7 @@ namespace DatabaseController {
                 time = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             time = AMPMFormat(time);
             return time;
@@ -181,7 +182,7 @@ namespace DatabaseController {
                 date = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             date = (date.Replace('-', '/')).Split(' ')[0];
             return ZeroFillDate(date);
@@ -215,7 +216,7 @@ namespace DatabaseController {
                 dbCon.Close();
                 return table;
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
                 return null;
             }
         }
@@ -248,11 +249,11 @@ namespace DatabaseController {
                     dbCon.Close();
                 } catch (Exception e) {
                     dbCon.Close();
-                    MessageBox.Show(e.Message + "\n\n Database connection error: Unable to record late fee");
+                    WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to record late fee");
                     return false;
                 }
             } else {
-                MessageBox.Show("Database connection error: Unable to record late fee");
+                WPFMessageBox.Show("Database connection error: Unable to record late fee");
                 return false;
             }
             return true;
@@ -271,7 +272,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to check if charge exceeds monthly maximum for normal care.");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to check if charge exceeds monthly maximum for normal care.");
             }
             return recordFound;
         }
@@ -290,7 +291,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to add charge to family balance.");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to add charge to family balance.");
             }
         }
 
@@ -311,7 +312,7 @@ namespace DatabaseController {
                 return allowanceID;
             } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information.");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information.");
                 return null;
             }
         }
@@ -336,7 +337,7 @@ namespace DatabaseController {
                 return transaction;
             } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve original transaction.");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve original transaction.");
                 return null;
             }
         }
@@ -359,7 +360,7 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return result;
         }

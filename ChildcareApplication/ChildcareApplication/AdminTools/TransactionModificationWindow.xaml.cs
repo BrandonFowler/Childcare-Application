@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MessageBoxUtils;
 
 namespace AdminTools {
     public partial class TransactionModificationWindow : Window {
@@ -45,7 +46,7 @@ namespace AdminTools {
                 }
                 this.dataChanged = false;
             } else {
-                MessageBox.Show("You did not modify any of the data in this form.  If you would like to cancel modifying this transaction, please click the cancel button.");
+                WPFMessageBox.Show("You did not modify any of the data in this form.  If you would like to cancel modifying this transaction, please click the cancel button.");
             }
         }
 
@@ -88,37 +89,37 @@ namespace AdminTools {
             EventDB eventDB = new EventDB();
 
             if (!parentDB.GuardianNameExists(txt_GuardianName.Text)) {
-                MessageBox.Show("The guardian name you entered does not exist in the database!  Please verify you have spelled it correctly.");
+                WPFMessageBox.Show("The guardian name you entered does not exist in the database!  Please verify you have spelled it correctly.");
                 txt_GuardianName.Focus();
                 return false;
             }
             if(!childDB.ChildNameExists(txt_ChildName.Text)) {
-                MessageBox.Show("The child name you entered does not exist in the database!  Please verify you have spelled it correctly.");
+                WPFMessageBox.Show("The child name you entered does not exist in the database!  Please verify you have spelled it correctly.");
                 txt_ChildName.Focus();
                 return false;
             }
             if(cmb_EventName.SelectedIndex < 0) {
-                MessageBox.Show("You must select an event from the drop down menu!");
+                WPFMessageBox.Show("You must select an event from the drop down menu!");
                 cmb_EventName.Focus();
                 return false;
             }
             if (!ValidTime(txt_CheckIn.Text)) {
-                MessageBox.Show("You must enter a valid time in the checked in text box!");
+                WPFMessageBox.Show("You must enter a valid time in the checked in text box!");
                 txt_CheckIn.Focus();
                 return false;
             }
             if (!ValidTime(txt_CheckOut.Text)) {
-                MessageBox.Show("You must enter a valid time in the checked out text box!");
+                WPFMessageBox.Show("You must enter a valid time in the checked out text box!");
                 txt_CheckOut.Focus();
                 return false;
             }
             if (!ValidDate(txt_Date.Text)) {
-                MessageBox.Show("You must enter a valid date in the transaction date text box!");
+                WPFMessageBox.Show("You must enter a valid date in the transaction date text box!");
                 txt_Date.Focus();
                 return false;
             }
             if (!ValidTransactionTotal(txt_TransactionTotal.Text)) {
-                MessageBox.Show("You must enter a valid transaction total in the transaction total text box!");
+                WPFMessageBox.Show("You must enter a valid transaction total in the transaction total text box!");
                 txt_TransactionTotal.Focus();
                 return false;
             }

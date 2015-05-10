@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Data;
 using System.Windows;
+using MessageBoxUtils;
 
 namespace DatabaseController {
     class ChildInfoDatabase {
@@ -36,7 +37,7 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             return maxID;
         }
@@ -62,7 +63,7 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             return maxID;
         }
@@ -79,7 +80,7 @@ namespace DatabaseController {
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             dbCon.Close();
         }
@@ -95,10 +96,10 @@ namespace DatabaseController {
                 command.CommandText = sql;
 
                 command.ExecuteNonQuery();
-                MessageBox.Show("Link Completed.");
+                WPFMessageBox.Show("Link Completed.");
 
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             dbCon.Close();
         }
@@ -120,10 +121,10 @@ namespace DatabaseController {
                 mycommand.Parameters.Add(new SQLiteParameter("@ID", ID));
 
                 mycommand.ExecuteNonQuery();
-                MessageBox.Show("Completed");
+                WPFMessageBox.Show("Completed");
                 dbCon.Close();
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
         }
 
@@ -140,10 +141,10 @@ namespace DatabaseController {
                 command.Parameters.Add(new SQLiteParameter("@childID", childID));
                 command.ExecuteNonQuery();
 
-                MessageBox.Show("Completed");
+                WPFMessageBox.Show("Completed");
                 dbCon.Close();
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
         }//end GetFirstName
 
@@ -172,7 +173,7 @@ namespace DatabaseController {
                 dbCon.Close();
                 return data;
             } catch (Exception e) {
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for children");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for children");
                 dbCon.Close();
                 return null;
             }
@@ -196,7 +197,7 @@ namespace DatabaseController {
                 dbCon.Close();
             }
             catch (Exception e) {
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for children");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for children");
                 dbCon.Close();
             }
 
@@ -236,7 +237,7 @@ namespace DatabaseController {
                 reader.Close();
                 connection.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return result;
         }
@@ -267,7 +268,7 @@ namespace DatabaseController {
                     return true;
                 }
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return false;
         }

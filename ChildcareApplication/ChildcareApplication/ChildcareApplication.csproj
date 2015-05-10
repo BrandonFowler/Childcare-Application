@@ -106,7 +106,6 @@
     <Compile Include="AdminTools\AdminAddEdit.xaml.cs">
       <DependentUpon>AdminAddEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminTools\AdminChildCheckIn.cs" />
     <Compile Include="AdminTools\AdminLogin.xaml.cs">
       <DependentUpon>AdminLogin.xaml</DependentUpon>
     </Compile>
@@ -313,6 +312,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="SpokaneClubIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WPFMessageBox\WPFMessageBox.csproj">
+      <Project>{53f2d809-3e1a-422d-a507-abcb407ebf29}</Project>
+      <Name>WPFMessageBox</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

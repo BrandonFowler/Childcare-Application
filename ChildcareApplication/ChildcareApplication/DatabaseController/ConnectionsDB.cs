@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Windows;
 using ChildcareApplication.Properties;
+using MessageBoxUtils;
 
 namespace DatabaseController {
 
@@ -23,7 +24,7 @@ namespace DatabaseController {
             string time = Convert.ToDateTime(dateTime).ToString("HH:mm:ss");
             TimeSpan TSTime = TimeSpan.Parse(time);
             if (settings.CheckIfPastClosing(dt.DayOfWeek.ToString(), TSTime) > 0){
-                MessageBox.Show("Cannot check in a child after normal operating hours");
+                WPFMessageBox.Show("Cannot check in a child after normal operating hours");
                 return false;
             }
             eventName = GetAgeGroup(eventName, birthday, date);
@@ -44,7 +45,7 @@ namespace DatabaseController {
                 dbCon.Close();
             }
             catch (Exception e){
-                MessageBox.Show(e.Message + "\n\n Database Connection Error: Unable Check In Child");
+                WPFMessageBox.Show(e.Message + "\n\n Database Connection Error: Unable Check In Child");
                 dbCon.Close();
                 return false;
             }
@@ -79,7 +80,7 @@ namespace DatabaseController {
             }
             catch (Exception e){
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information");
                 return null;
             }
         }
@@ -98,7 +99,7 @@ namespace DatabaseController {
                 dbCon.Close();
             }
             catch(Exception e){
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to check out child");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to check out child");
                 dbCon.Close();
                 return false;
             }
@@ -126,7 +127,7 @@ namespace DatabaseController {
             }
             catch (Exception e){
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
                 return 0;
             }
         }
@@ -152,7 +153,7 @@ namespace DatabaseController {
             }
             catch(Exception e){
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to access find all children. Please log out, then try again.");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to access find all children. Please log out, then try again.");
                 return false;
             }
         }
@@ -172,12 +173,12 @@ namespace DatabaseController {
                     command.Parameters.Add(new SQLiteParameter("@cID", cID));
                     command.Parameters.Add(new SQLiteParameter("@famID", famID));
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Link Completed.");
+                    WPFMessageBox.Show("Link Completed.");
                 } else {
-                    MessageBox.Show("There is already a link to this child and the guardian.");
+                    WPFMessageBox.Show("There is already a link to this child and the guardian.");
                 }
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             dbCon.Close();
         }
@@ -204,7 +205,7 @@ namespace DatabaseController {
                 dbCon.Close();
                 return false;
             } catch (Exception e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             dbCon.Close();
             return false;
@@ -226,7 +227,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
         }
 
@@ -250,7 +251,7 @@ namespace DatabaseController {
                 allowanceID = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
 
             return allowanceID;

@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using MessageBoxUtils;
 
 namespace ChildcareApplication.AdminTools {
     /// <summary>
@@ -171,9 +172,9 @@ namespace ChildcareApplication.AdminTools {
                     Properties.Settings.Default.SunClose = DateTime.Parse(txt_SunClosing.Text);
 
                 Properties.Settings.Default.Save();
-                MessageBox.Show("Your new settings have been saved.", "Settings Saved!");
+                WPFMessageBox.Show("Your new settings have been saved.", "Settings Saved!");
             } else {
-                MessageBox.Show("There is an error in the settings window, please fix all errors before submitting settings.", "ERROR!");
+                WPFMessageBox.Show("There is an error in the settings window, please fix all errors before submitting settings.", "ERROR!");
             }
         }
 
@@ -367,7 +368,7 @@ namespace ChildcareApplication.AdminTools {
             if (SettingsValidation.ValidBillingDate(txt_BillingDate.Text)) {
                 statusGood();
             } else {
-                MessageBox.Show("Invalid Input. Billing Date must be a number from 1 to 29");
+                WPFMessageBox.Show("Invalid Input. Billing Date must be a number from 1 to 29");
                 statusBad(txt_BillingDate);
             }
         }
@@ -376,7 +377,7 @@ namespace ChildcareApplication.AdminTools {
             if (SettingsValidation.PositiveInteger(txt_MaxMonthlyFee.Text)) {
                 statusGood();
             } else {
-                MessageBox.Show("Invalid Input. Maximum Monthly Fee must be a positive number");
+                WPFMessageBox.Show("Invalid Input. Maximum Monthly Fee must be a positive number");
                 statusBad(txt_MaxMonthlyFee);
             }
         }
@@ -385,7 +386,7 @@ namespace ChildcareApplication.AdminTools {
             if (SettingsValidation.PositiveInteger(txt_ExpirationDays.Text)) {
                 statusGood();
             } else {
-                MessageBox.Show("Invalid Input. Days to hold expired records must be a positive number");
+                WPFMessageBox.Show("Invalid Input. Days to hold expired records must be a positive number");
                 statusBad(txt_ExpirationDays);
             }
         }
@@ -394,7 +395,7 @@ namespace ChildcareApplication.AdminTools {
             if (SettingsValidation.ValidAge(txt_InfantAge.Text, txt_RegularAge.Text)) {
                 statusGood();
             } else {
-                MessageBox.Show("Invalid Input. Infant Age must be a positive number less than Regular Age");
+                WPFMessageBox.Show("Invalid Input. Infant Age must be a positive number less than Regular Age");
                 statusBad(txt_InfantAge, txt_RegularAge);
             }
         }
@@ -403,7 +404,7 @@ namespace ChildcareApplication.AdminTools {
             if (SettingsValidation.ValidAge(txt_InfantAge.Text, txt_RegularAge.Text)) {
                 statusGood();
             } else {
-                MessageBox.Show("Invalid Input. Regular Age must be a positive number greater than Infant Age");
+                WPFMessageBox.Show("Invalid Input. Regular Age must be a positive number greater than Infant Age");
                 statusBad(txt_InfantAge, txt_RegularAge);
             }
         }
@@ -477,14 +478,14 @@ namespace ChildcareApplication.AdminTools {
             if (SettingsValidation.ValidHours(openTime.Text, closeTime.Text)) {
                 statusGood();
             } else {
-                MessageBox.Show("Invalid Input. Must be a valid time less than closing time");
+                WPFMessageBox.Show("Invalid Input. Must be a valid time less than closing time");
                 statusBad(openTime, closeTime);
             }
         }
 
         private void txt_BillingDate_KeyUp(object sender, System.Windows.Input.KeyEventArgs e) {
             if (e.Key == Key.Enter) {
-                MessageBox.Show("NYI");
+                WPFMessageBox.Show("NYI");
             }
         }
 

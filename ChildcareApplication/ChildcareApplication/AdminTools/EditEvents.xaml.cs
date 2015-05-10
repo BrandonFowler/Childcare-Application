@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MessageBoxUtils;
 
 namespace AdminTools {
     public partial class EditEvents : Window {
@@ -48,7 +49,7 @@ namespace AdminTools {
                 win.Show();
                 this.Close();
             } else {
-                MessageBox.Show("You must select an event name from the drop down box.");
+                WPFMessageBox.Show("You must select an event name from the drop down box.");
             }
         }
 

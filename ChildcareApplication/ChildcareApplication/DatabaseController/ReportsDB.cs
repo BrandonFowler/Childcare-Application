@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using MessageBoxUtils;
 
 namespace ChildcareApplication.DatabaseController {
     class ReportsDB {
@@ -26,7 +27,7 @@ namespace ChildcareApplication.DatabaseController {
                 connection.Close();
                 return table;
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
                 return null;
             }
         }
@@ -59,7 +60,7 @@ namespace ChildcareApplication.DatabaseController {
                 connection.Close();
                 return table;
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
                 return null;
             }
         }

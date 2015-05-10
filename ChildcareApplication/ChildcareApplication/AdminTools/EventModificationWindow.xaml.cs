@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MessageBoxUtils;
 
 namespace AdminTools {
     public partial class EventModificationWindow : Window {
@@ -41,7 +42,7 @@ namespace AdminTools {
             if (this.valueChanged) {
                 ProcessModification();
             } else {
-                MessageBox.Show("You have not changed any values!  If you would like to return to the previous window without making changes, please hit cancel.");
+                WPFMessageBox.Show("You have not changed any values!  If you would like to return to the previous window without making changes, please hit cancel.");
             }
         }
 
@@ -181,22 +182,22 @@ namespace AdminTools {
                 return false;
             }
             if (cmb_PriceType.SelectedIndex == -1) {
-                MessageBox.Show("You must select a price type from the drop down menu.");
+                WPFMessageBox.Show("You must select a price type from the drop down menu.");
                 cmb_PriceType.Focus();
                 return false;
             }
             if (!ValidDoubleGreaterThanZero(txt_Rate.Text)) {
-                MessageBox.Show("You must enter a valid dollar figure greater than zero in the Rate box.");
+                WPFMessageBox.Show("You must enter a valid dollar figure greater than zero in the Rate box.");
                 txt_Rate.Focus();
                 return false;
             }
             if (txt_DiscountPrice.Text != "" && !ValidDoubleGreaterThanZero(txt_DiscountPrice.Text)) {
-                MessageBox.Show("You must enter a valid dollar figure greater than zero in the Discount Price box.");
+                WPFMessageBox.Show("You must enter a valid dollar figure greater than zero in the Discount Price box.");
                 txt_DiscountPrice.Focus();
                 return false;
             }
             if (cmb_Occurence.SelectedIndex == -1) {
-                MessageBox.Show("You must select an event occurence from the drop down menu.");
+                WPFMessageBox.Show("You must select an event occurence from the drop down menu.");
                 cmb_Occurence.Focus();
                 return false;
             }
@@ -206,12 +207,12 @@ namespace AdminTools {
                 }
             }
             if (cmb_Occurence.SelectedIndex == 2 && cmb_DayName.SelectedIndex == -1) {
-                MessageBox.Show("You must select a valid day of the week from the drop down menu.");
+                WPFMessageBox.Show("You must select a valid day of the week from the drop down menu.");
                 cmb_Occurence.Focus();
                 return false;
             }
             if (txt_MaxHours.Text != "" && !ValidDoubleGreaterThanZero(txt_MaxHours.Text)) {
-                MessageBox.Show("You must enter a valid number greater than zero in the maximum hours text box.");
+                WPFMessageBox.Show("You must enter a valid number greater than zero in the maximum hours text box.");
                 txt_MaxHours.Focus();
                 return false;
             }
@@ -220,11 +221,11 @@ namespace AdminTools {
 
         private bool EventNameValid(string eventName) {
             if (eventName.Length < 1) {
-                MessageBox.Show("You must enter an event name.");
+                WPFMessageBox.Show("You must enter an event name.");
                 return false;
             }
             if (!RegExpressions.RegexValidateEventName(eventName)) {
-                MessageBox.Show("Event names may only contain letters and spaces.");
+                WPFMessageBox.Show("Event names may only contain letters and spaces.");
                 return false;
             }
             return true;
@@ -340,12 +341,12 @@ namespace AdminTools {
             int dayNum = 0;
             int monthNum = 0;
             if (!(Int32.TryParse(txt_DayOfMonth.Text, out dayNum))) { 
-                MessageBox.Show("You must enter a valid number in the Day of Month box.");
+                WPFMessageBox.Show("You must enter a valid number in the Day of Month box.");
                 txt_DayOfMonth.Focus();
                 return false;
             }
             if (!(Int32.TryParse(txt_MonthNum.Text, out monthNum) && monthNum > 0 && monthNum < 13)) {
-                MessageBox.Show("You must enter a valid number in the Month number box.");
+                WPFMessageBox.Show("You must enter a valid number in the Month number box.");
                 txt_MonthNum.Focus();
                 return false;
             }
@@ -353,7 +354,7 @@ namespace AdminTools {
             if(dayNum <= cal.GetDaysInMonth(DateTime.Now.Year, monthNum) && dayNum > 0) {
                 return true;
             } else {
-                MessageBox.Show("You must enter a valid month number and day number in the month number and day number boxes!");
+                WPFMessageBox.Show("You must enter a valid month number and day number in the month number and day number boxes!");
                 txt_DayOfMonth.Focus();
             }
             return false;

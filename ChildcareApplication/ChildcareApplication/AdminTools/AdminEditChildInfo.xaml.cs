@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using MessageBoxUtils;
 
 namespace AdminTools {
     /// <summary>
@@ -96,7 +97,7 @@ namespace AdminTools {
 
         }
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
-            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you wish to delete this person?", "Deletion Conformation", MessageBoxButton.YesNo);
+            MessageBoxResult messageBoxResult = WPFMessageBox.Show("Are you sure you wish to delete this person?", "Deletion Conformation", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes) {
                 ConnectionsDB conDB = new ConnectionsDB();
                 string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
@@ -133,13 +134,13 @@ namespace AdminTools {
 
 
             if (string.IsNullOrWhiteSpace(this.txt_FirstName.Text)) {
-                MessageBox.Show("Please enter your first name.");
+                WPFMessageBox.Show("Please enter your first name.");
                 return true;
             } else if (string.IsNullOrWhiteSpace(this.txt_LastName.Text)) {
-                MessageBox.Show("Please enter your last name.");
+                WPFMessageBox.Show("Please enter your last name.");
                 return true;
             } else if (string.IsNullOrWhiteSpace(this.dte_Birthday.Text)) {
-                MessageBox.Show("Please enter the birthday. MM/DD/YYYY");
+                WPFMessageBox.Show("Please enter the birthday. MM/DD/YYYY");
                 return true;
             }
             return false;
@@ -186,7 +187,7 @@ namespace AdminTools {
                 image.Source = bitmapImage;
             } 
             catch(Exception e) {
-                MessageBox.Show(e.Message + "\n\n Error: Invalid photo path, attempting to load default photo.");
+                WPFMessageBox.Show(e.Message + "\n\n Error: Invalid photo path, attempting to load default photo.");
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"../../Pictures/default.jpg");
                 bitmapImage.BeginInit();
@@ -327,7 +328,7 @@ namespace AdminTools {
                         cnv_ChildIcon.Background = ib;
                         txt_FilePath.Text = path;
                     } catch (Exception) {
-                        MessageBox.Show("Could not change picture to" + path);
+                        WPFMessageBox.Show("Could not change picture to" + path);
 
                     }
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DatabaseController;
 using System.Windows;
+using MessageBoxUtils;
 
 namespace GuardianTools {
     class TransactionCharge {
@@ -35,7 +36,7 @@ namespace GuardianTools {
             TransactionDB transDB = new TransactionDB();
             string[] transaction = transDB.FindTransaction(this.allowanceID);
             if (transaction == null || this.allowanceID == null) {
-                MessageBox.Show("Unable to check out child. Please log out then try again.");
+                WPFMessageBox.Show("Unable to check out child. Please log out then try again.");
                 return false;
             }
             string eventName = transaction[1];
@@ -81,7 +82,7 @@ namespace GuardianTools {
             }
             eventFee = eventFee - GetBillingCap(eventName, guardianID, eventFee);
             if (totalCheckedInHours < 0) {
-                MessageBox.Show("Negative value calculated for childcare charge. Please check your system clock for currency");
+                WPFMessageBox.Show("Negative value calculated for childcare charge. Please check your system clock for currency");
                 eventFee = 0;
             }
             return eventFee;

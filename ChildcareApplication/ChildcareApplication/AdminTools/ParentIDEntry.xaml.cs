@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Input;
+using MessageBoxUtils;
 
 namespace AdminTools {
 
@@ -22,7 +23,7 @@ namespace AdminTools {
             if (e.Key == Key.Enter) {
                 SubmitID();
             } else if (!((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || e.Key == Key.Back)) {
-                MessageBox.Show("Please use only numbers.");
+                WPFMessageBox.Show("Please use only numbers.");
                 e.Handled = true;
             }
         }
@@ -35,7 +36,7 @@ namespace AdminTools {
         private void SubmitID() {
             GuardianInfoDB parentDB = new GuardianInfoDB();
             if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text)) {
-                MessageBox.Show("Please enter the parents ID number.");
+                WPFMessageBox.Show("Please enter the parents ID number.");
 
             } else {
                 string ID = txt_IDEntry.Text;
@@ -46,7 +47,7 @@ namespace AdminTools {
                     else
                         DisplayAdminEditChildInfo(ID);
                 } else {
-                    MessageBox.Show("User ID or PIN does not exist");
+                    WPFMessageBox.Show("User ID or PIN does not exist");
                 }
             }
         }

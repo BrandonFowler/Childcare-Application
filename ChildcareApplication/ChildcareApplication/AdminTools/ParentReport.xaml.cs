@@ -15,6 +15,7 @@ using System.Data;
 using ChildcareApplication.AdminTools;
 using DatabaseController;
 using ChildcareApplication.DatabaseController;
+using MessageBoxUtils;
 
 namespace AdminTools {
     public partial class ParentReport : Window {
@@ -53,7 +54,7 @@ namespace AdminTools {
                 LoadReport();
                 LoadParentData();
             } else {
-                MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
+                WPFMessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
                 txt_GuardianID.Focus();
             }
         }
@@ -94,7 +95,7 @@ namespace AdminTools {
                 LoadReport(fromDate, toDate);
                 LoadParentData();
             } else {
-                MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
+                WPFMessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
                 txt_GuardianID.Focus();
             }
         }
@@ -123,7 +124,7 @@ namespace AdminTools {
                 DateRangeReport();
             }
             else {
-                MessageBox.Show("Please enter valid dates!");
+                WPFMessageBox.Show("Please enter valid dates!");
             }
         }
 
@@ -148,15 +149,15 @@ namespace AdminTools {
                         LoadReport(fromDate, toDate);
                         LoadParentData();
                     } else {
-                        MessageBox.Show("You must enter a valid date range!");
+                        WPFMessageBox.Show("You must enter a valid date range!");
                         dte_fromDate.Focus();
                     }
                 } else {
-                    MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
+                    WPFMessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
                     txt_GuardianID.Focus();
                 }
             } else {
-                MessageBox.Show("You must enter a valid date range!");
+                WPFMessageBox.Show("You must enter a valid date range!");
                 dte_fromDate.Focus();
             }
         }
@@ -181,7 +182,7 @@ namespace AdminTools {
                 PaymentEntry paymentEntry = new PaymentEntry(txt_GuardianID.Text, this);
                 paymentEntry.ShowDialog();
             } else {
-                MessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
+                WPFMessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
                 txt_GuardianID.Focus();
             }
             
@@ -225,7 +226,7 @@ namespace AdminTools {
                     printDialog.PrintDocument(paginator, "Parent Report Data Table");
                 }
             } else {
-                MessageBox.Show("You must load a report before you can print one!");
+                WPFMessageBox.Show("You must load a report before you can print one!");
             }
         }
 
@@ -235,7 +236,7 @@ namespace AdminTools {
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show("TODO: save as PDF");
+            WPFMessageBox.Show("TODO: save as PDF");
         }
     }
 }

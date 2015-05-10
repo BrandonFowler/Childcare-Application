@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using MessageBoxUtils;
 
 namespace DatabaseController {
     class GuardianInfoDB {
@@ -31,7 +32,7 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return result;
         }
@@ -46,7 +47,7 @@ namespace DatabaseController {
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return result;
         }
@@ -61,7 +62,7 @@ namespace DatabaseController {
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return result;
         }
@@ -81,7 +82,7 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return result;
         }
@@ -97,7 +98,7 @@ namespace DatabaseController {
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return result;
         }
@@ -112,7 +113,7 @@ namespace DatabaseController {
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return result;
         }
@@ -130,7 +131,7 @@ namespace DatabaseController {
                 curDue += Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
 
             if (curDue.IndexOf('.') == curDue.Length - 2) {
@@ -151,7 +152,7 @@ namespace DatabaseController {
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
 
             if( result == guardianID) {
@@ -186,7 +187,7 @@ namespace DatabaseController {
                     return true;
                 }
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message);
+                WPFMessageBox.Show(exception.Message);
             }
             return false;
         }
@@ -205,7 +206,7 @@ namespace DatabaseController {
 
                 DB.Fill(DS);
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             dbCon.Close();
             return DS;
@@ -226,9 +227,9 @@ namespace DatabaseController {
 
                 command.ExecuteNonQuery();
 
-                MessageBox.Show("Completed");
+                WPFMessageBox.Show("Completed");
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             dbCon.Close();
 
@@ -243,9 +244,9 @@ namespace DatabaseController {
                 "VALUES('" + ID + "', " + PIN + ", " + firstName + ", " + lastName + ", " + phone + ", " + email + ", " + address + ", " + address2 + ", " + city + ", " + state + ", " + zip + ", " + photo + ");";
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
                 mycommand.ExecuteNonQuery();
-                MessageBox.Show("Completed");
+                WPFMessageBox.Show("Completed");
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             dbCon.Close();
         }
@@ -273,9 +274,9 @@ namespace DatabaseController {
                 mycommand.Parameters.Add(new SQLiteParameter("@path", path));
 
                 mycommand.ExecuteNonQuery();
-                MessageBox.Show("Completed");
+                WPFMessageBox.Show("Completed");
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             dbCon.Close();
         }
@@ -300,7 +301,7 @@ namespace DatabaseController {
 
 
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
 
             dbCon.Close();
@@ -320,7 +321,7 @@ namespace DatabaseController {
                 command.ExecuteNonQuery();
 
             } catch (SQLiteException e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             dbCon.Close();
         }
@@ -344,7 +345,7 @@ namespace DatabaseController {
                 dbCon.Close();
                 return data;
             } catch (Exception e) {
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for guardian");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for guardian");
                 dbCon.Close();
                 return null;
             }
@@ -368,7 +369,7 @@ namespace DatabaseController {
                 connection.Close();
                 return table;
             } catch (Exception e) {
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for guardians");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for guardians");
                 dbCon.Close();
                 return null;
             }
@@ -390,7 +391,7 @@ namespace DatabaseController {
                 return false;
             } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
                 return false;
             }
         }
@@ -411,7 +412,7 @@ namespace DatabaseController {
                 return null;
             } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve guardian picture.");
+                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve guardian picture.");
                 return null;
             }
         }

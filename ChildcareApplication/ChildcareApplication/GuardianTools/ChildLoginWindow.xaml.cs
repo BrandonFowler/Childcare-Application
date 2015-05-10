@@ -7,6 +7,7 @@ using AdminTools;
 using System.Windows.Media;
 using DatabaseController;
 using System.Windows.Input;
+using MessageBoxUtils;
 
 namespace GuardianTools {
    
@@ -82,7 +83,7 @@ namespace GuardianTools {
                 image.Source = bitmapImage;
             } 
             catch(Exception e){
-                MessageBox.Show(e.Message + "\n\n Error: Invalid photo path, attempting to load default photo.");
+                WPFMessageBox.Show(e.Message + "\n\n Error: Invalid photo path, attempting to load default photo.");
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"../../Pictures/default.jpg");
                 bitmapImage.BeginInit();
@@ -109,7 +110,7 @@ namespace GuardianTools {
                 }
             }
             else {
-                MessageBox.Show("Please choose and event.");
+                WPFMessageBox.Show("Please choose and event.");
             }
         }
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ChildcareApplication.Properties;
 using System.Windows;
+using MessageBoxUtils;
 
 namespace GuardianTools {
 
@@ -40,7 +41,7 @@ namespace GuardianTools {
             if (Int32.TryParse(Settings.Default.RegularMaxAge, out cap)) {
                 return cap;
             }
-            MessageBox.Show("Error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
+            WPFMessageBox.Show("Error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
             return 8;
 
         }
@@ -50,7 +51,7 @@ namespace GuardianTools {
             if (Int32.TryParse(Settings.Default.InfantMaxAge, out cap)) {
                 return cap;
             }
-            MessageBox.Show("Error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
+            WPFMessageBox.Show("Error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
             return 1;
 
         }
@@ -60,7 +61,7 @@ namespace GuardianTools {
             if (Int32.TryParse(Settings.Default.BillingStartDate, out cap)) {
                 return cap-1;
             }
-            MessageBox.Show("Error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
+            WPFMessageBox.Show("Error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
             return 19;
 
         }
@@ -70,7 +71,7 @@ namespace GuardianTools {
             if (Int32.TryParse(Settings.Default.BillingStartDate, out cap)) {
                 return cap;
             }
-            MessageBox.Show("Error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
+            WPFMessageBox.Show("Error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
             return 20;
 
         }
@@ -80,7 +81,7 @@ namespace GuardianTools {
             if (Int32.TryParse(Settings.Default.MaxMonthlyFee, out cap)) {
                 return cap;
             }
-            MessageBox.Show("Error: Unable to retrieve settings information, fee may be recorded incorrectly.");
+            WPFMessageBox.Show("Error: Unable to retrieve settings information, fee may be recorded incorrectly.");
             return 100;
         }
 

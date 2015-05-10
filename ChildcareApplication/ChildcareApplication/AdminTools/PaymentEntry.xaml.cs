@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AdminTools;
 using DatabaseController;
+using MessageBoxUtils;
 
 namespace ChildcareApplication.AdminTools {
     public partial class PaymentEntry : Window {
@@ -50,7 +51,7 @@ namespace ChildcareApplication.AdminTools {
                         this.callingWindow.UpdateCurDue(this.guardianID);
                         this.Close();
                     } else {
-                        MessageBox.Show("You must enter a valid dollar number in the Payment Amount box.");
+                        WPFMessageBox.Show("You must enter a valid dollar number in the Payment Amount box.");
                     }
                 } else {
                     transDB.UpdateFamilyBalance(this.guardianID, num);
@@ -59,7 +60,7 @@ namespace ChildcareApplication.AdminTools {
                     this.Close();
                 }
             } else {
-                MessageBox.Show("You must enter a valid dollar number in the Payment Amount box.");
+                WPFMessageBox.Show("You must enter a valid dollar number in the Payment Amount box.");
             }
         }
 

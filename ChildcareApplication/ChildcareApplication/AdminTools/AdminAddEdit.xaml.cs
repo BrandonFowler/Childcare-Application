@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using MessageBoxUtils;
 
 namespace ChildcareApplication.AdminTools {
     /// <summary>
@@ -61,7 +62,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void btn_AddAdmin_Click(object sender, RoutedEventArgs e) {
             if (lst_AdminList.Items.Contains("default")) {
-                MessageBox.Show("You cannot add a new administrator while there is still a default administrator.\nPlease edit the default administrator before adding a new one");
+                WPFMessageBox.Show("You cannot add a new administrator while there is still a default administrator.\nPlease edit the default administrator before adding a new one");
             } else {
                 this.db.AddNewAdmin();
                 lst_AdminList.ItemsSource = db.FindAdmins();
@@ -71,17 +72,17 @@ namespace ChildcareApplication.AdminTools {
 
         private void btn_DelAdmin_Click(object sender, RoutedEventArgs e) {
             if (lst_AdminList.SelectedItem.ToString().Equals(loggedInAs)) {
-                MessageBox.Show("You cannot delete the currently logged in administrator");
+                WPFMessageBox.Show("You cannot delete the currently logged in administrator");
             }
             else {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you wish to delete this administrator?", "Deletion Conformation", MessageBoxButton.OKCancel);
+                MessageBoxResult messageBoxResult = WPFMessageBox.Show("Are you sure you wish to delete this administrator?", "Deletion Conformation", MessageBoxButton.OKCancel);
                 if (messageBoxResult == MessageBoxResult.OK) {
-                    MessageBox.Show(lst_AdminList.SelectedItem.ToString() + " has been deleted from the administrator list");
+                    WPFMessageBox.Show(lst_AdminList.SelectedItem.ToString() + " has been deleted from the administrator list");
                     db.DeleteAdmin(lst_AdminList.SelectedItem.ToString());
                     lst_AdminList.ItemsSource = db.FindAdmins();
                     clearForm();
                 } else {
-                    MessageBox.Show("Deletion canceled");
+                    WPFMessageBox.Show("Deletion canceled");
                 }
 
             }
@@ -168,7 +169,7 @@ namespace ChildcareApplication.AdminTools {
                     pwChanged = true;
                 }
                 else {
-                    MessageBox.Show("Passwords do not match. Please try again");
+                    WPFMessageBox.Show("Passwords do not match. Please try again");
                 }
             }
 
@@ -226,7 +227,7 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_LoginName_LostFocus(object sender, RoutedEventArgs e) {
             if (lst_AdminList.Items.Contains(txt_LoginName.Text) && !(lst_AdminList.SelectedItem.ToString().Equals(txt_LoginName.Text))) {
-                MessageBox.Show("An administrator with that name already exists. Please change the login name to be unique before continuing");
+                WPFMessageBox.Show("An administrator with that name already exists. Please change the login name to be unique before continuing");
                 btn_Save.IsEnabled = false;
             }
         }

@@ -7,7 +7,7 @@ using System.Data.SQLite;
 using System.Windows;
 using ChildcareApplication.Properties;
 using System.IO;
-
+using MessageBoxUtils;
 
 namespace ChildcareApplication.DatabaseController {
     class CleanDB {
@@ -27,7 +27,7 @@ namespace ChildcareApplication.DatabaseController {
                 daysToKeepRecords = Convert.ToInt32(Settings.Default.HoldExpiredRecords) * (-1);
             }
             catch(Exception e){
-                MessageBox.Show(e.Message + "\n\n Error: Unable to retrieve settings data, database clean up routine failed.");
+                WPFMessageBox.Show(e.Message + "\n\n Error: Unable to retrieve settings data, database clean up routine failed.");
                 return false;
             }
             if (daysToKeepRecords == 0) {
@@ -63,7 +63,7 @@ namespace ChildcareApplication.DatabaseController {
             }
             catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
+                WPFMessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
                 return false;
             }
             return true;
@@ -80,7 +80,7 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Close();
             } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
+                WPFMessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
                 return false;
             }
             return true;
@@ -97,7 +97,7 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Close();
             } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
+                WPFMessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
                 return false;
             }
             return true;
@@ -114,7 +114,7 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Close();
             } catch (Exception e) {
                 dbCon.Close();
-                MessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
+                WPFMessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
                 return false;
             }
             return true;

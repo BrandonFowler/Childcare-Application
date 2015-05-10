@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
 using DatabaseController;
+using MessageBoxUtils;
 
 namespace GuardianTools {
    
@@ -71,7 +72,7 @@ namespace GuardianTools {
                 this.altKeyPressed = false;
             }
             else {
-                MessageBox.Show("Please use only numbers.");
+                WPFMessageBox.Show("Please use only numbers.");
                 e.Handled = true;
                 this.altKeyPressed = false;
             }
@@ -90,7 +91,7 @@ namespace GuardianTools {
 
         private void btn_Login_Click(object sender, RoutedEventArgs e) {
             if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text) || string.IsNullOrWhiteSpace(this.txt_PINEntry.Password)) {
-                MessageBox.Show("Please enter a User ID and a PIN.");
+                WPFMessageBox.Show("Please enter a User ID and a PIN.");
 
             }
             else {
@@ -116,7 +117,7 @@ namespace GuardianTools {
                 this.Close();
             }
             else {
-                MessageBox.Show("User ID or PIN does not exist");
+                WPFMessageBox.Show("User ID or PIN does not exist");
             }
         }
 

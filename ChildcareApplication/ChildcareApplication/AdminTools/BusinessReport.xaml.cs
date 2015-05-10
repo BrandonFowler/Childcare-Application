@@ -18,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MessageBoxUtils;
 
 namespace AdminTools {
     public partial class BusinessReport : Window {
@@ -154,7 +155,7 @@ namespace AdminTools {
 
                 LoadReport(fromDate, toDate);
             } else {
-                MessageBox.Show("You must select a month and year from the drop down menus.");
+                WPFMessageBox.Show("You must select a month and year from the drop down menus.");
             }
         }
 
@@ -211,7 +212,7 @@ namespace AdminTools {
                     printDialog.PrintDocument(paginator, "Business Report Data Table");
                 }
             } else {
-                MessageBox.Show("You must load a report before you can print one!");
+                WPFMessageBox.Show("You must load a report before you can print one!");
             }
         }
 

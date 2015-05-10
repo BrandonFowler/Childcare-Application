@@ -11,7 +11,7 @@
         <Viewbox StretchDirection="Both" Stretch="Uniform" Width="1280" Height="700">
             <Grid Width="1280" Height="700">
                 <Button Style="{DynamicResource GlassButton}" x:Name="btn_LogOutParent" Content="_Log Out" HorizontalAlignment="Left" Margin="24,125,0,0" VerticalAlignment="Top" Width="143" Click="btn_LogOutParent_Click" Height="93" FontSize="20" KeyboardNavigation.TabIndex="5"/>
-                <ListBox x:Name="lst_CheckInBox" HorizontalAlignment="Left" Height="214" Margin="174,461,0,0" VerticalAlignment="Top" Width="734" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Background="#FFE6EAE0" KeyboardNavigation.TabIndex="1">
+                <ListBox x:Name="lst_CheckInBox" HorizontalAlignment="Left" Height="214" Margin="174,461,0,0" VerticalAlignment="Top" Width="734" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Background="#FFE6EAE0" KeyboardNavigation.TabIndex="1" BorderBrush="#FFE6EAE0">
                     <ListBox.ToolTip>
                         <ToolTip Background="#FFE6EAE0">
                             <TextBlock Name="CheckInTip" Text="Select a child that is eligible for check in" FontSize="20" Background="#FFE6EAE0"/>
@@ -32,7 +32,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <ListBox x:Name="lst_CheckOutBox" HorizontalAlignment="Left" Height="618" Margin="993,57,0,0" VerticalAlignment="Top" Width="160" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Background="#FFE6EAE0" KeyboardNavigation.TabIndex="3">
+                <ListBox x:Name="lst_CheckOutBox" HorizontalAlignment="Left" Height="618" Margin="993,57,0,0" VerticalAlignment="Top" Width="160" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Background="#FFE6EAE0" KeyboardNavigation.TabIndex="3" BorderBrush="#FFE6EAE0">
                     <ListBox.ToolTip>
                         <ToolTip Background="#FFE6EAE0">
                             <TextBlock Name="CheckOutTip" Text="Select a child that is eligible for check out" FontSize="20" Background="#FFE6EAE0"/>

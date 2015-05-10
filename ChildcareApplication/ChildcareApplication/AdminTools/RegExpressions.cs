@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using System.Windows;
+using MessageBoxUtils;
 
 namespace ChildcareApplication.AdminTools {
     class RegExpressions {
@@ -17,7 +18,7 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            MessageBox.Show("The word " + data + " is not valid. Please re-enter. EX:(509)555-5555");
+            WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX:(509)555-5555");
             return false;
         }//end regexPhoneNumber
 
@@ -34,7 +35,7 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            MessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: e.mail@ewu.edu");
+            WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: e.mail@ewu.edu");
             return false;
         }//end regexEmail
 
@@ -50,7 +51,7 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            MessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: Brian");
+            WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: Brian");
             return false;
         }//end regexName
 
@@ -66,7 +67,7 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            MessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: 02-15-1991");
+            WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: 02-15-1991");
             return false;
         }//end regexDate
 
@@ -83,7 +84,7 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            MessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: 123 Road Rd.");
+            WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: 123 Road Rd.");
             return false;
 
         }//end regexAddress
@@ -99,7 +100,7 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            MessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: Spokane");
+            WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: Spokane");
             return false;
         }//end regexCityState
 
@@ -113,7 +114,7 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            MessageBox.Show("The word " + data + " is not valid. Please re-enter. Ex: 12345");
+            WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. Ex: 12345");
             return false;
         }//end regexCityState
 
@@ -127,7 +128,7 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            MessageBox.Show("The word " + data + " is not valid. Please re-enter. Ex: 123456");
+            WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. Ex: 123456");
             return false;
         }//end regexCityState
 
@@ -141,7 +142,7 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            MessageBox.Show("The word " + data + " is not valid. Please re-enter. Ex: 1234");
+            WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. Ex: 1234");
             return false;
         }//end regexCityState
 
@@ -156,7 +157,7 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            MessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: file_name.jpg");
+            WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: file_name.jpg");
             return false;
         }//end regexCityState
 
@@ -172,7 +173,7 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            MessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: Some Event Name");
+            WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: Some Event Name");
             return false;
 
 

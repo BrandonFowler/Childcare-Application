@@ -2,6 +2,8 @@
 using DatabaseController;
 using System.Windows;
 using System.Windows.Input;
+using MessageBoxUtils;
+
 namespace AdminTools {
     /// <summary>
     /// Interaction logic for win_Link_DeLinkChild.xaml
@@ -67,10 +69,10 @@ namespace AdminTools {
 
 
             if (string.IsNullOrWhiteSpace(this.txt_GuardianID.Text)) {
-                MessageBox.Show("Please enter the ID number.");
+                WPFMessageBox.Show("Please enter the ID number.");
                 return true;
             } else if (string.IsNullOrWhiteSpace(this.txt_GuardianID2.Text)) {
-                MessageBox.Show("Please enter the ID number a second time.");
+                WPFMessageBox.Show("Please enter the ID number a second time.");
                 return true;
             }
 
@@ -82,7 +84,7 @@ namespace AdminTools {
             if (str1.Equals(str2))
                 return true;
             else {
-                MessageBox.Show("Your ID numbers do not match. Please re-enter");
+                WPFMessageBox.Show("Your ID numbers do not match. Please re-enter");
 
                 return false;
             }
@@ -98,7 +100,7 @@ namespace AdminTools {
             if (isNum1 && isNum2)
                 return true;
             else {
-                MessageBox.Show("Your ID numbers are not numbers only. Please re-enter.");
+                WPFMessageBox.Show("Your ID numbers are not numbers only. Please re-enter.");
 
                 return false;
             }

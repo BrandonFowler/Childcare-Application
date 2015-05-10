@@ -8,6 +8,7 @@ using System.Data;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows;
+using MessageBoxUtils;
 
 namespace DatabaseController {
 
@@ -36,7 +37,7 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (Exception e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             return false;
         }
@@ -51,7 +52,7 @@ namespace DatabaseController {
                 SQLiteCommand cmd = new SQLiteCommand(query, this.dbCon);
                 accessLevel = Convert.ToInt32(cmd.ExecuteScalar());
             } catch (Exception e) {
-                MessageBox.Show(e.Message);
+                WPFMessageBox.Show(e.Message);
             }
             return accessLevel;
         }
@@ -72,7 +73,7 @@ namespace DatabaseController {
                     return true;
                 }
             } catch (Exception e) {
-                MessageBox.Show(e.Message + "\n\n Database Connection Failure");
+                WPFMessageBox.Show(e.Message + "\n\n Database Connection Failure");
                 dbCon.Close();
             }
             return false;

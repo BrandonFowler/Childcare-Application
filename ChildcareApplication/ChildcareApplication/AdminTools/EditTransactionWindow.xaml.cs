@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MessageBoxUtils;
 
 namespace AdminTools {
     public partial class EditTransactionWindow : Window {
@@ -58,12 +59,12 @@ namespace AdminTools {
                 if (db.TransactionExists(txt_TransactionID.Text)) {
                     return true;
                 } else {
-                    MessageBox.Show("The Transaction ID you entered does not exist in the database.  Verify you entered the correct Transaction ID.");
+                    WPFMessageBox.Show("The Transaction ID you entered does not exist in the database.  Verify you entered the correct Transaction ID.");
                     txt_TransactionID.Focus();
                     return false;
                 }
             } else {
-                MessageBox.Show("The Transaction ID you entered does not exist in the database.  Verify you entered the correct Transaction ID.");
+                WPFMessageBox.Show("The Transaction ID you entered does not exist in the database.  Verify you entered the correct Transaction ID.");
                 txt_TransactionID.Focus();
                 return false;
             }

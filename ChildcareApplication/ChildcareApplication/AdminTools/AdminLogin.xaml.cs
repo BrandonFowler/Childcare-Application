@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using MessageBoxUtils;
 
 namespace AdminTools {
     public partial class AdminLogin : Window {
@@ -42,7 +42,7 @@ namespace AdminTools {
 
         private void LoginCheck() {
             if (string.IsNullOrWhiteSpace(this.txt_UserName.Text) || string.IsNullOrWhiteSpace(this.pwd_Password.Password)) {
-                MessageBox.Show("Please enter a User Name and a Password.");
+                WPFMessageBox.Show("Please enter a User Name and a Password.");
             } else {
                 string ID = txt_UserName.Text;
                 string PIN = pwd_Password.Password;
@@ -59,7 +59,7 @@ namespace AdminTools {
                         DisplayAdminWindow(accessLevel, txt_UserName.Text);
                     }
                 } else {
-                    MessageBox.Show("User ID or PIN does not exist");
+                    WPFMessageBox.Show("User ID or PIN does not exist");
                 }
             }
         }

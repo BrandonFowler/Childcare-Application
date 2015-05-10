@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using MessageBoxUtils;
 
 namespace AdminTools {
     /// <summary>
@@ -47,7 +48,7 @@ namespace AdminTools {
                         this.Close();
 
                     } else {
-                        MessageBox.Show("A Guardian with this ID already Exists. Please re-enter your ID");
+                        WPFMessageBox.Show("A Guardian with this ID already Exists. Please re-enter your ID");
                     }
 
                 }
@@ -81,16 +82,16 @@ namespace AdminTools {
         public bool CheckIfNull() {
 
             if (string.IsNullOrWhiteSpace(this.txt_ParentID1.Text)) {
-                MessageBox.Show("Please enter your ID number.");
+                WPFMessageBox.Show("Please enter your ID number.");
                 return true;
             } else if (string.IsNullOrWhiteSpace(this.txt_ParentID2.Text)) {
-                MessageBox.Show("Please enter your ID number a second time.");
+                WPFMessageBox.Show("Please enter your ID number a second time.");
                 return true;
             } else if (string.IsNullOrWhiteSpace(this.psw_ParentPIN1.Password)) {
-                MessageBox.Show("Please enter your PIN number.");
+                WPFMessageBox.Show("Please enter your PIN number.");
                 return true;
             } else if (string.IsNullOrWhiteSpace(this.psw_ParentPIN2.Password)) {
-                MessageBox.Show("Please enter your PIN number a second time.");
+                WPFMessageBox.Show("Please enter your PIN number a second time.");
                 return true;
             }
             return false;
@@ -101,7 +102,7 @@ namespace AdminTools {
             if (str1.Equals(str2))
                 return true;
             else {
-                MessageBox.Show("Your ID or PIN numbers do not match. Please re-enter");
+                WPFMessageBox.Show("Your ID or PIN numbers do not match. Please re-enter");
 
                 return false;
             }

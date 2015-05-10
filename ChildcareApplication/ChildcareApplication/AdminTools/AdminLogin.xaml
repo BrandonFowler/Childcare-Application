@@ -7,13 +7,13 @@
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
     <Border BorderBrush="LightBlue" BorderThickness="2" Width="274.149" Height="291.268" ClipToBounds="True">
-        <Grid>
+        <Grid Margin="2,-2,-2,2">
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Close" Content="_Close" HorizontalAlignment="Left" Margin="179,230,0,0" VerticalAlignment="Top" Width="77" Click="btn_Exit_Click" FontSize="16"/>
-            <Label x:Name="lbl_Username" Content="Username" HorizontalAlignment="Left" Margin="40,34,0,0" VerticalAlignment="Top" Width="146"/>
-            <Label x:Name="lbl_Password" Content="Password" HorizontalAlignment="Left" Margin="40,88,0,0" VerticalAlignment="Top" Width="121"/>
-            <TextBox x:Name="txt_UserName" Height="23" Margin="40,60,40,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" KeyUp="KeyUp_Event_USRName" Background="#FFE6EAE0" GotFocus="txt_GotFocus" ToolTip="Username"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Login" Content="_Log In" Margin="80,173,80,0" VerticalAlignment="Top" Click="btn_Login_Click" TabIndex="2" FontSize="16"/>
-            <PasswordBox x:Name="pwd_Password" HorizontalAlignment="Left" Margin="40,114,0,0" VerticalAlignment="Top" Width="186" Height="23" TabIndex="1" KeyUp="KeyUp_Event_PWD" Background="#FFE6EAE0" GotFocus="pwd_GotFocus" ToolTip="Password"/>
+            <Label x:Name="lbl_Username" Content="Username" HorizontalAlignment="Left" Margin="40,34,0,0" VerticalAlignment="Top" Width="146" FontSize="14"/>
+            <Label x:Name="lbl_Password" Content="Password" HorizontalAlignment="Left" Margin="44,98,0,0" VerticalAlignment="Top" Width="121" FontSize="14" RenderTransformOrigin="0.57,0.793"/>
+            <TextBox x:Name="txt_UserName" Height="25" Margin="44,68,36,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" KeyUp="KeyUp_Event_USRName" Background="#FFE6EAE0" GotFocus="txt_GotFocus" ToolTip="Username" FontSize="14"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Login" Content="_Log In" Margin="76,171,84,0" VerticalAlignment="Top" Click="btn_Login_Click" TabIndex="2" FontSize="16"/>
+            <PasswordBox x:Name="pwd_Password" HorizontalAlignment="Left" Margin="44,132,0,0" VerticalAlignment="Top" Width="186" Height="25" TabIndex="1" KeyUp="KeyUp_Event_PWD" Background="#FFE6EAE0" GotFocus="pwd_GotFocus" ToolTip="Password" FontSize="14"/>
         </Grid>
     </Border>
 </Window>
