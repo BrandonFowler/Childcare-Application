@@ -35,6 +35,7 @@ namespace ChildcareApplication.AdminTools {
             txt_ExpirationDays.Text = Properties.Settings.Default.HoldExpiredRecords.ToString();
             txt_InfantAge.Text = Properties.Settings.Default.InfantMaxAge.ToString();
             txt_RegularAge.Text = Properties.Settings.Default.RegularMaxAge.ToString();
+            txt_defaultReportFolder.Text = Properties.Settings.Default.DefaultSaveFolder.ToString();
 
             txt_MonOpening.Text = Properties.Settings.Default.MonOpen.TimeOfDay.ToString();
             txt_MonClosing.Text = Properties.Settings.Default.MonClose.TimeOfDay.ToString();
@@ -100,6 +101,7 @@ namespace ChildcareApplication.AdminTools {
                 Properties.Settings.Default.HoldExpiredRecords = txt_ExpirationDays.Text;
                 Properties.Settings.Default.InfantMaxAge = txt_InfantAge.Text;
                 Properties.Settings.Default.RegularMaxAge = txt_RegularAge.Text;
+                Properties.Settings.Default.DefaultSaveFolder = txt_defaultReportFolder.Text;
 
                 if (txt_MonOpening.Text.Equals("closed"))
                     Properties.Settings.Default.MonOpen = DateTime.Parse(closedString);
@@ -367,7 +369,7 @@ namespace ChildcareApplication.AdminTools {
         private void txt_BillingDate_LostFocus(object sender, RoutedEventArgs e) {
             if (SettingsValidation.ValidBillingDate(txt_BillingDate.Text)) {
                 statusGood();
-            } else {
+            } else if (!errorPresent) {
                 WPFMessageBox.Show("Invalid Input. Billing Date must be a number from 1 to 29");
                 statusBad(txt_BillingDate);
             }
@@ -376,7 +378,7 @@ namespace ChildcareApplication.AdminTools {
         private void txt_MaxMonthlyFee_LostFocus(object sender, RoutedEventArgs e) {
             if (SettingsValidation.PositiveInteger(txt_MaxMonthlyFee.Text)) {
                 statusGood();
-            } else {
+            } else if (!errorPresent) {
                 WPFMessageBox.Show("Invalid Input. Maximum Monthly Fee must be a positive number");
                 statusBad(txt_MaxMonthlyFee);
             }
@@ -385,7 +387,7 @@ namespace ChildcareApplication.AdminTools {
         private void txt_ExpirationDays_LostFocus(object sender, RoutedEventArgs e) {
             if (SettingsValidation.PositiveInteger(txt_ExpirationDays.Text)) {
                 statusGood();
-            } else {
+            } else if (!errorPresent) {
                 WPFMessageBox.Show("Invalid Input. Days to hold expired records must be a positive number");
                 statusBad(txt_ExpirationDays);
             }
@@ -394,7 +396,7 @@ namespace ChildcareApplication.AdminTools {
         private void txt_InfantAge_LostFocus(object sender, RoutedEventArgs e) {
             if (SettingsValidation.ValidAge(txt_InfantAge.Text, txt_RegularAge.Text)) {
                 statusGood();
-            } else {
+            } else if (!errorPresent) {
                 WPFMessageBox.Show("Invalid Input. Infant Age must be a positive number less than Regular Age");
                 statusBad(txt_InfantAge, txt_RegularAge);
             }
@@ -403,89 +405,101 @@ namespace ChildcareApplication.AdminTools {
         private void txt_RegularAge_LostFocus(object sender, RoutedEventArgs e) {
             if (SettingsValidation.ValidAge(txt_InfantAge.Text, txt_RegularAge.Text)) {
                 statusGood();
-            } else {
+            } else if (!errorPresent) {
                 WPFMessageBox.Show("Invalid Input. Regular Age must be a positive number greater than Infant Age");
-                statusBad(txt_InfantAge, txt_RegularAge);
+                statusBad(txt_RegularAge, txt_InfantAge);
             }
         }
 
         private void btn_selectFolder_Click(object sender, RoutedEventArgs e) {
             System.Windows.Forms.FolderBrowserDialog folderDialog = new System.Windows.Forms.FolderBrowserDialog();
-            folderDialog.SelectedPath = "C:\\";
+            folderDialog.SelectedPath = txt_defaultReportFolder.Text;
 
             System.Windows.Forms.DialogResult result = folderDialog.ShowDialog();
-            if (result.ToString() == "OK")
+            if (result.ToString() == "OK") {
                 txt_defaultReportFolder.Text = folderDialog.SelectedPath;
+            }
         }
 
         private void txt_MonOpening_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_MonOpening, txt_MonClosing);
+            TimeCheckingO(txt_MonOpening, txt_MonClosing);
         }
 
         private void txt_MonClosing_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_MonOpening, txt_MonClosing);
+            TimeCheckingC(txt_MonOpening, txt_MonClosing);
         }
 
         private void txt_TueOpening_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_TueOpening, txt_TueClosing);
+            TimeCheckingO(txt_TueOpening, txt_TueClosing);
         }
 
         private void txt_TueClosing_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_TueOpening, txt_TueClosing);
+            TimeCheckingC(txt_TueOpening, txt_TueClosing);
         }
 
         private void txt_WedOpening_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_WedOpening, txt_WedClosing);
+            TimeCheckingO(txt_WedOpening, txt_WedClosing);
         }
 
         private void txt_WedClosing_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_WedOpening, txt_WedClosing);
+            TimeCheckingC(txt_WedOpening, txt_WedClosing);
         }
 
         private void txt_ThuOpening_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_ThuOpening, txt_ThuClosing);
+            TimeCheckingO(txt_ThuOpening, txt_ThuClosing);
         }
 
         private void txt_ThuClosing_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_ThuOpening, txt_ThuClosing);
+            TimeCheckingC(txt_ThuOpening, txt_ThuClosing);
         }
 
         private void txt_FriOpening_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_FriOpening, txt_FriClosing);
+            TimeCheckingO(txt_FriOpening, txt_FriClosing);
         }
 
         private void txt_FriClosing_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_FriOpening, txt_FriClosing);
+            TimeCheckingC(txt_FriOpening, txt_FriClosing);
         }
 
         private void txt_SatOpening_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_SatOpening, txt_SatClosing);
+            TimeCheckingO(txt_SatOpening, txt_SatClosing);
         }
 
         private void txt_SatClosing_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_SatOpening, txt_SatClosing);
+            TimeCheckingC(txt_SatOpening, txt_SatClosing);
         }
 
         private void txt_SunOpening_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_SunOpening, txt_SunClosing);
+            TimeCheckingO(txt_SunOpening, txt_SunClosing);
         }
 
         private void txt_SunClosing_LostFocus(object sender, RoutedEventArgs e) {
-            TimeChecking(txt_SunOpening, txt_SunClosing);
+            TimeCheckingC(txt_SunOpening, txt_SunClosing);
         }
 
-        private void TimeChecking(TextBox openTime, TextBox closeTime) {
+        private void TimeCheckingO(TextBox openTime, TextBox closeTime) {
             if (SettingsValidation.ValidHours(openTime.Text, closeTime.Text)) {
                 statusGood();
-            } else {
+            } else if (!errorPresent) {
                 WPFMessageBox.Show("Invalid Input. Must be a valid time less than closing time");
                 statusBad(openTime, closeTime);
             }
         }
 
-        private void txt_BillingDate_KeyUp(object sender, System.Windows.Input.KeyEventArgs e) {
+        private void TimeCheckingC(TextBox openTime, TextBox closeTime) {
+            if (SettingsValidation.ValidHours(openTime.Text, closeTime.Text)) {
+                statusGood();
+            } else if (!errorPresent) {
+                WPFMessageBox.Show("Invalid Input. Closing time must be a valid time greater than opening time");
+                statusBad(closeTime, openTime);
+            }
+        }
+
+        private void EnterKeyUpEvent(object sender, System.Windows.Input.KeyEventArgs e) {
             if (e.Key == Key.Enter) {
-                WPFMessageBox.Show("NYI");
+                TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next);
+                request.Wrapped = true;
+                ((Control)e.Source).MoveFocus(request);
             }
         }
 

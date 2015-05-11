@@ -175,16 +175,30 @@ namespace ChildcareApplication.AdminTools {
 
         }
 
+        private void txt_LoginName_LostFocus(object sender, RoutedEventArgs e) {
+            if (lst_AdminList.Items.Contains(txt_LoginName.Text) && !(lst_AdminList.SelectedItem.ToString().Equals(txt_LoginName.Text))) {
+                WPFMessageBox.Show("An administrator with that name already exists. Please change the login name to be unique before continuing");
+                btn_Save.IsEnabled = false;
+            }
+            //check for valid username
+        }
+
+        private void txt_Email_LostFocus(object sender, RoutedEventArgs e) {
+            //check for valid email
+        }
+
         private bool passwordsMatch() {
             return txt_Password.Password.Equals(txt_ConfirmPass.Password);
         }
 
         private void txt_Password_LostFocus(object sender, RoutedEventArgs e) {
             txt_Password.Password = AdminTools.Hashing.HashPass(txt_Password.Password);
+            //check for valid password
         }
 
         private void txt_ConfirmPass_LostFocus(object sender, RoutedEventArgs e) {
             txt_ConfirmPass.Password = AdminTools.Hashing.HashPass(txt_ConfirmPass.Password);
+            //check for valid password?
         }
 
         private void txt_Password_GotFocus(object sender, RoutedEventArgs e) {
@@ -225,10 +239,11 @@ namespace ChildcareApplication.AdminTools {
                 DragMove();
         }
 
-        private void txt_LoginName_LostFocus(object sender, RoutedEventArgs e) {
-            if (lst_AdminList.Items.Contains(txt_LoginName.Text) && !(lst_AdminList.SelectedItem.ToString().Equals(txt_LoginName.Text))) {
-                WPFMessageBox.Show("An administrator with that name already exists. Please change the login name to be unique before continuing");
-                btn_Save.IsEnabled = false;
+        private void EnterKeyUpEvent(object sender, System.Windows.Input.KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next);
+                request.Wrapped = true;
+                ((Control)e.Source).MoveFocus(request);
             }
         }
     }
