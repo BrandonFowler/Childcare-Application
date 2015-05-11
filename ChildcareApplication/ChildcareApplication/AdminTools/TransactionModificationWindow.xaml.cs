@@ -241,7 +241,7 @@ namespace AdminTools {
             }
         }
 
-        private void TextChanged_Event(object sender, TextChangedEventArgs e) {
+        private void TextChanged_Event(object sender, Object e) {
             this.dataChanged = true;
         }
 

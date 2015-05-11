@@ -16,6 +16,7 @@ using ChildcareApplication.AdminTools;
 using DatabaseController;
 using ChildcareApplication.DatabaseController;
 using MessageBoxUtils;
+using PdfSharp.Pdf;
 
 namespace AdminTools {
     public partial class ParentReport : Window {
@@ -236,7 +237,13 @@ namespace AdminTools {
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e) {
-            WPFMessageBox.Show("TODO: save as PDF");
+            if (this.reportLoaded && this.table.Rows.Count > 0) {
+                PDFCreator pdfCreator = new PDFCreator(this.table);
+                PdfDocument pdf = pdfCreator.CreatePDF();
+                pdfCreator.SavePDF(pdf);
+            } else {
+                WPFMessageBox.Show("You must load a report before you can save one!");
+            }
         }
     }
 }

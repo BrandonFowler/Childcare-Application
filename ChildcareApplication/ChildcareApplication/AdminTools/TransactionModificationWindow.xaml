@@ -30,7 +30,7 @@
             <Label x:Name="lbl_TransactionTotal" Content="Transaction Total" Margin="146,261,-21,0" VerticalAlignment="Top" FontSize="14"/>
             <TextBox x:Name="txt_Date" HorizontalAlignment="Left" Height="25" Margin="9,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" GotFocus="txt_GotFocus" KeyUp="KeyUp_Event" TextChanged="TextChanged_Event" TabIndex="5" Background="#FFE6EAE0" FontSize="14" ToolTip="The date for the transaction."/>
             <Label x:Name="lbl_TransactionTotal_Copy" Content="Transaction Date" HorizontalAlignment="Left" Margin="10,261,0,0" VerticalAlignment="Top" Width="115" FontSize="14"/>
-            <ComboBox x:Name="cmb_EventName" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="255" TabIndex="2" Height="25" FontSize="14" ToolTip="A list of events currently entered in the database.">
+            <ComboBox x:Name="cmb_EventName" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="255" TabIndex="2" Height="25" FontSize="14" ToolTip="A list of events currently entered in the database." SelectionChanged="TextChanged_Event">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
