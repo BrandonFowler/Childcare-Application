@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SQLite;
+using MessageBoxUtils;
 
 namespace ChildcareApplication.DatabaseController {
     class AdminDB {
@@ -11,129 +12,163 @@ namespace ChildcareApplication.DatabaseController {
         }
 
         public string[] FindAdmins() {
-            dbCon.Open();
+            String[] names = null;
+            
+            try {
+                dbCon.Open();
 
-            string sql = "SELECT AdministratorUN from Administrator WHERE NOT AccessLevel='0'";
+                string sql = "SELECT AdministratorUN from Administrator WHERE NOT AccessLevel='0'";
 
-            SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
-            DataSet adminlist = new DataSet();
-            adapter.Fill(adminlist);
+                SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
+                DataSet adminlist = new DataSet();
+                adapter.Fill(adminlist);
 
-            int count = adminlist.Tables[0].Rows.Count;
-            String[] names = new string[count];
-            int x = 0;
-            while (x < count) {
-                names[x] = adminlist.Tables[0].Rows[x][0].ToString();
-                x++;
+                int count = adminlist.Tables[0].Rows.Count;
+                names = new string[count];
+                int x = 0;
+                while (x < count) {
+                    names[x] = adminlist.Tables[0].Rows[x][0].ToString();
+                    x++;
+                }
+                dbCon.Close();
+            } catch (SQLiteException e) {
+                WPFMessageBox.Show(e.Message);
             }
-            dbCon.Close();
 
             return names;
         }
 
         internal string GetAccessLevel(string tempUN) {
-            dbCon.Open();
+            string result = "";
 
-            string sql = @"SELECT AccessLevel FROM Administrator WHERE AdministratorUN = @adminUN;";
+            try {
+                dbCon.Open();
 
-            SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
+                string sql = @"SELECT AccessLevel FROM Administrator WHERE AdministratorUN = @adminUN;";
 
-            comm.Parameters.Add(new SQLiteParameter("@adminUN", tempUN));
+                SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
 
-            SQLiteDataReader reader = comm.ExecuteReader();
+                comm.Parameters.Add(new SQLiteParameter("@adminUN", tempUN));
 
-            reader.Read();
+                SQLiteDataReader reader = comm.ExecuteReader();
 
-            string result = reader.GetString(0);
+                reader.Read();
 
-            reader.Close();
-            dbCon.Close();
+                result = reader.GetString(0);
+
+                reader.Close();
+                dbCon.Close();
+            } catch (SQLiteException e) {
+                WPFMessageBox.Show(e.Message);
+            }
 
             return result;
         }
 
         internal string GetAdminEmail(string tempUN) {
-            dbCon.Open();
+            string result = "";
 
-            string sql = @"SELECT AdministratorEmail FROM Administrator WHERE AdministratorUN = @adminUN;";
+            try {
+                dbCon.Open();
 
-            SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
+                string sql = @"SELECT AdministratorEmail FROM Administrator WHERE AdministratorUN = @adminUN;";
 
-            comm.Parameters.Add(new SQLiteParameter("@adminUN", tempUN));
+                SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
 
-            SQLiteDataReader reader = comm.ExecuteReader();
+                comm.Parameters.Add(new SQLiteParameter("@adminUN", tempUN));
 
-            reader.Read();
+                SQLiteDataReader reader = comm.ExecuteReader();
 
-            string result = reader.GetString(0);
+                reader.Read();
 
-            reader.Close();
-            dbCon.Close();
+                result = reader.GetString(0);
+
+                reader.Close();
+                dbCon.Close();
+            } catch (SQLiteException e) {
+                WPFMessageBox.Show(e.Message);
+            }
 
             return result;
         }
 
 
         internal void AddNewAdmin() {
-            dbCon.Open();
+            try {
+                dbCon.Open();
 
-            string sql = @"INSERT INTO Administrator VALUES (@newname, @newpw, 2, @newemail, null);";
+                string sql = @"INSERT INTO Administrator VALUES (@newname, @newpw, 2, @newemail, null);";
 
-            SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
+                SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
 
-            string defaultdata = "default";
-            string newPass = ChildcareApplication.AdminTools.Hashing.HashPass("default");
-            comm.Parameters.Add(new SQLiteParameter("@newname", defaultdata));
-            comm.Parameters.Add(new SQLiteParameter("@newpw", newPass));
-            comm.Parameters.Add(new SQLiteParameter("@newemail", defaultdata));
+                string defaultdata = "default";
+                string newPass = ChildcareApplication.AdminTools.Hashing.HashPass("default");
+                comm.Parameters.Add(new SQLiteParameter("@newname", defaultdata));
+                comm.Parameters.Add(new SQLiteParameter("@newpw", newPass));
+                comm.Parameters.Add(new SQLiteParameter("@newemail", defaultdata));
 
-            comm.ExecuteNonQuery();
+                comm.ExecuteNonQuery();
 
-            dbCon.Close();
+                dbCon.Close();
+            } catch (SQLiteException e) {
+                WPFMessageBox.Show(e.Message);
+            }
         }
 
         internal void UpdateAdmin(string oldlogin, string newlogin, string newpw, string email, string access) {
-            dbCon.Open();
+            try {
+                dbCon.Open();
 
-            string sql = @"UPDATE Administrator SET AdministratorUN = @newUN, AdministratorPW = @newPW, AdministratorEmail = @em, AccessLevel = @al WHERE AdministratorUN = @oldUN;";
-            SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
-            comm.Parameters.Add(new SQLiteParameter("@newUN", newlogin));
-            comm.Parameters.Add(new SQLiteParameter("@newPW", newpw));
-            comm.Parameters.Add(new SQLiteParameter("@em", email));
-            comm.Parameters.Add(new SQLiteParameter("@al", access));
-            comm.Parameters.Add(new SQLiteParameter("@oldUN", oldlogin));
+                string sql = @"UPDATE Administrator SET AdministratorUN = @newUN, AdministratorPW = @newPW, AdministratorEmail = @em, AccessLevel = @al WHERE AdministratorUN = @oldUN;";
+                SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
+                comm.Parameters.Add(new SQLiteParameter("@newUN", newlogin));
+                comm.Parameters.Add(new SQLiteParameter("@newPW", newpw));
+                comm.Parameters.Add(new SQLiteParameter("@em", email));
+                comm.Parameters.Add(new SQLiteParameter("@al", access));
+                comm.Parameters.Add(new SQLiteParameter("@oldUN", oldlogin));
 
-            comm.ExecuteNonQuery();
+                comm.ExecuteNonQuery();
 
-            dbCon.Close();
+                dbCon.Close();
+            } catch (SQLiteException e) {
+                WPFMessageBox.Show(e.Message);
+            }
         }
 
         internal void UpdateAdmin(string oldlogin, string newlogin, string email, string access) {
-            dbCon.Open();
+            try {
+                dbCon.Open();
 
-            string sql = @"UPDATE Administrator SET AdministratorUN = @newUN, AdministratorEmail = @em, AccessLevel = @al WHERE AdministratorUN = @oldUN;";
-            SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
-            comm.Parameters.Add(new SQLiteParameter("@newUN", newlogin));
-            comm.Parameters.Add(new SQLiteParameter("@em", email));
-            comm.Parameters.Add(new SQLiteParameter("@al", access));
-            comm.Parameters.Add(new SQLiteParameter("@oldUN", oldlogin));
+                string sql = @"UPDATE Administrator SET AdministratorUN = @newUN, AdministratorEmail = @em, AccessLevel = @al WHERE AdministratorUN = @oldUN;";
+                SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
+                comm.Parameters.Add(new SQLiteParameter("@newUN", newlogin));
+                comm.Parameters.Add(new SQLiteParameter("@em", email));
+                comm.Parameters.Add(new SQLiteParameter("@al", access));
+                comm.Parameters.Add(new SQLiteParameter("@oldUN", oldlogin));
 
-            comm.ExecuteNonQuery();
+                comm.ExecuteNonQuery();
 
-            dbCon.Close();
+                dbCon.Close();
+            } catch (SQLiteException e) {
+                WPFMessageBox.Show(e.Message);
+            }
         }
 
         internal void DeleteAdmin(string user) {
-            dbCon.Open();
+            try {
+                dbCon.Open();
 
-            string sql = @"DELETE FROM Administrator WHERE AdministratorUN = @delme;";
-            SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
-            comm.Parameters.Add(new SQLiteParameter("@delMe", user));
+                string sql = @"DELETE FROM Administrator WHERE AdministratorUN = @delme;";
+                SQLiteCommand comm = new SQLiteCommand(sql, dbCon);
+                comm.Parameters.Add(new SQLiteParameter("@delMe", user));
 
-            comm.ExecuteNonQuery();
+                comm.ExecuteNonQuery();
 
-            dbCon.Close();
+                dbCon.Close();
+            } catch (SQLiteException e) {
+                WPFMessageBox.Show(e.Message);
+            }
         }
     }
 }
