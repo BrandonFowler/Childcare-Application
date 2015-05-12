@@ -44,8 +44,13 @@ namespace DatabaseController {
                 command.ExecuteNonQuery();
                 dbCon.Close();
             }
-            catch (Exception e){
-                WPFMessageBox.Show(e.Message + "\n\n Database Connection Error: Unable Check In Child");
+            catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+                return false;
+            }
+            catch (Exception){
+                WPFMessageBox.Show("Unable Check In Child");
                 dbCon.Close();
                 return false;
             }
@@ -77,10 +82,14 @@ namespace DatabaseController {
                 dbCon.Close();
 
                 return connectionID;
-            }
-            catch (Exception e){
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information");
+                return null;
+            }
+            catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve critical information");
                 return null;
             }
         }
@@ -97,9 +106,13 @@ namespace DatabaseController {
                 dbCon.Open();
                 command.ExecuteNonQuery();
                 dbCon.Close();
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+                return false;
             }
-            catch(Exception e){
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to check out child");
+            catch (Exception) {
+                WPFMessageBox.Show("Unable to check out child");
                 dbCon.Close();
                 return false;
             }
@@ -124,10 +137,13 @@ namespace DatabaseController {
                 dbCon.Close();
 
                 return count;
-            }
-            catch (Exception e){
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the charge was calculated correctly.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
+                return 0;
+            }catch (Exception){
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve critical information. Please insure the charge was calculated correctly.");
                 return 0;
             }
         }
@@ -150,10 +166,13 @@ namespace DatabaseController {
                     return true;
                 }
                 return false;
-            }
-            catch(Exception e){
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible. All children may not be showing.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to access find all children. Please log out, then try again.");
+                return false;
+            }catch(Exception){
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to find children. Please log out, then try again.");
                 return false;
             }
         }

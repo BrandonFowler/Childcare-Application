@@ -185,9 +185,9 @@ namespace AdminTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            } 
-            catch(Exception e) {
-                WPFMessageBox.Show(e.Message + "\n\n Error: Invalid photo path, attempting to load default photo.");
+            }
+            catch (System.IO.DirectoryNotFoundException) {
+                WPFMessageBox.Show("Error loading photo. Pease insure your photos are in the correct directory.");
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"../../Pictures/default.jpg");
                 bitmapImage.BeginInit();
@@ -196,6 +196,10 @@ namespace AdminTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
+            }
+            catch (Exception) {
+                WPFMessageBox.Show("Unable to load photo for unknown reason.");
+
             }
             return image;
         }//end buildImage	

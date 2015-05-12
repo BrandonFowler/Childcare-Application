@@ -57,7 +57,7 @@ namespace GuardianTools {
                 return;
             }
             for (int x = 0; x < childrenData.GetLength(0); x++) {
-                Image image = BuildImage(childrenData[x, 6], 120);
+                Image image = BuildImage(childrenData[x, 6], 70);
                 if (!db.IsCheckedIn(childrenData[x, 0],this.guardianID)){
                     lst_CheckInBox.Items.Add(new Child(childrenData[x, 0], childrenData[x, 1], childrenData[x, 2], 
                         image, childrenData[x, 3], childrenData[x, 4], childrenData[x, 5], childrenData[x, 6]));
@@ -81,9 +81,9 @@ namespace GuardianTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            } 
-            catch(Exception e){
-                WPFMessageBox.Show(e.Message + "\n\n Error: Invalid photo path, attempting to load default photo.");
+            }
+            catch (System.IO.DirectoryNotFoundException) {
+                WPFMessageBox.Show("Error loading photo. Pease insure your photos are in the correct directory.");
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"../../Pictures/default.jpg");
                 bitmapImage.BeginInit();
@@ -92,6 +92,10 @@ namespace GuardianTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
+            }
+            catch(Exception){
+                WPFMessageBox.Show("Unable to load photo for unknown reason.");
+               
             }
             return image;
         }

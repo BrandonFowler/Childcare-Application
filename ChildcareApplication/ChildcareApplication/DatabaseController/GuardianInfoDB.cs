@@ -344,8 +344,12 @@ namespace DatabaseController {
                 }
                 dbCon.Close();
                 return data;
-            } catch (Exception e) {
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for guardian");
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+                return null;
+            }catch (Exception) {
+                WPFMessageBox.Show("Unable to retrieve information for guardian");
                 dbCon.Close();
                 return null;
             }
@@ -354,7 +358,7 @@ namespace DatabaseController {
         public DataTable RetieveGuardiansByLastName(string name) {
             string sql = "select LastName as 'First Name', FirstName as 'Last Name', Guardian_ID as ID " +
                          "from Guardian " +
-                         "where LastName = @name";
+                         "where upper(LastName) = upper(@name)";
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
             DataTable table;
             try
@@ -368,8 +372,12 @@ namespace DatabaseController {
                 adapter.Fill(table);
                 connection.Close();
                 return table;
-            } catch (Exception e) {
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for guardians");
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+                return null;
+            }catch (Exception) {
+                WPFMessageBox.Show("Unable to retrieve information for guardians");
                 dbCon.Close();
                 return null;
             }
@@ -389,9 +397,13 @@ namespace DatabaseController {
                     return true;
                 }
                 return false;
-            } catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
+                return false;
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian information.");
                 return false;
             }
         }
@@ -410,9 +422,13 @@ namespace DatabaseController {
                     return (string)recordFound;
                 }
                 return null;
-            } catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve guardian picture.");
+                return null;
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian picture.");
                 return null;
             }
         }

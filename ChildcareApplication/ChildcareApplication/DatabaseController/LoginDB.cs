@@ -72,8 +72,11 @@ namespace DatabaseController {
                     dbCon.Close();
                     return true;
                 }
-            } catch (Exception e) {
-                WPFMessageBox.Show(e.Message + "\n\n Database Connection Failure");
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+            }catch (Exception) {
+                WPFMessageBox.Show("Unable to retrieve guardian information.");
                 dbCon.Close();
             }
             return false;

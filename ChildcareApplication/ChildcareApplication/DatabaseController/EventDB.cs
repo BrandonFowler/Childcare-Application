@@ -451,9 +451,13 @@ namespace DatabaseController {
                 }
                 dbCon.Close();
                 return eventData;
-            } catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible. Please insure the charge was calculated correctly.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information. Please insure charge was calculated correctly");
+                return null;
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve critical information. Please insure charge was calculated correctly.");
                 return null;
             }
         }
@@ -486,9 +490,13 @@ namespace DatabaseController {
                     return Convert.ToDouble(recordFound);
                 }
                 return eventHasNoMax;
-            } catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve event specifications. Possible late fee calculations could be incorrect.");
+                return eventHasNoMax;
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve event specifications. Possible late fee calculations could be incorrect.");
                 return eventHasNoMax;
             }
         }
@@ -522,8 +530,12 @@ namespace DatabaseController {
                 }
                 dbCon.Close();
                 return events;
-            } catch (Exception e) {
-                WPFMessageBox.Show(e.Message + "\n\n Database dbCon error: Unable to retrieve information for events");
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+                return null;
+            }catch (Exception) {
+                WPFMessageBox.Show("Unable to retrieve information for events");
                 dbCon.Close();
                 return null;
             }
@@ -542,9 +554,13 @@ namespace DatabaseController {
 
                 double lateFee = Convert.ToDouble(fee);
                 return lateFee;
-            } catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible. Any late fees have not been recorded.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information. Any late fees have not been recorded.");
+                return 0;
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve critical information. Any late fees have not been recorded.");
                 return 0;
             }
         }

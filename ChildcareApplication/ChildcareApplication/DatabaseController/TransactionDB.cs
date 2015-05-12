@@ -247,9 +247,13 @@ namespace DatabaseController {
                     dbCon.Open();
                     command.ExecuteNonQuery();
                     dbCon.Close();
-                } catch (Exception e) {
+                }catch (System.Data.SQLite.SQLiteException) {
+                    WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible. Did not record late fee.");
                     dbCon.Close();
-                    WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to record late fee");
+                    return false;
+                }catch (Exception) {
+                    dbCon.Close();
+                    WPFMessageBox.Show("Unable to record late fee");
                     return false;
                 }
             } else {
@@ -270,9 +274,12 @@ namespace DatabaseController {
                 dbCon.Open();
                 recordFound = command.ExecuteScalar();
                 dbCon.Close();
-            } catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to check if charge exceeds monthly maximum for normal care.");
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to check if charge exceeds monthly maximum for normal care.");
             }
             return recordFound;
         }
@@ -289,9 +296,12 @@ namespace DatabaseController {
                 dbCon.Open();
                 command.ExecuteNonQuery();
                 dbCon.Close();
-            } catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible. Charge has not been added to balance.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to add charge to family balance.");
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to add charge to family balance.");
             }
         }
 
@@ -310,9 +320,13 @@ namespace DatabaseController {
                 string allowanceID = Convert.ToString(command.ExecuteScalar());
                 dbCon.Close();
                 return allowanceID;
-            } catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve critical information.");
+                return null;
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve critical information.");
                 return null;
             }
         }
@@ -335,9 +349,13 @@ namespace DatabaseController {
                 }
                 dbCon.Close();
                 return transaction;
-            } catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve original transaction.");
+                return null;
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve original transaction.");
                 return null;
             }
         }

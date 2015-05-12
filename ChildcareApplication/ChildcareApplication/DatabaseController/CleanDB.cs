@@ -26,8 +26,12 @@ namespace ChildcareApplication.DatabaseController {
             try {
                 daysToKeepRecords = Convert.ToInt32(Settings.Default.HoldExpiredRecords) * (-1);
             }
-            catch(Exception e){
-                WPFMessageBox.Show(e.Message + "\n\n Error: Unable to retrieve settings data, database clean up routine failed.");
+            catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Could not access the setting for the amount of days to hold records. Please insure the setting is valid.");
+                return false;
+            }
+            catch(Exception){
+                WPFMessageBox.Show("Unable to retrieve settings data, database clean up routine failed.");
                 return false;
             }
             if (daysToKeepRecords == 0) {
@@ -60,10 +64,13 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Open();
                 command.ExecuteNonQuery();
                 dbCon.Close();
-            }
-            catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
+                return false;
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to clean old records");
                 return false;
             }
             return true;
@@ -78,9 +85,13 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Open();
                 command.ExecuteNonQuery();
                 dbCon.Close();
-            } catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
+                return false;
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to clean old records");
                 return false;
             }
             return true;
@@ -95,9 +106,13 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Open();
                 command.ExecuteNonQuery();
                 dbCon.Close();
-            } catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
+                return false;
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to clean old records");
                 return false;
             }
             return true;
@@ -112,9 +127,13 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Open();
                 command.ExecuteNonQuery();
                 dbCon.Close();
-            } catch (Exception e) {
+            }catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-                WPFMessageBox.Show(e.Message + "\n\n Database Connection Error: Unable to clean old records");
+                return false;
+            }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to clean old records");
                 return false;
             }
             return true;

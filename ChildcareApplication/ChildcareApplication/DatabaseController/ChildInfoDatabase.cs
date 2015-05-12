@@ -172,8 +172,12 @@ namespace DatabaseController {
                 }
                 dbCon.Close();
                 return data;
-            } catch (Exception e) {
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for children");
+            }catch(System.Data.SQLite.SQLiteException){
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+                return null;
+            } catch (Exception) {
+                WPFMessageBox.Show("Error trying to retrieve information for children");
                 dbCon.Close();
                 return null;
             }
@@ -196,8 +200,12 @@ namespace DatabaseController {
                 DB.Fill(DS);
                 dbCon.Close();
             }
-            catch (Exception e) {
-                WPFMessageBox.Show(e.Message + "\n\n Database connection error: Unable to retrieve information for children");
+            catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+            }
+            catch (Exception) {
+                WPFMessageBox.Show("Unable to retrieve information for children");
                 dbCon.Close();
             }
 
