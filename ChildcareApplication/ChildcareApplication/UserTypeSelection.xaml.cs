@@ -44,5 +44,15 @@ namespace ChildcareApplication {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
+
+        private void btn_Help_Click(object sender, RoutedEventArgs e) {
+            HelpWindow help = new HelpWindow();
+            help.ShowDialog();
+        }
+
+        private void btn_About_Click(object sender, RoutedEventArgs e) {
+            AboutWindow about = new AboutWindow();
+            about.ShowDialog();
+        }
     }
 }

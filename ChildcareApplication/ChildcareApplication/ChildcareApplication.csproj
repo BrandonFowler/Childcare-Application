@@ -103,6 +103,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminTools\AdminAddEdit.xaml.cs">
       <DependentUpon>AdminAddEdit.xaml</DependentUpon>
     </Compile>
@@ -143,10 +146,17 @@
       <DependentUpon>AdminChildCheckIn.xaml</DependentUpon>
     </Compile>
     <Compile Include="GuardianTools\TransactionCharge.cs" />
+    <Compile Include="HelpWindow.xaml.cs">
+      <DependentUpon>HelpWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="UserTypeSelection.xaml.cs">
       <DependentUpon>UserTypeSelection.xaml</DependentUpon>
     </Compile>
+    <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminTools\AdminAddEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -273,6 +283,10 @@
     <Compile Include="GuardianTools\GuardianCheckIn.xaml.cs">
       <DependentUpon>GuardianCheckIn.xaml</DependentUpon>
     </Compile>
+    <Page Include="HelpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserTypeSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
