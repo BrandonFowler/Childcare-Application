@@ -9,6 +9,7 @@
     <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True">
         <Grid Height="267" VerticalAlignment="Bottom" Margin="-2">
             <Button x:Name="btn_Close" Style="{DynamicResource GlassButton}" Content="Close" HorizontalAlignment="Left" Margin="111,166,0,0" VerticalAlignment="Top" Width="75" IsTabStop="False" IsCancel="True"/>
+            <Image Margin="76,10,75.2,121" Source="Eastern-Washington-University-Logo2lg.png" Stretch="Fill"/>
 
         </Grid>
     </Border>
