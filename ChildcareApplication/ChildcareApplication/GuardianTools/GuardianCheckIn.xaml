@@ -11,14 +11,14 @@
             <Grid>
                 <Label x:Name="lbl_ID" Content="ID:" HorizontalAlignment="Left" Margin="210,169,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.836,7.284" Height="29" Width="66" FontSize="16"/>
                 <Label x:Name="lbl_PIN" Content="PIN:" HorizontalAlignment="Left" Margin="210,248,0,0" VerticalAlignment="Top" FontSize="16" Width="66" Height="29" RenderTransformOrigin="1.907,1.076"/>
-                <TextBox x:Name="txt_IDEntry" TabIndex="0" HorizontalAlignment="Left" Height="25" Margin="322,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" MaxLength="6" FontSize="16" Background="#FFE6EAE0" CommandManager.PreviewExecuted="PasteCheck" ContextMenu="{x:Null}">
+                <TextBox x:Name="txt_IDEntry" TabIndex="0" HorizontalAlignment="Left" Height="25" Margin="322,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" MaxLength="6" FontSize="16" Background="#FFE6EAE0" CommandManager.PreviewExecuted="PasteCheck" ContextMenu="{x:Null}" VerticalContentAlignment="Center">
                     <TextBox.ToolTip>
                         <ToolTip Background="#FFE6EAE0">
                             <TextBlock Name="IDTip" Text="Six digit member number" FontSize="20" Background="#FFE6EAE0"/>
                         </ToolTip>
                     </TextBox.ToolTip>
                 </TextBox>
-                <PasswordBox x:Name="txt_PINEntry" TabIndex="1" HorizontalAlignment="Left" Height="25" Margin="322,252,0,0" VerticalAlignment="Top" Width="108" MaxLength="4" FontSize="16" RenderTransformOrigin="1.781,2.629" Background="#FFE6EAE0" CommandManager.PreviewExecuted="PasteCheck" ContextMenu="{x:Null}">
+                <PasswordBox x:Name="txt_PINEntry" TabIndex="1" HorizontalAlignment="Left" Height="25" Margin="322,252,0,0" VerticalAlignment="Top" Width="108" MaxLength="4" FontSize="16" RenderTransformOrigin="1.781,2.629" Background="#FFE6EAE0" CommandManager.PreviewExecuted="PasteCheck" ContextMenu="{x:Null}" VerticalContentAlignment="Center">
                     <PasswordBox.ToolTip>
                         <ToolTip Background="#FFE6EAE0">
                             <TextBlock Name="PINTip" Text="Four digit PIN number" FontSize="20" Background="#FFE6EAE0"/>

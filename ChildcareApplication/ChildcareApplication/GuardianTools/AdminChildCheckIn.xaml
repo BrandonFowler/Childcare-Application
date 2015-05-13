@@ -10,7 +10,7 @@
         <Grid Margin="-1.6,-1.6,-2.4,-2.4">
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="_Close" HorizontalAlignment="Left" Margin="683,583,0,0" VerticalAlignment="Top" Width="107" Click="btn_Cancel_Click" RenderTransformOrigin="11.947,11.825" Height="67" FontSize="16"/>
             <Label x:Name="lbl_searchLable" Content="Search By Last Name or Guardian ID" HorizontalAlignment="Left" Margin="340,130,0,0" VerticalAlignment="Top" Height="38" Width="278" FontSize="14" RenderTransformOrigin="0.5,0.5"/>
-            <TextBox x:Name="txt_SearchBox" HorizontalAlignment="Left" Height="25" Margin="340,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" FontSize="14" Background="#FFE6EAE0">
+            <TextBox x:Name="txt_SearchBox" HorizontalAlignment="Left" Height="25" Margin="340,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" FontSize="14" Background="#FFE6EAE0" VerticalContentAlignment="Center">
                 <TextBox.ToolTip>
                     <ToolTip Background="#FFE6EAE0">
                         <TextBlock Name="SearchTip" Text="Last name or member number of guardian" FontSize="14" Background="#FFE6EAE0"/>
