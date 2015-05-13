@@ -120,10 +120,8 @@ namespace AdminTools {
             btn_De_LinkChild.IsEnabled = false;
         }
         private void btn_MainMenu_Click(object sender, RoutedEventArgs e) {
-            AdminMenu adminMenu = new AdminMenu();
-            adminMenu.Show();
             this.Close();
-        }//end btn_MainMenu_Click
+        }
 
         private void LoadParentInfo(string parentID) {
             txt_IDNumber.Text = parentID;

@@ -72,8 +72,6 @@ namespace AdminTools {
         }
 
         private void btn_Close_Click(object sender, RoutedEventArgs e) {
-            AdminMenu adminMenu = new AdminMenu();
-            adminMenu.Show();
             this.Close(); 
         }
     }

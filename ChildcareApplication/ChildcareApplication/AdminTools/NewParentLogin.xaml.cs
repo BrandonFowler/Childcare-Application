@@ -58,8 +58,6 @@ namespace AdminTools {
         }
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e) {
-            AdminMenu adminMenu = new AdminMenu();
-            adminMenu.Show();
             this.Close();
         }
 

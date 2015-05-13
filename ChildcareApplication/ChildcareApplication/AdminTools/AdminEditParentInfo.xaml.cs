@@ -98,11 +98,8 @@ namespace AdminTools {
         }
 
         private void btn_Finish_Click(object sender, RoutedEventArgs e) {
-
-            AdminMenu adminMenu = new AdminMenu();
-            adminMenu.Show();
             this.Close();
-        }//end btn_Finish_Click
+        }
 
         private void btn_AddChild_Click(object sender, RoutedEventArgs e) {
 
@@ -111,7 +108,7 @@ namespace AdminTools {
             AdminEditChildInfo.Show();
             this.Close();
 
-        }//end btn_AddChild_Click
+        }
 
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
 

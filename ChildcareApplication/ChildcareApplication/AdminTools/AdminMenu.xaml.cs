@@ -26,11 +26,6 @@ namespace AdminTools {
             this.MouseDown += WindowMouseDown;
         }
 
-        public AdminMenu() {
-            InitializeComponent();
-            this.MouseDown += WindowMouseDown;
-        }
-
         private void HideAdminOptions() {
             if (accessLevel == 2) {
                 btn_EditAddEvents.IsEnabled = false;
@@ -73,7 +68,6 @@ namespace AdminTools {
             bool editParent = true;
             ParentIDEntry ParentLogin = new ParentIDEntry(editParent);
             ParentLogin.ShowDialog();
-            this.Close();
         }
 
         private void btn_Logout_Click(object sender, RoutedEventArgs e) {
@@ -96,7 +90,6 @@ namespace AdminTools {
             bool editParent = false;
             ParentIDEntry ParentLogin = new ParentIDEntry(editParent);
             ParentLogin.ShowDialog();
-            this.Close();
         }
 
         private void btn_EditAddEvents_Click(object sender, RoutedEventArgs e) {
@@ -106,8 +99,7 @@ namespace AdminTools {
 
         private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
             NewParentLogin newParentLogin = new NewParentLogin();
-            newParentLogin.ShowDialog();
-            this.Close(); 
+            newParentLogin.ShowDialog(); 
         }
 
         private void btn_EditTransaction_Click(object sender, RoutedEventArgs e) {
