@@ -221,5 +221,14 @@ namespace GuardianTools {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
+
+        private void PasteCheck(object sender, ExecutedRoutedEventArgs e) {
+            if (e.Command == ApplicationCommands.Copy ||
+                e.Command == ApplicationCommands.Cut ||
+                e.Command == ApplicationCommands.Paste) {
+                e.Handled = true;
+            }
+        }
+
     }
 }
