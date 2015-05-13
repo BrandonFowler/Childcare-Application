@@ -52,6 +52,10 @@ namespace ChildcareApplication.DatabaseController {
                 return false;
             }
             success = DeleteChildren(expirationDate);
+            if (!success) {
+                return false;
+            }
+            success = DeleteEvents(expirationDate);
             return success;
         }
 
@@ -132,6 +136,29 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Close();
                 return false;
             }catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to clean old records");
+                return false;
+            }
+            return true;
+        }
+
+        public bool DeleteEvents(string expirationDate) {
+            String sql = "delete " +
+                         "from EventData " +
+                         "where EventDeletionDate <= '" + expirationDate + "'";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            try {
+                dbCon.Open();
+                command.ExecuteNonQuery();
+                dbCon.Close();
+            }
+            catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+                return false;
+            }
+            catch (Exception) {
                 dbCon.Close();
                 WPFMessageBox.Show("Unable to clean old records");
                 return false;
