@@ -224,7 +224,7 @@ namespace AdminTools {
         private void btn_Save_Click(object sender, RoutedEventArgs e) {
             if (this.reportLoaded && this.table.Rows.Count > 0) {
                 PDFCreator pdfCreator = new PDFCreator(this.table);
-                PdfDocument pdf = pdfCreator.CreatePDF();
+                PdfDocument pdf = pdfCreator.CreatePDF(5);
                 pdfCreator.SavePDF(pdf);
             } else {
                 WPFMessageBox.Show("You must load a report before you can save one!");
