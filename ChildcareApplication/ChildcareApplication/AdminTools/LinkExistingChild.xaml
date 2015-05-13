@@ -10,7 +10,7 @@
     <Border BorderBrush="LightBlue" BorderThickness="2" Width="555" Height="314" ClipToBounds="True">
         <Grid>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_LinkChild" Content="Link Child" Margin="67,210,334,40" Click="btn_LinkChild_Click" FontSize="16" ToolTip="Links the selected child to the current Guardian loged in. Gives this Guardian access to this child."/>
-            <ListBox x:Name="lst_ChildBox" Height="124" Margin="67,70,66,0" VerticalAlignment="Top" Background="#FFE6EAE0" FontSize="14">
+            <ListBox x:Name="lst_ChildBox" Height="124" Margin="67,70,66,0" VerticalAlignment="Top" Background="#FFE6EAE0" FontSize="14" ToolTip="Click a child in this box to select them. Then click the &quot;Link Child&quot; button to link them to yourself.">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal" />
