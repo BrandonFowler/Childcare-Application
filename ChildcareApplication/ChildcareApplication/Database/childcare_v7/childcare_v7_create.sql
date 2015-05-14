@@ -69,7 +69,9 @@ CREATE TABLE EventData (
 -- Table: Family
 CREATE TABLE Family (
     Family_ID varchar(5) NOT NULL  PRIMARY KEY,
-    FamilyTotal float
+    RegularTotal float,
+    CampTotal float,
+    MiscTotal float
 );
 
 -- Table: Guardian

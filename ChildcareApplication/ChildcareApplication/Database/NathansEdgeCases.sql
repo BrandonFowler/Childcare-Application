@@ -89,6 +89,6 @@ INSERT into Guardian VALUES ("100041", "81DC9BDB52D04DC20036DBD8313ED0", "Gandal
 INSERT into Child VALUES ("100042", "Frodo", "Baggins", '2005-02-15', "Rings of Power", "Addicted to the Ring of power", "../../Pictures/Frodo_Baggins.jpg", null);
 INSERT into AllowedConnections VALUES ("001000", "100040", "100042", "10004", NULL);
 INSERT into AllowedConnections VALUES ("001001", "100041", "100042", "10004", NULL);
-Insert into Family VALUES ('10004', 51.65);
+Insert into Family VALUES ('10004', 51.65, 24.25, 30.02);
 
-Insert into Family VALUES ('12345', 51.65);
+Insert into Family VALUES ('12345', 51.65, 24.25, 30.02);

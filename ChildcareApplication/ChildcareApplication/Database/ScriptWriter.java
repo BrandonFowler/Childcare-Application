@@ -21,7 +21,7 @@ public class ScriptWriter {
 			String familySQL = "INSERT INTO Family VALUES ('";
 			String childTransSQL = "INSERT INTO ChildcareTransaction VALUES ('";
 			
-			familySQL += (guardianID / 10) + "', 42);";
+			familySQL += (guardianID / 10) + "', 42, 24, 66);";
 			
 			guardianSQL += guardianID + "', '81DC9BDB52D04DC20036DBD8313ED0', 'Guardian" + gName + "', '" + gName + "guardian', ";
 			guardianSQL += "'555-555-5555', 'blah@blah.com', '123 nowhere', null, 'Spokane', 'WA', '99999', '../../Pictures/default.jpg', null);";
