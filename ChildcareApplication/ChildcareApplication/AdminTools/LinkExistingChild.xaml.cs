@@ -73,7 +73,7 @@ namespace ChildcareApplication.AdminTools {
         }//end buildImage	
 
 
-        public string GetFamilyID(string pID) {
+        internal string GetFamilyID(string pID) {
             string familyID = "";
 
             for (int x = 0; x < pID.Length - 1; x++) {

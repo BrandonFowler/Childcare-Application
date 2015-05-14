@@ -18,8 +18,7 @@ namespace DatabaseController {
         }
 
 
-        public int GetMaxChildID() {
-
+        internal int GetMaxChildID() {
             int maxID = 0;
             try {
                 dbCon.Open();
@@ -42,8 +41,7 @@ namespace DatabaseController {
             return maxID;
         }
 
-        public int GetMaxConnectionID() {
-            
+        internal int GetMaxConnectionID() {
             DataSet DS = new DataSet();
             int maxID = 0;
 
@@ -148,7 +146,7 @@ namespace DatabaseController {
             }
         }//end GetFirstName
 
-        public String[,] FindChildren(string guardianID) {
+        internal String[,] FindChildren(string guardianID) {
             string sql = "select Child.* " +
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
                   "where Guardian_ID = @guardianID and ChildDeletionDate is null and ConnectionDeletionDate is NULL";

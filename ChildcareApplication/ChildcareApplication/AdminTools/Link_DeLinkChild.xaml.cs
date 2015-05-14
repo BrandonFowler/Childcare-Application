@@ -57,7 +57,8 @@ namespace AdminTools {
         private void btn_Cancel_Click(object sender, RoutedEventArgs e) {
             this.Close();
         }
-        public string MakeFamilyID(string ID) {
+
+        internal string MakeFamilyID(string ID) {
             string familyID = "";
 
             for (int x = 0; x < ID.Length - 1; x++) {
@@ -65,9 +66,8 @@ namespace AdminTools {
             }
             return familyID;
         }
-        public bool CheckIfNull() {
 
-
+        internal bool CheckIfNull() {
             if (string.IsNullOrWhiteSpace(this.txt_GuardianID.Text)) {
                 WPFMessageBox.Show("Please enter the ID number.");
                 return true;
@@ -79,8 +79,7 @@ namespace AdminTools {
             return false;
         }//end CheckIfNull
 
-        public bool CheckIfSame(string str1, string str2) {
-
+        internal bool CheckIfSame(string str1, string str2) {
             if (str1.Equals(str2))
                 return true;
             else {
@@ -91,7 +90,7 @@ namespace AdminTools {
 
         }
 
-        public bool CheckIfNumbers(string str1, string str2) {
+        internal bool CheckIfNumbers(string str1, string str2) {
             int parseNum1, parseNum2;
 
             bool isNum1 = int.TryParse(str1, out parseNum1);

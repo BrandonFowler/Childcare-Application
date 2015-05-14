@@ -19,7 +19,7 @@ namespace DatabaseController {
             dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }
 
-        public bool validateAdminLogin(string ID, string PIN) {
+        internal bool validateAdminLogin(string ID, string PIN) {
             try {
                 dbCon.Open();
                 string sql = "SELECT * FROM Administrator WHERE AdministratorUN = \"" + ID + "\" AND AdministratorPW = \"" + PIN + "\";";
@@ -42,7 +42,7 @@ namespace DatabaseController {
             return false;
         }
 
-        public int GetAccessLevel(string ID) {
+        internal int GetAccessLevel(string ID) {
             int accessLevel = -1;
             String query = "Select AccessLevel from Administrator where AdministratorUN = '" + ID + "';";
 

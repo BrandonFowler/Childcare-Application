@@ -11,7 +11,7 @@ namespace GuardianTools {
 
     class GuardianToolsSettings {
 
-        public string GetClosingTime(string dayOfWeek) {
+        internal string GetClosingTime(string dayOfWeek) {
             DateTime closingTime;
             string closing = null;
             if (dayOfWeek.CompareTo("Monday") == 0) {
@@ -36,7 +36,7 @@ namespace GuardianTools {
             return closing;
         }
 
-        public int GetRegularChildCap() {
+        internal int GetRegularChildCap() {
             int cap;
             if (Int32.TryParse(Settings.Default.RegularMaxAge, out cap)) {
                 return cap;
@@ -46,7 +46,7 @@ namespace GuardianTools {
 
         }
 
-        public int GetInfantCap() {
+        internal int GetInfantCap() {
             int cap;
             if (Int32.TryParse(Settings.Default.InfantMaxAge, out cap)) {
                 return cap;
@@ -56,7 +56,7 @@ namespace GuardianTools {
 
         }
 
-        public int GetBillingEnd() {
+        internal int GetBillingEnd() {
             int cap;
             if (Int32.TryParse(Settings.Default.BillingStartDate, out cap)) {
                 return cap-1;
@@ -66,7 +66,7 @@ namespace GuardianTools {
 
         }
 
-        public int GetBillingStart() {
+        internal int GetBillingStart() {
             int cap;
             if (Int32.TryParse(Settings.Default.BillingStartDate, out cap)) {
                 return cap;
@@ -76,7 +76,7 @@ namespace GuardianTools {
 
         }
 
-        public int GetBillingCap() {
+        internal int GetBillingCap() {
             int cap;
             if (Int32.TryParse(Settings.Default.MaxMonthlyFee, out cap)) {
                 return cap;
@@ -85,7 +85,7 @@ namespace GuardianTools {
             return 100;
         }
 
-        public string CheckAgeGroup(string birthday, string date) {
+        internal string CheckAgeGroup(string birthday, string date) {
             DateTime DTBirthday = DateTime.Parse(birthday);
             DateTime DTDate = DateTime.Parse(date);
             TimeSpan difference = DTDate - DTBirthday;
@@ -100,7 +100,7 @@ namespace GuardianTools {
             return "Adolescent";
         }
 
-        public double CheckIfPastClosing(string dayOfWeek, TimeSpan time) {
+        internal double CheckIfPastClosing(string dayOfWeek, TimeSpan time) {
             string closingTime = GetClosingTime(dayOfWeek);
             if (string.IsNullOrEmpty(closingTime)) {
                 return 1;

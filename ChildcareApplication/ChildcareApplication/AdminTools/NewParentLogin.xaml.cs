@@ -77,7 +77,7 @@ namespace AdminTools {
             }
 
         }
-        public bool CheckIfNull() {
+        internal bool CheckIfNull() {
 
             if (string.IsNullOrWhiteSpace(this.txt_ParentID1.Text)) {
                 WPFMessageBox.Show("Please enter your ID number.");
@@ -95,7 +95,7 @@ namespace AdminTools {
             return false;
         }//end CheckIfNull
 
-        public bool CheckIfSame(string str1, string str2) {
+        internal bool CheckIfSame(string str1, string str2) {
 
             if (str1.Equals(str2))
                 return true;

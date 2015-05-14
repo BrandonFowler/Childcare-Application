@@ -32,7 +32,7 @@ namespace GuardianTools {
             this.isLate = isLate;
         }
 
-        public bool PrepareTransaction(string childID, string guardianID) {
+        internal bool PrepareTransaction(string childID, string guardianID) {
             TransactionDB transDB = new TransactionDB();
             string[] transaction = transDB.FindTransaction(this.allowanceID);
             if (transaction == null || this.allowanceID == null) {
@@ -51,7 +51,7 @@ namespace GuardianTools {
             return true;
         }
 
-        public double CalculateTransaction(string checkInTime, string checkOutTime, string eventName, double eventFee) {
+        internal double CalculateTransaction(string checkInTime, string checkOutTime, string eventName, double eventFee) {
             EventDB eventDB = new EventDB();
             TimeSpan TimeSpanCheckOut = TimeSpan.Parse(checkOutTime);
             TimeSpan TimeSpanCheckIn = TimeSpan.Parse(checkInTime);
@@ -75,7 +75,7 @@ namespace GuardianTools {
             return getCharge(eventFee, eventName, totalCheckedInHours);
         }
 
-        public double getCharge(double eventFee, string eventName, double totalCheckedInHours){
+        internal double getCharge(double eventFee, string eventName, double totalCheckedInHours){
             if (CheckIfHourly(eventName)) {
                 eventFee = eventFee * totalCheckedInHours;
                 eventFee = Math.Round(eventFee, 2, MidpointRounding.AwayFromZero);
@@ -98,7 +98,7 @@ namespace GuardianTools {
             }
         }
 
-        public double CalculateLateFee() {
+        internal double CalculateLateFee() {
             TransactionDB transDB = new TransactionDB();
             EventDB eventDB = new EventDB();
             String name = "Late Fee";
@@ -110,7 +110,7 @@ namespace GuardianTools {
             return lateFee;
         }
 
-        public bool CheckIfHourly(string eventName) {
+        internal bool CheckIfHourly(string eventName) {
             EventDB eventDB = new EventDB();
             string[] eventData = eventDB.GetEvent(eventName);
             if (eventData == null) {
@@ -124,7 +124,7 @@ namespace GuardianTools {
             }
         }
 
-        public double FindEventFee(string guardianID, string eventName) {
+        internal double FindEventFee(string guardianID, string eventName) {
             EventDB eventDB = new EventDB();
             bool discount = false;
             int childrenCheckedIn = db.NumberOfCheckedIn(guardianID);
@@ -196,7 +196,7 @@ namespace GuardianTools {
             return 0.0;
         }
 
-        public DateTime FindBillingEnd(DateTime DTStart, int billingEnd) {
+        internal DateTime FindBillingEnd(DateTime DTStart, int billingEnd) {
             DateTime DTEnd;
             int endMonth = DTStart.Month + 1;
             if (endMonth == 13) {

@@ -58,7 +58,7 @@ namespace AdminTools {
             }
         }//end btn_Submit_Click
 
-        public bool RegexValidation() {
+        internal bool RegexValidation() {
             bool fname = RegExpressions.RegexName(txt_FirstName.Text);
             if (!fname)
                 txt_FirstName.Focus();
@@ -128,7 +128,7 @@ namespace AdminTools {
             btn_ChangePicture.IsEnabled = false;
         }
 
-        public void ClearFields() {
+        internal void ClearFields() {
             txt_Address.Clear();
             txt_Address2.Clear();
             txt_City.Clear();
@@ -141,7 +141,7 @@ namespace AdminTools {
             txt_FilePath.Clear();
         }//end ClearFields
 
-        public bool CheckIfNull() {
+        internal bool CheckIfNull() {
 
             if (string.IsNullOrWhiteSpace(this.txt_Address.Text)) {
                 WPFMessageBox.Show("Please enter your address.");

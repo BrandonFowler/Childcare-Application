@@ -77,7 +77,7 @@ namespace AdminTools {
         }//end btn_Submit_Click
 
 
-        public bool RegexValidation() {
+        internal bool RegexValidation() {
             bool fname = RegExpressions.RegexName(txt_FirstName.Text);
             if (!fname)
                 txt_FirstName.Focus();
@@ -128,7 +128,7 @@ namespace AdminTools {
 
         }//end LoadParentInfo
 
-        public bool CheckIfNull() {
+        internal bool CheckIfNull() {
 
 
             if (string.IsNullOrWhiteSpace(this.txt_FirstName.Text)) {
@@ -144,7 +144,7 @@ namespace AdminTools {
             return false;
         }//end CheckIfNull
 
-        public void ClearFields() {
+        internal void ClearFields() {
             txt_FirstName.Clear();
             txt_LastName.Clear();
             txt_Allergies.Clear();
@@ -249,7 +249,7 @@ namespace AdminTools {
 
         }
 
-        public string GetFamilyID(string pID) {
+        internal string GetFamilyID(string pID) {
             string familyID = "";
 
             for (int x = 0; x < pID.Length - 1; x++) {
@@ -292,7 +292,7 @@ namespace AdminTools {
             ClearFields();
         }
 
-        public ArrayList GetConnectedChildren(ArrayList list) {
+        internal ArrayList GetConnectedChildren(ArrayList list) {
             for (int i = 0; i < lst_ChildBox.Items.Count; i++) {
                 list.Add(((Child)(lst_ChildBox.Items[i])).ID);
             }

@@ -15,7 +15,7 @@ namespace DatabaseController {
             this.dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }
 
-        public String GetParentName(String parentID) {
+        internal String GetParentName(String parentID) {
             String result = "";
 
             try {
@@ -37,7 +37,7 @@ namespace DatabaseController {
             return result;
         }
 
-        public String GetAddress1(String parentID) {
+        internal String GetAddress1(String parentID) {
             String query = "SELECT Address1 FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             String result = "";
             try {
@@ -52,7 +52,7 @@ namespace DatabaseController {
             return result;
         }
 
-        public String GetAddress2(String parentID) {
+        internal String GetAddress2(String parentID) {
             String query = "SELECT Address2 FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             String result = "";
             try {
@@ -68,7 +68,7 @@ namespace DatabaseController {
         }
 
         //returns a string for the state, zip, and city
-        public String GetAddress3(String parentID) {
+        internal String GetAddress3(String parentID) {
             String query = "SELECT City, StateAbrv, Zip FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             String result = "";
@@ -87,7 +87,7 @@ namespace DatabaseController {
             return result;
         }
 
-        public String GetPhoneNumber(String parentID) {
+        internal String GetPhoneNumber(String parentID) {
             String query = "SELECT Phone FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             String result = "";
@@ -103,7 +103,7 @@ namespace DatabaseController {
             return result;
         }
 
-        public String GetPhotoPath(String parentID) {
+        internal String GetPhotoPath(String parentID) {
             String query = "SELECT PhotoLocation FROM Guardian WHERE Guardian_ID = '" + parentID + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             String result = "";
@@ -142,7 +142,7 @@ namespace DatabaseController {
             return curDue;
         }
 
-        public bool GuardianIDExists(string guardianID) {
+        internal bool GuardianIDExists(string guardianID) {
             String query = "SELECT Guardian_ID FROM Guardian WHERE Guardian_ID = '" + guardianID + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
             String result = "";
@@ -281,7 +281,7 @@ namespace DatabaseController {
             dbCon.Close();
         }
 
-        public string CheckIfFamilyExists(string familyID) {
+        internal string CheckIfFamilyExists(string familyID) {
             string result = ""; 
             try {
 
