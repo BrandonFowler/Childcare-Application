@@ -67,7 +67,7 @@ namespace ChildcareApplication.DatabaseController {
                 DateTime now = DateTime.Now;
                 TimeSpan difference = now - lastBackup;
                 if (difference.Days > 6) {
-                    File.Copy(@"..\..\Database\ChildcareDB.s3db", @"..\..\Backup Records\ChildcareDB" + now.ToString("MM,dd,yyyy") + ".s3db");
+                    File.Copy(@"..\..\Database\ChildcareDB.s3db", @"..\..\Backup Records\ChildcareDB_" + now.ToString("MM-dd-yyyy") + ".s3db");
                     Properties.Settings.Default.LastBackup = DateTime.Now;
                     Properties.Settings.Default.Save();
                 }
