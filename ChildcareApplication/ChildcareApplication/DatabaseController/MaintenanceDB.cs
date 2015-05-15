@@ -61,6 +61,8 @@ namespace ChildcareApplication.DatabaseController {
 
         public bool Backup() {
             try {
+                var dirInfo = new DirectoryInfo("../../Backup Records");
+                dirInfo.Attributes &= ~FileAttributes.ReadOnly;
                 DateTime lastBackup = Properties.Settings.Default.LastBackup;
                 DateTime now = DateTime.Now;
                 TimeSpan difference = now - lastBackup;

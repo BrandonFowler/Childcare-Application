@@ -60,8 +60,7 @@ namespace AdminTools {
                 try {
                     MessageBoxResult messageBoxResult = WPFMessageBox.Show("Are you sure you wish to perform a record restore?", "Restore Confirmation", MessageBoxButton.YesNo);
                     if (messageBoxResult == MessageBoxResult.Yes) {
-                        File.Delete(@"..\..\Database\ChildcareDB.s3db");
-                        File.Copy(txt_path.Text, @"..\..\Database\ChildcareDB.s3db");
+                        File.Copy(txt_path.Text, @"..\..\Database\ChildcareDB.s3db",true);
                         WPFMessageBox.Show("Restore Completed.");
                     }
                 }
