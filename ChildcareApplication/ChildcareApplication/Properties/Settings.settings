@@ -60,7 +60,7 @@
       <Value Profile="(Default)">2015-04-13</Value>
     </Setting>
     <Setting Name="DefaultSaveFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\</Value>
+      <Value Profile="(Default)">..\..\Saved Reports</Value>
     </Setting>
   </Settings>
 </SettingsFile>

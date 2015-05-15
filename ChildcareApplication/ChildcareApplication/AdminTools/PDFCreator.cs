@@ -1,10 +1,13 @@
-﻿using MessageBoxUtils;
+﻿using ChildcareApplication.Properties;
+using MessageBoxUtils;
+using Microsoft.Win32;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +51,8 @@ namespace AdminTools {
 
                 for (int i = 0; i < RowsPerPage && currentRow < rows; i++, currentRow++) {
                     for (int j = 0; j < this.table.Columns.Count; j++) {
-                        gfx.DrawString(this.table.Rows[currentRow].ItemArray[j].ToString(), font, XBrushes.Black, curPoint);
+                        string colValue = TrimColEntry(i, j, this.table.Columns.Count);
+                        gfx.DrawString(colValue, font, XBrushes.Black, curPoint);
                         curPoint.X += columnWidth[j];
                     }
                     curPoint.Y += LineHeight;
@@ -57,6 +61,42 @@ namespace AdminTools {
             }
             
             return pdf;
+        }
+
+        private string TrimColEntry(int currentRow, int colNum, int colCount) {
+            if (colCount == 5) {
+                if (colNum == 1) {
+                    return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 25);
+                } else if (colNum == 2) {
+                    return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 25);
+                } else if (colNum == 3) {
+                    return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 25);
+                } else {
+                    return this.table.Rows[currentRow].ItemArray[colNum].ToString();
+                }
+            } else {
+                if (colNum == 1) {
+                    return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 15);
+                } else if (colNum == 2) {
+                    return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 15);
+                }else if(colNum == 3) {
+                    return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 20);
+                } else {
+                    return this.table.Rows[currentRow].ItemArray[colNum].ToString();
+                }
+            }
+        }
+
+        private string TruncateString(string val, int length) {
+            if (!string.IsNullOrEmpty(val)) {
+                if (val.Length < length) {
+                    return val;
+                } else {
+                    return val.Substring(0, length);
+                }
+            } else {
+                return val;
+            }
         }
 
         private int[] InitWidths(int numCols) {
@@ -68,12 +108,12 @@ namespace AdminTools {
                 colWidths[3] = 150;
                 colWidths[4] = 0;
             } else {
-                colWidths[0] = 125;
-                colWidths[1] = 125;
-                colWidths[2] = 125;
+                colWidths[0] = 70;
+                colWidths[1] = 90;
+                colWidths[2] = 90;
                 colWidths[3] = 125;
-                colWidths[4] = 125;
-                colWidths[5] = 125;
+                colWidths[4] = 60;
+                colWidths[5] = 70;
                 colWidths[6] = 0;
             }
 
@@ -81,14 +121,25 @@ namespace AdminTools {
         }
 
         public void SavePDF(PdfDocument pdf) {
-            string filename = @"..\..\Saved Reports\HelloWorld.pdf";
-            try {
-                pdf.Save(filename); //try catches here
-                Process.Start(filename);
-            } catch (System.IO.IOException) {
-                WPFMessageBox.Show("Unable to access file!  Ensure the file is not opened and that you have permission to edit files in the location specified.");
-            } catch (Exception) {
-                WPFMessageBox.Show("Error occurred while attempting to save the report. Report has not been saved.");
+            Settings settings = new Settings();
+
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.AddExtension = true;
+            dialog.DefaultExt = ".pdf";
+            dialog.Filter = "PDF file (*.pdf)|*.pdf";
+            dialog.InitialDirectory = Path.GetFullPath(settings.DefaultSaveFolder); //TODO: uncomment before release
+
+            if (dialog.ShowDialog() == true) {
+                string filename = dialog.FileName;
+
+                try {
+                    pdf.Save(filename);
+                    WPFMessageBox.Show("Report saved to the reports folder!");
+                } catch (System.IO.IOException) {
+                    WPFMessageBox.Show("Unable to access file!  Ensure the file is not opened and that you have permission to edit files in the location specified.");
+                } catch (Exception) {
+                    WPFMessageBox.Show("Error occurred while attempting to save the report. Report has not been saved.");
+                }
             }
         }
     }
