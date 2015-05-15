@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using MessageBoxUtils;
+using System;
 
 namespace AdminTools {
     /// <summary>
@@ -15,7 +16,7 @@ namespace AdminTools {
         public NewParentLogin() {
             InitializeComponent();
             this.db = new GuardianInfoDB();
-            this.MouseDown += WindowMouseDown;
+           // this.MouseDown += WindowMouseDown; Got an error here, dont know hat it does. comented it out
         }
 
         private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
@@ -67,8 +68,7 @@ namespace AdminTools {
             for (int x = 0; x < ID.Length - 1; x++) {
                 familyID += ID[x];
             }
-            //DataSet DS = new DataSet();
-            //DS = this.db.checkIfFamilyExists(familyID);
+
             string fID = this.db.CheckIfFamilyExists(familyID);
 
             if (string.IsNullOrWhiteSpace(fID))//FamilyID does not exist
@@ -106,64 +106,16 @@ namespace AdminTools {
             }
 
         }
-
-        private void txt_GotFocus(object sender, RoutedEventArgs e) {
-            var textBox = e.OriginalSource as TextBox;
-            if (textBox != null) {
-                textBox.SelectAll();
-            }
+   
+        private void SelectAllGotFocus(object sender, RoutedEventArgs e) {
+            TextBox tb = (TextBox)sender;
+            Dispatcher.BeginInvoke((Action)(tb.SelectAll));
+ 
         }
 
-        private void txt_GotMouseCapture(object sender, MouseEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void psw_GotFocus(object sender, RoutedEventArgs e) {
-            var passwordBox = e.OriginalSource as PasswordBox;
-            if (passwordBox != null) {
-                passwordBox.SelectAll();
-            }
-        }
-
-        private void psw_GotMouseCapture(object sender, MouseEventArgs e) {
-            psw_GotFocus(sender, e);
-        }
-
-        private void txt_ParentID1_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_ParentID2_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_ParentID1_GotMouseCapture(object sender, MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void txt_ParentID2_GotMouseCapture(object sender, MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void psw_ParentPIN1_GotFocus(object sender, RoutedEventArgs e) {
-            psw_GotFocus(sender, e);
-        }
-
-        private void psw_ParentPIN1_GotMouseCapture(object sender, MouseEventArgs e) {
-            psw_GotMouseCapture(sender, e);
-        }
-
-        private void psw_ParentPIN2_GotFocus(object sender, RoutedEventArgs e) {
-            psw_GotFocus(sender, e);
-        }
-
-        private void psw_ParentPIN2_GotMouseCapture(object sender, MouseEventArgs e) {
-            psw_GotMouseCapture(sender, e);
-        }
-
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
-            if (e.ChangedButton == MouseButton.Left)
-                DragMove();
+        private void SelectAllGotFocusPW(object sender, RoutedEventArgs e) {
+            PasswordBox pwb = (PasswordBox)sender;
+            Dispatcher.BeginInvoke((Action)(pwb.SelectAll));
         }
 
     }

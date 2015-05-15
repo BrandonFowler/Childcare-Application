@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using MessageBoxUtils;
+using System.Windows.Controls;
 
 namespace AdminTools {
 
@@ -74,5 +75,12 @@ namespace AdminTools {
         private void btn_Close_Click(object sender, RoutedEventArgs e) {
             this.Close(); 
         }
+
+        private void SelectAllOnFocus(object sender, RoutedEventArgs e) {
+
+            TextBox tb = (TextBox)sender;
+            Dispatcher.BeginInvoke((Action)(tb.SelectAll));
+        }
+        
     }
 }

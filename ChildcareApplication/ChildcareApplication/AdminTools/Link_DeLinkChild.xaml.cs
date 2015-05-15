@@ -3,6 +3,8 @@ using DatabaseController;
 using System.Windows;
 using System.Windows.Input;
 using MessageBoxUtils;
+using System.Windows.Controls;
+using System;
 
 namespace AdminTools {
     /// <summary>
@@ -10,12 +12,12 @@ namespace AdminTools {
     /// </summary>
 
     public partial class Link_DeLinkChild : Window {
-        //private LoadParentInfoDatabase db;
+        
         private ChildInfoDatabase db;
         int linked;
         string childID;
 
-        //private ChildInfoDatabse dbChild;
+        
         public Link_DeLinkChild(int link, string cID) {
             linked = link;
             childID = cID;
@@ -108,6 +110,11 @@ namespace AdminTools {
         private void WindowMouseDown(object sender, MouseButtonEventArgs e){
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
+        }
+
+        private void SelectAllGotFocus(object sender, RoutedEventArgs e) {
+            TextBox tb = (TextBox)sender;
+            Dispatcher.BeginInvoke((Action)(tb.SelectAll));
         }
     }
 }

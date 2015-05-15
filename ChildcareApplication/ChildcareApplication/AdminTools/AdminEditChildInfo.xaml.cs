@@ -33,11 +33,11 @@ namespace AdminTools {
             setChildBox();
             lst_ChildBox.SelectionChanged += ListBoxSelectionChanged;
             this.MouseDown += WindowMouseDown;
-            this.dte_Birthday.Loaded += delegate{
+            this.dte_Birthday.Loaded += delegate {
                 var textBox = (TextBox)dte_Birthday.Template.FindName("PART_TextBox", dte_Birthday);
                 textBox.Background = dte_Birthday.Background;
             };
-          
+
         }
 
 
@@ -183,8 +183,7 @@ namespace AdminTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            }
-            catch (System.IO.DirectoryNotFoundException) {
+            } catch (System.IO.DirectoryNotFoundException) {
                 WPFMessageBox.Show("Error loading photo. Pease insure your photos are in the correct directory.");
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"../../Pictures/default.jpg");
@@ -194,8 +193,7 @@ namespace AdminTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 WPFMessageBox.Show("Unable to load photo for unknown reason.");
 
             }
@@ -302,7 +300,7 @@ namespace AdminTools {
 
         private void btn_ChangePicture_Click(object sender, RoutedEventArgs e) {
             if (lst_ChildBox.SelectedItem != null) {
-               
+
                 string imagePath = System.IO.Path.GetFullPath("../../Pictures");
                 imagePath = imagePath.Replace(@"/", @"\");
                 Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -340,53 +338,20 @@ namespace AdminTools {
 
         }//end btnChangePicture
 
-        private void txt_GotFocus(object sender, RoutedEventArgs e) {
-            var textBox = e.OriginalSource as TextBox;
-            if (textBox != null) {
-                textBox.SelectAll();
-            }
-        }
-
-        private void txt_GotMouseCapture(object sender, MouseEventArgs e) {
-
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_FirstName_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_LastName_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_Medical_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_Allergies_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_FirstName_GotMouseCapture(object sender, MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void txt_LastName_GotMouseCapture(object sender, MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void txt_Medical_GotMouseCapture(object sender, MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void txt_Allergies_GotMouseCapture(object sender, MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
+        }
+
+        private void SelectAllGotFocus(object sender, RoutedEventArgs e) {
+            TextBox tb = (TextBox)sender;
+            Dispatcher.BeginInvoke((Action)(tb.SelectAll));
+        }
+
+        private void SelectAllGotFocusDate(object sender, RoutedEventArgs e) {
+
+            DatePicker dp = (DatePicker)sender;
+            dp.Focus();
         }
     }
 }

@@ -48,7 +48,7 @@ namespace AdminTools {
                     address = txt_Address.Text;
                     address2 = txt_Address2.Text;
                     city = txt_City.Text;
-                    state = cbo_State.Text; //dont know if this will work yet
+                    state = cbo_State.Text; 
                     zip = txt_Zip.Text;
                     path = txt_FilePath.Text;
 
@@ -316,87 +316,14 @@ namespace AdminTools {
 
         }
 
-        private void txt_GotFocus(object sender, RoutedEventArgs e) {
-            var textBox = e.OriginalSource as TextBox;
-            if (textBox != null) {
-                textBox.SelectAll();
-            }
+        private void SelectAllGotFocus(object sender, RoutedEventArgs e) {
+            TextBox tb = (TextBox)sender;
+            Dispatcher.BeginInvoke((Action)(tb.SelectAll));
         }
-
-        private void txt_GotMouseCapture(object sender, MouseEventArgs e) {
-
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_FirstName_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_LastName_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_PhoneNumber_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_Email_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_Address_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_Address2_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_City_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_Zip_GotFocus(object sender, RoutedEventArgs e) {
-            txt_GotFocus(sender, e);
-        }
-
-        private void txt_FirstName_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void txt_LastName_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void txt_PhoneNumber_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void txt_Email_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void txt_Address_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void txt_Address2_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void txt_City_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void txt_Zip_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e) {
-            txt_GotMouseCapture(sender, e);
-        }
-
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
-
 
     }//end class
 }//end nameSpace
