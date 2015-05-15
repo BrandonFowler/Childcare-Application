@@ -265,7 +265,7 @@ namespace ChildcareApplication.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2015-01-01")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2015-05-15")]
         public global::System.DateTime LastBackup {
             get {
                 return ((global::System.DateTime)(this["LastBackup"]));

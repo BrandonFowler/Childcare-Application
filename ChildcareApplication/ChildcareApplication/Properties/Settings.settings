@@ -63,7 +63,7 @@
       <Value Profile="(Default)">..\..\Saved Reports</Value>
     </Setting>
     <Setting Name="LastBackup" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">2015-01-01</Value>
+      <Value Profile="(Default)">2015-05-15</Value>
     </Setting>
   </Settings>
 </SettingsFile>
