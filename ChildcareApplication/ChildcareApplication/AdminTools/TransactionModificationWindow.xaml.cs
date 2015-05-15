@@ -14,11 +14,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MessageBoxUtils;
+using GuardianTools;
 
 namespace AdminTools {
     public partial class TransactionModificationWindow : Window {
         private String transactionID;
         private bool dataChanged;
+        private String originalEventName = "";
+        private double originalFee = 0.0;
+        private TransactionCharge transaction;
 
         public TransactionModificationWindow(String transactionID) {
             InitializeComponent();
@@ -26,6 +30,11 @@ namespace AdminTools {
             LoadData();
             this.dataChanged = false;
             this.MouseDown += WindowMouseDown;
+            this.txt_CheckIn.LostFocus += CalcOnLostFocus;
+            this.txt_CheckOut.LostFocus += CalcOnLostFocus;
+            this.cmb_EventName.LostFocus += CalcOnLostFocus;
+            this.txt_GuardianName.LostFocus += ReadyTransaction;
+            this.txt_ChildName.LostFocus += ReadyTransaction;
         }
 
         public TransactionModificationWindow() {
@@ -34,6 +43,11 @@ namespace AdminTools {
             this.transactionID = "";
             this.dataChanged = false;
             this.MouseDown += WindowMouseDown;
+            this.txt_CheckIn.LostFocus += CalcOnLostFocus;
+            this.txt_CheckOut.LostFocus += CalcOnLostFocus;
+            this.cmb_EventName.LostFocus += CalcOnLostFocus;
+            this.txt_GuardianName.LostFocus += ReadyTransaction;
+            this.txt_ChildName.LostFocus += ReadyTransaction;
         }
 
         private void btn_OK_Click(object sender, RoutedEventArgs e) {
@@ -58,15 +72,19 @@ namespace AdminTools {
             ChildInfoDatabase childDB = new ChildInfoDatabase();
             TransactionDB transDB = new TransactionDB();
             GuardianInfoDB parentDB = new GuardianInfoDB();
+            ConnectionsDB conDB = new ConnectionsDB();
 
             this.txt_ChildName.Text = childDB.GetChildName(this.transactionID);
             this.txt_GuardianName.Text = transDB.GetParentNameFromTrans(this.transactionID);
+            this.originalFee = transDB.GetTransactionTotal(this.transactionID);
             this.txt_TransactionTotal.Text = String.Format("{0:0.00}", transDB.GetTransactionTotal(this.transactionID));
-            string eventName = transDB.GetTransEventName(this.transactionID);
+            this.originalEventName = transDB.GetTransEventName(this.transactionID);
+            string eventName = this.originalEventName;
             LoadEventCMB(eventName);
             this.txt_CheckIn.Text = transDB.GetTwelveHourTime(this.transactionID, "CheckedIn");
             this.txt_CheckOut.Text = transDB.GetTwelveHourTime(this.transactionID, "CheckedOut");
             this.txt_Date.Text = transDB.GetTransactionDate(this.transactionID);
+            this.transaction = new TransactionCharge(transDB.GetGuardianIDFromTrans(this.transactionID), conDB.GetAllowanceIDOnNames(this.txt_GuardianName.Text, this.txt_ChildName.Text));
         }
 
         private void LoadEventCMB(params string[] selectedName) {
@@ -197,8 +215,11 @@ namespace AdminTools {
             if (this.transactionID == "") {
                 transID = transDB.GetNextTransID();
                 transDB.NewTransaction(transID, eventName, allowanceID, transDate, checkedIn, checkedOut, transTotal);
+                transaction.CompleteTransaction(Convert.ToDouble(this.txt_TransactionTotal.Text), eventName);
             } else {
                 transDB.UpdateTransaction(this.transactionID, eventName, allowanceID, transDate, checkedIn, checkedOut, transTotal);
+                transaction.CompleteTransaction(Convert.ToDouble(this.txt_TransactionTotal.Text), eventName);
+                transaction.AddToBalance(this.originalEventName, (this.originalFee) * (-1));
             }
         }
 
@@ -249,5 +270,39 @@ namespace AdminTools {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
+
+        private void CalcOnLostFocus(object sender, RoutedEventArgs e) {
+            if (!String.IsNullOrWhiteSpace(this.cmb_EventName.Text) && !String.IsNullOrWhiteSpace(this.txt_CheckIn.Text) && !String.IsNullOrWhiteSpace(this.txt_CheckOut.Text) && this.dataChanged && IsValidForCalculations()) {
+                double eventFee = this.transaction.GetStrictEventFee(this.cmb_EventName.Text);
+                this.txt_TransactionTotal.Text = String.Format("{0:0.00}", transaction.CalculateTransaction(this.txt_CheckIn.Text, this.txt_CheckOut.Text, this.cmb_EventName.Text, eventFee));
+            }
+        }
+
+        private bool IsValidForCalculations() {
+            if (cmb_EventName.SelectedIndex < 0) {
+                WPFMessageBox.Show("You must select an event from the drop down menu!");
+                return false;
+            }
+            if (!ValidTime(txt_CheckIn.Text)) {
+                WPFMessageBox.Show("You must enter a valid time in the checked in text box!");
+                return false;
+            }
+            if (!ValidTime(txt_CheckOut.Text)) {
+                WPFMessageBox.Show("You must enter a valid time in the checked out text box!");
+                return false;
+            }
+            return true;
+        }
+
+        private void ReadyTransaction(object sender, RoutedEventArgs e) {
+            ChildInfoDatabase childDB = new ChildInfoDatabase();
+            TransactionDB transDB = new TransactionDB();
+            GuardianInfoDB parentDB = new GuardianInfoDB();
+            ConnectionsDB conDB = new ConnectionsDB();
+            if (parentDB.GuardianNameExists(txt_GuardianName.Text) && childDB.ChildNameExists(txt_ChildName.Text)) {
+                this.transaction = new TransactionCharge(conDB.GetGuardianIDOnNames(txt_GuardianName.Text, txt_ChildName.Text), conDB.GetAllowanceIDOnNames(this.txt_GuardianName.Text, this.txt_ChildName.Text));
+            }
+        }
+
     }
 }

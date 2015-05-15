@@ -48,14 +48,16 @@ namespace GuardianTools {
             double eventFee = FindEventFee(guardianID, eventName);
             this.lateTime = settings.CheckIfPastClosing(DateTime.Now.DayOfWeek.ToString(), TimeSpan.Parse(checkOutTime));
             eventFee = CalculateTransaction(checkInTime, checkOutTime, eventName, eventFee);
-            CompleteTransaction(eventFee);
+            string eventFeeRounded = eventFee.ToString("f2");
+            db.CheckOut(DateTime.Now.ToString("HH:mm:ss"), eventFeeRounded, this.allowanceID);
+            CompleteTransaction(eventFee, this.eventName);
             return true;
         }
 
         internal double CalculateTransaction(string checkInTime, string checkOutTime, string eventName, double eventFee) {
             EventDB eventDB = new EventDB();
-            TimeSpan TimeSpanCheckOut = TimeSpan.Parse(checkOutTime);
-            TimeSpan TimeSpanCheckIn = TimeSpan.Parse(checkInTime);
+            TimeSpan TimeSpanCheckOut = TimeSpan.Parse(DateTime.Parse(checkOutTime).ToString("HH:mm:ss"));
+            TimeSpan TimeSpanCheckIn = TimeSpan.Parse(DateTime.Parse(checkInTime).ToString("HH:mm:ss"));
             double totalCheckedInHours = (TimeSpanCheckOut.Hours - TimeSpanCheckIn.Hours) + ((TimeSpanCheckOut.Minutes - TimeSpanCheckIn.Minutes) / 60.0);
             double lateMaximum = eventDB.GetEventHourCap(eventName);
             if (totalCheckedInHours > lateMaximum) {
@@ -83,27 +85,14 @@ namespace GuardianTools {
             }
             eventFee = eventFee - GetBillingCap(eventName, guardianID, eventFee);
             if (totalCheckedInHours < 0) {
-                WPFMessageBox.Show("Negative value calculated for childcare charge. Please check your system clock for currency");
                 eventFee = 0;
             }
             return eventFee;
         }
 
-        public void CompleteTransaction(double eventFee) {
+        public void CompleteTransaction(double eventFee, string name) {
             TransactionDB transDB = new TransactionDB();
-            string eventFeeRounded = eventFee.ToString("f2");
-            db.CheckOut(DateTime.Now.ToString("HH:mm:ss"), eventFeeRounded, this.allowanceID);
-            string name = this.eventName.ToUpper();
-            if(this.eventName.CompareTo("Regular Childcare") == 0 || this.eventName.CompareTo("Infant Childcare") == 0 || this.eventName.CompareTo("Adolescent Childcare") == 0) {
-                transDB.UpdateBalances(guardianID, eventFee, "RegularTotal");
-            }
-            else if(name.Contains("CAMP")){
-                transDB.UpdateBalances(guardianID, eventFee, "CampTotal");
-            }
-            else {
-                transDB.UpdateBalances(guardianID, eventFee, "MiscTotal");
-            }
-
+            AddToBalance(name, eventFee);
             if (this.isLate) {
                 double lateFee = CalculateLateFee();
             }
@@ -161,6 +150,20 @@ namespace GuardianTools {
                 else {
                     return Convert.ToDouble(eventData[1]);
                 }
+            }
+        }
+
+        internal double GetStrictEventFee(string eventName) {
+            EventDB eventDB = new EventDB();
+            string[] eventData = eventDB.GetEvent(eventName);
+            if (eventData == null) {
+                return 0.0;
+            }
+            if (String.IsNullOrWhiteSpace(eventData[1])) {
+                return Convert.ToDouble(eventData[3]);
+            }
+            else {
+                return Convert.ToDouble(eventData[1]);
             }
         }
 
@@ -231,6 +234,20 @@ namespace GuardianTools {
                 DTStart = new DateTime(DateTime.Now.Year, startMonth, billingStart);
             }
             return DTStart;
+        }
+
+        public void AddToBalance(String name, Double eventFee) {
+            TransactionDB transDB = new TransactionDB();
+            name = name.ToUpper();
+            if (name.CompareTo("Regular Childcare") == 0 || name.CompareTo("Infant Childcare") == 0 || name.CompareTo("Adolescent Childcare") == 0) {
+                transDB.UpdateBalances(guardianID, eventFee, "RegularTotal");
+            }
+            else if (name.Contains("CAMP")) {
+                transDB.UpdateBalances(guardianID, eventFee, "CampTotal");
+            }
+            else {
+                transDB.UpdateBalances(guardianID, eventFee, "MiscTotal");
+            }
         }
 
     }

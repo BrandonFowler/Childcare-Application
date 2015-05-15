@@ -275,5 +275,33 @@ namespace DatabaseController {
 
             return allowanceID;
         }
+
+        public string GetGuardianIDOnNames(string fullGuardianName, string fullChildName) {
+            string[] splitGuardianName = fullGuardianName.Split(' ');
+            string[] splitChildName = fullChildName.Split(' ');
+            string guardianFirst = splitGuardianName[0];
+            string guardianLast = splitGuardianName[1];
+            string childFirst = splitChildName[0];
+            string childLast = splitChildName[1];
+            string allowanceID = "";
+
+            String query = "SELECT Guardian.Guardian_ID FROM Guardian Natural Join AllowedConnections Join ";
+            query += "Child ON AllowedConnections.Child_ID = Child.Child_ID Where Guardian.FirstName = '";
+            query += guardianFirst + "' and Guardian.LastName = '" + guardianLast;
+            query += "' and Child.FirstName = '" + childFirst + "' and Child.LastName = '" + childLast + "';";
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
+
+            try {
+                dbCon.Open();
+                allowanceID = Convert.ToString(cmd.ExecuteScalar());
+                dbCon.Close();
+            }
+            catch (Exception exception) {
+                WPFMessageBox.Show(exception.Message);
+            }
+
+            return allowanceID;
+        }
+
     }
 }

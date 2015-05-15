@@ -405,5 +405,29 @@ namespace DatabaseController {
             }
             return result;
         }
+
+        public String GetGuardianIDFromTrans(String transactionID) {
+            String result = "";
+
+            try {
+                dbCon.Open();
+
+                String query = "SELECT Guardian_ID FROM Guardian NATURAL JOIN AllowedConnections NATURAL JOIN ";
+                query += "ChildcareTransaction WHERE ChildcareTransaction.ChildcareTransaction_ID = '" + transactionID + "';";
+                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
+
+                SQLiteDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+
+                result = reader.GetString(0);
+
+                reader.Close();
+                dbCon.Close();
+            }
+            catch (Exception exception) {
+                WPFMessageBox.Show(exception.Message);
+            }
+            return result;
+        }
     }
 }
