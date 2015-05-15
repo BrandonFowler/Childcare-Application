@@ -15,7 +15,8 @@ namespace GuardianTools {
         private ConnectionsDB db;
         private string allowanceID;
         private double lateTime;
-        private bool isLate = false;
+        internal string eventName;
+        internal bool isLate = false;
 
         public TransactionCharge(String guardianID, String allowanceID) {
             this.settings = new GuardianToolsSettings();
@@ -39,7 +40,7 @@ namespace GuardianTools {
                 WPFMessageBox.Show("Unable to check out child. Please log out then try again.");
                 return false;
             }
-            string eventName = transaction[1];
+            this.eventName = transaction[1];
             string transactionDate = transaction[3];
             string checkInTime = transaction[4];
             checkInTime = Convert.ToDateTime(checkInTime).ToString("HH:mm:ss");
@@ -92,7 +93,17 @@ namespace GuardianTools {
             TransactionDB transDB = new TransactionDB();
             string eventFeeRounded = eventFee.ToString("f2");
             db.CheckOut(DateTime.Now.ToString("HH:mm:ss"), eventFeeRounded, this.allowanceID);
-            transDB.UpdateFamilyBalance(guardianID, eventFee);
+            string name = this.eventName.ToUpper();
+            if(this.eventName.CompareTo("Regular Childcare") == 0 || this.eventName.CompareTo("Infant Childcare") == 0 || this.eventName.CompareTo("Adolescent Childcare") == 0) {
+                transDB.UpdateBalances(guardianID, eventFee, "RegularTotal");
+            }
+            else if(name.Contains("CAMP")){
+                transDB.UpdateBalances(guardianID, eventFee, "CampTotal");
+            }
+            else {
+                transDB.UpdateBalances(guardianID, eventFee, "MiscTotal");
+            }
+
             if (this.isLate) {
                 double lateFee = CalculateLateFee();
             }
@@ -106,7 +117,7 @@ namespace GuardianTools {
             lateFee = lateFee * this.lateTime;
             string maxTransactionID = transDB.GetNextTransID();
             transDB.AddLateFee(maxTransactionID, name, this.allowanceID, DateTime.Now.ToString("yyyy-MM-dd"), lateFee);
-            transDB.UpdateFamilyBalance(guardianID, lateFee);
+            transDB.UpdateBalances(guardianID, lateFee,"MiscTotal");
             return lateFee;
         }
 

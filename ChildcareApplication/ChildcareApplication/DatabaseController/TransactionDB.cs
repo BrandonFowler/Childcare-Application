@@ -305,6 +305,29 @@ namespace DatabaseController {
             }
         }
 
+        public void UpdateBalances(string guardianID, double fee, string balanceType) {
+            string familyID = guardianID.Remove(guardianID.Length - 1);
+            string sql = "update Family " +
+                         "set "+balanceType+" = "+balanceType+" + @fee " +
+                         "where Family_ID = @familyID;";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@fee", fee));
+            command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
+            try {
+                dbCon.Open();
+                command.ExecuteNonQuery();
+                dbCon.Close();
+            }
+            catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible. Charge has not been added to balance.");
+                dbCon.Close();
+            }
+            catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to add charge to family balance.");
+            }
+        }
+
         public string GetIncompleteTransAllowanceID(string guardianID, string childID) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
             string sql = "select Allowance_ID " +
