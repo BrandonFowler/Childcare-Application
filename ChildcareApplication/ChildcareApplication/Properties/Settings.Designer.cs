@@ -262,5 +262,17 @@ namespace ChildcareApplication.Properties {
                 this["DefaultSaveFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2015-01-01")]
+        public global::System.DateTime LastBackup {
+            get {
+                return ((global::System.DateTime)(this["LastBackup"]));
+            }
+            set {
+                this["LastBackup"] = value;
+            }
+        }
     }
 }

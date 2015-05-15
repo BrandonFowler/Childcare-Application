@@ -129,12 +129,15 @@
     <Compile Include="AdminTools\PDFCreator.cs" />
     <Compile Include="AdminTools\RegExpressions.cs" />
     <Compile Include="AdminTools\ReportsPaginator.cs" />
+    <Compile Include="AdminTools\RestoreRecords.xaml.cs">
+      <DependentUpon>RestoreRecords.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminTools\SettingsValidation.cs" />
     <Compile Include="AdminTools\TransactionModificationWindow.xaml.cs">
       <DependentUpon>TransactionModificationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseController\AdminDB.cs" />
-    <Compile Include="DatabaseController\CleanDB.cs" />
+    <Compile Include="DatabaseController\MaintenanceDB.cs" />
     <Compile Include="DatabaseController\EventDB.cs" />
     <Compile Include="AdminTools\PaymentEntry.xaml.cs">
       <DependentUpon>PaymentEntry.xaml</DependentUpon>
@@ -218,6 +221,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AdminTools\PaymentEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminTools\RestoreRecords.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -42,6 +42,8 @@ namespace AdminTools {
                 btn_EditTransactions.Visibility = Visibility.Hidden;
                 btn_ParentReport.IsEnabled = false;
                 btn_ParentReport.Visibility = Visibility.Hidden;
+                btn_RestoreRecords.IsEnabled = false;
+                btn_RestoreRecords.Visibility = Visibility.Hidden;
             } else if (accessLevel == 0) {
                 btn_EditAddEvents.IsEnabled = false;
                 btn_EditAddEvents.Visibility = Visibility.Hidden;
@@ -61,6 +63,8 @@ namespace AdminTools {
                 btn_EditOrDeleteChild.Visibility = Visibility.Hidden;
                 btn_EditOrDeleteParent.IsEnabled = false;
                 btn_EditOrDeleteParent.Visibility = Visibility.Hidden;
+                btn_RestoreRecords.IsEnabled = false;
+                btn_RestoreRecords.Visibility = Visibility.Hidden;
             }
         }
 
@@ -120,6 +124,12 @@ namespace AdminTools {
         private void WindowMouseDown(object sender, MouseButtonEventArgs e){
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
+        }
+
+        private void btn_RestoreRecords_Click(object sender, RoutedEventArgs e) {
+            RestoreRecords restore = new RestoreRecords(accessLevel, username);
+            restore.Show();
+            this.Close();
         }
 
     }

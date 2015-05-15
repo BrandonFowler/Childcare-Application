@@ -348,6 +348,7 @@
 		<row><td>ISX_DEFAULTCOMPONENT3</td><td>{4D1104CA-33DF-4A50-B9EA-4CF4CB4AC446}</td><td>RELEASE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT4</td><td>{BB6DA6CE-ED1C-4A61-A4F5-44C15B6533E8}</td><td>PICTURES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT5</td><td>{F911A6B2-3C16-49D0-9BF5-CA29EDAFF612}</td><td>SAVED_REPORTS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT6</td><td>{41861A08-6AB5-4655-BD56-33C62A11616C}</td><td>BACKUP_RECORDS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>System.Data.SQLite.dll</td><td>{631412EF-CA0E-4F37-B9E1-5D002B3FF2DC}</td><td>DATABASEDIR</td><td>2</td><td/><td>system.data.sqlite.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>System.Data.SQLite.dll1</td><td>{7D459290-EE99-40A0-840E-F86FEA7218E1}</td><td>DEBUG</td><td>2</td><td/><td>system.data.sqlite.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
@@ -1058,6 +1059,7 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>BACKUP_RECORDS</td><td>ISX_DEFAULTCOMPONENT6</td></row>
 		<row><td>BIN</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>RELEASE</td><td>ISX_DEFAULTCOMPONENT3</td></row>
 		<row><td>SAVED_REPORTS</td><td>ISX_DEFAULTCOMPONENT5</td></row>
@@ -1142,6 +1144,7 @@
 		<row><td>ALLUSERSPROFILE</td><td>TARGETDIR</td><td>.:ALLUSE~1|All Users</td><td/><td>0</td><td/></row>
 		<row><td>AdminToolsFolder</td><td>TARGETDIR</td><td>.:Admint~1|AdminTools</td><td/><td>0</td><td/></row>
 		<row><td>AppDataFolder</td><td>TARGETDIR</td><td>.:APPLIC~1|Application Data</td><td/><td>0</td><td/></row>
+		<row><td>BACKUP_RECORDS</td><td>INSTALLDIR</td><td>BACKUP~1|Backup Records</td><td/><td>0</td><td/></row>
 		<row><td>BIN</td><td>INSTALLDIR</td><td>bin</td><td/><td>0</td><td/></row>
 		<row><td>CommonAppDataFolder</td><td>TARGETDIR</td><td>.:Common~1|CommonAppData</td><td/><td>0</td><td/></row>
 		<row><td>CommonFiles64Folder</td><td>TARGETDIR</td><td>.:Common64</td><td/><td>0</td><td/></row>
@@ -1885,6 +1888,7 @@
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT3</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT4</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT5</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT6</td></row>
 		<row><td>AlwaysInstall</td><td>System.Data.SQLite.dll</td></row>
 		<row><td>AlwaysInstall</td><td>System.Data.SQLite.dll1</td></row>
 	</table>
@@ -2080,6 +2084,7 @@
 		<row><td>ISX_DEFAULTCOMPONENT3</td><td/><td/><td>_29CBAAFE_AAFE_438E_979D_D635D29D951F_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT4</td><td/><td/><td>_726C8779_153F_4342_A167_E921EE7EAB31_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT5</td><td/><td/><td>_B7D00CD6_7958_4D61_8CF2_3E114B924272_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT6</td><td/><td/><td>_07E4E81D_8FBE_4F69_8145_59801D696395_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>System.Data.SQLite.dll</td><td/><td/><td>_EFB86ECF_F0A3_49D4_8CE7_81A1CB3034CE_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>System.Data.SQLite.dll1</td><td/><td/><td>_7765D744_6216_4F46_8880_FE5CFD1C8940_FILTER</td><td/><td/><td/><td/></row>
 	</table>
