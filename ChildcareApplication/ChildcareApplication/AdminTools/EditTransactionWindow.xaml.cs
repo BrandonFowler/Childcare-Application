@@ -46,9 +46,28 @@ namespace AdminTools {
         private void btn_DeleteTransaction_Click(object sender, RoutedEventArgs e) {
             if (VerifyTextBox()) {
                 TransactionDB db = new TransactionDB();
+                
+                UpdateTotals();
                 db.DeleteTransaction(txt_TransactionID.Text);
                 LoadTransactions();
             }
+        }
+
+        private void UpdateTotals() {
+            TransactionDB db = new TransactionDB();
+            string[] data = db.GetUpdateTotalsDetails(txt_TransactionID.Text); //[guardianID, eventName, transactionTotal]
+
+            if (IsRegular(data[1])) {
+                db.UpdateRegularBalance(data[0], Double.Parse(data[2]) * -1);
+            } else if (data[1].Contains("Camp") || data[1].Contains("camp")) {
+                db.UpdateCampBalance(data[0], Double.Parse(data[2]) * -1);
+            } else {
+                db.UpdateMiscBalance(data[0], Double.Parse(data[2]) * -1);
+            }
+        }
+
+        private bool IsRegular(string eventName) {
+            return (eventName == "Regular Childcare" || eventName == "Infant Childcare" || eventName == "Adolescent Childcare");
         }
 
         private bool VerifyTextBox() {

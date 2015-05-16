@@ -144,8 +144,8 @@ namespace AdminTools {
                     String[] toParts = initialTo.Split('/');
 
                     if (fromParts.Length == 3 && toParts.Length == 3) {
-                        String fromDate = fromParts[2] + "-" + fromParts[0] + "-" + fromParts[1];
-                        String toDate = toParts[2] + "-" + toParts[0] + "-" + toParts[1];
+                        String fromDate = fromParts[2] + "-" + fromParts[1] + "-" + fromParts[0];
+                        String toDate = toParts[2] + "-" + toParts[1] + "-" + toParts[0];
 
                         LoadReport(fromDate, toDate);
                         LoadParentData();

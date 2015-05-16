@@ -420,5 +420,31 @@ namespace DatabaseController {
             }
             return result;
         }
+
+        public string[] GetUpdateTotalsDetails(string transactionID) {
+            String query = "SELECT AllowedConnections.Guardian_ID, ChildcareTransaction.EventName, ";
+            query += "ChildcareTransaction.TransactionTotal From ChildcareTransaction NATURAL JOIN AllowedConnections ";
+            query += "Where ChildcareTransaction.ChildcareTransaction_ID = '" + transactionID + "';";
+            string[] results = new string[3];
+
+            try {
+                dbCon.Open();
+                SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
+
+                SQLiteDataReader reader = cmd.ExecuteReader();
+
+                reader.Read();
+                results[0] = reader.GetString(0);
+                results[1] = reader.GetString(1);
+                double temp = reader.GetDouble(2);
+                results[2] = temp.ToString();
+                
+                reader.Close();
+                dbCon.Close();
+            } catch (Exception exception) {
+                WPFMessageBox.Show(exception.Message);
+            }
+            return results;
+        }
     }
 }
