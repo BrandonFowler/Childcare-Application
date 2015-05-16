@@ -16,7 +16,7 @@ namespace AdminTools {
         public NewParentLogin() {
             InitializeComponent();
             this.db = new GuardianInfoDB();
-           // this.MouseDown += WindowMouseDown; Got an error here, dont know hat it does. comented it out
+            this.MouseDown += WindowMouseDown;
         }
 
         private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
@@ -116,6 +116,19 @@ namespace AdminTools {
         private void SelectAllGotFocusPW(object sender, RoutedEventArgs e) {
             PasswordBox pwb = (PasswordBox)sender;
             Dispatcher.BeginInvoke((Action)(pwb.SelectAll));
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
+        }
+
+        private void Key_Up_Event(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next); //Found at: http://stackoverflow.com/questions/23008670/wpf-and-mvvm-how-to-move-focus-to-the-next-control-automatically
+                request.Wrapped = true;
+                ((Control)e.Source).MoveFocus(request);
+            }
         }
 
     }

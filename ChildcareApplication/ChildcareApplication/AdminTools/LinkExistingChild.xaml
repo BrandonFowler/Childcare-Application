@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
     <Border BorderBrush="LightBlue" BorderThickness="2" Width="555" Height="314" ClipToBounds="True">
         <Grid>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_LinkChild" Content="Link Child" Margin="67,210,334,40" Click="btn_LinkChild_Click" FontSize="16" ToolTip="Links the selected child to the current Guardian loged in. Gives this Guardian access to this child."/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_LinkChild" Content="_Link Child" Margin="67,210,334,40" Click="btn_LinkChild_Click" FontSize="16" ToolTip="Links the selected child to the current Guardian loged in. Gives this Guardian access to this child."/>
             <ListBox x:Name="lst_ChildBox" Height="124" Margin="67,70,66,0" VerticalAlignment="Top" Background="#FFE6EAE0" FontSize="14" ToolTip="Click a child in this box to select them. Then click the &quot;Link Child&quot; button to link them to yourself.">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -26,7 +26,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="Close" Margin="335,210,66,40" Click="btn_Cancel_Click" FontSize="16" ToolTip="Closes the window. Does not save. "/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="_Close" Margin="335,210,66,40" Click="btn_Cancel_Click" FontSize="16" ToolTip="Closes the window. Does not save. "/>
             <Label x:Name="lbl_LinkExistingCHild" Content="Click a child from your family to link to yourself. Then hit &quot;Link Child&quot;." Margin="55,26,56,0" VerticalAlignment="Top" FontSize="14"/>
 
         </Grid>
