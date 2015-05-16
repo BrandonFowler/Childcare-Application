@@ -43,7 +43,7 @@ namespace AdminTools {
         }
 
         private bool IsProtected(string eventName) {
-            return (eventName == "Regular Childcare" || eventName == "Infant Childcare" || eventName == "Adolescent Childcare");
+            return (eventName == "Regular Childcare" || eventName == "Infant Childcare" || eventName == "Adolescent Childcare" || eventName == "Late Fee");
         }
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {

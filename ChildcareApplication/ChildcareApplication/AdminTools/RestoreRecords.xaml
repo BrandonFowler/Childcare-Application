@@ -11,7 +11,7 @@
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Close" Content="_Close" HorizontalAlignment="Left" Margin="187,252,0,0" VerticalAlignment="Top" Width="77" Click="btn_Exit_Click" FontSize="16"/>
             <TextBlock HorizontalAlignment="Left" Margin="39,10,0,0" TextWrapping="Wrap" Text="               WARNING:                         Restoring to a backup is not reversible. You will lose all records between the date of your chosen restore point and now." VerticalAlignment="Top" Height="116" Width="214" FontSize="14" FontWeight="Bold"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_SelectRestore" Content="_Select Restore File" HorizontalAlignment="Left" Margin="55,131,0,0" VerticalAlignment="Top" Width="155" FontSize="16" Height="39" Click="btn_SelectRestore_Click"/>
-            <TextBox Name="txt_path" HorizontalAlignment="Left" Height="54" Margin="39,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="191" Background="#FFE6EAE0" ToolTip="File path of backup file." Focusable="False" IsReadOnly="True" IsUndoEnabled="False" IsTabStop="False"/>
+            <TextBox Name="txt_path" HorizontalAlignment="Left" Height="54" Margin="39,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="191" Background="#FFE6EAE0" ToolTip="File path of backup file." Focusable="False" IsReadOnly="True" IsUndoEnabled="False" IsTabStop="False" IsEnabled="False"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Restore" Content="_Restore" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="77" FontSize="16" Click="btn_Restore_Click"/>
         </Grid>
     </Border>

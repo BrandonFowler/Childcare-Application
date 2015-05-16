@@ -283,7 +283,7 @@ namespace DatabaseController {
             string guardianLast = splitGuardianName[1];
             string childFirst = splitChildName[0];
             string childLast = splitChildName[1];
-            string allowanceID = "";
+            string guardianID = "";
 
             String query = "SELECT Guardian.Guardian_ID FROM Guardian Natural Join AllowedConnections Join ";
             query += "Child ON AllowedConnections.Child_ID = Child.Child_ID Where Guardian.FirstName = '";
@@ -293,14 +293,17 @@ namespace DatabaseController {
 
             try {
                 dbCon.Open();
-                allowanceID = Convert.ToString(cmd.ExecuteScalar());
+                guardianID = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
-            }
-            catch (Exception exception) {
-                WPFMessageBox.Show(exception.Message);
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve critical information.");
             }
 
-            return allowanceID;
+            return guardianID;
         }
 
     }

@@ -576,11 +576,11 @@ namespace DatabaseController {
                 command.ExecuteNonQuery();
                 dbCon.Close();
             } catch (System.Data.SQLite.SQLiteException) {
-                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible. Any late fees have not been recorded.");
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
             } catch (Exception) {
                 dbCon.Close();
-                WPFMessageBox.Show("Unable to retrieve critical information. Any late fees have not been recorded.");
+                WPFMessageBox.Show("Unable to retrieve critical information.");
             }
         }
     }
