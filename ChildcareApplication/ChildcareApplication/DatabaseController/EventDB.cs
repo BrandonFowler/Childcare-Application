@@ -564,5 +564,24 @@ namespace DatabaseController {
                 return 0;
             }
         }
+
+        public void DeleteEvent(string eventName) {
+            string sql = "Update EventData Set EventDeletionDate = @date " +
+                         "where EventName = @eventName";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@eventName", eventName));
+            command.Parameters.Add(new SQLiteParameter("@date", DateTime.Now.ToString("yyyy-MM-dd")));
+            try {
+                dbCon.Open();
+                command.ExecuteNonQuery();
+                dbCon.Close();
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible. Any late fees have not been recorded.");
+                dbCon.Close();
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve critical information. Any late fees have not been recorded.");
+            }
+        }
     }
 }

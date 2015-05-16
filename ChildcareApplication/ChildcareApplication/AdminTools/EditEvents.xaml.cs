@@ -53,6 +53,18 @@ namespace AdminTools {
             }
         }
 
+        private void btn_DeleteEvent_Click(object sender, RoutedEventArgs e) {
+            if (cmd_EventIDCombo.SelectedIndex != -1) {
+                EventDB eventDB = new EventDB();
+                String test = ((ComboBoxItem)cmd_EventIDCombo.SelectedItem).Content.ToString();
+
+                eventDB.DeleteEvent(test);
+                LoadEvents();
+            } else {
+                WPFMessageBox.Show("You must select an event name from the drop down box.");
+            }
+        }
+
         private void btn_AddEvent_Click(object sender, RoutedEventArgs e) {
             EventModificationWindow win = new EventModificationWindow();
             win.Show();
