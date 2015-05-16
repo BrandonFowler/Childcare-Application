@@ -34,8 +34,16 @@ namespace AdminTools {
             LoadData(oldEventName);
             valueChanged = false;
             maxHoursChanged = false;
+            if (IsProtected(oldEventName)) {
+                this.txt_EventName.IsEnabled = false;
+                this.lbl_EventName.Content = "Event Name (Protected Event)";
+            }
             this.oldEventName = oldEventName;
             this.MouseDown += WindowMouseDown;
+        }
+
+        private bool IsProtected(string eventName) {
+            return (eventName == "Regular Childcare" || eventName == "Infant Childcare" || eventName == "Adolescent Childcare");
         }
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {

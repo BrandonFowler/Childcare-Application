@@ -46,7 +46,6 @@ namespace AdminTools {
             parentDataGrid.ItemsSource = table.DefaultView;
             
             this.reportLoaded = true;
-            //parentDataGrid.CellStyle.
         }
 
         private void btn_LoadAll_Click(object sender, RoutedEventArgs e) {
