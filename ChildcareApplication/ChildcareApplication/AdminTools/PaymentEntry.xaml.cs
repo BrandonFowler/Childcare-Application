@@ -19,8 +19,11 @@ namespace ChildcareApplication.AdminTools {
     public partial class PaymentEntry : Window {
         private String guardianID;
         private ParentReport callingWindow;
-        public PaymentEntry(String guardianID, ParentReport parentReport) {
+        private string type;
+
+        public PaymentEntry(String guardianID, ParentReport parentReport, string type) {
             InitializeComponent();
+            this.type = type;
             this.guardianID = guardianID;
             this.callingWindow = parentReport;
             InitializeCurrentBalance();
@@ -31,7 +34,7 @@ namespace ChildcareApplication.AdminTools {
         private void InitializeCurrentBalance() {
             GuardianInfoDB parentInfoDB = new GuardianInfoDB();
 
-            lbl_CurrentBalance.Content += " " + parentInfoDB.GetCurrentDue(guardianID);
+            lbl_CurrentBalance.Content += " " + parentInfoDB.GetCurrentDue(guardianID, this.type);
         }
 
         private void btn_SubmitPayment_Click(object sender, RoutedEventArgs e) {
@@ -39,29 +42,40 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void SubmitPayment() {
-            TransactionDB transDB = new TransactionDB();
-            Double num;
+            double num;
 
             if (Double.TryParse(txt_PaymentAmount.Text, out num) && num > 0) {
                 num *= -1;
                 if (num.ToString().Contains('.')) {
                     if (num.ToString().Split('.')[1].Length < 3) {
-                        transDB.UpdateFamilyBalance(this.guardianID, num);
-
-                        this.callingWindow.UpdateCurDue(this.guardianID);
-                        this.Close();
+                        UpdateBalance(num);
                     } else {
                         WPFMessageBox.Show("You must enter a valid dollar number in the Payment Amount box.");
                     }
                 } else {
-                    transDB.UpdateFamilyBalance(this.guardianID, num);
-
-                    this.callingWindow.UpdateCurDue(this.guardianID);
-                    this.Close();
+                    UpdateBalance(num);
                 }
             } else {
                 WPFMessageBox.Show("You must enter a valid dollar number in the Payment Amount box.");
             }
+        }
+
+        private void UpdateBalance(double num) {
+            TransactionDB transDB = new TransactionDB();
+
+            if (this.type == "Regular") {
+                transDB.UpdateRegularBalance(this.guardianID, (num));
+                this.callingWindow.UpdateRegularDue(this.guardianID);
+            } else if (this.type == "Camp") {
+                transDB.UpdateCampBalance(this.guardianID, (num));
+                this.callingWindow.UpdateCampDue(this.guardianID);
+            } else if (this.type == "Misc") {
+                transDB.UpdateMiscBalance(this.guardianID, (num));
+                this.callingWindow.UpdateMiscDue(this.guardianID);
+            } else {
+                WPFMessageBox.Show("A valid type was not sent to the PaymentEntry window!");
+            }
+            this.Close();
         }
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e) {

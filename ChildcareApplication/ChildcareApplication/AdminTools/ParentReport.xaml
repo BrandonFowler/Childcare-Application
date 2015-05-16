@@ -7,14 +7,15 @@
         Padding="0"
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
     <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True">
-        <Grid Margin="0,-2,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid Margin="15,15,-2,17" HorizontalAlignment="Center" VerticalAlignment="Center" Width="883">
+            <Label x:Name="lbl_RegularDueText" Content="Regular Due:" HorizontalAlignment="Left" Margin="592,455,0,0" VerticalAlignment="Top" Width="103" FontSize="14" Height="29" VerticalContentAlignment="Center"/>
             <Label x:Name="lbl_From" Content="From:" HorizontalAlignment="Left" Margin="636,40,0,0" VerticalAlignment="Top" Height="25" Width="84"/>
             <Label x:Name="lbl_To" Content="To:" HorizontalAlignment="Left" Margin="748,40,0,0" VerticalAlignment="Top" Height="25" Width="84"/>
             <TextBox x:Name="txt_GuardianID" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="10,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" TabIndex="0" GotFocus="txt_GuardianID_GotFocus" Background="#FFE6EAE0" FontSize="14" ToolTip="Guardian ID"/>
             <Label x:Name="lbl_ParentID" Content="Guardian ID" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="120" FontSize="14"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_CurrentMonthReport" Content="Current _Billing Cycle" HorizontalAlignment="Left" Margin="275,66,0,0" VerticalAlignment="Top" Width="163" Click="btn_CurrentMonthReport_Click" TabIndex="2" ToolTip="Load all charges associated with the Guardian ID entered in the text box for the current billing cycle."/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_DateRangeReport" Content="_Date Range Report" HorizontalAlignment="Left" Margin="444,66,0,0" VerticalAlignment="Top" Width="157" Click="btn_DateRangeReport_Click" TabIndex="3" ToolTip="Load all charges associated with the Guardian ID entered in the text box for the date range selected in the From and To boxes."/>
-            <DataGrid x:Name="parentDataGrid" Margin="10,118,275,0" VerticalAlignment="Top" Height="460" CanUserReorderColumns="False" IsReadOnly="True" ColumnWidth="Auto" Background="#FFE6EAE0" FontSize="14" RowBackground="#FFE6EAE0">
+            <DataGrid x:Name="parentDataGrid" Margin="10,118,0,0" VerticalAlignment="Top" Height="460" CanUserReorderColumns="False" IsReadOnly="True" ColumnWidth="Auto" Background="#FFE6EAE0" FontSize="14" RowBackground="#FFE6EAE0" HorizontalAlignment="Left" Width="581">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -31,7 +32,7 @@
                         <Setter Property="BorderThickness" Value="0, 0, 1, 0"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
                     </Style>
-                    <Style TargetType="DataGridRowHeader">
+                    <Style TargetType="{x:Type DataGridRowHeader}">
                         <Setter Property="Background" Value="#FFE6EAE0"/>
                     </Style>
                 </DataGrid.Resources>
@@ -43,14 +44,19 @@
             <Label x:Name="lbl_Address2" Content="" HorizontalAlignment="Left" Margin="636,374,0,0" VerticalAlignment="Top" Width="196" FontSize="14"/>
             <Label x:Name="lbl_Address3" Content="" HorizontalAlignment="Left" Margin="636,400,0,0" VerticalAlignment="Top" Width="196" FontSize="14"/>
             <Label x:Name="lbl_Phone" Content="" HorizontalAlignment="Left" Margin="636,426,0,0" VerticalAlignment="Top" Width="196" FontSize="14"/>
-            <Label x:Name="lbl_CurrentDueText" Content="Current Amount Due:" HorizontalAlignment="Left" Margin="636,465,0,0" VerticalAlignment="Top" Width="196" FontSize="14"/>
-            <Label x:Name="lbl_CurrentDueValue" Content="" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="636,488,0,0" VerticalAlignment="Top" Width="142" FontSize="14" Height="25"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_MakePayment" Content="S_ubmit a Payment" HorizontalAlignment="Left" Margin="656,526,0,0" VerticalAlignment="Top" Width="158" Click="btn_MakePayment_Click" TabIndex="6" ToolTip="Submit a payment to subtract from the current balance of the selected guardian."/>
+            <Label x:Name="lbl_RegularDueValue" Content="" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="686,455,0,0" VerticalAlignment="Top" Width="86" FontSize="14" Height="29" VerticalContentAlignment="Center"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_RegularPayment" Content="Payment" HorizontalAlignment="Left" Margin="777,455,0,0" VerticalAlignment="Top" Width="96" Click="btn_RegularPayment_Click" TabIndex="6" ToolTip="Submit a payment to subtract from the current balance of the selected guardian."/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Exit" Content="_Close" HorizontalAlignment="Left" Margin="791,595,0,0" VerticalAlignment="Top" Width="75" TabIndex="7" Click="btn_Exit_Click"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Print" Content="_Print" HorizontalAlignment="Left" Margin="426,595,0,0" VerticalAlignment="Top" Width="75" Click="btn_Print_Click"/>
             <DatePicker x:Name="dte_fromDate" HorizontalAlignment="Left" Margin="636,68,0,0" VerticalAlignment="Top" Width="94" Background="#FFE6EAE0" Height="25" FontSize="10" ToolTip="Click the calendar to select a date, or manually enter one in the text box."/>
             <DatePicker x:Name="dte_toDate" HorizontalAlignment="Left" Margin="748,68,0,0" VerticalAlignment="Top" Width="94" FontSize="10" Background="#FFE6EAE0" Height="25" ToolTip="Click the calendar to select a date, or manually enter one in the text box."/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Save" Content="_Save" HorizontalAlignment="Left" Margin="526,595,0,0" VerticalAlignment="Top" Width="75" Click="btn_Save_Click"/>
+            <Label x:Name="lbl_CampDueText" Content="Camp Due:" HorizontalAlignment="Left" Margin="603,500,0,0" VerticalAlignment="Top" Width="83" FontSize="14" Height="29" VerticalContentAlignment="Center"/>
+            <Label x:Name="lbl_CampDueValue" Content="" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="685,500,0,0" VerticalAlignment="Top" Width="86" FontSize="14" Height="29" VerticalContentAlignment="Center"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_CampPayment" Content="Payment" HorizontalAlignment="Left" Margin="777,500,0,0" VerticalAlignment="Top" Width="96" Click="btn_CampPayment_Click" TabIndex="6" ToolTip="Submit a payment to subtract from the current balance of the selected guardian."/>
+            <Label x:Name="lbl_MiscDueText" Content="Misc. Due:" HorizontalAlignment="Left" Margin="607,545,0,0" VerticalAlignment="Top" Width="83" FontSize="14" Height="29" VerticalContentAlignment="Center"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_MiscPayment" Content="Payment" HorizontalAlignment="Left" Margin="777,545,0,0" VerticalAlignment="Top" Width="96" Click="btn_MiscPayment_Click" TabIndex="6" ToolTip="Submit a payment to subtract from the current balance of the selected guardian."/>
+            <Label x:Name="lbl_MiscDueValue" Content="" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="685,545,0,0" VerticalAlignment="Top" Width="86" FontSize="14" Height="29" VerticalContentAlignment="Center"/>
         </Grid>
     </Border>
 </Window>

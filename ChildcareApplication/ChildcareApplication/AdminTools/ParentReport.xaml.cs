@@ -173,26 +173,51 @@ namespace AdminTools {
             lbl_Address2.Content = parentInfo.GetAddress2(txt_GuardianID.Text);
             lbl_Address3.Content = parentInfo.GetAddress3(txt_GuardianID.Text);
             lbl_Phone.Content = parentInfo.GetPhoneNumber(txt_GuardianID.Text);
-            UpdateCurDue(txt_GuardianID.Text);
+            UpdateRegularDue(txt_GuardianID.Text);
+            UpdateCampDue(txt_GuardianID.Text);
+            UpdateMiscDue(txt_GuardianID.Text);
         }
 
-        private void btn_MakePayment_Click(object sender, RoutedEventArgs e) {
+        private void btn_RegularPayment_Click(object sender, RoutedEventArgs e) {
+            SubmitPayment("Regular");
+        }
+
+        private void btn_CampPayment_Click(object sender, RoutedEventArgs e) {
+            SubmitPayment("Camp");
+        }
+
+        private void btn_MiscPayment_Click(object sender, RoutedEventArgs e) {
+            SubmitPayment("Misc");
+        }
+
+        private void SubmitPayment(string type) {
             GuardianInfoDB parentinfo = new GuardianInfoDB();
 
             if (txt_GuardianID.Text.Length == 6 && parentinfo.GuardianIDExists(txt_GuardianID.Text)) {
-                PaymentEntry paymentEntry = new PaymentEntry(txt_GuardianID.Text, this);
+                PaymentEntry paymentEntry = new PaymentEntry(txt_GuardianID.Text, this, type);
                 paymentEntry.ShowDialog();
             } else {
                 WPFMessageBox.Show("The Parent ID you entered does not exist in the database.  Please verify it is correct.");
                 txt_GuardianID.Focus();
             }
-            
         }
 
-        public void UpdateCurDue(String parentID) {
+        public void UpdateRegularDue(String parentID) {
             GuardianInfoDB parentInfo = new GuardianInfoDB();
 
-            lbl_CurrentDueValue.Content = parentInfo.GetCurrentDue(txt_GuardianID.Text);
+            lbl_RegularDueValue.Content = parentInfo.GetCurrentDue(txt_GuardianID.Text, "Regular");
+        }
+
+        public void UpdateCampDue(String parentID) {
+            GuardianInfoDB parentInfo = new GuardianInfoDB();
+
+            lbl_CampDueValue.Content = parentInfo.GetCurrentDue(txt_GuardianID.Text, "Camp");
+        }
+
+        public void UpdateMiscDue(String parentID) {
+            GuardianInfoDB parentInfo = new GuardianInfoDB();
+
+            lbl_MiscDueValue.Content = parentInfo.GetCurrentDue(txt_GuardianID.Text, "Misc");
         }
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e) {

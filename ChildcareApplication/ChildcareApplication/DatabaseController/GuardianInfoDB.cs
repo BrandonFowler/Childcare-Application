@@ -118,10 +118,17 @@ namespace DatabaseController {
             return result;
         }
 
-        public String GetCurrentDue(String parentID) {
+        public String GetCurrentDue(String parentID, String type) {
             String familyID = parentID.Remove(parentID.Length - 1);
+            String query = "";
 
-            String query = "SELECT FamilyTotal FROM Family WHERE Family_ID = '" + familyID + "';";
+            if (type == "Regular") {
+                query = "SELECT RegularTotal FROM Family WHERE Family_ID = '" + familyID + "';";
+            } else if (type == "Camp") {
+                query = "SELECT CampTotal FROM Family WHERE Family_ID = '" + familyID + "';";
+            } else { //Misc
+                query = "SELECT MiscTotal FROM Family WHERE Family_ID = '" + familyID + "';";
+            }
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
 
             String curDue = "$";
