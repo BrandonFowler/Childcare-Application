@@ -14,7 +14,7 @@ namespace GuardianTools {
         private string guardianID;
         private ConnectionsDB db;
         private string allowanceID;
-        private double lateTime;
+        internal double lateTime;
         internal string eventName;
         internal bool isLate = false;
 
@@ -93,7 +93,7 @@ namespace GuardianTools {
         public void CompleteTransaction(double eventFee, string name) {
             TransactionDB transDB = new TransactionDB();
             AddToBalance(name, eventFee);
-            if (this.isLate) {
+            if (this.isLate && name.CompareTo("Late Fee") != 0) {
                 double lateFee = CalculateLateFee();
             }
         }

@@ -30,9 +30,10 @@ namespace AdminTools {
             LoadData();
             this.dataChanged = false;
             this.MouseDown += WindowMouseDown;
-            this.txt_CheckIn.LostFocus += CalcOnLostFocus;
-            this.txt_CheckOut.LostFocus += CalcOnLostFocus;
-            this.cmb_EventName.LostFocus += CalcOnLostFocus;
+            this.txt_CheckIn.LostFocus += CalculateTransaction;
+            this.txt_CheckOut.LostFocus += CalculateTransaction;
+            this.cmb_EventName.LostFocus += CalculateTransaction;
+            this.txt_Date.LostFocus += CalculateTransaction;
             this.txt_GuardianName.LostFocus += ReadyTransaction;
             this.txt_ChildName.LostFocus += ReadyTransaction;
         }
@@ -43,9 +44,10 @@ namespace AdminTools {
             this.transactionID = "";
             this.dataChanged = false;
             this.MouseDown += WindowMouseDown;
-            this.txt_CheckIn.LostFocus += CalcOnLostFocus;
-            this.txt_CheckOut.LostFocus += CalcOnLostFocus;
-            this.cmb_EventName.LostFocus += CalcOnLostFocus;
+            this.txt_CheckIn.LostFocus += CalculateTransaction;
+            this.txt_CheckOut.LostFocus += CalculateTransaction;
+            this.cmb_EventName.LostFocus += CalculateTransaction;
+            this.txt_Date.LostFocus += CalculateTransaction;
             this.txt_GuardianName.LostFocus += ReadyTransaction;
             this.txt_ChildName.LostFocus += ReadyTransaction;
         }
@@ -212,6 +214,8 @@ namespace AdminTools {
             checkedOut = FormatTime(txt_CheckOut.Text);
             transTotal = txt_TransactionTotal.Text;
 
+            CheckForLateTime(checkedOut, transDate);
+
             if (this.transactionID == "") {
                 transID = transDB.GetNextTransID();
                 transDB.NewTransaction(transID, eventName, allowanceID, transDate, checkedIn, checkedOut, transTotal);
@@ -220,6 +224,16 @@ namespace AdminTools {
                 transDB.UpdateTransaction(this.transactionID, eventName, allowanceID, transDate, checkedIn, checkedOut, transTotal);
                 transaction.CompleteTransaction(Convert.ToDouble(this.txt_TransactionTotal.Text), eventName);
                 transaction.AddToBalance(this.originalEventName, (this.originalFee) * (-1));
+            }
+        }
+
+        private void CheckForLateTime(String checkedOut, String transDate){
+            GuardianToolsSettings settings = new GuardianToolsSettings();
+            if (!transaction.isLate) {
+                transaction.lateTime = settings.CheckIfPastClosing(DateTime.Parse(transDate).DayOfWeek.ToString(), TimeSpan.Parse(checkedOut));
+                if (transaction.lateTime > 0) {
+                    transaction.isLate = true;
+                }
             }
         }
 
@@ -271,24 +285,27 @@ namespace AdminTools {
                 DragMove();
         }
 
-        private void CalcOnLostFocus(object sender, RoutedEventArgs e) {
-            if (!String.IsNullOrWhiteSpace(this.cmb_EventName.Text) && !String.IsNullOrWhiteSpace(this.txt_CheckIn.Text) && !String.IsNullOrWhiteSpace(this.txt_CheckOut.Text) && this.dataChanged && IsValidForCalculations()) {
+        private void CalculateTransaction(object sender, RoutedEventArgs e) {
+            if (this.dataChanged && IsValidForCalculations()) {
                 double eventFee = this.transaction.GetStrictEventFee(this.cmb_EventName.Text);
+                transaction.isLate = false;
+                transaction.lateTime = 0.0;
+                CheckForLateTime(DateTime.Parse(this.txt_CheckOut.Text).ToString("HH:mm:ss"), DateTime.Parse(this.txt_Date.Text).ToString("yyyy-MM-dd"));
                 this.txt_TransactionTotal.Text = String.Format("{0:0.00}", transaction.CalculateTransaction(this.txt_CheckIn.Text, this.txt_CheckOut.Text, this.cmb_EventName.Text, eventFee));
             }
         }
 
         private bool IsValidForCalculations() {
             if (cmb_EventName.SelectedIndex < 0) {
-                WPFMessageBox.Show("You must select an event from the drop down menu!");
                 return false;
             }
             if (!ValidTime(txt_CheckIn.Text)) {
-                WPFMessageBox.Show("You must enter a valid time in the checked in text box!");
                 return false;
             }
             if (!ValidTime(txt_CheckOut.Text)) {
-                WPFMessageBox.Show("You must enter a valid time in the checked out text box!");
+                return false;
+            }
+            if (!ValidDate(txt_Date.Text)) {
                 return false;
             }
             return true;
@@ -301,6 +318,7 @@ namespace AdminTools {
             ConnectionsDB conDB = new ConnectionsDB();
             if (parentDB.GuardianNameExists(txt_GuardianName.Text) && childDB.ChildNameExists(txt_ChildName.Text)) {
                 this.transaction = new TransactionCharge(conDB.GetGuardianIDOnNames(txt_GuardianName.Text, txt_ChildName.Text), conDB.GetAllowanceIDOnNames(this.txt_GuardianName.Text, this.txt_ChildName.Text));
+                CalculateTransaction(sender, e);
             }
         }
 
