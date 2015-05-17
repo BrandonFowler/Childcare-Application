@@ -89,26 +89,31 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e) {
-            //this check will ensure that if the user is logged in as the currently selected administrator and changes their name it won't break functionality
-            if (lst_AdminList.SelectedItem.ToString().Equals(loggedInAs)) {
-                loggedInAs = txt_LoginName.Text;
-            }
-
-            if (pwChanged) {
-                if (rdb_Full.IsChecked == true)
-                    db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "1");
-                else if (rdb_Limited.IsChecked == true)
-                    db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "2");
+            if (!RegExpressions.RegexValidateEventName(txt_LoginName.Text)) {
+                WPFMessageBox.Show("Administrator names may only include numbers and letters.");
+                btn_Save.IsEnabled = false;
             } else {
-                if (rdb_Full.IsChecked == true)
-                    db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Email.Text, "1");
-                else if (rdb_Limited.IsChecked == true)
-                    db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Email.Text, "2");
+                //this check will ensure that if the user is logged in as the currently selected administrator and changes their name it won't break functionality
+                if (lst_AdminList.SelectedItem.ToString().Equals(loggedInAs)) {
+                    loggedInAs = txt_LoginName.Text;
+                }
+
+                if (pwChanged) {
+                    if (rdb_Full.IsChecked == true)
+                        db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "1");
+                    else if (rdb_Limited.IsChecked == true)
+                        db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Password.Password, txt_Email.Text, "2");
+                } else {
+                    if (rdb_Full.IsChecked == true)
+                        db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Email.Text, "1");
+                    else if (rdb_Limited.IsChecked == true)
+                        db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Email.Text, "2");
+                }
+
+
+                lst_AdminList.ItemsSource = db.FindAdmins();
+                clearForm();
             }
-
-
-            lst_AdminList.ItemsSource = db.FindAdmins();
-            clearForm();  
         }
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e) {
@@ -179,15 +184,17 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void txt_LoginName_LostFocus(object sender, RoutedEventArgs e) {
-            if (lst_AdminList.Items.Contains(txt_LoginName.Text) && !(lst_AdminList.SelectedItem.ToString().Equals(txt_LoginName.Text))) {
+            if (!RegExpressions.RegexValidateEventName(txt_LoginName.Text)) {
+                WPFMessageBox.Show("Administrator names may only include numbers and letters.");
+                btn_Save.IsEnabled = false;
+            } else if (lst_AdminList.Items.Contains(txt_LoginName.Text) && !(lst_AdminList.SelectedItem.ToString().Equals(txt_LoginName.Text))) {
                 WPFMessageBox.Show("An administrator with that name already exists. Please change the login name to be unique before continuing");
                 btn_Save.IsEnabled = false;
             }
-            //check for valid username
         }
 
         private void txt_Email_LostFocus(object sender, RoutedEventArgs e) {
-            //check for valid email
+            //check for valid email  Nathan: we probably don't really need to worry aobut if an admin has a correct type of email, but you could protect agains sql injection if you want
         }
 
         private bool passwordsMatch() {
@@ -196,12 +203,10 @@ namespace ChildcareApplication.AdminTools {
 
         private void txt_Password_LostFocus(object sender, RoutedEventArgs e) {
             txt_Password.Password = AdminTools.Hashing.HashPass(txt_Password.Password);
-            //check for valid password
         }
 
         private void txt_ConfirmPass_LostFocus(object sender, RoutedEventArgs e) {
             txt_ConfirmPass.Password = AdminTools.Hashing.HashPass(txt_ConfirmPass.Password);
-            //check for valid password?
         }
 
         private void txt_Password_GotFocus(object sender, RoutedEventArgs e) {

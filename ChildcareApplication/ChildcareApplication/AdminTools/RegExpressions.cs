@@ -173,7 +173,7 @@ namespace ChildcareApplication.AdminTools {
             if (match.Success)
                 return true;
 
-            WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: Some Event Name");
+            //WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: Some Event Name");
             return false;
 
 
