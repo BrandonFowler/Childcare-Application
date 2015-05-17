@@ -36,7 +36,7 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (SQLiteException e) {
-                WPFMessageBox.Show(e.Message);
+                WPFMessageBox.Show("Could not find max child ID");
             }
             return maxID;
         }
@@ -61,7 +61,7 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (SQLiteException e) {
-                WPFMessageBox.Show(e.Message);
+                WPFMessageBox.Show("Could not find max connection ID.");
             }
             return maxID;
         }
@@ -78,7 +78,7 @@ namespace DatabaseController {
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
             } catch (SQLiteException e) {
-                WPFMessageBox.Show(e.Message);
+                WPFMessageBox.Show("Could not add a new child to the Database. ");
             }
             dbCon.Close();
         }
@@ -97,7 +97,7 @@ namespace DatabaseController {
                 WPFMessageBox.Show("Link Completed.");
 
             } catch (SQLiteException e) {
-                WPFMessageBox.Show(e.Message);
+                WPFMessageBox.Show("Could not update the child's information.");
             }
             dbCon.Close();
         }
@@ -122,7 +122,7 @@ namespace DatabaseController {
                 WPFMessageBox.Show("Completed");
                 dbCon.Close();
             } catch (SQLiteException e) {
-                WPFMessageBox.Show(e.Message);
+                WPFMessageBox.Show("Could not update the child's information.");
             }
         }
 
@@ -142,7 +142,7 @@ namespace DatabaseController {
                 WPFMessageBox.Show("Completed");
                 dbCon.Close();
             } catch (SQLiteException e) {
-                WPFMessageBox.Show(e.Message);
+                WPFMessageBox.Show("Could not delete this child.");
             }
         }//end GetFirstName
 
@@ -175,7 +175,7 @@ namespace DatabaseController {
                 dbCon.Close();
                 return null;
             } catch (Exception) {
-                WPFMessageBox.Show("Error trying to retrieve information for children");
+                WPFMessageBox.Show("Error trying to retrieve information for children.");
                 dbCon.Close();
                 return null;
             }
@@ -203,7 +203,7 @@ namespace DatabaseController {
                 dbCon.Close();
             }
             catch (Exception) {
-                WPFMessageBox.Show("Unable to retrieve information for children");
+                WPFMessageBox.Show("Unable to retrieve information for children.");
                 dbCon.Close();
             }
 
@@ -243,7 +243,7 @@ namespace DatabaseController {
                 reader.Close();
                 connection.Close();
             } catch (Exception exception) {
-                WPFMessageBox.Show(exception.Message);
+                WPFMessageBox.Show("Could not retrieve childern information.");
             }
             return result;
         }
@@ -274,7 +274,7 @@ namespace DatabaseController {
                     return true;
                 }
             } catch (Exception exception) {
-                WPFMessageBox.Show(exception.Message);
+                WPFMessageBox.Show("Could not retrieve childern information.");
             }
             return false;
         }
