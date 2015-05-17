@@ -24,6 +24,7 @@ namespace AdminTools {
             InitializeComponent();
             this.db = new ChildInfoDatabase();
             this.MouseDown += WindowMouseDown;
+            txt_GuardianID.Focus(); 
         }
 
         private void btn_Enter_Click(object sender, RoutedEventArgs e) {

@@ -50,27 +50,28 @@ namespace AdminTools {
                 bool regex = RegexValidation();
                 if (regex) {
 
+                    if (lst_ChildBox.SelectedItem != null) {
+                        string cID, firstName, lastName, medical, allergies, birthday, filePath;
 
-                    string cID, firstName, lastName, medical, allergies, birthday, filePath;
+                        firstName = txt_FirstName.Text;
+                        lastName = txt_LastName.Text;
+                        birthday = dte_Birthday.SelectedDate.Value.ToString("yyyy-MM-dd");
+                        medical = txt_Medical.Text;
+                        allergies = txt_Allergies.Text;
+                        cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
+                        filePath = txt_FilePath.Text;
 
-                    firstName = txt_FirstName.Text;
-                    lastName = txt_LastName.Text;
-                    birthday = dte_Birthday.SelectedDate.Value.ToString("yyyy-MM-dd");
-                    medical = txt_Medical.Text;
-                    allergies = txt_Allergies.Text;
-                    cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
-                    filePath = txt_FilePath.Text;
+                        this.db.UpdateChildInfo(cID, firstName, lastName, birthday, medical, allergies, filePath);
+                        ((Child)(lst_ChildBox.SelectedItem)).firstName = firstName;
+                        ((Child)(lst_ChildBox.SelectedItem)).lastName = lastName;
+                        ((Child)(lst_ChildBox.SelectedItem)).birthday = birthday;
+                        ((Child)(lst_ChildBox.SelectedItem)).medical = medical;
+                        ((Child)(lst_ChildBox.SelectedItem)).allergies = allergies;
+                        ((Child)(lst_ChildBox.SelectedItem)).path = filePath;
 
-                    this.db.UpdateChildInfo(cID, firstName, lastName, birthday, medical, allergies, filePath);
-                    ((Child)(lst_ChildBox.SelectedItem)).firstName = firstName;
-                    ((Child)(lst_ChildBox.SelectedItem)).lastName = lastName;
-                    ((Child)(lst_ChildBox.SelectedItem)).birthday = birthday;
-                    ((Child)(lst_ChildBox.SelectedItem)).medical = medical;
-                    ((Child)(lst_ChildBox.SelectedItem)).allergies = allergies;
-                    ((Child)(lst_ChildBox.SelectedItem)).path = filePath;
-
-                    lst_ChildBox.Items.Clear();
-                    setChildBox();
+                        lst_ChildBox.Items.Clear();
+                        setChildBox();
+                    }
                 }
                 // ClearFields();
             }
@@ -97,18 +98,19 @@ namespace AdminTools {
 
         }
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
-            MessageBoxResult messageBoxResult = WPFMessageBox.Show("Are you sure you wish to delete this person?", "Deletion Conformation", MessageBoxButton.YesNo);
-            if (messageBoxResult == MessageBoxResult.Yes) {
-                ConnectionsDB conDB = new ConnectionsDB();
-                string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
-                string pID = txt_IDNumber.Text;
-                this.db.DeleteChildInfo(cID);
-                conDB.DeleteAllowedConnection(cID, pID);
-                lst_ChildBox.Items.Clear();
-                setChildBox();
-                ClearFields();
+            if (lst_ChildBox.SelectedItem != null) {
+                MessageBoxResult messageBoxResult = WPFMessageBox.Show("Are you sure you wish to delete this person?", "Deletion Conformation", MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes) {
+                    ConnectionsDB conDB = new ConnectionsDB();
+                    string cID = ((Child)(lst_ChildBox.SelectedItem)).ID;
+                    string pID = txt_IDNumber.Text;
+                    this.db.DeleteChildInfo(cID);
+                    conDB.DeleteAllowedConnection(cID, pID);
+                    lst_ChildBox.Items.Clear();
+                    setChildBox();
+                    ClearFields();
+                }
             }
-
 
         }//end btn_Delete_Click
 

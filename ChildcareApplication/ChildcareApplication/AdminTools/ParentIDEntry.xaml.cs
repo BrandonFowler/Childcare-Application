@@ -18,6 +18,7 @@ namespace AdminTools {
             this.txt_IDEntry.KeyDown += new KeyEventHandler(KeyPressedValidateNumber);
             this.txt_IDEntry.Focus();
             this.MouseDown += WindowMouseDown;
+            txt_IDEntry.Focus();
         }
 
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e) {

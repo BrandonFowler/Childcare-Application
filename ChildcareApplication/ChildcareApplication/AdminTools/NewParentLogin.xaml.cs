@@ -17,6 +17,7 @@ namespace AdminTools {
             InitializeComponent();
             this.db = new GuardianInfoDB();
             this.MouseDown += WindowMouseDown;
+            txt_ParentID1.Focus(); 
         }
 
         private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
