@@ -365,7 +365,7 @@ namespace DatabaseController {
         }
 
         public DataTable RetieveGuardiansByLastName(string name) {
-            string sql = "select LastName as 'First Name', FirstName as 'Last Name', Guardian_ID as ID " +
+            string sql = "select LastName as 'Last Name', FirstName as 'First Name', Guardian_ID as ID " +
                          "from Guardian " +
                          "where upper(LastName) = upper(@name)";
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");

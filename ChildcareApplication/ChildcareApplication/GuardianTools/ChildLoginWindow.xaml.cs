@@ -112,6 +112,9 @@ namespace GuardianTools {
                         lst_CheckInBox.Items.Remove(lst_CheckInBox.SelectedItem);
                     }
                 }
+                else {
+                    WPFMessageBox.Show("Please select the child that you wish to check in.");
+                }
             }
             else {
                 WPFMessageBox.Show("Please choose and event.");
@@ -129,6 +132,9 @@ namespace GuardianTools {
                     lst_CheckInBox.Items.Add(lst_CheckOutBox.SelectedItem);
                     lst_CheckOutBox.Items.Remove(lst_CheckOutBox.SelectedItem);
                 }
+            }
+            else {
+                WPFMessageBox.Show("Please select the child that you wish to check out.");
             }
         }
 

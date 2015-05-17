@@ -24,12 +24,18 @@ namespace GuardianTools {
 
         public AdminChildCheckIn() {
             InitializeComponent();
-            dta_GuardianList.SelectionChanged += lst_Guardians_IndexChange;
             this.db = new ConnectionsDB();
             txt_SearchBox.Focus();
+            SetupEvents();
+        }
+
+        private void SetupEvents() {
+            this.dta_GuardianList.SelectionChanged += lst_Guardians_IndexChange;
             this.txt_SearchBox.KeyDown += new KeyEventHandler(KeyPressed);
             this.dta_GuardianList.KeyDown += new KeyEventHandler(KeyPressed);
             this.MouseDown += WindowMouseDown;
+            this.txt_SearchBox.GotFocus += OnBoxFocus;
+            this.txt_SearchBox.GotMouseCapture += new System.Windows.Input.MouseEventHandler(OnBoxFocus);
         }
 
         private void KeyPressed(Object o, KeyEventArgs e) {
@@ -41,6 +47,12 @@ namespace GuardianTools {
                         Login();
                     }
                 }    
+        }
+
+        private void OnBoxFocus(object sender, RoutedEventArgs e) {
+            if (e.OriginalSource as TextBox != null) {
+                this.txt_SearchBox.SelectAll();
+            }
         }
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e) {
@@ -96,7 +108,7 @@ namespace GuardianTools {
             }
             else {
                 DataTable guardianInfo = parentDB.RetieveGuardiansByLastName(txt_SearchBox.Text);
-                if (guardianInfo == null) {
+                if (guardianInfo == null || guardianInfo.Rows.Count == 0) {
                     WPFMessageBox.Show("No search results found");
                     return;
                 }
