@@ -31,8 +31,8 @@ namespace DatabaseController {
 
                 reader.Close();
                 dbCon.Close();
-            } catch (Exception exception) {
-                WPFMessageBox.Show(exception.Message);
+            } catch (Exception) {
+                WPFMessageBox.Show("Could not retrieve Guardian information.");
             }
             return result;
         }
@@ -46,8 +46,8 @@ namespace DatabaseController {
                 dbCon.Open();
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
-            } catch (Exception exception) {
-                WPFMessageBox.Show(exception.Message);
+            } catch (Exception) {
+                WPFMessageBox.Show("Could not retrieve Guardian address.");
             }
             return result;
         }
@@ -61,8 +61,8 @@ namespace DatabaseController {
 
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
-            } catch (Exception exception) {
-                WPFMessageBox.Show(exception.Message);
+            } catch (Exception) {
+                WPFMessageBox.Show("Could not retrieve Guardian address.");
             }
             return result;
         }
@@ -81,8 +81,8 @@ namespace DatabaseController {
                 result = reader.GetString(0) + ", " + reader.GetString(1) + " " + reader.GetString(2);
                 reader.Close();
                 dbCon.Close();
-            } catch (Exception exception) {
-                WPFMessageBox.Show(exception.Message);
+            } catch (Exception) {
+                WPFMessageBox.Show("Could not retrieve Guardian Address.");
             }
             return result;
         }
@@ -97,8 +97,8 @@ namespace DatabaseController {
 
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
-            } catch (Exception exception) {
-                WPFMessageBox.Show(exception.Message);
+            } catch (Exception) {
+                WPFMessageBox.Show("Could not retrieve Guardian phone number.");
             }
             return result;
         }
@@ -112,8 +112,8 @@ namespace DatabaseController {
                 dbCon.Open();
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
-            } catch (Exception exception) {
-                WPFMessageBox.Show(exception.Message);
+            } catch (Exception) {
+                WPFMessageBox.Show("Could not retrieve Guardian ID.");
             }
             return result;
         }
@@ -137,8 +137,8 @@ namespace DatabaseController {
                 dbCon.Open();
                 curDue += Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
-            } catch (Exception exception) {
-                WPFMessageBox.Show(exception.Message);
+            } catch (Exception) {
+                WPFMessageBox.Show("Could not retrieve Guardian current due amount.");
             }
 
             if (curDue.IndexOf('.') == curDue.Length - 2) {
@@ -158,8 +158,8 @@ namespace DatabaseController {
                 dbCon.Open();
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
-            } catch (Exception exception) {
-                WPFMessageBox.Show(exception.Message);
+            } catch (Exception) {
+                WPFMessageBox.Show("Could not retrieve Guardian ID.");
             }
 
             if( result == guardianID) {
@@ -193,8 +193,8 @@ namespace DatabaseController {
                 if (count > 0) {
                     return true;
                 }
-            } catch (Exception exception) {
-                WPFMessageBox.Show(exception.Message);
+            } catch (Exception) {
+                WPFMessageBox.Show("Could not retrieve Guardian name.");
             }
             return false;
         }
@@ -212,8 +212,8 @@ namespace DatabaseController {
                 SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
 
                 DB.Fill(DS);
-            } catch (SQLiteException e) {
-                WPFMessageBox.Show(e.Message);
+            } catch (SQLiteException) {
+                WPFMessageBox.Show("Could not retrieve Guardian information.");
             }
             dbCon.Close();
             return DS;
@@ -235,8 +235,8 @@ namespace DatabaseController {
                 command.ExecuteNonQuery();
 
                 WPFMessageBox.Show("Completed");
-            } catch (SQLiteException e) {
-                WPFMessageBox.Show(e.Message);
+            } catch (SQLiteException) {
+                WPFMessageBox.Show("Could not delete Guardian.");
             }
             dbCon.Close();
 
@@ -252,8 +252,8 @@ namespace DatabaseController {
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
                 mycommand.ExecuteNonQuery();
                 WPFMessageBox.Show("Completed");
-            } catch (SQLiteException e) {
-                WPFMessageBox.Show(e.Message);
+            } catch (SQLiteException) {
+                WPFMessageBox.Show("Could not add new Guardian.");
             }
             dbCon.Close();
         }
@@ -282,8 +282,8 @@ namespace DatabaseController {
 
                 mycommand.ExecuteNonQuery();
                 WPFMessageBox.Show("Completed");
-            } catch (SQLiteException e) {
-                WPFMessageBox.Show(e.Message);
+            } catch (SQLiteException) {
+                WPFMessageBox.Show("Could not update Guardian information.");
             }
             dbCon.Close();
         }
@@ -307,8 +307,8 @@ namespace DatabaseController {
                 }
 
 
-            } catch (SQLiteException e) {
-                WPFMessageBox.Show(e.Message);
+            } catch (SQLiteException) {
+                WPFMessageBox.Show("Could not find if family exists.");
             }
 
             dbCon.Close();
@@ -329,8 +329,8 @@ namespace DatabaseController {
 
                 command.ExecuteNonQuery();
 
-            } catch (SQLiteException e) {
-                WPFMessageBox.Show(e.Message);
+            } catch (SQLiteException) {
+                WPFMessageBox.Show("Could not add family.");
             }
             dbCon.Close();
         }
@@ -358,7 +358,7 @@ namespace DatabaseController {
                 dbCon.Close();
                 return null;
             }catch (Exception) {
-                WPFMessageBox.Show("Unable to retrieve information for guardian");
+                WPFMessageBox.Show("Unable to retrieve information for guardian.");
                 dbCon.Close();
                 return null;
             }
@@ -386,7 +386,7 @@ namespace DatabaseController {
                 dbCon.Close();
                 return null;
             }catch (Exception) {
-                WPFMessageBox.Show("Unable to retrieve information for guardians");
+                WPFMessageBox.Show("Unable to retrieve information for guardians.");
                 dbCon.Close();
                 return null;
             }

@@ -35,8 +35,8 @@ namespace DatabaseController {
                 }
                 reader.Close();
                 dbCon.Close();
-            } catch (SQLiteException e) {
-                WPFMessageBox.Show("Could not find max child ID");
+            } catch (SQLiteException) {
+                WPFMessageBox.Show("Could not find max child ID.");
             }
             return maxID;
         }
@@ -60,7 +60,7 @@ namespace DatabaseController {
                 }
                 reader.Close();
                 dbCon.Close();
-            } catch (SQLiteException e) {
+            } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not find max connection ID.");
             }
             return maxID;
@@ -77,7 +77,7 @@ namespace DatabaseController {
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
-            } catch (SQLiteException e) {
+            } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not add a new child to the Database. ");
             }
             dbCon.Close();
@@ -96,7 +96,7 @@ namespace DatabaseController {
                 command.ExecuteNonQuery();
                 WPFMessageBox.Show("Link Completed.");
 
-            } catch (SQLiteException e) {
+            } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not update the child's information.");
             }
             dbCon.Close();
@@ -121,7 +121,7 @@ namespace DatabaseController {
                 mycommand.ExecuteNonQuery();
                 WPFMessageBox.Show("Completed");
                 dbCon.Close();
-            } catch (SQLiteException e) {
+            } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not update the child's information.");
             }
         }
@@ -141,7 +141,7 @@ namespace DatabaseController {
 
                 WPFMessageBox.Show("Completed");
                 dbCon.Close();
-            } catch (SQLiteException e) {
+            } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not delete this child.");
             }
         }//end GetFirstName
@@ -242,7 +242,7 @@ namespace DatabaseController {
 
                 reader.Close();
                 connection.Close();
-            } catch (Exception exception) {
+            } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve childern information.");
             }
             return result;
@@ -273,7 +273,7 @@ namespace DatabaseController {
                 if (count > 0) {
                     return true;
                 }
-            } catch (Exception exception) {
+            } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve childern information.");
             }
             return false;
