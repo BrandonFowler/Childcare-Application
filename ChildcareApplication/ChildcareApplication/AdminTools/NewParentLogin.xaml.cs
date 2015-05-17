@@ -73,7 +73,7 @@ namespace AdminTools {
 
             if (string.IsNullOrWhiteSpace(fID))//FamilyID does not exist
              {
-                this.db.AddNewFamily(familyID, 0.0);
+                this.db.AddNewFamily(familyID, 0.0, 0, 0);
             }
 
         }

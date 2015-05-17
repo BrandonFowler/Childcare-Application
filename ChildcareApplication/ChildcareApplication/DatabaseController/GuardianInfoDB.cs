@@ -315,15 +315,17 @@ namespace DatabaseController {
             return result;
         }
 
-        public void AddNewFamily(string familyID, double ballance) {
+        public void AddNewFamily(string familyID, double regBallance, double campBallance, double miscBallance) {
 
             try {
                 dbCon.Open();
-                string sql = @"INSERT INTO Family(Family_ID, FamilyTotal) " +
-                "VALUES(@familyID, @ballance);";
+                string sql = @"INSERT INTO Family(Family_ID, RegularTotal, CampTotal, MiscTotal) " +
+                "VALUES(@familyID, @regBallance, @campBalance, @miscBalance);";
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
                 command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
-                command.Parameters.Add(new SQLiteParameter("@ballance", ballance));
+                command.Parameters.Add(new SQLiteParameter("@regBallance", regBallance));
+                command.Parameters.Add(new SQLiteParameter("@campBalance", campBallance));
+                command.Parameters.Add(new SQLiteParameter("@miscBalance", miscBallance));
 
                 command.ExecuteNonQuery();
 
