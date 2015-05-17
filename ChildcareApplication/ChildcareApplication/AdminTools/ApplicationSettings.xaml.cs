@@ -370,7 +370,7 @@ namespace ChildcareApplication.AdminTools {
             if (SettingsValidation.ValidBillingDate(txt_BillingDate.Text)) {
                 statusGood();
             } else if (!errorPresent) {
-                WPFMessageBox.Show("Invalid Input. Billing Date must be a number from 1 to 29");
+                WPFMessageBox.Show("Invalid Input. Billing Date must be a number from 2 to 27");
                 statusBad(txt_BillingDate);
             }
         }

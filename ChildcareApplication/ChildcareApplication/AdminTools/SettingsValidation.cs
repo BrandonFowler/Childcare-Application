@@ -10,7 +10,7 @@ namespace ChildcareApplication.AdminTools {
         public static bool ValidBillingDate(string inputDate) {
             int result;
             if (Int32.TryParse(inputDate, out result)) {
-                if (result < 1 || result > 29) {
+                if (result < 3 || result > 27) {
                     return false;
                 } else {
                     return true;
