@@ -221,10 +221,10 @@ namespace AdminTools {
             if (this.transactionID == "") {
                 transID = transDB.GetNextTransID();
                 transDB.NewTransaction(transID, eventName, this.allowanceID, transDate, checkedIn, checkedOut, transTotal);
-                transaction.CompleteTransaction(Convert.ToDouble(this.txt_TransactionTotal.Text), eventName);
+                transaction.CompleteTransaction(Convert.ToDouble(this.txt_TransactionTotal.Text), eventName, DateTime.Parse(transDate).ToString("yyyy-MM-dd"));
             } else {
                 transDB.UpdateTransaction(this.transactionID, eventName, this.allowanceID, transDate, checkedIn, checkedOut, transTotal);
-                transaction.CompleteTransaction(Convert.ToDouble(this.txt_TransactionTotal.Text), eventName);
+                transaction.CompleteTransaction(Convert.ToDouble(this.txt_TransactionTotal.Text), eventName, DateTime.Parse(transDate).ToString("yyyy-MM-dd"));
                 transaction.AddToBalance(this.originalEventName, (this.originalFee) * (-1));
             }
         }

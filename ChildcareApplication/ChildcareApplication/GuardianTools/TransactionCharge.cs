@@ -50,7 +50,7 @@ namespace GuardianTools {
             eventFee = CalculateTransaction(checkInTime, checkOutTime, eventName, eventFee);
             string eventFeeRounded = eventFee.ToString("f2");
             db.CheckOut(DateTime.Now.ToString("HH:mm:ss"), eventFeeRounded, this.allowanceID);
-            CompleteTransaction(eventFee, this.eventName);
+            CompleteTransaction(eventFee, this.eventName, DateTime.Now.ToString("yyyy-MM-dd"));
             return true;
         }
 
@@ -90,22 +90,22 @@ namespace GuardianTools {
             return eventFee;
         }
 
-        public void CompleteTransaction(double eventFee, string name) {
+        public void CompleteTransaction(double eventFee, string name, string date) {
             TransactionDB transDB = new TransactionDB();
             AddToBalance(name, eventFee);
             if (this.isLate && name.CompareTo("Late Fee") != 0) {
-                double lateFee = CalculateLateFee();
+                double lateFee = CalculateLateFee(date);
             }
         }
 
-        internal double CalculateLateFee() {
+        internal double CalculateLateFee(string date) {
             TransactionDB transDB = new TransactionDB();
             EventDB eventDB = new EventDB();
             String name = "Late Fee";
             double lateFee = eventDB.GetLateFee(name);
             lateFee = lateFee * this.lateTime;
             string maxTransactionID = transDB.GetNextTransID();
-            transDB.AddLateFee(maxTransactionID, name, this.allowanceID, DateTime.Now.ToString("yyyy-MM-dd"), lateFee);
+            transDB.AddLateFee(maxTransactionID, name, this.allowanceID, date, lateFee);
             transDB.UpdateBalances(guardianID, lateFee,"MiscTotal");
             return lateFee;
         }

@@ -29,8 +29,8 @@ namespace ChildcareUnitTests {
         public void TestCalculateLateFee() {
             GuardianTools.TransactionCharge tCharge = new GuardianTools.TransactionCharge("123450", "000001");
             tCharge.setLateTime(1.0);
-            Assert.AreEqual(tCharge.CalculateLateFee(), 30.0);
-            Assert.AreNotEqual(tCharge.CalculateLateFee(), 60.0);
+            Assert.AreEqual(tCharge.CalculateLateFee(DateTime.Now.ToString("yyyy-MM-dd")), 30.0);
+            Assert.AreNotEqual(tCharge.CalculateLateFee(DateTime.Now.ToString("yyyy-MM-dd")), 60.0);
         }
 
         [TestMethod]
