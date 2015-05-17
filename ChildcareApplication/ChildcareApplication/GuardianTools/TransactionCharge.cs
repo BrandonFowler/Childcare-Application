@@ -60,7 +60,7 @@ namespace GuardianTools {
             TimeSpan TimeSpanCheckIn = TimeSpan.Parse(DateTime.Parse(checkInTime).ToString("HH:mm:ss"));
             double totalCheckedInHours = (TimeSpanCheckOut.Hours - TimeSpanCheckIn.Hours) + ((TimeSpanCheckOut.Minutes - TimeSpanCheckIn.Minutes) / 60.0);
             double lateMaximum = eventDB.GetEventHourCap(eventName);
-            if (totalCheckedInHours > lateMaximum) {
+            if (totalCheckedInHours > lateMaximum && eventName.CompareTo("Late Fee") != 0) {
                 double timeDifference = totalCheckedInHours - lateMaximum;
                 if (timeDifference > this.lateTime) {
                     this.lateTime = timeDifference;
@@ -71,7 +71,7 @@ namespace GuardianTools {
                 }
                 this.isLate = true;
             }
-            else if (this.lateTime > 0) {
+            else if (this.lateTime > 0 && eventName.CompareTo("Late Fee") != 0) {
                 totalCheckedInHours = totalCheckedInHours - this.lateTime;
                 this.isLate = true;
             }

@@ -24,6 +24,8 @@ namespace AdminTools {
         private double originalFee = 0.0;
         private TransactionCharge transaction;
         private string allowanceID;
+        private string guardianName = "";
+        private string childName = "";
 
         public TransactionModificationWindow(String transactionID) {
             InitializeComponent();
@@ -228,7 +230,9 @@ namespace AdminTools {
         }
 
         private void SetAllowanceID() {
-            if (this.allowanceID == null) {
+            if (this.allowanceID == null || this.txt_GuardianName.Text.CompareTo(guardianName) != 0 || this.txt_ChildName.Text.CompareTo(childName) != 0) {
+                this.guardianName = this.txt_GuardianName.Text;
+                this.childName = this.txt_ChildName.Text;
                 ConnectionsDB conDB = new ConnectionsDB();
                 List<string> allowanceIDs = conDB.GetAllowanceIDsOnNames(txt_GuardianName.Text, txt_ChildName.Text);
 
