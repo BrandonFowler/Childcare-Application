@@ -109,6 +109,9 @@
     <Compile Include="AdminTools\AdminAddEdit.xaml.cs">
       <DependentUpon>AdminAddEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminTools\SelectGuardian.xaml.cs">
+      <DependentUpon>SelectGuardian.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminTools\AdminLogin.xaml.cs">
       <DependentUpon>AdminLogin.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,10 @@
     <Page Include="AdminTools\AdminAddEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminTools\SelectGuardian.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="AdminTools\AdminLogin.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows;
 using ChildcareApplication.Properties;
 using MessageBoxUtils;
+using System.Collections.Generic;
 
 namespace DatabaseController {
 
@@ -250,14 +251,14 @@ namespace DatabaseController {
             }
         }
 
-        public string GetAllowanceIDOnNames(string fullGuardianName, string fullChildName) {
+        public List<string> GetAllowanceIDsOnNames(string fullGuardianName, string fullChildName) {
             string[] splitGuardianName = fullGuardianName.Split(' ');
             string[] splitChildName = fullChildName.Split(' ');
             string guardianFirst = splitGuardianName[0];
             string guardianLast = splitGuardianName[1];
             string childFirst = splitChildName[0];
             string childLast = splitChildName[1];
-            string allowanceID = "";
+            List<string> allowanceID = new List<string>();
 
             String query = "SELECT Allowance_ID FROM Guardian Natural Join AllowedConnections Join ";
             query += "Child ON AllowedConnections.Child_ID = Child.Child_ID Where Guardian.FirstName = '";
@@ -267,7 +268,13 @@ namespace DatabaseController {
 
             try {
                 dbCon.Open();
-                allowanceID = Convert.ToString(cmd.ExecuteScalar());
+                SQLiteDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read()) {
+                    allowanceID.Add(reader.GetString(0));
+                }
+
+                reader.Close();
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
@@ -306,5 +313,81 @@ namespace DatabaseController {
             return guardianID;
         }
 
+        public string GetAllowanceID(string transactionID) {
+            string sql = "select Allowance_ID " +
+                         "from ChildcareTransaction " +
+                         "where ChildcareTransaction_ID = @transactionID;";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@transactionID", transactionID));
+            try {
+                dbCon.Open();
+                string connectionID = Convert.ToString(command.ExecuteScalar());
+                dbCon.Close();
+
+                return connectionID;
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+                return null;
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve critical information");
+                return null;
+            }
+        }
+
+        public string GetGuardianID(string allowanceID) {
+            string sql = "select Guardian_ID " +
+                         "from AllowedConnections " +
+                         "where Allowance_ID = @allowanceID;";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
+            try {
+                dbCon.Open();
+                string connectionID = Convert.ToString(command.ExecuteScalar());
+                dbCon.Close();
+
+                return connectionID;
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+                return null;
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve critical information");
+                return null;
+            }
+        }
+
+        public string[] GetGuardianName(string allowanceID) {
+            string[] name = new string[2];
+
+            string sql = "select FirstName, LastName " +
+                         "from AllowedConnections NATURAL JOIN Guardian " +
+                         "where Allowance_ID = @allowanceID;";
+            SQLiteCommand command = new SQLiteCommand(sql, dbCon);
+            command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
+            try {
+                dbCon.Open();
+                SQLiteDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                name[0] = reader.GetString(0);
+                name[1] = reader.GetString(1);
+
+                reader.Close();
+                dbCon.Close();
+
+                return name;
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+                return null;
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve critical information");
+                return null;
+            }
+        }
     }
 }

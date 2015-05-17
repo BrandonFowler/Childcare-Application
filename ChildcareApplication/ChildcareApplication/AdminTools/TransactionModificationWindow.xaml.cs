@@ -23,19 +23,15 @@ namespace AdminTools {
         private String originalEventName = "";
         private double originalFee = 0.0;
         private TransactionCharge transaction;
+        private string allowanceID;
 
         public TransactionModificationWindow(String transactionID) {
             InitializeComponent();
             this.transactionID = transactionID;
             LoadData();
             this.dataChanged = false;
-            this.MouseDown += WindowMouseDown;
-            this.txt_CheckIn.LostFocus += CalculateTransaction;
-            this.txt_CheckOut.LostFocus += CalculateTransaction;
-            this.cmb_EventName.LostFocus += CalculateTransaction;
-            this.txt_Date.LostFocus += CalculateTransaction;
-            this.txt_GuardianName.LostFocus += ReadyTransaction;
-            this.txt_ChildName.LostFocus += ReadyTransaction;
+            CreateEvents();
+            this.txt_GuardianName.Focus();
         }
 
         public TransactionModificationWindow() {
@@ -43,6 +39,11 @@ namespace AdminTools {
             LoadEventCMB();
             this.transactionID = "";
             this.dataChanged = false;
+            CreateEvents();
+            this.txt_GuardianName.Focus();
+        }
+
+        private void CreateEvents() {
             this.MouseDown += WindowMouseDown;
             this.txt_CheckIn.LostFocus += CalculateTransaction;
             this.txt_CheckOut.LostFocus += CalculateTransaction;
@@ -86,7 +87,7 @@ namespace AdminTools {
             this.txt_CheckIn.Text = transDB.GetTwelveHourTime(this.transactionID, "CheckedIn");
             this.txt_CheckOut.Text = transDB.GetTwelveHourTime(this.transactionID, "CheckedOut");
             this.txt_Date.Text = transDB.GetTransactionDate(this.transactionID);
-            this.transaction = new TransactionCharge(transDB.GetGuardianIDFromTrans(this.transactionID), conDB.GetAllowanceIDOnNames(this.txt_GuardianName.Text, this.txt_ChildName.Text));
+            this.transaction = new TransactionCharge(transDB.GetGuardianIDFromTrans(this.transactionID), conDB.GetAllowanceID(this.transactionID));
         }
 
         private void LoadEventCMB(params string[] selectedName) {
@@ -204,11 +205,10 @@ namespace AdminTools {
 
         private void SubmitChanges() {
             TransactionDB transDB = new TransactionDB();
-            ConnectionsDB conDB = new ConnectionsDB();
-            string transID, eventName, allowanceID, transDate, checkedIn, checkedOut, transTotal;
+            string transID, eventName, transDate, checkedIn, checkedOut, transTotal;
 
             eventName = ((ComboBoxItem)cmb_EventName.SelectedItem).Content.ToString();
-            allowanceID = conDB.GetAllowanceIDOnNames(txt_GuardianName.Text, txt_ChildName.Text);
+            SetAllowanceID();
             transDate = FormatDate(txt_Date.Text);
             checkedIn = FormatTime(txt_CheckIn.Text);
             checkedOut = FormatTime(txt_CheckOut.Text);
@@ -218,12 +218,26 @@ namespace AdminTools {
 
             if (this.transactionID == "") {
                 transID = transDB.GetNextTransID();
-                transDB.NewTransaction(transID, eventName, allowanceID, transDate, checkedIn, checkedOut, transTotal);
+                transDB.NewTransaction(transID, eventName, this.allowanceID, transDate, checkedIn, checkedOut, transTotal);
                 transaction.CompleteTransaction(Convert.ToDouble(this.txt_TransactionTotal.Text), eventName);
             } else {
-                transDB.UpdateTransaction(this.transactionID, eventName, allowanceID, transDate, checkedIn, checkedOut, transTotal);
+                transDB.UpdateTransaction(this.transactionID, eventName, this.allowanceID, transDate, checkedIn, checkedOut, transTotal);
                 transaction.CompleteTransaction(Convert.ToDouble(this.txt_TransactionTotal.Text), eventName);
                 transaction.AddToBalance(this.originalEventName, (this.originalFee) * (-1));
+            }
+        }
+
+        private void SetAllowanceID() {
+            if (this.allowanceID == null) {
+                ConnectionsDB conDB = new ConnectionsDB();
+                List<string> allowanceIDs = conDB.GetAllowanceIDsOnNames(txt_GuardianName.Text, txt_ChildName.Text);
+
+                if (allowanceIDs.Count > 1) {
+                    SelectGuardian selectGuardian = new SelectGuardian(allowanceIDs, this);
+                    selectGuardian.ShowDialog();
+                } else {
+                    this.allowanceID = allowanceIDs[0];
+                }
             }
         }
 
@@ -296,6 +310,15 @@ namespace AdminTools {
         }
 
         private bool IsValidForCalculations() {
+            GuardianInfoDB parentDB = new GuardianInfoDB();
+            ChildInfoDatabase childDB = new ChildInfoDatabase();
+
+            if (!parentDB.GuardianNameExists(txt_GuardianName.Text)) {
+                return false;
+            }
+            if (!childDB.ChildNameExists(txt_ChildName.Text)) {
+                return false;
+            }
             if (cmb_EventName.SelectedIndex < 0) {
                 return false;
             }
@@ -312,15 +335,20 @@ namespace AdminTools {
         }
 
         private void ReadyTransaction(object sender, RoutedEventArgs e) {
-            ChildInfoDatabase childDB = new ChildInfoDatabase();
             TransactionDB transDB = new TransactionDB();
-            GuardianInfoDB parentDB = new GuardianInfoDB();
             ConnectionsDB conDB = new ConnectionsDB();
+            ChildInfoDatabase childDB = new ChildInfoDatabase();
+            GuardianInfoDB parentDB = new GuardianInfoDB();
+
             if (parentDB.GuardianNameExists(txt_GuardianName.Text) && childDB.ChildNameExists(txt_ChildName.Text)) {
-                this.transaction = new TransactionCharge(conDB.GetGuardianIDOnNames(txt_GuardianName.Text, txt_ChildName.Text), conDB.GetAllowanceIDOnNames(this.txt_GuardianName.Text, this.txt_ChildName.Text));
+                SetAllowanceID();
+                this.transaction = new TransactionCharge(conDB.GetGuardianID(allowanceID), allowanceID);
                 CalculateTransaction(sender, e);
             }
         }
 
+        public void SetAllowanceID(string allowanceID) {
+            this.allowanceID = allowanceID;
+        }
     }
 }

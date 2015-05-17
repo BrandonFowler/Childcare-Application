@@ -92,6 +92,7 @@ namespace AdminTools {
         private void btn_NewTransaction_Click(object sender, RoutedEventArgs e) {
             TransactionModificationWindow win = new TransactionModificationWindow();
             win.ShowDialog();
+            this.LoadTransactions();
         }
 
         private void txt_TransactionID_KeyUp(object sender, KeyEventArgs e) {
