@@ -46,8 +46,7 @@ namespace ChildcareApplication {
         }
 
         private void btn_Help_Click(object sender, RoutedEventArgs e) {
-            HelpWindow help = new HelpWindow();
-            help.ShowDialog();
+            
         }
 
         private void btn_About_Click(object sender, RoutedEventArgs e) {
