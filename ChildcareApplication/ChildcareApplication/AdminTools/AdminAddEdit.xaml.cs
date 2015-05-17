@@ -151,25 +151,28 @@ namespace ChildcareApplication.AdminTools {
                 lbl_PassText.Text = "Confirm Changes";
             }
             else if (editingPW) {
-                if (passwordsMatch()) {
-                    lst_AdminList.IsEnabled = true;
-                    btn_AddAdmin.IsEnabled = true;
-                    btn_DelAdmin.IsEnabled = true;
-                    btn_Save.IsEnabled = true;
-                    btn_Cancel.IsEnabled = true;
-                    txt_LoginName.IsEnabled = true;
-                    txt_Email.IsEnabled = true;
-                    rdb_Full.IsEnabled = true;
-                    rdb_Limited.IsEnabled = true;
+                if (txt_Password.Password != AdminTools.Hashing.HashPass("")) {
+                    if (passwordsMatch()) {
+                        lst_AdminList.IsEnabled = true;
+                        btn_AddAdmin.IsEnabled = true;
+                        btn_DelAdmin.IsEnabled = true;
+                        btn_Save.IsEnabled = true;
+                        btn_Cancel.IsEnabled = true;
+                        txt_LoginName.IsEnabled = true;
+                        txt_Email.IsEnabled = true;
+                        rdb_Full.IsEnabled = true;
+                        rdb_Limited.IsEnabled = true;
 
-                    txt_Password.IsEnabled = false;
-                    txt_ConfirmPass.IsEnabled = false;
-                    editingPW = false;
-                    lbl_PassText.Text = "Change Password";
-                    pwChanged = true;
-                }
-                else {
-                    WPFMessageBox.Show("Passwords do not match. Please try again");
+                        txt_Password.IsEnabled = false;
+                        txt_ConfirmPass.IsEnabled = false;
+                        editingPW = false;
+                        lbl_PassText.Text = "Change Password";
+                        pwChanged = true;
+                    } else {
+                        WPFMessageBox.Show("Passwords do not match. Please try again");
+                    }
+                } else {
+                    WPFMessageBox.Show("Password must not be blank!");
                 }
             }
 
