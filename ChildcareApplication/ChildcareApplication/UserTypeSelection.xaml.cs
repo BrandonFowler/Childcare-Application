@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AdminTools;
 using GuardianTools;
+using MessageBoxUtils;
 
 namespace ChildcareApplication {
     /// <summary>
@@ -46,7 +47,7 @@ namespace ChildcareApplication {
         }
 
         private void btn_Help_Click(object sender, RoutedEventArgs e) {
-            
+            WPFMessageBox.Show("Not yet implemented: will open the help pdf.");
         }
 
         private void btn_About_Click(object sender, RoutedEventArgs e) {
