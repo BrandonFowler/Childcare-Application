@@ -354,7 +354,7 @@
                 </Column>
                 <Column Id="c59">
                     <Name>Family_ID</Name>
-                    <Type>varchar(6)</Type>
+                    <Type>varchar(5)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>false</PK>
@@ -642,7 +642,7 @@
             <Columns>
                 <Column Id="c57">
                     <Name>Family_ID</Name>
-                    <Type>varchar(6)</Type>
+                    <Type>varchar(5)</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <PK>true</PK>

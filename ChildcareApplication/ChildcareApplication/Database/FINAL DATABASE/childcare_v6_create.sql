@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2015-05-18 08:39:58.817
+-- Last modification date: 2015-05-18 19:59:29.496
 
 
 
@@ -18,7 +18,7 @@ CREATE TABLE AllowedConnections (
     Allowance_ID varchar(6) NOT NULL  PRIMARY KEY,
     Guardian_ID varchar(6) NOT NULL,
     Child_ID varchar(6) NOT NULL,
-    Family_ID varchar(6) NOT NULL,
+    Family_ID varchar(5) NOT NULL,
     ConnectionDeletionDate date,
     FOREIGN KEY (Guardian_ID) REFERENCES Guardian (Guardian_ID),
     FOREIGN KEY (Child_ID) REFERENCES Child (Child_ID),
@@ -66,7 +66,7 @@ CREATE TABLE EventData (
 
 -- Table: Family
 CREATE TABLE Family (
-    Family_ID varchar(6) NOT NULL  PRIMARY KEY,
+    Family_ID varchar(5) NOT NULL  PRIMARY KEY,
     RegularTotal float,
     CampTotal float,
     MiscTotal float
