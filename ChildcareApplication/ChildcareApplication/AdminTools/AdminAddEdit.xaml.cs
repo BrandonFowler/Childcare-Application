@@ -187,7 +187,7 @@ namespace ChildcareApplication.AdminTools {
             if (!RegExpressions.RegexValidateEventName(txt_LoginName.Text)) {
                 WPFMessageBox.Show("Administrator names may only include numbers and letters.");
                 btn_Save.IsEnabled = false;
-            } else if (lst_AdminList.Items.Contains(txt_LoginName.Text) && !(lst_AdminList.SelectedItem.ToString().Equals(txt_LoginName.Text))) {
+            } else if ((lst_AdminList.Items.Contains(txt_LoginName.Text) && !(lst_AdminList.SelectedItem.ToString().Equals(txt_LoginName.Text))) || txt_LoginName.Text.Equals("superuser")) {
                 WPFMessageBox.Show("An administrator with that name already exists. Please change the login name to be unique before continuing");
                 btn_Save.IsEnabled = false;
             }
