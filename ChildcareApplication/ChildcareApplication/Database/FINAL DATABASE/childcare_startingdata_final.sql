@@ -1,8 +1,8 @@
 INSERT INTO Administrator
 VALUES ("superuser",
-	"0CC175B9C0F1B6A831C399E2697726",
-	"1",
-	"tester@testmail.test",
+	"C55AFC6C3E18F2C3014019F7AC29EF",
+	"0",
+	"none",
 	NULL);
 
 INSERT INTO EventData
@@ -14,7 +14,7 @@ VALUES ("Late Fee",
         NULL,
         NULL,
         NULL,
-	NULL,
+		NULL,
 		NULL);
 
 INSERT INTO EventData
@@ -26,7 +26,7 @@ VALUES ("Regular Childcare",
         NULL,
         NULL,
         NULL,
-	3,
+		3,
 		NULL);
 
 INSERT INTO EventData
@@ -38,7 +38,7 @@ VALUES ("Adolescent Childcare",
         NULL,
         NULL,
         NULL,
-	NULL,
+		NULL,
 		NULL);
 
 INSERT INTO EventData
@@ -50,7 +50,7 @@ VALUES ("Infant Childcare",
         NULL,
         NULL,
         NULL,
-	2,
+		2,
 		NULL);
 
 INSERT INTO EventData
@@ -62,7 +62,7 @@ VALUES ("Parents Night Out",
         NULL,
         NULL,
         "Friday",
-	NULL,
+		NULL,
 		NULL);
 
 INSERT INTO EventData
@@ -74,5 +74,5 @@ VALUES ("Camp",
         NULL,
         NULL,
         NULL,
-	NULL,
+		NULL,
 		NULL);
