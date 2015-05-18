@@ -95,7 +95,6 @@ namespace GuardianTools {
             }
             catch(Exception){
                 WPFMessageBox.Show("Unable to load photo for unknown reason.");
-               
             }
             return image;
         }

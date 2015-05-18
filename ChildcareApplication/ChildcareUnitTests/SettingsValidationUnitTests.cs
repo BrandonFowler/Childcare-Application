@@ -13,7 +13,7 @@ namespace ChildcareUnitTests {
             Assert.IsFalse(SettingsValidation.ValidBillingDate("a"));
             Assert.IsFalse(SettingsValidation.ValidBillingDate("30"));
             Assert.IsFalse(SettingsValidation.ValidBillingDate("0"));
-            Assert.IsTrue(SettingsValidation.ValidBillingDate("1"));
+            Assert.IsTrue(SettingsValidation.ValidBillingDate("2"));
             Assert.IsTrue(SettingsValidation.ValidBillingDate("28"));
             Assert.IsTrue(SettingsValidation.ValidBillingDate("10"));
         }

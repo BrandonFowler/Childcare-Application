@@ -39,14 +39,14 @@ namespace GuardianTools {
         }
 
         private void KeyPressed(Object o, KeyEventArgs e) {
-                if (e.Key == Key.Return) {
-                    if (txt_SearchBox.IsSelectionActive) {
-                        Search();
-                    }
-                    else if (dta_GuardianList.SelectedItem != null) {
-                        Login();
-                    }
-                }    
+            if (e.Key == Key.Return) {
+                if (txt_SearchBox.IsSelectionActive) {
+                    Search();
+                }
+                else if (dta_GuardianList.SelectedItem != null) {
+                    Login();
+                }
+            }
         }
 
         private void OnBoxFocus(object sender, RoutedEventArgs e) {

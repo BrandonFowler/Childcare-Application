@@ -43,7 +43,6 @@ namespace GuardianTools {
             }
             WPFMessageBox.Show("Error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
             return 8;
-
         }
 
         internal int GetInfantCap() {
@@ -53,7 +52,6 @@ namespace GuardianTools {
             }
             WPFMessageBox.Show("Error: Unable to retrieve settings data, child age group may be calculated incorrectly.");
             return 1;
-
         }
 
         internal int GetBillingEnd() {
@@ -63,7 +61,6 @@ namespace GuardianTools {
             }
             WPFMessageBox.Show("Error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
             return 19;
-
         }
 
         internal int GetBillingStart() {
@@ -73,7 +70,6 @@ namespace GuardianTools {
             }
             WPFMessageBox.Show("Error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
             return 20;
-
         }
 
         internal int GetBillingCap() {
@@ -114,5 +110,6 @@ namespace GuardianTools {
             }
             return hours;
         }
+
     }
 }

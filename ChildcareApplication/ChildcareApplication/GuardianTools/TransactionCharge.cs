@@ -119,9 +119,7 @@ namespace GuardianTools {
             if (String.IsNullOrWhiteSpace(eventData[1])) {
                 return false;
             }
-            else {
-                return true;
-            }
+            return true;
         }
 
         internal double FindEventFee(string guardianID, string eventName) {

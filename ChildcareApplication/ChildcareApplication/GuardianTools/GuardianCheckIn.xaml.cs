@@ -26,7 +26,6 @@ namespace GuardianTools {
         private bool altKeyPressed = false;
         private LoginDB db;
 
-
         public GuardianCheckIn() {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
