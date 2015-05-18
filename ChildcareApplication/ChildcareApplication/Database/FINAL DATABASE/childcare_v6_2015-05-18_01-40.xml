@@ -622,7 +622,7 @@
                     <Name>AdminDeletionDate</Name>
                     <Type>date</Type>
                     <Description></Description>
-                    <Nullable>false</Nullable>
+                    <Nullable>true</Nullable>
                     <PK>false</PK>
                     <DefaultValue></DefaultValue>
                     <CheckExpression></CheckExpression>

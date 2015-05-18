@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2015-05-18 08:02:49.434
+-- Last modification date: 2015-05-18 08:39:58.817
 
 
 
@@ -10,7 +10,7 @@ CREATE TABLE Administrator (
     AdministratorPW varchar(200) NOT NULL,
     AccessLevel varchar(1) NOT NULL,
     AdministratorEmail varchar(100) NOT NULL,
-    AdminDeletionDate date NOT NULL
+    AdminDeletionDate date
 );
 
 -- Table: AllowedConnections
