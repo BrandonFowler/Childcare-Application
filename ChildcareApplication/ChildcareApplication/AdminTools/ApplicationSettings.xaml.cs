@@ -37,20 +37,20 @@ namespace ChildcareApplication.AdminTools {
             txt_RegularAge.Text = Properties.Settings.Default.RegularMaxAge.ToString();
             txt_defaultReportFolder.Text = Properties.Settings.Default.DefaultSaveFolder.ToString();
 
-            txt_MonOpening.Text = Properties.Settings.Default.MonOpen.TimeOfDay.ToString();
-            txt_MonClosing.Text = Properties.Settings.Default.MonClose.TimeOfDay.ToString();
-            txt_TueOpening.Text = Properties.Settings.Default.TueOpen.TimeOfDay.ToString();
-            txt_TueClosing.Text = Properties.Settings.Default.TueClose.TimeOfDay.ToString();
-            txt_WedOpening.Text = Properties.Settings.Default.WedOpen.TimeOfDay.ToString();
-            txt_WedClosing.Text = Properties.Settings.Default.WedClose.TimeOfDay.ToString();
-            txt_ThuOpening.Text = Properties.Settings.Default.ThuOpen.TimeOfDay.ToString();
-            txt_ThuClosing.Text = Properties.Settings.Default.ThuClose.TimeOfDay.ToString();
-            txt_FriOpening.Text = Properties.Settings.Default.FriOpen.TimeOfDay.ToString();
-            txt_FriClosing.Text = Properties.Settings.Default.FriClose.TimeOfDay.ToString();
-            txt_SatOpening.Text = Properties.Settings.Default.SatOpen.TimeOfDay.ToString();
-            txt_SatClosing.Text = Properties.Settings.Default.SatClose.TimeOfDay.ToString();
-            txt_SunOpening.Text = Properties.Settings.Default.SunOpen.TimeOfDay.ToString();
-            txt_SunClosing.Text = Properties.Settings.Default.SunClose.TimeOfDay.ToString();
+            txt_MonOpening.Text = Properties.Settings.Default.MonOpen.ToString("HH:mm");
+            txt_MonClosing.Text = Properties.Settings.Default.MonClose.ToString("HH:mm");
+            txt_TueOpening.Text = Properties.Settings.Default.TueOpen.ToString("HH:mm");
+            txt_TueClosing.Text = Properties.Settings.Default.TueClose.ToString("HH:mm");
+            txt_WedOpening.Text = Properties.Settings.Default.WedOpen.ToString("HH:mm");
+            txt_WedClosing.Text = Properties.Settings.Default.WedClose.ToString("HH:mm");
+            txt_ThuOpening.Text = Properties.Settings.Default.ThuOpen.ToString("HH:mm");
+            txt_ThuClosing.Text = Properties.Settings.Default.ThuClose.ToString("HH:mm");
+            txt_FriOpening.Text = Properties.Settings.Default.FriOpen.ToString("HH:mm");
+            txt_FriClosing.Text = Properties.Settings.Default.FriClose.ToString("HH:mm");
+            txt_SatOpening.Text = Properties.Settings.Default.SatOpen.ToString("HH:mm");
+            txt_SatClosing.Text = Properties.Settings.Default.SatClose.ToString("HH:mm");
+            txt_SunOpening.Text = Properties.Settings.Default.SunOpen.ToString("HH:mm");
+            txt_SunClosing.Text = Properties.Settings.Default.SunClose.ToString("HH:mm");
 
             checkDays();
         }
