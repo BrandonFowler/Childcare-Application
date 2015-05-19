@@ -264,6 +264,7 @@ namespace ChildcareApplication.AdminTools {
             txt_Status.Text = "OK";
             txt_Status.Foreground = Brushes.LightGreen;
             errorPresent = false;
+            btn_Confirm.ToolTip = "Confirm and save changes.";
         }
 
         private void statusBad() {
@@ -272,6 +273,7 @@ namespace ChildcareApplication.AdminTools {
             txt_Status.Text = "ERROR";
             txt_Status.Foreground = Brushes.Red;
             errorPresent = true;
+            btn_Confirm.ToolTip = "Confirm that you have fixed errors present before saving your settings.";
         }
 
         private void statusBad(TextBox errorBox) {
