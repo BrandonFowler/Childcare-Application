@@ -389,7 +389,7 @@ namespace DatabaseController {
         }
 
         public List<string> GetAllEventNames() {
-            String query = "SELECT EventName FROM EventData;";
+            String query = "SELECT EventName FROM EventData Where EventDeletionDate IS null;";
             List<string> results = new List<string>();
 
             try {

@@ -42,6 +42,11 @@ namespace AdminTools {
             }
         }
 
+        private void ReFillComboBox() {
+            this.cmd_EventIDCombo.Items.Clear();
+            FillComboBox();
+        }
+
         private void btn_EditEvent_Click(object sender, RoutedEventArgs e) {
             if (cmd_EventIDCombo.SelectedIndex != -1) {
                 String test = ((ComboBoxItem)cmd_EventIDCombo.SelectedItem).Content.ToString();
@@ -58,11 +63,20 @@ namespace AdminTools {
                 EventDB eventDB = new EventDB();
                 String test = ((ComboBoxItem)cmd_EventIDCombo.SelectedItem).Content.ToString();
 
-                eventDB.DeleteEvent(test);
-                LoadEvents();
+                if (!IsProtected(test)) {
+                    eventDB.DeleteEvent(test);
+                    LoadEvents();
+                    ReFillComboBox();
+                } else {
+                    WPFMessageBox.Show("" + test + " is a protected event.  You may not delete it.");
+                }
             } else {
                 WPFMessageBox.Show("You must select an event name from the drop down box.");
             }
+        }
+
+        private bool IsProtected(string eventName) {
+            return (eventName == "Regular Childcare" || eventName == "Late Fee" || eventName == "Adolescent Childcare" || eventName == "Infant Childcare");
         }
 
         private void btn_AddEvent_Click(object sender, RoutedEventArgs e) {
@@ -78,6 +92,23 @@ namespace AdminTools {
         private void WindowMouseDown(object sender, MouseButtonEventArgs e){
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
+        }
+
+        private void EventViewDataGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
+            if (this.EventViewDataGrid.HasItems) {
+                DataRowView row = (DataRowView)EventViewDataGrid.SelectedItem;
+                string eventName = row.Row[0].ToString();
+                this.cmd_EventIDCombo.SelectedIndex = FindCMBIndex(eventName);
+            }
+        }
+
+        private int FindCMBIndex(string eventName) {
+            for (int i = 0; i < this.cmd_EventIDCombo.Items.Count; i++) {
+                if (((DataRowView)EventViewDataGrid.Items[i]).Row[0].ToString() == eventName) {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 }

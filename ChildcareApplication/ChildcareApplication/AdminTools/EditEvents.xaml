@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
     <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True">
         <Grid Margin="-2">
-            <DataGrid x:Name="EventViewDataGrid" Margin="10,87,10,15" VerticalAlignment="Center" Height="273" Background="#FFE6EAE0" RowBackground="#FFE6EAE0" HorizontalAlignment="Center" Width="830">
+            <DataGrid x:Name="EventViewDataGrid" Margin="10,87,10,15" VerticalAlignment="Center" Height="273" Background="#FFE6EAE0" RowBackground="#FFE6EAE0" HorizontalAlignment="Center" Width="830" MouseLeftButtonUp="EventViewDataGrid_MouseLeftButtonUp" ToolTip="Click an event or select an item from the above combo box." SelectionMode="Single">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -31,7 +31,7 @@
                 </DataGrid.Resources>
             </DataGrid>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddEvent" Content="_Add Event" HorizontalAlignment="Left" Margin="24,36,0,0" VerticalAlignment="Top" Width="110" Click="btn_AddEvent_Click" TabIndex="0" ToolTip="Add a new event."/>
-            <ComboBox x:Name="cmd_EventIDCombo" HorizontalAlignment="Left" Margin="270,38,0,0" VerticalAlignment="Top" Width="126" TabIndex="2" FontSize="14" ToolTip="Loaded from the list below.">
+            <ComboBox x:Name="cmd_EventIDCombo" HorizontalAlignment="Left" Margin="270,38,0,0" VerticalAlignment="Top" Width="210" TabIndex="2" FontSize="14" ToolTip="Loaded from the list below.">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -42,7 +42,7 @@
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditEvent" Content="_Edit Event" HorizontalAlignment="Left" Margin="145,36,0,0" VerticalAlignment="Top" Width="110" Click="btn_EditEvent_Click" TabIndex="1" ToolTip="Edit the selected event."/>
             <Label x:Name="lbl_EventID" Content="Event Name" HorizontalAlignment="Left" Margin="270,12,0,0" VerticalAlignment="Top" Width="82"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Exit" Content="_Close" HorizontalAlignment="Left" Margin="738,36,0,0" VerticalAlignment="Top" Width="76" TabIndex="3" Click="btn_Exit_Click"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_DeleteEvent" Content="_Delete Event" HorizontalAlignment="Left" Margin="420,34,0,0" VerticalAlignment="Top" Width="110" Click="btn_DeleteEvent_Click" TabIndex="1" ToolTip="Edit the selected event."/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_DeleteEvent" Content="_Delete Event" HorizontalAlignment="Left" Margin="497,36,0,0" VerticalAlignment="Top" Width="110" Click="btn_DeleteEvent_Click" TabIndex="1" ToolTip="Edit the selected event."/>
 
         </Grid>
     </Border>
