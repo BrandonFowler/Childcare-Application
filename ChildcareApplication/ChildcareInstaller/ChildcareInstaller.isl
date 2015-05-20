@@ -1930,7 +1930,6 @@
 		<row><td>spokaneclub.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>SPOKAN~1.JPG|SpokaneClub.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\SpokaneClub.jpg</td><td>1</td><td/></row>
 		<row><td>spokaneclubicon.ico</td><td>ISX_DEFAULTCOMPONENT4</td><td>SPOKAN~1.ICO|SpokaneClubIcon.ico</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\SpokaneClubIcon.ico</td><td>1</td><td/></row>
 		<row><td>system.data.sqlite.dll</td><td>System.Data.SQLite.dll</td><td>SYSTEM~1.DLL|System.Data.SQLite.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Database\System.Data.SQLite.dll</td><td>1</td><td/></row>
-		<row><td>system.data.sqlite.dll.cur</td><td>ISX_DEFAULTCOMPONENT2</td><td>SYSTEM~1.CUR|System.Data.SQLite.dll.cur</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Database\System.Data.SQLite.dll.cur</td><td>1</td><td/></row>
 		<row><td>system.data.sqlite.dll1</td><td>System.Data.SQLite.dll1</td><td>SYSTEM~1.DLL|System.Data.SQLite.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\System.Data.SQLite.dll</td><td>1</td><td/></row>
 		<row><td>tauriel.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>Tauriel.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Tauriel.jpg</td><td>1</td><td/></row>
 	</table>
