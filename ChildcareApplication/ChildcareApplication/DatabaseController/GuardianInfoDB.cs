@@ -131,21 +131,16 @@ namespace DatabaseController {
             }
             SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
 
-            String curDue = "$";
+            string curDue = "";
 
             try {
                 dbCon.Open();
-                curDue += Convert.ToString(cmd.ExecuteScalar());
+                curDue = "$" + String.Format("{0:0.00}", cmd.ExecuteScalar());
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve Guardian current due amount.");
             }
 
-            if (curDue.IndexOf('.') == curDue.Length - 2) {
-                curDue += "0";
-            } else if (!curDue.Contains('.')) {
-                curDue += ".00";
-            }
             return curDue;
         }
 

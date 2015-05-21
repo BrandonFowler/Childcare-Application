@@ -103,7 +103,7 @@ namespace AdminTools {
                 fromMonth = DateTime.Now.Month;
                 if (DateTime.Now.Month != 12) {
                     toYear = DateTime.Now.Year;
-                    toMonth = DateTime.Now.Month;
+                    toMonth = DateTime.Now.Month + 1;
                 } else {
                     toYear = DateTime.Now.Year + 1;
                     toMonth = 1;
@@ -188,11 +188,49 @@ namespace AdminTools {
         private void LoadReport(string startDate, string endDate) {
             ReportsDB reportsDB = new ReportsDB();
             DataTable table = reportsDB.GetBusinessReportTable(startDate, endDate);
+            AddTotalsColumn(table);
             this.table = table;
 
             businessDataGrid.ItemsSource = table.DefaultView;
 
             this.reportLoaded = true;
+        }
+
+        private void AddTotalsColumn(DataTable table) {
+            GuardianInfoDB gDB = new GuardianInfoDB();
+            table.Columns.Add("Totals", typeof(string));
+            if (table.Rows.Count > 1) {
+                string id = "";
+                bool campTotalDisplayed = false;
+                bool regTotalDisplayed = false;
+
+                for (int i = 0; i < table.Rows.Count; i++) {
+                    if (id != table.Rows[i][0].ToString()) {
+                        campTotalDisplayed = false;
+                        regTotalDisplayed = false;
+                        id = table.Rows[i][0].ToString();
+                    }
+                    if (IsRegular(table.Rows[i][3].ToString())) {
+                        if (!regTotalDisplayed) {
+                            table.Rows[i][5] = String.Format("{0:0.00}", gDB.GetCurrentDue(id, "Regular"));
+                            regTotalDisplayed = true;
+                        }
+                    } else if (table.Rows[i][3].ToString().Contains("Camp") || table.Rows[i][3].ToString().Contains("camp")) {
+                        if (!campTotalDisplayed) {
+                            campTotalDisplayed = true;
+                            table.Rows[i][5] = String.Format("{0:0.00}", gDB.GetCurrentDue(id, "Camp"));
+                        }
+                    }
+                    if (table.Rows[i][5] == "$0.00") {
+                        table.Rows[i][5] = "";
+                    }
+
+                }
+            }
+        }
+
+        private bool IsRegular(string eventName) {
+            return (eventName == "Regular Childcare" || eventName == "Infant Childcare" || eventName == "Adolescent Childcare");
         }
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e) {
