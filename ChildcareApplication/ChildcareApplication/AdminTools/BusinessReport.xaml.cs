@@ -205,20 +205,20 @@ namespace AdminTools {
                 bool regTotalDisplayed = false;
 
                 for (int i = 0; i < table.Rows.Count; i++) {
-                    if (id != table.Rows[i][0].ToString()) {
+                    if (id != table.Rows[i][0].ToString().Remove(5)) {
                         campTotalDisplayed = false;
                         regTotalDisplayed = false;
-                        id = table.Rows[i][0].ToString();
+                        id = table.Rows[i][0].ToString().Remove(5);
                     }
                     if (IsRegular(table.Rows[i][3].ToString())) {
                         if (!regTotalDisplayed) {
-                            table.Rows[i][5] = String.Format("{0:0.00}", gDB.GetCurrentDue(id, "Regular"));
+                            table.Rows[i][5] = String.Format("{0:0.00}", gDB.GetCurrentDue(table.Rows[i][0].ToString(), "Regular"));
                             regTotalDisplayed = true;
                         }
                     } else if (table.Rows[i][3].ToString().Contains("Camp") || table.Rows[i][3].ToString().Contains("camp")) {
                         if (!campTotalDisplayed) {
                             campTotalDisplayed = true;
-                            table.Rows[i][5] = String.Format("{0:0.00}", gDB.GetCurrentDue(id, "Camp"));
+                            table.Rows[i][5] = String.Format("{0:0.00}", gDB.GetCurrentDue(table.Rows[i][0].ToString(), "Camp"));
                         }
                     }
                     if (table.Rows[i][5] == "$0.00") {
