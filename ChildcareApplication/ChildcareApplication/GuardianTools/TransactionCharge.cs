@@ -236,11 +236,10 @@ namespace GuardianTools {
 
         public void AddToBalance(String name, Double eventFee) {
             TransactionDB transDB = new TransactionDB();
-            name = name.ToUpper();
             if (name.CompareTo("Regular Childcare") == 0 || name.CompareTo("Infant Childcare") == 0 || name.CompareTo("Adolescent Childcare") == 0) {
                 transDB.UpdateBalances(guardianID, eventFee, "RegularTotal");
             }
-            else if (name.Contains("CAMP")) {
+            else if (name.ToUpper().Contains("CAMP")) {
                 transDB.UpdateBalances(guardianID, eventFee, "CampTotal");
             }
             else {
