@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
     <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True">
         <Grid Margin="-2">
-            <DataGrid x:Name="EventViewDataGrid" Margin="10,87,10,15" VerticalAlignment="Center" Height="273" Background="#FFE6EAE0" RowBackground="#FFE6EAE0" HorizontalAlignment="Center" Width="830" MouseLeftButtonUp="EventViewDataGrid_MouseLeftButtonUp" ToolTip="Click an event or select an item from the above combo box." SelectionMode="Single">
+            <DataGrid x:Name="EventViewDataGrid" Margin="10,87,10,15" VerticalAlignment="Center" Height="273" Background="#FFE6EAE0" RowBackground="#FFE6EAE0" HorizontalAlignment="Center" Width="830" MouseLeftButtonUp="EventViewDataGrid_MouseLeftButtonUp" ToolTip="Click an event or select an item from the above combo box." SelectionMode="Single" IsReadOnly="True">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="VerticalContentAlignment" Value="Center"/>

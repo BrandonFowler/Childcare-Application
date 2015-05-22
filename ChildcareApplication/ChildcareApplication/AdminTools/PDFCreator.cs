@@ -64,11 +64,11 @@ namespace AdminTools {
         }
 
         private string TrimColEntry(int currentRow, int colNum, int colCount) {
-            if (colCount == 5) {
+            if (colCount == 6) { //Business Report
                 if (colNum == 1) {
-                    return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 25);
+                    return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 22);
                 } else if (colNum == 2) {
-                    return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 25);
+                    return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 20);
                 } else if (colNum == 3) {
                     return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 25);
                 } else {
@@ -101,12 +101,13 @@ namespace AdminTools {
 
         private int[] InitWidths(int numCols) {
             int[] colWidths = new int[numCols];
-            if (numCols == 5) { //business report
+            if (numCols == 6) { //business report
                 colWidths[0] = 50;
-                colWidths[1] = 150;
-                colWidths[2] = 150;
+                colWidths[1] = 125;
+                colWidths[2] = 125;
                 colWidths[3] = 150;
-                colWidths[4] = 0;
+                colWidths[4] = 55;
+                colWidths[5] = 0;
             } else {
                 colWidths[0] = 70;
                 colWidths[1] = 90;
@@ -134,7 +135,6 @@ namespace AdminTools {
 
                 try {
                     pdf.Save(filename);
-                    WPFMessageBox.Show("Report saved to the reports folder!");
                 } catch (System.IO.IOException) {
                     WPFMessageBox.Show("Unable to access file!  Ensure the file is not opened and that you have permission to edit files in the location specified.");
                 } catch (Exception) {

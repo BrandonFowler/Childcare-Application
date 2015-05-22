@@ -35,11 +35,20 @@ namespace AdminTools {
             valueChanged = false;
             maxHoursChanged = false;
             if (IsProtected(oldEventName)) {
-                this.txt_EventName.IsEnabled = false;
-                this.lbl_EventName.Content = "Event Name (Protected Event)";
+                ProtectEvents(oldEventName);
             }
             this.oldEventName = oldEventName;
             this.MouseDown += WindowMouseDown;
+        }
+
+        private void ProtectEvents(string oldEventName) {
+            this.txt_EventName.IsEnabled = false;
+            this.cmb_Occurence.IsEnabled = false;
+            this.cmb_PriceType.IsEnabled = false;
+            this.lbl_EventName.Content = "Event Name (Protected Event)";
+            if (oldEventName == "Late Fee") {
+                this.txt_MaxHours.IsEnabled = false;
+            }
         }
 
         private bool IsProtected(string eventName) {
