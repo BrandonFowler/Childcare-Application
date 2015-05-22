@@ -71,7 +71,7 @@ namespace AdminTools {
                 fromMonth = DateTime.Now.Month;
                 if (DateTime.Now.Month != 12) {
                     toYear = DateTime.Now.Year;
-                    toMonth = DateTime.Now.Month;
+                    toMonth = DateTime.Now.Month + 1;
                 } else {
                     toYear = DateTime.Now.Year + 1;
                     toMonth = 1;

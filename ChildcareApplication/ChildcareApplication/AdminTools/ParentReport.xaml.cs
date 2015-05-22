@@ -38,6 +38,39 @@ namespace AdminTools {
                 textBox.Background = dte_toDate.Background;
             };
             this.MouseDown += WindowMouseDown;
+            this.btn_CurrentMonthReport.ToolTip = GetCurMonthToolTip(DateTime.Now);
+        }
+
+        private string GetCurMonthToolTip(DateTime now) {
+            Settings settings = new Settings();
+            int fromMonth, fromYear, fromDay, toMonth, toYear, toDay;
+
+            fromDay = Convert.ToInt32(settings.BillingStartDate);
+            toDay = fromDay - 1;
+
+            if (DateTime.Now.Day < fromDay) { //previous month and this month
+                if (DateTime.Now.Month != 1) {
+                    fromYear = DateTime.Now.Year;
+                    fromMonth = DateTime.Now.Month - 1;
+                } else {
+                    fromYear = DateTime.Now.Year - 1;
+                    fromMonth = 12;
+                }
+                toYear = DateTime.Now.Year;
+                toMonth = DateTime.Now.Month;
+            } else { //this month and next month
+                fromYear = DateTime.Now.Year;
+                fromMonth = DateTime.Now.Month;
+                if (DateTime.Now.Month != 12) {
+                    toYear = DateTime.Now.Year;
+                    toMonth = DateTime.Now.Month + 1;
+                } else {
+                    toYear = DateTime.Now.Year + 1;
+                    toMonth = 1;
+                }
+            }
+
+            return "From " + fromMonth + "/" + fromDay + "/" + fromYear + " to " + toMonth + "/" + toDay + "/" + toYear;
         }
 
         //Loads a report based on the passed in MySQL query
