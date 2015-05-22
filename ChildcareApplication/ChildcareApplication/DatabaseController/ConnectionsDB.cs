@@ -203,7 +203,7 @@ namespace DatabaseController {
             dbCon.Close();
         }
 
-        private bool ConnectionExists(string pID, string cID) {
+        public bool ConnectionExists(string pID, string cID) {
             try {
                 dbCon.Open();
                 string sql = "select Child.* " +

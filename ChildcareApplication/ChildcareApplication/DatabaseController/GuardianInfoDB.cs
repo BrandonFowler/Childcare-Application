@@ -164,6 +164,26 @@ namespace DatabaseController {
             }
         }
 
+        internal bool GuardianNotDeletedAndExists(string guardianID) {
+            String query = "SELECT Guardian_ID FROM Guardian WHERE Guardian_ID = '" + guardianID + "' AND GuardianDeletionDate is null;";
+            SQLiteCommand cmd = new SQLiteCommand(query, dbCon);
+            String result = "";
+
+            try {
+                dbCon.Open();
+                result = Convert.ToString(cmd.ExecuteScalar());
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("Could not retrieve Guardian ID.");
+            }
+
+            if (result == guardianID) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public bool GuardianNameExists(string fullName) {
             string[] nameAra = fullName.Split(' ');
             if (nameAra.Length != 2) {

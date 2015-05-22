@@ -51,14 +51,18 @@ namespace AdminTools {
                         string connectionID = connID.ToString();
                         fID = MakeFamilyID(pID);
                         bool guardianExists = false;
-                        guardianExists = gdb.GuardianIDExists(pID);
+                        guardianExists = gdb.GuardianNotDeletedAndExists(pID);
                         if (guardianExists)
                             conDB.UpdateAllowedConnections(connectionID, pID, childID, fID);
                         else
                             WPFMessageBox.Show("Guardian with ID: " +pID + " does not exist.");
                     } else if (linked == 1) {//delink child
+                        bool connExists = conDB.ConnectionExists(pID, childID);
+                        if(connExists)
+                            conDB.DeleteAllowedConnection(childID, pID);
 
-                        conDB.DeleteAllowedConnection(childID, pID);
+                        else
+                            WPFMessageBox.Show("No connection to the Guardian with ID: " + pID + " exists or no Guardian with that ID exists.");
                     }
                     this.Close();
                 }
