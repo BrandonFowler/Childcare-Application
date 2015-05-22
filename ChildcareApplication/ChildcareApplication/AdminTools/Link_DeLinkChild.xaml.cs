@@ -14,6 +14,7 @@ namespace AdminTools {
     public partial class Link_DeLinkChild : Window {
         
         private ChildInfoDatabase db;
+        
         int linked;
         string childID;
 
@@ -23,12 +24,14 @@ namespace AdminTools {
             childID = cID;
             InitializeComponent();
             this.db = new ChildInfoDatabase();
+            
             this.MouseDown += WindowMouseDown;
             txt_GuardianID.Focus(); 
         }
 
         private void btn_Enter_Click(object sender, RoutedEventArgs e) {
             ConnectionsDB conDB = new ConnectionsDB();
+            GuardianInfoDB gdb = new GuardianInfoDB(); 
             string fID = "", pID = "";
             bool formNotComplete = CheckIfNull();
             if (!formNotComplete)//form is completed
@@ -47,7 +50,12 @@ namespace AdminTools {
 
                         string connectionID = connID.ToString();
                         fID = MakeFamilyID(pID);
-                        conDB.UpdateAllowedConnections(connectionID, pID, childID, fID);
+                        bool guardianExists = false;
+                        guardianExists = gdb.GuardianIDExists(pID);
+                        if (guardianExists)
+                            conDB.UpdateAllowedConnections(connectionID, pID, childID, fID);
+                        else
+                            WPFMessageBox.Show("Guardian with ID: " +pID + " does not exist.");
                     } else if (linked == 1) {//delink child
 
                         conDB.DeleteAllowedConnection(childID, pID);
