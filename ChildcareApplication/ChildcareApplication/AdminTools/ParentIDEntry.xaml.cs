@@ -43,7 +43,7 @@ namespace AdminTools {
             } else {
                 string ID = txt_IDEntry.Text;
 
-                if (parentDB.GuardianIDExists(ID)) {
+                if (parentDB.GuardianNotDeletedAndExists(ID)) {
                     if (editParent)
                         DisplayAdminEditParentWindow(ID);
                     else

@@ -58,7 +58,8 @@ namespace AdminTools {
                             WPFMessageBox.Show("Guardian with ID: " +pID + " does not exist.");
                     } else if (linked == 1) {//delink child
                         bool connExists = conDB.ConnectionExists(pID, childID);
-                        if(connExists)
+                        bool guardianExists = gdb.GuardianNotDeletedAndExists(pID);
+                        if(connExists && guardianExists)
                             conDB.DeleteAllowedConnection(childID, pID);
 
                         else
