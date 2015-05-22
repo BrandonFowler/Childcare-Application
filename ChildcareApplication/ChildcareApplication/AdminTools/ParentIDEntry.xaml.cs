@@ -50,6 +50,7 @@ namespace AdminTools {
                         DisplayAdminEditChildInfo(ID);
                 } else {
                     WPFMessageBox.Show("User ID or PIN does not exist");
+                    txt_IDEntry.Focus(); 
                 }
             }
         }
