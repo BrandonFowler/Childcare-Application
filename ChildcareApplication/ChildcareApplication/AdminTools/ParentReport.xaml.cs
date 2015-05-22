@@ -22,6 +22,7 @@ namespace AdminTools {
     public partial class ParentReport : Window {
         private DataTable table;
         private bool reportLoaded;
+        private ChildcareApplication.Properties.Settings settings;
 
         public ParentReport() {
             InitializeComponent();
@@ -65,8 +66,8 @@ namespace AdminTools {
             int fromMonth, fromYear, fromDay, toMonth, toYear, toDay;
 
             if (txt_GuardianID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_GuardianID.Text)) {
-                fromDay = 20;
-                toDay = 19;
+                fromDay = Convert.ToInt32(settings.BillingStartDate);
+                toDay = fromDay - 1;
 
                 if (DateTime.Now.Day < 20) { //previous month and this month
                     if (DateTime.Now.Month != 1) {
@@ -83,7 +84,7 @@ namespace AdminTools {
                     fromMonth = DateTime.Now.Month;
                     if (DateTime.Now.Month != 12) {
                         toYear = DateTime.Now.Year;
-                        toMonth = DateTime.Now.Month;
+                        toMonth = DateTime.Now.Month + 1;
                     } else {
                         toYear = DateTime.Now.Year + 1;
                         toMonth = 1;
