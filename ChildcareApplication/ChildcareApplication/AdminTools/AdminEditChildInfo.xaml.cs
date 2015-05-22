@@ -21,7 +21,7 @@ namespace AdminTools {
         private ChildInfoDatabase db;
         DataSet DS = new DataSet();
         private string ID;
-
+        private bool formError;
         public AdminEditChildInfo(string parentID) {
             InitializeComponent();
             this.ID = parentID;
@@ -73,23 +73,34 @@ namespace AdminTools {
                         setChildBox();
                     }
                 }
-                // ClearFields();
             }
         }//end btn_Submit_Click
 
 
         internal bool RegexValidation() {
-            bool fname = RegExpressions.RegexName(txt_FirstName.Text);
-            if (!fname)
-                txt_FirstName.Focus();
+            formError = true;
+            bool fname = false, lname = false, path = false;
+            if (formError) {
+                fname = RegExpressions.RegexName(txt_FirstName.Text);
+                if (!fname) {
+                    txt_FirstName.Focus();
+                    formError = false;
+                }
+            }
+            if (formError) {
+                lname = RegExpressions.RegexName(txt_LastName.Text);
+                if (!lname) {
+                    txt_LastName.Focus();
+                    formError = false;
+                }
+            }
 
-            bool lname = RegExpressions.RegexName(txt_LastName.Text);
-            if (!lname)
-                txt_LastName.Focus();
-
-
-            bool path = RegExpressions.RegexFilePath(txt_FilePath.Text);
-
+            if (formError) {
+                path = RegExpressions.RegexFilePath(txt_FilePath.Text);
+                if (!path) {
+                    formError = false;
+                }
+            }
 
             if (fname && lname && path)
                 return true;
@@ -120,6 +131,15 @@ namespace AdminTools {
             btn_ChangePicture.IsEnabled = false;
             btn_LinkChild.IsEnabled = false;
             btn_De_LinkChild.IsEnabled = false;
+            btn_LinkExistingChild.IsEnabled = false;
+        }
+        private void EnableForm() {
+            btn_Delete.IsEnabled = true;
+            btn_Submit.IsEnabled = true;
+            btn_ChangePicture.IsEnabled = true;
+            btn_LinkChild.IsEnabled = true;
+            btn_De_LinkChild.IsEnabled = true;
+            btn_LinkExistingChild.IsEnabled = true;
         }
         private void btn_MainMenu_Click(object sender, RoutedEventArgs e) {
             this.Close();
@@ -170,6 +190,10 @@ namespace AdminTools {
                                             image, childrenData[x, 3], childrenData[x, 4], childrenData[x, 5], childrenData[x, 6]));
                 }
             }
+            if (childrenData.GetLength(0) == 0) {
+                DisableForm();  
+            }
+
         }//end setUpCheckInBox
 
         private Image buildImage(string path, int size) {
@@ -222,6 +246,7 @@ namespace AdminTools {
         }
 
         private void btn_AddChild_Click(object sender, RoutedEventArgs e) {
+            EnableForm();
             int maxID = this.db.GetMaxChildID();
             ConnectionsDB conDB = new ConnectionsDB();
 

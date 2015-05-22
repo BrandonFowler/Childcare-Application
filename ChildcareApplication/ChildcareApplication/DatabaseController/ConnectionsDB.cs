@@ -193,7 +193,7 @@ namespace DatabaseController {
                     command.Parameters.Add(new SQLiteParameter("@cID", cID));
                     command.Parameters.Add(new SQLiteParameter("@famID", famID));
                     command.ExecuteNonQuery();
-                    WPFMessageBox.Show("Link Completed.");
+                    
                 } else {
                     WPFMessageBox.Show("There is already a link to this child and the guardian.");
                 }

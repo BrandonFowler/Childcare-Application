@@ -16,6 +16,7 @@ namespace AdminTools {
     public partial class AdminEditParentInfo : Window {
 
         private GuardianInfoDB db;
+        private bool formError;
         public AdminEditParentInfo(string parentID) {
 
             InitializeComponent();
@@ -48,7 +49,7 @@ namespace AdminTools {
                     address = txt_Address.Text;
                     address2 = txt_Address2.Text;
                     city = txt_City.Text;
-                    state = cbo_State.Text; 
+                    state = cbo_State.Text;
                     zip = txt_Zip.Text;
                     path = txt_FilePath.Text;
 
@@ -59,36 +60,64 @@ namespace AdminTools {
         }//end btn_Submit_Click
 
         internal bool RegexValidation() {
-            bool fname = RegExpressions.RegexName(txt_FirstName.Text);
-            if (!fname)
-                txt_FirstName.Focus();
+            formError = true;
+            bool fname = false, lname = false, phone = false, email = false, address = false, city = false, zip = false, path = false;
+            if (formError) {
+                 fname = RegExpressions.RegexName(txt_FirstName.Text);
+                if (!fname) {
+                    txt_FirstName.Focus();
+                    formError = false;
+                }
+            }
+            if (formError) {
+                 lname = RegExpressions.RegexName(txt_LastName.Text);
+                if (!lname) {
+                    txt_LastName.Focus();
+                    formError = false;
+                }
+            }
+            if (formError) {
+                 phone = RegExpressions.RegexPhoneNumber(txt_PhoneNumber.Text);
+                if (!phone) {
+                    txt_PhoneNumber.Focus();
+                    formError = false;
+                }
+            }
+            if (formError) {
+                 email = RegExpressions.RegexEmail(txt_Email.Text);
+                if (!email) {
+                    txt_Email.Focus();
+                    formError = false;
+                }
+            }
+            if (formError) {
+                 address = RegExpressions.RegexAddress(txt_Address.Text);
+                if (!address) {
+                    txt_Address.Focus();
+                    formError = false;
+                }
+            }
+            if (formError) {
+                 city = RegExpressions.RegexCity(txt_City.Text);
+                if (!city) {
+                    txt_City.Focus();
+                    formError = false;
+                }
+            }
+            if (formError) {
+                 zip = RegExpressions.RegexZIP(txt_Zip.Text);
+                if (!zip) {
+                    txt_Zip.Focus();
+                    formError = false;
+                }
+            }
 
-            bool lname = RegExpressions.RegexName(txt_LastName.Text);
-            if (!lname)
-                txt_LastName.Focus();
-
-            bool phone = RegExpressions.RegexPhoneNumber(txt_PhoneNumber.Text);
-            if (!phone)
-                txt_PhoneNumber.Focus();
-
-            bool email = RegExpressions.RegexEmail(txt_Email.Text);
-            if (!email)
-                txt_Email.Focus();
-
-            bool address = RegExpressions.RegexAddress(txt_Address.Text);
-            if (!address)
-                txt_Address.Focus();
-
-            bool city = RegExpressions.RegexCity(txt_City.Text);
-            if (!city)
-                txt_City.Focus();
-
-            bool zip = RegExpressions.RegexZIP(txt_Zip.Text);
-            if (!zip)
-                txt_Zip.Focus();
-
-            bool path = RegExpressions.RegexFilePath(txt_FilePath.Text);
-
+            if (formError) {
+                 path = RegExpressions.RegexFilePath(txt_FilePath.Text);
+                if (!path) {
+                    formError = false;
+                }
+            }
 
             if (fname && lname && phone && email && address && city && zip && path)
                 return true;
@@ -146,34 +175,22 @@ namespace AdminTools {
             if (string.IsNullOrWhiteSpace(this.txt_Address.Text)) {
                 WPFMessageBox.Show("Please enter your address.");
                 return true;
-            }
-
-            else if (string.IsNullOrWhiteSpace(this.txt_City.Text)) {
+            } else if (string.IsNullOrWhiteSpace(this.txt_City.Text)) {
                 WPFMessageBox.Show("Please enter your city.");
                 return true;
-            }
-
-            else if (string.IsNullOrWhiteSpace(this.txt_Zip.Text)) {
+            } else if (string.IsNullOrWhiteSpace(this.txt_Zip.Text)) {
                 WPFMessageBox.Show("Please enter your zip.");
                 return true;
-            }
-
-            else if (string.IsNullOrWhiteSpace(this.txt_FirstName.Text)) {
+            } else if (string.IsNullOrWhiteSpace(this.txt_FirstName.Text)) {
                 WPFMessageBox.Show("Please enter your first name.");
                 return true;
-            }
-
-            else if (string.IsNullOrWhiteSpace(this.txt_LastName.Text)) {
+            } else if (string.IsNullOrWhiteSpace(this.txt_LastName.Text)) {
                 WPFMessageBox.Show("Please enter your last name.");
                 return true;
-            }
-
-            else if (string.IsNullOrWhiteSpace(this.cbo_State.Text)) {
+            } else if (string.IsNullOrWhiteSpace(this.cbo_State.Text)) {
                 WPFMessageBox.Show("Please enter your state.");
                 return true;
-            }
-
-            else if (string.IsNullOrWhiteSpace(this.txt_Email.Text)) {
+            } else if (string.IsNullOrWhiteSpace(this.txt_Email.Text)) {
                 WPFMessageBox.Show("Please enter your e-mail.");
                 return true;
             }
@@ -208,8 +225,7 @@ namespace AdminTools {
                     ImageBrush ib = new ImageBrush();
                     ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
                     cnv_ParentIcon.Background = ib;
-                }
-                else {
+                } else {
                     ClearFields();
                     DisableForm();
                     WPFMessageBox.Show("This Parent has already been deleted.");
@@ -306,8 +322,7 @@ namespace AdminTools {
                     ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
                     cnv_ParentIcon.Background = ib;
                     txt_FilePath.Text = path;
-                }
-                catch (Exception) {
+                } catch (Exception) {
                     WPFMessageBox.Show("Could not change picture to" + path);
 
                 }

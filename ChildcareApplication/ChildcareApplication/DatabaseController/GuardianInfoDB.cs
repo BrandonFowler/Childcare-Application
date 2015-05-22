@@ -229,7 +229,7 @@ namespace DatabaseController {
 
                 command.ExecuteNonQuery();
 
-                WPFMessageBox.Show("Completed");
+                
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not delete Guardian.");
             }
@@ -246,7 +246,7 @@ namespace DatabaseController {
                 "VALUES('" + ID + "', " + PIN + ", " + firstName + ", " + lastName + ", " + phone + ", " + email + ", " + address + ", " + address2 + ", " + city + ", " + state + ", " + zip + ", " + photo + ");";
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
                 mycommand.ExecuteNonQuery();
-                WPFMessageBox.Show("Completed");
+                
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not add new Guardian.");
             }

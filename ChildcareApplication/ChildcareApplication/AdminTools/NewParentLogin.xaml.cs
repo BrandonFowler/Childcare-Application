@@ -13,6 +13,7 @@ namespace AdminTools {
     /// </summary>
     public partial class NewParentLogin : Window {
         private GuardianInfoDB db;
+        private bool formError; 
         public NewParentLogin() {
             InitializeComponent();
             this.db = new GuardianInfoDB();
@@ -79,18 +80,22 @@ namespace AdminTools {
 
         }
         internal bool CheckIfNull() {
-
-            if (string.IsNullOrWhiteSpace(this.txt_ParentID1.Text)) {
+            formError = true; 
+            if (string.IsNullOrWhiteSpace(this.txt_ParentID1.Text) && formError) {
                 WPFMessageBox.Show("Please enter your ID number.");
+                formError = false; 
                 return true;
-            } else if (string.IsNullOrWhiteSpace(this.txt_ParentID2.Text)) {
+            } else if (string.IsNullOrWhiteSpace(this.txt_ParentID2.Text) && formError) {
                 WPFMessageBox.Show("Please enter your ID number a second time.");
+                formError = false;
                 return true;
-            } else if (string.IsNullOrWhiteSpace(this.psw_ParentPIN1.Password)) {
+            } else if (string.IsNullOrWhiteSpace(this.psw_ParentPIN1.Password) && formError) {
                 WPFMessageBox.Show("Please enter your PIN number.");
+                formError = false; 
                 return true;
-            } else if (string.IsNullOrWhiteSpace(this.psw_ParentPIN2.Password)) {
+            } else if (string.IsNullOrWhiteSpace(this.psw_ParentPIN2.Password) && formError) {
                 WPFMessageBox.Show("Please enter your PIN number a second time.");
+                formError = false; 
                 return true;
             }
             return false;

@@ -94,7 +94,7 @@ namespace ChildcareApplication.AdminTools {
              * Spokane
              * San Antonio
              */
-            Regex regex = new Regex(@"(^([\w\s]+)$)");
+            Regex regex = new Regex(@"(^([a-zA-Z]+\s?)+$)");
             Match match = regex.Match(data);
 
             if (match.Success)

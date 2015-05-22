@@ -94,7 +94,7 @@ namespace DatabaseController {
                 command.CommandText = sql;
 
                 command.ExecuteNonQuery();
-                WPFMessageBox.Show("Link Completed.");
+                
 
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not update the child's information.");
@@ -139,7 +139,6 @@ namespace DatabaseController {
                 command.Parameters.Add(new SQLiteParameter("@childID", childID));
                 command.ExecuteNonQuery();
 
-                WPFMessageBox.Show("Completed");
                 dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not delete this child.");
