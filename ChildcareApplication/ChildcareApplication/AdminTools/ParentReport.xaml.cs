@@ -17,12 +17,12 @@ using DatabaseController;
 using ChildcareApplication.DatabaseController;
 using MessageBoxUtils;
 using PdfSharp.Pdf;
+using ChildcareApplication.Properties;
 
 namespace AdminTools {
     public partial class ParentReport : Window {
         private DataTable table;
         private bool reportLoaded;
-        private ChildcareApplication.Properties.Settings settings;
 
         public ParentReport() {
             InitializeComponent();
@@ -63,6 +63,7 @@ namespace AdminTools {
         private void btn_CurrentMonthReport_Click(object sender, RoutedEventArgs e) { 
             GuardianInfoDB parentInfo = new GuardianInfoDB();
             String fromDate, toDate;
+            Settings settings = new Settings();
             int fromMonth, fromYear, fromDay, toMonth, toYear, toDay;
 
             if (txt_GuardianID.Text.Length == 6 && parentInfo.GuardianIDExists(txt_GuardianID.Text)) {
@@ -107,7 +108,7 @@ namespace AdminTools {
             date = year + "-";
 
             if (month < 10) {
-                date += "0" + month;
+                date += "0" + month + "-";
             } else {
                 date += month + "-";
             }
