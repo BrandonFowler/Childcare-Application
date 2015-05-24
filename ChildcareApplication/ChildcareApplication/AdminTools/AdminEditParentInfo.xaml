@@ -28,19 +28,20 @@
                     <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FFE6EAE0" />
                 </ComboBox.Resources>
             </ComboBox>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditChild" Content="_Edit My Child" Margin="487,479,159,0" VerticalAlignment="Top" Height="60" Click="btn_AddChild_Click" TabIndex="11" FontSize="16" ToolTip="Click to edit the children information of the current Guardian."/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditChild" Content="_Edit My Child" Margin="618,479,28,0" VerticalAlignment="Top" Height="60" Click="btn_AddChild_Click" TabIndex="11" FontSize="16" ToolTip="Click to edit the children information of the current Guardian."/>
             <Label x:Name="lbl_Zip" Content="Zip:" HorizontalAlignment="Left" Margin="602,336,0,0" VerticalAlignment="Top" Width="43" FontSize="14"/>
             <TextBox x:Name="txt_Zip" HorizontalAlignment="Left" Height="25" Margin="650,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" TabIndex="8" GotFocus="SelectAllGotFocus" Background="#FFE6EAE0" FontSize="14" ToolTip="Enter Guardian's zip code here." MaxLength="5" VerticalContentAlignment="Center" KeyUp="Key_Up_Event"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_SubmitInfo" Content="_Save" HorizontalAlignment="Left" Margin="159,479,0,0" VerticalAlignment="Top" Width="150" Height="60" Click="btn_Submit_Click"  TabIndex="10" FontSize="16" ToolTip="Saves changes."/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_SubmitInfo" Content="_Save" HorizontalAlignment="Left" Margin="308,479,0,0" VerticalAlignment="Top" Width="150" Height="60" Click="btn_Submit_Click"  TabIndex="10" FontSize="16" ToolTip="Saves changes."/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Finish" Content="_Close" Margin="634,574,12,22" Click="btn_Finish_Click" TabIndex="13" FontSize="16" ToolTip="Closes the window. Does not save."/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Delete" Content="_Delete" Margin="12,574,634,22" Click="btn_Delete_Click" TabIndex="12" FontSize="16" ToolTip="Prmanently deletes the current Guardian."/>
             <Label x:Name="lbl_Email" Content="Email:" HorizontalAlignment="Left" Margin="256,188,0,0" VerticalAlignment="Top" Width="47" FontSize="14" RenderTransformOrigin="0.747,1.735"/>
             <TextBox x:Name="txt_Email" HorizontalAlignment="Left" Height="25" Margin="308,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" TabIndex="3" GotFocus="SelectAllGotFocus" Background="#FFE6EAE0" FontSize="14" ToolTip="Enter Guardian's email here." MaxLength="50" VerticalContentAlignment="Center" KeyUp="Key_Up_Event"/>
             <Label x:Name="lbl_Address2" Content="Address 2:" HorizontalAlignment="Left" Margin="101,293,0,0" VerticalAlignment="Top" Width="76" FontSize="14"/>
             <TextBox x:Name="txt_Address2" HorizontalAlignment="Left" Height="25" Margin="182,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" TabIndex="5" GotFocus="SelectAllGotFocus" Background="#FFE6EAE0" FontSize="14" ToolTip="Enter Guardian's secondary address here." MaxLength="50" VerticalContentAlignment="Center" KeyUp="Key_Up_Event"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_ChangePicture" Content="Change _Picture" HorizontalAlignment="Left" Margin="50,383,0,0" VerticalAlignment="Top" Width="150" Height="60" Click="btn_ChangePicture_Click" TabIndex="9" FontSize="16" ToolTip="Changes the Guardian's picture."/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_ChangePicture" Content="Change _Picture" HorizontalAlignment="Left" Margin="12,383,0,0" VerticalAlignment="Top" Width="150" Height="60" Click="btn_ChangePicture_Click" TabIndex="9" FontSize="16" ToolTip="Changes the Guardian's picture."/>
             <TextBox x:Name="txt_FilePath" HorizontalAlignment="Left" Height="25" Margin="251,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" IsEnabled="False" Background="#FFE6EAE0" FontSize="14" ToolTip="File path to the photo of the Guardian." MaxLength="200" VerticalContentAlignment="Center"/>
             <Label x:Name="lbl_path" Content="Path:" HorizontalAlignment="Left" Margin="205,395,0,0" VerticalAlignment="Top" FontSize="14"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_changePIN" Content="C_hange PIN" HorizontalAlignment="Left" Margin="12,479,0,0" VerticalAlignment="Top" Width="150" Height="60"  TabIndex="10" FontSize="16" ToolTip="Saves changes." Click="btn_changePIN_Click"/>
 
         </Grid>
     </Border>

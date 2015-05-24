@@ -155,6 +155,7 @@ namespace AdminTools {
             btn_Delete.IsEnabled = false;
             btn_SubmitInfo.IsEnabled = false;
             btn_ChangePicture.IsEnabled = false;
+            btn_changePIN.IsEnabled = false;
         }
 
         internal void ClearFields() {
@@ -345,6 +346,15 @@ namespace AdminTools {
                 TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next); //Found at: http://stackoverflow.com/questions/23008670/wpf-and-mvvm-how-to-move-focus-to-the-next-control-automatically
                 request.Wrapped = true;
                 ((Control)e.Source).MoveFocus(request);
+            }
+        }
+
+        private void btn_changePIN_Click(object sender, RoutedEventArgs e) {
+            MessageBoxResult messageBoxResult = WPFMessageBox.Show("Are you sure you wish to permanently change this person's PIN?", "PIN Chnage Conformation", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes) {
+                string pID = txt_IDNumber.Text;
+                AdminChangeGuardianPIN adminChangeGuardianPIN = new AdminChangeGuardianPIN(pID);
+                adminChangeGuardianPIN.ShowDialog();
             }
         }
 

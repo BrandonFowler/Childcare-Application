@@ -456,5 +456,22 @@ namespace DatabaseController {
                 return null;
             }
         }
+        public void UpdateParentPIN(string ID, string PIN) {
+
+
+            try {
+                dbCon.Open();
+                string sql = @"UPDATE Guardian SET GuardianPIN = @PIN WHERE Guardian_ID = @ID;";
+
+                SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
+                mycommand.CommandText = sql;
+                mycommand.Parameters.Add(new SQLiteParameter("@PIN", PIN));
+                mycommand.Parameters.Add(new SQLiteParameter("@ID", ID));               
+                mycommand.ExecuteNonQuery();
+            } catch (SQLiteException) {
+                WPFMessageBox.Show("Could not update Guardian PIN.");
+            }
+            dbCon.Close();
+        }
     }
 }
