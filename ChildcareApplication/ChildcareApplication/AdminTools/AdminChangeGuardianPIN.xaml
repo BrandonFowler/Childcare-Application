@@ -14,7 +14,7 @@
             <Label Content="Guardian ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,54,0,0" FontSize="14"/>
             <Label Content="Guardian PIN:" VerticalAlignment="Top" Margin="258,54,180,0" FontSize="14"/>
             <Label Content="Guardian PIN:" VerticalAlignment="Top" Margin="258,119,180,0" FontSize="14"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_ChnagePIN" Content="Chnage _PIN" HorizontalAlignment="Left" Margin="35,201,0,35" Width="150" FontSize="16" ToolTip="Creates a new Guardian with the login information above." Click="btn_ChnagePIN_Click"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_ChnagePIN" Content="Change _PIN" HorizontalAlignment="Left" Margin="35,201,0,35" Width="150" FontSize="16" ToolTip="Creates a new Guardian with the login information above." Click="btn_ChnagePIN_Click"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="_Close" Margin="311,201,35,35" Click="btn_Cancel_Click" Width="150" FontSize="16" ToolTip="Closes the window. Does not save. "/>
             <Label Content="Pick a new PIN for the current Guardian. This action is permanent." Margin="60,10,60,0" VerticalAlignment="Top" FontSize="14"/>
 
