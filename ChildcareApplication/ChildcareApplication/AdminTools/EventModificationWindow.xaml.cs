@@ -48,6 +48,7 @@ namespace AdminTools {
             this.lbl_EventName.Content = "Event Name (Protected Event)";
             if (oldEventName == "Late Fee") {
                 this.txt_MaxHours.IsEnabled = false;
+                this.txt_DiscountPrice.IsEnabled = false;
             }
         }
 
