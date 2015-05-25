@@ -1,12 +1,7 @@
 ﻿//Example used to create this class found at: http://tech.pro/tutorial/888/wpf-printing-part-2-pagination
 
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
 

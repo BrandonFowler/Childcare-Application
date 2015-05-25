@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SQLite;
+﻿using MessageBoxUtils;
+using System;
 using System.Data;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows;
-using MessageBoxUtils;
+using System.Data.SQLite;
 
 namespace DatabaseController {
 

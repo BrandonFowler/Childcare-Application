@@ -1,7 +1,7 @@
-﻿using System;
+﻿using MessageBoxUtils;
+using System;
 using System.Data;
 using System.Data.SQLite;
-using MessageBoxUtils;
 
 namespace ChildcareApplication.DatabaseController {
     class AdminDB {

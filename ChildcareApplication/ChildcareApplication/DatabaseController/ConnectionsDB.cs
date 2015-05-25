@@ -1,10 +1,8 @@
-﻿using System.Data.SQLite;
+﻿using MessageBoxUtils;
 using System;
-using System.Data;
-using System.Windows;
-using ChildcareApplication.Properties;
-using MessageBoxUtils;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SQLite;
 
 namespace DatabaseController {
 

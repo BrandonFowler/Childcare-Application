@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using MessageBoxUtils;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using MessageBoxUtils;
 
 namespace DatabaseController {
     class EventDB {
