@@ -232,6 +232,10 @@ namespace AdminTools {
                 WPFMessageBox.Show("You must enter an event name.");
                 return false;
             }
+            if (eventName.Length > 50) {
+                WPFMessageBox.Show("Event names may not be longer than 50 characters.");
+                return false;
+            }
             if (!RegExpressions.RegexValidateEventName(eventName)) {
                 WPFMessageBox.Show("Event names may only contain letters and spaces.");
                 return false;
