@@ -297,7 +297,7 @@ namespace AdminTools {
 
         private void btn_ChangePicture_Click(object sender, RoutedEventArgs e) {
 
-            string imagePath = System.IO.Path.GetFullPath("../../Pictures");
+            string imagePath = System.IO.Path.GetFullPath("../../Pictures"); //TAG: pictures access
             imagePath = imagePath.Replace(@"/", @"\");
 
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -311,7 +311,7 @@ namespace AdminTools {
             // Process open file dialog box results 
             if (result == true) {
                 // Open document 
-                string path = "../../Pictures/";
+                string path = "../../Pictures/"; //TAG: pictures access
                 string filename = dlg.FileName;
                 string[] words = filename.Split('\\');
 

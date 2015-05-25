@@ -212,7 +212,7 @@ namespace AdminTools {
             } catch (System.IO.DirectoryNotFoundException) {
                 WPFMessageBox.Show("Error loading photo. Pease insure your photos are in the correct directory.");
                 BitmapImage bitmapImage = new BitmapImage();
-                var fileInfo = new FileInfo(@"../../Pictures/default.jpg");
+                var fileInfo = new FileInfo(@"../../Pictures/default.jpg"); //TAG: pictures access
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
@@ -254,8 +254,8 @@ namespace AdminTools {
             string mID = maxID.ToString();
 
             Image i;
-            i = buildImage("../../Pictures/default.jpg", 60);
-            lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None", "../../Pictures/default.jpg"));
+            i = buildImage("../../Pictures/default.jpg", 60); //TAG: pictures access
+            lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None", "../../Pictures/default.jpg")); //TAG: pictures access
 
             int connID = this.db.GetMaxConnectionID();
 
@@ -263,7 +263,7 @@ namespace AdminTools {
             string connectionID = connID.ToString();
 
             string famID = GetFamilyID(ID);
-            this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "../../Pictures/default.jpg");
+            this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "../../Pictures/default.jpg"); //TAG: pictures access
 
             conDB.UpdateAllowedConnections(connectionID, ID, mID, famID);
 
@@ -328,7 +328,7 @@ namespace AdminTools {
         private void btn_ChangePicture_Click(object sender, RoutedEventArgs e) {
             if (lst_ChildBox.SelectedItem != null) {
 
-                string imagePath = System.IO.Path.GetFullPath("../../Pictures");
+                string imagePath = System.IO.Path.GetFullPath("../../Pictures"); //TAG: pictures access
                 imagePath = imagePath.Replace(@"/", @"\");
                 Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
@@ -341,7 +341,7 @@ namespace AdminTools {
                 // Process open file dialog box results 
                 if (result == true) {
                     // Open document 
-                    string path = "../../Pictures/";
+                    string path = "../../Pictures/"; //TAG: pictures access
                     string filename = dlg.FileName;
                     string[] words = filename.Split('\\');
 
