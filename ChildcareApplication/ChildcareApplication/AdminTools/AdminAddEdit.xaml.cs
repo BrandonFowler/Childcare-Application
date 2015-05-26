@@ -254,5 +254,13 @@ namespace ChildcareApplication.AdminTools {
                 ((Control)e.Source).MoveFocus(request);
             }
         }
+
+        private void rdb_Limited_Checked(object sender, RoutedEventArgs e) {
+            //we decided that the currently logged in administrator should not be able to downgrade their own access level
+            if (lst_AdminList.SelectedItem.ToString().Equals(loggedInAs) && db.GetAccessLevel(loggedInAs).Equals("1")) {
+                WPFMessageBox.Show("The administrator account that you are currently using has a higher access level. If you wish to lower this administrator's access level you must do so while logged in under a different administrator account.");
+                rdb_Full.IsChecked = true;
+            }
+        }
     }
 }
