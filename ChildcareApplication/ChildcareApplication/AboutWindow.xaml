@@ -10,16 +10,14 @@
         <Grid Height="660" Width="800" VerticalAlignment="Bottom" Margin="-2">
             <Button x:Name="btn_Close" Style="{DynamicResource GlassButton}" Content="Close" HorizontalAlignment="Left" Margin="715,621,0,0" VerticalAlignment="Top" Width="75" IsTabStop="False" IsCancel="True"/>
             <Image x:Name="img_EWULogo" Margin="28,395,482,54" Source="Eastern-Washington-University-Logo2lg.png" Stretch="None" Width="290" Height="211"/>
-            <Label x:Name="lbl_AboutText" HorizontalAlignment="Center" Margin="10,10,10,383" VerticalAlignment="Center" FontSize="24" Height="267" Width="780">
-                <TextBlock TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="267" Width="780">
-                    <Bold>Spokane Club Childcare Application</Bold><LineBreak/>
-                    Design and Implementation by:<LineBreak/>
-                    <Italic>Blaine Abbott</Italic><LineBreak/>
-                    <Italic>Brandon Fowler</Italic><LineBreak/>
-                    <Italic>Nathan Graham</Italic><LineBreak/>
-                    <Italic>Brian Lollis</Italic><LineBreak/>
-                    Under the Senior Capstone Project at Eastern Washington University
-                </TextBlock>
+            <Label x:Name="lbl_AboutText" HorizontalAlignment="Center" Margin="10,10,10,602" VerticalAlignment="Center" FontSize="24" Height="48" Width="780">
+                <TextBlock TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="39" Width="780"><Bold><Run Text="Spokane Club Childcare Application"/></Bold></TextBlock>
+            </Label>
+            <Label x:Name="lbl_description" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Height="312" Width="780">
+                <TextBlock TextWrapping="Wrap" Height="301" Width="770"><Run Text="&#x9;"/><Run FontSize="22" Text="This application was designed by senior students, in the Eastern Washington University Computer Science Department. It provides a system through which parental guardians may check children in or out of the Spokane Club Childcare Center and provides detailed information of transactions. This application also provides many administrative tools that include: automatic billing calculations, guardian balance management, generation of billing reports for both guardians and Spokane Club employees, custom childcare events, and more. The overall goal of this application, is to ease and expedite the process through which childcare transactions are made, recorded, and organized."/></TextBlock>
+            </Label>
+            <Label x:Name="lbl_team" HorizontalAlignment="Left" Margin="323,395,0,0" VerticalAlignment="Top" Height="211" Width="467">
+                <TextBlock TextWrapping="Wrap" Height="201" Width="457" FontSize="24"><Run Text="Team Lead: "/><LineBreak/><Run Text="&#x9;Nathaniel Graham"/><LineBreak/><Run Text="Members:   "/><LineBreak/><Run Text="&#x9;Brandon Fowler"/><LineBreak/><Run Text="&#x9;Brian Lollis"/><LineBreak/><Run Text="&#x9;Blaine Abbott"/></TextBlock>
             </Label>
 
         </Grid>
