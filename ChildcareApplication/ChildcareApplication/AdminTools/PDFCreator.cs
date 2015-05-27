@@ -123,7 +123,7 @@ namespace AdminTools {
             dialog.DefaultExt = ".pdf";
             dialog.Filter = "PDF file (*.pdf)|*.pdf";
             dialog.InitialDirectory = Path.GetFullPath(settings.DefaultSaveFolder);
-
+            
             if (dialog.ShowDialog() == true) {
                 string filename = dialog.FileName;
 

@@ -19,7 +19,7 @@ namespace ChildcareApplication.AdminTools {
             InitializeComponent();
             this.db = new AdminDB();
             this.loggedInAs = username;
-
+            
             lst_AdminList.ItemsSource = db.FindAdmins();
             this.MouseDown += WindowMouseDown;
         }

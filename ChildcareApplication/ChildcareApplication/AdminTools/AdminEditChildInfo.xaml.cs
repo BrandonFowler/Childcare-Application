@@ -253,7 +253,7 @@ namespace AdminTools {
             maxID = maxID + 1;
             string mID = maxID.ToString();
 
-            Image i;
+            Image i; //string test = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             i = buildImage("../../Pictures/default.jpg", 60); //TAG: pictures access
             lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None", "../../Pictures/default.jpg")); //TAG: pictures access
 
