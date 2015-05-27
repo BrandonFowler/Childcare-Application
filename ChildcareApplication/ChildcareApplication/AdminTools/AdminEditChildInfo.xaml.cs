@@ -254,8 +254,8 @@ namespace AdminTools {
             string mID = maxID.ToString();
 
             Image i; //string test = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            i = buildImage("../../Pictures/default.jpg", 60); //TAG: pictures access
-            lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None", "../../Pictures/default.jpg")); //TAG: pictures access
+            i = buildImage(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg", 60); //TAG: pictures access
+            lst_ChildBox.Items.Add(new Child(mID, "First", "Last", i, "2005/01/01", "None", "None", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg")); //TAG: pictures access
 
             int connID = this.db.GetMaxConnectionID();
 
@@ -263,7 +263,7 @@ namespace AdminTools {
             string connectionID = connID.ToString();
 
             string famID = GetFamilyID(ID);
-            this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "../../Pictures/default.jpg"); //TAG: pictures access
+            this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg"); //TAG: pictures access
 
             conDB.UpdateAllowedConnections(connectionID, ID, mID, famID);
 
@@ -328,7 +328,7 @@ namespace AdminTools {
         private void btn_ChangePicture_Click(object sender, RoutedEventArgs e) {
             if (lst_ChildBox.SelectedItem != null) {
 
-                string imagePath = System.IO.Path.GetFullPath("../../Pictures"); //TAG: pictures access
+                string imagePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Childcare Application\Pictures"; //TAG: pictures access
                 imagePath = imagePath.Replace(@"/", @"\");
                 Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
@@ -341,22 +341,25 @@ namespace AdminTools {
                 // Process open file dialog box results 
                 if (result == true) {
                     // Open document 
-                    string path = "../../Pictures/"; //TAG: pictures access
+                    string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Childcare Application\\Pictures\\"; //TAG: pictures access
                     string filename = dlg.FileName;
                     string[] words = filename.Split('\\');
 
                     path += words[words.Length - 1];
 
+                    if (File.Exists(path)) {
+                        try {
+                            string imageLink = path;
+                            ImageBrush ib = new ImageBrush();
+                            ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
+                            cnv_ChildIcon.Background = ib;
+                            txt_FilePath.Text = path;
+                        } catch (Exception) {
+                            WPFMessageBox.Show("Could not change picture to" + path);
 
-                    try {
-                        string imageLink = path;
-                        ImageBrush ib = new ImageBrush();
-                        ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
-                        cnv_ChildIcon.Background = ib;
-                        txt_FilePath.Text = path;
-                    } catch (Exception) {
-                        WPFMessageBox.Show("Could not change picture to" + path);
-
+                        }
+                    } else {
+                        WPFMessageBox.Show("The picture you specified is not in the Pictures folder in the Childcare Application folder in your documents folder!");
                     }
 
                 }

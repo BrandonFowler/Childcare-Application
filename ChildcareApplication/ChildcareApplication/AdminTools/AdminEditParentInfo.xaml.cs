@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using MessageBoxUtils;
+using System.IO;
 
 namespace AdminTools {
     /// <summary>
@@ -297,7 +298,7 @@ namespace AdminTools {
 
         private void btn_ChangePicture_Click(object sender, RoutedEventArgs e) {
 
-            string imagePath = System.IO.Path.GetFullPath("../../Pictures"); //TAG: pictures access
+            string imagePath = @"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures"; //TAG: pictures access
             imagePath = imagePath.Replace(@"/", @"\");
 
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -311,25 +312,27 @@ namespace AdminTools {
             // Process open file dialog box results 
             if (result == true) {
                 // Open document 
-                string path = "../../Pictures/"; //TAG: pictures access
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Childcare Application\\Pictures\\"; //TAG: pictures access
                 string filename = dlg.FileName;
                 string[] words = filename.Split('\\');
 
                 path += words[words.Length - 1];
 
-                try {
-                    string imageLink = path;
-                    ImageBrush ib = new ImageBrush();
-                    ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
-                    cnv_ParentIcon.Background = ib;
-                    txt_FilePath.Text = path;
-                } catch (Exception) {
-                    WPFMessageBox.Show("Could not change picture to" + path);
+                if (File.Exists(path)) {
+                    try {
+                        string imageLink = path;
+                        ImageBrush ib = new ImageBrush();
+                        ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
+                        cnv_ParentIcon.Background = ib;
+                        txt_FilePath.Text = path;
+                    } catch (Exception) {
+                        WPFMessageBox.Show("Could not change picture to" + path);
 
+                    }
+                } else {
+                    WPFMessageBox.Show("The picture you specified is not in the Pictures folder in the Childcare Application folder in your documents folder!");
                 }
-
             }
-
         }
 
         private void SelectAllGotFocus(object sender, RoutedEventArgs e) {

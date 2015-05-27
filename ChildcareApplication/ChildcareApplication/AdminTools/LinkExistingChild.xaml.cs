@@ -62,7 +62,7 @@ namespace ChildcareApplication.AdminTools {
                 image.Source = bitmapImage;
             } catch {
                 BitmapImage bitmapImage = new BitmapImage();
-                var fileInfo = new FileInfo(@"../../Pictures/default.jpg"); //TAG: pictures access
+                var fileInfo = new FileInfo(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "Childcare Application/Pictures/default.jpg"); //TAG: pictures access
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
