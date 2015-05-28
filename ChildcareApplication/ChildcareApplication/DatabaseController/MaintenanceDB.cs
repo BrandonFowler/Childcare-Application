@@ -14,6 +14,14 @@ namespace ChildcareApplication.DatabaseController {
             dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }
 
+        public void SetDefaults() {
+            if (Settings.Default.FirstRun) {
+                Settings.Default.DefaultSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Childcare Application\\Saved Reports\\";
+                Settings.Default.FirstRun = false;
+                Settings.Default.Save();
+            }
+        }
+
         public bool Clean() {
             var dirInfo = new DirectoryInfo("../../Database");
             dirInfo.Attributes &= ~FileAttributes.ReadOnly;
