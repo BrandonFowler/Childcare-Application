@@ -3,6 +3,8 @@ using GuardianTools;
 using MessageBoxUtils;
 using System.Windows;
 using System.Windows.Input;
+using System.IO;
+using System;
 
 namespace ChildcareApplication {
     /// <summary>
@@ -36,7 +38,20 @@ namespace ChildcareApplication {
         }
 
         private void btn_Help_Click(object sender, RoutedEventArgs e) {
-            WPFMessageBox.Show("Not yet implemented: will open the help pdf.");
+            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Childcare Application User Manual.pdf")) {
+                try {
+                    System.Diagnostics.Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Childcare Application User Manual.pdf");
+                }
+                catch(System.IO.FileNotFoundException) {
+                    WPFMessageBox.Show("Unable to open user manual. It may not exist.");
+                }
+                catch(Exception) {
+                    WPFMessageBox.Show("Unable to open user manual.");
+                }
+            }
+            else {
+                WPFMessageBox.Show("Unable to open user manual.");
+            }
         }
 
         private void btn_About_Click(object sender, RoutedEventArgs e) {
