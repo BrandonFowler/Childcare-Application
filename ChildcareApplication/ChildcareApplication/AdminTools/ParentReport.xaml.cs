@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace AdminTools {
     public partial class ParentReport : Window {
@@ -194,7 +195,12 @@ namespace AdminTools {
         private void LoadParentData() {
             GuardianInfoDB parentInfo = new GuardianInfoDB();
 
-            cnv_ParentIcon.Background = new ImageBrush(new BitmapImage(new Uri(parentInfo.GetPhotoPath(txt_GuardianID.Text), UriKind.Relative)));
+            if (File.Exists(parentInfo.GetPhotoPath(txt_GuardianID.Text))) {
+                cnv_ParentIcon.Background = new ImageBrush(new BitmapImage(new Uri(parentInfo.GetPhotoPath(txt_GuardianID.Text), UriKind.Relative)));
+            }
+            else {
+                cnv_ParentIcon.Background = new ImageBrush(new BitmapImage(new Uri(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg", UriKind.Relative)));
+            }
             lbl_Name.Content = parentInfo.GetParentName(txt_GuardianID.Text);
             lbl_Address1.Content = parentInfo.GetAddress1(txt_GuardianID.Text);
             lbl_Address2.Content = parentInfo.GetAddress2(txt_GuardianID.Text);

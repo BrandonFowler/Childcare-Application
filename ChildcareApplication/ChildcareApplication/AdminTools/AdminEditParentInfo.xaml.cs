@@ -224,9 +224,17 @@ namespace AdminTools {
 
                     txt_FilePath.Text = DS.Tables[0].Rows[0][11].ToString();
                     string imageLink = DS.Tables[0].Rows[0][11].ToString();
-                    ImageBrush ib = new ImageBrush();
-                    ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
-                    cnv_ParentIcon.Background = ib;
+
+                    if (File.Exists(imageLink)) {
+                        ImageBrush ib = new ImageBrush();
+                        ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
+                        cnv_ParentIcon.Background = ib;
+                    }
+                    else {
+                        ImageBrush ib = new ImageBrush();
+                        ib.ImageSource = new BitmapImage(new Uri(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
+                        cnv_ParentIcon.Background = ib;
+                    }
                 } else {
                     ClearFields();
                     DisableForm();

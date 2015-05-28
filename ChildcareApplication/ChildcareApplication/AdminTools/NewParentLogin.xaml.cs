@@ -24,8 +24,7 @@ namespace AdminTools {
         private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
             string pID = "", PIN = "";
             bool formNotComplete = CheckIfNull();
-            if (!formNotComplete)//form is completed
-            {
+            if (!formNotComplete){
                 bool sameID = CheckIfSame(txt_ParentID1.Text, txt_ParentID2.Text);
                 bool samePIN = CheckIfSame(psw_ParentPIN1.Password, psw_ParentPIN2.Password);
 
@@ -39,18 +38,18 @@ namespace AdminTools {
                     DS = this.db.GetParentInfoDS(pID);
                     int count = DS.Tables[0].Rows.Count;
 
-                    if (count == 0)//ID does not exist
-                    {
+                    if (count == 0){
                         string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
                         hashedPIN = "\"" + hashedPIN + "\"";
-                        this.db.AddNewParent(pID, hashedPIN, "\"First\"", "\"Last\"", "\"000-000-0000\"", "\"someEmail@email.com\"", "\"123 Road St\"", "\"none\"", "\"City\"", "\"WA\"", "\"12345\"", @"Childcare Application/Pictures/default.jpg"); //TAG: pictures access
+                        this.db.AddNewParent(pID, hashedPIN, "\"First\"", "\"Last\"", "\"000-000-0000\"", "\"someEmail@email.com\"", "\"123 Road St\"", "\"none\"", "\"City\"", "\"WA\"", "\"12345\"", "'" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Childcare Application\\Pictures\\default.jpg'"); //TAG: pictures access
                         MakeFamilyID(pID);
 
                         AdminEditParentInfo adminEditParentInfo = new AdminEditParentInfo(pID);
                         adminEditParentInfo.Show();
                         this.Close();
 
-                    } else {
+                    }
+                    else {
                         WPFMessageBox.Show("A Guardian with this ID already Exists. Please re-enter your ID");
                     }
 

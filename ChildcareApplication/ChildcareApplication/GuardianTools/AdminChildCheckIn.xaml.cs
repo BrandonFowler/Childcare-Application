@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using DatabaseController;
 using System.Data;
 using MessageBoxUtils;
+using System.IO;
 
 namespace GuardianTools {
    
@@ -73,11 +74,16 @@ namespace GuardianTools {
             }
             this.guardianID = guardianInfo;
             string imageLink = parentDB.GetGuardianImagePath(this.guardianID);
-            if (imageLink != null) {
+            if (imageLink != null && File.Exists(imageLink)) {
                 ImageBrush ib = new ImageBrush();
                 ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
                 cnv_GuardianPic.Background = ib;
                 cnv_GuardianPic.Visibility = System.Windows.Visibility.Visible;
+            }
+            else {
+                ImageBrush ib = new ImageBrush();
+                ib.ImageSource = new BitmapImage(new Uri(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
+                cnv_GuardianPic.Background = ib;
             }
         }
 

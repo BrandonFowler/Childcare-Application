@@ -209,17 +209,27 @@ namespace AdminTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            } catch (System.IO.DirectoryNotFoundException) {
-                WPFMessageBox.Show("Error loading photo. Pease insure your photos are in the correct directory.");
+            }
+            catch (System.IO.FileNotFoundException) {
                 BitmapImage bitmapImage = new BitmapImage();
-                var fileInfo = new FileInfo(@"../../Pictures/default.jpg"); //TAG: pictures access
+                var fileInfo = new FileInfo(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg"); //TAG: pictures access
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            } catch (Exception) {
+            }catch (System.IO.DirectoryNotFoundException) {
+                BitmapImage bitmapImage = new BitmapImage();
+                var fileInfo = new FileInfo(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg"); //TAG: pictures access
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = new Uri(fileInfo.FullName);
+                bitmapImage.DecodePixelWidth = size;
+                bitmapImage.DecodePixelHeight = size;
+                bitmapImage.EndInit();
+                image.Source = bitmapImage;
+            }
+            catch (Exception) {
                 WPFMessageBox.Show("Unable to load photo for unknown reason.");
 
             }
@@ -238,9 +248,16 @@ namespace AdminTools {
                 txt_FilePath.Text = ((Child)(lst_ChildBox.SelectedItem)).path;
 
                 string imageLink = ((Child)(lst_ChildBox.SelectedItem)).path;
-                ImageBrush ib = new ImageBrush();
-                ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
-                cnv_ChildIcon.Background = ib;
+                if (File.Exists(imageLink)) {
+                    ImageBrush ib = new ImageBrush();
+                    ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
+                    cnv_ChildIcon.Background = ib;
+                }
+                else {
+                    ImageBrush ib = new ImageBrush();
+                    ib.ImageSource = new BitmapImage(new Uri(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
+                    cnv_ChildIcon.Background = ib;
+                }
 
             }
         }
