@@ -349,6 +349,9 @@
 		<row><td>ISX_DEFAULTCOMPONENT4</td><td>{BB6DA6CE-ED1C-4A61-A4F5-44C15B6533E8}</td><td>PICTURES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT5</td><td>{F911A6B2-3C16-49D0-9BF5-CA29EDAFF612}</td><td>SAVED_REPORTS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT6</td><td>{41861A08-6AB5-4655-BD56-33C62A11616C}</td><td>BACKUP_RECORDS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT7</td><td>{7D8FBBE4-C006-455F-B788-BFB3D94932FE}</td><td>USERPROFILE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT8</td><td>{F0F92169-D7D4-4C8C-A44E-6484EEAA4FA7}</td><td>PersonalFolder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT9</td><td>{6406E6A6-3DE2-404B-9FB1-25D810BBAC2F}</td><td>CHILDCARE_APPLICATION</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>System.Data.SQLite.dll</td><td>{631412EF-CA0E-4F37-B9E1-5D002B3FF2DC}</td><td>DATABASEDIR</td><td>2</td><td/><td>system.data.sqlite.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>System.Data.SQLite.dll1</td><td>{7D459290-EE99-40A0-840E-F86FEA7218E1}</td><td>DEBUG</td><td>2</td><td/><td>system.data.sqlite.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
@@ -1061,8 +1064,10 @@
 		<col key="yes" def="s72">Component_</col>
 		<row><td>BACKUP_RECORDS</td><td>ISX_DEFAULTCOMPONENT6</td></row>
 		<row><td>BIN</td><td>ISX_DEFAULTCOMPONENT</td></row>
+		<row><td>PersonalFolder</td><td>ISX_DEFAULTCOMPONENT8</td></row>
 		<row><td>RELEASE</td><td>ISX_DEFAULTCOMPONENT3</td></row>
 		<row><td>SAVED_REPORTS</td><td>ISX_DEFAULTCOMPONENT5</td></row>
+		<row><td>USERPROFILE</td><td>ISX_DEFAULTCOMPONENT7</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1146,6 +1151,7 @@
 		<row><td>AppDataFolder</td><td>TARGETDIR</td><td>.:APPLIC~1|Application Data</td><td/><td>0</td><td/></row>
 		<row><td>BACKUP_RECORDS</td><td>INSTALLDIR</td><td>BACKUP~1|Backup Records</td><td/><td>0</td><td/></row>
 		<row><td>BIN</td><td>INSTALLDIR</td><td>bin</td><td/><td>0</td><td/></row>
+		<row><td>CHILDCARE_APPLICATION</td><td>PersonalFolder</td><td>CHILDC~1|Childcare Application</td><td/><td>0</td><td/></row>
 		<row><td>CommonAppDataFolder</td><td>TARGETDIR</td><td>.:Common~1|CommonAppData</td><td/><td>0</td><td/></row>
 		<row><td>CommonFiles64Folder</td><td>TARGETDIR</td><td>.:Common64</td><td/><td>0</td><td/></row>
 		<row><td>CommonFilesFolder</td><td>TARGETDIR</td><td>.:Common</td><td/><td>0</td><td/></row>
@@ -1161,9 +1167,9 @@
 		<row><td>ISYourDataBaseDir</td><td>INSTALLDIR</td><td>Database</td><td/><td>0</td><td/></row>
 		<row><td>LocalAppDataFolder</td><td>TARGETDIR</td><td>.:LocalA~1|LocalAppData</td><td/><td>0</td><td/></row>
 		<row><td>MyPicturesFolder</td><td>TARGETDIR</td><td>.:MyPict~1|MyPictures</td><td/><td>0</td><td/></row>
-		<row><td>NEW_DIRECTORY1</td><td>ProgramFilesFolder</td><td>SPOKAN~1|Spokane Club Childcare</td><td/><td>0</td><td/></row>
+		<row><td>NEW_DIRECTORY1</td><td>ProgramFilesFolder</td><td>CHILDC~1|Childcare Application</td><td/><td>0</td><td/></row>
 		<row><td>NetHoodFolder</td><td>TARGETDIR</td><td>.:NetHood</td><td/><td>0</td><td/></row>
-		<row><td>PICTURES</td><td>INSTALLDIR</td><td>Pictures</td><td/><td>0</td><td/></row>
+		<row><td>PICTURES</td><td>CHILDCARE_APPLICATION</td><td>Pictures</td><td/><td>0</td><td/></row>
 		<row><td>PersonalFolder</td><td>TARGETDIR</td><td>.:Personal</td><td/><td>0</td><td/></row>
 		<row><td>PrimaryVolumePath</td><td>TARGETDIR</td><td>.:Primar~1|PrimaryVolumePath</td><td/><td>0</td><td/></row>
 		<row><td>PrintHoodFolder</td><td>TARGETDIR</td><td>.:PRINTH~1|PrintHood</td><td/><td>0</td><td/></row>
@@ -1172,7 +1178,7 @@
 		<row><td>ProgramMenuFolder</td><td>TARGETDIR</td><td>.:Programs</td><td/><td>3</td><td/></row>
 		<row><td>RELEASE</td><td>BIN</td><td>Release</td><td/><td>0</td><td/></row>
 		<row><td>RecentFolder</td><td>TARGETDIR</td><td>.:Recent</td><td/><td>0</td><td/></row>
-		<row><td>SAVED_REPORTS</td><td>INSTALLDIR</td><td>SAVEDR~1|Saved Reports</td><td/><td>0</td><td/></row>
+		<row><td>SAVED_REPORTS</td><td>CHILDCARE_APPLICATION</td><td>SAVEDR~1|Saved Reports</td><td/><td>0</td><td/></row>
 		<row><td>SPOKANE_CLUB1</td><td>DIRPROPERTY1</td><td>SPOKAN~1|Spokane Club</td><td/><td>0</td><td/></row>
 		<row><td>SPOKANE_CLUB_CHILDCARE1</td><td>SPOKANE_CLUB1</td><td>SPOKAN~1|Spokane Club Childcare</td><td/><td>0</td><td/></row>
 		<row><td>SendToFolder</td><td>TARGETDIR</td><td>.:SendTo</td><td/><td>3</td><td/></row>
@@ -1889,6 +1895,9 @@
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT4</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT5</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT6</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT7</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT8</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT9</td></row>
 		<row><td>AlwaysInstall</td><td>System.Data.SQLite.dll</td></row>
 		<row><td>AlwaysInstall</td><td>System.Data.SQLite.dll1</td></row>
 	</table>
@@ -1905,33 +1914,16 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>_2.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>12.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\12.jpg</td><td>1</td><td/></row>
-		<row><td>_2.jpg1</td><td>ISX_DEFAULTCOMPONENT4</td><td>22.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\22.jpg</td><td>1</td><td/></row>
-		<row><td>_2.jpg2</td><td>ISX_DEFAULTCOMPONENT4</td><td>32.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\32.jpg</td><td>1</td><td/></row>
-		<row><td>_52.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>152.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\152.jpg</td><td>1</td><td/></row>
-		<row><td>beckyarmstrong.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>BECKYA~1.JPG|BeckyArmstrong.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\BeckyArmstrong.jpg</td><td>1</td><td/></row>
-		<row><td>bilbo_baggins.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>BILBO_~1.JPG|Bilbo_Baggins.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Bilbo_Baggins.jpg</td><td>1</td><td/></row>
-		<row><td>billyarmstrong.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>BILLYA~1.JPG|BillyArmstrong.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\BillyArmstrong.jpg</td><td>1</td><td/></row>
-		<row><td>child.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>Child.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Child.jpg</td><td>1</td><td/></row>
+		<row><td>childcare_application_user_m</td><td>ISX_DEFAULTCOMPONENT9</td><td>CHILDC~1.PDF|Childcare Application User Manual.pdf</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Childcare Application User Manual.pdf</td><td>1</td><td/></row>
 		<row><td>childcareapplication.exe</td><td>ChildcareApplication.exe</td><td>CHILDC~1.EXE|ChildcareApplication.exe</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>1</td><td/></row>
 		<row><td>childcareapplication.exe.con</td><td>ISX_DEFAULTCOMPONENT1</td><td>CHILDC~1.CON|ChildcareApplication.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe.config</td><td>1</td><td/></row>
 		<row><td>childcareapplication.pdb</td><td>ISX_DEFAULTCOMPONENT1</td><td>CHILDC~1.PDB|ChildcareApplication.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.pdb</td><td>1</td><td/></row>
 		<row><td>childcareapplication.vshost.</td><td>ChildcareApplication.vshost.exe</td><td>CHILDC~1.EXE|ChildcareApplication.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.vshost.exe</td><td>1</td><td/></row>
 		<row><td>childcareapplication.vshost.1</td><td>ISX_DEFAULTCOMPONENT1</td><td>CHILDC~1.CON|ChildcareApplication.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.vshost.exe.config</td><td>1</td><td/></row>
-		<row><td>childcaredb.s3db</td><td>ISX_DEFAULTCOMPONENT2</td><td>CHILDC~1.S3D|ChildcareDB.s3db</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Database\ChildcareDB.s3db</td><td>1</td><td/></row>
+		<row><td>childcaredb.s3db</td><td>ISX_DEFAULTCOMPONENT2</td><td>CHILDC~1.S3D|ChildcareDB.s3db</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Database\FINAL DATABASE\ChildcareDB.s3db</td><td>1</td><td/></row>
 		<row><td>default.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>default.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\default.jpg</td><td>1</td><td/></row>
-		<row><td>ewu.gif</td><td>ISX_DEFAULTCOMPONENT4</td><td>EWU.gif</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\EWU.gif</td><td>1</td><td/></row>
-		<row><td>frodo_baggins.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>FRODO_~1.JPG|Frodo_Baggins.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Frodo_Baggins.jpg</td><td>1</td><td/></row>
-		<row><td>gandalf.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>Gandalf.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Gandalf.jpg</td><td>1</td><td/></row>
-		<row><td>lillyarmstrong.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>LILLYA~1.JPG|LillyArmstrong.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\LillyArmstrong.jpg</td><td>1</td><td/></row>
-		<row><td>parent.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>Parent.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Parent.jpg</td><td>1</td><td/></row>
-		<row><td>quincyarmstrong.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>QUINCY~1.JPG|QuincyArmstrong.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\QuincyArmstrong.jpg</td><td>1</td><td/></row>
-		<row><td>smeagol.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>Smeagol.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Smeagol.jpg</td><td>1</td><td/></row>
-		<row><td>spokaneclub.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>SPOKAN~1.JPG|SpokaneClub.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\SpokaneClub.jpg</td><td>1</td><td/></row>
-		<row><td>spokaneclubicon.ico</td><td>ISX_DEFAULTCOMPONENT4</td><td>SPOKAN~1.ICO|SpokaneClubIcon.ico</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\SpokaneClubIcon.ico</td><td>1</td><td/></row>
 		<row><td>system.data.sqlite.dll</td><td>System.Data.SQLite.dll</td><td>SYSTEM~1.DLL|System.Data.SQLite.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Database\System.Data.SQLite.dll</td><td>1</td><td/></row>
 		<row><td>system.data.sqlite.dll1</td><td>System.Data.SQLite.dll1</td><td>SYSTEM~1.DLL|System.Data.SQLite.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\System.Data.SQLite.dll</td><td>1</td><td/></row>
-		<row><td>tauriel.jpg</td><td>ISX_DEFAULTCOMPONENT4</td><td>Tauriel.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\Pictures\Tauriel.jpg</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2084,6 +2076,9 @@
 		<row><td>ISX_DEFAULTCOMPONENT4</td><td/><td/><td>_726C8779_153F_4342_A167_E921EE7EAB31_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT5</td><td/><td/><td>_B7D00CD6_7958_4D61_8CF2_3E114B924272_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT6</td><td/><td/><td>_07E4E81D_8FBE_4F69_8145_59801D696395_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT7</td><td/><td/><td>_ADDA06DD_9F6A_4124_88B9_A588EFF602A6_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT8</td><td/><td/><td>_2A4EA4D7_2881_4E4D_BDC5_D20ED225765D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT9</td><td/><td/><td>_E8DCA0E8_E3B9_4126_A668_CB25A52F7E7A_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>System.Data.SQLite.dll</td><td/><td/><td>_EFB86ECF_F0A3_49D4_8CE7_81A1CB3034CE_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>System.Data.SQLite.dll1</td><td/><td/><td>_7765D744_6216_4F46_8880_FE5CFD1C8940_FILTER</td><td/><td/><td/><td/></row>
 	</table>
