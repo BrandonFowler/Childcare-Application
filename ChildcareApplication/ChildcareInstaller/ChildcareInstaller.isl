@@ -344,6 +344,8 @@
 		<row><td>ChildcareApplication.vshost.exe</td><td>{8FA720F4-19B5-47EC-9618-2F40E1B9F8BA}</td><td>DEBUG</td><td>2</td><td/><td>childcareapplication.vshost.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{A019AE2F-1F1D-43F5-96F5-1FE964D6CF08}</td><td>BIN</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{51DCE8F7-596E-4DC0-9FFF-55F6E9583DB7}</td><td>DEBUG</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT10</td><td>{34D2AF78-4C40-4606-9A16-F1CB71C33DFF}</td><td>ALLUSERSPROFILE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT11</td><td>{DA7F5C61-A05F-4636-8085-AFEE973FB9F7}</td><td>DOCUMENTS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{0D9F905A-7548-4F26-9078-B4EC7DD7DB82}</td><td>DATABASEDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT3</td><td>{4D1104CA-33DF-4A50-B9EA-4CF4CB4AC446}</td><td>RELEASE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT4</td><td>{BB6DA6CE-ED1C-4A61-A4F5-44C15B6533E8}</td><td>PICTURES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
@@ -1062,8 +1064,10 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>ALLUSERSPROFILE</td><td>ISX_DEFAULTCOMPONENT10</td></row>
 		<row><td>BACKUP_RECORDS</td><td>ISX_DEFAULTCOMPONENT6</td></row>
 		<row><td>BIN</td><td>ISX_DEFAULTCOMPONENT</td></row>
+		<row><td>DOCUMENTS</td><td>ISX_DEFAULTCOMPONENT11</td></row>
 		<row><td>PersonalFolder</td><td>ISX_DEFAULTCOMPONENT8</td></row>
 		<row><td>RELEASE</td><td>ISX_DEFAULTCOMPONENT3</td></row>
 		<row><td>SAVED_REPORTS</td><td>ISX_DEFAULTCOMPONENT5</td></row>
@@ -1151,13 +1155,14 @@
 		<row><td>AppDataFolder</td><td>TARGETDIR</td><td>.:APPLIC~1|Application Data</td><td/><td>0</td><td/></row>
 		<row><td>BACKUP_RECORDS</td><td>INSTALLDIR</td><td>BACKUP~1|Backup Records</td><td/><td>0</td><td/></row>
 		<row><td>BIN</td><td>INSTALLDIR</td><td>bin</td><td/><td>0</td><td/></row>
-		<row><td>CHILDCARE_APPLICATION</td><td>PersonalFolder</td><td>CHILDC~1|Childcare Application</td><td/><td>0</td><td/></row>
+		<row><td>CHILDCARE_APPLICATION</td><td>DOCUMENTS</td><td>CHILDC~1|Childcare Application</td><td/><td>0</td><td/></row>
 		<row><td>CommonAppDataFolder</td><td>TARGETDIR</td><td>.:Common~1|CommonAppData</td><td/><td>0</td><td/></row>
 		<row><td>CommonFiles64Folder</td><td>TARGETDIR</td><td>.:Common64</td><td/><td>0</td><td/></row>
 		<row><td>CommonFilesFolder</td><td>TARGETDIR</td><td>.:Common</td><td/><td>0</td><td/></row>
 		<row><td>DATABASEDIR</td><td>ISYourDataBaseDir</td><td>.</td><td/><td>0</td><td/></row>
 		<row><td>DEBUG</td><td>BIN</td><td>Debug</td><td/><td>0</td><td/></row>
 		<row><td>DIRPROPERTY1</td><td>TARGETDIR</td><td>.</td><td/><td>0</td><td/></row>
+		<row><td>DOCUMENTS</td><td>ALLUSERSPROFILE</td><td>DOCUME~1|Documents</td><td/><td>0</td><td/></row>
 		<row><td>DesktopFolder</td><td>TARGETDIR</td><td>.:Desktop</td><td/><td>3</td><td/></row>
 		<row><td>FavoritesFolder</td><td>TARGETDIR</td><td>.:FAVORI~1|Favorites</td><td/><td>0</td><td/></row>
 		<row><td>FontsFolder</td><td>TARGETDIR</td><td>.:Fonts</td><td/><td>0</td><td/></row>
@@ -1890,6 +1895,8 @@
 		<row><td>AlwaysInstall</td><td>ChildcareApplication.vshost.exe</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT10</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT11</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT2</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT3</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT4</td></row>
@@ -2071,6 +2078,8 @@
 		<row><td>ChildcareApplication.vshost.exe</td><td/><td/><td>_11BA971A_98BA_4326_8A5A_5D8CDFA4EDE7_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_D3469327_7FE9_4840_8D64_6D6C441695BF_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_83C0D019_6832_4949_A297_E381E8068108_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT10</td><td/><td/><td>_FF6C3D89_06F8_4050_BE33_229A368136E3_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT11</td><td/><td/><td>_DD127170_453C_4415_AB19_C8613270E244_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_D5C67873_1517_4A00_B3DF_4B8EC4E7B163_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT3</td><td/><td/><td>_29CBAAFE_AAFE_438E_979D_D635D29D951F_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT4</td><td/><td/><td>_726C8779_153F_4342_A167_E921EE7EAB31_FILTER</td><td/><td/><td/><td/></row>

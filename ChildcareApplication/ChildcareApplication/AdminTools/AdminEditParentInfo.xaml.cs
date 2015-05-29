@@ -232,7 +232,7 @@ namespace AdminTools {
                     }
                     else {
                         ImageBrush ib = new ImageBrush();
-                        ib.ImageSource = new BitmapImage(new Uri(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
+                        ib.ImageSource = new BitmapImage(new Uri(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
                         cnv_ParentIcon.Background = ib;
                     }
                 } else {
@@ -306,7 +306,7 @@ namespace AdminTools {
 
         private void btn_ChangePicture_Click(object sender, RoutedEventArgs e) {
 
-            string imagePath = @"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures"; //TAG: pictures access
+            string imagePath = @"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures"; //TAG: pictures access
             imagePath = imagePath.Replace(@"/", @"\");
 
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -320,7 +320,7 @@ namespace AdminTools {
             // Process open file dialog box results 
             if (result == true) {
                 // Open document 
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Childcare Application\\Pictures\\"; //TAG: pictures access
+                string path = "C:\\Users\\Public\\Documents" + "\\Childcare Application\\Pictures\\"; //TAG: pictures access
                 string filename = dlg.FileName;
                 string[] words = filename.Split('\\');
 

@@ -253,7 +253,7 @@ namespace ChildcareApplication.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"\"")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Public\\Documents")]
         public string DefaultSaveFolder {
             get {
                 return ((string)(this["DefaultSaveFolder"]));
@@ -272,18 +272,6 @@ namespace ChildcareApplication.Properties {
             }
             set {
                 this["LastBackup"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool FirstRun {
-            get {
-                return ((bool)(this["FirstRun"]));
-            }
-            set {
-                this["FirstRun"] = value;
             }
         }
     }

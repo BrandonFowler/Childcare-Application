@@ -84,7 +84,7 @@ namespace GuardianTools {
             }
             catch (System.IO.FileNotFoundException) {
                 BitmapImage bitmapImage = new BitmapImage();
-                var fileInfo = new FileInfo(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg"); //TAG: pictures access
+                var fileInfo = new FileInfo(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg"); //TAG: pictures access
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
@@ -94,7 +94,7 @@ namespace GuardianTools {
             }
             catch (System.IO.DirectoryNotFoundException) {
                 BitmapImage bitmapImage = new BitmapImage();
-                var fileInfo = new FileInfo(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg"); //TAG: pictures access
+                var fileInfo = new FileInfo(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg"); //TAG: pictures access
                 bitmapImage.BeginInit();
                 bitmapImage.UriSource = new Uri(fileInfo.FullName);
                 bitmapImage.DecodePixelWidth = size;
@@ -159,7 +159,7 @@ namespace GuardianTools {
                 }
                 else {
                     ImageBrush ib = new ImageBrush();
-                    ib.ImageSource = new BitmapImage(new Uri(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
+                    ib.ImageSource = new BitmapImage(new Uri(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
                     cnv_GuardianPic.Background = ib;
                 }
             }

@@ -38,9 +38,9 @@ namespace ChildcareApplication {
         }
 
         private void btn_Help_Click(object sender, RoutedEventArgs e) {
-            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Childcare Application User Manual.pdf")) {
+            if (File.Exists("C:/Users/Public/Documents" + "/Childcare Application/Childcare Application User Manual.pdf")) {
                 try {
-                    System.Diagnostics.Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Childcare Application User Manual.pdf");
+                    System.Diagnostics.Process.Start("C:/Users/Public/Documents" + "/Childcare Application/Childcare Application User Manual.pdf");
                 }
                 catch(System.IO.FileNotFoundException) {
                     WPFMessageBox.Show("Unable to open user manual. It may not exist.");

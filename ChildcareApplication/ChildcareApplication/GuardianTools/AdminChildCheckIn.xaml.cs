@@ -82,7 +82,7 @@ namespace GuardianTools {
             }
             else {
                 ImageBrush ib = new ImageBrush();
-                ib.ImageSource = new BitmapImage(new Uri(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
+                ib.ImageSource = new BitmapImage(new Uri(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
                 cnv_GuardianPic.Background = ib;
             }
         }

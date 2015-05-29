@@ -199,7 +199,7 @@ namespace AdminTools {
                 cnv_ParentIcon.Background = new ImageBrush(new BitmapImage(new Uri(parentInfo.GetPhotoPath(txt_GuardianID.Text), UriKind.Relative)));
             }
             else {
-                cnv_ParentIcon.Background = new ImageBrush(new BitmapImage(new Uri(@"" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Childcare Application/Pictures/default.jpg", UriKind.Relative)));
+                cnv_ParentIcon.Background = new ImageBrush(new BitmapImage(new Uri(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg", UriKind.Relative)));
             }
             lbl_Name.Content = parentInfo.GetParentName(txt_GuardianID.Text);
             lbl_Address1.Content = parentInfo.GetAddress1(txt_GuardianID.Text);

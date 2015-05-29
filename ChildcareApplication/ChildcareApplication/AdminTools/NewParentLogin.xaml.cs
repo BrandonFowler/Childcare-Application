@@ -41,7 +41,7 @@ namespace AdminTools {
                     if (count == 0){
                         string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
                         hashedPIN = "\"" + hashedPIN + "\"";
-                        this.db.AddNewParent(pID, hashedPIN, "\"First\"", "\"Last\"", "\"000-000-0000\"", "\"someEmail@email.com\"", "\"123 Road St\"", "\"none\"", "\"City\"", "\"WA\"", "\"12345\"", "'" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Childcare Application\\Pictures\\default.jpg'"); //TAG: pictures access
+                        this.db.AddNewParent(pID, hashedPIN, "\"First\"", "\"Last\"", "\"000-000-0000\"", "\"someEmail@email.com\"", "\"123 Road St\"", "\"none\"", "\"City\"", "\"WA\"", "\"12345\"", "'" + "C:\\Users\\Public\\Documents" + "\\Childcare Application\\Pictures\\default.jpg'"); //TAG: pictures access
                         MakeFamilyID(pID);
 
                         AdminEditParentInfo adminEditParentInfo = new AdminEditParentInfo(pID);
