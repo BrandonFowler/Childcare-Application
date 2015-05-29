@@ -126,8 +126,8 @@ namespace DatabaseController {
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
             }
-            result = "" + num;
-            String.Format("{0:0000000000}", result);
+            
+            result = String.Format("{0:0000000000}", num);
             return result;
         }
 

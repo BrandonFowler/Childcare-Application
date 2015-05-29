@@ -83,7 +83,7 @@ namespace DatabaseController {
             try {
                 dbCon.Open();
                 String sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
-                                + "VALUES(" + conID + ", " + pID + ", " + cID + ", " + famID + ");";
+                                + "VALUES('" + conID + "', '" + pID + "', '" + cID + "', '" + famID + "');";
 
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
                 command.CommandText = sql;
@@ -181,7 +181,7 @@ namespace DatabaseController {
 
             string sql = "select Child.* " +
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
-                  "where  Family_ID = " + fID + " AND Guardian_ID != " + ID + " AND ConnectionDeletionDate IS null";
+                  "where  Family_ID = '" + fID + "' AND Guardian_ID != '" + ID + "' AND ConnectionDeletionDate IS null";
 
             SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
