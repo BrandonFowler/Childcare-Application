@@ -53,7 +53,7 @@ namespace DatabaseController {
         public bool ValidateGuardianLogin(string ID, string PIN) {
             string sql = "select Guardian_ID " +
                          "from Guardian " +
-                         "where Guardian_ID = @ID and GuardianPIN = @PIN";
+                         "where Guardian_ID = @ID and GuardianPIN = @PIN and GuardianDeletionDate is NULL";
             SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             command.Parameters.Add(new SQLiteParameter("@ID", ID));
             command.Parameters.Add(new SQLiteParameter("@PIN", PIN));
