@@ -117,8 +117,6 @@ namespace DatabaseController {
 
                 if(!reader.IsDBNull(0)) {
                     num = Convert.ToInt32(reader.GetString(0));
-                } else {
-                    num = 0;
                 }
                 num++;
                 reader.Close();
@@ -127,7 +125,7 @@ namespace DatabaseController {
                 WPFMessageBox.Show(exception.Message);
             }
             
-            result = String.Format("{0:0000000000}", num);
+            result = num.ToString("D10");
             return result;
         }
 
