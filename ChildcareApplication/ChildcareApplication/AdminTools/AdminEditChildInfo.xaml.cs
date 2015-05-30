@@ -1,5 +1,6 @@
 ﻿using ChildcareApplication.AdminTools;
 using DatabaseController;
+using MessageBoxUtils;
 using System;
 using System.Collections;
 using System.Data;
@@ -9,14 +10,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using MessageBoxUtils;
 
 namespace AdminTools {
-    /// <summary>
-    /// Interaction logic for win_AdminEditChildInfo.xaml
-    /// </summary>
-    /// 
-
     public partial class AdminEditChildInfo : Window {
         private ChildInfoDatabase db;
         DataSet DS = new DataSet();
@@ -37,9 +32,7 @@ namespace AdminTools {
                 var textBox = (TextBox)dte_Birthday.Template.FindName("PART_TextBox", dte_Birthday);
                 textBox.Background = dte_Birthday.Background;
             };
-
         }
-
 
         private void btn_Submit_Click(object sender, RoutedEventArgs e) {
             bool formNotComplete = true;
@@ -74,8 +67,7 @@ namespace AdminTools {
                     }
                 }
             }
-        }//end btn_Submit_Click
-
+        }
 
         internal bool RegexValidation() {
             formError = true;
@@ -108,6 +100,7 @@ namespace AdminTools {
             return false;
 
         }
+
         private void btn_Delete_Click(object sender, RoutedEventArgs e) {
             if (lst_ChildBox.SelectedItem != null) {
                 MessageBoxResult messageBoxResult = WPFMessageBox.Show("Are you sure you wish to delete this person?", "Deletion Conformation", MessageBoxButton.YesNo);
@@ -123,7 +116,7 @@ namespace AdminTools {
                 }
             }
 
-        }//end btn_Delete_Click
+        }
 
         private void DisableForm() {
             btn_Delete.IsEnabled = false;
@@ -133,6 +126,7 @@ namespace AdminTools {
             btn_De_LinkChild.IsEnabled = false;
             btn_LinkExistingChild.IsEnabled = false;
         }
+
         private void EnableForm() {
             btn_Delete.IsEnabled = true;
             btn_Submit.IsEnabled = true;
@@ -141,6 +135,7 @@ namespace AdminTools {
             btn_De_LinkChild.IsEnabled = true;
             btn_LinkExistingChild.IsEnabled = true;
         }
+
         private void btn_MainMenu_Click(object sender, RoutedEventArgs e) {
             this.Close();
         }
@@ -148,7 +143,7 @@ namespace AdminTools {
         private void LoadParentInfo(string parentID) {
             txt_IDNumber.Text = parentID;
 
-        }//end LoadParentInfo
+        }
 
         internal bool CheckIfNull() {
 
@@ -164,7 +159,7 @@ namespace AdminTools {
                 return true;
             }
             return false;
-        }//end CheckIfNull
+        }
 
         internal void ClearFields() {
             txt_FirstName.Clear();
@@ -173,8 +168,7 @@ namespace AdminTools {
             txt_Medical.Clear();
             txt_FilePath.Clear();
             dte_Birthday.Text = "01/01/2005";
-        }//end ClarFields
-
+        }
 
         private void setChildBox() {
             string[,] childrenData = db.FindChildren(this.ID);
@@ -191,10 +185,10 @@ namespace AdminTools {
                 }
             }
             if (childrenData.GetLength(0) == 0) {
-                DisableForm();  
+                DisableForm();
             }
 
-        }//end setUpCheckInBox
+        }
 
         private Image buildImage(string path, int size) {
             Image image = new Image();
@@ -209,8 +203,7 @@ namespace AdminTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            }
-            catch (System.IO.FileNotFoundException) {
+            } catch (System.IO.FileNotFoundException) {
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg"); //TAG: pictures access
                 bitmapImage.BeginInit();
@@ -219,7 +212,7 @@ namespace AdminTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            }catch (System.IO.DirectoryNotFoundException) {
+            } catch (System.IO.DirectoryNotFoundException) {
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg"); //TAG: pictures access
                 bitmapImage.BeginInit();
@@ -228,13 +221,11 @@ namespace AdminTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 WPFMessageBox.Show("Unable to load photo for unknown reason.");
-
             }
             return image;
-        }//end buildImage	
+        }
 
         private void ListBoxSelectionChanged(object sender, System.EventArgs e) {
 
@@ -252,13 +243,11 @@ namespace AdminTools {
                     ImageBrush ib = new ImageBrush();
                     ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
                     cnv_ChildIcon.Background = ib;
-                }
-                else {
+                } else {
                     ImageBrush ib = new ImageBrush();
                     ib.ImageSource = new BitmapImage(new Uri(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
                     cnv_ChildIcon.Background = ib;
                 }
-
             }
         }
 
@@ -288,7 +277,6 @@ namespace AdminTools {
             setChildBox();
             lst_ChildBox.SelectedItem = lst_ChildBox.Items[lst_ChildBox.Items.Count - 1];
             txt_FirstName.Focus();
-
         }
 
         internal string GetFamilyID(string pID) {
@@ -378,12 +366,9 @@ namespace AdminTools {
                     } else {
                         WPFMessageBox.Show("The picture you specified is not in the Pictures folder in the Childcare Application folder in your documents folder!");
                     }
-
                 }
-
             }
-
-        }//end btnChangePicture
+        }
 
         private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)

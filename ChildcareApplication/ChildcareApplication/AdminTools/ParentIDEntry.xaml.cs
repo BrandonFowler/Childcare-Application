@@ -1,9 +1,9 @@
 ﻿using DatabaseController;
+using MessageBoxUtils;
 using System;
 using System.Windows;
-using System.Windows.Input;
-using MessageBoxUtils;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AdminTools {
 
@@ -50,7 +50,7 @@ namespace AdminTools {
                         DisplayAdminEditChildInfo(ID);
                 } else {
                     WPFMessageBox.Show("User ID or PIN does not exist");
-                    txt_IDEntry.Focus(); 
+                    txt_IDEntry.Focus();
                 }
             }
         }
@@ -69,13 +69,13 @@ namespace AdminTools {
             this.Close();
         }//end DisplayAdminEditChildInfo
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
 
         private void btn_Close_Click(object sender, RoutedEventArgs e) {
-            this.Close(); 
+            this.Close();
         }
 
         private void SelectAllOnFocus(object sender, RoutedEventArgs e) {
@@ -91,6 +91,5 @@ namespace AdminTools {
                 ((Control)e.Source).MoveFocus(request);
             }
         }
-        
     }
 }

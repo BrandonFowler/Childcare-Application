@@ -167,7 +167,7 @@ namespace AdminTools {
                     } else {
                         AddEventNoDiscount();
                     }
-                } else if(txt_DiscountPrice.Text != "") {
+                } else if (txt_DiscountPrice.Text != "") {
                     EditEventDiscount();
                 } else {
                     EditEventNoDiscount();
@@ -264,7 +264,7 @@ namespace AdminTools {
                 return 3;
             } else if (eventDay == "Thursday") {
                 return 4;
-            } else if(eventDay == "Friday") {
+            } else if (eventDay == "Friday") {
                 return 5;
             } else {
                 return 6;
@@ -352,7 +352,7 @@ namespace AdminTools {
         private bool DateValid() {
             int dayNum = 0;
             int monthNum = 0;
-            if (!(Int32.TryParse(txt_DayOfMonth.Text, out dayNum))) { 
+            if (!(Int32.TryParse(txt_DayOfMonth.Text, out dayNum))) {
                 WPFMessageBox.Show("You must enter a valid number in the Day of Month box.");
                 txt_DayOfMonth.Focus();
                 return false;
@@ -363,7 +363,7 @@ namespace AdminTools {
                 return false;
             }
             GregorianCalendar cal = new GregorianCalendar();
-            if(dayNum <= cal.GetDaysInMonth(DateTime.Now.Year, monthNum) && dayNum > 0) {
+            if (dayNum <= cal.GetDaysInMonth(DateTime.Now.Year, monthNum) && dayNum > 0) {
                 return true;
             } else {
                 WPFMessageBox.Show("You must enter a valid month number and day number in the month number and day number boxes!");
@@ -391,7 +391,7 @@ namespace AdminTools {
             }
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }

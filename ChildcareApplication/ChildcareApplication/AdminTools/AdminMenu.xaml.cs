@@ -92,7 +92,7 @@ namespace AdminTools {
 
         private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
             NewParentLogin newParentLogin = new NewParentLogin();
-            newParentLogin.ShowDialog(); 
+            newParentLogin.ShowDialog();
         }
 
         private void btn_EditTransaction_Click(object sender, RoutedEventArgs e) {
@@ -110,7 +110,7 @@ namespace AdminTools {
             appsettings.ShowDialog();
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
@@ -120,6 +120,5 @@ namespace AdminTools {
             restore.Show();
             this.Close();
         }
-
     }
 }

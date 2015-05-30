@@ -1,10 +1,10 @@
 ﻿using AdminTools;
 using GuardianTools;
 using MessageBoxUtils;
+using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
-using System.IO;
-using System;
 
 namespace ChildcareApplication {
     /// <summary>
@@ -32,7 +32,7 @@ namespace ChildcareApplication {
             Application.Current.Shutdown();
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
@@ -41,15 +41,12 @@ namespace ChildcareApplication {
             if (File.Exists("C:/Users/Public/Documents" + "/Childcare Application/Childcare Application User Manual.pdf")) {
                 try {
                     System.Diagnostics.Process.Start("C:/Users/Public/Documents" + "/Childcare Application/Childcare Application User Manual.pdf");
-                }
-                catch(System.IO.FileNotFoundException) {
+                } catch (System.IO.FileNotFoundException) {
                     WPFMessageBox.Show("Unable to open user manual. It may not exist.");
-                }
-                catch(Exception) {
+                } catch (Exception) {
                     WPFMessageBox.Show("Unable to open user manual.");
                 }
-            }
-            else {
+            } else {
                 WPFMessageBox.Show("Unable to open user manual.");
             }
         }

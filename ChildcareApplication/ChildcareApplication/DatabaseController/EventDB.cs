@@ -254,7 +254,7 @@ namespace DatabaseController {
             }
         }
 
-        public void DailyPriceWeeklyOcur(String eventName, Double dailyPrice, Double dailyDiscount, String weekday, String oldEventName) { 
+        public void DailyPriceWeeklyOcur(String eventName, Double dailyPrice, Double dailyDiscount, String weekday, String oldEventName) {
             String query = "UPDATE EventData SET EventName = '" + eventName + "', DailyPrice = " + dailyPrice + ", ";
             query += "DailyDiscount = " + dailyDiscount + ", EventWeekday = '" + weekday + "', HourlyPrice = null,";
             query += " HourlyDiscount = null, EventMonth = null, EventDay = null WHERE EventName = '" + oldEventName + "';";
@@ -446,11 +446,11 @@ namespace DatabaseController {
                 }
                 dbCon.Close();
                 return eventData;
-            }catch (System.Data.SQLite.SQLiteException) {
+            } catch (System.Data.SQLite.SQLiteException) {
                 WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible. Please insure the charge was calculated correctly.");
                 dbCon.Close();
                 return null;
-            }catch (Exception) {
+            } catch (Exception) {
                 dbCon.Close();
                 WPFMessageBox.Show("Unable to retrieve critical information. Please insure charge was calculated correctly.");
                 return null;
@@ -485,11 +485,11 @@ namespace DatabaseController {
                     return Convert.ToDouble(recordFound);
                 }
                 return eventHasNoMax;
-            }catch (System.Data.SQLite.SQLiteException) {
+            } catch (System.Data.SQLite.SQLiteException) {
                 WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
                 return eventHasNoMax;
-            }catch (Exception) {
+            } catch (Exception) {
                 dbCon.Close();
                 WPFMessageBox.Show("Unable to retrieve event specifications. Possible late fee calculations could be incorrect.");
                 return eventHasNoMax;
@@ -525,11 +525,11 @@ namespace DatabaseController {
                 }
                 dbCon.Close();
                 return events;
-            }catch (System.Data.SQLite.SQLiteException) {
+            } catch (System.Data.SQLite.SQLiteException) {
                 WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
                 return null;
-            }catch (Exception) {
+            } catch (Exception) {
                 WPFMessageBox.Show("Unable to retrieve information for events");
                 dbCon.Close();
                 return null;
@@ -549,11 +549,11 @@ namespace DatabaseController {
 
                 double lateFee = Convert.ToDouble(fee);
                 return lateFee;
-            }catch (System.Data.SQLite.SQLiteException) {
+            } catch (System.Data.SQLite.SQLiteException) {
                 WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible. Any late fees have not been recorded.");
                 dbCon.Close();
                 return 0;
-            }catch (Exception) {
+            } catch (Exception) {
                 dbCon.Close();
                 WPFMessageBox.Show("Unable to retrieve critical information. Any late fees have not been recorded.");
                 return 0;

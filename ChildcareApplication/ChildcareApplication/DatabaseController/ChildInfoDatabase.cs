@@ -63,7 +63,7 @@ namespace DatabaseController {
 
         public void AddNewChild(string cID, string fName, string lName, string birthday, string allergies, string medical, string photo) {
 
-            
+
             try {
                 dbCon.Open();
                 string sql = "INSERT INTO Child(Child_ID, FirstName, LastName, Birthday, Allergies, Medical, PhotoLocation) "
@@ -89,7 +89,7 @@ namespace DatabaseController {
                 command.CommandText = sql;
 
                 command.ExecuteNonQuery();
-                
+
 
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not update the child's information.");
@@ -164,7 +164,7 @@ namespace DatabaseController {
                 }
                 dbCon.Close();
                 return data;
-            }catch(System.Data.SQLite.SQLiteException){
+            } catch (System.Data.SQLite.SQLiteException) {
                 WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
                 return null;
@@ -191,12 +191,10 @@ namespace DatabaseController {
                 dbCon.Open();
                 DB.Fill(DS);
                 dbCon.Close();
-            }
-            catch (System.Data.SQLite.SQLiteException) {
+            } catch (System.Data.SQLite.SQLiteException) {
                 WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 WPFMessageBox.Show("Unable to retrieve information for children.");
                 dbCon.Close();
             }

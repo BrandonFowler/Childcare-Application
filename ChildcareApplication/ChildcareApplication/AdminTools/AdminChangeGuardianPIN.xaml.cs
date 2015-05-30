@@ -1,42 +1,27 @@
 ﻿using DatabaseController;
 using MessageBoxUtils;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ChildcareApplication.AdminTools {
-    /// <summary>
-    /// Interaction logic for AdminChangeGuardianPIN.xaml
-    /// </summary>
     public partial class AdminChangeGuardianPIN : Window {
         private GuardianInfoDB db;
         private bool formError;
         public AdminChangeGuardianPIN(string pID) {
-             
+
             InitializeComponent();
             this.db = new GuardianInfoDB();
             this.MouseDown += WindowMouseDown;
-            txt_ParentID1.Text = pID; 
+            txt_ParentID1.Text = pID;
             psw_ParentPIN1.Focus();
         }
 
         private void btn_ChnagePIN_Click(object sender, RoutedEventArgs e) {
             string pID = "", PIN = "";
             bool formNotComplete = CheckIfNull();
-            if (!formNotComplete)//form is completed
-            {
-               
+            if (!formNotComplete) {
                 bool samePIN = CheckIfSame(psw_ParentPIN1.Password, psw_ParentPIN2.Password);
 
                 bool regexPIN = RegExpressions.RegexPIN(psw_ParentPIN1.Password);
@@ -45,14 +30,11 @@ namespace ChildcareApplication.AdminTools {
                     pID = string.Format("{0:000000}", txt_ParentID1.Text);
                     PIN = string.Format("{0:0000}", psw_ParentPIN1.Password);
 
-                        string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
-                        this.db.UpdateParentPIN(pID, hashedPIN);
-                        this.Close();
-
+                    string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
+                    this.db.UpdateParentPIN(pID, hashedPIN);
+                    this.Close();
                 }
-
             }
-
         }
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e) {
@@ -68,25 +50,24 @@ namespace ChildcareApplication.AdminTools {
 
             string fID = this.db.CheckIfFamilyExists(familyID);
 
-            if (string.IsNullOrWhiteSpace(fID))//FamilyID does not exist
-             {
+            if (string.IsNullOrWhiteSpace(fID)) {
                 this.db.AddNewFamily(familyID, 0.0, 0, 0);
             }
-
         }
+
         internal bool CheckIfNull() {
-            formError = true; 
-           if (string.IsNullOrWhiteSpace(this.psw_ParentPIN1.Password) && formError) {
+            formError = true;
+            if (string.IsNullOrWhiteSpace(this.psw_ParentPIN1.Password) && formError) {
                 WPFMessageBox.Show("Please enter your PIN number.");
-                formError = false; 
+                formError = false;
                 return true;
             } else if (string.IsNullOrWhiteSpace(this.psw_ParentPIN2.Password) && formError) {
                 WPFMessageBox.Show("Please enter your PIN number a second time.");
-                formError = false; 
+                formError = false;
                 return true;
             }
             return false;
-        }//end CheckIfNull
+        }
 
         internal bool CheckIfSame(string str1, string str2) {
 
@@ -97,13 +78,11 @@ namespace ChildcareApplication.AdminTools {
 
                 return false;
             }
-
         }
-   
+
         private void SelectAllGotFocus(object sender, RoutedEventArgs e) {
             TextBox tb = (TextBox)sender;
             Dispatcher.BeginInvoke((Action)(tb.SelectAll));
- 
         }
 
         private void SelectAllGotFocusPW(object sender, RoutedEventArgs e) {
@@ -123,6 +102,5 @@ namespace ChildcareApplication.AdminTools {
                 ((Control)e.Source).MoveFocus(request);
             }
         }
-        
     }
 }

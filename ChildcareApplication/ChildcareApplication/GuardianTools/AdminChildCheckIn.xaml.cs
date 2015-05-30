@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace GuardianTools {
-   
+
     public partial class AdminChildCheckIn : Window {
 
         private string guardianID;
@@ -36,8 +36,7 @@ namespace GuardianTools {
             if (e.Key == Key.Return) {
                 if (txt_SearchBox.IsSelectionActive) {
                     Search();
-                }
-                else if (dta_GuardianList.SelectedItem != null) {
+                } else if (dta_GuardianList.SelectedItem != null) {
                     Login();
                 }
             }
@@ -61,7 +60,7 @@ namespace GuardianTools {
             }
             GuardianInfoDB parentDB = new GuardianInfoDB();
             String guardianInfo = "";
-            for (int i = 0; i < dta_GuardianList.SelectedItems.Count; i++){
+            for (int i = 0; i < dta_GuardianList.SelectedItems.Count; i++) {
                 System.Data.DataRowView selectedFile = (System.Data.DataRowView)dta_GuardianList.SelectedItems[i];
                 guardianInfo = Convert.ToString(selectedFile.Row.ItemArray[2]);
             }
@@ -72,8 +71,7 @@ namespace GuardianTools {
                 ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
                 cnv_GuardianPic.Background = ib;
                 cnv_GuardianPic.Visibility = System.Windows.Visibility.Visible;
-            }
-            else {
+            } else {
                 ImageBrush ib = new ImageBrush();
                 ib.ImageSource = new BitmapImage(new Uri(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
                 cnv_GuardianPic.Background = ib;
@@ -100,12 +98,10 @@ namespace GuardianTools {
                     ChildLoginWindow.Show();
                     ChildLoginWindow.WindowState = WindowState.Maximized;
                     this.Close();
-                }
-                else {
+                } else {
                     WPFMessageBox.Show("No search results found");
                 }
-            }
-            else {
+            } else {
                 DataTable guardianInfo = parentDB.RetieveGuardiansByLastName(txt_SearchBox.Text);
                 if (guardianInfo == null || guardianInfo.Rows.Count == 0) {
                     WPFMessageBox.Show("No search results found");
@@ -140,6 +136,5 @@ namespace GuardianTools {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
-
     }
 }

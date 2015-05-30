@@ -1,6 +1,5 @@
-﻿using System.Text.RegularExpressions;
-using System.Windows;
-using MessageBoxUtils;
+﻿using MessageBoxUtils;
+using System.Text.RegularExpressions;
 
 namespace ChildcareApplication.AdminTools {
     class RegExpressions {
@@ -20,7 +19,7 @@ namespace ChildcareApplication.AdminTools {
 
             WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX:(509)555-5555");
             return false;
-        }//end regexPhoneNumber
+        }
 
         public static bool RegexEmail(string data) {
             /*Email:
@@ -37,7 +36,7 @@ namespace ChildcareApplication.AdminTools {
 
             WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: e.mail@ewu.edu");
             return false;
-        }//end regexEmail
+        }
 
         public static bool RegexName(string data) {
             /*Name:
@@ -53,7 +52,7 @@ namespace ChildcareApplication.AdminTools {
 
             WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: Brian");
             return false;
-        }//end regexName
+        }
 
         public static bool RegexDate(string data) {
             /*Date:
@@ -69,7 +68,7 @@ namespace ChildcareApplication.AdminTools {
 
             WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: 02-15-1991");
             return false;
-        }//end regexDate
+        }
 
         public static bool RegexAddress(string data) {
             /*Address: 
@@ -86,8 +85,7 @@ namespace ChildcareApplication.AdminTools {
 
             WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: 123 Road Rd.");
             return false;
-
-        }//end regexAddress
+        }
 
         public static bool RegexCity(string data) {
             /*City:
@@ -102,7 +100,7 @@ namespace ChildcareApplication.AdminTools {
 
             WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: Spokane");
             return false;
-        }//end regexCityState
+        }
 
         public static bool RegexZIP(string data) {
             /*ZIP:
@@ -116,7 +114,7 @@ namespace ChildcareApplication.AdminTools {
 
             WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. Ex: 12345");
             return false;
-        }//end regexCityState
+        }
 
         public static bool RegexID(string data) {
             /*ID:
@@ -130,7 +128,7 @@ namespace ChildcareApplication.AdminTools {
 
             WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. Ex: 123456");
             return false;
-        }//end regexCityState
+        }
 
         public static bool RegexPIN(string data) {
             /*PIN:
@@ -144,7 +142,7 @@ namespace ChildcareApplication.AdminTools {
 
             WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. Ex: 1234");
             return false;
-        }//end regexCityState
+        }
 
         public static bool RegexFilePath(string data) {
             /*FilePath
@@ -159,7 +157,7 @@ namespace ChildcareApplication.AdminTools {
 
             WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: file_name.jpg");
             return false;
-        }//end regexCityState
+        }
 
         public static bool RegexValidateEventName(string data) {
             /*Event Nmae:
@@ -175,8 +173,6 @@ namespace ChildcareApplication.AdminTools {
 
             //WPFMessageBox.Show("The word " + data + " is not valid. Please re-enter. EX: Some Event Name");
             return false;
-
-
         }
     }
 }

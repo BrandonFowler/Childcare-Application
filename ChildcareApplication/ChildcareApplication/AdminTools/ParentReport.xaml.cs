@@ -6,12 +6,12 @@ using MessageBoxUtils;
 using PdfSharp.Pdf;
 using System;
 using System.Data;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.IO;
 
 namespace AdminTools {
     public partial class ParentReport : Window {
@@ -23,11 +23,11 @@ namespace AdminTools {
             this.txt_GuardianID.Focus();
             this.parentDataGrid.IsTabStop = false;
             this.reportLoaded = false;
-            this.dte_fromDate.Loaded += delegate{
+            this.dte_fromDate.Loaded += delegate {
                 var textBox = (TextBox)dte_fromDate.Template.FindName("PART_TextBox", dte_fromDate);
                 textBox.Background = dte_fromDate.Background;
             };
-            this.dte_toDate.Loaded += delegate{
+            this.dte_toDate.Loaded += delegate {
                 var textBox = (TextBox)dte_toDate.Template.FindName("PART_TextBox", dte_toDate);
                 textBox.Background = dte_toDate.Background;
             };
@@ -72,7 +72,7 @@ namespace AdminTools {
             ReportsDB reportDB = new ReportsDB();
             this.table = reportDB.GetParentReportTable(this.txt_GuardianID.Text, dates);
             parentDataGrid.ItemsSource = table.DefaultView;
-            
+
             this.reportLoaded = true;
         }
 
@@ -87,7 +87,7 @@ namespace AdminTools {
             }
         }
 
-        private void btn_CurrentMonthReport_Click(object sender, RoutedEventArgs e) { 
+        private void btn_CurrentMonthReport_Click(object sender, RoutedEventArgs e) {
             GuardianInfoDB parentInfo = new GuardianInfoDB();
             String fromDate, toDate;
             Settings settings = new Settings();
@@ -151,8 +151,7 @@ namespace AdminTools {
             DateTime dt;
             if (DateTime.TryParse(dte_fromDate.Text, out dt) && DateTime.TryParse(dte_toDate.Text, out dt)) {
                 DateRangeReport();
-            }
-            else {
+            } else {
                 WPFMessageBox.Show("Please enter valid dates!");
             }
         }
@@ -197,8 +196,7 @@ namespace AdminTools {
 
             if (File.Exists(parentInfo.GetPhotoPath(txt_GuardianID.Text))) {
                 cnv_ParentIcon.Background = new ImageBrush(new BitmapImage(new Uri(parentInfo.GetPhotoPath(txt_GuardianID.Text), UriKind.Relative)));
-            }
-            else {
+            } else {
                 cnv_ParentIcon.Background = new ImageBrush(new BitmapImage(new Uri(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg", UriKind.Relative)));
             }
             lbl_Name.Content = parentInfo.GetParentName(txt_GuardianID.Text);
@@ -289,7 +287,7 @@ namespace AdminTools {
             }
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }

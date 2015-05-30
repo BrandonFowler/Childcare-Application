@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MessageBoxUtils;
+﻿using MessageBoxUtils;
+using System;
 using System.IO;
+using System.Windows;
+using System.Windows.Input;
 
 namespace AdminTools {
-    
+
     public partial class RestoreRecords : Window {
 
         private string userName;
@@ -55,23 +45,19 @@ namespace AdminTools {
         private void btn_Restore_Click(object sender, RoutedEventArgs e) {
             if (txt_path.Text == "") {
                 WPFMessageBox.Show("You must choose a backup file first.");
-            }
-            else {
+            } else {
                 try {
                     MessageBoxResult messageBoxResult = WPFMessageBox.Show("Are you sure you wish to perform a record restore?", "Restore Confirmation", MessageBoxButton.YesNo);
                     if (messageBoxResult == MessageBoxResult.Yes) {
-                        File.Copy(txt_path.Text, @"..\..\Database\ChildcareDB.s3db",true);
+                        File.Copy(txt_path.Text, @"..\..\Database\ChildcareDB.s3db", true);
                         WPFMessageBox.Show("Restore Completed.");
                     }
-                }
-                catch (System.IO.IOException) {
+                } catch (System.IO.IOException) {
                     WPFMessageBox.Show("Unable to perform restore. Please insure write permissions are set for the database backup location.");
-                }
-                catch (Exception) {
+                } catch (Exception) {
                     WPFMessageBox.Show("Unable to perform restore");
                 }
             }
         }
-
     }
 }

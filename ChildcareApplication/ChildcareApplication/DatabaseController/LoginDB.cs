@@ -65,14 +65,14 @@ namespace DatabaseController {
                     dbCon.Close();
                     return true;
                 }
-            }catch (System.Data.SQLite.SQLiteException) {
+            } catch (System.Data.SQLite.SQLiteException) {
                 WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
-            }catch (Exception) {
+            } catch (Exception) {
                 WPFMessageBox.Show("Unable to retrieve guardian information.");
                 dbCon.Close();
             }
             return false;
         }
-    }//end Database
-}//end namespace
+    }
+}

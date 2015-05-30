@@ -13,7 +13,7 @@ namespace ChildcareApplication.DatabaseController {
 
         public string[] FindAdmins() {
             String[] names = null;
-            
+
             try {
                 dbCon.Open();
 

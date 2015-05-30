@@ -1,19 +1,16 @@
 ﻿using ChildcareApplication.AdminTools;
 using DatabaseController;
+using MessageBoxUtils;
 using System;
 using System.Data;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using MessageBoxUtils;
-using System.IO;
 
 namespace AdminTools {
-    /// <summary>
-    /// Interaction logic for win_AdminEditParentInfo.xaml
-    /// </summary>
     public partial class AdminEditParentInfo : Window {
 
         private GuardianInfoDB db;
@@ -58,55 +55,55 @@ namespace AdminTools {
                 }
 
             }
-        }//end btn_Submit_Click
+        }
 
         internal bool RegexValidation() {
             formError = true;
             bool fname = false, lname = false, phone = false, email = false, address = false, city = false, zip = false, path = false;
             if (formError) {
-                 fname = RegExpressions.RegexName(txt_FirstName.Text);
+                fname = RegExpressions.RegexName(txt_FirstName.Text);
                 if (!fname) {
                     txt_FirstName.Focus();
                     formError = false;
                 }
             }
             if (formError) {
-                 lname = RegExpressions.RegexName(txt_LastName.Text);
+                lname = RegExpressions.RegexName(txt_LastName.Text);
                 if (!lname) {
                     txt_LastName.Focus();
                     formError = false;
                 }
             }
             if (formError) {
-                 phone = RegExpressions.RegexPhoneNumber(txt_PhoneNumber.Text);
+                phone = RegExpressions.RegexPhoneNumber(txt_PhoneNumber.Text);
                 if (!phone) {
                     txt_PhoneNumber.Focus();
                     formError = false;
                 }
             }
             if (formError) {
-                 email = RegExpressions.RegexEmail(txt_Email.Text);
+                email = RegExpressions.RegexEmail(txt_Email.Text);
                 if (!email) {
                     txt_Email.Focus();
                     formError = false;
                 }
             }
             if (formError) {
-                 address = RegExpressions.RegexAddress(txt_Address.Text);
+                address = RegExpressions.RegexAddress(txt_Address.Text);
                 if (!address) {
                     txt_Address.Focus();
                     formError = false;
                 }
             }
             if (formError) {
-                 city = RegExpressions.RegexCity(txt_City.Text);
+                city = RegExpressions.RegexCity(txt_City.Text);
                 if (!city) {
                     txt_City.Focus();
                     formError = false;
                 }
             }
             if (formError) {
-                 zip = RegExpressions.RegexZIP(txt_Zip.Text);
+                zip = RegExpressions.RegexZIP(txt_Zip.Text);
                 if (!zip) {
                     txt_Zip.Focus();
                     formError = false;
@@ -114,7 +111,7 @@ namespace AdminTools {
             }
 
             if (formError) {
-                 path = RegExpressions.RegexFilePath(txt_FilePath.Text);
+                path = RegExpressions.RegexFilePath(txt_FilePath.Text);
                 if (!path) {
                     formError = false;
                 }
@@ -150,7 +147,8 @@ namespace AdminTools {
                 DisableForm();
             }
 
-        }//end btn_Delete_Click
+        }
+
         private void DisableForm() {
             btn_EditChild.IsEnabled = false;
             btn_Delete.IsEnabled = false;
@@ -170,7 +168,7 @@ namespace AdminTools {
             txt_Zip.Clear();
             txt_Email.Clear();
             txt_FilePath.Clear();
-        }//end ClearFields
+        }
 
         internal bool CheckIfNull() {
 
@@ -197,7 +195,7 @@ namespace AdminTools {
                 return true;
             }
             return false;
-        }//end checkIfNull
+        }
 
         private void LoadParentInfo(string parentID) {
 
@@ -229,8 +227,7 @@ namespace AdminTools {
                         ImageBrush ib = new ImageBrush();
                         ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
                         cnv_ParentIcon.Background = ib;
-                    }
-                    else {
+                    } else {
                         ImageBrush ib = new ImageBrush();
                         ib.ImageSource = new BitmapImage(new Uri(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
                         cnv_ParentIcon.Background = ib;
@@ -242,7 +239,8 @@ namespace AdminTools {
                 }
             }
 
-        }//end LoadParentInfo
+        }
+
         private void AddStates() {
 
             cbo_State.SelectedIndex = 46;
@@ -368,6 +366,5 @@ namespace AdminTools {
                 adminChangeGuardianPIN.ShowDialog();
             }
         }
-
-    }//end class
-}//end nameSpace
+    }
+}

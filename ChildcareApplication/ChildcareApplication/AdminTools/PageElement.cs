@@ -115,7 +115,6 @@ namespace AdminTools {
                 colWidths[5] = 70;
                 colWidths[6] = 0;
             }
-
             return colWidths;
         }
     }

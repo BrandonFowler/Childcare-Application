@@ -1,14 +1,11 @@
 ﻿using ChildcareApplication.DatabaseController;
+using MessageBoxUtils;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using MessageBoxUtils;
 
 namespace ChildcareApplication.AdminTools {
-    /// <summary>
-    /// Interaction logic for AdminAddEdit.xaml
-    /// </summary>
     public partial class AdminAddEdit : Window {
         private AdminDB db;
         private string loggedInAs;
@@ -19,7 +16,7 @@ namespace ChildcareApplication.AdminTools {
             InitializeComponent();
             this.db = new AdminDB();
             this.loggedInAs = username;
-            
+
             lst_AdminList.ItemsSource = db.FindAdmins();
             this.MouseDown += WindowMouseDown;
         }
@@ -73,8 +70,7 @@ namespace ChildcareApplication.AdminTools {
         private void btn_DelAdmin_Click(object sender, RoutedEventArgs e) {
             if (lst_AdminList.SelectedItem.ToString().Equals(loggedInAs)) {
                 WPFMessageBox.Show("You cannot delete the currently logged in administrator");
-            }
-            else {
+            } else {
                 MessageBoxResult messageBoxResult = WPFMessageBox.Show("Are you sure you wish to delete this administrator?", "Deletion Conformation", MessageBoxButton.OKCancel);
                 if (messageBoxResult == MessageBoxResult.OK) {
                     WPFMessageBox.Show(lst_AdminList.SelectedItem.ToString() + " has been deleted from the administrator list");
@@ -109,7 +105,6 @@ namespace ChildcareApplication.AdminTools {
                     else if (rdb_Limited.IsChecked == true)
                         db.UpdateAdmin(lst_AdminList.SelectedItem.ToString(), txt_LoginName.Text, txt_Email.Text, "2");
                 }
-
 
                 lst_AdminList.ItemsSource = db.FindAdmins();
                 clearForm();
@@ -154,8 +149,7 @@ namespace ChildcareApplication.AdminTools {
                 txt_ConfirmPass.IsEnabled = true;
                 editingPW = true;
                 lbl_PassText.Text = "Confirm Changes";
-            }
-            else if (editingPW) {
+            } else if (editingPW) {
                 if (txt_Password.Password != AdminTools.Hashing.HashPass("")) {
                     if (passwordsMatch()) {
                         lst_AdminList.IsEnabled = true;
@@ -180,7 +174,6 @@ namespace ChildcareApplication.AdminTools {
                     WPFMessageBox.Show("Password must not be blank!");
                 }
             }
-
         }
 
         private void txt_LoginName_LostFocus(object sender, RoutedEventArgs e) {
@@ -242,7 +235,7 @@ namespace ChildcareApplication.AdminTools {
             btn_Cancel.IsEnabled = true;
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }

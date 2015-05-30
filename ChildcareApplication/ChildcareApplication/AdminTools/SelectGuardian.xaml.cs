@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace AdminTools {
-   
+
     public partial class SelectGuardian : Window {
 
         private string guardianID;
@@ -74,6 +74,5 @@ namespace AdminTools {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
-
     }
 }

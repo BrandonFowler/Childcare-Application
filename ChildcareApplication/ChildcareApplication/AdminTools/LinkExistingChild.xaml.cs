@@ -6,8 +6,8 @@ using System.Data;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace ChildcareApplication.AdminTools {
     /// <summary>
@@ -101,7 +101,7 @@ namespace ChildcareApplication.AdminTools {
             setChildBox();
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }

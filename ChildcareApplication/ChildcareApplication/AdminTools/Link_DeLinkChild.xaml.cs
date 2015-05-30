@@ -1,37 +1,31 @@
 ﻿using ChildcareApplication.AdminTools;
 using DatabaseController;
-using System.Windows;
-using System.Windows.Input;
 using MessageBoxUtils;
-using System.Windows.Controls;
 using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AdminTools {
-    /// <summary>
-    /// Interaction logic for win_Link_DeLinkChild.xaml
-    /// </summary>
 
     public partial class Link_DeLinkChild : Window {
-        
         private ChildInfoDatabase db;
-        
         int linked;
         string childID;
 
-        
         public Link_DeLinkChild(int link, string cID) {
             linked = link;
             childID = cID;
             InitializeComponent();
             this.db = new ChildInfoDatabase();
-            
+
             this.MouseDown += WindowMouseDown;
-            txt_GuardianID.Focus(); 
+            txt_GuardianID.Focus();
         }
 
         private void btn_Enter_Click(object sender, RoutedEventArgs e) {
             ConnectionsDB conDB = new ConnectionsDB();
-            GuardianInfoDB gdb = new GuardianInfoDB(); 
+            GuardianInfoDB gdb = new GuardianInfoDB();
             string fID = "", pID = "";
             bool formNotComplete = CheckIfNull();
             if (!formNotComplete)//form is completed
@@ -44,7 +38,7 @@ namespace AdminTools {
 
                     MakeFamilyID(pID);
                     if (linked == 0) {//link child
- 
+
                         int connID = this.db.GetMaxConnectionID();
                         connID = connID + 1;
 
@@ -55,11 +49,11 @@ namespace AdminTools {
                         if (guardianExists)
                             conDB.UpdateAllowedConnections(connectionID, pID, childID, fID);
                         else
-                            WPFMessageBox.Show("Guardian with ID: " +pID + " does not exist.");
+                            WPFMessageBox.Show("Guardian with ID: " + pID + " does not exist.");
                     } else if (linked == 1) {//delink child
                         bool connExists = conDB.ConnectionExists(pID, childID);
                         bool guardianExists = gdb.GuardianNotDeletedAndExists(pID);
-                        if(connExists && guardianExists)
+                        if (connExists && guardianExists)
                             conDB.DeleteAllowedConnection(childID, pID);
 
                         else
@@ -93,7 +87,7 @@ namespace AdminTools {
             }
 
             return false;
-        }//end CheckIfNull
+        }
 
         internal bool CheckIfSame(string str1, string str2) {
             if (str1.Equals(str2))
@@ -121,7 +115,7 @@ namespace AdminTools {
             }
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }

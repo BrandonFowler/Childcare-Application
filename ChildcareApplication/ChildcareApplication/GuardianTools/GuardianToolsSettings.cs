@@ -52,7 +52,7 @@ namespace GuardianTools {
         internal int GetBillingEnd() {
             int cap;
             if (Int32.TryParse(Settings.Default.BillingStartDate, out cap)) {
-                return cap-1;
+                return cap - 1;
             }
             WPFMessageBox.Show("Error: Unable to retrieve billing dates, fee may be recorded incorrectly.");
             return 19;
@@ -84,8 +84,7 @@ namespace GuardianTools {
             double regularDays = GetRegularChildCap() * 365.242;
             if (difference.Days < infantDays) {
                 return "Infant";
-            }
-            else if (difference.Days < regularDays) {
+            } else if (difference.Days < regularDays) {
                 return "Regular";
             }
             return "Adolescent";
@@ -105,6 +104,5 @@ namespace GuardianTools {
             }
             return hours;
         }
-
     }
 }

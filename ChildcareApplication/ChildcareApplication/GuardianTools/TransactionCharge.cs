@@ -60,20 +60,18 @@ namespace GuardianTools {
                 if (timeDifference > this.lateTime) {
                     this.lateTime = timeDifference;
                     totalCheckedInHours = lateMaximum;
-                }
-                else {
+                } else {
                     totalCheckedInHours = totalCheckedInHours - this.lateTime;
                 }
                 this.isLate = true;
-            }
-            else if (this.lateTime > 0 && eventName.CompareTo("Late Fee") != 0) {
+            } else if (this.lateTime > 0 && eventName.CompareTo("Late Fee") != 0) {
                 totalCheckedInHours = totalCheckedInHours - this.lateTime;
                 this.isLate = true;
             }
             return getCharge(eventFee, eventName, totalCheckedInHours);
         }
 
-        internal double getCharge(double eventFee, string eventName, double totalCheckedInHours){
+        internal double getCharge(double eventFee, string eventName, double totalCheckedInHours) {
             if (CheckIfHourly(eventName)) {
                 eventFee = eventFee * totalCheckedInHours;
                 eventFee = Math.Round(eventFee, 2, MidpointRounding.AwayFromZero);
@@ -101,7 +99,7 @@ namespace GuardianTools {
             lateFee = lateFee * this.lateTime;
             string maxTransactionID = transDB.GetNextTransID();
             transDB.AddLateFee(maxTransactionID, name, this.allowanceID, date, lateFee);
-            transDB.UpdateBalances(guardianID, lateFee,"MiscTotal");
+            transDB.UpdateBalances(guardianID, lateFee, "MiscTotal");
             return lateFee;
         }
 
@@ -131,16 +129,13 @@ namespace GuardianTools {
             if (discount) {
                 if (String.IsNullOrWhiteSpace(eventData[2])) {
                     return Convert.ToDouble(eventData[4]);
-                }
-                else {
+                } else {
                     return Convert.ToDouble(eventData[2]);
                 }
-            }
-            else {
+            } else {
                 if (String.IsNullOrWhiteSpace(eventData[1])) {
                     return Convert.ToDouble(eventData[3]);
-                }
-                else {
+                } else {
                     return Convert.ToDouble(eventData[1]);
                 }
             }
@@ -154,8 +149,7 @@ namespace GuardianTools {
             }
             if (String.IsNullOrWhiteSpace(eventData[1])) {
                 return Convert.ToDouble(eventData[3]);
-            }
-            else {
+            } else {
                 return Convert.ToDouble(eventData[1]);
             }
         }
@@ -169,8 +163,7 @@ namespace GuardianTools {
             if (DateTime.Now.Day > billingEnd) {
                 DTStart = new DateTime(DateTime.Now.Year, DateTime.Now.Month, billingStart);
                 DTEnd = FindBillingEnd(DTStart, billingEnd);
-            }
-            else {
+            } else {
                 DTEnd = new DateTime(DateTime.Now.Year, DateTime.Now.Month, billingEnd);
                 DTStart = FindBillingStart(DTEnd, billingStart);
             }
@@ -187,16 +180,14 @@ namespace GuardianTools {
                 double sum;
                 if (recordFound == DBNull.Value || recordFound == null) {
                     return 0;
-                }
-                else {
+                } else {
                     sum = Convert.ToDouble(recordFound);
                 }
                 double total = sum + eventFee;
                 double capdiff = total - cap;
                 if (capdiff > 0 && capdiff < eventFee) {
                     return capdiff;
-                }
-                else if (capdiff >= eventFee) {
+                } else if (capdiff >= eventFee) {
                     return eventFee;
                 }
             }
@@ -209,8 +200,7 @@ namespace GuardianTools {
             if (endMonth == 13) {
                 int endYear = DTStart.Year + 1;
                 DTEnd = new DateTime(endYear, 1, billingEnd);
-            }
-            else {
+            } else {
                 DTEnd = new DateTime(DateTime.Now.Year, endMonth, billingEnd);
             }
             return DTEnd;
@@ -222,8 +212,7 @@ namespace GuardianTools {
             if (startMonth == 0) {
                 int startYear = DTEnd.Year - 1;
                 DTStart = new DateTime(startYear, 12, billingStart);
-            }
-            else {
+            } else {
                 DTStart = new DateTime(DateTime.Now.Year, startMonth, billingStart);
             }
             return DTStart;
@@ -233,14 +222,11 @@ namespace GuardianTools {
             TransactionDB transDB = new TransactionDB();
             if (name.CompareTo("Regular Childcare") == 0 || name.CompareTo("Infant Childcare") == 0 || name.CompareTo("Adolescent Childcare") == 0) {
                 transDB.UpdateBalances(guardianID, eventFee, "RegularTotal");
-            }
-            else if (name.ToUpper().Contains("CAMP")) {
+            } else if (name.ToUpper().Contains("CAMP")) {
                 transDB.UpdateBalances(guardianID, eventFee, "CampTotal");
-            }
-            else {
+            } else {
                 transDB.UpdateBalances(guardianID, eventFee, "MiscTotal");
             }
         }
-
     }
 }

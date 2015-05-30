@@ -53,7 +53,7 @@ namespace AdminTools {
                     curPoint.X = PageMargin;
                 }
             }
-            
+
             return pdf;
         }
 
@@ -73,7 +73,7 @@ namespace AdminTools {
                     return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 15);
                 } else if (colNum == 2) {
                     return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 15);
-                }else if(colNum == 3) {
+                } else if (colNum == 3) {
                     return TruncateString(this.table.Rows[currentRow].ItemArray[colNum].ToString(), 20);
                 } else {
                     return this.table.Rows[currentRow].ItemArray[colNum].ToString();
@@ -123,7 +123,7 @@ namespace AdminTools {
             dialog.DefaultExt = ".pdf";
             dialog.Filter = "PDF file (*.pdf)|*.pdf";
             dialog.InitialDirectory = Path.GetFullPath(settings.DefaultSaveFolder);
-            
+
             if (dialog.ShowDialog() == true) {
                 string filename = dialog.FileName;
 

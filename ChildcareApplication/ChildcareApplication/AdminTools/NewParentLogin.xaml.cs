@@ -1,11 +1,11 @@
 ﻿using ChildcareApplication.AdminTools;
 using DatabaseController;
+using MessageBoxUtils;
+using System;
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using MessageBoxUtils;
-using System;
 
 namespace AdminTools {
     /// <summary>
@@ -13,18 +13,18 @@ namespace AdminTools {
     /// </summary>
     public partial class NewParentLogin : Window {
         private GuardianInfoDB db;
-        private bool formError; 
+        private bool formError;
         public NewParentLogin() {
             InitializeComponent();
             this.db = new GuardianInfoDB();
             this.MouseDown += WindowMouseDown;
-            txt_ParentID1.Focus(); 
+            txt_ParentID1.Focus();
         }
 
         private void btn_AddNewParent_Click(object sender, RoutedEventArgs e) {
             string pID = "", PIN = "";
             bool formNotComplete = CheckIfNull();
-            if (!formNotComplete){
+            if (!formNotComplete) {
                 bool sameID = CheckIfSame(txt_ParentID1.Text, txt_ParentID2.Text);
                 bool samePIN = CheckIfSame(psw_ParentPIN1.Password, psw_ParentPIN2.Password);
 
@@ -38,7 +38,7 @@ namespace AdminTools {
                     DS = this.db.GetParentInfoDS(pID);
                     int count = DS.Tables[0].Rows.Count;
 
-                    if (count == 0){
+                    if (count == 0) {
                         string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
                         hashedPIN = "\"" + hashedPIN + "\"";
                         this.db.AddNewParent(pID, hashedPIN, "\"First\"", "\"Last\"", "\"000-000-0000\"", "\"someEmail@email.com\"", "\"123 Road St\"", "\"none\"", "\"City\"", "\"WA\"", "\"12345\"", "'" + "C:\\Users\\Public\\Documents" + "\\Childcare Application\\Pictures\\default.jpg'"); //TAG: pictures access
@@ -48,8 +48,7 @@ namespace AdminTools {
                         adminEditParentInfo.Show();
                         this.Close();
 
-                    }
-                    else {
+                    } else {
                         WPFMessageBox.Show("A Guardian with this ID already Exists. Please re-enter your ID");
                     }
 
@@ -79,10 +78,10 @@ namespace AdminTools {
 
         }
         internal bool CheckIfNull() {
-            formError = true; 
+            formError = true;
             if (string.IsNullOrWhiteSpace(this.txt_ParentID1.Text) && formError) {
                 WPFMessageBox.Show("Please enter your ID number.");
-                formError = false; 
+                formError = false;
                 return true;
             } else if (string.IsNullOrWhiteSpace(this.txt_ParentID2.Text) && formError) {
                 WPFMessageBox.Show("Please enter your ID number a second time.");
@@ -90,11 +89,11 @@ namespace AdminTools {
                 return true;
             } else if (string.IsNullOrWhiteSpace(this.psw_ParentPIN1.Password) && formError) {
                 WPFMessageBox.Show("Please enter your PIN number.");
-                formError = false; 
+                formError = false;
                 return true;
             } else if (string.IsNullOrWhiteSpace(this.psw_ParentPIN2.Password) && formError) {
                 WPFMessageBox.Show("Please enter your PIN number a second time.");
-                formError = false; 
+                formError = false;
                 return true;
             }
             return false;
@@ -111,11 +110,11 @@ namespace AdminTools {
             }
 
         }
-   
+
         private void SelectAllGotFocus(object sender, RoutedEventArgs e) {
             TextBox tb = (TextBox)sender;
             Dispatcher.BeginInvoke((Action)(tb.SelectAll));
- 
+
         }
 
         private void SelectAllGotFocusPW(object sender, RoutedEventArgs e) {
@@ -135,6 +134,5 @@ namespace AdminTools {
                 ((Control)e.Source).MoveFocus(request);
             }
         }
-
     }
 }

@@ -108,12 +108,12 @@ namespace AdminTools {
                 txt_GuardianName.Focus();
                 return false;
             }
-            if(!childDB.ChildNameExists(txt_ChildName.Text)) {
+            if (!childDB.ChildNameExists(txt_ChildName.Text)) {
                 WPFMessageBox.Show("The child name you entered does not exist in the database!  Please verify you have spelled it correctly.");
                 txt_ChildName.Focus();
                 return false;
             }
-            if(cmb_EventName.SelectedIndex < 0) {
+            if (cmb_EventName.SelectedIndex < 0) {
                 WPFMessageBox.Show("You must select an event from the drop down menu!");
                 cmb_EventName.Focus();
                 return false;
@@ -142,7 +142,7 @@ namespace AdminTools {
         }
 
         private bool ValidTime(string time) {
-            String[] splitTime = time.Split(new char[] {' ', ':'});
+            String[] splitTime = time.Split(new char[] { ' ', ':' });
             int hour, minute, second;
 
             if (splitTime.Length != 4) {
@@ -173,7 +173,7 @@ namespace AdminTools {
             DateTime dt;
             string[] splitDate = date.Split('/');
 
-            if(!DateTime.TryParse(date, out dt)) {
+            if (!DateTime.TryParse(date, out dt)) {
                 return false;
             }
             if (splitDate[0].Length != 2 || splitDate[1].Length != 2 || splitDate[2].Length != 4) {
@@ -237,7 +237,7 @@ namespace AdminTools {
             }
         }
 
-        private void CheckForLateTime(String checkedOut, String transDate){
+        private void CheckForLateTime(String checkedOut, String transDate) {
             GuardianToolsSettings settings = new GuardianToolsSettings();
             if (!transaction.isLate) {
                 transaction.lateTime = settings.CheckIfPastClosing(DateTime.Parse(transDate).DayOfWeek.ToString(), TimeSpan.Parse(checkedOut));
@@ -250,7 +250,7 @@ namespace AdminTools {
         //expects time as HH:MM:SS PM
         private string FormatTime(string time) {
             string[] splitTime = time.Split(new char[] { ' ', ':' });
-            
+
             if (splitTime[3] == "PM" && Convert.ToInt32(splitTime[0]) != 12) {
                 int hours = Convert.ToInt32(splitTime[0]);
 
@@ -290,7 +290,7 @@ namespace AdminTools {
             this.dataChanged = true;
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }

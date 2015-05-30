@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace GuardianTools {
-   
+
     public partial class ChildLogin : Window {
 
         private string guardianID;
@@ -37,13 +37,12 @@ namespace GuardianTools {
             ExitToLogin();
         }
 
-        private void listBoxFocus(object sender, RoutedEventArgs e){
+        private void listBoxFocus(object sender, RoutedEventArgs e) {
             if ((sender as ListBox) != null && (sender as ListBox).Name.CompareTo("lst_CheckInBox") == 0) {
                 if (this.lst_CheckInBox.HasItems) {
                     this.lst_CheckInBox.SelectedIndex = 0;
                 }
-            }
-            else {
+            } else {
                 if (this.lst_CheckOutBox.HasItems) {
                     this.lst_CheckOutBox.SelectedIndex = 0;
                 }
@@ -53,20 +52,19 @@ namespace GuardianTools {
         public void SetUpCheckInBox() {
             ChildInfoDatabase childDB = new ChildInfoDatabase();
             string[,] childrenData = childDB.FindChildren(this.guardianID);
-            if(childrenData == null){
+            if (childrenData == null) {
                 return;
             }
             for (int x = 0; x < childrenData.GetLength(0); x++) {
                 Image image = BuildImage(childrenData[x, 6], 70);
-                if (!db.IsCheckedIn(childrenData[x, 0],this.guardianID)){
-                    lst_CheckInBox.Items.Add(new Child(childrenData[x, 0], childrenData[x, 1], childrenData[x, 2], 
+                if (!db.IsCheckedIn(childrenData[x, 0], this.guardianID)) {
+                    lst_CheckInBox.Items.Add(new Child(childrenData[x, 0], childrenData[x, 1], childrenData[x, 2],
+                        image, childrenData[x, 3], childrenData[x, 4], childrenData[x, 5], childrenData[x, 6]));
+                } else {
+                    lst_CheckOutBox.Items.Add(new Child(childrenData[x, 0], childrenData[x, 1], childrenData[x, 2],
                         image, childrenData[x, 3], childrenData[x, 4], childrenData[x, 5], childrenData[x, 6]));
                 }
-                else{
-                    lst_CheckOutBox.Items.Add(new Child(childrenData[x, 0], childrenData[x, 1], childrenData[x, 2], 
-                        image, childrenData[x, 3], childrenData[x, 4], childrenData[x, 5], childrenData[x, 6]));
-                }
-            } 
+            }
         }
 
         public Image BuildImage(string path, int size) {
@@ -81,8 +79,7 @@ namespace GuardianTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            }
-            catch (System.IO.FileNotFoundException) {
+            } catch (System.IO.FileNotFoundException) {
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg"); //TAG: pictures access
                 bitmapImage.BeginInit();
@@ -91,8 +88,7 @@ namespace GuardianTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            }
-            catch (System.IO.DirectoryNotFoundException) {
+            } catch (System.IO.DirectoryNotFoundException) {
                 BitmapImage bitmapImage = new BitmapImage();
                 var fileInfo = new FileInfo(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg"); //TAG: pictures access
                 bitmapImage.BeginInit();
@@ -101,8 +97,7 @@ namespace GuardianTools {
                 bitmapImage.DecodePixelHeight = size;
                 bitmapImage.EndInit();
                 image.Source = bitmapImage;
-            }
-            catch(Exception){
+            } catch (Exception) {
                 WPFMessageBox.Show("Unable to load photo for unknown reason.");
             }
             return image;
@@ -115,16 +110,14 @@ namespace GuardianTools {
                     string childID = ((Child)lst_CheckInBox.SelectedItem).ID;
                     string birthday = ((Child)lst_CheckInBox.SelectedItem).birthday;
                     bool success = db.CheckIn(childID, eventID, guardianID, birthday);
-                    if (success){
+                    if (success) {
                         lst_CheckOutBox.Items.Add(lst_CheckInBox.SelectedItem);
                         lst_CheckInBox.Items.Remove(lst_CheckInBox.SelectedItem);
                     }
-                }
-                else {
+                } else {
                     WPFMessageBox.Show("Please select the child that you wish to check in.");
                 }
-            }
-            else {
+            } else {
                 WPFMessageBox.Show("Please choose and event.");
             }
         }
@@ -136,39 +129,36 @@ namespace GuardianTools {
                 string allowanceID = transDB.GetIncompleteTransAllowanceID(guardianID, childID);
                 TransactionCharge transactionCharge = new TransactionCharge(this.guardianID, allowanceID);
                 bool success = transactionCharge.PrepareTransaction(childID, guardianID);
-                if (success){
+                if (success) {
                     lst_CheckInBox.Items.Add(lst_CheckOutBox.SelectedItem);
                     lst_CheckOutBox.Items.Remove(lst_CheckOutBox.SelectedItem);
                 }
-            }
-            else {
+            } else {
                 WPFMessageBox.Show("Please select the child that you wish to check out.");
             }
         }
 
         public void SetUpParentDisplay() {
             GuardianInfoDB parentDB = new GuardianInfoDB();
-            string [] parentInfo = parentDB.GetParentInfo(this.guardianID);
+            string[] parentInfo = parentDB.GetParentInfo(this.guardianID);
             string imageLink = parentDB.GetGuardianImagePath(this.guardianID);
-            if (parentInfo != null){
+            if (parentInfo != null) {
                 lbl_ParentName.Content = parentInfo[2] + " " + parentInfo[3];
                 if (imageLink != null && File.Exists(imageLink)) {
                     ImageBrush ib = new ImageBrush();
                     ib.ImageSource = new BitmapImage(new Uri(imageLink, UriKind.Relative));
                     cnv_GuardianPic.Background = ib;
-                }
-                else {
+                } else {
                     ImageBrush ib = new ImageBrush();
                     ib.ImageSource = new BitmapImage(new Uri(@"" + "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg", UriKind.Relative));
                     cnv_GuardianPic.Background = ib;
                 }
-            }
-            else{
+            } else {
                 ExitToLogin();
             }
         }
 
-        private void ExitToLogin(){
+        private void ExitToLogin() {
             GuardianCheckIn loginWindow = new GuardianCheckIn();
             loginWindow.Show();
             this.Close();
@@ -177,25 +167,23 @@ namespace GuardianTools {
         public void EventsSetup() {
             EventDB eventDB = new EventDB();
             string[] events = eventDB.GetCurrentEvents();
-            if (events != null){
-                for (int x = 0; x < events.GetLength(0); x++){
+            if (events != null) {
+                for (int x = 0; x < events.GetLength(0); x++) {
                     ComboBoxItem newEvent = new ComboBoxItem() { Content = events[x], Tag = events[x] };
                     cbo_EventChoice.Items.Add(newEvent);
                 }
 
-                if (events.GetLength(0) == 1){
+                if (events.GetLength(0) == 1) {
                     cbo_EventChoice.SelectedItem = cbo_EventChoice.Items[0];
                 }
-            }
-            else{
+            } else {
                 ExitToLogin();
             }
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
-
     }
 }

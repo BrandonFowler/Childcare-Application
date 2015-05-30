@@ -11,7 +11,7 @@ namespace AdminTools {
         private LoginDB db;
         private bool parentTools = false;
 
-        public AdminLogin(){
+        public AdminLogin() {
             InitializeComponent();
             this.db = new LoginDB();
             this.txt_UserName.Focus();
@@ -37,14 +37,13 @@ namespace AdminTools {
                 string ID = txt_UserName.Text;
                 string PIN = pwd_Password.Password;
                 string hashedPIN = ChildcareApplication.AdminTools.Hashing.HashPass(PIN);
-                 
+
                 bool userFound = this.db.validateAdminLogin(ID, hashedPIN);
 
                 if (userFound) {
                     if (parentTools) {
                         DisplayAdminChildCheckIn();
-                    }
-                    else {
+                    } else {
                         int accessLevel = db.GetAccessLevel(ID);
                         DisplayAdminWindow(accessLevel, txt_UserName.Text);
                     }
@@ -53,7 +52,7 @@ namespace AdminTools {
                 }
             }
         }
-        
+
         private void DisplayAdminChildCheckIn() {
             GuardianTools.AdminChildCheckIn AdminCheckIn = new GuardianTools.AdminChildCheckIn();
             AdminCheckIn.Show();
@@ -63,7 +62,7 @@ namespace AdminTools {
         private void DisplayAdminWindow(int accessLevel, string username) {
             AdminMenu AdminMenu = new AdminMenu(accessLevel, username);
             AdminMenu.Show();
-            this.Close(); 
+            this.Close();
         }
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e) {
@@ -86,7 +85,7 @@ namespace AdminTools {
             }
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }

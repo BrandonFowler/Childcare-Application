@@ -1,17 +1,14 @@
-﻿using System;
+﻿using MessageBoxUtils;
+using System;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using MessageBoxUtils;
 
 namespace ChildcareApplication.AdminTools {
-    /// <summary>
-    /// Interaction logic for ApplicationSettings.xaml
-    /// </summary>
     public partial class ApplicationSettings : Window {
-        
+
         private string closedString;
         private string defaultOpen;
         private string defaultClose;
@@ -56,37 +53,37 @@ namespace ChildcareApplication.AdminTools {
         }
 
         private void checkDays() {
-            if ((txt_MonOpening.Text == closedString && txt_MonClosing.Text == closedString) || 
+            if ((txt_MonOpening.Text == closedString && txt_MonClosing.Text == closedString) ||
                 (txt_MonOpening.Text == "closed" && txt_MonClosing.Text == "closed")) {
                 chk_MonClosed_Checked(null, null);
                 chk_MonClosed.IsChecked = true;
             }
-            if ((txt_TueOpening.Text == closedString && txt_TueClosing.Text == closedString) || 
+            if ((txt_TueOpening.Text == closedString && txt_TueClosing.Text == closedString) ||
                 (txt_TueOpening.Text == "closed" && txt_TueClosing.Text == "closed")) {
                 chk_TueClosed_Checked(null, null);
                 chk_TueClosed.IsChecked = true;
             }
-            if ((txt_WedOpening.Text == closedString && txt_WedClosing.Text == closedString) || 
+            if ((txt_WedOpening.Text == closedString && txt_WedClosing.Text == closedString) ||
                 (txt_WedOpening.Text == "closed" && txt_WedClosing.Text == "closed")) {
                 chk_WedClosed_Checked(null, null);
                 chk_WedClosed.IsChecked = true;
             }
-            if ((txt_ThuOpening.Text == closedString && txt_ThuClosing.Text == closedString) || 
+            if ((txt_ThuOpening.Text == closedString && txt_ThuClosing.Text == closedString) ||
                 (txt_ThuOpening.Text == "closed" && txt_ThuClosing.Text == "closed")) {
                 chk_ThuClosed_Checked(null, null);
                 chk_ThuClosed.IsChecked = true;
             }
-            if ((txt_FriOpening.Text == closedString && txt_FriClosing.Text == closedString) || 
+            if ((txt_FriOpening.Text == closedString && txt_FriClosing.Text == closedString) ||
                 (txt_FriOpening.Text == "closed" && txt_FriClosing.Text == "closed")) {
                 chk_FriClosed_Checked(null, null);
                 chk_FriClosed.IsChecked = true;
             }
-            if ((txt_SatOpening.Text == closedString && txt_SatClosing.Text == closedString) || 
+            if ((txt_SatOpening.Text == closedString && txt_SatClosing.Text == closedString) ||
                 (txt_SatOpening.Text == "closed" && txt_SatClosing.Text == "closed")) {
                 chk_SatClosed_Checked(null, null);
                 chk_SatClosed.IsChecked = true;
             }
-            if ((txt_SunOpening.Text == closedString && txt_SunClosing.Text == closedString) || 
+            if ((txt_SunOpening.Text == closedString && txt_SunClosing.Text == closedString) ||
                 (txt_SunOpening.Text == "closed" && txt_SunClosing.Text == "closed")) {
                 chk_SunClosed_Checked(null, null);
                 chk_SunClosed.IsChecked = true;
@@ -505,7 +502,7 @@ namespace ChildcareApplication.AdminTools {
             }
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }

@@ -27,7 +27,7 @@ namespace AdminTools {
             EventDB eventDB = new EventDB();
             List<string> namesList = eventDB.GetAllEventNames();
 
-            for(int i = 0; i < namesList.Count; i++) {
+            for (int i = 0; i < namesList.Count; i++) {
                 String eventID = namesList[i];
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = eventID;
@@ -82,7 +82,7 @@ namespace AdminTools {
             this.Close();
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }

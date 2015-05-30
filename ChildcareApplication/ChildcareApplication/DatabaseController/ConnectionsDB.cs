@@ -22,7 +22,7 @@ namespace DatabaseController {
             string date = Convert.ToDateTime(dateTime).ToString("yyyy-MM-dd");
             string time = Convert.ToDateTime(dateTime).ToString("HH:mm:ss");
             TimeSpan TSTime = TimeSpan.Parse(time);
-            if (settings.CheckIfPastClosing(dt.DayOfWeek.ToString(), TSTime) > 0){
+            if (settings.CheckIfPastClosing(dt.DayOfWeek.ToString(), TSTime) > 0) {
                 WPFMessageBox.Show("Cannot check in a child after normal operating hours");
                 return false;
             }
@@ -30,7 +30,7 @@ namespace DatabaseController {
             string allowanceID = GetAllowanceIDOnID(guardianID, childID);
             string transactionID = this.transDB.GetNextTransID();
             string sql = "insert into " +
-                         "ChildcareTransaction (ChildcareTransaction_ID,EventName,Allowance_ID,transactionDate,CheckedIn) " + 
+                         "ChildcareTransaction (ChildcareTransaction_ID,EventName,Allowance_ID,transactionDate,CheckedIn) " +
                          "values (@transactionID, @eventName, @allowanceID, @date, @time)";
             SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             command.Parameters.Add(new SQLiteParameter("@transactionID", transactionID));
@@ -38,17 +38,15 @@ namespace DatabaseController {
             command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
             command.Parameters.Add(new SQLiteParameter("@date", date));
             command.Parameters.Add(new SQLiteParameter("@time", time));
-            try{
+            try {
                 dbCon.Open();
                 command.ExecuteNonQuery();
                 dbCon.Close();
-            }
-            catch (System.Data.SQLite.SQLiteException) {
+            } catch (System.Data.SQLite.SQLiteException) {
                 WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
                 return false;
-            }
-            catch (Exception){
+            } catch (Exception) {
                 WPFMessageBox.Show("Unable Check In Child");
                 dbCon.Close();
                 return false;
@@ -75,18 +73,17 @@ namespace DatabaseController {
             SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             command.Parameters.Add(new SQLiteParameter("@guardianID", guardianID));
             command.Parameters.Add(new SQLiteParameter("@childID", childID));
-            try{
+            try {
                 dbCon.Open();
                 string connectionID = Convert.ToString(command.ExecuteScalar());
                 dbCon.Close();
 
                 return connectionID;
-            }catch (System.Data.SQLite.SQLiteException) {
+            } catch (System.Data.SQLite.SQLiteException) {
                 WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
                 return null;
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 dbCon.Close();
                 WPFMessageBox.Show("Unable to retrieve critical information");
                 return null;
@@ -95,22 +92,21 @@ namespace DatabaseController {
 
         public bool CheckOut(string currentTimeString, string eventFeeRounded, string allowanceID) {
             string sql = "update ChildcareTransaction " +
-                  "set CheckedOut= @currentTimeString, TransactionTotal = @eventFee "+
+                  "set CheckedOut= @currentTimeString, TransactionTotal = @eventFee " +
                   "where Allowance_ID = @allowanceID and CheckedOut is null";
             SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             command.Parameters.Add(new SQLiteParameter("@currentTimeString", currentTimeString));
             command.Parameters.Add(new SQLiteParameter("@eventFee", eventFeeRounded));
             command.Parameters.Add(new SQLiteParameter("@allowanceID", allowanceID));
-            try{
+            try {
                 dbCon.Open();
                 command.ExecuteNonQuery();
                 dbCon.Close();
-            }catch (System.Data.SQLite.SQLiteException) {
+            } catch (System.Data.SQLite.SQLiteException) {
                 WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
                 dbCon.Close();
                 return false;
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 WPFMessageBox.Show("Unable to check out child");
                 dbCon.Close();
                 return false;
@@ -129,25 +125,25 @@ namespace DatabaseController {
             command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
             SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
             DataSet DS = new DataSet();
-            try{
+            try {
                 dbCon.Open();
                 DB.Fill(DS);
                 int count = DS.Tables[0].Rows.Count;
                 dbCon.Close();
 
                 return count;
-            }catch (System.Data.SQLite.SQLiteException) {
+            } catch (System.Data.SQLite.SQLiteException) {
                 WPFMessageBox.Show("Database connection error. Please insure the charge was calculated correctly.");
                 dbCon.Close();
                 return 0;
-            }catch (Exception){
+            } catch (Exception) {
                 dbCon.Close();
                 WPFMessageBox.Show("Unable to retrieve critical information. Please insure the charge was calculated correctly.");
                 return 0;
             }
         }
 
-        public bool IsCheckedIn(string childID, string guardianID){
+        public bool IsCheckedIn(string childID, string guardianID) {
             string familyID = guardianID.Remove(guardianID.Length - 1);
             string sql = "select ChildcareTransaction_ID " +
                          "from Child natural join AllowedConnections natural join ChildcareTransaction " +
@@ -155,21 +151,20 @@ namespace DatabaseController {
             SQLiteCommand command = new SQLiteCommand(sql, dbCon);
             command.Parameters.Add(new SQLiteParameter("@familyID", familyID));
             command.Parameters.Add(new SQLiteParameter("@childID", childID));
-            try{
+            try {
                 dbCon.Open();
                 object recordFound = command.ExecuteScalar();
                 dbCon.Close();
 
-                if (recordFound != DBNull.Value && recordFound != null)
-                {
+                if (recordFound != DBNull.Value && recordFound != null) {
                     return true;
                 }
                 return false;
-            }catch (System.Data.SQLite.SQLiteException) {
+            } catch (System.Data.SQLite.SQLiteException) {
                 WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible. All children may not be showing.");
                 dbCon.Close();
                 return false;
-            }catch(Exception){
+            } catch (Exception) {
                 dbCon.Close();
                 WPFMessageBox.Show("Unable to find children. Please log out, then try again.");
                 return false;
@@ -179,7 +174,7 @@ namespace DatabaseController {
         public void UpdateAllowedConnections(string conID, string pID, string cID, string famID) {
 
             try {
-                
+
                 if (!ConnectionExists(pID, cID)) {
                     dbCon.Open();
                     string sql = "INSERT INTO AllowedConnections(Allowance_ID, Guardian_ID, Child_ID, Family_ID) "
@@ -191,7 +186,7 @@ namespace DatabaseController {
                     command.Parameters.Add(new SQLiteParameter("@cID", cID));
                     command.Parameters.Add(new SQLiteParameter("@famID", famID));
                     command.ExecuteNonQuery();
-                    
+
                 } else {
                     WPFMessageBox.Show("There is already a link to this child and the guardian.");
                 }
@@ -217,7 +212,7 @@ namespace DatabaseController {
                 DB.Fill(DS);
                 int count = DS.Tables[0].Rows.Count;
                 if (count > 0) {
-                    dbCon.Close(); 
+                    dbCon.Close();
                     return true;
                 }
                 dbCon.Close();

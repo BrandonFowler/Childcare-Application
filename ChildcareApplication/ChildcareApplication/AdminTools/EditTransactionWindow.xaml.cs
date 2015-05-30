@@ -35,7 +35,7 @@ namespace AdminTools {
         private void btn_DeleteTransaction_Click(object sender, RoutedEventArgs e) {
             if (VerifyTextBox()) {
                 TransactionDB db = new TransactionDB();
-                
+
                 UpdateTotals();
                 db.DeleteTransaction(txt_TransactionID.Text);
                 LoadTransactions();
@@ -105,7 +105,7 @@ namespace AdminTools {
             }
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }

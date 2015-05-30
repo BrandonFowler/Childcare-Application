@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace GuardianTools {
-   
+
     public partial class GuardianCheckIn : Window {
 
         private bool IDBoxSelected = false;
@@ -34,8 +34,7 @@ namespace GuardianTools {
                 this.IDBoxSelected = true;
                 this.PINBoxSelected = false;
                 this.txt_IDEntry.SelectAll();
-            }
-            else {
+            } else {
                 this.PINBoxSelected = true;
                 this.IDBoxSelected = false;
                 this.txt_PINEntry.SelectAll();
@@ -45,21 +44,18 @@ namespace GuardianTools {
         private void KeyPressedValidateNumber(Object o, KeyEventArgs e) {
             if (e.SystemKey == Key.LeftAlt || e.SystemKey == Key.RightAlt) {
                 this.altKeyPressed = true;
-            }
-            else if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) 
-                || e.Key == Key.Back || e.Key == Key.Tab || e.Key == Key.Enter || e.Key == Key.NumLock 
-                || this.altKeyPressed) {
-                if (e.Key == Key.Return){
-                    if (IDBoxSelected){
+            } else if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+                  || e.Key == Key.Back || e.Key == Key.Tab || e.Key == Key.Enter || e.Key == Key.NumLock
+                  || this.altKeyPressed) {
+                if (e.Key == Key.Return) {
+                    if (IDBoxSelected) {
                         this.txt_PINEntry.Focus();
-                    }
-                    else if (PINBoxSelected){
+                    } else if (PINBoxSelected) {
                         GuardianLogin();
                     }
                 }
                 this.altKeyPressed = false;
-            }
-            else {
+            } else {
                 WPFMessageBox.Show("Please use only numbers.");
                 e.Handled = true;
                 this.altKeyPressed = false;
@@ -81,13 +77,12 @@ namespace GuardianTools {
             if (string.IsNullOrWhiteSpace(this.txt_IDEntry.Text) || string.IsNullOrWhiteSpace(this.txt_PINEntry.Password)) {
                 WPFMessageBox.Show("Please enter a User ID and a PIN.");
 
-            }
-            else {
+            } else {
                 GuardianLogin();
             }
         }
 
-        private void btn_UserSelect_Click(object sender, RoutedEventArgs e){
+        private void btn_UserSelect_Click(object sender, RoutedEventArgs e) {
             UserSelection userSelect = new UserSelection();
             userSelect.Show();
             this.Close();
@@ -103,8 +98,7 @@ namespace GuardianTools {
                 ChildLoginWindow.Show();
                 ChildLoginWindow.WindowState = WindowState.Maximized;
                 this.Close();
-            }
-            else {
+            } else {
                 WPFMessageBox.Show("User ID or PIN does not exist");
             }
         }
@@ -205,7 +199,7 @@ namespace GuardianTools {
             this.Close();
         }
 
-        private void WindowMouseDown(object sender, MouseButtonEventArgs e){
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
@@ -217,6 +211,5 @@ namespace GuardianTools {
                 e.Handled = true;
             }
         }
-
     }
 }
