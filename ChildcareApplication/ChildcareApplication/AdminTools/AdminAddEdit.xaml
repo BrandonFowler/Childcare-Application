@@ -9,10 +9,10 @@
     <Border BorderBrush="LightBlue" BorderThickness="2" Width="800" Height="400" ClipToBounds="True">
         <Grid>
             <ListBox x:Name="lst_AdminList" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="170" SelectionChanged="lst_AdminList_SelectionChanged" IsTextSearchEnabled="False" Background="#FFE6EAE0" FontSize="14" Height="342"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddAdmin" Content="Add New" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="79" IsTabStop="False" Click="btn_AddAdmin_Click" ToolTip="Add a new administrator"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_DelAdmin" Content="Delete" HorizontalAlignment="Left" Margin="94,357,0,0" VerticalAlignment="Top" Width="86" IsTabStop="False" Click="btn_DelAdmin_Click" IsEnabled="False" ToolTip="Delete the currently selected administrator"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="Revert Changes" HorizontalAlignment="Left" Margin="468,285,0,0" VerticalAlignment="Top" Width="130" IsTabStop="False" IsEnabled="False" Click="btn_Cancel_Click" ToolTip="Undo all changes to the currently selected administrator"/>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Save" Content="Save Changes" HorizontalAlignment="Left" Margin="308,285,0,0" VerticalAlignment="Top" Width="115" IsTabStop="False" IsEnabled="False" Click="btn_Save_Click" ToolTip="Save all changes to the currently selected administrator"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddAdmin" Content="_Add New" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="79" IsTabStop="False" Click="btn_AddAdmin_Click" ToolTip="Add a new administrator"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_DelAdmin" Content="_Delete" HorizontalAlignment="Left" Margin="94,357,0,0" VerticalAlignment="Top" Width="86" IsTabStop="False" Click="btn_DelAdmin_Click" IsEnabled="False" ToolTip="Delete the currently selected administrator"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="_Revert Changes" HorizontalAlignment="Left" Margin="468,285,0,0" VerticalAlignment="Top" Width="130" IsTabStop="False" IsEnabled="False" Click="btn_Cancel_Click" ToolTip="Undo all changes to the currently selected administrator"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Save" Content="_Save Changes" HorizontalAlignment="Left" Margin="308,285,0,0" VerticalAlignment="Top" Width="115" IsTabStop="False" IsEnabled="False" Click="btn_Save_Click" ToolTip="Save all changes to the currently selected administrator"/>
             <Label x:Name="lbl_LoginName" Content="Administrator Login Name" HorizontalAlignment="Left" Margin="197,32,0,0" VerticalAlignment="Top" FontSize="14" Height="29"/>
             <Label x:Name="lbl_Password" Content="Administrator Password" HorizontalAlignment="Left" Margin="197,73,0,0" VerticalAlignment="Top" FontSize="14" Height="29"/>
             <Label x:Name="lbl_ConfirmPass" Content="Confirm Password" HorizontalAlignment="Left" Margin="197,120,0,0" VerticalAlignment="Top" FontSize="14" Height="29"/>
@@ -27,7 +27,7 @@
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_ChangePW" HorizontalAlignment="Left" Margin="611,73,0,0" VerticalAlignment="Top" Width="106" Click="btn_ChangePW_Click" Height="74" IsEnabled="False" TabIndex="3" ToolTip="Change the administrators password">
                 <TextBlock x:Name="lbl_PassText" TextWrapping="Wrap" TextAlignment="Center">Change Password</TextBlock>
             </Button>
-            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Close" Content="Close" HorizontalAlignment="Left" Margin="711,357,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" IsTabStop="False" ToolTip="Close this window and return to the administration menu (unsaved changes will be discarded)"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Close" Content="_Close" HorizontalAlignment="Left" Margin="711,357,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" IsTabStop="False" ToolTip="Close this window and return to the administration menu (unsaved changes will be discarded)"/>
         </Grid>
     </Border>
 </Window>
