@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DatabaseController;
-using System.Windows;
+﻿using DatabaseController;
 using MessageBoxUtils;
+using System;
 
 namespace GuardianTools {
     class TransactionCharge {

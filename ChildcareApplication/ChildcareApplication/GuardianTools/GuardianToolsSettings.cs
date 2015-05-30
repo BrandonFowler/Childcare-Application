@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ChildcareApplication.Properties;
-using System.Windows;
+﻿using ChildcareApplication.Properties;
 using MessageBoxUtils;
+using System;
 
 namespace GuardianTools {
 

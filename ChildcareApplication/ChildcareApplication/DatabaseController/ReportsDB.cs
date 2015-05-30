@@ -67,14 +67,14 @@ namespace ChildcareApplication.DatabaseController {
                 query += "Last, EventData.EventName AS 'Event Type', time(ChildcareTransaction.CheckedIn) AS 'Check In', ";
                 query += "time(ChildcareTransaction.CheckedOut) AS 'Check Out', ";
                 query += "'$' || printf('%.2f', ChildcareTransaction.TransactionTotal) AS Total FROM AllowedConnections NATURAL JOIN Child ";
-                query += "NATURAL JOIN ChildcareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = " + parentID + " ";
+                query += "NATURAL JOIN ChildcareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = '" + parentID + "' ";
                 query += "AND ChildcareTransaction.TransactionDate BETWEEN '" + dates[0] + "' AND '" + dates[1] + "';";
             } else {
                 query += "SELECT strftime('%m/%d/%Y', ChildcareTransaction.TransactionDate) AS 'Date', Child.FirstName AS First, Child.LastName AS ";
                 query += "Last, EventData.EventName AS 'Event Type', time(ChildcareTransaction.CheckedIn) AS 'Check In', ";
                 query += "time(ChildcareTransaction.CheckedOut) AS 'Check Out', ";
                 query += "'$' || printf('%.2f', ChildcareTransaction.TransactionTotal) AS Total FROM AllowedConnections NATURAL JOIN Child ";
-                query += "NATURAL JOIN ChildcareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = " + parentID + ";";
+                query += "NATURAL JOIN ChildcareTransaction NATURAL JOIN EventData WHERE AllowedConnections.Guardian_ID = '" + parentID + "';";
             }
             return query;
         }

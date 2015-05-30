@@ -60,7 +60,7 @@
       <Value Profile="(Default)">2015-04-13</Value>
     </Setting>
     <Setting Name="DefaultSaveFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\Public\Documents</Value>
+      <Value Profile="(Default)">C:\Users\Public\Documents\Childcare Application\Saved Reports</Value>
     </Setting>
     <Setting Name="LastBackup" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)">2015-05-15</Value>

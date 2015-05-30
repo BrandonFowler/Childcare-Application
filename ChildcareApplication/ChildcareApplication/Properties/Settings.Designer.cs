@@ -253,7 +253,7 @@ namespace ChildcareApplication.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Public\\Documents")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Public\\Documents\\Childcare Application\\Saved Reports")]
         public string DefaultSaveFolder {
             get {
                 return ((string)(this["DefaultSaveFolder"]));
