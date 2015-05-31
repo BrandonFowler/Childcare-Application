@@ -31,6 +31,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception e) {
                 WPFMessageBox.Show(e.Message);
+                dbCon.Close();
             }
             return false;
         }
@@ -39,13 +40,14 @@ namespace DatabaseController {
             int accessLevel = -1;
             String query = "Select AccessLevel from Administrator where AdministratorUN = '" + ID + "';";
 
-
             try {
                 this.dbCon.Open();
                 SQLiteCommand cmd = new SQLiteCommand(query, this.dbCon);
                 accessLevel = Convert.ToInt32(cmd.ExecuteScalar());
+                dbCon.Close();
             } catch (Exception e) {
                 WPFMessageBox.Show(e.Message);
+                dbCon.Close();
             }
             return accessLevel;
         }

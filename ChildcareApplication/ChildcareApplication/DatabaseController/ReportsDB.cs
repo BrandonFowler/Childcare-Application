@@ -23,6 +23,7 @@ namespace ChildcareApplication.DatabaseController {
                 return table;
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                connection.Close();
                 return null;
             }
         }
@@ -56,6 +57,7 @@ namespace ChildcareApplication.DatabaseController {
                 return table;
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                connection.Close();
                 return null;
             }
         }

@@ -186,14 +186,17 @@ namespace DatabaseController {
                     command.Parameters.Add(new SQLiteParameter("@cID", cID));
                     command.Parameters.Add(new SQLiteParameter("@famID", famID));
                     command.ExecuteNonQuery();
-
+                    dbCon.Close();
                 } else {
                     WPFMessageBox.Show("There is already a link to this child and the guardian.");
                 }
             } catch (SQLiteException e) {
                 WPFMessageBox.Show(e.Message);
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
-            dbCon.Close();
         }
 
         public bool ConnectionExists(string pID, string cID) {
@@ -212,15 +215,14 @@ namespace DatabaseController {
                 DB.Fill(DS);
                 int count = DS.Tables[0].Rows.Count;
                 if (count > 0) {
-                    dbCon.Close();
                     return true;
                 }
                 dbCon.Close();
                 return false;
             } catch (Exception e) {
                 WPFMessageBox.Show(e.Message);
+                dbCon.Close();
             }
-            dbCon.Close();
             return false;
         }
 
@@ -241,6 +243,10 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (SQLiteException e) {
                 WPFMessageBox.Show(e.Message);
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
         }
 
@@ -271,6 +277,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
 
             return allowanceID;

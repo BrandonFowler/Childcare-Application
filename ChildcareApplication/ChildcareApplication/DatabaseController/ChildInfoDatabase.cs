@@ -32,6 +32,10 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not find max child ID.");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
             return maxID;
         }
@@ -57,13 +61,15 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not find max connection ID.");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
             return maxID;
         }
 
         public void AddNewChild(string cID, string fName, string lName, string birthday, string allergies, string medical, string photo) {
-
-
             try {
                 dbCon.Open();
                 string sql = "INSERT INTO Child(Child_ID, FirstName, LastName, Birthday, Allergies, Medical, PhotoLocation) "
@@ -72,10 +78,14 @@ namespace DatabaseController {
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
+                dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not add a new child to the Database. ");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
-            dbCon.Close();
         }
 
         public void UpdateExistingChilderen(string conID, string pID, string cID, string famID) {
@@ -90,11 +100,14 @@ namespace DatabaseController {
 
                 command.ExecuteNonQuery();
 
-
+                dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not update the child's information.");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
-            dbCon.Close();
         }
 
         public void UpdateChildInfo(string ID, string firstName, string lastName, string birthday, string medical, string allergies, string filePath) {
@@ -118,6 +131,10 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not update the child's information.");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
         }
 
@@ -137,8 +154,12 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not delete this child.");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
-        }//end GetFirstName
+        }
 
         internal String[,] FindChildren(string guardianID) {
             string sql = "select Child.* " +
@@ -176,9 +197,6 @@ namespace DatabaseController {
         }
 
         public String[,] FindFamilyChildren(string fID, string ID) {
-
-
-
             string sql = "select Child.* " +
                   "from AllowedConnections join Child on Child.Child_ID = AllowedConnections.Child_ID " +
                   "where  Family_ID = '" + fID + "' AND Guardian_ID != '" + ID + "' AND ConnectionDeletionDate IS null";
@@ -214,7 +232,7 @@ namespace DatabaseController {
             }
 
             return data;
-        }//end findChildren
+        }
 
         public String GetChildName(String transactionID) {
             SQLiteConnection connection = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
@@ -236,6 +254,7 @@ namespace DatabaseController {
                 connection.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve childern information.");
+                connection.Close();
             }
             return result;
         }
@@ -262,11 +281,14 @@ namespace DatabaseController {
 
                 count = Convert.ToInt32(cmd.ExecuteScalar());
 
+                connection.Close();
                 if (count > 0) {
                     return true;
                 }
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve childern information.");
+                connection.Close();
+
             }
             return false;
         }

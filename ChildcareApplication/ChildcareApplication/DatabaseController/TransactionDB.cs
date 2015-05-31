@@ -22,6 +22,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
             if (count == 0) {
                 return false;
@@ -41,6 +42,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -55,6 +57,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
             return result;
         }
@@ -70,6 +73,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
             return result;
         }
@@ -86,6 +90,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -101,6 +106,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -123,6 +129,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
 
             result = num.ToString("D10");
@@ -141,6 +148,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
             time = AMPMFormat(time);
             return time;
@@ -176,6 +184,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
             date = (date.Replace('-', '/')).Split(' ')[0];
             return ZeroFillDate(date);
@@ -210,6 +219,7 @@ namespace DatabaseController {
                 return table;
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
                 return null;
             }
         }
@@ -384,6 +394,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
             return result;
         }
@@ -407,6 +418,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
             return result;
         }
@@ -433,6 +445,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
             return results;
         }

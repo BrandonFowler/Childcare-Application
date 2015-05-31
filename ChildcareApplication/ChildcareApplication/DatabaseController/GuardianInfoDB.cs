@@ -28,6 +28,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve Guardian information.");
+                dbCon.Close();
             }
             return result;
         }
@@ -43,6 +44,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve Guardian address.");
+                dbCon.Close();
             }
             return result;
         }
@@ -58,6 +60,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve Guardian address.");
+                dbCon.Close();
             }
             return result;
         }
@@ -78,6 +81,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve Guardian Address.");
+                dbCon.Close();
             }
             return result;
         }
@@ -94,6 +98,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve Guardian phone number.");
+                dbCon.Close();
             }
             return result;
         }
@@ -109,6 +114,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve Guardian ID.");
+                dbCon.Close();
             }
             return result;
         }
@@ -134,6 +140,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve Guardian current due amount.");
+                dbCon.Close();
             }
 
             return curDue;
@@ -150,6 +157,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve Guardian ID.");
+                dbCon.Close();
             }
 
             if (result == guardianID) {
@@ -170,6 +178,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve Guardian ID.");
+                dbCon.Close();
             }
 
             if (result == guardianID) {
@@ -203,9 +212,11 @@ namespace DatabaseController {
                 if (count > 0) {
                     return true;
                 }
+                dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("Could not retrieve Guardian name.");
-            }
+                dbCon.Close();
+            } 
             return false;
         }
 
@@ -214,7 +225,6 @@ namespace DatabaseController {
             try {
                 dbCon.Open();
 
-
                 string sql = "select * from Guardian where Guardian_ID = @parentID";
 
                 SQLiteCommand command = new SQLiteCommand(sql, dbCon);
@@ -222,10 +232,14 @@ namespace DatabaseController {
                 SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
 
                 DB.Fill(DS);
+                dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not retrieve Guardian information.");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
-            dbCon.Close();
             return DS;
         }
 
@@ -244,28 +258,32 @@ namespace DatabaseController {
 
                 command.ExecuteNonQuery();
 
-
+                dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not delete Guardian.");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
-            dbCon.Close();
 
         }
 
         public void AddNewParent(string ID, string PIN, string firstName, string lastName, string phone, string email, string address, string address2, string city, string state, string zip, string photo) {
-
-
             try {
                 dbCon.Open();
                 string sql = @"INSERT INTO Guardian(Guardian_ID, GuardianPIN, FirstName, LastName, Phone, Email, Address1, Address2, City, StateAbrv, Zip, PhotoLocation) " +
                 "VALUES('" + ID + "', " + PIN + ", " + firstName + ", " + lastName + ", " + phone + ", " + email + ", " + address + ", " + address2 + ", " + city + ", " + state + ", " + zip + ", " + photo + ");";
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
                 mycommand.ExecuteNonQuery();
-
+                dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not add new Guardian.");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
-            dbCon.Close();
         }
 
         public void UpdateParentInfo(string ID, string firstName, string lastName, string phone, string email, string address, string address2, string city, string state, string zip, string path) {
@@ -292,10 +310,14 @@ namespace DatabaseController {
 
                 mycommand.ExecuteNonQuery();
                 WPFMessageBox.Show("Completed");
+                dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not update Guardian information.");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
-            dbCon.Close();
         }
 
         internal string CheckIfFamilyExists(string familyID) {
@@ -313,12 +335,14 @@ namespace DatabaseController {
 
                     dbCon.Close();
                     return (string)res;
-
                 }
-
-
+                dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not find if family exists.");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
 
             dbCon.Close();
@@ -339,10 +363,14 @@ namespace DatabaseController {
 
                 command.ExecuteNonQuery();
 
+                dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not add family.");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
-            dbCon.Close();
         }
 
         public string[] GetParentInfo(String guardianID) {
@@ -450,9 +478,8 @@ namespace DatabaseController {
                 return null;
             }
         }
+
         public void UpdateParentPIN(string ID, string PIN) {
-
-
             try {
                 dbCon.Open();
                 string sql = @"UPDATE Guardian SET GuardianPIN = @PIN WHERE Guardian_ID = @ID;";
@@ -462,10 +489,14 @@ namespace DatabaseController {
                 mycommand.Parameters.Add(new SQLiteParameter("@PIN", PIN));
                 mycommand.Parameters.Add(new SQLiteParameter("@ID", ID));
                 mycommand.ExecuteNonQuery();
+                dbCon.Close();
             } catch (SQLiteException) {
                 WPFMessageBox.Show("Could not update Guardian PIN.");
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
-            dbCon.Close();
         }
     }
 }

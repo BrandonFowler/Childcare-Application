@@ -22,6 +22,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -36,6 +37,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -50,6 +52,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -64,6 +67,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -78,6 +82,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -92,6 +97,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -106,6 +112,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -120,6 +127,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -134,6 +142,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -148,6 +157,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -162,6 +172,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -176,6 +187,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -191,6 +203,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -206,6 +219,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -221,6 +235,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -236,6 +251,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -251,6 +267,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -266,6 +283,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -281,6 +299,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -296,6 +315,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -311,6 +331,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -326,6 +347,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -341,6 +363,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -356,6 +379,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 
@@ -380,6 +404,7 @@ namespace DatabaseController {
                 }
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
             return false;
         }
@@ -402,6 +427,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
             return results;
         }
@@ -425,6 +451,7 @@ namespace DatabaseController {
                 return table;
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
                 return null;
             }
         }
@@ -468,6 +495,7 @@ namespace DatabaseController {
                 dbCon.Close();
             } catch (Exception exception) {
                 WPFMessageBox.Show(exception.Message);
+                dbCon.Close();
             }
         }
 

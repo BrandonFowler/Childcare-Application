@@ -34,6 +34,10 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Close();
             } catch (SQLiteException e) {
                 WPFMessageBox.Show(e.Message);
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
 
             return names;
@@ -61,6 +65,10 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Close();
             } catch (SQLiteException e) {
                 WPFMessageBox.Show(e.Message);
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
 
             return result;
@@ -88,11 +96,14 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Close();
             } catch (SQLiteException e) {
                 WPFMessageBox.Show(e.Message);
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
 
             return result;
         }
-
 
         internal void AddNewAdmin() {
             try {
@@ -113,6 +124,10 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Close();
             } catch (SQLiteException e) {
                 WPFMessageBox.Show(e.Message);
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
         }
 
@@ -133,6 +148,10 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Close();
             } catch (SQLiteException e) {
                 WPFMessageBox.Show(e.Message);
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
         }
 
@@ -152,6 +171,10 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Close();
             } catch (SQLiteException e) {
                 WPFMessageBox.Show(e.Message);
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
         }
 
@@ -168,6 +191,10 @@ namespace ChildcareApplication.DatabaseController {
                 dbCon.Close();
             } catch (SQLiteException e) {
                 WPFMessageBox.Show(e.Message);
+                dbCon.Close();
+            } catch (Exception) {
+                WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
+                dbCon.Close();
             }
         }
     }
