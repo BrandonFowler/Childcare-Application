@@ -31,11 +31,18 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (SQLiteException) {
+<<<<<<< HEAD
                 WPFMessageBox.Show("Could not find max child ID.");
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
                 dbCon.Close();
+=======
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to update child information.");
+>>>>>>> origin/Development
             }
             return maxID;
         }
@@ -60,11 +67,18 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (SQLiteException) {
+<<<<<<< HEAD
                 WPFMessageBox.Show("Could not find max connection ID.");
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
                 dbCon.Close();
+=======
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to update child information.");
+>>>>>>> origin/Development
             }
             return maxID;
         }
@@ -80,11 +94,18 @@ namespace DatabaseController {
                 command.ExecuteNonQuery();
                 dbCon.Close();
             } catch (SQLiteException) {
+<<<<<<< HEAD
                 WPFMessageBox.Show("Could not add a new child to the Database. ");
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
                 dbCon.Close();
+=======
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to add new child.");
+>>>>>>> origin/Development
             }
         }
 
@@ -102,11 +123,18 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (SQLiteException) {
+<<<<<<< HEAD
                 WPFMessageBox.Show("Could not update the child's information.");
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
                 dbCon.Close();
+=======
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to update child information.");
+>>>>>>> origin/Development
             }
         }
 
@@ -130,11 +158,18 @@ namespace DatabaseController {
                 WPFMessageBox.Show("Completed");
                 dbCon.Close();
             } catch (SQLiteException) {
+<<<<<<< HEAD
                 WPFMessageBox.Show("Could not update the child's information.");
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
                 dbCon.Close();
+=======
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to update child information.");
+>>>>>>> origin/Development
             }
         }
 
@@ -153,11 +188,18 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (SQLiteException) {
+<<<<<<< HEAD
                 WPFMessageBox.Show("Could not delete this child.");
                 dbCon.Close();
             } catch (Exception) {
                 WPFMessageBox.Show("An unknown error occured while interacting with the database.  Verify that ChildcareDB.s3db is in the Database folder.  If this problem persists, a reinstall may be necessary.");
                 dbCon.Close();
+=======
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to delete child information.");
+>>>>>>> origin/Development
             }
         }
 
@@ -252,9 +294,16 @@ namespace DatabaseController {
 
                 reader.Close();
                 connection.Close();
+            } catch (SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
             } catch (Exception) {
+<<<<<<< HEAD
                 WPFMessageBox.Show("Could not retrieve childern information.");
                 connection.Close();
+=======
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to get child information.");
+>>>>>>> origin/Development
             }
             return result;
         }
@@ -285,10 +334,17 @@ namespace DatabaseController {
                 if (count > 0) {
                     return true;
                 }
+            } catch (SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
             } catch (Exception) {
+<<<<<<< HEAD
                 WPFMessageBox.Show("Could not retrieve childern information.");
                 connection.Close();
 
+=======
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to update child information.");
+>>>>>>> origin/Development
             }
             return false;
         }
