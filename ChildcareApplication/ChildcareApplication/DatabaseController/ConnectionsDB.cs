@@ -215,6 +215,7 @@ namespace DatabaseController {
                 DB.Fill(DS);
                 int count = DS.Tables[0].Rows.Count;
                 if (count > 0) {
+                    dbCon.Close();
                     return true;
                 }
                 dbCon.Close();
