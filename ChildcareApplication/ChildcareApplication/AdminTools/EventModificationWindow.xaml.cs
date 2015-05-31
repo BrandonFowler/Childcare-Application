@@ -228,6 +228,7 @@ namespace AdminTools {
         }
 
         private bool EventNameValid(string eventName) {
+            EventDB eventDB = new EventDB();
             if (eventName.Length < 1) {
                 WPFMessageBox.Show("You must enter an event name.");
                 return false;
@@ -238,6 +239,10 @@ namespace AdminTools {
             }
             if (!RegExpressions.RegexValidateEventName(eventName)) {
                 WPFMessageBox.Show("Event names may only contain letters and spaces.");
+                return false;
+            }
+            if(eventDB.EventNameExists(eventName) && this.oldEventName == null) {
+                WPFMessageBox.Show("The event name you have entered already exists.");
                 return false;
             }
             return true;
