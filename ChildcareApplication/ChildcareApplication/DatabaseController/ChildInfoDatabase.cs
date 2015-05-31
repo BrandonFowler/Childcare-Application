@@ -31,7 +31,10 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not find max child ID.");
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to update child information.");
             }
             return maxID;
         }
@@ -56,7 +59,10 @@ namespace DatabaseController {
                 reader.Close();
                 dbCon.Close();
             } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not find max connection ID.");
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to update child information.");
             }
             return maxID;
         }
@@ -73,7 +79,10 @@ namespace DatabaseController {
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
             } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not add a new child to the Database. ");
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to add new child.");
             }
             dbCon.Close();
         }
@@ -92,7 +101,10 @@ namespace DatabaseController {
 
 
             } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not update the child's information.");
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to update child information.");
             }
             dbCon.Close();
         }
@@ -117,7 +129,10 @@ namespace DatabaseController {
                 WPFMessageBox.Show("Completed");
                 dbCon.Close();
             } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not update the child's information.");
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to update child information.");
             }
         }
 
@@ -136,7 +151,10 @@ namespace DatabaseController {
 
                 dbCon.Close();
             } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not delete this child.");
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to delete child information.");
             }
         }//end GetFirstName
 
@@ -234,8 +252,11 @@ namespace DatabaseController {
 
                 reader.Close();
                 connection.Close();
+            } catch (SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
             } catch (Exception) {
-                WPFMessageBox.Show("Could not retrieve childern information.");
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to get child information.");
             }
             return result;
         }
@@ -265,8 +286,11 @@ namespace DatabaseController {
                 if (count > 0) {
                     return true;
                 }
+            } catch (SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
             } catch (Exception) {
-                WPFMessageBox.Show("Could not retrieve childern information.");
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to update child information.");
             }
             return false;
         }

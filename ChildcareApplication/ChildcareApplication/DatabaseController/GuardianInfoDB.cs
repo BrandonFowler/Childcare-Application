@@ -26,8 +26,12 @@ namespace DatabaseController {
 
                 reader.Close();
                 dbCon.Close();
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
             } catch (Exception) {
-                WPFMessageBox.Show("Could not retrieve Guardian information.");
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian name.");
             }
             return result;
         }
@@ -41,8 +45,12 @@ namespace DatabaseController {
                 dbCon.Open();
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
             } catch (Exception) {
-                WPFMessageBox.Show("Could not retrieve Guardian address.");
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian address.");
             }
             return result;
         }
@@ -56,8 +64,12 @@ namespace DatabaseController {
 
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
             } catch (Exception) {
-                WPFMessageBox.Show("Could not retrieve Guardian address.");
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian address.");
             }
             return result;
         }
@@ -76,8 +88,12 @@ namespace DatabaseController {
                 result = reader.GetString(0) + ", " + reader.GetString(1) + " " + reader.GetString(2);
                 reader.Close();
                 dbCon.Close();
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
             } catch (Exception) {
-                WPFMessageBox.Show("Could not retrieve Guardian Address.");
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian address.");
             }
             return result;
         }
@@ -92,8 +108,12 @@ namespace DatabaseController {
 
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
             } catch (Exception) {
-                WPFMessageBox.Show("Could not retrieve Guardian phone number.");
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian phone number.");
             }
             return result;
         }
@@ -107,8 +127,12 @@ namespace DatabaseController {
                 dbCon.Open();
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
             } catch (Exception) {
-                WPFMessageBox.Show("Could not retrieve Guardian ID.");
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian picture.");
             }
             return result;
         }
@@ -132,8 +156,12 @@ namespace DatabaseController {
                 dbCon.Open();
                 curDue = "$" + String.Format("{0:0.00}", cmd.ExecuteScalar());
                 dbCon.Close();
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
             } catch (Exception) {
-                WPFMessageBox.Show("Could not retrieve Guardian current due amount.");
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian current due ammount.");
             }
 
             return curDue;
@@ -148,8 +176,12 @@ namespace DatabaseController {
                 dbCon.Open();
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
             } catch (Exception) {
-                WPFMessageBox.Show("Could not retrieve Guardian ID.");
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian information.");
             }
 
             if (result == guardianID) {
@@ -168,8 +200,12 @@ namespace DatabaseController {
                 dbCon.Open();
                 result = Convert.ToString(cmd.ExecuteScalar());
                 dbCon.Close();
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
             } catch (Exception) {
-                WPFMessageBox.Show("Could not retrieve Guardian ID.");
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian information.");
             }
 
             if (result == guardianID) {
@@ -203,8 +239,12 @@ namespace DatabaseController {
                 if (count > 0) {
                     return true;
                 }
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
             } catch (Exception) {
-                WPFMessageBox.Show("Could not retrieve Guardian name.");
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian information.");
             }
             return false;
         }
@@ -222,8 +262,12 @@ namespace DatabaseController {
                 SQLiteDataAdapter DB = new SQLiteDataAdapter(command);
 
                 DB.Fill(DS);
-            } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not retrieve Guardian information.");
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve guardian information.");
             }
             dbCon.Close();
             return DS;
@@ -245,8 +289,12 @@ namespace DatabaseController {
                 command.ExecuteNonQuery();
 
 
-            } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not delete Guardian.");
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to delete guardian.");
             }
             dbCon.Close();
 
@@ -262,8 +310,12 @@ namespace DatabaseController {
                 SQLiteCommand mycommand = new SQLiteCommand(sql, dbCon);
                 mycommand.ExecuteNonQuery();
 
-            } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not add new Guardian.");
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to add new guardian.");
             }
             dbCon.Close();
         }
@@ -292,8 +344,12 @@ namespace DatabaseController {
 
                 mycommand.ExecuteNonQuery();
                 WPFMessageBox.Show("Completed");
-            } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not update Guardian information.");
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to update guardian information.");
             }
             dbCon.Close();
         }
@@ -317,8 +373,12 @@ namespace DatabaseController {
                 }
 
 
-            } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not find if family exists.");
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to retrieve family information.");
             }
 
             dbCon.Close();
@@ -339,8 +399,12 @@ namespace DatabaseController {
 
                 command.ExecuteNonQuery();
 
-            } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not add family.");
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to add new family.");
             }
             dbCon.Close();
         }
@@ -462,8 +526,12 @@ namespace DatabaseController {
                 mycommand.Parameters.Add(new SQLiteParameter("@PIN", PIN));
                 mycommand.Parameters.Add(new SQLiteParameter("@ID", ID));
                 mycommand.ExecuteNonQuery();
-            } catch (SQLiteException) {
-                WPFMessageBox.Show("Could not update Guardian PIN.");
+            } catch (System.Data.SQLite.SQLiteException) {
+                WPFMessageBox.Show("Database connection error. Please insure the database exists, and is accessible.");
+                dbCon.Close();
+            } catch (Exception) {
+                dbCon.Close();
+                WPFMessageBox.Show("Unable to update guardian PIN.");
             }
             dbCon.Close();
         }
