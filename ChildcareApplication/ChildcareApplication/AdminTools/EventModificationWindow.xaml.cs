@@ -241,7 +241,8 @@ namespace AdminTools {
                 WPFMessageBox.Show("Event names may only contain letters and spaces.");
                 return false;
             }
-            if(eventDB.EventNameExists(eventName) && this.oldEventName == null) {
+            if((eventDB.EventNameExists(eventName) && this.oldEventName == null) || 
+                (this.oldEventName != null && this.txt_EventName.Text != this.oldEventName && eventDB.EventNameExists(eventName))) {
                 WPFMessageBox.Show("The event name you have entered already exists.");
                 return false;
             }

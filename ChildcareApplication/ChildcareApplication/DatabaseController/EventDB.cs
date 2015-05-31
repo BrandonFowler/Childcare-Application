@@ -374,6 +374,7 @@ namespace DatabaseController {
 
                 count = Convert.ToInt32(cmd.ExecuteScalar());
 
+                dbCon.Close();
                 if (count > 0) {
                     return true;
                 }
