@@ -31,7 +31,7 @@
                 <ComboBoxItem Content="Weekly"/>
             </ComboBox>
             <Label x:Name="lbl_PriceType" Content="Price Type" Margin="28,72,247,0" VerticalAlignment="Top" FontSize="14"/>
-            <Label x:Name="lbl_EventOccurence" Content="Event Occurence" HorizontalAlignment="Right" Margin="0,156,247,0" VerticalAlignment="Top" Width="120" FontSize="14"/>
+            <Label x:Name="lbl_EventOccurence" Content="Event Occurrence" HorizontalAlignment="Right" Margin="0,156,247,0" VerticalAlignment="Top" Width="120" FontSize="14"/>
             <Label x:Name="lbl_EventName" Content="Event Name" HorizontalAlignment="Right" Margin="0,13,115,0" VerticalAlignment="Top" Width="252" FontSize="14"/>
             <TextBox x:Name="txt_EventName" Height="25" Margin="28,42,180,0" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" TextChanged="DataChanged_Event" GotFocus="txt_GotFocus" KeyUp="KeyUp_Event" Background="#FFE6EAE0" FontSize="14" ToolTip="The Event Name"/>
             <TextBox x:Name="txt_Rate" HorizontalAlignment="Right" VerticalContentAlignment="Center" Height="25" Margin="0,101,28,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="2" TextChanged="DataChanged_Event" GotFocus="txt_GotFocus" KeyUp="KeyUp_Event" Background="#FFE6EAE0" FontSize="14" ToolTip="A dollar value for the price of the event (do not include the &quot;$&quot;)."/>
