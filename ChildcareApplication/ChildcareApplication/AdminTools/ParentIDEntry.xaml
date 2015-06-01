@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
     <Border BorderBrush="LightBlue" BorderThickness="2" Width="378.238" Height="252.621" ClipToBounds="True">
         <Grid>
-            <TextBox x:Name="txt_IDEntry" Height="25" Margin="127,71,127,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE6EAE0" FontSize="14" MaxLength="6" ToolTip="Guardian ID goes here." TabIndex="0" VerticalContentAlignment="Center" GotFocus="SelectAllOnFocus" KeyUp="Key_Up_Event"/>
+            <TextBox x:Name="txt_IDEntry" Height="25" Margin="127,71,127,0" VerticalAlignment="Top" Background="#FFE6EAE0" FontSize="14" MaxLength="6" ToolTip="Guardian ID goes here." TabIndex="0" VerticalContentAlignment="Center" GotFocus="SelectAllOnFocus" KeyUp="Key_Up_Event"/>
             <Label x:Name="lbl_ID" Content="Guardian ID:" Margin="139,41,139,0" VerticalAlignment="Top" FontSize="14"/>
             <Button Style="{DynamicResource GlassButton}" x:Name="btn_Submit" Content="_Submit" Margin="10,134,214,0" VerticalAlignment="Top" Height="60" Click="btn_Submit_Click" FontSize="16" ToolTip="Logs in as the Guardian with the matching ID above." TabIndex="1"/>
             <Label Content="Please enter the Guardian ID of the guardian " Margin="92,10,92,0" VerticalAlignment="Top" FontSize="14"/>
