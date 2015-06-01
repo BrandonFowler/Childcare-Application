@@ -1,0 +1,3683 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="89b85372-76c0-4b67-be99-4715d6b02018"
+  name="Properties"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="4c0e4fdd-1c96-4d99-87a0-c1646b6d364c"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DChildcareApplication.Properties"
+      tag="ViewCode" />
+  </referencesInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="316051c5-a348-4c2e-8e2d-8bb9e9a5b6c8">
+      <profileInstance
+        Id="9bb03196-d012-4724-bc4a-66e037ba0d03"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="160b7856-e9d8-4c84-93fc-43c6ec80cfdf"
+        name="Settings"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="true"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="f8dcb778-fa4d-4ea8-af9b-dbfce3a9058b"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="dda870aa-b03d-4c5d-a481-7d563dd96c1d"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="52c4896d-ba26-4fe0-afcc-ab823da69275">
+                <propertyInstance
+                  Id="5d9ff872-b85b-442c-95b2-65dbf31e48ec"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="32026411-0e2b-4766-aff7-ddf300977ef1">
+                <propertyInstance
+                  Id="9cdc5c91-c0ab-49c4-99ab-15285ae73a54"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="86ef99aa-7c82-4d63-a6ff-f9b1e5a1412f">
+                <propertyInstance
+                  Id="c9fde093-745c-482c-a11e-9230cc3f42d1"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5e7eb907-9a39-41e4-8925-d65c939528d9">
+                <propertyInstance
+                  Id="fc843824-f2ea-4ac0-b69f-ad54b66b7a34"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f8a318ab-9bab-4a12-bcfe-c4c18d07107d">
+                <propertyInstance
+                  Id="52ad79e3-551e-4731-9d90-6514920ba401"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="8e574c18-b552-4143-861b-0a3610d6ac59"
+            isSubstitutable="false">
+            <classMoniker
+              Id="9c1a94c3-55ad-4a85-a69b-d368f3e1cfbf"
+              LastKnownName="ApplicationSettingsBase"
+              LastKnownLocation="Package8_1520.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="a7c3b98c-4d31-4b18-b59c-6255631c533c"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="Default"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="160b7856-e9d8-4c84-93fc-43c6ec80cfdf"
+              LastKnownName="Settings"
+              LastKnownLocation="Package10_1510.uml" />
+            <description>Property Default references type Settings.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e1580e42-4c92-4465-b898-2db48f66228c"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="945223b5-ba13-4143-967d-011155b8ba6e"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="f6f6c121-f2de-4cce-b82f-b88490c2b243"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="68d36e53-8423-4852-a3e9-1e975f0cbc2e"
+                  name="Default"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="2faf8d8d-7b53-4795-a801-733b9613b4a5"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="1bb045da-d97a-44dc-bf14-23cdbfb9c858"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="059935ed-4481-48ec-8247-c1bea369f1c1"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="FriClose"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property FriClose references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4ee5f14b-c517-4f91-b9ef-df375bf556ab"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c96ff17e-8145-4e2d-a85a-de7d62ce1df4"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="fa10b1e2-520a-4e32-ab00-eba1e8630c92"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="884f92cb-d476-42bb-9aef-45e45a6fc9d4"
+                  name="FriClose"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="7d757de9-186d-4122-92aa-eef0c49dfbcb"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="b4ff0d27-0424-4689-8a64-99f02bf6c29f"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="cbe721fa-998c-4f76-8e42-24d4949d6b58"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="FriOpen"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property FriOpen references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f47c8a14-df75-4e48-a20b-4b818cf176f6"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="f79725e4-4cb4-4ea2-9ddf-6a6cd2f7934d"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="1c57d3b8-f4b0-4431-b0c6-7e0301d01051"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f162bf7d-03cf-49d3-8550-ca2841fcc8e0"
+                  name="FriOpen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="7994bef8-dd52-4a3e-b626-c10c2cd0bd05"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="c40c078c-e29b-42a4-89e9-1eb3d4c121f7"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="d3ad9d33-bf56-4cd1-aa8c-712361ffbc81"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="LastBackup"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property LastBackup references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5ab0792a-8428-48ac-8154-ef92a003f499"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c997a244-aebb-4277-9d2d-9472cdfb698e"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="904a1bc2-a2ba-450a-95a4-5b98ee217752"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bca46e45-a79a-4ac7-a54c-68e5edf95690"
+                  name="LastBackup"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="6ab905ba-cace-4e3d-80de-b658b11606d1"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="ace1cb5d-6b41-44ea-9c49-479ef2eb484a"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="44718bcc-c6ca-4a81-b2b4-eca3e7a48b90"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="MonClose"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property MonClose references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="de3637f3-f631-4da6-be7f-f0867f172d22"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="2670efdc-4246-4296-a8b3-2349287cc373"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="4674ef99-1f39-4f39-800d-2b15c705c9b3"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8c8cf801-69c0-4823-98cb-6a5423196081"
+                  name="MonClose"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="e4244c29-3839-4c6a-aa7b-eda58ed0e7f5"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="14d6bbfc-a51a-4110-91a9-3d9a3d4a0d93"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="7ead309c-0279-47e8-a953-3418a6898e5f"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="MonOpen"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property MonOpen references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7206276b-8cff-402d-9494-1b012cbe9f33"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="78ea9e94-16ce-4cb4-bab7-b5cafb0bdebe"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="27a7db8e-ce19-4d1e-9576-e26f461bbffe"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0c56bf42-aba1-44c5-aac4-0e3cf3854e65"
+                  name="MonOpen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0ca70175-1cdf-4a0b-a0cc-87e70c87f39c"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="f121a2e8-f88b-42d1-9a88-0142f9221071"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="ee675538-6e26-4ca1-a3cd-ac61300a97e1"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="SatClose"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property SatClose references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="dc970a58-f71a-45a3-9438-d8f289435c8d"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="7fd45c95-a82d-4b9e-aaf5-a24c593c8244"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="2095f234-2b8e-4f73-b969-d382caa46544"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4ce693fd-17cc-42b1-9f56-f28833699278"
+                  name="SatClose"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d4c101c0-ead4-466e-906b-07c06507a12b"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="aa59a785-f553-4e38-886c-f3e4b4847fca"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="8e8c4648-f669-4ef6-8284-9b18056495e7"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="SatOpen"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property SatOpen references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8553105a-e05f-49f6-8296-a147f4247965"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c2a8992a-9442-407b-be71-553d688057c7"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="2f09689a-8afb-4710-a647-864d2b6ed06e"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bfb1f5ef-4bec-4c97-9984-2ff296000197"
+                  name="SatOpen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="89ee1a19-b6b3-4aea-ae41-b8d25dae5ca2"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="aa1774e3-4dba-4561-9886-0f70881a5025"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="449e7eac-81bb-43d6-948f-210c7628f10e"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="SunClose"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property SunClose references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fa7e48a0-177e-4f27-9416-1270a1d2b60a"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="f69cf50c-06f3-49ef-9526-f1bc23ceb3a5"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="423ca9aa-fdd9-453f-a656-ef9f80840ec5"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9303471b-2522-4482-960b-fefa7897cfa1"
+                  name="SunClose"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="80ffb488-78b0-4f06-b169-efc121d57f32"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="dedc6d0d-e878-4311-9e57-d4e98babfed4"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="141f168c-ccd4-47b0-a942-1fe87dd72781"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="SunOpen"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property SunOpen references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="21ad2f48-33c4-472e-9110-eb9aa786e719"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="24176b63-f702-41f9-a70f-e22ef446d48d"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="d6542711-00ad-4e2c-bf06-7ce7b1d89183"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8c99d398-d971-4434-a292-ac5bf33be17c"
+                  name="SunOpen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="fe983172-cf76-4e97-850d-695c580771ec"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="8b572d37-080c-4986-84f5-2854ad7b1bab"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="ded2097f-bcde-4faa-b6c4-a4a5f442663c"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="ThuClose"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property ThuClose references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7af6750a-e572-4430-92b1-c961fdf2161f"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="691c0593-9292-4fdd-a7d9-673cf9cbf5ae"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="adf26d15-67a6-43aa-a7e3-a9249dfac5e9"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b9aae1d6-32e9-4296-bd67-992c26d3184a"
+                  name="ThuClose"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="837b02b6-ccf4-43b9-9c6e-d3b367cfac91"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="1712fcb4-1966-4e39-a997-eb5bfb0b6e7d"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="be6fb718-e499-4f01-a33d-0733faf139ac"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="ThuOpen"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property ThuOpen references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e7d4137b-a75d-403d-9f95-f626878e5aa1"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="7ca6d920-adf3-4448-9105-41897b626251"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="e39597fb-161d-4b1d-87d1-76997e6c6212"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="844518a8-0f02-4b15-812a-1a0d872d7d1a"
+                  name="ThuOpen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="8449d454-8f3a-4926-b10d-5be0cadf3e70"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="dc62e7b0-1718-4dfe-88e7-8af0c187f7b2"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="5f6febd1-cec4-4dbc-8e57-6d9031a393d2"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="TueClose"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property TueClose references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e2ca5a3a-ffba-48d9-af15-7070f6b3e8ff"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="e1142c64-fdbf-481c-87f0-1035599ed0a1"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="359b24df-968d-49cc-a19f-0e0f2e729619"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b5afe210-9679-439d-9a7a-d04d11e768ac"
+                  name="TueClose"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="7c8b89f8-c833-40ca-b955-e0031d6816ac"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="50ef1502-5a08-4279-a791-a2eec35611dc"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="9e388044-dcd3-4ca7-9951-4833f642dde5"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="TueOpen"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property TueOpen references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="033a80de-607b-44d1-a041-109d3a1d2d6c"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="013eadb8-0c7e-4697-805e-a2ee5da40154"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="9bde8623-ab22-4914-8e26-75425a0da30a"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4c984678-d04a-43d1-b528-d50819da10b5"
+                  name="TueOpen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0b1bc173-129d-404b-8113-4b5e7e4be510"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="075009f0-ebb8-4bdc-92c4-a1cfa7711c66"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="63d5b153-0c33-4d0f-8f13-77fdd39cb2d1"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="WedClose"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property WedClose references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f9e58a1b-727b-4bc5-aba1-90bb806ae2c4"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="ea5149e4-e242-4698-91c0-d7abcb37e8c9"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="c483eb85-5076-4a37-bc7f-5cbd17f0185a"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="14ccbfdd-bee1-452e-b85a-97df2ad3f0fc"
+                  name="WedClose"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="027bd71e-1bd5-4381-bfc4-d2439fc6cad7"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="58c57637-c555-4da5-a537-cc58329fc683"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0005714b-8b6b-4dfc-931d-2384b0f962b0"
+            isDerived="false"
+            sourceEndRoleName="Settings"
+            targetEndRoleName="WedOpen"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package1_1510.uml" />
+            <description>Property WedOpen references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="87ad2239-f55c-4c96-95c9-bff4897e5c7d"
+                  name="Settings"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="ba57d6ed-0552-45cd-9774-9b791cd76589"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="b5a5eb29-96f3-4a3d-b3fe-2056c9e47f9f"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="de472403-7f73-4625-bb47-c8109f781949"
+                  name="WedOpen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="8a0f2d26-34f6-45c7-a455-15111a7bbee4"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="a0da3642-51bb-4eef-b2aa-ca7f4eeb3a0a"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="2bbe7175-b0b7-42c6-9222-1bf33d39d270"
+            name="BillingStartDate"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="40e5253e-3c51-4a61-9f4b-7652d39a843c"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DBillingStartDate"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="60017d02-bc14-4300-be68-6482791dabd8"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1efc894a-b1c8-4c35-82fb-509f7448e276">
+                    <propertyInstance
+                      Id="584db5cb-d60f-4384-9111-30fac70b56b8"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b476636f-227b-4bb8-bcd8-7fff31f3b9e3">
+                    <propertyInstance
+                      Id="6386605c-5180-4918-a3ef-6adbbfebe6f9"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="734f1f91-7908-415c-ac4a-2f945c4f0ac3">
+                    <propertyInstance
+                      Id="4dc2da02-16a8-4e9f-8c4b-921cbc295939"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="96c3dce3-cec1-4beb-b638-6af072cb85ad">
+                    <propertyInstance
+                      Id="81cc3103-377b-44b3-aeb6-751e22509e48"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="461ee166-99c2-4124-84ac-1054cff7442c">
+                    <propertyInstance
+                      Id="a1398fab-2646-494a-9e57-b9f700ece8ac"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b4d47d6c-c18c-4ffe-819e-e9951aae1f22">
+                    <propertyInstance
+                      Id="49e6258f-7739-4d46-8662-76b251b01c2f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="967526d9-324a-461c-865c-38e52c3cc4fe">
+                    <propertyInstance
+                      Id="3ebc20f9-f7c7-424a-a358-59b86d6b6311"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ClassDiagram.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="f36e2a93-d944-475d-bd58-4abb57a2d58d"
+            name="Default"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="e33bf176-3c7f-474e-b70f-7be91376905b"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DDefault"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="7127758e-3125-4010-bbfe-521392428637"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b56ba5c3-9847-44b3-a790-108bcc75f533">
+                    <propertyInstance
+                      Id="9d9130e0-012a-4848-9590-9844a17ed62f"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f3c99257-ec48-485f-bff4-c8876eb242b9">
+                    <propertyInstance
+                      Id="68a09dad-eba5-43de-87cf-c3ec7115dd72"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8fe61a91-aec2-4ec2-a392-62eb3353dafa">
+                    <propertyInstance
+                      Id="161ffb93-522c-4052-819e-67b250911e2b"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="21377bf4-7926-4b9c-a86f-c12a56b48d4c">
+                    <propertyInstance
+                      Id="214ca75d-0f66-42af-9175-9941213a0437"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8722d100-f0e4-4ac7-90dd-8fc2bdd63680">
+                    <propertyInstance
+                      Id="637c121d-5e5b-4105-9fe5-d5969153ddee"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c5418003-aba1-43fb-8879-d9847187dc5f">
+                    <propertyInstance
+                      Id="78338e5e-8207-4b57-880f-cd1f0c5da1e2"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d7676222-782a-4882-9c17-e79d55288b43">
+                    <propertyInstance
+                      Id="abcd0270-7bfc-4845-a685-198ab3ff3f26"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="160b7856-e9d8-4c84-93fc-43c6ec80cfdf"
+                LastKnownName="Settings"
+                LastKnownLocation="Package10_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="9a9db849-a2ec-43f5-8ade-0bb4315492e4"
+            name="DefaultSaveFolder"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0127235f-8ee6-43f1-8f7c-9960dd98c826"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DDefaultSaveFolder"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="5e415e77-7c07-45ef-9351-d901e7365f74"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0d0252dc-96f6-4f77-98c4-5b026f773419">
+                    <propertyInstance
+                      Id="b5f14c15-58de-4a75-8f98-32b7e8726c64"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0f3f6c9d-ee47-4f82-bf5c-eaf2e6dfb0ab">
+                    <propertyInstance
+                      Id="c285d8eb-4a89-46f1-9fbe-9c3f59ff97b0"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f559bc9a-ce45-4b75-8137-acb349920e5e">
+                    <propertyInstance
+                      Id="e4865043-1de0-48ad-b96c-8adb8d481e78"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fff3a379-b079-4371-92b7-d10a0f5a6ee1">
+                    <propertyInstance
+                      Id="c930ac9e-0213-440f-95b5-492489292e6c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2eb79675-b85d-46a1-98c5-df794eeca6fd">
+                    <propertyInstance
+                      Id="2dc13c8f-33d6-4436-b51c-1d1de46b1d83"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c2052492-48ac-404d-b0ff-d95cd3e5acb2">
+                    <propertyInstance
+                      Id="f038ca96-0ec9-45fc-b370-e84a6e97ffab"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bb84228f-cbbd-4041-9e34-bc7a604b7aa8">
+                    <propertyInstance
+                      Id="e0620399-7a7e-4c6e-986d-090bca76a365"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ClassDiagram.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="4b41df85-bd20-4b70-90e4-0ee7a5e3c665"
+            name="FriClose"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="211adb38-944f-41d4-973a-d69e7187a5ae"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DFriClose"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f1fd701b-f02f-42dc-a9d1-e4a388c1028e"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="db424bcd-cd6b-4ef0-b736-6bb23f4b1d96">
+                    <propertyInstance
+                      Id="54e39c5f-b0b2-481a-a748-cfc834589e32"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="128cfc1f-58c7-4688-8dbf-db87b5b501fb">
+                    <propertyInstance
+                      Id="08799188-3c81-4eea-b7b8-1281b2430146"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="82eca662-7f85-4267-a39d-153b11019cc3">
+                    <propertyInstance
+                      Id="2bfd56cc-370a-457f-8423-33757fa51f78"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="394a6987-4514-4623-9beb-4b053e1bbad3">
+                    <propertyInstance
+                      Id="c17ce82a-2d3d-4a75-ab31-3b77c86a0e8e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="68b7d2bc-f86f-4376-9101-a51f8f1d495a">
+                    <propertyInstance
+                      Id="ac05c96b-6cd6-417b-978c-52bdafa281aa"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="89d1a1ea-4972-4611-a329-0e1aac761dba">
+                    <propertyInstance
+                      Id="48ef8a80-c625-40a6-aaae-828825fde70e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3f7eef85-b76b-4e5a-abe8-3c15751808ef">
+                    <propertyInstance
+                      Id="da1a148a-a98c-4fe0-9db9-6118e1a4e4dd"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e4c28f07-7fab-4229-9512-e2237f324170"
+            name="FriOpen"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="388a175f-0578-4ed3-be2d-9e4f466ce931"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DFriOpen"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f6a047c5-1039-4d43-82b2-e666982a26c4"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="24d0fe09-e69e-48fe-a70c-403f36d8b200">
+                    <propertyInstance
+                      Id="c617584d-a184-4336-b6c9-5059bdb9a4b9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0932faa5-0291-4e43-adb6-a4472ce9de0b">
+                    <propertyInstance
+                      Id="e40f71d8-8407-4114-9c95-dad4995c3d16"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="953d4ca3-1e53-4a02-9a1a-f173732d65f0">
+                    <propertyInstance
+                      Id="1a4f27f0-67a4-4281-96ce-bd6d82ce34cd"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8c0d3c34-47e7-482e-9d9b-7721c78e443f">
+                    <propertyInstance
+                      Id="6cfe5ba2-f5f2-48ff-b72b-8b19dd86db6a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ace06551-9998-4fa8-afe6-3529c347fc37">
+                    <propertyInstance
+                      Id="b1eed5f1-e203-4ec9-83b7-08c5ab4c11f0"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="65d0ba48-ab0e-4fb8-898c-92703891dca3">
+                    <propertyInstance
+                      Id="3790245d-386e-4171-aaab-1398f9ac93fd"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3fc63f2f-370d-4712-9f46-6de98f3d5b36">
+                    <propertyInstance
+                      Id="6784d5f7-e5b4-4e14-8c63-2c875aa4c88f"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="86998930-3c65-48b5-bb0d-9111f525e581"
+            name="HoldExpiredRecords"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="53414d06-e71a-4523-b7e0-e1ef03729ecb"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DHoldExpiredRecords"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="65902a45-c555-44de-892d-98cc50ce5391"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="00c82c7b-cc66-4f30-a2b1-c6251437427b">
+                    <propertyInstance
+                      Id="b0fbecb6-0a52-46fb-b659-bb372f45385e"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f3a38325-8a7c-4b37-b5a6-b38a249f0014">
+                    <propertyInstance
+                      Id="ecf8ab53-bdea-4690-8ffe-23841dd04f03"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="35e628be-552b-429c-a42c-57601f779b5d">
+                    <propertyInstance
+                      Id="196dc01f-6832-46d7-be00-62c5920f0fd5"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="08cefdfe-751a-41d7-987c-31d3865d0d69">
+                    <propertyInstance
+                      Id="7aef3fea-898a-42ac-8112-38518dc0484b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="65fe1781-526a-4181-bcc5-f732cca8e132">
+                    <propertyInstance
+                      Id="4aa8d46a-8a70-4508-8e42-4a9ca533b425"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7053c7d2-1d4e-4b39-93bc-f419fe002749">
+                    <propertyInstance
+                      Id="40dc5107-e872-4ff7-97c3-1d994f8991a8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fe92dbec-7633-4397-863d-df101d7d9753">
+                    <propertyInstance
+                      Id="2778fa3f-2e8b-4db7-be89-11e1dd283858"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ClassDiagram.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="8975a2c0-b242-40b0-8f23-47ca2096b5db"
+            name="InfantMaxAge"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="8912e21a-8714-47de-b8e3-b5297814db5b"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DInfantMaxAge"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2aeebeea-1503-47a0-bd8d-9e29e44bae42"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="22aafc62-226b-478e-a5a3-66605d0f4dbb">
+                    <propertyInstance
+                      Id="b4dae372-0e12-41db-b7f4-4840c85a252b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="28d1a5cd-ca15-473f-b035-51cf74e9e430">
+                    <propertyInstance
+                      Id="9ca29f92-bf11-4f4b-899e-16e5b8dbac49"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6488e157-3c12-46f2-9297-93ad1e7929f8">
+                    <propertyInstance
+                      Id="cb69d343-c7e4-4f65-a55b-6813b30bba8a"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1b8c3c03-4dca-4de8-8dc9-681a96f27c86">
+                    <propertyInstance
+                      Id="38f3be1d-5480-4ace-bb6f-2777654cab50"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ed130746-5ab5-46ce-bd26-930492d0fd00">
+                    <propertyInstance
+                      Id="6848c3bf-2986-489e-96cc-01c7b81b1918"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0986d651-f886-4027-9dd3-19919b1e6cdf">
+                    <propertyInstance
+                      Id="c4d26a8b-d906-4b33-8438-4f36c96c86fe"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e1692ff3-7158-4943-a8f9-45642d8e5034">
+                    <propertyInstance
+                      Id="6c2b8900-1212-4c2d-bd95-67ea18d66d3d"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ClassDiagram.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="7a1ec098-5f23-4347-8384-0b8600d7d344"
+            name="LastBackup"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="b1b936ab-d091-4c8d-98ec-6484c4cb2a87"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DLastBackup"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a757a3bb-325d-4f06-9003-d809ffb91381"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8984e33c-8bac-4efe-81a7-16443e8ee2ce">
+                    <propertyInstance
+                      Id="18fb4ca5-7e01-4b9c-8bf4-f8177c5cd1f3"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="91ac36c1-95cd-4618-9b78-ed06f53772ea">
+                    <propertyInstance
+                      Id="d8b09af0-df54-4d2f-97aa-0287b4cadcff"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c338dcee-6048-4e6d-8bc9-5204e0a22e6a">
+                    <propertyInstance
+                      Id="96b0b8d5-8f56-417e-916b-35b282ffcc12"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2a431222-6c0f-4abd-bd6c-0fbb8d3aa648">
+                    <propertyInstance
+                      Id="c85a679a-a262-42d7-b6df-9f6ae3ca489e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aa90d128-a6de-4a8c-9cb6-6fc8c006c0ba">
+                    <propertyInstance
+                      Id="2128a874-8f96-40a6-804a-e97fca37b6b6"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1bbede74-7ff2-44ea-b7a3-077a61ee1de5">
+                    <propertyInstance
+                      Id="e7ebe312-ebb3-4f31-a9ec-d713b671d73f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c1c3ad12-1001-44ef-b199-f038ff993756">
+                    <propertyInstance
+                      Id="0cca0a24-9723-4a32-aded-94a63d2b44db"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="9ebea42c-5a00-4004-8b52-ea37eaba9a7b"
+            name="MaxMonthlyFee"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="dda05e6a-577f-4d80-8755-f9468749dca6"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DMaxMonthlyFee"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a3abc33e-45c5-44da-bf38-962c2f0e4af2"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0bb2714c-baee-4df4-a59c-190463e184a2">
+                    <propertyInstance
+                      Id="3e77926f-e7b8-43e7-8088-863483016b8e"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b14a9884-4330-4df7-87ce-e6d0dfd01ed9">
+                    <propertyInstance
+                      Id="b29e8125-45e8-45b7-a49a-0a27a2f2e4cc"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c3c54306-3dec-4c56-9fca-35f7e1349f55">
+                    <propertyInstance
+                      Id="5b02e09b-3cdd-43f1-a6b8-f3aa95efd4c2"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="09de60a9-58f7-4369-b1b9-38f7aac33559">
+                    <propertyInstance
+                      Id="6529fbd7-5831-4589-b3d7-02215413d229"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2d891a3b-4a15-4b9e-9c1f-d88a160379ee">
+                    <propertyInstance
+                      Id="1a9e669a-214d-4cfa-a2ee-997c4869cdce"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0d775a2e-9b92-41d3-a48b-a6a46a823d3b">
+                    <propertyInstance
+                      Id="c6731385-ef2e-4cc2-8d19-22371a6d5e1c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="92f80eba-6bff-4d0b-a147-ba692b0c6fc3">
+                    <propertyInstance
+                      Id="71154bb0-2892-4136-b8f3-8c74912b865b"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ClassDiagram.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="54f4fee0-8aa5-4a4d-bc4a-fdbc31bf2bef"
+            name="MonClose"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="fca4c7d8-6b7b-44d5-bd41-6805c27cfee1"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DMonClose"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e78fe066-868a-4f73-9fae-8f7273b1048d"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bd016d06-44b4-460b-95eb-a012b0317a61">
+                    <propertyInstance
+                      Id="a52dbbff-81b3-4610-864f-48b6ed0ed28a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="781da77e-008d-4e91-931d-d98f3e4ced9a">
+                    <propertyInstance
+                      Id="e10fb2c9-1a57-4cc9-b349-375718cd55fb"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9019c179-cccf-4963-9c18-ad5616226b05">
+                    <propertyInstance
+                      Id="ee549d6a-ee13-4d85-a51b-4ef23517cc5c"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d2438d5f-e567-4b89-987d-760ebb3e67df">
+                    <propertyInstance
+                      Id="f8608994-3957-4575-b7d3-f9fee52f4406"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aa165853-3492-4728-86b0-5b7ddbcb6eb8">
+                    <propertyInstance
+                      Id="da6716d8-1014-4b2f-8e96-2efa5757000f"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="70f90528-787b-4bbe-9853-cdbe108c87a9">
+                    <propertyInstance
+                      Id="3363c8b7-24f5-4a4c-9aaf-384ec90aa613"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c72c07dd-b0c8-4dc4-bb52-daa530277551">
+                    <propertyInstance
+                      Id="b793bd95-dbc8-4b5c-8816-2d9a138e7874"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="783ed3d8-95e4-45c9-9a0a-4fc92e553588"
+            name="MonOpen"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="fce62918-e0b7-4f14-8525-fb49c2c8d37b"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DMonOpen"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1c7b9d55-009b-46a6-9bf3-e7950d3453ef"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b1c574bf-d687-45b1-ad43-86bb93e6a4f1">
+                    <propertyInstance
+                      Id="57f7db27-83e1-4ea9-9311-382ebc66f75c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9f4b545b-ab4e-490b-87fb-13a5c0f4e27d">
+                    <propertyInstance
+                      Id="33c417ce-3baf-4440-a8f6-2181707dd64a"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="64355868-4a66-42e0-87de-1c93d04e6d28">
+                    <propertyInstance
+                      Id="8784c4bb-0e4a-4c37-abe5-5dbdc920c232"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1ee590bb-23e2-411e-9d68-0b9d1af73af5">
+                    <propertyInstance
+                      Id="1a5fd855-1357-4bac-8b3c-cd80d0825f82"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="39b79646-e67d-4c92-8433-61914cb40f9b">
+                    <propertyInstance
+                      Id="aba91c4f-3107-4bcf-8ed3-904a2df912e2"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="29451431-1a4a-4e59-92c3-1fed31f7ec45">
+                    <propertyInstance
+                      Id="999097a5-e4a3-4175-be82-d46a8a38275c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e0b54823-fc70-458e-8876-0fcd0bb95c63">
+                    <propertyInstance
+                      Id="72d19b6f-736d-4c4c-ba46-b4cb3c279a8b"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="4a99475f-d2b6-4786-8f78-cfb34e9b4c41"
+            name="RegularMaxAge"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="a59afeab-bf5f-4370-8a48-eac8bc34c2a6"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DRegularMaxAge"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="dfce0216-bc2e-4199-9a6b-ff2dd12c6c11"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0e33b0e7-3488-40d2-ad55-fa7ae0dd95c8">
+                    <propertyInstance
+                      Id="6d9ab114-538c-41ef-a270-bd87fe1f52f6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="27af6118-a9fc-41ca-82bd-d3890d22c508">
+                    <propertyInstance
+                      Id="e63dd6e6-cd6f-4967-b3d3-4a38f0e6f60f"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="41a507e8-439b-4cea-af98-63e710a23235">
+                    <propertyInstance
+                      Id="f9461b71-4669-4b0e-af33-3f03a73a2387"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c8f8ae71-3602-4328-a036-9bdee5458250">
+                    <propertyInstance
+                      Id="314714fa-8c0f-41ab-9578-9f15e4d80e3b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="01dd6f77-1ed8-4543-aa4f-c8332b08e7e4">
+                    <propertyInstance
+                      Id="57e1856d-6103-4946-851e-38ea10c958a8"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="80a6aa4e-b359-4966-a321-41f0a6f690cc">
+                    <propertyInstance
+                      Id="d421ecbe-a576-4ad1-8620-be19a130847a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="99e99bf3-a4ae-4b46-82fa-abbae9f6e49e">
+                    <propertyInstance
+                      Id="be0cffd1-a938-4c25-9ce1-f46c74d7869c"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ClassDiagram.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="d66a711c-255f-42bc-8b0a-e6f81beb196a"
+            name="SatClose"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="8b8718ca-af2f-4151-ad09-64f531caa1d2"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DSatClose"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e865ec0b-2025-4b23-96e2-4a87fabe8fd6"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bfca663e-f595-4eb6-9c61-49fba94879a5">
+                    <propertyInstance
+                      Id="63a9be04-b76b-4b29-a712-ebbb0bd50bcf"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="111a1beb-b995-48c4-85e9-9cf4cab3a108">
+                    <propertyInstance
+                      Id="31eee172-9246-44a1-90b6-8b58d922de47"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0546ba6e-2f5c-4ea8-ba46-97b04eb08a69">
+                    <propertyInstance
+                      Id="10ea6a3a-f92f-4b3e-823e-d0efe36f045e"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8a7f1eb7-f42e-47b1-8569-4e4e618e5529">
+                    <propertyInstance
+                      Id="577fb5ae-3328-4d74-83fc-a890ef5cccd2"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e01d8fb8-2413-4136-9059-886f66cc52bb">
+                    <propertyInstance
+                      Id="6b224856-555e-4d22-827d-19cefa35f8b3"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3a1fa8bb-260f-453c-b054-2640f2edb641">
+                    <propertyInstance
+                      Id="1bfe39f8-3d82-47c8-931a-7f23692d7c80"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b3f794e8-a04e-44e7-b486-9ce7ff0dd428">
+                    <propertyInstance
+                      Id="615aed15-ca25-49c7-a110-6be83a1b99ba"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e0757629-8d33-4c63-8a07-7b06ec9a3bf3"
+            name="SatOpen"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="a498483b-6501-4d4d-a6cb-f6b6bb308172"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DSatOpen"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="24c9f8c3-9154-48f6-bdf9-27e9262389c8"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d0b2f7b6-de72-4572-9150-08574dbbd779">
+                    <propertyInstance
+                      Id="1703fcd4-c9df-49fe-a21b-3dea74819c2d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5cb79fe3-74b6-4e29-96d4-2c58ac420faf">
+                    <propertyInstance
+                      Id="3dac1657-83b3-4d1d-8f12-1e93ea8ec617"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e993359d-7642-4b5e-ab76-0d25db45a245">
+                    <propertyInstance
+                      Id="300c060e-1d23-444f-8a33-fcfe17d5c1ae"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="33083e00-048a-47ce-ba3c-53586c259c72">
+                    <propertyInstance
+                      Id="311099ce-5a31-422e-aed7-a27f40dd2f56"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="31270ba6-73fd-41a5-8e94-a305b5aa221d">
+                    <propertyInstance
+                      Id="3cddf4a4-8d01-483e-a29d-c2e48c2a422e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b8a3735e-b541-47e6-835c-b96c344218ff">
+                    <propertyInstance
+                      Id="1038af84-cbee-4232-a034-5be893b6a7b6"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7a12f6e1-9493-4ae9-95b8-88e914ac38d0">
+                    <propertyInstance
+                      Id="52974a72-8802-48ef-b6f7-80a3e54ec80d"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ac605f9b-cc79-4e04-81fe-d7d64e0e6ef6"
+            name="SunClose"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="a4058eb3-55bd-47f8-a744-8458d880c804"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DSunClose"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f64e8474-145b-48d3-a1d4-2b83bad7ec21"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="15616210-c15c-4ce6-b757-4a42de461535">
+                    <propertyInstance
+                      Id="15babd6c-ee99-46d9-a61d-a1a19169a2f8"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="07ddf1e7-67c2-4dc9-a97b-8a584a42e0d6">
+                    <propertyInstance
+                      Id="bca548c5-c670-4fab-943e-478e06a3dd38"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="31642e90-b2c8-4647-89ac-666369c52a2c">
+                    <propertyInstance
+                      Id="c7cabd99-3487-4dd5-858d-ce236400c8b4"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="25940b6f-10ca-4895-a382-85f4aac400be">
+                    <propertyInstance
+                      Id="2256564f-f0c5-41c2-978a-7f82edff46b9"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="097d991b-ad53-4f8a-922c-882820c88423">
+                    <propertyInstance
+                      Id="8c294b9e-da6d-4214-bd76-5ee085cb7ae7"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="04e1b285-c727-466f-bae1-ae79ae521723">
+                    <propertyInstance
+                      Id="344091d9-553e-49ac-9929-bb5ddd7d6d52"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="95ce219b-47b9-4d11-9531-d3465731ccd8">
+                    <propertyInstance
+                      Id="8e94ff5f-33af-4abd-912c-6f2b96394a83"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="cb0f20fe-61d9-4725-b460-dc41b5f95344"
+            name="SunOpen"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="1cf80cce-9f18-489f-842b-27991fd5513d"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DSunOpen"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="fde7415f-bcf5-4afd-a5ff-3b2ec5d5866e"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f3fcc03b-5f54-485c-b4dc-ba9e15f80634">
+                    <propertyInstance
+                      Id="517953ba-505b-4b15-a6dd-266885a13a0f"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b3066ab7-e671-43c3-a400-f5eb50ff4c0b">
+                    <propertyInstance
+                      Id="76dcd595-fd63-456b-b0d3-833f27d8effc"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f06f056d-0896-4cb8-b8c0-18a858f3ab70">
+                    <propertyInstance
+                      Id="65237137-47c8-405c-baae-20c28f88eb75"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6983598c-a265-4015-b66d-407abe24a0a2">
+                    <propertyInstance
+                      Id="296c96e8-e3b0-4144-be61-bdbe937b20d5"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="79241483-f350-4298-b05e-6be800c73eb2">
+                    <propertyInstance
+                      Id="8df0f51f-fbef-479d-894c-588a7d4e4280"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f830aca5-693d-4aaf-b414-a002fd308000">
+                    <propertyInstance
+                      Id="9bc234b2-74c0-43d2-a683-1a06034c5fc2"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="60839372-63b0-4a11-ad41-524db6efcc1e">
+                    <propertyInstance
+                      Id="a200486c-f30b-40b6-9943-b1368e6e8465"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="319e7b55-4578-4465-bbac-affdf8aca93f"
+            name="ThuClose"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="4b54b8e6-6115-4967-87e4-0b75936380de"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DThuClose"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="835a1752-7507-44e8-afa5-7e9040d179b9"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1c8020ae-dea7-49c2-91dc-5f299a0a7556">
+                    <propertyInstance
+                      Id="c3b9d1db-0df0-419e-b89c-b55b2ee02055"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="30e03ee9-8eb1-4622-8ed1-80a342684b72">
+                    <propertyInstance
+                      Id="64163424-88b4-4f21-8e8f-d6459744f712"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4d2202fa-3f36-4a2c-b873-e0670b0e7c1c">
+                    <propertyInstance
+                      Id="c765fd73-4527-4106-9552-e477916cad08"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e361c889-77ed-47c6-8f59-0d6fda07b78b">
+                    <propertyInstance
+                      Id="0c5bd043-8214-4b32-8295-1213b1e52efa"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3de26574-4189-43dd-aa2a-ef4bb2d85430">
+                    <propertyInstance
+                      Id="1129e3ae-0455-45d7-bbf2-a0f7e63ba8f7"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8a56db42-1f18-4fbd-913e-8c03f2717e2e">
+                    <propertyInstance
+                      Id="44c4c6ba-7c9f-4d5e-8cc0-1a04384b660b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b47918b4-bd20-4d54-8e03-7929700cb59e">
+                    <propertyInstance
+                      Id="c1818eea-3e3a-4efe-b3fc-56e32d447e23"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="1c240a49-96c8-4d42-80b7-a4cc58c8418f"
+            name="ThuOpen"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="02138a36-ff01-4945-acd1-f543955b9153"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DThuOpen"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="005e4d12-9550-418d-b763-c90296b86db5"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3779293d-20be-44bf-9363-b9c76f7e548e">
+                    <propertyInstance
+                      Id="e3fcdc2d-c9e7-47a8-a417-c6522510b9e2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="92aeed98-a765-4181-96d5-d1b07bee699e">
+                    <propertyInstance
+                      Id="e30049d7-310a-4000-ba1c-4e7438aad538"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="930ad44f-3d1d-468f-8765-84304f2e8126">
+                    <propertyInstance
+                      Id="d64a7c81-bf17-4836-be20-1307bbdd41e6"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a365715b-ce12-4009-81e8-9880b224deaa">
+                    <propertyInstance
+                      Id="0ccc6227-9fdc-46d5-ab6d-31cf9c937ba9"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ba0d26ea-bc4b-40ab-b778-5bba754628ae">
+                    <propertyInstance
+                      Id="12ec5a16-ea79-459e-b511-9eaeac73ee3e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="85339e7f-fa91-4ad0-b7ff-9c2004099a6d">
+                    <propertyInstance
+                      Id="cbcb54a0-a2ac-476f-8ccd-08e45125c44a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ca010b0d-7e23-4ac6-bd79-dcdab2707279">
+                    <propertyInstance
+                      Id="23c3197b-4115-48e0-ad3b-6fd53dedcd38"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="1507f27a-a939-42ec-acc5-c0220ef594a4"
+            name="TueClose"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="4f76124e-79d2-44ae-94c3-9dbdd88404da"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DTueClose"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d2ac0fec-1d7c-45f6-b2ef-ed6ab8f72ea5"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dc537fea-1ece-412f-9d1e-737f610b1a9b">
+                    <propertyInstance
+                      Id="780383a9-57d5-4916-a3fd-d8ed3b85bdbe"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0c066484-5721-4c7a-b2b5-054136fae560">
+                    <propertyInstance
+                      Id="eaf12e7d-abf7-4d53-9dcf-8be390f247e1"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="75a3bc70-9c9a-41a4-a16d-d71bd9dfa173">
+                    <propertyInstance
+                      Id="a222145b-6ae8-4a09-bc6d-5221f6afd708"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="51871485-ac2c-42e9-b959-2949b569f373">
+                    <propertyInstance
+                      Id="f0014733-2a04-4bae-a64d-554dbccbd7c1"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="73914cc5-606a-4219-99b7-f9bb9f578774">
+                    <propertyInstance
+                      Id="14a8e569-5872-469b-ad7c-0adf450cb67f"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eacee4b3-346b-4d8d-80ce-501828045d65">
+                    <propertyInstance
+                      Id="c63c23b7-772d-4a42-8210-a91c38f68441"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="52d3de83-6ead-4549-9b1f-2632039a5a4e">
+                    <propertyInstance
+                      Id="27d624e8-9fc9-428a-9687-437700bf4bf1"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="eaa16e3b-134c-4bf0-ae7c-7699765360b2"
+            name="TueOpen"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="3ed0b4fc-0951-4ed1-8146-0cb0e447bb39"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DTueOpen"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3c2940f8-36a1-4f8e-9cc6-a85ce8c9a870"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b6d90a4a-eb87-43de-bf95-a59033ef4f80">
+                    <propertyInstance
+                      Id="03637249-f4ae-4c86-aa35-b13cc0fb7b4a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4e155e30-5b25-4f10-a72b-3f93cf8968dc">
+                    <propertyInstance
+                      Id="31f5234e-f1a3-489a-999b-2e2fb262e3c2"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dba07e5a-cf04-4951-9c8c-3b17d4ef36a2">
+                    <propertyInstance
+                      Id="8da67227-94d1-4de6-86e7-805e9340edf3"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="edc04123-4fc1-4aa2-8594-f47113e927bd">
+                    <propertyInstance
+                      Id="661d33c5-c06e-4988-875c-ab1b8423633d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2164ee5d-cd42-420f-abdb-e567a5d71ca1">
+                    <propertyInstance
+                      Id="dde5e9c9-57c1-4a19-ae20-2f14649b5c5f"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ef0439e4-7af9-492f-96f6-74fb593d5535">
+                    <propertyInstance
+                      Id="185a451a-ec62-4b3e-96b0-c12ec79ea36e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="66b9b541-0935-4881-8a54-df522d66711c">
+                    <propertyInstance
+                      Id="92d533e9-505e-46f0-891b-a33cf39436e0"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c167d3f9-d78a-47f9-bef6-a8bdd2b4f4bd"
+            name="WedClose"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="a187d85d-4474-4672-b1ed-1c251c1e6749"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DWedClose"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8eb640f4-b1c7-4cf4-a641-b9519c375dfb"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="21bbaf5b-8110-409e-9825-0f05bff5b44e">
+                    <propertyInstance
+                      Id="913b1a97-5863-4de8-8825-b60421780969"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="efbe0a3d-f779-47bb-afcc-68e96aba4f9b">
+                    <propertyInstance
+                      Id="b160e065-4223-4484-bbf7-5f8d9ec7c369"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="283004cf-58c5-409d-ad05-c6f3233fc794">
+                    <propertyInstance
+                      Id="6d4db3ef-9675-4a8a-8a4e-d2b761dd6d32"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="19febfc1-4e34-45ce-97e3-c555c0f728eb">
+                    <propertyInstance
+                      Id="2b700709-ceab-4772-adf0-5eada1f12077"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="47a732cb-2db1-4139-958b-76c53f13b5d2">
+                    <propertyInstance
+                      Id="dd54397d-4e1c-4a34-bf1e-7f08885b83cb"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="84f1242f-1847-4870-b6e7-9d6621064494">
+                    <propertyInstance
+                      Id="45d2faee-b21e-4aea-afdb-b9e88a2b2676"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f1023c47-300a-41c9-97d0-02183d0c2a40">
+                    <propertyInstance
+                      Id="69a60196-a665-4afd-8a1b-bf9d2a2282fc"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="fc759888-fe9d-4d4d-8d69-a358e375934f"
+            name="WedOpen"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="95252e7a-4a43-44ba-87f7-6e800c841a45"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DWedOpen"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6be807c1-14df-4ece-a1d3-5d541b550f30"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8ce02cc8-3e04-4202-a013-4496d471f437">
+                    <propertyInstance
+                      Id="d23d1140-3337-46c3-807b-58175885f824"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="168857e4-266a-4183-b4f9-8074a07f198a">
+                    <propertyInstance
+                      Id="43f7d653-bb8d-40a0-978b-e62fb25a46aa"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dedd8453-bafc-4ae7-ae38-97b7001e854e">
+                    <propertyInstance
+                      Id="990c7929-ee03-4340-9e6c-4936d798a3e7"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="df37afd9-b3ad-418d-88a1-bac6e9bb0313">
+                    <propertyInstance
+                      Id="9cc26fa0-4f75-4822-ac73-0a61975de242"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="712a2bf9-e3c7-435d-ba00-269b3a5a1cc0">
+                    <propertyInstance
+                      Id="1b816d82-bb57-4d87-b013-5b084185399c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="88b4284b-1d4f-4590-948f-53765a5b6572">
+                    <propertyInstance
+                      Id="195fac48-0882-4326-b940-55ccf2ffcc58"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e387fe3b-c2b0-4b55-98f8-808918be4492">
+                    <propertyInstance
+                      Id="907a5236-a1c8-4a06-8948-7f7ddc8ee426"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="6fd8cd69-9463-4de9-a4c6-cde3e73d6f02"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package1_1510.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3c3f60be-3408-4cdc-902b-61849d67ae01"
+            name="defaultInstance"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="86228583-6c5d-40b3-b0d3-633744f718b4"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3DdefaultInstance"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c7cda211-9f07-4cef-903d-fa7c510d4508"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="99d9d07e-52b9-4067-b0c3-ae66acd1839c">
+                    <propertyInstance
+                      Id="65a78f53-e1cb-4361-8088-98b5117e3017"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3a27d8ab-5c64-4639-a600-6ac9f2e8f409">
+                    <propertyInstance
+                      Id="38cd1505-1d87-422f-b6f4-5282fa7cf38e"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e0578e47-a369-4ace-9581-cfc32617ae5c">
+                    <propertyInstance
+                      Id="7c9d1f4b-6727-427e-ad6d-3e70724b3ea9"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="69145533-5a57-41e3-a20e-40d4fe66dbf0">
+                    <propertyInstance
+                      Id="f7ca13bb-b05b-4974-9200-42ea1679923d"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3a2a2a45-9d8e-4238-aab2-67a6e414d384">
+                    <propertyInstance
+                      Id="cd8ec1a3-1a31-4dcd-b87a-021d42b5f3b1"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="160b7856-e9d8-4c84-93fc-43c6ec80cfdf"
+                LastKnownName="Settings"
+                LastKnownLocation="Package10_1510.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a1a0915f-34b7-474b-aae6-39902442846e"
+            name="Settings"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="e5f3640d-7f9d-4c96-9780-1f7ef186de29"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8ff4779a-00a1-43c2-83a3-8070161a63f2"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f46eb85c-5394-4b14-9c14-b045b80f7894">
+                    <propertyInstance
+                      Id="8267020f-785c-4a4d-9b58-6c892a8cde1a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="06382c84-ce5f-4ca7-838a-9c97380e5dae">
+                    <propertyInstance
+                      Id="701b2e2b-4f15-4bf4-8b41-660e7363ce04"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3311c820-bf23-4ccd-9f8c-da58ce45e7f0">
+                    <propertyInstance
+                      Id="c0d8107d-03c1-4474-8ebf-2322b8547c8e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ebae25d7-4954-46b4-ad37-6c1394f6456f">
+                    <propertyInstance
+                      Id="1c1e5f3f-c12d-43f2-b09b-ef91e877b27b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="70f0ab87-a155-4ea2-a992-594c673ad260">
+                    <propertyInstance
+                      Id="1ec6bb96-bedf-4613-9e57-f93173a1e853"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7c80b6d5-a54e-4d37-a56b-c692ac81a2f2">
+                    <propertyInstance
+                      Id="1f2850b0-c971-404e-b8f3-86977be14594"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="a05b4823-9353-426d-8e4c-36a848dcfc88"
+            name="SettingChangingEventHandler"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="2368e5f1-52e5-44ed-87a6-f4cac58c8f49"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3D(Name%3DSettingChangingEventHandler OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.dll&quot; Namespace%3DSystem.Configuration Type%3DSettingChangingEventArgs)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="38d9e1d0-a58a-45c6-8c53-e442ebb9540a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f2cd2d9d-a362-4ac8-ae0f-b246f118ffc1">
+                    <propertyInstance
+                      Id="9d30c616-d6f3-4f5a-b602-bf1985a16526"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="54a88537-8da5-4558-92ec-21d4116bfa3d">
+                    <propertyInstance
+                      Id="62025704-95e5-4c65-b02f-acfa99f98e2f"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e311c800-a968-45f1-a084-8fa76de5a558">
+                    <propertyInstance
+                      Id="b250e19c-a55e-4372-a41b-e181b51403d7"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ed47e147-991c-4430-9728-53791c0bdc8b">
+                    <propertyInstance
+                      Id="9beebca6-a69b-447d-9d09-504a75826611"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1ea459c3-4465-46af-a903-8af8c13c78cc">
+                    <propertyInstance
+                      Id="3e559f79-f264-4a4f-86fa-7a1caf779b4e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="db356f2a-04fd-4a7b-9f9e-f2c6b64d350e">
+                    <propertyInstance
+                      Id="f282d9f1-a119-488c-9a16-556cb810dc3c"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="01f09fbf-b8b5-4d00-b395-bce6f5f0198f"
+                  name="sender"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="09ccff4a-06e0-4a8d-9335-4b978ae4503c"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3D(Name%3DSettingChangingEventHandler OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.dll&quot; Namespace%3DSystem.Configuration Type%3DSettingChangingEventArgs)]) ParameterIdentifier%3Dsender"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="7bb47939-2186-4c77-aee7-ca7cf396bb63"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package1_1510.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="54d172e3-b729-4ac5-a39a-88114eae5187"
+                  name="e"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="78c554e7-4e63-4c4e-ba92-3c6957eb5608"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3D(Name%3DSettingChangingEventHandler OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.dll&quot; Namespace%3DSystem.Configuration Type%3DSettingChangingEventArgs)]) ParameterIdentifier%3De"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="fbf4db00-4810-4afc-ac31-119f9ad0fa61"
+                      LastKnownName="SettingChangingEventArgs"
+                      LastKnownLocation="Package8_1520.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2ca41b8f-b12f-4394-adc1-d4bc5b661f5d"
+            name="SettingsSavingEventHandler"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="feb69a15-bbc9-4425-90cf-a89e33a13276"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3D(Name%3DSettingsSavingEventHandler OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.dll&quot; Namespace%3DSystem.ComponentModel Type%3DCancelEventArgs)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="07e9bfab-8b52-4a91-b8ac-0034f4997fdd"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d69e91af-648a-412a-ad0f-d9f654c86c78">
+                    <propertyInstance
+                      Id="6df1d9c4-58ab-4e59-ad01-f50af3d0df6c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="31a18cc6-133e-4476-8948-1e8fcfc4437c">
+                    <propertyInstance
+                      Id="bcd41242-901e-43da-a599-a83f5f6a08ff"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fe481525-a6bc-4f4b-b8f5-92cbf3a64f98">
+                    <propertyInstance
+                      Id="c1d28e72-465b-449c-aa56-04f540487ce8"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="de8c0922-2821-487a-bfa9-91438784c38b">
+                    <propertyInstance
+                      Id="fc16c4fd-b019-42dc-b0d9-eb8cf98d497b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="72e38650-e11f-4431-a4b3-886fd7ab4ebb">
+                    <propertyInstance
+                      Id="e42fa6d3-3d37-4391-b831-14fe8eaef4c3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0b1a17a9-8cee-410b-9dfd-1fb5cffe1486">
+                    <propertyInstance
+                      Id="f03ed0e3-0f4b-4326-b161-6e598b24221a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7610b931-6e5a-4fb6-85a2-6d7a2ec81fc6"
+                  name="sender"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="84998c7f-8a82-4c55-869b-d3bdacfb681d"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3D(Name%3DSettingsSavingEventHandler OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.dll&quot; Namespace%3DSystem.ComponentModel Type%3DCancelEventArgs)]) ParameterIdentifier%3Dsender"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="7bb47939-2186-4c77-aee7-ca7cf396bb63"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package1_1510.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="dc206fc6-b968-4d39-a646-214572916dd0"
+                  name="e"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="2ee4d7a0-c550-4f90-8d86-960b2af8ff62"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DSettings Member%3D(Name%3DSettingsSavingEventHandler OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.dll&quot; Namespace%3DSystem.ComponentModel Type%3DCancelEventArgs)]) ParameterIdentifier%3De"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="8cd389de-41ab-4625-a90f-0c53bb519e71"
+                      LastKnownName="CancelEventArgs"
+                      LastKnownLocation="Package4_1520.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="3883c5a7-cb30-47d4-ae9b-efef5b557e98"
+        name="Resources"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="6f9b02b2-9d3b-401e-a059-6a2f7eaa0e84"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DResources"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="eb28e34c-132e-4319-b96f-d3c5c41e0c1c"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e35cce84-f8b6-4c23-b6ed-3fc0812a4acc">
+                <propertyInstance
+                  Id="bc8f0b96-9661-4fcd-895a-d7a90dcf0bfd"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="72cd1fd3-c95c-47cd-8a33-dce71ec84be2">
+                <propertyInstance
+                  Id="6788b67d-e9c4-4433-931e-6e349b64b6d0"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1c2a5e57-4440-4bee-998f-c3264a722c5e">
+                <propertyInstance
+                  Id="f84a3219-c35e-4293-911c-eea358a5f733"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0d6e4f41-770d-4b49-9083-7e258ebdd3f7">
+                <propertyInstance
+                  Id="278f85b9-830d-42e2-98f2-2c6f3edffe03"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c8b42ad1-1324-49e0-b897-676b8aa9923a">
+                <propertyInstance
+                  Id="2b2bb547-1e2f-4815-8835-e6b5c466635e"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="eb75130d-4eae-4d89-b09f-738187d7bfe2"
+            name="Culture"
+            visibility="Package"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="405326fe-d31f-400a-932e-1ec72fb000a6"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DResources Member%3DCulture"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="cf59d295-e0fc-4a2a-8d31-d561e41f9d7a"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4cc3b73b-dda5-42e4-9a61-8211ff2602c4">
+                    <propertyInstance
+                      Id="aedef35a-5bb3-4f7b-b04e-7c3149a6df91"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="670c7c3f-fcdd-4394-96c6-f5807a44bba0">
+                    <propertyInstance
+                      Id="5498d535-8dd7-43c4-b145-9f6742965fa8"
+                      name="Get"
+                      value="package" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="854fcbb9-d4eb-4401-b2b9-59e492874148">
+                    <propertyInstance
+                      Id="3ffe94eb-1303-4895-867c-8f1b524729b3"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="16309755-8d2f-47b0-ab6c-50f003733249">
+                    <propertyInstance
+                      Id="6558a6c0-3ef6-41d8-b23b-324f789da601"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="05b9ef83-4f49-4053-8da1-3a6e56b6ac7e">
+                    <propertyInstance
+                      Id="fbe03f78-3670-4121-8600-e5d223d79408"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a709b5e8-f57b-4997-9678-eaf79b14022c">
+                    <propertyInstance
+                      Id="0f04124a-dd73-46ce-9761-e60d8baa1d02"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d70ae4c0-6816-4617-957d-1e0f91a65222">
+                    <propertyInstance
+                      Id="a338ac2a-b820-4a6f-b493-d316485f2702"
+                      name="Set"
+                      value="package" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="d09f500a-9c85-4826-ad48-6aa1d53feac7"
+                LastKnownName="CultureInfo"
+                LastKnownLocation="Package5_1520.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e6ebffad-1fef-4c2d-92f1-b36d9ae4000d"
+            name="ResourceManager"
+            visibility="Package"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0724a008-b4b9-464d-929b-361173181943"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DResources Member%3DResourceManager"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ea96477f-05a3-432c-9360-879200ff44e0"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0b8a589c-b3d1-421f-93e5-3cca01a8f9d9">
+                    <propertyInstance
+                      Id="484b32ca-03a0-4a0b-a81e-d7ac9153f413"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d56c1697-b9e8-4366-81ab-c3f72c91803c">
+                    <propertyInstance
+                      Id="5d5b03d1-56b7-4ba3-bbed-f1ff8de9e65a"
+                      name="Get"
+                      value="package" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4b58b88e-954f-4a49-9c20-07e9871ec9c6">
+                    <propertyInstance
+                      Id="34908986-a32d-4de0-a60a-477a79d9b19e"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="572da109-5bb2-45b6-b739-6abd98f4d4f3">
+                    <propertyInstance
+                      Id="5acdfefa-10ee-42d7-a6ff-33a49ff23bf3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6738d74b-35c4-45e6-a4b4-7f8aa973755a">
+                    <propertyInstance
+                      Id="b5fa44e3-1c30-4b25-b321-101ffb4e8824"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b52f7084-b97c-4cb4-9ae1-e5d7f6f8d265">
+                    <propertyInstance
+                      Id="8d49fe0d-6084-4beb-bc79-4b36fb0c7505"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="867bb79f-c4cd-4608-92ef-3f45314b23d5">
+                    <propertyInstance
+                      Id="6f09c6e5-38f1-4c66-8c9c-f452e9be3f07"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="827f247e-c3c6-4a19-a1c8-628be5e166f0"
+                LastKnownName="ResourceManager"
+                LastKnownLocation="Package6_1520.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="93587571-ccbc-4b8f-9365-bddd7fd3411a"
+            name="resourceCulture"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="32e6aa42-bc18-4a2f-8d27-5ca009d3237d"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DResources Member%3DresourceCulture"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1c2bf19c-b769-4e54-8d22-fdee7ed06227"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d104533b-6a63-40da-bfb6-2d815d761344">
+                    <propertyInstance
+                      Id="832a9259-e9a0-4ee9-965c-968756fe02cb"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d32ab807-48ba-42d8-9c74-378a71b95c3e">
+                    <propertyInstance
+                      Id="b2ef3558-adf5-4a85-9368-fdad314494cc"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="50f3d0f2-7f62-4095-ba04-331b01da6d98">
+                    <propertyInstance
+                      Id="2b310c6c-a994-4cb7-b8b6-fb0386d4b992"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c5e83498-60a5-4d0b-9695-43b3c96b942d">
+                    <propertyInstance
+                      Id="2bf0b7a3-1431-4569-80e0-ec99742ce2fa"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b38db0d8-3ce6-486e-8b5c-e9a676c12721">
+                    <propertyInstance
+                      Id="dfa14d63-36af-4bf7-87f5-4cc939d54865"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="d09f500a-9c85-4826-ad48-6aa1d53feac7"
+                LastKnownName="CultureInfo"
+                LastKnownLocation="Package5_1520.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="17d1ccc4-f0f2-4151-84dd-17a789fd23a6"
+            name="resourceMan"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="93a998fb-2fa1-4c4b-92a5-78907aed7a60"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DResources Member%3DresourceMan"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="33587f6b-8f50-47a4-8118-30f60eeaeb31"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5fc23a60-2054-4995-95aa-cf62f5acbdbd">
+                    <propertyInstance
+                      Id="09fb1212-40b3-4738-bb12-1ac60dc30f89"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fef2d1de-4a92-4383-890c-bcbdc3d6e673">
+                    <propertyInstance
+                      Id="57b337b8-bb1f-4066-9c58-6cd531738b5e"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="62c22ce6-0ea4-46a7-aaca-fedf76adaa3b">
+                    <propertyInstance
+                      Id="34d02f7e-24c7-45dd-aea3-8692aae9d921"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ab65a753-b107-4100-aecc-ae85592e8f76">
+                    <propertyInstance
+                      Id="31ceea3d-d35c-47ec-9961-ce0fe879bcd1"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9f1b4898-ca81-4551-9826-7c9666ad69f3">
+                    <propertyInstance
+                      Id="308cd5cb-a0d1-486a-aba1-36f98901a156"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="827f247e-c3c6-4a19-a1c8-628be5e166f0"
+                LastKnownName="ResourceManager"
+                LastKnownLocation="Package6_1520.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="e3dd9a29-fd11-441a-b8fd-70654cd1ef61"
+            name="Resources"
+            visibility="Package"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="5d71cac9-8a7f-4339-ab1d-342ce63c51b5"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareApplication%2Fbin%2FDebug%2FChildcareApplication.exe&quot; Namespace%3DChildcareApplication.Properties Type%3DResources Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6a717870-9fc2-43a8-be7d-df3b0bde016c"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2d007ffd-6ce1-4ff2-add7-d55476128cce">
+                    <propertyInstance
+                      Id="e9d6cc75-13af-4f19-8cbb-22a8739162ce"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8374c2ae-2fd7-400b-845a-5637c6b365fd">
+                    <propertyInstance
+                      Id="dde80aec-e8ca-4b63-a4a2-0c999360c743"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="84574c38-da3f-4e9a-bfb4-651c98104873">
+                    <propertyInstance
+                      Id="13f595cf-f1a5-4ec8-b471-0c3c4f76c8ac"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="799d34f2-69fe-417e-9b1a-034de0850ef0">
+                    <propertyInstance
+                      Id="7c117357-afc4-474c-bf6c-d02d24cae39d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="84aaaf46-9697-49a8-8345-db6f5afd675f">
+                    <propertyInstance
+                      Id="fbea3229-317d-42a9-8cff-f0eb04b62a21"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="23a55f1a-ae6b-46d2-adcc-6ab526ec5b30">
+                    <propertyInstance
+                      Id="0cc1b153-ac0f-424a-bf65-7e29db564804"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
