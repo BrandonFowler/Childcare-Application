@@ -43,9 +43,14 @@ namespace AdminTools {
         }
 
         private void btn_Restore_Click(object sender, RoutedEventArgs e) {
-            if (txt_path.Text == "") {
+            if (txt_path.Text == null || txt_path.Text == "") {
                 WPFMessageBox.Show("You must choose a backup file first.");
-            } else {
+                return;
+            }
+            string pathExtention = txt_path.Text.Substring(txt_path.Text.LastIndexOf('.') + 1);
+            if (pathExtention.CompareTo("s3db") != 0){
+                WPFMessageBox.Show("The file you have chosen is not valid. Please choose a valid database file.");
+            }else{
                 try {
                     MessageBoxResult messageBoxResult = WPFMessageBox.Show("Are you sure you wish to perform a record restore?", "Restore Confirmation", MessageBoxButton.YesNo);
                     if (messageBoxResult == MessageBoxResult.Yes) {
