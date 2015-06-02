@@ -364,7 +364,7 @@ namespace AdminTools {
 
                         }
                     } else {
-                        WPFMessageBox.Show("The picture you specified is not in the Pictures folder in the Childcare Application folder in your documents folder!");
+                        WPFMessageBox.Show(@"The picture you specified is not the directory C:\Users\Public\Childcare Application\Pictures");
                     }
                 }
             }
