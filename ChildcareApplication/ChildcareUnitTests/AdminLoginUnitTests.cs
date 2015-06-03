@@ -19,7 +19,7 @@ namespace ChildcareUnitTests {
         public void TestValidateAdminAccessLevel() {
             DatabaseController.LoginDB db = new DatabaseController.LoginDB();
             Assert.AreEqual(db.GetAccessLevel("a"), 1);
-            Assert.AreEqual(db.GetAccessLevel("JunkID"), -1);
+            Assert.AreEqual(db.GetAccessLevel("JunkID"), 0);
         }
     }
 }
