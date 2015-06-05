@@ -92,7 +92,7 @@ namespace ChildcareApplication.AdminTools {
                 string childID = ((Child)(lst_ChildBox.SelectedItem)).ID;
                 int connID = this.db.GetMaxConnectionID();
                 connID = connID + 1;
-                string connectionID = connID.ToString();
+                string connectionID = string.Format("{0:000000}", connID);
                 string fID = GetFamilyID(this.ID);
                 this.db.UpdateExistingChilderen(connectionID, this.ID, childID, fID);
                 this.connectedChildren.Add(childID);

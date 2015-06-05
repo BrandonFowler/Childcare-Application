@@ -257,7 +257,7 @@ namespace AdminTools {
             ConnectionsDB conDB = new ConnectionsDB();
 
             maxID = maxID + 1;
-            string mID = maxID.ToString();
+            string mID = string.Format("{0:000000}", maxID);
 
             Image i; //string test = "C:/Users/Public/Documents";
             i = buildImage("C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg", 60); //TAG: pictures access
@@ -266,7 +266,7 @@ namespace AdminTools {
             int connID = this.db.GetMaxConnectionID();
 
             connID = connID + 1;
-            string connectionID = connID.ToString();
+            string connectionID = string.Format("{0:000000}", connID);
 
             string famID = GetFamilyID(ID);
             this.db.AddNewChild(mID, "First", "Last", "2005-01-01", "None", "None", "C:/Users/Public/Documents" + "/Childcare Application/Pictures/default.jpg"); //TAG: pictures access

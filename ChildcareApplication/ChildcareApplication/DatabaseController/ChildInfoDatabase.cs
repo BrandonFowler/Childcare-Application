@@ -12,7 +12,6 @@ namespace DatabaseController {
             dbCon = new SQLiteConnection("Data Source=../../Database/ChildcareDB.s3db;Version=3;");
         }
 
-
         internal int GetMaxChildID() {
             int maxID = 0;
             try {

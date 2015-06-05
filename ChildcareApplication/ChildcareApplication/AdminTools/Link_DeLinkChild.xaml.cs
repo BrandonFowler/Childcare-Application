@@ -42,7 +42,7 @@ namespace AdminTools {
                         int connID = this.db.GetMaxConnectionID();
                         connID = connID + 1;
 
-                        string connectionID = connID.ToString();
+                        string connectionID = string.Format("{0:000000}", connID);
                         fID = MakeFamilyID(pID);
                         bool guardianExists = false;
                         guardianExists = gdb.GuardianNotDeletedAndExists(pID);
