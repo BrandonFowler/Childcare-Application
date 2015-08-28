@@ -39,7 +39,6 @@
                 <Button Style="{DynamicResource GlassButton}" x:Name="btn_Login" TabIndex="3" Content="_Log In" HorizontalAlignment="Left" Margin="322,325,0,0" VerticalAlignment="Top" Width="108" Click="btn_Login_Click" Height="60" FontSize="16" RenderTransformOrigin="0.036,0.488"/>
                 <Button Style="{DynamicResource GlassButton}" x:Name="btn_UExit" Content="_Close" Width="120" Click="btn_UserSelect_Click" Margin="833,529,10,10" FontSize="16" Height="60" RenderTransformOrigin="0.038,0.466"/>
                 <Button Style="{DynamicResource GlassButton}" x:Name="btn_AdminLogin" Content="_Admin Login" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="60" Click="btn_AdminLogin_Click" Margin="10,10,0,0" FontSize="16"/>
-                <Image Margin="0,400,0,0" Source="/ChildcareApplication;component/SpokaneClubDeco.png" HorizontalAlignment="Left" Width="427" Height="199" VerticalAlignment="Top" RenderTransformOrigin="0.544,0.76" Opacity="0.5"/>
             </Grid>
         </Viewbox>
     </Border>

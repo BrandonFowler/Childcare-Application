@@ -34,7 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>SpokaneClubIcon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -337,19 +338,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="SpokaneClubIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\WPFMessageBox\WPFMessageBox.csproj">
       <Project>{53f2d809-3e1a-422d-a507-abcb407ebf29}</Project>
       <Name>WPFMessageBox</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="SpokaneClubDeco.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Eastern-Washington-University-Logo2lg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

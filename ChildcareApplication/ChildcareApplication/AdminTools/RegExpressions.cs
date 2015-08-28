@@ -44,7 +44,7 @@ namespace ChildcareApplication.AdminTools {
              * Name
              * Only
              */
-            Regex regex = new Regex(@"(^([a-zA-Z])+$)");
+            Regex regex = new Regex(@"^(?!\s*$).+");
             Match match = regex.Match(data);
 
             if (match.Success)
@@ -77,7 +77,7 @@ namespace ChildcareApplication.AdminTools {
              * 123 Road Rd
              * 123 Road Road
              */
-            Regex regex = new Regex(@"(^(\d{3,6}\s)([a-zA-Z]+\s?)+((RD|rd|ST|st|BLVD|blvd|AVE|ave|CT|ct|LN|ln|WAY|way|PL|pl|ALY|aly|Road|Street|Boulevard|Avenue|Court|Lane|Place|Alley)?\.?)$)");
+            Regex regex = new Regex(@"^(?!\s*$).+");
             Match match = regex.Match(data);
 
             if (match.Success)
@@ -92,7 +92,7 @@ namespace ChildcareApplication.AdminTools {
              * Spokane
              * San Antonio
              */
-            Regex regex = new Regex(@"(^([a-zA-Z]+\s?)+$)");
+            Regex regex = new Regex(@"^(?!\s*$).+");
             Match match = regex.Match(data);
 
             if (match.Success)
@@ -165,7 +165,7 @@ namespace ChildcareApplication.AdminTools {
              * Event
              */
 
-            Regex regex = new Regex(@"(^([a-zA-Z0-9]+\s?)+$)");
+            Regex regex = new Regex(@"^(?!\s*$).+");
             Match match = regex.Match(data);
 
             if (match.Success)

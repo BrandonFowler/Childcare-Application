@@ -52,7 +52,7 @@
 	<summary>
 		<codepage>1252</codepage>
 		<title>Installation Database</title>
-		<subject>Spokane Club Childcare</subject>
+		<subject>##ID_STRING7##</subject>
 		<author>##ID_STRING2##</author>
 		<keywords>Installer,MSI,Database</keywords>
 		<comments>Contact:  Your local administrator</comments>
@@ -1198,6 +1198,8 @@
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
+		<row><td>brando_1_brandon_fowler</td><td>ProgramMenuFolder</td><td>BRANDO~1|Brandon Fowler</td><td/><td>1</td><td/></row>
+		<row><td>childc_1_childcare_application</td><td>brando_1_brandon_fowler</td><td>CHILDC~1|Childcare Application</td><td/><td>1</td><td/></row>
 		<row><td>spokan_1_spokane_club</td><td>ProgramMenuFolder</td><td>SPOKAN~1|Spokane Club</td><td/><td>1</td><td/></row>
 		<row><td>spokan_1_spokane_club_childcare</td><td>spokan_1_spokane_club</td><td>SPOKAN~1|Spokane Club Childcare</td><td/><td>1</td><td/></row>
 	</table>
@@ -2709,7 +2711,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>Spokane Club</td><td>0</td><td/><td>1654868747</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>Brandon Fowler</td><td>0</td><td/><td>-467416575</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>849543570</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>849543570</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>849559986</td></row>
@@ -3530,6 +3532,7 @@
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.vshost.exe</td><td>0</td><td/><td>849550741</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>849588021</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.vshost.exe</td><td>0</td><td/><td>849588021</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME9</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>-467437023</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>849543570</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>849543570</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>849543570</td></row>
@@ -3818,12 +3821,14 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>849543570</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>849543570</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>849543570</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.SpokaneClub.com</td><td>0</td><td/><td>1654868747</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>Spokane Club</td><td>0</td><td/><td>1654868747</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.BrandonFowler.com</td><td>0</td><td/><td>-467416575</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>Brandon Fowler</td><td>0</td><td/><td>-467416575</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>849545714</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>849600691</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>849602739</td></row>
 		<row><td>ID_STRING6</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>849577813</td></row>
+		<row><td>ID_STRING7</td><td>1033</td><td>Childcare Application</td><td>0</td><td/><td>-467457983</td></row>
+		<row><td>ID_STRING8</td><td>1033</td><td>LAUNCH~1.EXE|Launch ChildcareApplication.exe</td><td>0</td><td/><td>-467432927</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>849543570</td></row>
 	</table>
 
@@ -3932,12 +3937,12 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
-		<row><td>ChildcareApplicati_0FAB571B915847CA931172AF1C19CC42.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
 		<row><td>ChildcareApplicati_167E9733FB3548BEBB194139D1105ED0.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
 		<row><td>ChildcareApplicati_2CC225757CB042B494BB8A19A1D64312.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
 		<row><td>ChildcareApplicati_5CD9939E6135418AACFB30A3DA1AC969.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
+		<row><td>ChildcareApplicati_71A6BAD0D7624DFA8A1D966450CE1F03.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>ChildcareApplicati_74DA0D5C26484F31A3A56BF1FFDF6BD5.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>ChildcareApplicati_9FD07330974E4DB7947ADC23038D84E1.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
-		<row><td>ChildcareApplicati_A69559987A2E4A8480B4F80BCB4D6E6E.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
 		<row><td>ChildcareApplicati_A8C6F373FD3E462FBD0DDB2E155A7B47.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>ChildcareApplicati_AD70FCD5FA5C46CE8981D653FB9BD79B.exe</td><td/><td>&lt;ISPROJECTDIR&gt;..\..\ChildcareApplication\bin\Debug\ChildcareApplication.exe</td><td>0</td></row>
 	</table>
@@ -4447,7 +4452,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>ProductCode</td><td>{9B98C764-E9F7-4DCF-AF6C-8DE382F8462C}</td><td/></row>
-		<row><td>ProductName</td><td>Spokane Club Childcare</td><td/></row>
+		<row><td>ProductName</td><td>Childcare Application</td><td/></row>
 		<row><td>ProductVersion</td><td>1.00.0000</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
@@ -4524,7 +4529,9 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
-		<row><td>ChildcareApplication.exe</td><td>ChildcareApplication.exe</td><td/><td>spokan_1_spokane_club_childcare</td><td>2</td></row>
+		<row><td>ChildcareApplication.exe</td><td>ChildcareApplication.exe</td><td/><td>childc_1_childcare_application</td><td>2</td></row>
+		<row><td>FileKey1</td><td>ChildcareApplication.exe</td><td/><td>brando_1_brandon_fowler</td><td>2</td></row>
+		<row><td>FileKey2</td><td>ChildcareApplication.exe</td><td/><td>childc_1_childcare_application</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4610,8 +4617,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>ChildcareApplication.exe</td><td>spokan_1_spokane_club_childcare</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>ChildcareApplication.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ChildcareApplicati_A69559987A2E4A8480B4F80BCB4D6E6E.exe</td><td>1</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>ChildcareApplication.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>ChildcareApplication.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ChildcareApplicati_0FAB571B915847CA931172AF1C19CC42.exe</td><td>1</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ChildcareApplication.exe</td><td>childc_1_childcare_application</td><td>##IDS_SHORTCUT_DISPLAY_NAME9##</td><td>ChildcareApplication.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ChildcareApplicati_71A6BAD0D7624DFA8A1D966450CE1F03.exe</td><td>0</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ChildcareApplication.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME9##</td><td>ChildcareApplication.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ChildcareApplicati_74DA0D5C26484F31A3A56BF1FFDF6BD5.exe</td><td>0</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
