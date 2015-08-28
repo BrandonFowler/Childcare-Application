@@ -27,23 +27,6 @@ namespace ChildcareUnitTests {
         }
 
         [TestMethod]
-        public void TestEditChildRegexValidation() {
-            AdminTools.AdminEditChildInfo addEditChild = new AdminTools.AdminEditChildInfo("123450");
-            addEditChild.lst_ChildBox.SelectedItem = addEditChild.lst_ChildBox.Items[0];
-            Assert.IsTrue(addEditChild.RegexValidation());
-            addEditChild.txt_FirstName.Text = "2131234JunkName";
-            Assert.IsFalse(addEditChild.RegexValidation());
-            addEditChild = new AdminTools.AdminEditChildInfo("123450");
-            addEditChild.lst_ChildBox.SelectedItem = addEditChild.lst_ChildBox.Items[0];
-            addEditChild.txt_LastName.Text = "2131234JunkName";
-            Assert.IsFalse(addEditChild.RegexValidation());
-            addEditChild = new AdminTools.AdminEditChildInfo("123450");
-            addEditChild.lst_ChildBox.SelectedItem = addEditChild.lst_ChildBox.Items[0];
-            addEditChild.txt_FilePath.Text = "2131234JunkPath";
-            Assert.IsFalse(addEditChild.RegexValidation());
-        }
-
-        [TestMethod]
         public void TestEditChildGetFamilyID() {
             AdminTools.AdminEditChildInfo addEditChild = new AdminTools.AdminEditChildInfo("123450");
             Assert.AreEqual(addEditChild.GetFamilyID("123450"), "12345");

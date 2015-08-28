@@ -48,35 +48,6 @@ namespace ChildcareUnitTests {
         }
 
         [TestMethod]
-        public void TestGuardianRegexValidation() {
-            AdminTools.AdminEditParentInfo addEditParent = new AdminTools.AdminEditParentInfo("123450");
-            Assert.IsTrue(addEditParent.RegexValidation());
-            addEditParent.txt_PhoneNumber.Text = "not a phone number";
-            Assert.IsFalse(addEditParent.RegexValidation());
-            addEditParent = new AdminTools.AdminEditParentInfo("123450");
-            addEditParent.txt_FirstName.Text = "2131234JunkName";
-            Assert.IsFalse(addEditParent.RegexValidation());
-            addEditParent = new AdminTools.AdminEditParentInfo("123450");
-            addEditParent.txt_LastName.Text = "2131234JunkName";
-            Assert.IsFalse(addEditParent.RegexValidation());
-            addEditParent = new AdminTools.AdminEditParentInfo("123450");
-            addEditParent.txt_Email.Text = "JunkEmail";
-            Assert.IsFalse(addEditParent.RegexValidation());
-            addEditParent = new AdminTools.AdminEditParentInfo("123450");
-            addEditParent.txt_Address.Text = "2131234JunkAddress";
-            Assert.IsFalse(addEditParent.RegexValidation());
-            addEditParent = new AdminTools.AdminEditParentInfo("123450");
-            addEditParent.txt_City.Text = "21+12-4JunkCity^";
-            Assert.IsFalse(addEditParent.RegexValidation());
-            addEditParent = new AdminTools.AdminEditParentInfo("123450");
-            addEditParent.txt_Zip.Text = "2131234JunkZip";
-            Assert.IsFalse(addEditParent.RegexValidation());
-            addEditParent = new AdminTools.AdminEditParentInfo("123450");
-            addEditParent.txt_FilePath.Text = "2131234JunkPath";
-            Assert.IsFalse(addEditParent.RegexValidation());
-        }
-
-        [TestMethod]
         public void TestEditParentClearFields() {
             AdminTools.AdminEditParentInfo addEditChild = new AdminTools.AdminEditParentInfo("123450");
             addEditChild.ClearFields();
