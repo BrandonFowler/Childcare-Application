@@ -1,0 +1,40 @@
+﻿<Window x:Class="AdminTools.AdminMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="win_AdminMenu" Height="400" Width="600"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Padding="0"
+        WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
+    <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True" HorizontalAlignment="Left" Width="600" Height="400" VerticalAlignment="Top">
+        <Grid Margin="-2,-2,-2,0" Height="400" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="600">
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Logout" Content="_Logout" Margin="470,361,10,0" VerticalAlignment="Top" Height="29" Click="btn_Logout_Click" TabIndex="50" FontSize="16" Width="120"/>
+            <GroupBox Header="Reports" HorizontalAlignment="Left" Margin="40,40,0,0" VerticalAlignment="Top" Height="105" Width="230">
+                <Grid>
+                    <Button Style="{DynamicResource GlassButton}" x:Name="btn_ParentReport" Content="_Parent Report" Margin="10,10,10,0" Click="btn_ParentReport_Click" TabIndex="0" FontSize="16" Height="29" VerticalAlignment="Top" Width="199"/>
+                    <Button Style="{DynamicResource GlassButton}" x:Name="btn_BusinessReport" Content="_Business Report" Margin="10,0,10,10" VerticalAlignment="Bottom" Height="29" Click="btn_BusinessReport_Click" TabIndex="1" FontSize="16" Width="199"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Events and Transactions" HorizontalAlignment="Right" Margin="0,40,40,0" VerticalAlignment="Top" Height="105" Width="230">
+                <Grid>
+                    <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditAddEvents" Content="E_dit / Add Events" Margin="10,10,10,0" VerticalAlignment="Top" Height="29" Click="btn_EditAddEvents_Click" TabIndex="5" FontSize="16" Width="199"/>
+                    <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditTransactions" Content="Edit _Transaction" Margin="10,44,10,0" VerticalAlignment="Top" Height="29" Click="btn_EditTransaction_Click" TabIndex="6" FontSize="16" Width="199"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Guardians and Children" HorizontalAlignment="Left" Margin="40,0,0,80" VerticalAlignment="Bottom" Height="139" Width="232">
+                <Grid>
+                    <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditOrDeleteParent" Content="_Edit Parent Info" Margin="10,10,10,0" VerticalAlignment="Top" Height="29" Click="btn_EditOrDeleteParent_Click" TabIndex="3" FontSize="16" Width="199"/>
+                    <Button Style="{DynamicResource GlassButton}" x:Name="btn_EditOrDeleteChild" Content="Edit _Child Info" Margin="10,44,10,0" VerticalAlignment="Top" Height="29" Click="btn_EditOrDeleteChild_Click" TabIndex="4" FontSize="16" Width="199"/>
+                    <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddNewParent" Content="_Add New Parent" Margin="10,0,10,10" VerticalAlignment="Bottom" Height="29" Click="btn_AddNewParent_Click" TabIndex="2" FontSize="16" Width="199"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Settings and Administration" HorizontalAlignment="Right" Margin="0,0,40,80" VerticalAlignment="Bottom" Height="139" Width="231">
+                <Grid>
+                    <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddEditAdmin" Content="Edit / Add Ad_ministrators" Margin="10,44,10,0" VerticalAlignment="Top" Height="29" TabIndex="7" Click="btn_AddEditAdmin_Click" FontSize="16" Width="199"/>
+                    <Button Style="{DynamicResource GlassButton}" x:Name="btn_AppSettings" Content="Application _Settings" Margin="10,10,10,0" VerticalAlignment="Top" Height="29" TabIndex="8" Click="btn_AppSettings_Click" FontSize="16" Width="199"/>
+                    <Button Style="{DynamicResource GlassButton}" x:Name="btn_RestoreRecords" Content="Restore _Records" Margin="10,78,10,0" VerticalAlignment="Top" Height="29" TabIndex="8" FontSize="16" Width="199" Click="btn_RestoreRecords_Click"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </Border>
+</Window>

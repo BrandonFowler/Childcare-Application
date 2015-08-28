@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="a098fdbb-f4ea-4edf-bd1e-d46eed898eba"
+  name="Documents"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="572acb44-9da7-4124-a8e6-d2b37b4feadc"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DSystem.Windows.Documents"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="88c0ea26-0be3-4d8d-b6c7-ebbafe97628e"
+        name="DocumentPage"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="077704f5-a945-4209-bfb2-eeab4f17ffb6"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Documents Type%3DDocumentPage"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="b16349a0-25fb-459d-913a-c3f3beefa509"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bb81a1d1-0dd9-43b5-a835-3d3c671574aa">
+                <propertyInstance
+                  Id="5b0485cb-ebc4-49b7-a03f-8548db690e3b"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9c283f40-57bc-429f-bf44-bf805fed753c">
+                <propertyInstance
+                  Id="20e264d3-264a-4b1f-86a6-a57af7599f9d"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="41d6b0cf-be1d-44f1-91cc-44ee7517f53e">
+                <propertyInstance
+                  Id="e20e010c-c0b2-458f-a483-fa4ae571d9c8"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7a79e8f0-b9f0-44f9-9b28-21308a7338dd">
+                <propertyInstance
+                  Id="c41e294e-aaf1-401f-8397-cab764ff5e91"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="46d6b234-3fee-4a77-944b-383e77ad8e98">
+                <propertyInstance
+                  Id="44eaeaac-bdf8-49d6-a7ed-d03bc54a611d"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="81e08864-00e4-4731-83f9-d5162baeb921"
+        name="IDocumentPaginatorSource"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="7d081887-f605-495f-af43-c657a1c8d05a"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Documents Type%3DIDocumentPaginatorSource"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="76ed39d2-6546-43ab-b220-2895e18dabf7"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="559d21b9-a60b-4e22-a415-b8365fe6b472">
+                <propertyInstance
+                  Id="a3e1bb7b-84fe-43aa-b3c2-52ef4ae2f909"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bb52c89f-bac3-4d85-b562-59008ed7b9c4">
+                <propertyInstance
+                  Id="e7528193-1348-41ed-92bb-c814fefe2c23"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="89eb95a7-16ce-4101-a5c6-87a8e0499bd6">
+                <propertyInstance
+                  Id="58e09b65-7313-4284-94e3-9d327ccb665e"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="334d7371-5b3a-44a5-8a78-763209978f8e">
+                <propertyInstance
+                  Id="f986c3d0-09ad-46c8-ae8a-9f655887f435"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="416a2f17-79f4-487e-866b-4a41661a7d5e"
+        name="DocumentPaginator"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="96e47d1e-ee75-4bf4-afeb-7dc887769b4f"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Documents Type%3DDocumentPaginator"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="f8bd5a50-8cdb-4d6f-a590-3ba30fab178b"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5709e7c4-260f-4058-9402-8615af22d5e2">
+                <propertyInstance
+                  Id="5d0037c5-760f-4ba0-867b-0ad645cc2ca5"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b16489f4-30d3-4b0a-b3ca-c09eccb5e029">
+                <propertyInstance
+                  Id="a6de8cf0-6e73-4737-b39e-28964d96ecd0"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4d688880-edfc-4d6c-9251-cf9e18ef3c2f">
+                <propertyInstance
+                  Id="c387f9e4-dc45-47f8-8ab0-71033f5b286a"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9617a8fa-5bbf-4201-9eb6-447a0a9459c5">
+                <propertyInstance
+                  Id="78a2e4cc-32ad-4f2a-a772-cac2d4c874c4"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c0a39e05-88b6-45f6-af21-32a8c8bbc69b">
+                <propertyInstance
+                  Id="e6a96fdf-7afc-49d8-9e1e-8ba4a1aa2fd9"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

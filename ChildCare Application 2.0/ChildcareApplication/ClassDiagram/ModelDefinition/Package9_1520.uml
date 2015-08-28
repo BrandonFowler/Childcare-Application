@@ -1,0 +1,3885 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="1a996ca6-3d27-485f-8d82-9c5e69b1d91c"
+  name="ChildcareUnitTests"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="7494f478-d85f-47bd-aec3-637a6ed25fae"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DChildcareUnitTests"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="0bdf81f5-7eb2-47bb-a740-4102092fdb7d"
+        name="SettingsValidationUnitTests"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="6a468c81-c78e-4e53-a86e-2a7f5513aef4"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DSettingsValidationUnitTests"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="5999bf0e-2194-4092-803d-ca2f140136e5"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="36d63f4b-05b1-4cb5-ab4d-c64506460513">
+                <propertyInstance
+                  Id="a400144e-e9f8-4960-ab88-f5fbe808a50b"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="75b3474a-82be-4391-a545-8f4b35b3eb11">
+                <propertyInstance
+                  Id="ce394572-1a6c-4a89-8277-f44d7cabbfa3"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6fad3b6c-4a33-490c-b124-2021814427a2">
+                <propertyInstance
+                  Id="1fe62782-d778-4f7b-9201-a1a692b06fb4"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="574aacf2-016d-4e19-987c-e3efaa2e8764">
+                <propertyInstance
+                  Id="072c6df1-138a-4776-a962-9170e7f3c33c"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ef62004f-b943-4604-8651-03b3fa7b4287">
+                <propertyInstance
+                  Id="35812b33-80a4-4b4e-8cb8-93f34539866e"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="4e5ed7a6-d616-4a2c-9396-81bac7d20ebe"
+            name="SettingsValidationUnitTests"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="e420808c-dc93-4ba6-95bc-6f97f017211b"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DSettingsValidationUnitTests Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="632b8213-664f-4d27-b8a0-d1e48a723d39"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="654845d6-9598-44c3-a85b-f39cb0f60a25">
+                    <propertyInstance
+                      Id="a6292127-1a64-40c7-8374-5206629ab0fe"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="428b234d-5260-4e1a-96d7-b99620319043">
+                    <propertyInstance
+                      Id="68bd216a-a0b2-425d-a207-02114416eca9"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2bb10f94-4f59-4fa2-90fe-033b40ebc3ea">
+                    <propertyInstance
+                      Id="4e78c5dd-93b7-4509-84a5-beb6ba21e2dc"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c7dd5b69-0b93-43d0-abad-c8e9c5bcc933">
+                    <propertyInstance
+                      Id="a89503fd-a994-47d8-a7c2-d25821318eff"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4670ff1c-8208-40b6-a285-a0920da400ef">
+                    <propertyInstance
+                      Id="a09da9f9-8931-4864-8f90-9e1f3098c75e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6a8adbac-3908-42f6-81e1-503b7632d35c">
+                    <propertyInstance
+                      Id="588b7066-f0b0-46d9-acbc-fe0bf4de226b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="cd02f2d6-c9a1-4359-9923-b7c24ffdfacc"
+            name="TestPositiveInteger"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="5b76f184-b45c-45ef-8333-9fe5dcbadae5"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DSettingsValidationUnitTests Member%3DTestPositiveInteger"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="9f89d04c-331e-4933-a986-10889bec84f3"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="67d070a7-633d-4209-b5a4-b137aa8adebd">
+                    <propertyInstance
+                      Id="50e2aef6-6117-47da-b17c-93aa65d34684"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0f1e6668-bc91-4cd9-ba3c-50d37fccd1fb">
+                    <propertyInstance
+                      Id="bd345e8d-765f-400d-9f85-88dfb8015b6e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cf5bcf7a-1958-44c7-a542-edb40d7034ab">
+                    <propertyInstance
+                      Id="946d2d9b-3d4c-4da8-ab9e-8cf721a27647"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e4fe4a3d-621c-4cd2-8e26-073adf99e062">
+                    <propertyInstance
+                      Id="7d5923f3-051d-4598-9e87-b2f95a8fb4ed"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2ffc696d-3614-4284-b23b-810ff9e3232f">
+                    <propertyInstance
+                      Id="ad2c68c9-18ab-4a2f-be30-e2b97437e281"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f5a079f5-3dcb-4caa-bfc1-5a5cc20e9d85">
+                    <propertyInstance
+                      Id="4f5f850b-350e-4727-822b-1f2795195de5"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="259abde3-2492-4c81-9c2c-8ccc3faa5912"
+            name="TestValidAge"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="8cde2be7-57b7-462b-9fe9-a55739491eb9"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DSettingsValidationUnitTests Member%3DTestValidAge"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3c5e10d4-3f91-4b3f-9200-e2b204399e01"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a909cf48-7924-41ec-9f64-de8c1c840ed3">
+                    <propertyInstance
+                      Id="518f0ec6-92a2-4002-a3b3-737b9a60c9c9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="696447ce-e70c-4950-8a35-4230273bc9b6">
+                    <propertyInstance
+                      Id="8c8f04df-dd23-4d38-a43a-1bedbc863ff8"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aaf4281f-0e51-4fbc-97cf-4b49f6d70b77">
+                    <propertyInstance
+                      Id="b473d566-c00a-4670-b316-5f4b67a4f409"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="183e7f73-9f2a-462c-9527-f81db181a667">
+                    <propertyInstance
+                      Id="c976f5df-eade-4c4e-8937-20ac5eafa670"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="99a5a6d6-9afc-436d-8b4a-1af957ecc258">
+                    <propertyInstance
+                      Id="b6a81862-d8c3-4d40-a107-08696d6ef4b7"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eaab99bf-18c5-416c-8623-043790ddd7a8">
+                    <propertyInstance
+                      Id="d17d2763-c861-4314-b5c3-2dd78636876d"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="1b2c7fb6-19a7-4801-be10-d2958729a5fb"
+            name="TestValidBillingDate"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="d0d3343b-9486-4280-adf2-565509cbcc65"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DSettingsValidationUnitTests Member%3DTestValidBillingDate"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d16a8df1-355b-462f-87af-c6923eb1087d"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c64f1217-1a13-4fb4-b7d7-4da58a13f2df">
+                    <propertyInstance
+                      Id="c33c2c99-c9c2-454c-bd0a-848208a34558"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="96da4ac9-c222-4552-b08c-6486cd0ddc2d">
+                    <propertyInstance
+                      Id="957bf28f-7931-4359-9844-3f1aceea7862"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="77c47f8b-1c4c-4733-bcb0-4494bb19742d">
+                    <propertyInstance
+                      Id="35f630b8-12eb-401d-9679-6e391a47f4bd"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fd0d4d16-5c70-476c-b216-22284f99c204">
+                    <propertyInstance
+                      Id="5ffaa36d-a8b9-47e9-b124-8a8b1b0655b2"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="659a601e-7753-40bc-bbfa-e06191e1bd48">
+                    <propertyInstance
+                      Id="959b26f2-46b5-4018-abdf-420a41f28fb4"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="23313863-994e-42dc-9e41-b5d3c9a978f8">
+                    <propertyInstance
+                      Id="85ab3ef7-cb73-45f9-8684-de336a87a031"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="8bfff463-6bb8-408e-a3fd-6084e783bf9c"
+            name="TestValidHours"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="6ea1d3b0-4633-45d9-9157-5f1e3bad3bb4"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DSettingsValidationUnitTests Member%3DTestValidHours"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ccc29faa-1f89-4b5c-a049-a422a1b765b3"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8522e1ef-0375-480f-b535-78a7c891465f">
+                    <propertyInstance
+                      Id="3dccec02-5af5-4574-813b-e3d1664ac099"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c45208c4-e91e-4db4-9927-3dac2e5dae84">
+                    <propertyInstance
+                      Id="2c34173e-809f-4d75-ae83-c0428175f9ef"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="13492958-1506-47fc-8661-c4b1e396ca82">
+                    <propertyInstance
+                      Id="76e5ab39-4db7-494b-8f97-b8d735a11dfa"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e85612c4-9a97-44a6-8bf2-2ae8d7f626f0">
+                    <propertyInstance
+                      Id="593662d4-79d9-44d1-a7f7-f34b8d1f0416"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8c446ad4-3444-4015-bae5-f40446228f9a">
+                    <propertyInstance
+                      Id="feba52e7-06ec-4576-8e8d-45b6605054f5"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ba47305c-d89b-4ed5-95ae-c2ccc5ed29a6">
+                    <propertyInstance
+                      Id="b252d0d2-f098-41ce-88b4-898f7e022a82"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7e47b49d-e6ae-467f-8390-dbb3682ca200"
+        name="TransactionChargeUnitTest"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="c652bade-8161-4830-9bc8-b3caed75c7bb"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DTransactionChargeUnitTest"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="b85f91d7-fd70-4883-8beb-2393e9fd1634"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0b16dc06-b73c-4c44-9c78-12f38f8997b6">
+                <propertyInstance
+                  Id="b729f9cc-fec9-412d-81b6-f7343c805434"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="17916263-c8d3-4289-9528-1195e90bb336">
+                <propertyInstance
+                  Id="492f91fd-7e07-475b-9e1b-a6d0b56e01ac"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="66bdf8e8-08d3-491b-acd3-31bdd617208a">
+                <propertyInstance
+                  Id="76eed944-30cc-446a-9b9c-12cf2949b465"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="db328a3b-bfaf-4335-a1a4-566fbec86941">
+                <propertyInstance
+                  Id="d7eda48b-d45c-462d-bbef-c7419c8d2fd9"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b7c7fa5d-9edf-48ef-8b20-c652b5b04221">
+                <propertyInstance
+                  Id="079c40c1-f284-4c74-b4f1-a606b1be2cff"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="7ce418f9-b1a3-47ac-9cdc-0c90a67b4622"
+            name="TransactionChargeUnitTest"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="449015e9-0324-4d74-88f9-6d9c759d37a7"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DTransactionChargeUnitTest Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f6a2684b-8229-4e14-bd30-2e15cdd0ffb9"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c604d018-5123-45e8-8afe-35ab9527361d">
+                    <propertyInstance
+                      Id="c2fc26aa-1a56-4aca-a41a-d79a18af649e"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cceba34a-c608-49d6-84cd-e6ee50c9799e">
+                    <propertyInstance
+                      Id="c6d858b3-4c5a-4933-bd33-ca8eb15a315f"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3e090ec3-0a82-4fc1-a75e-6d7e9e0b7aca">
+                    <propertyInstance
+                      Id="88e66c29-62e1-494c-89a5-53c0800f94f1"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b2d3c0b7-0ab0-4acc-ab20-0289c5c2fc58">
+                    <propertyInstance
+                      Id="b5d4586a-29d9-4e4a-8295-34642044f5f9"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7e40508e-b1d7-48aa-9776-791f54f18e1e">
+                    <propertyInstance
+                      Id="b2505a8f-d371-4106-99a2-fe063f3b9ae6"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="27014da2-119a-436e-a0d4-54ff6455b869">
+                    <propertyInstance
+                      Id="ebfe81e7-fc3b-466a-b936-54bbd8926403"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="6ee9a110-2622-461a-9839-d165e5507c1b"
+            name="TestCalculateLateFee"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="492a53af-eff4-472b-a635-cc7881eded8e"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DTransactionChargeUnitTest Member%3DTestCalculateLateFee"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d27e53b6-6c91-4ef0-86d0-f0a2cfb6f4c0"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bc8b90ac-722e-45ea-a326-8fdfe2f67ab2">
+                    <propertyInstance
+                      Id="c2a5e882-ae2c-417f-adff-5b620ff8acb0"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0b4d1570-1200-48b7-a083-dbcb563b743b">
+                    <propertyInstance
+                      Id="7a42de49-ba7e-468c-96e9-3ee368a0fbfc"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3842b43b-1659-4092-adc5-42f32ee391cb">
+                    <propertyInstance
+                      Id="e9b37bfe-751f-49c1-b1f3-b42ec8ef55c2"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="56b76062-8b2d-4230-a805-03ad369621cd">
+                    <propertyInstance
+                      Id="1a57571d-9ade-448c-9ac6-e0e1aca6bdff"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2adb8821-6e3c-4220-a912-442c7e54fc10">
+                    <propertyInstance
+                      Id="12bdb181-2289-4f93-989d-d2060c95f34e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9e2f6dc3-af07-495c-af75-6a89377f9b18">
+                    <propertyInstance
+                      Id="e73404c6-4201-4a9d-93f4-32cd5f4aa5ca"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="501b9440-b20f-4b99-bc63-e28b6291b613"
+            name="TestCalculateTransaction"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="0e5442d1-8ea1-428e-b422-968142a85a70"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DTransactionChargeUnitTest Member%3DTestCalculateTransaction"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="dcc1a30a-8a74-4a4d-926a-d65d9ad354d8"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="efe913dd-3afd-47d5-bf19-30ac8ae2138a">
+                    <propertyInstance
+                      Id="a663cb24-d10e-43df-a66a-c3649fa1dfb6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="35242ffa-1129-4d09-873a-c87d99ad62f0">
+                    <propertyInstance
+                      Id="64f07de6-308c-4b24-a357-cd503070da6d"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="df1f4375-117c-414f-8c24-a17d5275d634">
+                    <propertyInstance
+                      Id="32085f86-ffd2-4dea-9df1-9b1a0c0abfbd"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bac0b0b1-3f24-4cef-937c-695b139f5e92">
+                    <propertyInstance
+                      Id="0956839f-d9c4-457d-a05d-57507f4f4b83"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6b0d9ac4-342d-432d-b26d-05bd36740dbe">
+                    <propertyInstance
+                      Id="813d40d7-27ef-4891-a95c-3be4932c88a8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b87eee54-98bd-4ffb-850f-c556db70e842">
+                    <propertyInstance
+                      Id="8eb36ae9-8462-4c8e-8133-5c1a3fcdef7d"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="82179d12-16cd-457f-b86a-12f0945a8d51"
+            name="TestCheckIfHourly"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="39e4dd36-2fa5-4806-a8a7-3d9dcd60a451"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DTransactionChargeUnitTest Member%3DTestCheckIfHourly"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c493c867-7a77-45c4-b1ef-30ba10c26ec5"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="114a03ab-2e23-4f7f-946b-77de6b416bf4">
+                    <propertyInstance
+                      Id="fab92406-acce-493b-bc79-dc17739f21be"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ee8a9a23-ada3-4efb-afeb-c563e4b07668">
+                    <propertyInstance
+                      Id="b46da636-8910-4854-a9e3-0f6bdf4f7a80"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="70bf45c0-f92b-40d5-8aac-0f776f510415">
+                    <propertyInstance
+                      Id="89f2c12a-0681-4fb5-9c55-55f5e2681a2f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="456766c9-4bc4-4a9d-988f-5758886dd42a">
+                    <propertyInstance
+                      Id="b41d8ec8-44b7-4194-9379-5e45c71c09d9"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="14e4b07b-efad-453c-9c9d-fe0656e87108">
+                    <propertyInstance
+                      Id="77293335-3163-48e3-bcc9-1d9c3be6b785"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="34b18c06-0535-4ea3-b5ca-77e8bfd9b0af">
+                    <propertyInstance
+                      Id="65be3ebc-8e26-4673-b884-0965a2ae9f5e"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="6eb06043-82a8-43d9-96fb-3a41ed83f654"
+            name="TestFindBillingEnd"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="347feb44-b4b4-44be-bf1c-62b43439df10"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DTransactionChargeUnitTest Member%3DTestFindBillingEnd"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2ade6fd1-bc20-4e24-b83c-a5a3009a420b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8b655894-078b-4fe3-8584-cb4b5af440ce">
+                    <propertyInstance
+                      Id="17b0e06c-7686-40c3-ab33-f5dff4799eb2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6f6d3139-649d-4f0e-9a8b-2e648da123f0">
+                    <propertyInstance
+                      Id="a0e7a884-cb65-4021-bcc1-dd044840436e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f98a1ed6-9a10-4b1f-ad45-01983c07708a">
+                    <propertyInstance
+                      Id="e3f83e74-5883-4af9-8316-39589effb15f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ba8b1c54-4d3f-436c-a4ca-3be230f6b125">
+                    <propertyInstance
+                      Id="487d9ea1-c8f5-4136-b24a-eebf480ece40"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="466520c3-6c82-491c-91fc-fa5f8a9660c4">
+                    <propertyInstance
+                      Id="475ca575-7c3f-4a7b-a95f-27c2d3ec71f9"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b232e288-fd67-4310-b27f-97857778c9e7">
+                    <propertyInstance
+                      Id="cdf6dd5e-f545-4e05-9c08-827f15e19465"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="d02fe3f8-bb74-4f6d-abaf-b08ea32d654f"
+            name="TestFindBillingStart"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="bf14bb33-5c52-4e07-8a7f-962e58c2bed1"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DTransactionChargeUnitTest Member%3DTestFindBillingStart"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="facf2f50-24a6-43a1-8c17-95e04a95eacd"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5791d405-f6f3-43a5-8bb6-d386edcdd9e6">
+                    <propertyInstance
+                      Id="5bee76ec-98a0-4d91-85a2-aaaa46585143"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="38199762-5991-4697-aa0c-a63199b2f2f9">
+                    <propertyInstance
+                      Id="fe8027b6-e6e8-4374-972e-8096cc2dcfbf"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e85d593a-a19f-4110-8326-3260ed809d80">
+                    <propertyInstance
+                      Id="e53330b9-4aa7-42ba-9a2f-53e9b9933c25"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="93cafa3b-376f-4d11-8e1f-ef6fcd9b6f11">
+                    <propertyInstance
+                      Id="c1c281e7-cd44-43fc-a853-5f37a98c3585"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="39d66679-5f0d-4074-ab7c-a23239cb4746">
+                    <propertyInstance
+                      Id="4350d844-0909-4b83-8c48-dc859e388f91"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="28d8962e-5a66-439b-8261-33412281a8da">
+                    <propertyInstance
+                      Id="9040c7ae-13be-460c-8255-d7a01495d090"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="4ad9469b-3b3a-4fcc-a57f-96b8085cd875"
+            name="TestFindEventFee"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="dc780725-86ff-40ce-ac65-9014e7225144"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DTransactionChargeUnitTest Member%3DTestFindEventFee"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="dff2c8aa-dd50-41c9-bdea-5c89cd598b96"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d800bde4-2874-489a-93ac-8728e33b195a">
+                    <propertyInstance
+                      Id="04549e9c-b2e1-41fa-9747-f482eca376bd"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ff913c16-beff-44ee-9161-5bde46e6c41c">
+                    <propertyInstance
+                      Id="8c700f4a-0906-4ef4-a5b3-6648f11c4885"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f276a347-bd87-4d0c-a1ef-2681b0269e3c">
+                    <propertyInstance
+                      Id="e22ca220-0fa5-495e-8ea7-fae196b7a10a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a32c6345-1f25-4d6d-a905-46769b15f6db">
+                    <propertyInstance
+                      Id="27edaaa6-5974-42d4-978f-1d7c9992e82b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="488b39c2-5117-4e5b-92ef-6b87add83254">
+                    <propertyInstance
+                      Id="90c2faba-3fbe-48ec-88b0-5ca6394b7261"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a2151a4c-2dad-44b8-8dc4-395254064305">
+                    <propertyInstance
+                      Id="11bb1200-3e43-4d3f-af6f-f2b2920f7b4c"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="461b9fca-512f-4078-a9c4-a2be738c6461"
+            name="TestGetCharge"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="f173e2f4-4380-4fc5-8597-dffd84b5b50b"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DTransactionChargeUnitTest Member%3DTestGetCharge"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6cc480ba-f59e-4a20-a958-bb1c5b8863b6"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="01163366-13ca-4281-ad70-837360acd7bf">
+                    <propertyInstance
+                      Id="e0b7f011-2d1b-49fb-8f9f-370837ec80f4"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="92652456-6538-46dc-a786-c412ec62e055">
+                    <propertyInstance
+                      Id="5a613375-8de6-4f7d-91cb-469653d6c78b"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="97ff5a0c-8586-4c03-85f8-74064f6b571c">
+                    <propertyInstance
+                      Id="62ef1184-24fc-4021-b9d5-07e6f4e82610"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7ede17aa-9ed1-4c63-b804-a223264c72b1">
+                    <propertyInstance
+                      Id="9f9759d8-4913-4647-86ce-ec1c7122caa0"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cac7598a-da0c-4db9-b23c-c2f26c5083bc">
+                    <propertyInstance
+                      Id="7590f685-0f54-4106-895e-3d9a49110662"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="16c34614-71c3-4dad-9b7f-07b6df56f8a2">
+                    <propertyInstance
+                      Id="752e9127-c201-4218-8599-5474b4a7b40e"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="5524c0bd-d45b-4db1-b1dc-0d4d19aecbcb"
+            name="TestPrepareTransaction"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="85f13008-2230-40b8-ae1e-7ee2807ca0e2"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DTransactionChargeUnitTest Member%3DTestPrepareTransaction"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="9d3aa705-39a6-4a49-9fe2-b0c9a32147b3"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="01eebdbf-4ba2-48d9-8674-d047f457ffd7">
+                    <propertyInstance
+                      Id="0fcd398e-c537-4a77-8967-2d8c0e530490"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9447b13e-c916-4ad1-b43b-12b15e87a8ae">
+                    <propertyInstance
+                      Id="31766b1f-4b45-46c1-b24b-6fae8da9c108"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ec15defa-871d-4dc5-99f4-9863b6b8cc8d">
+                    <propertyInstance
+                      Id="7bcf3118-b6ff-4f02-b2b4-0a4532d8d586"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="60b55a30-c199-4900-8fb9-43efae762f9f">
+                    <propertyInstance
+                      Id="696adf4a-65a2-4d80-a77b-7ea563953983"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="74a56bda-bbc7-47c7-8c05-2ea5aef5afb8">
+                    <propertyInstance
+                      Id="918960d7-7379-4652-982d-ff93d041bb5d"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4fcaeb1a-f054-4abe-85eb-56e643e30a7e">
+                    <propertyInstance
+                      Id="ee742987-1dd2-44e2-ba37-1b1ac57ebfe7"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="c724bfb1-cd1b-48c0-8824-07164bcf6941"
+        name="AddEditChildUnitTests"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="37ff043a-adbf-460e-8aa0-3a30dadd2010"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="60b0485e-427f-4762-a490-1240122d4635"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1c93d4b8-6fa0-4247-9783-38a0ccb0b316">
+                <propertyInstance
+                  Id="452daade-8537-4b1c-87ac-303955661f93"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2cdf5e57-53fc-4ada-9e7f-7b54720bcdea">
+                <propertyInstance
+                  Id="7d209f38-54ac-44c9-80a0-0874561cf353"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d01884a5-4df0-419a-a3a4-bab60b3545ef">
+                <propertyInstance
+                  Id="86d51a1a-ceee-439b-a8d6-b5686e0f9c27"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="23b9c791-6148-41b2-8fde-1f3d37f67fb4">
+                <propertyInstance
+                  Id="fd15c2db-f859-45f2-aade-4c1ea74e681a"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="431fd5b0-c54b-46ce-a8a8-057e3e3644e2">
+                <propertyInstance
+                  Id="167edb5e-1dd4-4290-baa4-ebfbb5a16133"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="99862e97-c43f-44e9-99a4-f59750057a04"
+            name="AddEditChildUnitTests"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="8ae31f8a-ef19-4aab-94df-238736fc4097"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="999a3432-cedd-4f77-aa5d-c7229464a383"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4f90b4b8-433b-4a0a-b0e0-f5f177ca665f">
+                    <propertyInstance
+                      Id="57169930-7c6b-49da-be71-99e0ab1e4ee2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d1a6b556-5276-46d7-87ab-9ff6dea8c2a4">
+                    <propertyInstance
+                      Id="af501b8e-5614-411a-b2e3-d7e8d8b5fa25"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="60f03d66-012b-4109-9c59-3668486c37d8">
+                    <propertyInstance
+                      Id="f078f003-f434-499f-80bb-ff3a02731a11"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="046af4cc-d4fd-4e05-9ec8-025f60b9ed1c">
+                    <propertyInstance
+                      Id="0c54e484-5f59-4d1b-859e-e2c4d8be72a1"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8edef00b-2673-42fb-bd05-f16426fb452d">
+                    <propertyInstance
+                      Id="508dfa88-af10-48c9-8481-b3784b79be2d"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9474fdba-d84c-4c8a-a34a-d9f6d1d6998e">
+                    <propertyInstance
+                      Id="79705437-08d5-4b6d-b527-efa7d84ad051"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="fd20ef12-ad30-4851-b489-bf85e188312a"
+            name="TestDeLinkCheckIfNumbers"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="789c12ad-274e-46be-8a5b-39ec6d765491"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestDeLinkCheckIfNumbers"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="da7660d4-55f0-4f7d-845c-1e9d7e0ee003"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="39fdf986-639d-4678-b965-76fd39cda46a">
+                    <propertyInstance
+                      Id="2a5b7b33-40ed-4d08-b066-a432e140a5c7"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1c61a573-b80f-4801-980d-683792d01dec">
+                    <propertyInstance
+                      Id="73248ccd-ab7d-429c-a3f2-cc99d82924d5"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bcaec16e-b2c8-469c-82f8-ca3768ad59e1">
+                    <propertyInstance
+                      Id="127ea086-bf33-4aab-afa1-b249e5f1b910"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2abe960a-376d-4a42-a4f8-1daa0e022712">
+                    <propertyInstance
+                      Id="9397e1a7-a08a-46c4-be06-bb1960caf838"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fe6c9245-5ab2-40c2-ae15-aeecb90df9ef">
+                    <propertyInstance
+                      Id="e2d72e5c-30e8-4f2b-a1a7-dcf7ed3c4157"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bea18ebb-3c67-446b-a6d3-b59e0c295d49">
+                    <propertyInstance
+                      Id="adb52c02-40bf-4034-ba5c-70fa0657e19f"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="10a3e36c-39f0-4d46-8f75-2d8ca62fe5d4"
+            name="TestDeLinkCheckIfSame"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="6e52ca06-67bb-4ec4-82a6-e04632eb79db"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestDeLinkCheckIfSame"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2a123914-a589-4e0e-a22f-3778012d926b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="995b7180-018c-4e87-a158-43e00b6735f4">
+                    <propertyInstance
+                      Id="845d62a0-9996-4873-a5a3-68cc76ce11f6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e29a4cec-f26d-4dcb-85a6-ea2ac9e1a10c">
+                    <propertyInstance
+                      Id="f35a1067-f209-4d2f-9d33-dddc708dca25"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1b63348a-2a1a-4ed1-88ab-359d1821a3c2">
+                    <propertyInstance
+                      Id="b5fac254-0762-46da-93c3-5b0c5551f35e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b59b0d39-fa9d-4db7-924a-9a8dee16aad8">
+                    <propertyInstance
+                      Id="b5eafde7-98ab-4925-8fdc-8b97e966a9ce"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0f6e2cc5-c078-477b-84f3-f8db2dad73de">
+                    <propertyInstance
+                      Id="7dcf31f0-2a39-4e09-957a-df85b838a200"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bda3b962-67c0-4a6c-87da-ef31f6fbd523">
+                    <propertyInstance
+                      Id="e26d8422-ed94-4696-b90d-6d8ef2dcecb4"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="e52d64b8-38ce-41f0-8277-0cf2fcefd816"
+            name="TestDeLinkChildCheckIfNull"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="b77c7192-ddc4-49ab-8308-9cc000837c7f"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestDeLinkChildCheckIfNull"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ca947a11-2f66-44ed-89ed-57c6819e2416"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c0ad41c0-6cd0-4ab6-beb3-2f8f4cca2f00">
+                    <propertyInstance
+                      Id="207ecf77-c329-470e-88dc-35bdb5e3662b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="00bfdd7f-8ff4-40cd-99fc-738b7880af62">
+                    <propertyInstance
+                      Id="c73c93be-330e-4243-a9f6-527c95a05dcc"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bcb790d4-dfcc-477e-864c-215271eccb11">
+                    <propertyInstance
+                      Id="12502b6a-7f7d-4c49-911b-c367c8b533f8"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae0dde71-1211-472d-be98-3c9c7d77589f">
+                    <propertyInstance
+                      Id="d6964a17-84f6-4125-89ea-22e7add871c0"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="75906c53-f8c9-437c-b7a3-4264aafb7b44">
+                    <propertyInstance
+                      Id="772d5eb8-4485-40b9-9364-2f4297272a6b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7d2685d1-86c7-46ab-aa0b-a6414de8794b">
+                    <propertyInstance
+                      Id="03b2abb0-48a7-4a2a-9068-8517f5945901"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="34cf6e1e-f3cc-4e17-be95-e3d9a08226e5"
+            name="TestDeLinkMakeFamilyID"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="eb08136f-1ef4-4541-b245-2759fd973a43"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestDeLinkMakeFamilyID"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f0e2152f-9ac0-4ad3-b106-de44b0985f6a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ad401cbd-a158-4673-aaee-fc191715dd24">
+                    <propertyInstance
+                      Id="116e8539-ef4e-4239-8ec7-7e92d377aaf3"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="65e7f72e-6849-4ed7-9a7c-29c3e2af1112">
+                    <propertyInstance
+                      Id="0a81c22d-2d04-48a8-886b-2afe138e1e35"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6148f9ad-2977-4596-9b57-7051c17c8c7d">
+                    <propertyInstance
+                      Id="39987973-a13c-4857-8491-4ad135b3999f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="79092012-3cd3-4a7f-8e89-a639ef968b68">
+                    <propertyInstance
+                      Id="2cbe9490-d5e4-4bdf-b860-00311b2cf7fa"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b12f605f-a4d9-4d56-9af5-07565dafe437">
+                    <propertyInstance
+                      Id="b2294ff9-fa81-4e78-9b2c-705a588bac8c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6953b91f-ccc8-45ae-8768-2f73d77c91d2">
+                    <propertyInstance
+                      Id="0579eef0-f847-486a-9544-a5a239dc90a4"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="59db54aa-406c-4c6e-9f4d-cf62f7d0094d"
+            name="TestEditChildCheckIfNull"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="b19952c0-6917-49a1-bedf-13f39e48a277"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestEditChildCheckIfNull"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6270285f-e0b7-4ea4-8443-166e0663ea6b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f133f6ce-f49c-4256-b2f4-65d981ad3612">
+                    <propertyInstance
+                      Id="a0aacfe5-16dc-4d1b-b1b6-2f9c48244655"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a2a49292-e6a0-4cb1-8fb2-0c89def38eeb">
+                    <propertyInstance
+                      Id="6767ae06-3fb8-4e09-85c2-8596e082050e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d9eca295-f170-4d47-8cb4-44cbd4eb71ca">
+                    <propertyInstance
+                      Id="2b0bb74a-b079-410d-ba8b-58a1e07ba5d4"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1f5beb4c-71b9-47d7-80ce-b9711aa4dc3f">
+                    <propertyInstance
+                      Id="586e9fe5-e732-4ac6-bc24-605e136bc8f3"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="557528cf-e621-4183-a1f9-26cb90463e1e">
+                    <propertyInstance
+                      Id="e6dd090b-7827-48c1-a311-d6d782743062"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae04104d-67ed-4129-a472-f02adac06cf6">
+                    <propertyInstance
+                      Id="20f543f7-8fb5-4514-9a25-73b21d10304a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="89adf241-1188-43b3-a4fc-e3ca87f319ab"
+            name="TestEditChildClearFields"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="1b43f06e-c909-49e9-bbf7-f2b5e89ebf78"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestEditChildClearFields"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c39d69f1-01ee-4d36-a31a-bbac021b7b0d"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="78bcc430-536f-40c5-9c6b-7b28c25b7d67">
+                    <propertyInstance
+                      Id="2a071fbe-a328-4ec3-8f75-f5fb1d75ffa1"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="65e7e428-8fd6-4083-a947-2b2b8659750b">
+                    <propertyInstance
+                      Id="0eff85d6-4463-48be-ac0d-6bbd827de48e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="27ba776f-1e7c-4d09-97c3-bd74cee4f232">
+                    <propertyInstance
+                      Id="1332f66a-ca12-4e3b-9744-d61a7ec7b4b1"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e2cab607-a81a-4a18-91e3-e8da6e89040d">
+                    <propertyInstance
+                      Id="01b58824-2b46-412d-ab28-f85957dd4016"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3add4c0a-470e-48b2-a7b9-48c9e088004b">
+                    <propertyInstance
+                      Id="548f5e9d-c378-4445-bad1-7765c4a14d55"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6136767b-900e-4395-8a25-a57403485db0">
+                    <propertyInstance
+                      Id="116cfb6b-50e1-46f1-8f0e-4fafc345370e"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="66b5c046-55a2-4664-b4f3-04e59d7b438a"
+            name="TestEditChildGetConnectedChildren"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="e6b6271e-b4e3-4cc5-bca6-7c844d9b4d9d"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestEditChildGetConnectedChildren"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6b8b7e9c-88f2-43be-8075-b2eafe6a7a0c"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="61800be1-d076-41be-9d74-2e997a1f907a">
+                    <propertyInstance
+                      Id="8e0f3c04-f8fe-4848-b04a-14d53d195901"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f02ceefc-3db8-437b-b971-f987979fc5dd">
+                    <propertyInstance
+                      Id="859164dd-2f59-4df4-9756-c9c4c06b29e5"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3c496eed-e1c2-42a7-9822-0fa37af98278">
+                    <propertyInstance
+                      Id="c2a379d1-a867-48d6-9917-5ed3f2a20966"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5694700b-faea-415e-a408-fee2594de1a4">
+                    <propertyInstance
+                      Id="7057f54e-40bc-4600-9611-7aa3569817c5"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ce3ae238-91b2-41de-aec1-18e2aa0da647">
+                    <propertyInstance
+                      Id="7aa9d4e6-10dd-48b0-b16e-60f11fb76692"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e3094fcf-2168-44f7-95a0-250c81585886">
+                    <propertyInstance
+                      Id="c130b78c-d4ed-4e28-89e6-65d89af22415"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="825b290c-f6de-4da5-94d7-d1447af60726"
+            name="TestEditChildGetFamilyID"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="19fb3b80-1fd3-4e6c-b8f2-8cbfafb65d43"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestEditChildGetFamilyID"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2832a5d0-74f0-4ebe-a527-ef253d6504b6"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dbd74192-f999-40fd-9700-b993a2d18e4c">
+                    <propertyInstance
+                      Id="7c3710a1-4c9c-47d6-bdb1-6ac68a5417a2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1718e752-616c-4301-9bee-2f998947ee5b">
+                    <propertyInstance
+                      Id="bc39fa0d-5e3b-4de0-be54-476f731a2d89"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="141453bd-45a8-4658-a438-95fdea21114d">
+                    <propertyInstance
+                      Id="e2699b88-b1bc-47b9-a905-852f99c3d0c9"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="39784550-62d8-47d7-9a63-41ae5522dafb">
+                    <propertyInstance
+                      Id="73881f86-9281-4edd-9709-852248cd637d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="219f821d-65e8-4c39-b64e-540d37a6f368">
+                    <propertyInstance
+                      Id="79fa91c4-65ef-4810-8f43-533cf03b33ab"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="29e7ca2f-a05e-4516-b91c-668d4b2a7213">
+                    <propertyInstance
+                      Id="c6798a59-6e8c-4307-8770-d95a2d4a5707"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="4b536891-15ef-4799-befc-f0ae4f507765"
+            name="TestEditChildRegexValidation"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="4c9d6ae4-3e5b-4bcf-91f3-27d324127e81"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestEditChildRegexValidation"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8046b663-55b3-4d9d-92f9-54a1eed9e144"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="043a18d2-7195-4500-9bea-09318e2f983c">
+                    <propertyInstance
+                      Id="4e4f4a33-f987-4518-a543-b1a59e8b6f37"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b77c411b-b115-44e6-91bc-7b7864d5bd03">
+                    <propertyInstance
+                      Id="958dd8fa-b9c6-4633-92a5-fe307964eb3e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7d823fc4-532f-48fc-b023-de303e17fdda">
+                    <propertyInstance
+                      Id="166505d9-b9d1-492a-8acf-a1c394b00222"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="72752719-78bf-4cea-a909-e74c149ed676">
+                    <propertyInstance
+                      Id="989490a5-9f1c-490e-9f75-f9e72a6ca816"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bcc63ec1-479b-4f16-8839-336e934aa5e3">
+                    <propertyInstance
+                      Id="1dcdc6ff-431c-4eed-9550-affa3becaacb"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d65dc9dd-cf69-4817-8b66-93c0fff98233">
+                    <propertyInstance
+                      Id="8988095b-bab1-43d3-a615-eb4bd378149f"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="bb035c56-e227-4d93-9385-ff30f2d69c14"
+            name="TestFindChildren"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="3b8e3e3c-ef61-4136-a336-b6fe8139801a"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestFindChildren"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4713da5c-2cdc-4aab-8ab1-7c1610cff95a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="010cf843-7cd4-47e1-824b-54e27f960769">
+                    <propertyInstance
+                      Id="3f4b138c-c35e-4157-ac66-84bba3bae331"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f581a7cf-988d-4e16-824e-927607d899e6">
+                    <propertyInstance
+                      Id="22849a98-12cf-4c17-a620-7f417463ab7d"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e8930ab1-ca18-4984-a01e-9f0d5d7ea706">
+                    <propertyInstance
+                      Id="29d812c3-def0-4a48-8412-5ce4a465d689"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b162f8da-a010-4b8e-805c-b2d7f6c27f41">
+                    <propertyInstance
+                      Id="402aaeba-0268-48bf-a3b1-1bd6fce8c83b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a36802a2-de9a-45f4-9227-e39cda72c696">
+                    <propertyInstance
+                      Id="23c4fceb-0811-4f9e-b3fe-29774b08c736"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b7df1c29-b1f4-4faf-8cfe-6ef4bb2008b2">
+                    <propertyInstance
+                      Id="460d4aa1-066c-4c81-932d-7acade7150fd"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="00b4de31-8cc6-4944-9692-da919ebaa57c"
+            name="TestGetMaxChildID"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="97da6c8b-62cf-45ef-9aac-3075310e4596"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestGetMaxChildID"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1285e0f4-4315-479a-8d62-a236dc834a91"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cadc88f4-a7b1-429a-8143-a4b2317325a9">
+                    <propertyInstance
+                      Id="a79d48b2-a4d7-4456-889b-b243c11e7293"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="606b3f95-9388-44aa-9a7b-7d238a50ac97">
+                    <propertyInstance
+                      Id="5ad1ce57-2e2d-4777-ae3e-d3ad70ef0114"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e2085a11-2454-4942-9904-8bc2e43bdfbd">
+                    <propertyInstance
+                      Id="3e3167f0-f496-42d8-9940-6981a8504484"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0f5b8c34-f6c8-45db-9e2d-c660e3962148">
+                    <propertyInstance
+                      Id="12be366c-a1c5-46ea-9992-e243f29473d5"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="768c02e2-fbc8-478e-921b-3885176c87c0">
+                    <propertyInstance
+                      Id="c0d672cd-ce24-469b-87b7-5502d0ec8bb7"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="75ca1177-26a8-4f21-93a9-46af81751831">
+                    <propertyInstance
+                      Id="569d7de3-ce50-4d0b-8239-8fe68d4cc74f"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="2dc2d0f0-ceec-4ecc-9419-850bb9626c49"
+            name="TestGetMaxConnectionID"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="35f6dc34-43cb-4198-8b80-bb1d4ea64458"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestGetMaxConnectionID"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="5e60c3ff-990a-43a6-bbbf-a43858a9479c"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="75a530a2-55e9-4fb4-ba7d-dd166c22a7dd">
+                    <propertyInstance
+                      Id="f0d09c27-ddad-4287-8d6b-04252da30308"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="15710631-4e70-4a0d-a69d-8e3b341a0356">
+                    <propertyInstance
+                      Id="c1910e2a-0b62-485e-9e08-2403e77741ca"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="27b4aba7-10a1-419d-81d1-681bea7c3eb6">
+                    <propertyInstance
+                      Id="5c342c84-dab6-4b56-bf9a-bf96ce7dec8d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d6704e62-dc6c-4b55-a5d9-5e783d836316">
+                    <propertyInstance
+                      Id="87510992-1d7e-4fc1-b430-98f9496ed334"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8e38c79c-5cfb-465b-a6e8-2671b4226b5e">
+                    <propertyInstance
+                      Id="65c5c322-d888-45e3-91bf-4654216ac2b0"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f815cd5e-ea55-4a84-928b-9ecb158a39a4">
+                    <propertyInstance
+                      Id="b033e79e-8eed-4c78-a0f2-3865ee021ee6"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="c77a6b53-34f7-45e2-8334-7e35b385b7b4"
+            name="TestLinkGetFamilyID"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="34d66b36-63bb-4d3b-8ff0-b8fad9a36e04"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditChildUnitTests Member%3DTestLinkGetFamilyID"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="31cc8264-d155-48cc-b729-009a91f63e34"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9a57fa94-5e4f-437b-a2e7-e2a2d1b36f0f">
+                    <propertyInstance
+                      Id="18b645ed-6745-44c0-9237-24f5fa355f2b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3ec72498-3dd8-43a1-9f87-b775a30d0497">
+                    <propertyInstance
+                      Id="6644574e-a307-4cde-a889-eeaf220e549e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ebc4fa3e-e84b-4bd1-b602-23fc16016b56">
+                    <propertyInstance
+                      Id="597bc062-75f4-41c4-93f2-8e6bceeaf0e0"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="691c52a4-d46e-402a-ab5b-1e846b4196cc">
+                    <propertyInstance
+                      Id="e00239cb-f7e5-45ed-91e3-4eabaa11cf2a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cf681586-e74b-408f-ad41-dc418e777fcf">
+                    <propertyInstance
+                      Id="8c65c9b2-67b8-48c1-a53e-fde73fb3dd94"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="50b3aaa5-6d0e-4d3e-94f4-60ea4b3c117a">
+                    <propertyInstance
+                      Id="b8181727-3f3e-4ff4-b2f9-1f1c7d48bfae"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e4421ac9-5dc2-4f5a-8426-ce8528e76a3b"
+        name="AddEditGuardianUnitTests"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="e0fea625-9333-455e-88d5-9c37d22b7ad5"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="35e85da7-bef9-48e3-bf50-4d7713a331c3"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9b96b933-998b-46f3-8506-ca23534da92e">
+                <propertyInstance
+                  Id="dc7374f4-879a-46c3-954f-114db0902e56"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e3515a50-7139-4204-ae51-ca3b135082ce">
+                <propertyInstance
+                  Id="dcfa55ea-b139-4863-877f-65eb4d71fa73"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5bea3d56-d0ea-46b6-aec6-9490c8126e29">
+                <propertyInstance
+                  Id="0a4db657-9e19-41e2-89c5-57e5cd2436d2"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d8a8391c-50bc-404b-9c59-e01e5d7befa9">
+                <propertyInstance
+                  Id="f74d703a-1636-4df5-a81e-438ec2bbcc50"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c057c62e-b19e-4120-ba81-190575a8861b">
+                <propertyInstance
+                  Id="637e3d2d-a7ed-468f-b2c5-4b289d8ced87"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="83e86148-66c5-48a6-97ae-1ca75d0f08db"
+            name="AddEditGuardianUnitTests"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="4de5d8ad-15c4-4db4-9a7a-4140e76b6c7a"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1ebc80ca-5870-4faf-bade-ac3e4b66e2d3"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="faeb227f-3f72-481b-8d01-987386cbef0e">
+                    <propertyInstance
+                      Id="cc68778f-ea77-4d9e-b383-a968fdbfd135"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e2e70b65-4b6d-40a9-8d67-c8d11e41fa95">
+                    <propertyInstance
+                      Id="6862d8cd-1185-4f89-95ed-07b66d3074dd"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="56b00045-e6fd-4401-83f1-515380cf502f">
+                    <propertyInstance
+                      Id="dc2faaa0-ce2c-4a2f-8dbf-24e350917f6a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cabe222e-e5c3-49e2-85ad-0d0dd72f5a13">
+                    <propertyInstance
+                      Id="8b3be9f2-2059-4c0e-b93e-57f26ef45026"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aa253b68-f386-42ef-9ddf-d23c907fbc63">
+                    <propertyInstance
+                      Id="db308f2a-3447-41df-8086-b89756390015"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="21c83c7c-79da-4824-91cd-a0fc2042dcc5">
+                    <propertyInstance
+                      Id="68f85128-e1d9-43c6-acbe-da177ef1bc8c"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="aee62664-a8c9-4572-9126-38cc5d4954fa"
+            name="TestCheckIfFamilyExists"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="589ec9b4-3028-4f1f-b5b6-8fa701c3369e"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestCheckIfFamilyExists"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="76cac55e-d241-44c3-b08d-ca78f3271278"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8d17a7bc-1ced-4402-96dc-a9c50b94091a">
+                    <propertyInstance
+                      Id="898aec06-564c-4b0f-be54-a8c703999b12"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="02550a66-0256-442e-8a2e-9aba0418935f">
+                    <propertyInstance
+                      Id="8783fe0b-72a9-4a09-91b0-77875d0d1aec"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a566f070-e11a-45cb-9280-e24abd86b7ad">
+                    <propertyInstance
+                      Id="98d6c8f2-7fc7-44fc-a5e8-e809b93d7e09"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="92093ef0-7c7c-4ee6-a786-f65b63528d7b">
+                    <propertyInstance
+                      Id="1b3c9ce2-697a-48b4-96ec-a81e401b1273"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0db764e3-e14d-4cdb-86d8-93b70647097d">
+                    <propertyInstance
+                      Id="d5520ade-13bd-4ab1-bb69-58abaa9be25f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="21000595-4ee7-45e5-aea0-6b77f67a2aa7">
+                    <propertyInstance
+                      Id="14707b06-05a8-4e4c-ab13-60f2aba57eff"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="1a868ea1-700f-4bf5-9c62-c2e90a2defdf"
+            name="TestEditParentClearFields"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="90b31275-9d0b-4d4c-bfca-5b65c777be9e"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestEditParentClearFields"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="cbfd9f04-4f20-40e1-b677-327dabe6a98a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cfc13072-21c5-4ddf-a24b-4d76d05bfa35">
+                    <propertyInstance
+                      Id="c7b5e110-0696-49db-b094-e14851ee174b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1443d507-b6c8-4d0d-8272-4f704f37a30a">
+                    <propertyInstance
+                      Id="414de691-7a9a-4153-8517-c883fac58d46"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e6154e9b-8a18-450d-b160-e1b9c7ce48d3">
+                    <propertyInstance
+                      Id="8bb7b5ea-5060-442a-81f5-9d8c19b7c46d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="61a68654-6cb7-4cad-9061-1a56b8c9b3c5">
+                    <propertyInstance
+                      Id="487b4f1d-44e8-4757-bffc-2f7e44c8dcba"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9ef6c117-701d-4200-b205-a7b23a113590">
+                    <propertyInstance
+                      Id="a990c0fb-977a-470e-8f52-90933f31b1f5"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="be5ac56b-1c80-47da-86dc-505905629236">
+                    <propertyInstance
+                      Id="9a038acc-8599-4b18-9885-259267f75cff"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="c7d1db6e-1972-4848-9751-5c01c4a30fee"
+            name="TestGetAddress1"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="56ead55e-5afa-4d3f-9518-e64b8d2e8ba4"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestGetAddress1"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3ea6acc2-874b-43f7-8c46-17811ee3175c"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="35ce105f-cf36-4845-8364-6e7892c1c440">
+                    <propertyInstance
+                      Id="aa6d31f4-22b9-47ce-a2d0-4ba72ba81e55"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="724ab05d-76d0-4570-857f-bc19566d3278">
+                    <propertyInstance
+                      Id="19e080b5-c9e1-4689-b633-a84c53839b05"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="456134c7-48b4-493a-82f6-b7eaa3e48ccc">
+                    <propertyInstance
+                      Id="4c3a63e3-775b-4970-85ab-2b1912b6af8b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="363fba59-d6d3-41aa-86a6-e6b27cadba07">
+                    <propertyInstance
+                      Id="fa0b4af1-b4bf-4667-a14e-00c543da52cc"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3d709266-6114-42f4-b73e-a2849dd10e33">
+                    <propertyInstance
+                      Id="26ae543c-ea09-460f-bce8-30ff415cf15b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="77646b35-231d-487a-b48a-0bc15bcbbfad">
+                    <propertyInstance
+                      Id="e4288c31-930a-4bf4-834d-fede1460c83c"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="9415aeb9-608f-42a7-b618-099bf01a41c2"
+            name="TestGetAddress2"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="cb41d2a3-a8cf-4537-86b3-ad441dd97676"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestGetAddress2"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="0d6a903f-54ac-494d-974e-b0cc372a32d3"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f94011c3-7e07-49f0-bc2d-4648bb1c89a2">
+                    <propertyInstance
+                      Id="ad182728-3fe2-462b-b432-1ab6f3b3fb2d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ecf059fb-3e3e-4531-8a94-51d1489fa5c7">
+                    <propertyInstance
+                      Id="488930c6-f378-47c7-8d0e-1de6ed259bc0"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a3deb735-c687-4335-9559-95ef11fa3763">
+                    <propertyInstance
+                      Id="43120655-ca4b-4696-b31d-6201004bfb62"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1794936b-6a0e-4134-857e-0468d9756cfe">
+                    <propertyInstance
+                      Id="adf53fac-c93d-4bf9-ae08-1c8c49cf03fe"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1d96b95e-d487-4b80-bc9c-90a371bf9fd2">
+                    <propertyInstance
+                      Id="726cad50-aaf1-43e7-b9d5-9ac7f65341a5"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2a4b4401-cd41-46ff-8896-527027957366">
+                    <propertyInstance
+                      Id="4e7d9509-5597-4075-9675-fcdda315225c"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="79cfdfd7-4724-4d22-8dea-fa7697ec85e6"
+            name="TestGetAddress3"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="15058d23-f5ed-4394-a215-3e967b8f49f1"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestGetAddress3"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="939a83d7-1f2b-4d93-94d9-174ce0a1f891"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="35c087e7-2e9b-4975-bac4-f10be9307fe3">
+                    <propertyInstance
+                      Id="dc16ccbf-7e82-46ed-8bfd-66b5638324c6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4fbd1786-6c23-493b-91a5-f2fcf687a504">
+                    <propertyInstance
+                      Id="0a483877-8d06-45c7-bcf5-a13fa1e07b3c"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b632ff52-ef4a-4eec-9f47-03c818867fbc">
+                    <propertyInstance
+                      Id="c89c97cd-71af-4a94-ad1d-206426e13129"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c34211de-d1bc-48d5-8390-dda575286ef7">
+                    <propertyInstance
+                      Id="bd945f5a-789f-40d1-8559-6ff80831c148"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="98a5c80c-e22c-44c5-8e29-4dafc234942e">
+                    <propertyInstance
+                      Id="1433d7ef-16a2-4ca9-92cb-9b3f6745ef41"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a7bb5e68-23b4-444a-a8e6-faaa491adedd">
+                    <propertyInstance
+                      Id="4fa2ce4f-6b86-42fe-971a-9e05bc67572a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="0c9a651a-872a-4e8b-b22f-54b8539b7f6b"
+            name="TestGetParentName"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="31472d59-e18c-4e97-9b44-b7249e74f18c"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestGetParentName"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="15941afb-5260-402c-80a2-49da1f9e0889"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a4753935-05b0-491b-8335-89797be50537">
+                    <propertyInstance
+                      Id="5df72f5c-cc53-4784-b755-99b0b0effa9b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bfafb55a-c72a-48d9-8c93-4ace867abf3a">
+                    <propertyInstance
+                      Id="cf37fd24-4b2c-43d1-8617-de34332816c0"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ddbab90d-b1c0-46ca-afd5-6b16e5af0842">
+                    <propertyInstance
+                      Id="45483c52-4bf5-4598-ba7f-f31b31b212c2"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5943ba64-1fb8-41e4-890c-99ad38e733dc">
+                    <propertyInstance
+                      Id="1474a783-0685-48c2-9c14-9b5b1c3b66cf"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b754ed1f-4c6c-45de-9560-b117cee0251b">
+                    <propertyInstance
+                      Id="af52c01d-1e17-483d-a74d-6c76adc4b1ef"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="626c3756-f3c2-49b3-869d-fb22ef5227d9">
+                    <propertyInstance
+                      Id="7d9edaae-ce6b-427f-a69e-b30afaacc75b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="9c1ad2b8-dfa7-4212-88fd-63cc06c061d2"
+            name="TestGetPhoneNumber"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="afa450c0-21c5-42dd-9a7c-2904a6c28e4b"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestGetPhoneNumber"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="38bec765-83d8-4c42-a790-d183ec89dbea"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="07ef4cf8-33f4-464a-a041-63531f5ddf75">
+                    <propertyInstance
+                      Id="67b42d42-af88-4220-b33a-f25bfafd5362"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6bd07cba-1dff-45ba-9e39-f9ce6a224f80">
+                    <propertyInstance
+                      Id="a2846bee-8c04-496b-91fa-d9cd15351e03"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="08d98010-215e-493f-bc8f-4100bfcf6c5e">
+                    <propertyInstance
+                      Id="a96b9c1d-e462-431a-801e-dd44fee96f6c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9cf9bde0-77eb-46d2-ac81-dda202587ba9">
+                    <propertyInstance
+                      Id="e5b0974f-76f5-4295-a5cb-e2b90db7170c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3fc40694-92ab-4f97-bcd5-0d819d47292f">
+                    <propertyInstance
+                      Id="9a778779-9dd1-4782-a2a6-567c385c9f04"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="94d40116-26da-46e1-b067-76749426d959">
+                    <propertyInstance
+                      Id="f14d83d7-4307-45ef-b7a4-a158448c7844"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="702e9140-7147-4f51-8ec0-6850075f951b"
+            name="TestGetPhotoPath"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="78237975-a3b6-45e5-9f8f-3bd1dae6aaed"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestGetPhotoPath"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="510f4397-d347-4121-94a2-28d23ae5fcbb"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a364875f-29cc-476e-9cde-e1315a9c0d09">
+                    <propertyInstance
+                      Id="ffc07c04-27d3-4376-9cc7-1ef65ab26f5a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="95e8ec98-c899-4192-a1cc-6bbc263c06a1">
+                    <propertyInstance
+                      Id="838cbdef-576d-4ac2-97c3-47dbb1a172f6"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="37e1c2e9-1302-44d4-ace4-948c00dbca6e">
+                    <propertyInstance
+                      Id="f7edb48b-6682-4507-abda-e475ecd43639"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="387a45ae-5aba-49c5-98e4-30d00b3f1887">
+                    <propertyInstance
+                      Id="8f47d1b5-e545-40eb-a487-c9bf24e9e33d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="818e1802-9257-4d6b-a690-d2cda15e642a">
+                    <propertyInstance
+                      Id="851dacc5-ebeb-4158-9dd1-9dd0612cdae2"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b1a886a7-84e2-4d73-b20e-459dfb35dba1">
+                    <propertyInstance
+                      Id="ffc62d17-a9a3-4dde-80f9-bc0991c581fb"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="2a380227-87fa-4de1-b620-c08a802d0abb"
+            name="TestGuardianCheckIfNull"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="2d0fec4b-cd8d-489d-bd0d-d5f1a7723821"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestGuardianCheckIfNull"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c0f297c7-a8fb-4cff-b951-c51121033b6e"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d0aec0c5-888a-4138-ada1-74e6010c7543">
+                    <propertyInstance
+                      Id="78216e6c-ba3a-483b-91a7-9cf0907450de"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2c34b444-2d7b-4baa-9b8e-aef1f839fe37">
+                    <propertyInstance
+                      Id="b840a11e-bc68-46e7-a9b4-affc6f803d13"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8d09a7ca-5abc-4196-979b-3302b365d58e">
+                    <propertyInstance
+                      Id="893d3bde-3db5-4e46-8fd9-335e341d4762"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ba04fc1f-5690-4eb2-906e-8a0533c96b41">
+                    <propertyInstance
+                      Id="d9c272a4-9dde-42be-823e-3f9e7fc43cc6"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="69837138-2f17-4dac-895d-df209e2d074c">
+                    <propertyInstance
+                      Id="8c71f60f-c19b-4da8-a3a2-ff98b37bb899"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="31f67ba3-0e09-44bf-83cc-4d1cb42aa5d5">
+                    <propertyInstance
+                      Id="c02a8f3b-dfb9-4c02-a9a4-a2154dce1aae"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="165a0bc0-9b93-4af4-a5b9-4033c7753827"
+            name="TestGuardianIDExists"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="75159c26-f077-48eb-b383-36a7e04578c9"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestGuardianIDExists"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f85259ef-d99c-4fe7-a06c-fef1243153ff"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a17e5aae-88ef-404e-a571-6f2fe1268326">
+                    <propertyInstance
+                      Id="96ccd30d-c971-4f3b-a1b5-1b0c0380c7ac"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c273d73f-67b4-4448-b5b1-478aa1c98635">
+                    <propertyInstance
+                      Id="a24332c4-1c0d-4ee7-a5ad-d5b4f5cd419b"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e4e01f04-5955-4034-bc9d-f980cd1bcc86">
+                    <propertyInstance
+                      Id="2a378971-b8fb-4aee-9c7c-901fa4677d12"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bbb70901-2c5d-4a99-ace4-47b6d7bb0aec">
+                    <propertyInstance
+                      Id="d0ec65cc-3bf6-4fc2-9fcd-552de8aa6f23"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5b1446a3-b62f-430a-9268-84736ef10629">
+                    <propertyInstance
+                      Id="f638880f-86b2-472a-9834-832870528eb8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0940e894-c32f-45f4-9785-0dc184e32519">
+                    <propertyInstance
+                      Id="3e590ca1-5246-4cb6-8812-da24b0313fb4"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="7944c943-35d3-4c2d-9f98-8cec2c667dcb"
+            name="TestGuardianRegexValidation"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="5f136b3b-109e-486e-a777-f2347cbebad5"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestGuardianRegexValidation"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e611262e-a72e-4c97-bb1c-f460c8513430"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ced6b471-7cd8-43cb-a8cf-44f242e0e84a">
+                    <propertyInstance
+                      Id="54cba48c-dd02-4ef6-bab7-89f52b1f943e"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8560604c-b68e-4ab2-82d6-2741c6225f4b">
+                    <propertyInstance
+                      Id="6ee6c69c-69be-4994-8fbc-acf40a31cd94"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aa053974-9252-4209-88ca-bc74a4c17fc3">
+                    <propertyInstance
+                      Id="9567beb4-3d57-41ac-b790-8c922d8bfcd0"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="57b02c43-0c8d-445c-9256-9d9f3900c6ca">
+                    <propertyInstance
+                      Id="6f3561ae-6986-40bb-99de-e263056349a8"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="58ad0f21-230b-47d7-8159-50a6aa89b3f4">
+                    <propertyInstance
+                      Id="1b711788-e927-4ba9-999f-c6dd76ef1107"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a062630d-a742-47bb-92c8-90eebc57d905">
+                    <propertyInstance
+                      Id="7a558a64-9c70-402e-9137-476bb007a199"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="f2406cc7-dc75-4494-8988-c319095be965"
+            name="TestNewParentCheckIfNull"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="b4a0ec5f-cff3-43c7-9d2a-5e831f478a1d"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestNewParentCheckIfNull"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="47513b12-9efd-4f48-bff6-0ed0be899eb4"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="006878a9-bc00-4953-90f8-ddda7aab8b25">
+                    <propertyInstance
+                      Id="92adbcf5-eeae-4089-921c-f1220ca0e29d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4eb4dc06-2cbe-440c-8659-87373f336219">
+                    <propertyInstance
+                      Id="79b1c05b-68ea-4316-b839-9a2f3ff35efd"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e79b91b4-cf04-4038-ae05-a0b98683e067">
+                    <propertyInstance
+                      Id="6c71d595-7ae4-4497-81f7-3221ec2d988f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a2821ce5-861a-482e-aea1-f582c97c5e45">
+                    <propertyInstance
+                      Id="8a9f6174-813c-4963-8dd9-cc195bf47c45"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ccbb1d8b-b158-4e3a-b61e-6b0959dae6ed">
+                    <propertyInstance
+                      Id="d7303666-fc37-4589-a8dc-b93d7935febd"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b35be77b-8ad9-415e-9440-34c0726a806d">
+                    <propertyInstance
+                      Id="3ddf0b31-b2a0-459f-a6d5-8e8a7ca6fbd5"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="ff6b94ce-2d16-4a55-94b4-b668a5203233"
+            name="TestNewParentCheckIfSame"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="ad23aaa4-01e3-455e-ab5d-6f141813b47d"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAddEditGuardianUnitTests Member%3DTestNewParentCheckIfSame"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6af837db-d13b-464a-b113-90b73096b373"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="305de7ff-3d83-48b8-8933-f3b9695b3b3a">
+                    <propertyInstance
+                      Id="557bfbb0-3fe8-41d8-b7cc-d30e979424b4"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b75a44ba-0304-4e1d-9157-6931defca0ba">
+                    <propertyInstance
+                      Id="441d82ff-09ef-4666-8436-14c3bce62d42"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b17bc2ba-0613-48de-b573-03501ef5af97">
+                    <propertyInstance
+                      Id="93f17c5e-02f5-48aa-98b2-d23d7b6639a4"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0653a36e-7868-4938-a57b-dc207d65546a">
+                    <propertyInstance
+                      Id="d6f54563-6c47-4d35-9957-f0fd8d49e4d1"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3afe5c76-ce52-46b2-ad10-ef3c8a4e145f">
+                    <propertyInstance
+                      Id="865cd886-f027-4d61-a00d-56e48dc62b22"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6ba2d33c-182d-474e-bb80-589794bce32d">
+                    <propertyInstance
+                      Id="0c1cbf94-c01d-4060-9e5a-0bc44f44e279"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a1b8f11f-ca3a-40fa-b7cb-6d0032f29f00"
+        name="AdminLoginUnitTests"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="c35db405-bc37-4df0-94a8-f221c97d7000"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAdminLoginUnitTests"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="daab1f9d-c42c-4bca-bf1f-1cb8d0fe280f"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3a7a2292-7b46-4925-92f4-c182d00e9f76">
+                <propertyInstance
+                  Id="ba9f0c21-0aaf-481e-a989-9ec6c6770be6"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b340e978-94d4-4707-b646-c890b7e8046a">
+                <propertyInstance
+                  Id="0d9704ed-1360-411c-b357-c54916dd0e41"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="275047d3-2a28-42fd-a3ae-b5167245f20d">
+                <propertyInstance
+                  Id="6809c050-6903-4c92-9262-0f6880ddf0d1"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="062bfb06-0de1-4995-85a3-fee48ce5c3e5">
+                <propertyInstance
+                  Id="7823d259-c493-49b7-a8b0-9b8ad79efcc4"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a8cad7d2-1c1a-43a5-99dc-7c48d7034256">
+                <propertyInstance
+                  Id="23e15fb4-0847-4224-8702-01b4116c1def"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a521ddac-3429-45c3-992d-5cd1771b3bf8"
+            name="AdminLoginUnitTests"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="5233d570-95ce-4748-9347-9a762df72315"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAdminLoginUnitTests Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="fcdc0336-ec82-44aa-923b-0f0f2471c6cf"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="277be0ba-1b5f-4414-bff8-bfcf80ed7e92">
+                    <propertyInstance
+                      Id="6468636c-feec-48a0-aab7-6204c8c5eec4"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="55bd995e-7185-45c5-a588-625f991ff902">
+                    <propertyInstance
+                      Id="7c500e7d-95ff-4a3c-a044-cf90c3e212ab"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2f7063a6-5a64-4dd7-ac0c-9e2b7f978344">
+                    <propertyInstance
+                      Id="80b27891-25f5-46f8-99de-5a7f64cd9a75"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="38155550-d66f-4049-b342-596f9595260b">
+                    <propertyInstance
+                      Id="73ced7dc-3e3c-4ad9-996a-9e32d98f7fe5"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6e1efa09-6419-4368-b84e-41d850760890">
+                    <propertyInstance
+                      Id="32eadc7d-062d-4487-be0e-85c3e6a01ba4"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c3e9377e-6f3f-4921-b0bb-8333133d0b68">
+                    <propertyInstance
+                      Id="8bde749f-6045-4edf-857a-0adf6a599620"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="c0860a81-b954-43f7-9b63-4873a055893e"
+            name="TestValidateAdminAccessLevel"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="3466bd2b-2b29-40dc-aeb0-459a060aeff2"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAdminLoginUnitTests Member%3DTestValidateAdminAccessLevel"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6a2b8c2e-0338-46cc-88d2-52b33e83446c"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="18adfb2e-ead1-4a6e-9e16-19040e1d6788">
+                    <propertyInstance
+                      Id="b66da36d-f1a3-49fc-9932-4088f56324a2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b647662b-acad-4fd8-b24e-dc71dbf9030a">
+                    <propertyInstance
+                      Id="ceaaee6e-c6f3-42f1-9c16-8a9414d3d5bc"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1bfa4a57-d26a-47ab-b076-2ca0e9a6036c">
+                    <propertyInstance
+                      Id="75e85881-57c1-4e73-a296-224c7ac068a8"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bbd40a75-0266-4f66-8cce-6f6304c19d26">
+                    <propertyInstance
+                      Id="5678e729-c29a-4880-b8e3-53f92926a60d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4b81eb90-89a3-4175-8792-3107693a3903">
+                    <propertyInstance
+                      Id="9bac3226-f268-478f-ba14-411fc5e7d2f3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d76b02cf-d301-44e8-85e7-a5b2346d9df8">
+                    <propertyInstance
+                      Id="9329bb5b-46f1-448b-ba93-5e19e652fb81"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="461ad638-51af-4bdf-991a-16284d015931"
+            name="TestValidateAdminLogin"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="b89466ca-9333-47be-9656-1a9ac8e26b46"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DAdminLoginUnitTests Member%3DTestValidateAdminLogin"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ddd9e8a0-8ee9-4aaf-80a9-407b917d5377"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b3b8830f-19fe-4674-8247-e7497ae8d0fe">
+                    <propertyInstance
+                      Id="8dec45e4-797b-4a83-ac65-8972213244ea"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4da3d038-295f-493b-a7e9-e6807d790c6f">
+                    <propertyInstance
+                      Id="d92ae50a-85c0-458a-92f7-e6edd6071b31"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="542bf49f-19b5-4e36-9a8c-f03a974311e3">
+                    <propertyInstance
+                      Id="f792ddcf-0c3f-49eb-9cbb-032d989b3a87"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cb35dc9b-6a36-4dbf-a138-e17b05685b29">
+                    <propertyInstance
+                      Id="58e9b799-f6aa-4fbe-9653-9763453a5a9c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="415d5887-4ba0-4731-990e-1979ceb33154">
+                    <propertyInstance
+                      Id="fba0a3a0-1646-4b86-b8a9-7b2bcb6bd0b3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="feeee73f-bcad-47a1-bb7a-f81d10115b61">
+                    <propertyInstance
+                      Id="cd6ce09c-2004-40b8-868f-c350d9b5d5b8"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="da981161-1a64-42da-8e1c-a671cbb336e4"
+        name="ChildCheckInTest"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="be5d9c1d-5e19-4ac3-bc36-1b4f11d2ec33"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DChildCheckInTest"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="b79df7b2-14a3-456d-a07d-234ac7f9d7fd"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2d2f89c9-20f2-4934-b8d9-9df02f9cedb6">
+                <propertyInstance
+                  Id="682975a7-9203-4a8d-bd3b-e4cbdad7b868"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f02954aa-9d69-4b67-b313-5a4a307c815a">
+                <propertyInstance
+                  Id="3428b72c-c960-4e2d-8ff6-df50bedc2493"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f0bf589d-8029-4b82-9c4f-005de17871b3">
+                <propertyInstance
+                  Id="0e55321f-736b-480f-bc75-e28976a580f4"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e83e0233-0e7f-4a1d-a77d-abd36599ddab">
+                <propertyInstance
+                  Id="aec28ce0-f0ea-4c84-8d4c-6a38c93efef5"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cf877563-5c63-4753-bcd2-8912f3cbb767">
+                <propertyInstance
+                  Id="2dfcd4e5-386f-48b2-b311-f2360f6c3c62"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="c91d6c53-c838-449f-85ea-5d0bc2ba7916"
+            name="ChildCheckInTest"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="2a56eb82-2c4f-4c77-ad77-4a611dbb1be1"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DChildCheckInTest Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="caf26948-dc04-4b24-91f5-f59405360011"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="92a919bc-b2eb-457a-9c74-2e5fcf8e40d7">
+                    <propertyInstance
+                      Id="1e951557-dfb4-4d71-ba4b-a841db4f74a9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="707d7111-4279-4465-a740-dcd5dc5b9c40">
+                    <propertyInstance
+                      Id="19b217c2-db69-4bcf-8291-a3c637c5568b"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5bc1d74e-a0d1-479c-bcff-f933115dc213">
+                    <propertyInstance
+                      Id="7e9a1b58-bdcc-451d-9add-2354e62dca3a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d2fd7703-39d8-49e3-b3f0-0ba8e4aaf51a">
+                    <propertyInstance
+                      Id="4d30a7ef-0dee-41dd-8edf-cd64e205c8ec"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cb18dbd2-7e5f-4158-a0ab-ab50b86b261b">
+                    <propertyInstance
+                      Id="26665a26-db39-4159-bdc5-58b9126f1924"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="755102f2-e9f5-4c61-9946-38bc837045d3">
+                    <propertyInstance
+                      Id="b6335b2c-8064-41b2-88e7-66d8a6425ba2"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="93d868a8-7a50-4837-8147-a9c40d38b6d8"
+            name="TestCheckAgeGroup"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="1e213274-2a8c-498a-8bbd-22676d22dd0f"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DChildCheckInTest Member%3DTestCheckAgeGroup"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="19e89c94-e19f-4c27-bc52-abe280449ffe"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="87a3abbc-8403-4c98-9ce3-fd2b1d5fddf3">
+                    <propertyInstance
+                      Id="d21c19b2-d6cc-480b-8008-e37a391f6629"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d1977cb2-3d31-4ddb-a91a-ffe8755eae3e">
+                    <propertyInstance
+                      Id="9cf4b20d-edc6-4bc4-afde-abf40a95ecc9"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8818972b-d6e5-4922-997e-5683031239cf">
+                    <propertyInstance
+                      Id="068a02fc-0dec-4464-9208-8ab723fc5511"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="51ba55e0-4d9c-42da-b4e4-e79f143eec48">
+                    <propertyInstance
+                      Id="8c86140e-508c-4b2f-99cf-6dccb3591a53"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="66abfe37-dc45-469e-9cd0-1595aa956130">
+                    <propertyInstance
+                      Id="2a107909-1f61-499e-975a-b59abeca12ae"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c42f9c4a-8832-4200-babd-dd2ef411b065">
+                    <propertyInstance
+                      Id="ff378006-52c3-4e8b-af90-fccc6abc40bf"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="f4a13925-b22e-4965-986b-2bd11e287360"
+            name="TestCheckIfPastClosing"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="87c3a702-899f-4097-8e4e-c388f05e0f3d"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DChildCheckInTest Member%3DTestCheckIfPastClosing"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2b241257-6794-4461-b592-8199ee8329d0"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ff86a920-3c44-4e0d-872c-9fd6e62a3989">
+                    <propertyInstance
+                      Id="6ab7a6fe-7f6a-4dd6-aa2e-67d6a02ab050"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="945ea465-67dd-4aae-b400-d768c3cad5a7">
+                    <propertyInstance
+                      Id="1640f10a-703c-43b5-bef8-74a6c6c5eabb"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c0f2353f-3850-4d45-a264-367e35832cd6">
+                    <propertyInstance
+                      Id="47cc02e5-5a98-4151-a171-c747884eb822"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ca2ae43d-571f-46c2-9ad4-8c0d4faf7946">
+                    <propertyInstance
+                      Id="5efbf0ae-0a47-4bd5-92e9-62a55823b42e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9887cb10-3c8b-4c51-b584-2201280e6680">
+                    <propertyInstance
+                      Id="9b43f8b3-ec02-4269-9b6b-04fe986e1377"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3e0476b2-2ade-4327-98cd-f651ed873827">
+                    <propertyInstance
+                      Id="34bfd84b-3e89-4c6c-8475-211cc6dfdfb0"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="ba29dc02-0d82-4f29-968c-da508352e15a"
+            name="TestGetBillingCap"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="255111d8-3ef7-4100-bf4a-9255bf574ab8"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DChildCheckInTest Member%3DTestGetBillingCap"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6b1755c9-eeed-44aa-b82b-986fc9de0eba"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d0e56e1f-4e33-4137-b1e7-80de31eb29c2">
+                    <propertyInstance
+                      Id="bed63b71-3759-4e98-8153-11fb26f1afaa"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="955b7daa-351d-4634-8b84-98503d03e09f">
+                    <propertyInstance
+                      Id="665952cb-9848-4da8-9556-a50b3b40b4d9"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fcb026a4-e56d-4df6-9c88-017e985e1b7b">
+                    <propertyInstance
+                      Id="9284503a-ef12-4871-b05c-14a7df9ae93f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9ceaa7c4-6ef4-46e2-96d5-3d429c7bd036">
+                    <propertyInstance
+                      Id="3961a97e-1431-44d1-b905-b01a1b035f0e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ce904857-0d36-4cd8-8700-73853f6b1a14">
+                    <propertyInstance
+                      Id="fe98a5ab-dc80-424c-955e-f58b9f091a5a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="359fa9a7-9c57-4e86-a279-7b35207bc50d">
+                    <propertyInstance
+                      Id="ac5c07ac-ecc3-48d5-9ffd-ba50a0b6ab11"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="64f9f8d9-b8d3-4261-84c4-be6b6f0bff87"
+            name="TestGetBillingEnd"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="ff00e95e-bfd4-4ca5-9ccb-c975f1221b3c"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DChildCheckInTest Member%3DTestGetBillingEnd"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4b214657-4697-4457-a69a-19e81f107a1a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="65677940-b019-4fa8-80fa-903e85a01616">
+                    <propertyInstance
+                      Id="e472d5c6-2bff-4158-8a65-44d3d7be1519"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="50bd47f3-92f9-40f6-9070-deaa5dadb576">
+                    <propertyInstance
+                      Id="92b5e0a2-b1eb-4727-8ccf-1d863aea5875"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d143d5ff-2116-4463-b10c-fc1e479c60fa">
+                    <propertyInstance
+                      Id="fba39e42-f079-44ec-8900-7df02705ce1c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3a2b74ca-c563-47c6-9db8-9d5183b559d0">
+                    <propertyInstance
+                      Id="8779b074-aa71-4e3b-a751-30d5770dd7c6"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9c24697b-ba6b-4f72-a579-0147505eba07">
+                    <propertyInstance
+                      Id="5fb56e70-ebbd-426f-a9cf-c259cc8b8c55"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="880949b9-79b3-4d47-a58e-df699c25f170">
+                    <propertyInstance
+                      Id="c623afe0-46ea-4981-b46d-b356c8598652"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="e084ba6e-d6f9-4904-874b-3d77de07ad1b"
+            name="TestGetBillingStart"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="162890f2-4aae-4685-a7e4-4843ff381979"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DChildCheckInTest Member%3DTestGetBillingStart"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="7598c0f6-c5dc-4707-86de-83c0cf31cb87"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f58f6e20-582a-4188-9b57-0902860d1baa">
+                    <propertyInstance
+                      Id="b4b68ce4-8f80-43d8-bd0b-460a243ae290"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="325cda98-9c92-4b95-8c92-111d5279a9ab">
+                    <propertyInstance
+                      Id="705035bf-a8c2-42e3-b7dc-857624043f0a"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4308bcfd-3228-4d80-87b7-d5cc0d7f4cdb">
+                    <propertyInstance
+                      Id="bc57d290-1974-4f1b-b39f-9d9549c5f465"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c00b1506-4806-4381-a802-d02d85959ba5">
+                    <propertyInstance
+                      Id="0e9f89b6-3e3f-45f2-93b6-9f2eefc72241"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d67ac4e6-a7fa-432a-b096-cb4981c07df0">
+                    <propertyInstance
+                      Id="b66140da-77d9-4c06-bce3-10485ae73eba"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5bcf9673-a95e-416e-8cf0-617ddeffab52">
+                    <propertyInstance
+                      Id="d898db70-baac-4f25-9ad4-c9b095ab447e"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="aee07deb-cb6f-47f7-bcd1-392d177bdbdb"
+            name="TestGetClosingTime"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="f7453c51-6ecf-487b-92be-6f7818fa84a0"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DChildCheckInTest Member%3DTestGetClosingTime"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="350608c1-2296-4e9f-81d1-50d9a10a02cf"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="de05056f-4231-41a3-af5b-797ca5528660">
+                    <propertyInstance
+                      Id="1c687b9c-47b7-4c5c-9792-f1debc60034b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a56e01f9-ba26-4fbe-adad-6a77a5b67bb5">
+                    <propertyInstance
+                      Id="2d375a1a-4324-4ea1-81f6-cbd03ec08d9d"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="08081895-94ec-4d94-b78d-71aaf2d1ab79">
+                    <propertyInstance
+                      Id="99fbecdb-d474-45cf-bf70-b8e18bba9e31"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="adb34a73-5498-418f-9b8b-9d4e311b41f8">
+                    <propertyInstance
+                      Id="3c5057a3-479d-45b2-9906-0ffa5758b1cd"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="db4fefa8-b6ae-4eb8-9c52-ceb8157f6ec7">
+                    <propertyInstance
+                      Id="e3be0a55-ccb9-429b-9d99-ab175260ed60"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5dcc9ddc-4f03-42c4-a3cc-88bf3fbeb38b">
+                    <propertyInstance
+                      Id="37d6a19c-cc46-41fe-adbc-80fc8fb99e49"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="521dba0a-97f7-4e60-9481-8c932962ed9e"
+            name="TestGetInfantCap"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="418e85f6-8d19-4415-9815-cc4a33363f86"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DChildCheckInTest Member%3DTestGetInfantCap"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8f4796a0-dd45-4bcb-933a-17bc693119af"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="51feaae1-4d64-4f4a-bf1b-7ef20ec627ef">
+                    <propertyInstance
+                      Id="c3d8ae9f-a4e9-498c-bcea-6d2f288d27d3"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7c3c9c77-5f26-4337-9227-1de256bdc041">
+                    <propertyInstance
+                      Id="4299088e-e533-45f0-a6af-2b46d59985b8"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c07ad689-f27c-4a61-82ac-6983af83a3ad">
+                    <propertyInstance
+                      Id="102ffb14-606f-420f-a0fa-c4f7e045ba38"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="39910bae-38b0-4a93-9dec-9eac7f9d3254">
+                    <propertyInstance
+                      Id="07d00033-0831-4f69-8b30-caec706be7c1"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a97d0b78-85d5-4614-80b6-625988d85e4e">
+                    <propertyInstance
+                      Id="3ee493d7-118f-4dd5-9473-9a0ccfe82cba"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fdf82b7d-c1d2-46c3-87f3-dec10de8ebd5">
+                    <propertyInstance
+                      Id="eee18d0a-54fa-4d8f-8dec-d1c7b6d46022"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="e9c78f31-1f2a-4d8b-8702-f158531ab280"
+            name="TestGetRegularChildCap"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="9f12a75e-cb6d-48cf-854e-196ccb590897"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FBrandon Fowler%2FDocuments%2FGitHub%2FChildcareApp%2FChildcareApplication%2FChildcareUnitTests%2Fbin%2FDebug%2FChildcareUnitTests.dll&quot; Namespace%3DChildcareUnitTests Type%3DChildCheckInTest Member%3DTestGetRegularChildCap"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8c05fd21-fc52-44ae-b1a3-3245ced246ec"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e131e885-c576-40dd-9eed-9ef3371b0ddd">
+                    <propertyInstance
+                      Id="5c2934f3-0a1d-44ce-84cb-2e44c1466218"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d69a4fb5-c582-45b2-87fe-467b28985082">
+                    <propertyInstance
+                      Id="b7bf3e27-bd2d-4151-aa38-8a28149a29c5"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6eb31067-cb78-492b-876c-cd31edddeeca">
+                    <propertyInstance
+                      Id="90aebf66-ce02-4f3a-ada1-cc2600f56204"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="611c6647-f6b4-4d3f-9f87-5f26586bf285">
+                    <propertyInstance
+                      Id="65a93ede-79be-42af-a2dc-58d416f059a8"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a5aceb6e-95ef-4bd0-83a9-1acc64fde984">
+                    <propertyInstance
+                      Id="299232b0-8a51-40e5-81c6-0cd5dc011d28"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="24f95a60-28e3-4a5c-b2f7-0dffc9b02610">
+                    <propertyInstance
+                      Id="47bd0d04-827c-4cf8-ada3-54ec3194424c"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

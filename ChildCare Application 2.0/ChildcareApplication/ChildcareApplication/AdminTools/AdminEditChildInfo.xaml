@@ -1,0 +1,54 @@
+﻿<Window x:Class="AdminTools.AdminEditChildInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:AdminTools"
+        Title="win_AdminEditChildInfo" Height="700" Width="800"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Padding="0"
+        WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
+    <Border BorderBrush="LightBlue" BorderThickness="2" Width="800" Height="700" ClipToBounds="True">
+        <Grid Margin="0,-1,0,1">
+            <Canvas x:Name="cnv_ChildIcon" HorizontalAlignment="Left" Height="152" Margin="32,46,0,0" VerticalAlignment="Top" Width="158" Background="#FFE6EAE0" ToolTip="Picture of the logged in Child."/>
+            <Label x:Name="lbl_Child" Content="Child Image:" HorizontalAlignment="Left" Margin="32,12,0,0" VerticalAlignment="Top" Width="98" FontSize="14" RenderTransformOrigin="0.933,0.787"/>
+            <Label x:Name="lbl_UserID" Content="Guardian ID:" HorizontalAlignment="Left" Margin="32,206,0,0" VerticalAlignment="Top" Width="86" FontSize="14"/>
+            <TextBox x:Name="txt_IDNumber" HorizontalAlignment="Left" Height="25" Margin="123,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" IsEnabled="False" Background="#FFE6EAE0" FontSize="14" ToolTip="Guardian ID of the Guardian this child is associated with." VerticalContentAlignment="Center"/>
+            <TextBox x:Name="txt_FirstName" HorizontalAlignment="Left" Height="25" Margin="372,26,0,0" VerticalAlignment="Top" Width="210" TabIndex="0" GotFocus="SelectAllGotFocus" Background="#FFE6EAE0" FontSize="14" ToolTip="Enter Child's first name here." MaxLength="50" VerticalContentAlignment="Center" KeyUp="Key_Up_Event"/>
+            <Label x:Name="lbl_FirstName" Content="First Name:" HorizontalAlignment="Left" Margin="271,22,0,0" VerticalAlignment="Top" Width="83" FontSize="14" RenderTransformOrigin="0.595,-0.108"/>
+            <Label x:Name="lbl_LastName" Content="Last Name:" HorizontalAlignment="Left" Margin="271,68,0,0" VerticalAlignment="Top" Width="83" FontSize="14"/>
+            <TextBox x:Name="txt_LastName" HorizontalAlignment="Left" Height="25" Margin="372,72,0,0" VerticalAlignment="Top" Width="210" TabIndex="1" GotFocus="SelectAllGotFocus" Background="#FFE6EAE0" FontSize="14" ToolTip="Enter Child's last name here." MaxLength="50" VerticalContentAlignment="Center" KeyUp="Key_Up_Event"/>
+            <Label x:Name="lbl_Medical" Content="Medical Issues:" HorizontalAlignment="Left" Margin="216,239,0,0" VerticalAlignment="Top" Width="109" FontSize="14"/>
+            <TextBox x:Name="txt_Medical" HorizontalAlignment="Left" Height="Auto" Margin="216,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187" TabIndex="4" GotFocus="SelectAllGotFocus" Background="#FFE6EAE0" MaxLines="6" FontSize="14" ToolTip="Enter Child's medical issues here." MaxLength="200" VerticalContentAlignment="Center" KeyUp="Key_Up_Event"/>
+            <Label x:Name="lbl_Allergies" Content="Allergies:" HorizontalAlignment="Left" Margin="421,239,0,0" VerticalAlignment="Top" Width="89" FontSize="14" RenderTransformOrigin="0.563,-0.402"/>
+            <TextBox x:Name="txt_Allergies" HorizontalAlignment="Left" Height="Auto" Margin="421,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187" TabIndex="5" GotFocus="SelectAllGotFocus" Background="#FFE6EAE0" MaxLines="6" FontSize="14" ToolTip="Enter Child's allergies here." MaxLength="200" VerticalContentAlignment="Center" KeyUp="Key_Up_Event"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Submit" Content="_Save" Margin="323,540,323,0" VerticalAlignment="Top" Height="60" Click="btn_Submit_Click" TabIndex="9" FontSize="16" ToolTip="Saves changes."/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Delete" Content="_Delete" HorizontalAlignment="Left" Margin="20,626,0,0" VerticalAlignment="Top" Width="150" Height="60" Click="btn_Delete_Click" TabIndex="10" FontSize="16" ToolTip="Permanently deletes the selected child."/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_MainMenu" Content="_Close" Margin="626,626,20,0" VerticalAlignment="Top" Height="60" Click="btn_MainMenu_Click" TabIndex="15" FontSize="16" ToolTip="Closes the window. Does not save."/>
+            <Label x:Name="lbl_Birthday" Content="Birthday:" HorizontalAlignment="Left" Margin="271,132,0,0" VerticalAlignment="Top" Width="68" FontSize="14"/>
+            <Label x:Name="lbl_Example" Content=" Enter a date or click the Calendar. EX: 01/01/2005" HorizontalAlignment="Left" Margin="267,106,0,0" VerticalAlignment="Top" FontSize="14"/>
+            <ListBox x:Name="lst_ChildBox" HorizontalAlignment="Left" Height="132" Margin="129,394,0,0" VerticalAlignment="Top" Width="561" Background="#FFE6EAE0" FontSize="14" ToolTip="Select a Child here to edit that child's information. ">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type local:Child}">
+                        <StackPanel>
+                            <TextBlock Margin="3" Text="{Binding firstName}"/>
+                            <TextBlock Margin="3" Text="{Binding lastName}"/>
+                            <ContentControl Margin="3" Content="{Binding image}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_AddChild" Content="_Add A Child" HorizontalAlignment="Left" Margin="20,321,0,0" VerticalAlignment="Top" Width="150" Height="60" Click="btn_AddChild_Click" TabIndex="6" FontSize="16" ToolTip="Adds a new child to the Guardian."/>
+            <DatePicker x:Name="dte_Birthday" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="372,137,0,0" DisplayDate="2005-01-01" IsTodayHighlighted="False" TabIndex="2" Background="#FFE6EAE0" FontSize="14" ToolTip="Click to change selected child's birthday." GotFocus="SelectAllGotFocusDate" KeyUp="Key_Up_Event"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_LinkChild" Content="_Link This Child" Margin="20,540,626,96" Click="btn_LinkChild_Click" TabIndex="7" FontSize="16" RenderTransformOrigin="0.415,0.988" ToolTip="Links selected child to a specific Guardian."/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_De_LinkChild" Content="_Un-Link This Child" Margin="626,540,20,96" Click="btn_De_LinkChild_Click" TabIndex="8" FontSize="16" ToolTip="Un-Links selected child from specific Guardian."/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_ChangePicture" Content="Change _Picture" HorizontalAlignment="Left" Margin="271,175,0,0" VerticalAlignment="Top" Width="150" Click="btn_ChangePicture_Click" TabIndex="3" FontSize="16" Height="60" RenderTransformOrigin="-0.727,3.706" ToolTip="Click to change the picture of the selected child."/>
+            <TextBox x:Name="txt_FilePath" HorizontalAlignment="Left" Height="25" Margin="442,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" IsEnabled="False" Background="#FFE6EAE0" FontSize="14" ToolTip="File path to the photo of the child." MaxLength="200" VerticalContentAlignment="Center"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_LinkExistingChild" Content="Link _Existing Child" Margin="626,321,20,0" VerticalAlignment="Top" Height="60" TabIndex="6" Click="btn_LinkExistingChild_Click" FontSize="16" ToolTip="Finds all childeren in the Guardian's &quot;family&quot;  not yet linked to the Guardian logged in. "/>
+        </Grid>
+    </Border>
+</Window>

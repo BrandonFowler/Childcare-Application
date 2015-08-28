@@ -1,0 +1,34 @@
+﻿<Window x:Class="ChildcareApplication.AdminTools.LinkExistingChild"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:AdminTools"
+        Title="LinkExistingChild" Height="314" Width="555"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Padding="0"
+        WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
+    <Border BorderBrush="LightBlue" BorderThickness="2" Width="555" Height="314" ClipToBounds="True">
+        <Grid>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_LinkChild" Content="_Link Child" Margin="67,210,334,40" Click="btn_LinkChild_Click" FontSize="16" ToolTip="Links the selected child to the current Guardian loged in. Gives this Guardian access to this child."/>
+            <ListBox x:Name="lst_ChildBox" Height="124" Margin="67,70,66,0" VerticalAlignment="Top" Background="#FFE6EAE0" FontSize="14" ToolTip="Click a child in this box to select them. Then click the &quot;Link Child&quot; button to link them to yourself.">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type local:Child}">
+                        <StackPanel>
+                            <TextBlock Margin="3" Text="{Binding firstName}"/>
+                            <TextBlock Margin="3" Text="{Binding lastName}"/>
+                            <ContentControl Margin="3" Content="{Binding image}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="_Close" Margin="335,210,66,40" Click="btn_Cancel_Click" FontSize="16" ToolTip="Closes the window. Does not save. "/>
+            <Label x:Name="lbl_LinkExistingCHild" Content="Click a child from your family to link to yourself. Then hit &quot;Link Child&quot;." Margin="55,26,56,0" VerticalAlignment="Top" FontSize="14"/>
+
+        </Grid>
+    </Border>
+</Window>

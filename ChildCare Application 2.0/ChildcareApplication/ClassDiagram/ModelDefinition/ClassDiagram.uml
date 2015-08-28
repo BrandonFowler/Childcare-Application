@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="9d22bdf5-277b-4266-b881-46a3a16c933a"
+  name="ClassDiagram" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="09007b68-5dad-4b5b-b0fa-2204179808f5">
+      <profileInstance
+        Id="48eecaec-a3e9-477c-b3a1-e0b063019398"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="3513fc38-1120-415b-b7df-41245c3d7327"
+        LastKnownName="AdminTools"
+        LastKnownLocation="Package_1510.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="985c9934-41d6-4ef6-b433-e79483612820"
+        LastKnownName="System"
+        LastKnownLocation="Package1_1510.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="2c05a487-709f-401b-8a07-8f176b89f87f"
+        LastKnownName="DatabaseController"
+        LastKnownLocation="Package6_1510.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="bcee27ba-790c-4ef1-a859-ad690a39d06a"
+        LastKnownName="ChildcareApplication"
+        LastKnownLocation="Package9_1510.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="ad203d35-105b-4bcd-98f4-5f7dd09c8d61"
+        LastKnownName="PdfSharp"
+        LastKnownLocation="Package11_1510.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="cfab1d9f-62f9-4667-9d58-ee0af38ac084"
+        LastKnownName="GuardianTools"
+        LastKnownLocation="Package16_1510.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="78b63587-ddb5-4a7d-a9b7-1b12d3e674cb"
+        LastKnownName="MessageBoxUtils"
+        LastKnownLocation="Package_1520.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="1a996ca6-3d27-485f-8d82-9c5e69b1d91c"
+        LastKnownName="ChildcareUnitTests"
+        LastKnownLocation="Package9_1520.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="925cb52d-cc7c-4590-a1d3-0c525e460104"
+        LastKnownName="XamlGeneratedNamespace"
+        LastKnownLocation="Package11_1520.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

@@ -1,0 +1,73 @@
+﻿<Window x:Class="AdminTools.BusinessReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BusinessReport" Height="660" Width="597.778"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Padding="0"
+        WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
+    <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True">
+        <Grid Height="638" VerticalAlignment="Center" HorizontalAlignment="Center" ClipToBounds="False" Margin="0,-2,0,0">
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_CurrentMonthReport" Content="Current _Month Report" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="184" Click="btn_CurrentMonthReport_Click" TabIndex="0"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_SpecificMonth" Content="Specific Month _Report" HorizontalAlignment="Left" Margin="199,37,0,0" VerticalAlignment="Top" Width="185" Click="btn_SpecificMonth_Click" TabIndex="1" ToolTip="Select a Month and Year from the drop down menus first."/>
+            <DataGrid x:Name="businessDataGrid" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="497" Width="552" IsReadOnly="True" ColumnWidth="Auto" Background="#FFE6EAE0" FontSize="14" RowBackground="#FFE6EAE0">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0.5,0.909" StartPoint="0.5,0.091">
+                                    <GradientStop Color="#FF264F6A" Offset="1"/>
+                                    <GradientStop Color="#FF6981AE" Offset="0.488"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="#FF6981AE"/>
+                        <Setter Property="BorderThickness" Value="0, 0, 1, 0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                    <Style TargetType="DataGridRowHeader">
+                        <Setter Property="Background" Value="#FFE6EAE0"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
+            <ComboBox x:Name="cmb_Month" HorizontalAlignment="Left" Margin="392,39,0,0" VerticalAlignment="Top" Width="100" TabIndex="2" FontSize="14">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FFE6EAE0" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+                <ComboBoxItem Content="January"/>
+                <ComboBoxItem Content="February"/>
+                <ComboBoxItem Content="March"/>
+                <ComboBoxItem Content="April"/>
+                <ComboBoxItem Content="May"/>
+                <ComboBoxItem Content="June"/>
+                <ComboBoxItem Content="July"/>
+                <ComboBoxItem Content="August"/>
+                <ComboBoxItem Content="September"/>
+                <ComboBoxItem Content="October"/>
+                <ComboBoxItem Content="November"/>
+                <ComboBoxItem Content="December"/>
+            </ComboBox>
+            <ComboBox x:Name="cmb_Year" HorizontalAlignment="Left" Margin="497,39,0,0" VerticalAlignment="Top" Width="65" TabIndex="3" FontSize="14">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FFE6EAE0" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+                <ComboBoxItem/>
+                <ComboBoxItem/>
+            </ComboBox>
+            <Label x:Name="lbl_Month" Content="Month" HorizontalAlignment="Left" Margin="392,13,0,0" VerticalAlignment="Top" Width="91"/>
+            <Label x:Name="lbl_Year" Content="Year" HorizontalAlignment="Left" Margin="497,13,0,0" VerticalAlignment="Top" Width="77"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Exit" Content="_Close" HorizontalAlignment="Left" Margin="487,599,0,0" VerticalAlignment="Top" Width="75" Click="btn_Exit_Click" TabIndex="5"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Print" Content="_Print" HorizontalAlignment="Left" Margin="286,599,0,0" VerticalAlignment="Top" Width="75" TabIndex="4" Click="btn_Print_Click"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Save" Content="_Save" HorizontalAlignment="Left" Margin="366,599,0,0" VerticalAlignment="Top" Width="75" TabIndex="4" Click="btn_Save_Click"/>
+
+        </Grid>
+    </Border>
+</Window>

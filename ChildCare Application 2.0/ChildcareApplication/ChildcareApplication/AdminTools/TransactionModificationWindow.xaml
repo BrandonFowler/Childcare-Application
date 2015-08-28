@@ -1,0 +1,44 @@
+﻿<Window x:Class="AdminTools.TransactionModificationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TransactionModificationWindow" Height="385.5" Width="279"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Padding="0"
+        WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
+    <Border BorderBrush="LightBlue" BorderThickness="2" ClipToBounds="True">
+        <Grid>
+            <Label x:Name="lbl_FromExample" Content="(MM/DD/YYYY)" HorizontalAlignment="Left" Margin="20,309,0,0" VerticalAlignment="Top" Height="30" Width="96"/>
+
+            <Label x:Name="lbl_CheckedOutFormat" Content="(HH:MM:SS PM)" Margin="157,239,-6,0" VerticalAlignment="Top" Height="30" HorizontalAlignment="Left" Width="124"/>
+
+            <Label x:Name="lbl_CheckedInFormat" Content="(HH:MM:SS AM)" HorizontalAlignment="Left" Margin="20,239,0,0" VerticalAlignment="Top" Height="30" Width="99"/>
+
+            <Label x:Name="lbl_GuardianName" Content="Full Guardian Name" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Width="139" FontSize="14"/>
+
+            <TextBox x:Name="txt_GuardianName" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="10,43,0,0" VerticalAlignment="Top" Width="255" GotFocus="txt_GotFocus" KeyUp="KeyUp_Event" TextChanged="TextChanged_Event" TabIndex="0" Background="#FFE6EAE0" FontSize="14" ToolTip="The guardian's first and last name."/>
+            <TextBox x:Name="txt_ChildName" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="9,102,0,0" VerticalAlignment="Top" Width="256" GotFocus="txt_GotFocus" KeyUp="KeyUp_Event" TextChanged="TextChanged_Event" TabIndex="1" Background="#FFE6EAE0" FontSize="14" ToolTip="The child's first and last name."/>
+            <TextBox x:Name="txt_CheckIn" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="10,220,0,0" VerticalAlignment="Top" Width="119" GotFocus="txt_GotFocus" KeyUp="KeyUp_Event" TextChanged="TextChanged_Event" TabIndex="3" Background="#FFE6EAE0" FontSize="14" ToolTip="The time at which the child was checked in."/>
+            <TextBox x:Name="txt_CheckOut" VerticalContentAlignment="Center" Height="25" Margin="146,220,10,0" VerticalAlignment="Top" GotFocus="txt_GotFocus" KeyUp="KeyUp_Event" TextChanged="TextChanged_Event" TabIndex="4" Background="#FFE6EAE0" FontSize="14" ToolTip="The time at which the child was checked out. A late fee may be charged based on this time."/>
+            <TextBox x:Name="txt_TransactionTotal" VerticalContentAlignment="Center" Height="25" Margin="146,290,10,0" VerticalAlignment="Top" GotFocus="txt_GotFocus" KeyUp="KeyUp_Event" TextChanged="TextChanged_Event" TabIndex="6" Background="#FFE6EAE0" FontSize="14" ToolTip="A dollar value for the transaction total (do not include the &quot;$&quot; or late fees)."/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_Cancel" Content="_Cancel" Margin="25,343,0,0" VerticalAlignment="Top" Click="btn_Cancel_Click" TabIndex="8" HorizontalAlignment="Left" Width="85"/>
+            <Button Style="{DynamicResource GlassButton}" x:Name="btn_OK" Content="_Submit" Margin="0,343,25,0" VerticalAlignment="Top" Click="btn_OK_Click" TabIndex="7" Width="85" HorizontalAlignment="Right" ToolTip="Submitting will update the transaction, update the family balance, and charge a late fee if applicable."/>
+            <Label x:Name="lbl_ChildName" Content="Full Child Name" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Width="114" FontSize="14"/>
+            <Label x:Name="lbl_EventName" Content="Event Name" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" Width="114" FontSize="14"/>
+            <Label x:Name="lbl_CheckIn" Content="Checked In" HorizontalAlignment="Left" Margin="9,191,0,0" VerticalAlignment="Top" Width="95" FontSize="14"/>
+            <Label x:Name="lbl_CheckOut" Content="Checked Out" Margin="146,191,10,0" VerticalAlignment="Top" FontSize="14"/>
+            <Label x:Name="lbl_TransactionTotal" Content="Transaction Total" Margin="146,261,-21,0" VerticalAlignment="Top" FontSize="14"/>
+            <TextBox x:Name="txt_Date" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="9,290,0,0" VerticalAlignment="Top" Width="119" GotFocus="txt_GotFocus" KeyUp="KeyUp_Event" TextChanged="TextChanged_Event" TabIndex="5" Background="#FFE6EAE0" FontSize="14" ToolTip="The date for the transaction."/>
+            <Label x:Name="lbl_TransactionTotal_Copy" Content="Transaction Date" HorizontalAlignment="Left" Margin="10,261,0,0" VerticalAlignment="Top" Width="115" FontSize="14"/>
+            <ComboBox x:Name="cmb_EventName" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="255" TabIndex="2" Height="25" FontSize="14" ToolTip="A list of events currently entered in the database." SelectionChanged="TextChanged_Event">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FFE6EAE0" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+
+        </Grid>
+    </Border>
+</Window>

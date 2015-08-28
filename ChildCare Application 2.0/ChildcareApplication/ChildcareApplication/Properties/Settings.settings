@@ -1,0 +1,69 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ChildcareApplication.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BillingStartDate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="MaxMonthlyFee" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="HoldExpiredRecords" Type="System.String" Scope="User">
+      <Value Profile="(Default)">365</Value>
+    </Setting>
+    <Setting Name="InfantMaxAge" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="RegularMaxAge" Type="System.String" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="MonOpen" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/13/2015 08:00:00</Value>
+    </Setting>
+    <Setting Name="MonClose" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/13/2015 19:00:00</Value>
+    </Setting>
+    <Setting Name="TueOpen" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/13/2015 08:00:00</Value>
+    </Setting>
+    <Setting Name="TueClose" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/13/2015 19:00:00</Value>
+    </Setting>
+    <Setting Name="WedOpen" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/13/2015 08:00:00</Value>
+    </Setting>
+    <Setting Name="WedClose" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/13/2015 19:00:00</Value>
+    </Setting>
+    <Setting Name="ThuOpen" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/13/2015 08:00:00</Value>
+    </Setting>
+    <Setting Name="ThuClose" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/13/2015 19:00:00</Value>
+    </Setting>
+    <Setting Name="FriOpen" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/13/2015 08:00:00</Value>
+    </Setting>
+    <Setting Name="FriClose" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/13/2015 20:00:00</Value>
+    </Setting>
+    <Setting Name="SatOpen" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/13/2015 08:00:00</Value>
+    </Setting>
+    <Setting Name="SatClose" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/13/2015 12:30:00</Value>
+    </Setting>
+    <Setting Name="SunOpen" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2015-04-13</Value>
+    </Setting>
+    <Setting Name="SunClose" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2015-04-13</Value>
+    </Setting>
+    <Setting Name="DefaultSaveFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\Public\Documents\Childcare Application\Saved Reports</Value>
+    </Setting>
+    <Setting Name="LastBackup" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2015-05-15</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

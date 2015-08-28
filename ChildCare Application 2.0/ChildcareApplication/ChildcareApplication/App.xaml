@@ -1,0 +1,8 @@
+﻿<Application x:Class="ChildcareApplication.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="UserTypeSelection.xaml">
+    <Application.Resources>
+        <ResourceDictionary Source="GlassButton.xaml"/>
+    </Application.Resources>
+</Application>

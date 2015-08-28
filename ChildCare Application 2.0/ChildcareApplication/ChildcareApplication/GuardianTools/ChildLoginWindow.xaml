@@ -1,0 +1,73 @@
+﻿<Window x:Class="GuardianTools.ChildLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:AdminTools"
+        Title="Child Check In"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Padding="0"
+        WindowStartupLocation="CenterScreen" Background="#FFE4E8EE">
+    <Border BorderBrush="#FFE4E8EE" BorderThickness="2" ClipToBounds="True">
+        <Viewbox>
+            <Grid>
+                <Button Style="{DynamicResource GlassButton}" x:Name="btn_LogOutParent" Content="_Log Out" HorizontalAlignment="Left" Margin="40,58,0,0" VerticalAlignment="Top" Width="90" Height="60" Click="btn_LogOutParent_Click" FontSize="16" KeyboardNavigation.TabIndex="5" RenderTransformOrigin="-0.033,0.538"/>
+                <ListBox x:Name="lst_CheckInBox" HorizontalAlignment="Left" Height="151" Margin="135,354,0,0" VerticalAlignment="Top" Width="592" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Background="#FFE6EAE0" KeyboardNavigation.TabIndex="1" BorderBrush="#FFE6EAE0">
+                    <ListBox.ToolTip>
+                        <ToolTip Background="#FFE6EAE0">
+                            <TextBlock Name="CheckInTip" Text="Select a child that is eligible for check in" FontSize="20" Background="#FFE6EAE0"/>
+                        </ToolTip>
+                    </ListBox.ToolTip>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type local:Child}">
+                            <StackPanel>
+                                <TextBlock Margin="3" Text="{Binding firstName}"/>
+                                <TextBlock Margin="3" Text="{Binding lastName}"/>
+                                <ContentControl Margin="3" Content="{Binding image}" IsTabStop="False"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <ListBox x:Name="lst_CheckOutBox" HorizontalAlignment="Left" Height="447" Margin="762,58,0,0" VerticalAlignment="Top" Width="114" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="20" Background="#FFE6EAE0" KeyboardNavigation.TabIndex="3" BorderBrush="#FFE6EAE0">
+                    <ListBox.ToolTip>
+                        <ToolTip Background="#FFE6EAE0">
+                            <TextBlock Name="CheckOutTip" Text="Select a child that is eligible for check out" FontSize="20" Background="#FFE6EAE0"/>
+                        </ToolTip>
+                    </ListBox.ToolTip>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type local:Child}">
+                            <StackPanel Focusable="False">
+                                <TextBlock Margin="3" Text="{Binding firstName}"/>
+                                <TextBlock Margin="3" Text="{Binding lastName}"/>
+                                <ContentControl Margin="3" Content="{Binding image}" IsTabStop="False"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button Style="{DynamicResource GlassButton}" x:Name="btn_CheckIn" Content="Check _In" Margin="40,408,802,51" Width="90" Height="60" Click="btn_CheckIn_Click" FontSize="16" KeyboardNavigation.TabIndex="2" RenderTransformOrigin="0.731,-0.412"/>
+                <Button Style="{DynamicResource GlassButton}" x:Name="btn_CheckOut" Content="Check _Out" HorizontalAlignment="Left" Margin="667,58,0,0" VerticalAlignment="Top" Width="90" Height="60" Click="btn_CheckOut_Click" FontSize="16" RenderTransformOrigin="0.223,0.835" KeyboardNavigation.TabIndex="4"/>
+                <Label x:Name="lbl_RegisteredChildren" Content="Eligible For Check In" HorizontalAlignment="Left" Margin="135,321,0,0" VerticalAlignment="Top" Width="197" Background="#FFE4E8EE" Height="28" FontSize="16" RenderTransformOrigin="0.528,-0.273"/>
+                <Label x:Name="lbl_CheckedIn" Content="Checked In" Margin="762,19,82,0" VerticalAlignment="Top" Background="#FFE4E8EE" Height="34" FontSize="16"/>
+                <Label x:Name="lbl_ParentName" Content="Parent Name" HorizontalAlignment="Left" Margin="135,19,0,0" VerticalAlignment="Top" Width="114" Cursor="" Background="#FFE4E8EE" Height="34" FontSize="16" RenderTransformOrigin="1.036,1.51"/>
+                <ComboBox x:Name="cbo_EventChoice" HorizontalAlignment="Left" Margin="404,168,0,0" VerticalAlignment="Top" Width="239" Height="30" FontSize="16" RenderTransformOrigin="0.503,-1.06" KeyboardNavigation.TabIndex="0" Background="#FFE6EAE0">
+                    <ComboBox.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FFE6EAE0" />
+                    </ComboBox.Resources>
+                    <ComboBox.ToolTip>
+                        <ToolTip Background="#FFE6EAE0">
+                            <TextBlock Name="IDTip" Text="Select a childcare event type before check in" FontSize="20" Background="#FFE6EAE0"/>
+                        </ToolTip>
+                    </ComboBox.ToolTip>
+                </ComboBox>
+                <Label x:Name="lbl_Events" Content="Events" HorizontalAlignment="Left" Margin="404,132,0,0" VerticalAlignment="Top" Width="90" Background="#FFE4E8EE" RenderTransformOrigin="1.712,1.006" FontSize="16"/>
+                <Label x:Name="lbl_Time" HorizontalAlignment="Left" Margin="404,58,0,0" VerticalAlignment="Top" Width="192" Content="{Binding Path=Now}" Height="30" RenderTransformOrigin="0.557,2.18" FontSize="16" Background="#FFE6EAE0"/>
+                <Label Content="Date/Time" HorizontalAlignment="Left" Margin="404,19,0,0" VerticalAlignment="Top" Width="114" Background="#FFE4E8EE" Height="34" RenderTransformOrigin="2.002,0.912" FontSize="16"/>
+                <Canvas x:Name="cnv_GuardianPic" HorizontalAlignment="Left" Height="172" Margin="135,58,0,0" VerticalAlignment="Top" Width="197" Background="#FFE6EAE0" RenderTransformOrigin="0.449,0.191"/>
+            </Grid>
+        </Viewbox>
+    </Border>
+</Window>
